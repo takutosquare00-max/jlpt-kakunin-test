@@ -24,15 +24,28 @@ h1 {
   background: #fff;
   border-radius: 12px;
   margin-bottom: 16px;
-  padding: 16px;
   box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  overflow: hidden;
 }
-.level h2 {
+.level summary {
   font-size: 1.2em;
-  margin-bottom: 12px;
-  padding-bottom: 8px;
+  font-weight: bold;
+  padding: 16px;
+  cursor: pointer;
+  list-style: none;
   border-bottom: 2px solid #e0e0e0;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
 }
+.level summary::-webkit-details-marker { display: none; }
+.level summary::before {
+  content: '▼';
+  display: inline-block;
+  margin-right: 8px;
+  transition: transform 0.2s;
+}
+.level[open] summary::before { transform: rotate(-90deg); }
+.level-content { padding: 16px; }
 .level a {
   display: block;
   padding: 12px 16px;
@@ -52,50 +65,59 @@ h1 {
 <body>
 <h1>JLPT 確認テスト一覧</h1>
 
-<div class="level">
-  <h2>N5</h2>
-  <a href="n5-10min-test-v2.html">N5 確認テスト2（10分・10問）</a>
-  <a href="n5-10min-test-v3.html">N5 確認テスト3（10分・10問）</a>
-  <a href="n5-10min-test-v4.html">N5 確認テスト4（10分・10問）</a>
-  <a href="n5-10min-test-v5.html">N5 確認テスト5（10分・10問）</a>
-  <a href="n5-6min-test.html">N5 確認テスト1（6分・6問）</a>
-</div>
+<details class="level" open>
+  <summary>N5</summary>
+  <div class="level-content">
+    <a href="n5-10min-test-v2.html">N5 確認テスト2（10分・10問）</a>
+    <a href="n5-10min-test-v3.html">N5 確認テスト3（10分・10問）</a>
+    <a href="n5-10min-test-v4.html">N5 確認テスト4（10分・10問）</a>
+    <a href="n5-10min-test-v5.html">N5 確認テスト5（10分・10問）</a>
+    <a href="n5-6min-test.html">N5 確認テスト1（6分・6問）</a>
+  </div>
+</details>
 
-<div class="level">
-  <h2>N4</h2>
-  <a href="n4-10min-test.html">N4 確認テスト1（10分・10問）</a>
-  <a href="n4-10min-test-v2.html">N4 確認テスト2（10分・10問）</a>
-  <a href="n4-10min-test-v3.html">N4 確認テスト3（10分・10問）</a>
-  <a href="n4-10min-test-v4.html">N4 確認テスト4（10分・10問）</a>
-  <a href="n4-10min-test-v5.html">N4 確認テスト5（10分・10問）</a>
-  <a href="n4-6min-test.html">N4 確認テスト1（6分・6問）</a>
-</div>
+<details class="level">
+  <summary>N4</summary>
+  <div class="level-content">
+    <a href="n4-10min-test.html">N4 確認テスト1（10分・10問）</a>
+    <a href="n4-10min-test-v2.html">N4 確認テスト2（10分・10問）</a>
+    <a href="n4-10min-test-v3.html">N4 確認テスト3（10分・10問）</a>
+    <a href="n4-10min-test-v4.html">N4 確認テスト4（10分・10問）</a>
+    <a href="n4-10min-test-v5.html">N4 確認テスト5（10分・10問）</a>
+    <a href="n4-6min-test.html">N4 確認テスト1（6分・6問）</a>
+  </div>
+</details>
 
-<div class="level">
-  <h2>N3</h2>
-  <a href="n3-10min-test.html">N3 確認テスト1（10分・10問）</a>
-  <a href="n3-10min-test-v2.html">N3 確認テスト2（10分・10問）</a>
-  <a href="n3-10min-test-v3.html">N3 確認テスト3（10分・10問）</a>
-  <a href="n3-10min-test-v4.html">N3 確認テスト4（10分・10問）</a>
-  <a href="n3-10min-test-v5.html">N3 確認テスト5（10分・10問）</a>
-  <a href="n3-6min-test.html">N3 確認テスト1（6分・6問）</a>
-</div>
+<details class="level">
+  <summary>N3</summary>
+  <div class="level-content">
+    <a href="n3-10min-test.html">N3 確認テスト1（10分・10問）</a>
+    <a href="n3-10min-test-v2.html">N3 確認テスト2（10分・10問）</a>
+    <a href="n3-10min-test-v3.html">N3 確認テスト3（10分・10問）</a>
+    <a href="n3-10min-test-v4.html">N3 確認テスト4（10分・10問）</a>
+    <a href="n3-10min-test-v5.html">N3 確認テスト5（10分・10問）</a>
+    <a href="n3-6min-test.html">N3 確認テスト1（6分・6問）</a>
+  </div>
+</details>
 
-<div class="level">
-  <h2>N2</h2>
-  <a href="n2-10min-test.html">N2 確認テスト（10分・18問）</a>
-  <a href="n2-10min-test-v1.html">N2 確認テスト v1（10分・10問）</a>
-  <a href="n2-10min-test-v2.html">N2 確認テスト v2（10分・10問）</a>
-  <a href="n2-10min-test-v3.html">N2 確認テスト v3（10分・10問）</a>
-  <a href="n2-10min-test-v4.html">N2 確認テスト v4（10分・10問）</a>
-  <a href="n2-10min-test-v5.html">N2 確認テスト v5（10分・10問）</a>
-  <a href="n2-6min-test.html">N2 確認テスト1（6分・6問）</a>
-</div>
+<details class="level">
+  <summary>N2</summary>
+  <div class="level-content">
+    <a href="n2-10min-test-v1.html">N2 確認テスト v1（10分・10問）</a>
+    <a href="n2-10min-test-v2.html">N2 確認テスト v2（10分・10問）</a>
+    <a href="n2-10min-test-v3.html">N2 確認テスト v3（10分・10問）</a>
+    <a href="n2-10min-test-v4.html">N2 確認テスト v4（10分・10問）</a>
+    <a href="n2-10min-test-v5.html">N2 確認テスト v5（10分・10問）</a>
+    <a href="n2-6min-test.html">N2 確認テスト1（6分・6問）</a>
+  </div>
+</details>
 
-<div class="level">
-  <h2>N1</h2>
-  <a href="n1-6min-test.html">N1 確認テスト1（6分・6問）</a>
-</div>
+<details class="level">
+  <summary>N1</summary>
+  <div class="level-content">
+    <a href="n1-6min-test.html">N1 確認テスト1（6分・6問）</a>
+  </div>
+</details>
 
 </body>
 </html>
