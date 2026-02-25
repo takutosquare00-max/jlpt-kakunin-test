@@ -74,13 +74,14 @@ h1 {
   flex-wrap: wrap;
   gap: 10px;
 }
-.icon-link {
+.icon-row .icon-link {
   display: flex;
   align-items: center;
   justify-content: center;
   min-width: 56px;
   height: 56px;
   padding: 0 16px;
+  margin-bottom: 0;
   background: #333;
   color: #fff;
   border-radius: 12px;
@@ -90,10 +91,10 @@ h1 {
   box-shadow: 0 2px 8px rgba(0,0,0,0.2);
   transition: transform 0.2s, box-shadow 0.2s;
   text-align: center;
+  line-height: 1;
 }
-.icon-link:active { transform: scale(0.96); }
-.icon-link:hover { box-shadow: 0 4px 12px rgba(0,0,0,0.25); }
-.level-content .icon-link { margin-bottom: 0; }
+.icon-row .icon-link:active { transform: scale(0.96); }
+.icon-row .icon-link:hover { box-shadow: 0 4px 12px rgba(0,0,0,0.25); }
 </style>
 </head>
 <body>
