@@ -60,19 +60,62 @@ h1 {
 }
 .level a:last-child { margin-bottom: 0; }
 .level a:active { background: #d0e0ff; }
+/* レベルチェック用：6分・6問の階層 */
+.sub-section { margin-bottom: 16px; }
+.sub-section:last-child { margin-bottom: 0; }
+.sub-section-title {
+  font-size: 0.95em;
+  color: #666;
+  margin-bottom: 12px;
+  padding-left: 4px;
+}
+.icon-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.icon-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 56px;
+  height: 56px;
+  padding: 0 16px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: #fff;
+  border-radius: 12px;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 1.1em;
+  box-shadow: 0 2px 8px rgba(102,126,234,0.3);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.icon-link:active { transform: scale(0.96); }
+.icon-link:hover { box-shadow: 0 4px 12px rgba(102,126,234,0.4); }
+.icon-link.n5 { background: linear-gradient(135deg, #48bb78 0%, #38a169 100%); }
+.icon-link.n4 { background: linear-gradient(135deg, #4299e1 0%, #3182ce 100%); }
+.icon-link.n3 { background: linear-gradient(135deg, #ed8936 0%, #dd6b20 100%); }
+.icon-link.n2 { background: linear-gradient(135deg, #e53e3e 0%, #c53030 100%); }
+.icon-link.n1 { background: linear-gradient(135deg, #805ad5 0%, #6b46c1 100%); }
+.level-content .icon-link { margin-bottom: 0; }
 </style>
 </head>
 <body>
 <h1>JLPT 確認テスト一覧</h1>
 
-<details class="level">
+<details class="level" open>
   <summary>レベルチェック</summary>
   <div class="level-content">
-    <a href="n5-6min-test.html">N5 確認テスト1（6分・6問）</a>
-    <a href="n4-6min-test.html">N4 確認テスト1（6分・6問）</a>
-    <a href="n3-6min-test.html">N3 確認テスト1（6分・6問）</a>
-    <a href="n2-6min-test.html">N2 確認テスト1（6分・6問）</a>
-    <a href="n1-6min-test.html">N1 確認テスト1（6分・6問）</a>
+    <div class="sub-section">
+      <div class="sub-section-title">6分・6問</div>
+      <div class="icon-row">
+        <a href="n5-6min-test.html" class="icon-link n5">N5</a>
+        <a href="n4-6min-test.html" class="icon-link n4">N4</a>
+        <a href="n3-6min-test.html" class="icon-link n3">N3</a>
+        <a href="n2-6min-test.html" class="icon-link n2">N2</a>
+        <a href="n1-6min-test.html" class="icon-link n1">N1</a>
+      </div>
+    </div>
   </div>
 </details>
 
