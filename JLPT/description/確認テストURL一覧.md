@@ -101,6 +101,11 @@ GitHub Pages でホスティング済み。**Macが起動していなくても**
 | N2 確認テスト v3（10分・10問） | <https://takutosquare00-max.github.io/jlpt-kakunin-test/n2-10min-test-v3.html> |
 | N2 確認テスト v4（10分・10問） | <https://takutosquare00-max.github.io/jlpt-kakunin-test/n2-10min-test-v4.html> |
 | N2 確認テスト v5（10分・10問） | <https://takutosquare00-max.github.io/jlpt-kakunin-test/n2-10min-test-v5.html> |
+| N2 確認テスト v6（10分・10問） | <https://takutosquare00-max.github.io/jlpt-kakunin-test/n2-10min-test-v6.html> |
+| N2 確認テスト v7（10分・10問） | <https://takutosquare00-max.github.io/jlpt-kakunin-test/n2-10min-test-v7.html> |
+| N2 確認テスト v8（10分・10問） | <https://takutosquare00-max.github.io/jlpt-kakunin-test/n2-10min-test-v8.html> |
+| N2 確認テスト v9（10分・10問） | <https://takutosquare00-max.github.io/jlpt-kakunin-test/n2-10min-test-v9.html> |
+| N2 確認テスト v10（10分・10問） | <https://takutosquare00-max.github.io/jlpt-kakunin-test/n2-10min-test-v10.html> |
 
 ---
 
@@ -180,6 +185,11 @@ https://takutosquare00-max.github.io/jlpt-kakunin-test/n2-10min-test-v2.html
 https://takutosquare00-max.github.io/jlpt-kakunin-test/n2-10min-test-v3.html
 https://takutosquare00-max.github.io/jlpt-kakunin-test/n2-10min-test-v4.html
 https://takutosquare00-max.github.io/jlpt-kakunin-test/n2-10min-test-v5.html
+https://takutosquare00-max.github.io/jlpt-kakunin-test/n2-10min-test-v6.html
+https://takutosquare00-max.github.io/jlpt-kakunin-test/n2-10min-test-v7.html
+https://takutosquare00-max.github.io/jlpt-kakunin-test/n2-10min-test-v8.html
+https://takutosquare00-max.github.io/jlpt-kakunin-test/n2-10min-test-v9.html
+https://takutosquare00-max.github.io/jlpt-kakunin-test/n2-10min-test-v10.html
 https://takutosquare00-max.github.io/jlpt-kakunin-test/n1-10min-test-v1.html
 https://takutosquare00-max.github.io/jlpt-kakunin-test/n1-10min-test-v2.html
 https://takutosquare00-max.github.io/jlpt-kakunin-test/n1-10min-test-v3.html
