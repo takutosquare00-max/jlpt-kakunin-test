@@ -1,0 +1,574 @@
+# Vocabulary List
+|#|ごい|Vocabulary|Type|Meaning|
+|---|---|---|---|---|
+|1|あ|a|Expression|Ah; oh|
+|2|ああ|aa|Adverb|ah; yes|
+|3|アフリカ|afurika|Noun, Katakana|Africa|
+|4|上がる|agaru あがる|Verb, Godan verb, Intransitive verb|to rise|
+|5|挨拶|aisatsu あいさつ|Noun, Suru verb|to greet|
+|6|味|aji あじ|Noun|flavor; taste​; uniqueness; attractiveness; experience|
+|7|アジア|ajia|Noun, Katakana|Asia|
+|8|赤ちゃん|akachan あかちゃん|Noun|baby; infant|
+|9|赤ん坊|akanbou あかんぼう|Noun|baby; infant|
+|10|アクセサリー|akusesarii|Noun, Katakana|accessory|
+|11|アメリカ|amerika|Noun, Katakana|America|
+|12|アナウンサー|anaunsaa|Noun, Katakana|announcer|
+|13|あんな|anna|Pre-noun adjectival|such|
+|14|案内|annai あんない|Noun, Suru verb|to guide|
+|15|安心|anshin あんしん|Noun|, Adjective, な-adjective, Suru verbpeace of mind|
+|16|安全|anzen あんぜん|Noun|, Adjective, な-adjectivesafety; security​|
+|17|アルバイト|arubaito|Noun, Suru verb|, Katakanapart-time job|
+|18|アルコール|arukooru|Noun, Katakana|alcohol|
+|19|浅い|asai あさい|Adjective, い-adjective|shallow|
+|20|遊び|asobi あそび|Noun|playing|
+|21|集まる|atsumaru あつまる|Verb, Godan verb, Intransitive verb|to gather; to collect; to assemble|
+|22|集める|atsumeru あつめる|Verb, Ichidan verb, Transitive verb|to collect; to assemble; to gather|
+|23|謝る|ayamaru あやまる|Verb, Godan verb|to apologize|
+|24|倍|bai ばい|Noun|double|
+|25|番組|bangumi ばんぐみ|Noun|program (e.g. TV)|
+|26|場所|basho ばしょ|Noun|place|
+|27|ベル|beru|Noun, Katakana|bell|
+|28|美術館|bijutsukan びじゅつかん|Noun|art gallery; art museum|
+|29|びっくり|bikkuri|Adverb|, Suru verbto be surprised|
+|30|ビル|biru|Noun, Katakana|building|
+|31|僕|boku ぼく|Pronoun|I (used by males)|
+|32|貿易|boueki ぼうえき|Noun, Suru verb|trade|
+|33|部長|buchou ぶちょう|Noun|manager; head (chief, director) of a section or department|
+|34|ぶどう|budou|Noun|grapes|
+|35|文学|bungaku ぶんがく|Noun|literature|
+|36|文化|bunka ぶんか|Noun|culture|
+|37|文法|bunpou ぶんぽう|Noun|grammar|
+|38|ちゃん|chan|Suffixsuffix|for familiar female person|
+|39|チェック|chekku|Noun, Suru verb|, Katakanato check|
+|40|血|chi ち|Noun|blood|
+|41|力|chikara ちから|Noun|energy; force; strength; might; power|
+|42|地理|chiri ちり|Noun|geography|
+|43|中学校|chuugakkou ちゅうがっこう|Noun|junior high school; middle school|
+|44|注意|chuui ちゅうい|Noun, Suru verb|caution|
+|45|注射|chuusha ちゅうしゃ|Noun, Suru verb|injection|
+|46|駐車場|chuushajou ちゅうしゃじょう|Noun|parking lot|
+|47|大分|daibu だいぶ|Adverb|considerably; greatly; a lot​|
+|48|大学生|daigakusei だいがくせい|Noun|university student; college student|
+|49|大事|daiji だいじ|Adjective, な-adjective|important; serious; crucial|
+|50|大体|daitai だいたい|Noun|roughly|
+|51|暖房|danbou だんぼう|Noun, Suru verb|heating|
+|52|男性|dansei だんせい|Noun|man; male|
+|53|できるだけ|dekiru dake|Adverb|, Expressionas much as possible|
+|54|電報|denpou でんぽう|Noun|telegram|
+|55|電灯|dentou でんとう|Noun|electric light|
+|56|どんどん|dondon|Adverb|rapidly; more and more|
+|57|泥棒|dorobou どろぼう|Noun|thief|
+|58|動物園|doubutsuen どうぶつえん|Noun|zoo; zoological gardens|
+|59|道具|dougu どうぐ|Noun|tool|
+|60|枝|eda えだ|Noun|branch|
+|61|遠慮|enryo えんりょ|Noun, Suru verb|reserve; refraining|
+|62|選ぶ|erabu えらぶ|Verb, Godan verb, Transitive verb|to choose|
+|63|エスカレーター|esukareetaa|Noun, Katakana|escalator|
+|64|ファックス|fakkusu|Noun, Suru verb|, Katakanafax|
+|65|不便|fuben ふべん|Noun|, Adjective, な-adjectiveinconvenience|
+|66|増える|fueru ふえる|Verb, Ichidan verb, Intransitive verb|to increase|
+|67|深い|fukai ふかい|Adjective, い-adjective|deep|
+|68|復習|fukushuu ふくしゅう|Noun, Verb, Suru verb|review (of learned material); revision|
+|69|複雑|fukuzatsu ふくざつ|Noun|, Adjective, な-adjectivecomplexity; complication|
+|70|踏む|fumu ふむ|Verb, Godan verb, Transitive verb|to step on|
+|71|船|fune ふね|Noun|ship|
+|72|降り出す|furidasu ふりだす|Verb, Godan verb, Intransitive verb|to start to rain|
+|73|布団|futon ふとん|Noun|Japanese bedding, futon|
+|74|太る|futoru ふとる|Verb, Godan verb, Intransitive verb|to become fat|
+|75|普通|futsuu ふつう|Noun|, Adverbusually|
+|76|ガラス|garasu|Noun, Katakana|a glass|
+|77|ガソリン|gasorin|Noun, Katakana|gasoline; petrol|
+|78|ガソリンスタンド|gasorin sutando|Noun, Katakana|petrol station|
+|79|ガス|gasu|Noun, Katakana|petrol|
+|80|原因|genin げんいん|Noun, Suru verb|cause|
+|81|下宿|geshuku げしゅく|Noun, Suru verb|lodging|
+|82|技術|gijutsu ぎじゅつ|Noun|art,technology,skill|
+|83|ごちそう|gochisou|Noun, Suru verb|a feast|
+|84|ごみ|gomi|Noun|rubbish|
+|85|ご覧になる|goran ni naru ごらんになる|Verb, Godan verb|, Expression(respectful) to see|
+|86|ご主人|goshujin ごしゅじん|Noun|your husband; her husband|
+|87|ご存じ|gozonji ごぞんじ|Noun|knowing|
+|88|具合|guai ぐあい|Noun|condition; health|
+|89|葉|ha は|Noun|leaves; leaf|
+|90|拝見|haiken はいけん|Noun, Suru verb|seeing; looking at​|
+|91|歯医者|haisha はいしゃ|Noun|dentist|
+|92|はっきり|hakkiri|Adverb|clearly|
+|93|運ぶ|hakobu はこぶ|Verb, Godan verb, Transitive verb|to carry|
+|94|花見|hanami はなみ|Noun, Verb, Suru verb|cherry blossom viewing; flower viewing|
+|95|ハンドバッグ|handobaggu|Noun, Katakana|handbag|
+|96|反対|hantai はんたい|Noun|, Adjective, な-adjective, Suru verbopposition|
+|97|払う|harau はらう|Verb, Godan verb, Transitive verb|to pay|
+|98|発音|hatsuon はつおん|Noun, Suru verb|pronunciation|
+|99|林|hayashi はやし|Noun|woods; forest|
+|100|恥ずかしい|hazukashii はずかしい|Adjective, い-adjective|embarrassed|
+|101|変|hen へん|Noun|, Adjective, な-adjectivestrange; peculiar; weird|
+|102|返事|henji へんじ|Noun, Suru verb|reply; answer; response|
+|103|火|hi ひ|Noun|fire|
+|104|酷い|hidoi ひどい|Adjective, い-adjective|terrible; awful​|
+|105|冷える|hieru ひえる|Verb, Ichidan verb, Intransitive verb|to grow cold|
+|106|髭|hige ひげ|Noun|beard|
+|107|非常に|hijou ni ひじょうに|Adverb|extremely|
+|108|光|hikari ひかり|Noun|light|
+|109|光る|hikaru ひかる|Verb, Godan verb, Intransitive verb|to shine|
+|110|引き出し|hikidashi ひきだし|Noun|drawer|
+|111|引き出す|hikidasu ひきだす|Verb, Godan verb, Transitive verb|to withdraw|
+|112|引っ越す|hikkosu ひっこす|Verb, Godan verb, Intransitive verb|to move house|
+|113|飛行場|hikoujou ひこうじょう|Noun|airfield; airport|
+|114|開く|hiraku ひらく|Verb, Godan verb, Intransitive verb|, Transitive verbto open; to undo; to unseal; to unpack|
+|115|拾う|hirou ひろう|Verb, Godan verb, Transitive verb|to pick up|
+|116|昼間|hiruma ひるま|Noun|daytime; during the day|
+|117|昼休み|hiruyasumi ひるやすみ|Noun|lunch break; noon recess; noon rest period|
+|118|久しぶり|hisashiburi ひさしぶり|Noun|, Adjective, な-adjectiveafter a long time|
+|119|褒める|homeru ほめる|Verb, Ichidan verb, Transitive verb|to praise|
+|120|翻訳|honyaku ほんやく|Noun, Suru verb|translation|
+|121|星|hoshi ほし|Noun|star|
+|122|ほとんど|hotondo|Adverb|ial Nounmostly|
+|123|法律|houritsu ほうりつ|Noun|law|
+|124|放送|housou ほうそう|Noun, Suru verb|to broadcast|
+|125|一度|ichido いちど|Noun|once; one time; on one occasion|
+|126|以外|igai いがい|Noun|with the exception of; excepting|
+|127|医学|igaku いがく|Noun|medical science; medicine|
+|128|いじめる|ijimeru|Verb, Ichidan verb, Transitive verb|to tease|
+|129|以上|ijou いじょう|Noun, Adverbial Noun|... and more; ... and upwards​|
+|130|以下|ika いか|Noun|not exceeding|
+|131|意見|iken いけん|Noun, Verb, Suru verb|opinion; view; comment|
+|132|生き物|ikimono いきもの|Noun|living thing|
+|133|生きる|ikiru いきる|Verb, Ichidan verb, Intransitive verb|to live|
+|134|以内|inai いない|Noun, Suffix|within|
+|135|田舎|inaka いなか|Noun|countryside|
+|136|祈る|inoru いのる|Verb, Godan verb, Transitive verb|to pray|
+|137|いっぱい|ippai|Noun|, Adjective, な-adjective, Adverbfull|
+|138|色んな|ironna いろんな|Pre-noun adjectival|various|
+|139|石|ishi いし|Noun|stone|
+|140|急ぐ|isogu いそぐ|Verb, Godan verb, Intransitive verb|to hurry; to rush; to hasten; to make something happen sooner|
+|141|一生懸命|isshoukenmei いっしょうけんめい|Noun, Adverbial Noun|, Adjective, な-adjectivevery hard; with utmost effort|
+|142|頂く|itadaku いただく|Verb, Godan verb, Transitive verb|(humble) to receive|
+|143|致す|itasu いたす|Verb, Godan verb, Transitive verb|(humble) to do|
+|144|糸|ito いと|Noun|thread|
+|145|ジャム|jamu|Noun, Katakana|jam|
+|146|字|ji じ|Noun|character|
+|147|時代|jidai じだい|Noun|period|
+|148|事故|jiko じこ|Noun|accident|
+|149|事務所|jimusho じむしょ|Noun|office|
+|150|神社|jinja じんじゃ|Noun|Shinto shrine|
+|151|人口|jinkou じんこう|Noun|population|
+|152|人生|jinsei じんせい|Noun|human life|
+|153|地震|jishin じしん|Noun|earthquake|
+|154|辞典|jiten じてん|Noun|dictionary|
+|155|自由|jiyuu じゆう|Noun|, Adjective, な-adjective, Expressionfreedom|
+|156|女性|josei じょせい|Noun|woman; female|
+|157|準備|junbi じゅんび|Noun, Suru verb|to prepare|
+|158|十分|juubun じゅうぶん|Noun|, Adjective, な-adjective, Adverbenough; sufficient; plenty; adequate; satisfactory|
+|159|柔道|juudou じゅうどう|Noun|judo|
+|160|住所|juusho じゅうしょ|Noun|address|
+|161|カーテン|kaaten|Noun, Katakana|curtain|
+|162|壁|kabe かべ|Noun|wall|
+|163|課長|kachou かちょう|Noun|section manager; section chief|
+|164|帰り|kaeri かえり|Noun|return; coming back|
+|165|変える|kaeru かえる|Verb, Ichidan verb, Transitive verb|to change; to transform|
+|166|科学|kagaku かがく|Noun|science|
+|167|鏡|kagami かがみ|Noun|mirror|
+|168|海岸|kaigan かいがん|Noun|coast|
+|169|会議|kaigi かいぎ|Noun, Verb, Suru verb|meeting; conference; session; assembly|
+|170|会議室|kaigishitsu かいぎしつ|Noun|conference room; conference hall; council room|
+|171|会場|kaijou かいじょう|Noun|assembly hall; meeting place; venue; grounds|
+|172|会話|kaiwa かいわ|Noun, Verb, Suru verb|conversation|
+|173|火事|kaji かじ|Noun|fire|
+|174|格好|kakkou かっこう|Noun|appearance|
+|175|構う|kamau かまう|Verb, Godan verb|to mind|
+|176|髪|kami かみ|Noun|hair|
+|177|噛む|kamu かむ|Verb, Godan verb, Transitive verb|to bite,to chew|
+|178|家内|kanai かない|Noun|(my) wife; inside the home; one's family|
+|179|必ず|kanarazu かならず|Adverb|always; certainly|
+|180|悲しい|kanashii かなしい|Adjective, い-adjective|sad|
+|181|考える|kangaeru かんがえる|Verb, Ichidan verb, Transitive verb|to think|
+|182|看護婦|kangofu かんごふ|Noun|female nurse|
+|183|関係|kankei かんけい|Noun, Suru verb|relationship|
+|184|彼女|kanojo かのじょ|Pronoun|she; her​|
+|185|簡単|kantan かんたん|Noun|, Adjective, な-adjectivesimple; easy|
+|186|彼|kare かれ|Pronoun|he; him​; his|
+|187|彼ら|karera かれら|Pronoun|they; them|
+|188|形|katachi かたち|Noun|shape|
+|189|片付ける|katadzukeru かたづける|Verb, Ichidan verb, Transitive verb|to tidy up|
+|190|硬い|katai かたい|Adjective, い-adjective|hard|
+|191|勝つ|katsu かつ|Verb, Godan verb, Intransitive verb|to win|
+|192|乾く|kawaku かわく|Verb, Godan verb, Intransitive verb|to get dry|
+|193|代わり|kawari かわり|Noun|instead; in place|
+|194|変わる|kawaru かわる|Verb, Godan verb, Intransitive verb|to change|
+|195|通う|kayou かよう|Verb, Godan verb, Intransitive verb|to commute|
+|196|飾る|kazaru かざる|Verb, Godan verb, Transitive verb|to decorate|
+|197|毛|ke け|Noun|hair or fur|
+|198|ケーキ|keeki|Noun, Katakana|cake|
+|199|怪我|kega けが|Noun, Suru verb|to injure|
+|200|計画|keikaku けいかく|Noun, Suru verb|to plan|
+|201|経験|keiken けいけん|Noun, Suru verb|to experience|
+|202|警察|keisatsu けいさつ|Noun|police|
+|203|経済|keizai けいざい|Noun|finance, economy|
+|204|見物|kenbutsu けんぶつ|Noun, Suru verb|sightseeing; visit|
+|205|喧嘩|kenka けんか|Noun, Suru verb|to quarrel|
+|206|研究|kenkyuu けんきゅう|Noun, Suru verb|research|
+|207|研究室|kenkyuushitsu けんきゅうしつ|Noun|laboratory|
+|208|消しゴム|keshigomu|Noun|eraser|
+|209|景色|keshiki けしき|Noun|scenery|
+|210|気|ki き|Noun|spirit|
+|211|厳しい|kibishii きびしい|Adjective, い-adjective|strict|
+|212|気分|kibun きぶん|Noun|feeling; mood|
+|213|機会|kikai きかい|Noun|chance; opportunity|
+|214|危険|kiken きけん|Noun|, Adjective, な-adjectivedanger|
+|215|聞こえる|kikoeru きこえる|Verb, Ichidan verb, Intransitive verb|to be heard; to be audible; to be said|
+|216|決まる|kimaru きまる|Verb, Godan verb, Intransitive verb|to be decided|
+|217|決める|kimeru きめる|Verb, Ichidan verb, Transitive verb|to decide|
+|218|君|kimi きみ|Pronoun|You|
+|219|気持ち|kimochi きもち|Noun|feeling|
+|220|着物|kimono きもの|Noun|kimono; Japanese traditional clothing|
+|221|近所|kinjo きんじょ|Noun|neighbourhood|
+|222|絹|kinu きぬ|Noun|silk|
+|223|季節|kisetsu きせつ|Noun|season|
+|224|汽車|kisha きしゃ|Noun|train|
+|225|規則|kisoku きそく|Noun|rule|
+|226|子|ko こ|Noun|child|
+|227|心|kokoro こころ|Noun|heart|
+|228|国際|kokusai こくさい|Noun|international|
+|229|細かい|komakai こまかい|Adjective, い-adjective|small, fine|
+|230|米|kome こめ|Noun|(husked grains of) rice|
+|231|込む|komu こむ|Verb, Godan verb, Intransitive verb|to be crowded|
+|232|今度|kondo こんど|Noun|this time; next time|
+|233|この間|kono aida このあいだ|Adverb|ial Nounthe other day; recently|
+|234|このごろ|kono goro|Adverb|ial Nounthese days; nowadays|
+|235|コンピュータ|konpyuuta|Noun, Katakana|computer|
+|236|コンサート|konsaato|Noun, Katakana|concert|
+|237|今夜|konya こんや|Noun|this evening; tonigh|
+|238|これから|korekara|Conjunction|after this|
+|239|故障|koshou こしょう|Noun, Suru verb|to break-down|
+|240|答え|kotae こたえ|Noun|response|
+|241|小鳥|kotori ことり|Noun|small bird|
+|242|こう|kou|Adverb|this way|
+|243|校長|kouchou こうちょう|Noun|principal; headmaster|
+|244|講堂|koudou こうどう|Noun|auditorium|
+|245|郊外|kougai こうがい|Noun|suburb; residential area on the outskirt of a city|
+|246|講義|kougi こうぎ|Noun, Suru verb|lecture|
+|247|工業|kougyou こうぎょう|Noun|industry|
+|248|工場|koujou こうじょう|Noun|factory|
+|249|高校|koukou こうこう|Noun|senior high school; high school​|
+|250|高校生|koukousei こうこうせい|Noun|high school student|
+|251|公務員|koumuin こうむいん|Noun|government worker|
+|252|高等学校|koutougakkou こうとうがっこう|Noun|high school|
+|253|交通|koutsuu こうつう|Noun|traffic|
+|254|怖い|kowai こわい|Adjective, い-adjective|frightening|
+|255|壊れる|kowareru こわれる|Verb, Ichidan verb, Intransitive verb|to be broken|
+|256|壊す|kowasu こわす|Verb, Godan verb, Transitive verb|to break|
+|257|首|kubi くび|Noun|neck|
+|258|下さる|kudasaru くださる|Verb, Godan verb|(respectful) to give|
+|259|雲|kumo くも|Noun|cloud|
+|260|君|kun くん|Suffix|suffix for familiar young male|
+|261|比べる|kuraberu くらべる|Verb, Ichidan verb, Transitive verb|to compare|
+|262|暮れる|kureru くれる|Verb, Ichidan verb, Intransitive verb|to get dark|
+|263|草|kusa くさ|Noun|grass|
+|264|空気|kuuki くうき|Noun|air|
+|265|空港|kuukou くうこう|Noun|airport|
+|266|客|kyaku きゃく|Noun|guest; customer|
+|267|教育|kyouiku きょういく|Noun, Suru verb|education|
+|268|教会|kyoukai きょうかい|Noun|church; congregation; Christian church|
+|269|興味|kyoumi きょうみ|Noun|interest (in something); curiosity (about something); zest (for)|
+|270|競争|kyousou きょうそう|Noun, Suru verb|competition|
+|271|急|kyuu きゅう|Adjective, な-adjective|sudden; abrupt; unexpected|
+|272|急行|kyuukou きゅうこう|Noun, Verb, Suru verb|hurrying (to somewhere); rushing; hastening|
+|273|間違える|machigaeru まちがえる|Verb, Ichidan verb, Transitive verb|to make a mistake (in)|
+|274|参る|mairu まいる|Verb, Godan verb, Intransitive verb|(humble) to go; to come|
+|275|負ける|makeru まける|Verb, Ichidan verb, Intransitive verb|to lose|
+|276|漫画|manga まんが|Noun|comic|
+|277|間に合う|maniau まにあう|Verb, Godan verb, Intransitive verb|to be in time (for)|
+|278|真ん中|mannaka まんなか|Noun|middle; centre; center|
+|279|周り|mawari まわり|Noun|around|
+|280|回る|mawaru まわる|Verb, Godan verb, Intransitive verb|to go around|
+|281|まず|mazu|Adverb|first of all|
+|282|召し上がる|meshiagaru めしあがる|Verb, Godan verb, Transitive verb|to eat; to drink​|
+|283|珍しい|mezurashii めずらしい|Adjective, い-adjective|unusual; rare|
+|284|見える|mieru みえる|Verb, Ichidan verb, Intransitive verb|to be seen; to be in sight; to look; to seem|
+|285|港|minato みなと|Noun|harbour|
+|286|味噌|miso みそ|Noun|fermented condiment made from soybeans|
+|287|見つかる|mitsukaru みつかる|Verb, Godan verb, Intransitive verb|to be found; to be discovered|
+|288|見つける|mitsukeru みつける|Verb, Ichidan verb, Transitive verb|to discover; to find; to come across; to detect; to spot|
+|289|都|miyako みやこ|Noun|capital|
+|290|湖|mizuumi みずうみ|Noun|lake|
+|291|戻る|modoru もどる|Verb, Godan verb, Intransitive verb|to turn back|
+|292|木綿|momen もめん|Noun|cotton (material)|
+|293|森|mori もり|Noun|forest|
+|294|もし|moshi|Adverb|if; in case; supposing|
+|295|申し上げる|moushiageru もうしあげる|Verb, Ichidan verb, Transitive verb|to say; to offer|
+|296|申す|mousu もうす|Verb, Godan verb, Transitive verb|to be called; to say|
+|297|もうすぐ|mousugu|Adverb|, Expressionsoon|
+|298|迎える|mukaeru むかえる|Verb, Ichidan verb, Transitive verb|to go out to meet|
+|299|昔|mukashi むかし|Noun, Adverbial Noun|olden days, former|
+|300|向かう|mukau むかう|Verb, Godan verb, Intransitive verb|to head towards|
+|301|無理|muri むり|Noun|, Adjective, な-adjective, Suru verbimpossible|
+|302|虫|mushi むし|Noun|insect|
+|303|息子|musuko むすこ|Noun|son|
+|304|娘|musume むすめ|Noun|daughter|
+|305|投げる|nageru なげる|Verb, Ichidan verb, Transitive verb|to throw or cast away|
+|306|泣く|naku なく|Verb, Godan verb|to weep|
+|307|無くなる|naku naru なくなる|Verb, Godan verb, Intransitive verb|to disappear; to get lost|
+|308|亡くなる|nakunaru なくなる|Verb, Godan verb, Intransitive verb|to die|
+|309|生|nama なま|Noun, Prefix|raw|
+|310|直る|naoru なおる|Verb, Godan verb, Intransitive verb|to be fixed,to be repaired|
+|311|治る|naoru なおる|Verb, Godan verb, Intransitive verb|to be cured; to heal|
+|312|慣れる|nareru なれる|Verb, Ichidan verb, Intransitive verb|to get used to|
+|313|鳴る|naru なる|Verb, Godan verb, Intransitive verb|to sound|
+|314|なるほど|naruhodo|Adverb|, Expressionnow I understand|
+|315|寝坊|nebou ねぼう|Noun, Verb, Suru verb|sleeping in late; oversleeping|
+|316|値段|nedan ねだん|Noun|price; cost|
+|317|眠い|nemui ねむい|Adjective, い-adjective|sleepy|
+|318|眠る|nemuru ねむる|Verb, Godan verb, Intransitive verb|to sleep|
+|319|熱|netsu ねつ|Noun|fever|
+|320|苦い|nigai にがい|Adjective, い-adjective|bitter|
+|321|逃げる|nigeru にげる|Verb, Ichidan verb, Intransitive verb|to escape|
+|322|二階建て|nikaidate にかいだて|Noun|two-storied building|
+|323|人形|ningyou にんぎょう|Noun|doll|
+|324|匂い|nioi におい|Noun|a smell|
+|325|似る|niru にる|Verb, Ichidan verb, Intransitive verb|to be similar|
+|326|喉|nodo のど|Noun|throat|
+|327|残る|nokoru のこる|Verb, Godan verb, Intransitive verb|to remain|
+|328|乗り換える|norikaeru のりかえる|Verb, Ichidan verb, Transitive verb|to change between buses or trains|
+|329|乗り物|norimono のりもの|Noun|vehicle|
+|330|濡れる|nureru ぬれる|Verb, Ichidan verb, Intransitive verb|to get wet|
+|331|塗る|nuru ぬる|Verb, Godan verb, Transitive verb|to paint; to plaster|
+|332|盗む|nusumu ぬすむ|Verb, Godan verb, Transitive verb|to steal|
+|333|入学|nyuugaku にゅうがく|Noun, Verb, Suru verb|entry to school or university; enrollment|
+|334|入院|nyuuin にゅういん|Noun, Verb, Suru verb|hospitalization|
+|335|落ちる|ochiru おちる|Verb, Ichidan verb, Intransitive verb|to fall or drop|
+|336|踊り|odori おどり|Noun|a dance|
+|337|驚く|odoroku おどろく|Verb, Godan verb, Intransitive verb|to be surprised|
+|338|踊る|odoru おどる|Verb, Godan verb, Intransitive verb|to dance|
+|339|お出でになる|oide ni naru おいでになる|Verb, Godan verb|, Expression(respectful) to be|
+|340|お祝い|oiwai おいわい|Noun, Suru verb|congratulation|
+|341|お嬢さん|ojousan おじょうさん|Noun|(another's) daughter|
+|342|可笑しい|okashii おかしい|Adjective, い-adjective|strange or funny|
+|343|行う|okonau おこなう|Verb, Godan verb, Transitive verb|to perform; to do; to carry out|
+|344|怒る|okoru おこる|Verb, Godan verb, Intransitive verb|to be angry|
+|345|起こす|okosu おこす|Verb, Godan verb, Transitive verb|to wake|
+|346|億|oku おく|Numericone|hundred million|
+|347|屋上|okujou おくじょう|Noun|rooftop​|
+|348|遅れる|okureru おくれる|Verb, Ichidan verb, Intransitive verb|to be late|
+|349|贈り物|okurimono おくりもの|Noun|present; gift|
+|350|送る|okuru おくる|Verb, Godan verb, Transitive verb|to send|
+|351|お祭り|omatsuri おまつり|Noun|festival|
+|352|お見舞い|omimai おみまい|Noun|visiting ill or distressed people|
+|353|お土産|omiyage おみやげ|Noun|souvenir|
+|354|おもちゃ|omocha|Noun|toy|
+|355|思い出す|omoidasu おもいだす|Verb, Godan verb, Transitive verb|to remember|
+|356|表|omote おもて|Noun|the front|
+|357|オートバイ|ootobai|Noun, Katakana|motorcycle|
+|358|お礼|orei おれい|Noun|thanks|
+|359|折れる|oreru おれる|Verb, Ichidan verb, Intransitive verb|to break; to be broken|
+|360|下りる|oriru おりる|Verb, Ichidan verb, Intransitive verb|to get off|
+|361|折る|oru おる|Verb, Godan verb, Transitive verb|to break or to fold|
+|362|押し入れ|oshiire おしいれ|Noun|closet|
+|363|仰る|ossharu おっしゃる|Verb, Godan verb, Transitive verb|(respectful) to say|
+|364|お宅|otaku おたく|Noun|your home|
+|365|音|oto おと|Noun|sound; note|
+|366|落とす|otosu おとす|Verb, Godan verb, Transitive verb|to drop|
+|367|お釣り|otsuri おつり|Noun|change (for a purchase)​|
+|368|夫|otto おっと|Noun|husband|
+|369|終わり|owari おわり|Noun|the end|
+|370|親|oya おや|Noun|parents|
+|371|泳ぎ方|oyogikata およぎかた|Noun|way of swimming|
+|372|パート|paato|Noun, Katakana|part; part time|
+|373|パソコン|pasokon|Noun, Katakana|personal computer|
+|374|ピアノ|piano|Noun, Katakana|piano|
+|375|プレゼント|purezento|Noun, Katakana|present; gift|
+|376|冷房|reibou れいぼう|Noun, Suru verb|air conditioning|
+|377|レジ|reji|Noun, Katakana|cashier​|
+|378|歴史|rekishi れきし|Noun|history|
+|379|連絡|renraku れんらく|Suru verb|to contact; to get in touch​|
+|380|レポート|repooto|Noun, Katakana|report|
+|381|利用|riyou りよう|Noun, Verb, Suru verb|use; utilization; application|
+|382|理由|riyuu りゆう|Noun|reason|
+|383|留守|rusu るす|Noun, Suru verb|absence|
+|384|旅館|ryokan りょかん|Noun|traditional inn; Japanese-style lodging|
+|385|両方|ryouhou りょうほう|Noun|both sides|
+|386|寂しい|sabishii さびしい|Adjective, い-adjective|lonely|
+|387|下がる|sagaru さがる|Verb, Godan verb, Intransitive verb|to get down|
+|388|探す|sagasu さがす|Verb, Godan verb, Transitive verb|to look for|
+|389|下げる|sageru さげる|Verb, Ichidan verb, Transitive verb|to lower|
+|390|最後|saigo さいご|Noun|end; last|
+|391|最近|saikin さいきん|Noun, Adverbial Noun|recently|
+|392|最初|saisho さいしょ|Noun, Adverbial Noun|beginning; first|
+|393|坂|saka さか|Noun|slope; hill|
+|394|盛ん|sakan さかん|Adjective, な-adjective|popularity; prosperous|
+|395|昨夜|sakuya さくや|Noun, Adverbial Noun|last night|
+|396|サンダル|sandaru|Noun, Katakana|sandal|
+|397|サンドイッチ|sandoicchi|Noun, Katakana|sandwich|
+|398|産業|sangyou さんぎょう|Noun|industry|
+|399|サラダ|sarada|Noun, Katakana|salad|
+|400|再来月|saraigetsu さらいげつ|Noun, Adverbial Noun|month after next|
+|401|再来週|saraishuu さらいしゅう|Noun, Adverbial Noun|week after next|
+|402|差し上げる|sashiageru さしあげる|Verb, Ichidan verb, Transitive verb|to give|
+|403|騒ぐ|sawagu さわぐ|Verb, Godan verb, Intransitive verb|to make noise,to be excited|
+|404|触る|sawaru さわる|Verb, Godan verb, Intransitive verb|to touch|
+|405|生物|seibutsu せいぶつ|Noun|living thing|
+|406|政治|seiji せいじ|Noun|politics|
+|407|生活|seikatsu せいかつ|Noun, Suru verb|to live|
+|408|生命|seimei せいめい|Noun|life|
+|409|生産|seisan せいさん|Noun, Suru verb|production|
+|410|西洋|seiyou せいよう|Noun|the west; Western countries|
+|411|世界|sekai せかい|Noun|the world|
+|412|席|seki せき|Noun|seat|
+|413|線|sen せん|Noun|line|
+|414|背中|senaka せなか|Noun|back (of body)|
+|415|先輩|senpai せんぱい|Noun|senior|
+|416|戦争|sensou せんそう|Noun, Suru verb|war|
+|417|説明|setsumei せつめい|Noun, Verb, Suru verb|explanation|
+|418|社長|shachou しゃちょう|Noun|company president; manager; director|
+|419|社会|shakai しゃかい|Noun|society; public; community; the world|
+|420|市|shi し|Noun|city|
+|421|試合|shiai しあい|Noun, Suru verb|match,game|
+|422|叱る|shikaru しかる|Verb, Godan verb, Transitive verb|to scold|
+|423|仕方|shikata しかた|Noun|way; method|
+|424|試験|shiken しけん|Noun, Suru verb|examination|
+|425|しっかり|shikkari|Adverb|, Suru verbfirmly; steadily|
+|426|島|shima しま|Noun|island|
+|427|市民|shimin 市民|Noun|citizen|
+|428|品物|shinamono しなもの|Noun|goods; article; thing|
+|429|新聞社|shinbunsha しんぶんしゃ|Noun|newspaper company|
+|430|親切|shinsetsu しんせつ|Noun|, Adjective, な-adjectivekindness|
+|431|失敗|shippai しっぱい|Noun, Suru verb|failure|
+|432|調べる|shiraberu しらべる|Verb, Ichidan verb, Transitive verb|to investigate|
+|433|知らせる|shiraseru しらせる|Verb, Ichidan verb, Transitive verb|to notify|
+|434|下着|shitagi したぎ|Noun|underwear|
+|435|食料品|shokuryouhin しょくりょうひん|Noun|food; groceries|
+|436|小学校|shougakkou しょうがっこう|Noun|elementary school|
+|437|生じる|shoujiru しょうじる|Verb, Ichidan verb, Transitive verb|to produce|
+|438|紹介|shoukai しょうかい|Noun, Suru verb|introduction|
+|439|将来|shourai しょうらい|Noun, Adverbial Noun|future|
+|440|小説|shousetsu しょうせつ|Noun|novel|
+|441|趣味|shumi しゅみ|Noun|hobby; pastime; preference|
+|442|習慣|shuukan しゅうかん|Noun|habit; custom; cultural practice.|
+|443|祖母|sobo そぼ|Noun|grandmother|
+|444|育てる|sodateru そだてる|Verb, Ichidan verb, Transitive verb|to rear,to bring up|
+|445|祖父|sofu そふ|Noun|grandfather|
+|446|ソフト|sofuto|Noun, Katakana|soft|
+|447|そんな|sonna|Pre-noun adjectival|that sort of|
+|448|それで|sore de|Conjunction|because of that|
+|449|それほど|sore hodo|Adverb|to that extent|
+|450|そろそろ|sorosoro|Adverb|gradually; soon|
+|451|卒業|sotsugyou そつぎょう|Noun, Suru verb|graduation|
+|452|相談|soudan そうだん|Noun, Suru verb|to discuss|
+|453|素晴らしい|subarashii すばらしい|Adjective, い-adjective|wonderful|
+|454|滑る|suberu すべる|Verb, Godan verb, Intransitive verb|to slide; to slip|
+|455|凄い|sugoi すごい|Adjective, い-adjective|terrific|
+|456|水道|suidou すいどう|Noun|water supply|
+|457|水泳|suiei すいえい|Noun, Suru verb|swimming|
+|458|すっかり|sukkari|Adverb|completely|
+|459|空く|suku すく|Verb, Godan verb, Intransitive verb|to be hungry|
+|460|スクリーン|sukuriin|Noun, Katakana|screen|
+|461|隅|sumi すみ|Noun|corner; nook|
+|462|済む|sumu すむ|Verb, Godan verb, Intransitive verb|to finish|
+|463|砂|suna すな|Noun|sand|
+|464|すり|suri|Noun|pickpocket|
+|465|スーツケース|sustsukeesu|Noun, Katakana|suitcase|
+|466|進む|susumu すすむ|Verb, Godan verb, Intransitive verb|to make progress|
+|467|ステーキ|suteeki|Noun, Katakana|steak|
+|468|ステレオ|sutereo|Noun, Katakana|stereo|
+|469|捨てる|suteru すてる|Verb, Ichidan verb, Transitive verb|to throw away|
+|470|数学|suugaku すうがく|Noun|mathematics; arithmetic|
+|471|スーツ|suutsu|Noun, Katakana|suit|
+|472|正しい|tadashii ただしい|Adjective, い-adjective|right; correct|
+|473|退院|tai'in たいいん|Noun, Verb, Suru verb|leaving hospital; discharge from hospital|
+|474|台風|taifuu たいふう|Noun|typhoon|
+|475|タイプ|taipu|Noun|type,style|
+|476|たいてい|taitei|Noun|, Adjective, な-adjective, Adverbusually|
+|477|たまに|tamani|Adverb|occasionally|
+|478|棚|tana たな|Noun|shelves|
+|479|誕生|tanjou たんじょう|Noun, Suru verb|birth|
+|480|楽しみ|tanoshimi たのしみ|Noun|, Adjective, な-adjectivelooking forward to​|
+|481|倒れる|taoreru たおれる|Verb, Ichidan verb, Intransitive verb|to fall (over, down)|
+|482|足りる|tariru たりる|Verb, Ichidan verb, Intransitive verb|to be sufficient; to be enough|
+|483|足す|tasu たす|Verb, Godan verb, Transitive verb|to add (numbers / something)|
+|484|畳|tatami たたみ|Noun|Japanese straw mat|
+|485|建てる|tateru たてる|Verb, Ichidan verb, Transitive verb|to build|
+|486|尋ねる|tazuneru たずねる|Verb, Ichidan verb, Transitive verb|to ask|
+|487|訪ねる|tazuneru たずねる|Verb, Ichidan verb, Transitive verb|to visit|
+|488|手袋|tebukuro てぶくろ|Noun|glove|
+|489|丁寧|teinei ていねい|Noun|, Adjective, な-adjectivepolite|
+|490|テキスト|tekisuto|Noun, Katakana|text; textbook|
+|491|適当|tekitou てきとう|Noun|, Adjective, な-adjectivesuitable|
+|492|点|ten てん|Noun|point; dot|
+|493|店員|ten'in てんいん|Noun|employee (of a store); shop assistant; clerk|
+|494|テニス|tenisu|Noun, Katakana|tennis|
+|495|天気予報|tenkiyohou てんきよほう|Noun|weather forecast|
+|496|展覧会|tenrankai てんらんかい|Noun|exhibition|
+|497|寺|tera てら|Noun|temple|
+|498|手伝う|tetsudau てつだう|Verb, Godan verb, Transitive verb|to help; to assist; to aid​|
+|499|途中|tochuu とちゅう|Noun, Adverbial Noun|on the way|
+|500|届ける|todokeru とどける|Verb, Ichidan verb, Transitive verb|to send​|
+|501|特急|tokkyuu とっきゅう|Noun|limited express (train, faster than an express)|
+|502|床屋|tokoya とこや|Noun|barber|
+|503|特別|tokubetsu とくべつ|Noun|, Adjective, な-adjectivespecial; particular; extraordinary; exceptional|
+|504|特に|tokuni とくに|Adverb|particularly; especially; in particular; expressly|
+|505|泊まる|tomaru とまる|Verb, Godan verb, Intransitive verb|to stay at|
+|506|止める|tomeru とめる|Verb, Ichidan verb, Transitive verb|to stop something|
+|507|遠く|tooku とおく|Noun, Adverbial Noun|distant|
+|508|通る|tooru とおる|Verb, Godan verb, Intransitive verb|to go through|
+|509|取り替える|torikaeru とりかえる|Verb, Ichidan verb, Transitive verb|to exchange; to swap; to replace|
+|510|到頭|toutou とうとう|Adverb|finally, after all|
+|511|続ける|tsudzukeru つづける|Verb, Ichidan verb, Transitive verb|to continue; to keep up; to keep on|
+|512|続く|tsudzuku つづく|Verb, Godan verb, Intransitive verb|to continue|
+|513|都合|tsugou つごう|Noun|, Adverbconvenience|
+|514|捕まえる|tsukamaeru つかまえる|Verb, Ichidan verb, Transitive verb|to catch|
+|515|漬ける|tsukeru つける|Verb, Ichidan verb, Transitive verb|to soak; to pickle|
+|516|月|tsuki つき|Noun|moon|
+|517|付く|tsuku つく|Verb, Godan verb, Intransitive verb|to be attached|
+|518|妻|tsuma つま|Noun|(humble) wife|
+|519|連れる|tsureru つれる|Verb, Ichidan verb, Transitive verb|to take (someone) with one|
+|520|釣る|tsuru つる|Verb, Godan verb, Transitive verb|to fish|
+|521|伝える|tsutaeru つたえる|Verb, Ichidan verb, Transitive verb|to report; to tell|
+|522|包む|tsutsumu つつむ|Verb, Godan verb, Transitive verb|to wrap|
+|523|腕|ude うで|Noun|arm|
+|524|植える|ueru うえる|Verb, Ichidan verb, Transitive verb|to plant; to grow|
+|525|動く|ugoku うごく|Verb, Godan verb, Intransitive verb|to move|
+|526|伺う|ukagau うかがう|Verb, Godan verb, Transitive verb|to visit|
+|527|受ける|ukeru うける|Verb, Ichidan verb, Transitive verb|to take a lesson or test|
+|528|受付|uketsuke うけつけ|Noun|reception (desk); information desk​|
+|529|生まれ|umare うまれ|Noun|birth|
+|530|運転手|untenshu うんてんしゅ|Noun|driver; chauffeur|
+|531|裏|ura うら|Noun|reverse side|
+|532|嬉しい|ureshii うれしい|Adjective, い-adjective|happy|
+|533|売り場|uriba うりば|Noun|selling area|
+|534|嘘|uso うそ|Noun|a lie|
+|535|打つ|utsu うつ|Verb, Godan verb, Transitive verb|to hit|
+|536|美しい|utsukushii うつくしい|Adjective, い-adjective|beautiful|
+|537|移る|utsuru うつる|Verb, Godan verb, Intransitive verb|to move house or transfer|
+|538|写す|utsusu うつす|Verb, Godan verb, Transitive verb|to copy or photograph|
+|539|ワープロ|waapuro|Noun, Katakana|word processor|
+|540|別れる|wakareru わかれる|Verb, Ichidan verb, Intransitive verb|to separate|
+|541|沸かす|wakasu わかす|Verb, Godan verb, Transitive verb|to boil; to heat|
+|542|沸く|waku わく|Verb, Godan verb, Intransitive verb|to boil|
+|543|笑う|warau わらう|Verb, Godan verb, Intransitive verb|to laugh; to smile|
+|544|割れる|wareru われる|Verb, Ichidan verb, Intransitive verb|to break|
+|545|割合|wariai わりあい|Noun|rate; ratio|
+|546|忘れ物|wasuremono わすれもの|Noun|lost article|
+|547|焼ける|yakeru やける|Verb, Ichidan verb, Intransitive verb|to burn; to be roasted|
+|548|焼く|yaku やく|Verb, Godan verb, Transitive verb|to bake; to grill|
+|549|役に立つ|yakunitatsu やくにたつ|Verb, Godan verb|, Expressionto be helpful|
+|550|約束|yakusoku やくそく|Noun, Suru verb|promise|
+|551|止む|yamu やむ|Verb, Godan verb, Intransitive verb|to stop|
+|552|やっぱり|yappari|Adverb|as I thought|
+|553|優しい|yasashii やさしい|Adjective, い-adjective|kind|
+|554|痩せる|yaseru やせる|Verb, Ichidan verb, Intransitive verb|to become thin|
+|555|柔らかい|yawarakai やわらかい|Adjective, い-adjective|soft|
+|556|汚れる|yogoreru よごれる|Verb, Ichidan verb, Intransitive verb|to get dirty|
+|557|喜ぶ|yorokobu よろこぶ|Verb, Godan verb|to be delighted|
+|558|寄る|yoru よる|Verb, Godan verb, Intransitive verb|to visit; to drop by|
+|559|予習|yoshuu よしゅう|Noun, Verb, Suru verb|preparation for a lesson|
+|560|予定|yotei よてい|Noun, Suru verb|plan|
+|561|用|you よう|Noun, Suffix|business; task; errand; use; purpose|
+|562|用意|youi ようい|Noun, Verb, Suru verb|preparation; arrangements; provision; getting ready|
+|563|用事|youji ようじ|Noun|tasks; things to do; errand; business (to take care of)|
+|564|予約|yoyaku よやく|Noun, Suru verb|reservation|
+|565|湯|yu ゆ|Noun|hot water|
+|566|指|yubi ゆび|Noun|finger|
+|567|指輪|yubiwa ゆびわ|Noun|finger ring|
+|568|夢|yume ゆめ|Noun|dream|
+|569|揺れる|yureru ゆれる|Verb, Ichidan verb, Intransitive verb|to shake|
+|570|残念|zannen ざんねん|Noun|, Adjective, な-adjectiveregrettable; unfortunate|
+|571|全然|zenzen ぜんぜん|Adverb|not entirely (used in a negative sentence)|

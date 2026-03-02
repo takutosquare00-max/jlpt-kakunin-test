@@ -50,6 +50,11 @@ GitHub Pages でホスティング済み。**Macが起動していなくても**
 | N5 確認テスト23（10分・10問） | <https://takutosquare00-max.github.io/jlpt-kakunin-test/n5-10min-test-v23.html> |
 | N5 確認テスト24（10分・10問） | <https://takutosquare00-max.github.io/jlpt-kakunin-test/n5-10min-test-v24.html> |
 | N5 確認テスト25（10分・10問） | <https://takutosquare00-max.github.io/jlpt-kakunin-test/n5-10min-test-v25.html> |
+| N5 確認テスト26（10分・10問） | <https://takutosquare00-max.github.io/jlpt-kakunin-test/n5-10min-test-v26.html> |
+| N5 確認テスト27（10分・10問） | <https://takutosquare00-max.github.io/jlpt-kakunin-test/n5-10min-test-v27.html> |
+| N5 確認テスト28（10分・10問） | <https://takutosquare00-max.github.io/jlpt-kakunin-test/n5-10min-test-v28.html> |
+| N5 確認テスト29（10分・10問） | <https://takutosquare00-max.github.io/jlpt-kakunin-test/n5-10min-test-v29.html> |
+| N5 確認テスト30（10分・10問） | <https://takutosquare00-max.github.io/jlpt-kakunin-test/n5-10min-test-v30.html> |
 
 ---
 
@@ -67,6 +72,21 @@ GitHub Pages でホスティング済み。**Macが起動していなくても**
 | N4 確認テスト8（10分・10問） | <https://takutosquare00-max.github.io/jlpt-kakunin-test/n4-10min-test-v8.html> |
 | N4 確認テスト9（10分・10問） | <https://takutosquare00-max.github.io/jlpt-kakunin-test/n4-10min-test-v9.html> |
 | N4 確認テスト10（10分・10問） | <https://takutosquare00-max.github.io/jlpt-kakunin-test/n4-10min-test-v10.html> |
+| N4 確認テスト11（10分・10問） | <https://takutosquare00-max.github.io/jlpt-kakunin-test/n4-10min-test-v11.html> |
+| N4 確認テスト12（10分・10問） | <https://takutosquare00-max.github.io/jlpt-kakunin-test/n4-10min-test-v12.html> |
+| N4 確認テスト13（10分・10問） | <https://takutosquare00-max.github.io/jlpt-kakunin-test/n4-10min-test-v13.html> |
+| N4 確認テスト14（10分・10問） | <https://takutosquare00-max.github.io/jlpt-kakunin-test/n4-10min-test-v14.html> |
+| N4 確認テスト15（10分・10問） | <https://takutosquare00-max.github.io/jlpt-kakunin-test/n4-10min-test-v15.html> |
+| N4 確認テスト16（10分・10問） | <https://takutosquare00-max.github.io/jlpt-kakunin-test/n4-10min-test-v16.html> |
+| N4 確認テスト17（10分・10問） | <https://takutosquare00-max.github.io/jlpt-kakunin-test/n4-10min-test-v17.html> |
+| N4 確認テスト18（10分・10問） | <https://takutosquare00-max.github.io/jlpt-kakunin-test/n4-10min-test-v18.html> |
+| N4 確認テスト19（10分・10問） | <https://takutosquare00-max.github.io/jlpt-kakunin-test/n4-10min-test-v19.html> |
+| N4 確認テスト20（10分・10問） | <https://takutosquare00-max.github.io/jlpt-kakunin-test/n4-10min-test-v20.html> |
+| N4 確認テスト21（10分・10問） | <https://takutosquare00-max.github.io/jlpt-kakunin-test/n4-10min-test-v21.html> |
+| N4 確認テスト22（10分・10問） | <https://takutosquare00-max.github.io/jlpt-kakunin-test/n4-10min-test-v22.html> |
+| N4 確認テスト23（10分・10問） | <https://takutosquare00-max.github.io/jlpt-kakunin-test/n4-10min-test-v23.html> |
+| N4 確認テスト24（10分・10問） | <https://takutosquare00-max.github.io/jlpt-kakunin-test/n4-10min-test-v24.html> |
+| N4 確認テスト25（10分・10問） | <https://takutosquare00-max.github.io/jlpt-kakunin-test/n4-10min-test-v25.html> |
 
 ---
 
@@ -126,6 +146,15 @@ GitHub Pages でホスティング済み。**Macが起動していなくても**
 
 ---
 
+## 番外
+
+| テスト名 | URL |
+|----------|-----|
+| ために・ように 使い分けテスト1（10問） | <https://takutosquare00-max.github.io/jlpt-kakunin-test/tameni-youni-test.html> |
+| ために・ように 使い分けテスト2（10問） | <https://takutosquare00-max.github.io/jlpt-kakunin-test/tameni-youni-test-v2.html> |
+
+---
+
 ## コピペ用（iPadのSafariで開く）
 
 ```
@@ -160,6 +189,11 @@ https://takutosquare00-max.github.io/jlpt-kakunin-test/n5-10min-test-v22.html
 https://takutosquare00-max.github.io/jlpt-kakunin-test/n5-10min-test-v23.html
 https://takutosquare00-max.github.io/jlpt-kakunin-test/n5-10min-test-v24.html
 https://takutosquare00-max.github.io/jlpt-kakunin-test/n5-10min-test-v25.html
+https://takutosquare00-max.github.io/jlpt-kakunin-test/n5-10min-test-v26.html
+https://takutosquare00-max.github.io/jlpt-kakunin-test/n5-10min-test-v27.html
+https://takutosquare00-max.github.io/jlpt-kakunin-test/n5-10min-test-v28.html
+https://takutosquare00-max.github.io/jlpt-kakunin-test/n5-10min-test-v29.html
+https://takutosquare00-max.github.io/jlpt-kakunin-test/n5-10min-test-v30.html
 https://takutosquare00-max.github.io/jlpt-kakunin-test/n4-10min-test.html
 https://takutosquare00-max.github.io/jlpt-kakunin-test/n4-10min-test-v2.html
 https://takutosquare00-max.github.io/jlpt-kakunin-test/n4-10min-test-v3.html
@@ -170,6 +204,21 @@ https://takutosquare00-max.github.io/jlpt-kakunin-test/n4-10min-test-v7.html
 https://takutosquare00-max.github.io/jlpt-kakunin-test/n4-10min-test-v8.html
 https://takutosquare00-max.github.io/jlpt-kakunin-test/n4-10min-test-v9.html
 https://takutosquare00-max.github.io/jlpt-kakunin-test/n4-10min-test-v10.html
+https://takutosquare00-max.github.io/jlpt-kakunin-test/n4-10min-test-v11.html
+https://takutosquare00-max.github.io/jlpt-kakunin-test/n4-10min-test-v12.html
+https://takutosquare00-max.github.io/jlpt-kakunin-test/n4-10min-test-v13.html
+https://takutosquare00-max.github.io/jlpt-kakunin-test/n4-10min-test-v14.html
+https://takutosquare00-max.github.io/jlpt-kakunin-test/n4-10min-test-v15.html
+https://takutosquare00-max.github.io/jlpt-kakunin-test/n4-10min-test-v16.html
+https://takutosquare00-max.github.io/jlpt-kakunin-test/n4-10min-test-v17.html
+https://takutosquare00-max.github.io/jlpt-kakunin-test/n4-10min-test-v18.html
+https://takutosquare00-max.github.io/jlpt-kakunin-test/n4-10min-test-v19.html
+https://takutosquare00-max.github.io/jlpt-kakunin-test/n4-10min-test-v20.html
+https://takutosquare00-max.github.io/jlpt-kakunin-test/n4-10min-test-v21.html
+https://takutosquare00-max.github.io/jlpt-kakunin-test/n4-10min-test-v22.html
+https://takutosquare00-max.github.io/jlpt-kakunin-test/n4-10min-test-v23.html
+https://takutosquare00-max.github.io/jlpt-kakunin-test/n4-10min-test-v24.html
+https://takutosquare00-max.github.io/jlpt-kakunin-test/n4-10min-test-v25.html
 https://takutosquare00-max.github.io/jlpt-kakunin-test/n3-10min-test.html
 https://takutosquare00-max.github.io/jlpt-kakunin-test/n3-10min-test-v2.html
 https://takutosquare00-max.github.io/jlpt-kakunin-test/n3-10min-test-v3.html
@@ -205,6 +254,8 @@ https://takutosquare00-max.github.io/jlpt-kakunin-test/n1-10min-test-v7.html
 https://takutosquare00-max.github.io/jlpt-kakunin-test/n1-10min-test-v8.html
 https://takutosquare00-max.github.io/jlpt-kakunin-test/n1-10min-test-v9.html
 https://takutosquare00-max.github.io/jlpt-kakunin-test/n1-10min-test-v10.html
+https://takutosquare00-max.github.io/jlpt-kakunin-test/tameni-youni-test.html
+https://takutosquare00-max.github.io/jlpt-kakunin-test/tameni-youni-test-v2.html
 ```
 
 ---
