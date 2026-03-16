@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
-<title>過去問J.TEST A-C 2026年3月度（80分・51問）</title>
+<title>過去問J.TEST A-C 2026年3月度（80分・全100問）</title>
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 html{-webkit-text-size-adjust:100%;-webkit-tap-highlight-color:transparent}
@@ -31,13 +31,13 @@ header h1{font-size:1.5em;margin-bottom:4px}
 @media(max-width:600px){.options{grid-template-columns:1fr}}
 .option{display:flex;flex-direction:column;position:relative;min-height:0}
 .option input{display:none}
-.option label{display:block;flex:1;min-height:52px;padding:10px 14px;border:2px solid #000;border-radius:8px;cursor:pointer;transition:all .2s;font-size:.95em;line-height:1.65;touch-action:manipulation;-webkit-user-select:none;user-select:none;color:#000;background:#f5f5f5}
+.option label{display:block;flex:1;min-height:52px;padding:10px 14px;border:2px solid #e2e8f0;border-radius:8px;cursor:pointer;transition:all .2s;font-size:.95em;line-height:1.65;touch-action:manipulation;-webkit-user-select:none;user-select:none;color:#1a202c;background:#fff}
 ruby{ruby-align:center}
 .option label rt,.q-text rt,.reading-passage rt{font-size:.55em;line-height:1.3}
-.option label:hover{border-color:#000;background:#f5f5f5}
-.option input:checked+label{border-color:#000;background:#f0f0f0;color:#000;font-weight:600}
-.option.correct label{border-color:#000!important;background:#f0f0f0!important;color:#000!important}
-.option.wrong label{border-color:#000!important;background:#e8e8e8!important;color:#000!important}
+.option label:hover{border-color:#38b2ac;background:#f0ffff}
+.option input:checked+label{border-color:#38b2ac;background:#e6fffa;color:#234e52;font-weight:600}
+.option.correct label{border-color:#48bb78!important;background:#f0fff4!important;color:#276749!important}
+.option.wrong label{border-color:#fc8181!important;background:#fff5f5!important;color:#9b2c2c!important}
 .reading-passage{background:#f5f5f5;border-left:3px solid #000;padding:16px;margin:12px 0;border-radius:0 8px 8px 0;font-size:.95em;line-height:1.9;white-space:pre-wrap;border:1px solid #000;color:#000}
 .btn-submit{display:block;width:100%;min-height:48px;padding:16px;background:#f5f5f5;color:#000;border:2px solid #000;border-radius:12px;font-size:1.1em;font-weight:bold;cursor:pointer;transition:transform .2s;margin-top:24px;touch-action:manipulation;-webkit-user-select:none;user-select:none}
 .btn-submit:hover{transform:translateY(-2px);background:#f5f5f5}
@@ -55,25 +55,24 @@ ruby{ruby-align:center}
 .result-item .value{font-size:1.2em;font-weight:bold;color:#000}
 .explanation{display:none;margin-top:8px;padding:10px;background:#f5f5f5;border-radius:8px;font-size:.9em;border-left:3px solid #000;border:1px solid #000;color:#000}
 .explanation.show{display:block}
+.question.readonly .answer-box{display:none;background:#f0f0f0;padding:10px;margin:8px 0;border-radius:8px;border:1px solid #000;font-weight:bold}
+.question.readonly .answer-box.show{display:block}
+.question.readonly .explanation{margin-top:8px}
 </style>
 </head>
 <body>
 <div class="container">
 <header>
-<h1>過去問J.TEST A-C 2026年3月度（80分・51問）</h1>
+<h1>過去問J.TEST A-C 2026年3月度（80分・全100問）</h1>
 <div class="header-info">
 <div class="timer" id="timer">80:00</div>
 <div class="progress-bar"><div class="progress-fill" id="progress" style="width:100%"></div></div>
-<div class="score-badge" id="scoreBadge">全51問</div>
+<div class="score-badge" id="scoreBadge">全100問</div>
 </div>
 </header>
 
-<div class="section">
-<div class="section-title">文法・<ruby>語彙<rt>ごい</rt></ruby><ruby>問題<rt>もんだい</rt></ruby> A — （　）に最も適当な言葉を入れなさい（20問）</div>
-<p style="color:#000;font-size:.9em;margin-bottom:12px">次の文の（　）に1・2・3・4の中から最も適当な言葉を入れなさい。</p>
-
+<div class="section"><div class="section-title">1 文法・語彙問題 A（20問）</div>
 <div class="question">
-
 <div class="q-text"><span class="q-num">1</span>やると言った（　）<ruby>途中<rt>とちゅう</rt></ruby>でやめることはできない。</div>
 <div class="options">
 <div class="option"><input type="radio" name="q1" id="q1a" value="1"><label for="q1a">1. からには</label></div>
@@ -81,10 +80,9 @@ ruby{ruby-align:center}
 <div class="option"><input type="radio" name="q1" id="q1c" value="0"><label for="q1c">3. ばかりか</label></div>
 <div class="option"><input type="radio" name="q1" id="q1d" value="0"><label for="q1d">4. わりに</label></div>
 </div>
-<div class="explanation">✅ 正解：1. からには — 「〜からには」＝「〜と決めた以上は」という意味で、責任や義務を表す。</div>
+<div class="explanation">✅ 正解：1. からには — 「〜からには」＝「〜と決めた以上は」という責任・義務を表す表現。「やると言ったからには、最後までやりなさい」のように使う。2「ついでに」は他の用事のついでに何かをするとき、3「ばかりか」は「〜だけでなく」、4「わりに」は「〜の割合に比べて」の意味で文意に合わない。</div>
 </div>
 <div class="question">
-
 <div class="q-text"><span class="q-num">2</span>雨が降るとわかっていたら、<ruby>傘<rt>かさ</rt></ruby>を（　）んだった。</div>
 <div class="options">
 <div class="option"><input type="radio" name="q2" id="q2a" value="0"><label for="q2a">1. 持って来たい</label></div>
@@ -92,10 +90,9 @@ ruby{ruby-align:center}
 <div class="option"><input type="radio" name="q2" id="q2c" value="0"><label for="q2c">3. 持って来なかった</label></div>
 <div class="option"><input type="radio" name="q2" id="q2d" value="1"><label for="q2d">4. 持って来る</label></div>
 </div>
-<div class="explanation">✅ 正解：4. 持って来る — 「〜るんだった」は過去の後悔を表す表現。「持って来るんだった」＝「持って来ればよかった」。</div>
+<div class="explanation">✅ 正解：4. 持って来る — 「〜るんだった」は過去の後悔を表す表現。「持って来るんだった」＝「持って来ればよかった」という意味になる。3「持って来なかった」を入れると「持って来なかったんだった」となり意味が通じない。</div>
 </div>
 <div class="question">
-
 <div class="q-text"><span class="q-num">3</span><ruby>藤田<rt>ふじた</rt></ruby>様（　）おかれましては、大変ご<ruby>活躍<rt>かつやく</rt></ruby>のことと存じます。</div>
 <div class="options">
 <div class="option"><input type="radio" name="q3" id="q3a" value="1"><label for="q3a">1. に</label></div>
@@ -103,10 +100,9 @@ ruby{ruby-align:center}
 <div class="option"><input type="radio" name="q3" id="q3c" value="0"><label for="q3c">3. が</label></div>
 <div class="option"><input type="radio" name="q3" id="q3d" value="0"><label for="q3d">4. と</label></div>
 </div>
-<div class="explanation">✅ 正解：1. に — 「〜におかれましては」は手紙やスピーチで使う最上級の敬語表現。</div>
+<div class="explanation">✅ 正解：1. に — 「〜におかれましては」は手紙やスピーチで使う最上級の敬語表現。「〜においては」のさらに丁寧な形。「貴社におかれましては」「皆様におかれましては」のように使う。</div>
 </div>
 <div class="question">
-
 <div class="q-text"><span class="q-num">4</span>元気だと<ruby>嘘<rt>うそ</rt></ruby>を（　）母に<ruby>心配<rt>しんぱい</rt></ruby>をかけたくなかった。</div>
 <div class="options">
 <div class="option"><input type="radio" name="q4" id="q4a" value="0"><label for="q4a">1. つくまい</label></div>
@@ -114,10 +110,9 @@ ruby{ruby-align:center}
 <div class="option"><input type="radio" name="q4" id="q4c" value="0"><label for="q4c">3. ついたきり</label></div>
 <div class="option"><input type="radio" name="q4" id="q4d" value="0"><label for="q4d">4. つくくらいなら</label></div>
 </div>
-<div class="explanation">✅ 正解：2. ついてでも — 「〜てでも」＝「たとえ〜という手段をとってでも」という意味。</div>
+<div class="explanation">✅ 正解：2. ついてでも — 「〜てでも」＝「たとえ〜という手段をとってでも」という意味。1「つくまい」は「つくつもりはない」で文意が逆。3「ついたきり」は「〜したままずっと」、4「つくくらいなら」は「〜するくらいなら〜したほうがいい」の形で使う。</div>
 </div>
 <div class="question">
-
 <div class="q-text"><span class="q-num">5</span><ruby>課長<rt>かちょう</rt></ruby>に<ruby>褒<rt>ほ</rt></ruby>められて、<ruby>佐伯<rt>さえき</rt></ruby>さんは（　）げだ。</div>
 <div class="options">
 <div class="option"><input type="radio" name="q5" id="q5a" value="0"><label for="q5a">1. うれしく</label></div>
@@ -125,10 +120,9 @@ ruby{ruby-align:center}
 <div class="option"><input type="radio" name="q5" id="q5c" value="1"><label for="q5c">3. うれし</label></div>
 <div class="option"><input type="radio" name="q5" id="q5d" value="0"><label for="q5d">4. うれしくて</label></div>
 </div>
-<div class="explanation">✅ 正解：3. うれし — 「〜げだ」は形容詞の語幹につける。「うれしい」→語幹「うれし」→「うれしげだ」。</div>
+<div class="explanation">✅ 正解：3. うれし — 「〜げだ」は「〜そうだ・〜という様子だ」という意味の接尾語。形容詞に接続するときは語幹（「い」を取った形）につける。「うれしい」→語幹「うれし」→「うれしげだ」。他の例：「悲しげだ」「不安げだ」「得意げだ」。</div>
 </div>
 <div class="question">
-
 <div class="q-text"><span class="q-num">6</span>昨日（　）うってかわって今日の<ruby>部長<rt>ぶちょう</rt></ruby>は<ruby>機嫌<rt>きげん</rt></ruby>がいい。</div>
 <div class="options">
 <div class="option"><input type="radio" name="q6" id="q6a" value="0"><label for="q6a">1. も</label></div>
@@ -136,10 +130,9 @@ ruby{ruby-align:center}
 <div class="option"><input type="radio" name="q6" id="q6c" value="1"><label for="q6c">3. とは</label></div>
 <div class="option"><input type="radio" name="q6" id="q6d" value="0"><label for="q6d">4. には</label></div>
 </div>
-<div class="explanation">✅ 正解：3. とは — 「昨日とはうってかわって」は慣用的な表現。「〜とはまったく変わって」の意味。</div>
+<div class="explanation">✅ 正解：3. とは — 「昨日とはうってかわって」は慣用的な表現。「〜とはうってかわって」＝「〜とはまったく変わって・正反対に」という意味。「先週とはうってかわって、今日は天気がいい」のように使う。</div>
 </div>
 <div class="question">
-
 <div class="q-text"><span class="q-num">7</span><ruby>皆<rt>みな</rt></ruby>さん！<ruby>未来<rt>みらい</rt></ruby>の<ruby>子供達<rt>こどもたち</rt></ruby>のために、<ruby>安心<rt>あんしん</rt></ruby>して<ruby>暮<rt>く</rt></ruby>らせる町を一緒に（　）じゃありませんか！</div>
 <div class="options">
 <div class="option"><input type="radio" name="q7" id="q7a" value="0"><label for="q7a">1. 作らない</label></div>
@@ -147,10 +140,9 @@ ruby{ruby-align:center}
 <div class="option"><input type="radio" name="q7" id="q7c" value="1"><label for="q7c">3. 作ろう</label></div>
 <div class="option"><input type="radio" name="q7" id="q7d" value="0"><label for="q7d">4. 作る</label></div>
 </div>
-<div class="explanation">✅ 正解：3. 作ろう — 「〜ようじゃありませんか」＝「一緒に〜しましょう」という呼びかけの表現。</div>
+<div class="explanation">✅ 正解：3. 作ろう — 「〜ようじゃありませんか」＝「一緒に〜しましょう」という呼びかけの表現。聴衆に向けて共同行動を促すときに使う。動詞の意志形（〜よう）につく。「頑張ろうじゃありませんか」も同じ形。</div>
 </div>
 <div class="question">
-
 <div class="q-text"><span class="q-num">8</span><ruby>事業計画<rt>じぎょうけいかく</rt></ruby>の<ruby>変更<rt>へんこう</rt></ruby>は、<ruby>市場<rt>しじょう</rt></ruby>の<ruby>変化<rt>へんか</rt></ruby>を受けての（　）だという。</div>
 <div class="options">
 <div class="option"><input type="radio" name="q8" id="q8a" value="0"><label for="q8a">1. ところ</label></div>
@@ -158,21 +150,19 @@ ruby{ruby-align:center}
 <div class="option"><input type="radio" name="q8" id="q8c" value="0"><label for="q8c">3. わけ</label></div>
 <div class="option"><input type="radio" name="q8" id="q8d" value="0"><label for="q8d">4. うち</label></div>
 </div>
-<div class="explanation">✅ 正解：2. こと — 「〜を受けてのことだ」＝「〜に対応した結果のことだ」という意味。</div>
+<div class="explanation">✅ 正解：2. こと — 「〜を受けてのことだ」＝「〜に対応した結果のことだ」という意味。「こと」は出来事・事柄を指す形式名詞で、変更の理由や背景を説明している。</div>
 </div>
 <div class="question">
-
 <div class="q-text"><span class="q-num">9</span><ruby>部長<rt>ぶちょう</rt></ruby>は<ruby>報告書<rt>ほうこくしょ</rt></ruby>に目を（　）なり、すぐに直すよう<ruby>指示<rt>しじ</rt></ruby>を出した。</div>
 <div class="options">
-<div class="option"><input type="radio" name="q9" id="q9a" value="0"><label for="q9a">1. 通す</label></div>
+<div class="option"><input type="radio" name="q9" id="q9a" value="1"><label for="q9a">1. 通す</label></div>
 <div class="option"><input type="radio" name="q9" id="q9b" value="0"><label for="q9b">2. 通そう</label></div>
-<div class="option"><input type="radio" name="q9" id="q9c" value="1"><label for="q9c">3. 通した</label></div>
+<div class="option"><input type="radio" name="q9" id="q9c" value="0"><label for="q9c">3. 通した</label></div>
 <div class="option"><input type="radio" name="q9" id="q9d" value="0"><label for="q9d">4. 通して</label></div>
 </div>
-<div class="explanation">✅ 正解：3. 通した — 「〜たなり」＝「〜するとすぐに（次の動作に移った）」という意味。</div>
+<div class="explanation">✅ 正解：1. 通す — 「〜なり」＝「〜するとすぐに（次の動作に移った）」という意味。接続は「動詞の辞書形＋なり」。「帰るなり、倒れてしまった」「ドアを開けるなり、飛び込んできた」などと使う。「目を通す」＝「ざっと読む」という意味。3「通した」はた形なので「〜たなり」＝「〜したまま（状態が続く）」の意味になり文意に合わない（例：「出て行ったなり、帰ってこない」）。</div>
 </div>
 <div class="question">
-
 <div class="q-text"><span class="q-num">10</span>彼は<ruby>上司<rt>じょうし</rt></ruby>がいないの（　）、仕事をしないでサボっていた。</div>
 <div class="options">
 <div class="option"><input type="radio" name="q10" id="q10a" value="0"><label for="q10a">1. にひきかえ</label></div>
@@ -180,10 +170,9 @@ ruby{ruby-align:center}
 <div class="option"><input type="radio" name="q10" id="q10c" value="0"><label for="q10c">3. とあれば</label></div>
 <div class="option"><input type="radio" name="q10" id="q10d" value="1"><label for="q10d">4. をいいことに</label></div>
 </div>
-<div class="explanation">✅ 正解：4. をいいことに — 「〜をいいことに」＝「〜という有利な状況を利用して（よくないことをする）」という意味。</div>
+<div class="explanation">✅ 正解：4. をいいことに — 「〜をいいことに」＝「〜という有利な状況を利用して（よくないことをする）」という意味。悪い意味で状況を利用するときに使う。「親がいないのをいいことに、夜遅くまでゲームをした」などと使う。</div>
 </div>
 <div class="question">
-
 <div class="q-text"><span class="q-num">11</span><ruby>育児<rt>いくじ</rt></ruby>（　）、その他の<ruby>家事<rt>かじ</rt></ruby>が<ruby>疎<rt>おろそ</rt></ruby>かになってしまった。</div>
 <div class="options">
 <div class="option"><input type="radio" name="q11" id="q11a" value="0"><label for="q11a">1. の極みで</label></div>
@@ -191,10 +180,9 @@ ruby{ruby-align:center}
 <div class="option"><input type="radio" name="q11" id="q11c" value="1"><label for="q11c">3. にかまけて</label></div>
 <div class="option"><input type="radio" name="q11" id="q11d" value="0"><label for="q11d">4. といえども</label></div>
 </div>
-<div class="explanation">✅ 正解：3. にかまけて — 「〜にかまけて」＝「〜に気を取られすぎて、他のことをおろそかにして」という意味。</div>
+<div class="explanation">✅ 正解：3. にかまけて — 「〜にかまけて」＝「〜に気を取られすぎて、他のことをおろそかにして」という意味。1「の極みで」は「〜の最高の状態で」、2「に即して」は「〜に従って」、4「といえども」は「〜であっても」という逆接。</div>
 </div>
 <div class="question">
-
 <div class="q-text"><span class="q-num">12</span>いくら（　）ところで、<ruby>破棄<rt>はき</rt></ruby>された<ruby>契約<rt>けいやく</rt></ruby>は元には戻らない。</div>
 <div class="options">
 <div class="option"><input type="radio" name="q12" id="q12a" value="1"><label for="q12a">1. 謝った</label></div>
@@ -202,10 +190,9 @@ ruby{ruby-align:center}
 <div class="option"><input type="radio" name="q12" id="q12c" value="0"><label for="q12c">3. 謝る</label></div>
 <div class="option"><input type="radio" name="q12" id="q12d" value="0"><label for="q12d">4. 謝れば</label></div>
 </div>
-<div class="explanation">✅ 正解：1. 謝った — 「いくら〜たところで」＝「どれだけ〜しても（結果は変わらない）」という意味。</div>
+<div class="explanation">✅ 正解：1. 謝った — 「いくら〜たところで」＝「どれだけ〜しても（結果は変わらない）」という意味。努力や行動が無意味であることを表す。接続は「動詞た形＋ところで」。「いくら謝ったところで、許してもらえない」などと使う。</div>
 </div>
 <div class="question">
-
 <div class="q-text"><span class="q-num">13</span><ruby>怪我<rt>けが</rt></ruby>をしているのに無理をしたら、治る（　）も治らない。</div>
 <div class="options">
 <div class="option"><input type="radio" name="q13" id="q13a" value="0"><label for="q13a">1. だけ</label></div>
@@ -213,10 +200,9 @@ ruby{ruby-align:center}
 <div class="option"><input type="radio" name="q13" id="q13c" value="0"><label for="q13c">3. こと</label></div>
 <div class="option"><input type="radio" name="q13" id="q13d" value="0"><label for="q13d">4. ところ</label></div>
 </div>
-<div class="explanation">✅ 正解：2. もの — 「治るものも治らない」＝「本来なら治るはずのものまで治らなくなる」という慣用表現。</div>
+<div class="explanation">✅ 正解：2. もの — 「治るものも治らない」＝「本来なら治るはずのものまで治らなくなる」という意味。「〜ものも〜ない」は「本来〜するはずのことさえできなくなる」という慣用表現。「できるものもできない」も同じ形。</div>
 </div>
 <div class="question">
-
 <div class="q-text"><span class="q-num">14</span>理由（　）いかんを問わず、チケットの<ruby>払い戻し<rt>はらいもどし</rt></ruby>は<ruby>致<rt>いた</rt></ruby>しません。</div>
 <div class="options">
 <div class="option"><input type="radio" name="q14" id="q14a" value="1"><label for="q14a">1. の</label></div>
@@ -224,10 +210,9 @@ ruby{ruby-align:center}
 <div class="option"><input type="radio" name="q14" id="q14c" value="0"><label for="q14c">3. に</label></div>
 <div class="option"><input type="radio" name="q14" id="q14d" value="0"><label for="q14d">4. を</label></div>
 </div>
-<div class="explanation">✅ 正解：1. の — 「〜のいかんを問わず」は「〜がどのようなものであっても関係なく」という慣用表現。</div>
+<div class="explanation">✅ 正解：1. の — 「〜のいかんを問わず」は「〜がどのようなものであっても関係なく」という意味の慣用表現。必ず「名詞＋の＋いかんを問わず」の形で使う。「理由のいかんを問わず」「結果のいかんを問わず」などと使う。</div>
 </div>
 <div class="question">
-
 <div class="q-text"><span class="q-num">15</span>車の窓から空き缶を道路に捨てるなんて、<ruby>非常識<rt>ひじょうしき</rt></ruby>（　）。</div>
 <div class="options">
 <div class="option"><input type="radio" name="q15" id="q15a" value="0"><label for="q15a">1. でも無理はない</label></div>
@@ -235,70 +220,61 @@ ruby{ruby-align:center}
 <div class="option"><input type="radio" name="q15" id="q15c" value="0"><label for="q15c">3. なものとする</label></div>
 <div class="option"><input type="radio" name="q15" id="q15d" value="0"><label for="q15d">4. だとか何とかだ</label></div>
 </div>
-<div class="explanation">✅ 正解：2. にもほどがある — 「〜にもほどがある」＝「〜にも限度がある・いくらなんでもひどすぎる」という意味。</div>
+<div class="explanation">✅ 正解：2. にもほどがある — 「〜にもほどがある」＝「〜にも限度がある・いくらなんでもひどすぎる」という意味。相手の行動に対して強い非難・呆れを表す。「いい加減にもほどがある」「失礼にもほどがある」などと使う。1「でも無理はない」は「〜でも仕方がない」で文意が逆。</div>
 </div>
 <div class="question">
-
-<div class="q-text"><span class="q-num">16</span>A：「明日の<ruby>会議<rt>かいぎ</rt></ruby>でビデオを見せるそうですね」<br>B：「（　）、5分ぐらいの短いものですよ」</div>
+<div class="q-text"><span class="q-num">16</span>A：「明日の<ruby>会議<rt>かいぎ</rt></ruby>でビデオを見せるそうですね」<br>　　　B：「（　）、5分ぐらいの短いものですよ」</div>
 <div class="options">
 <div class="option"><input type="radio" name="q16" id="q16a" value="1"><label for="q16a">1. ビデオといっても</label></div>
 <div class="option"><input type="radio" name="q16" id="q16b" value="0"><label for="q16b">2. ビデオというより</label></div>
 <div class="option"><input type="radio" name="q16" id="q16c" value="0"><label for="q16c">3. ビデオかのように</label></div>
 <div class="option"><input type="radio" name="q16" id="q16d" value="0"><label for="q16d">4. ビデオだからといって</label></div>
 </div>
-<div class="explanation">✅ 正解：1. ビデオといっても — 「〜といっても」＝「〜と言っているが、実際はそれほどではない」という意味。</div>
+<div class="explanation">✅ 正解：1. ビデオといっても — 「〜といっても」＝「〜と言っているが、実際はそれほどではない」という意味。相手の期待や先入観を修正する場面で使う。「旅行といっても、日帰りですよ」「料理といっても、簡単なものしか作れません」など。2「というより」は別の表現に言い換えるとき、4「だからといって」は逆接で使う。</div>
 </div>
 <div class="question">
-
-<div class="q-text"><span class="q-num">17</span>A：「もう少し<ruby>金額<rt>きんがく</rt></ruby>を下げてもらうことはできませんか」<br>B：「（　）できると思います。数やお届け日のご<ruby>希望<rt>きぼう</rt></ruby>を教えてください」</div>
+<div class="q-text"><span class="q-num">17</span>A：「もう少し<ruby>金額<rt>きんがく</rt></ruby>を下げてもらうことはできませんか」<br>　　　B：「（　）できると思います。数やお届け日のご<ruby>希望<rt>きぼう</rt></ruby>を教えてください」</div>
 <div class="options">
 <div class="option"><input type="radio" name="q17" id="q17a" value="0"><label for="q17a">1. 条件をめぐって</label></div>
 <div class="option"><input type="radio" name="q17" id="q17b" value="0"><label for="q17b">2. 条件どころか</label></div>
 <div class="option"><input type="radio" name="q17" id="q17c" value="1"><label for="q17c">3. 条件次第では</label></div>
 <div class="option"><input type="radio" name="q17" id="q17d" value="0"><label for="q17d">4. 条件というと</label></div>
 </div>
-<div class="explanation">✅ 正解：3. 条件次第では — 「〜次第では」＝「〜の内容によっては（可能性がある）」という意味。</div>
+<div class="explanation">✅ 正解：3. 条件次第では — 「〜次第では」＝「〜の内容によっては（可能性がある）」という意味。条件によって結果が変わることを示す。「条件次第ではできる」＝条件の内容によっては値引きできる可能性がある。1「をめぐって」は「〜について議論・争う」、2「どころか」は強い否定・逆接に使う。</div>
 </div>
 <div class="question">
-
-<div class="q-text"><span class="q-num">18</span><ruby>鈴木<rt>すずき</rt></ruby>：「あれ、<ruby>中井<rt>なかい</rt></ruby>さんは？」<br><ruby>山崎<rt>やまさき</rt></ruby>：「<ruby>作業<rt>さぎょう</rt></ruby><ruby>終了<rt>しゅうりょう</rt></ruby>のベルが（　）出て行きましたよ」</div>
+<div class="q-text"><span class="q-num">18</span><ruby>鈴木<rt>すずき</rt></ruby>：「あれ、<ruby>中井<rt>なかい</rt></ruby>さんは？」<br>　　　<ruby>山崎<rt>やまさき</rt></ruby>：「<ruby>作業<rt>さぎょう</rt></ruby><ruby>終了<rt>しゅうりょう</rt></ruby>のベルが（　）出て行きましたよ」</div>
 <div class="options">
 <div class="option"><input type="radio" name="q18" id="q18a" value="1"><label for="q18a">1. 鳴ったかと思うと</label></div>
 <div class="option"><input type="radio" name="q18" id="q18b" value="0"><label for="q18b">2. 鳴るにあたって</label></div>
 <div class="option"><input type="radio" name="q18" id="q18c" value="0"><label for="q18c">3. 鳴った上は</label></div>
 <div class="option"><input type="radio" name="q18" id="q18d" value="0"><label for="q18d">4. 鳴りもしないで</label></div>
 </div>
-<div class="explanation">✅ 正解：1. 鳴ったかと思うと — 「〜かと思うと」＝「〜したと思ったらすぐに（次のことが起きた）」という意味。</div>
+<div class="explanation">✅ 正解：1. 鳴ったかと思うと — 「〜かと思うと」＝「〜したと思ったらすぐに（次のことが起きた）」という意味。ほぼ同時に、または非常に素早く連続して起きる動作を表す。「雨が降ったかと思うと、すぐにやんだ」などと使う。2「にあたって」は「〜する際に」、3「た上は」は「〜した以上は」の意味。</div>
 </div>
 <div class="question">
-
-<div class="q-text"><span class="q-num">19</span>A：「今から帰っても、お子さんはもう寝ている時間ですね」<br>B：「うん。でも、娘の寝顔も（　）」</div>
+<div class="q-text"><span class="q-num">19</span>A：「今から帰っても、お子さんはもう寝ている時間ですね」<br>　　　B：「うん。でも、娘の寝顔も（　）」</div>
 <div class="options">
 <div class="option"><input type="radio" name="q19" id="q19a" value="0"><label for="q19a">1. かわいくなければそれまでだ</label></div>
 <div class="option"><input type="radio" name="q19" id="q19b" value="0"><label for="q19b">2. かわいくないものを</label></div>
 <div class="option"><input type="radio" name="q19" id="q19c" value="0"><label for="q19c">3. かわいいきらいがある</label></div>
 <div class="option"><input type="radio" name="q19" id="q19d" value="1"><label for="q19d">4. かわいいといったらないんだ</label></div>
 </div>
-<div class="explanation">✅ 正解：4. かわいいといったらないんだ — 「〜といったらない（んだ）」＝「どれほど〜か言葉では表せないほどだ」という意味。</div>
+<div class="explanation">✅ 正解：4. かわいいといったらないんだ — 「〜といったらない（んだ）」＝「どれほど〜か言葉では表せないほどだ」という意味。感情を強調する表現。「おいしいといったらない」「感動といったらなかった」なども同じ形。3「きらいがある」は「〜する傾向がある（やや否定的なニュアンス）」なので文意に合わない。</div>
 </div>
 <div class="question">
-
-<div class="q-text"><span class="q-num">20</span>A：「<ruby>専門家<rt>せんもんか</rt></ruby>が問題に<ruby>対応<rt>たいおう</rt></ruby>しているんですよね」<br>B：「ええ。しかし、彼らの（　）、<ruby>解決<rt>かいけつ</rt></ruby>は<ruby>困難<rt>こんなん</rt></ruby>のようです」</div>
+<div class="q-text"><span class="q-num">20</span>A：「<ruby>専門家<rt>せんもんか</rt></ruby>が問題に<ruby>対応<rt>たいおう</rt></ruby>しているんですよね」<br>　　　B：「ええ。しかし、彼らの（　）、<ruby>解決<rt>かいけつ</rt></ruby>は<ruby>困難<rt>こんなん</rt></ruby>のようです」</div>
 <div class="options">
 <div class="option"><input type="radio" name="q20" id="q20a" value="0"><label for="q20a">1. 知識ならまだしも</label></div>
 <div class="option"><input type="radio" name="q20" id="q20b" value="0"><label for="q20b">2. 知識をものともせず</label></div>
 <div class="option"><input type="radio" name="q20" id="q20c" value="1"><label for="q20c">3. 知識をもってしても</label></div>
 <div class="option"><input type="radio" name="q20" id="q20d" value="0"><label for="q20d">4. 知識をおいて</label></div>
 </div>
-<div class="explanation">✅ 正解：3. 知識をもってしても — 「〜をもってしても」＝「〜を使っても・〜の力を借りても（それでもなお）」という意味。</div>
+<div class="explanation">✅ 正解：3. 知識をもってしても — 「〜をもってしても」＝「〜を使っても・〜の力を借りても（それでもなお）」という意味。「専門家の知識をもってしても解決できない」＝専門家の知識でさえ解決できない。高い能力・手段でも届かないことを強調する表現。2「をものともせず」は「〜を恐れず・〜にも負けず」という意味で文意が異なる。</div>
 </div>
 </div>
-<div class="section">
-<div class="section-title">文法・<ruby>語彙<rt>ごい</rt></ruby><ruby>問題<rt>もんだい</rt></ruby> B — （　）に最も適当な言葉を入れなさい（10問）</div>
-<p style="color:#000;font-size:.9em;margin-bottom:12px">次の文の（　）に1・2・3・4の中から最も適当な言葉を入れなさい。</p>
-
+<div class="section"><div class="section-title">文法・語彙問題 B（10問）</div>
 <div class="question">
-
 <div class="q-text"><span class="q-num">21</span><ruby>晩<rt>ばん</rt></ruby>ご飯を作った時に（　）<ruby>材料<rt>ざいりょう</rt></ruby>で、次の日の<ruby>朝<rt>あさ</rt></ruby>ご飯を作った。</div>
 <div class="options">
 <div class="option"><input type="radio" name="q21" id="q21a" value="0"><label for="q21a">1. 吐いた</label></div>
@@ -306,10 +282,9 @@ ruby{ruby-align:center}
 <div class="option"><input type="radio" name="q21" id="q21c" value="1"><label for="q21c">3. 余った</label></div>
 <div class="option"><input type="radio" name="q21" id="q21d" value="0"><label for="q21d">4. 枯れた</label></div>
 </div>
-<div class="explanation">✅ 正解：3. 余った — 「余る」＝使い切れずに残る。「余った材料」＝使わずに残った食材。</div>
+<div class="explanation">✅ 正解：3. 余った — 「余る」＝使い切れずに残る。「余った材料」＝使わずに残った食材。1「吐いた」は吐き出す、2「組んだ」は組み合わせる、4「枯れた」は植物が枯れるという意味で不自然。</div>
 </div>
 <div class="question">
-
 <div class="q-text"><span class="q-num">22</span>毎年、<ruby>花見<rt>はなみ</rt></ruby>や<ruby>運動会<rt>うんどうかい</rt></ruby>など会社の（　）に参加している。</div>
 <div class="options">
 <div class="option"><input type="radio" name="q22" id="q22a" value="0"><label for="q22a">1. 事件</label></div>
@@ -317,10 +292,9 @@ ruby{ruby-align:center}
 <div class="option"><input type="radio" name="q22" id="q22c" value="1"><label for="q22c">3. <ruby>行事<rt>ぎょうじ</rt></ruby></label></div>
 <div class="option"><input type="radio" name="q22" id="q22d" value="0"><label for="q22d">4. <ruby>思い出<rt>おもいで</rt></ruby></label></div>
 </div>
-<div class="explanation">✅ 正解：3. <ruby>行事<rt>ぎょうじ</rt></ruby> — 「行事」＝決まった時期に行われるイベント・催し物のこと。</div>
+<div class="explanation">✅ 正解：3. <ruby>行事<rt>ぎょうじ</rt></ruby> — 「行事」＝決まった時期に行われるイベント・催し物のこと。花見や運動会は会社が定期的に行う催し物なので「行事」が最も適切。1「事件」は問題・トラブル、2「秘密」は隠し事、4「思い出」は記憶・メモリー。</div>
 </div>
 <div class="question">
-
 <div class="q-text"><span class="q-num">23</span><ruby>陸上<rt>りくじょう</rt></ruby><ruby>選手<rt>せんしゅ</rt></ruby>の彼は、毎日（　）を走っている。</div>
 <div class="options">
 <div class="option"><input type="radio" name="q23" id="q23a" value="0"><label for="q23a">1. トレーニング</label></div>
@@ -328,10 +302,9 @@ ruby{ruby-align:center}
 <div class="option"><input type="radio" name="q23" id="q23c" value="0"><label for="q23c">3. カロリー</label></div>
 <div class="option"><input type="radio" name="q23" id="q23d" value="1"><label for="q23d">4. グラウンド</label></div>
 </div>
-<div class="explanation">✅ 正解：4. グラウンド — 「グラウンド」＝運動場・競技場。「グラウンドを走る」は自然な表現。</div>
+<div class="explanation">✅ 正解：4. グラウンド — 「グラウンド（ground）」＝運動場・競技場。「グラウンドを走る」は自然な表現。1「トレーニングをする」は言えるが「トレーニングを走る」とは言わない。3「カロリーを消費する」は言えるが「カロリーを走る」とは言わない。</div>
 </div>
 <div class="question">
-
 <div class="q-text"><span class="q-num">24</span>私は（　）ので、よく<ruby>失敗<rt>しっぱい</rt></ruby>をする。</div>
 <div class="options">
 <div class="option"><input type="radio" name="q24" id="q24a" value="1"><label for="q24a">1. そそっかしい</label></div>
@@ -339,10 +312,9 @@ ruby{ruby-align:center}
 <div class="option"><input type="radio" name="q24" id="q24c" value="0"><label for="q24c">3. まぶしい</label></div>
 <div class="option"><input type="radio" name="q24" id="q24d" value="0"><label for="q24d">4. 等しい</label></div>
 </div>
-<div class="explanation">✅ 正解：1. そそっかしい — 「そそっかしい」＝落ち着きがなく、うっかりミスをしやすい性格。</div>
+<div class="explanation">✅ 正解：1. そそっかしい — 「そそっかしい」＝落ち着きがなく、うっかりミスをしやすい性格。2「あっけない」は拍子抜けするほど簡単・呆気ない様子、3「まぶしい」は光が強い様子、4「等しい」は同じ・等しいという意味。</div>
 </div>
 <div class="question">
-
 <div class="q-text"><span class="q-num">25</span><ruby>片付<rt>かたづ</rt></ruby>けが済み、<ruby>部屋<rt>へや</rt></ruby>が（　）した。</div>
 <div class="options">
 <div class="option"><input type="radio" name="q25" id="q25a" value="1"><label for="q25a">1. すっきり</label></div>
@@ -350,10 +322,9 @@ ruby{ruby-align:center}
 <div class="option"><input type="radio" name="q25" id="q25c" value="0"><label for="q25c">3. ばったり</label></div>
 <div class="option"><input type="radio" name="q25" id="q25d" value="0"><label for="q25d">4. にっこり</label></div>
 </div>
-<div class="explanation">✅ 正解：1. すっきり — 「すっきりする」＝散らかりがなくなってきれいに整った様子。</div>
+<div class="explanation">✅ 正解：1. すっきり — 「すっきりする」＝散らかりがなくなってきれいに整った様子。片付けが終わった後の部屋の状態を表すのに最も適切。2「ぴったり」はぴったり合う様子、3「ばったり」は突然倒れたり偶然出会う様子、4「にっこり」は笑顔の様子。</div>
 </div>
 <div class="question">
-
 <div class="q-text"><span class="q-num">26</span>一年前事故にあって、<ruby>命<rt>いのち</rt></ruby>も（　）なるほどの大けがをした。</div>
 <div class="options">
 <div class="option"><input type="radio" name="q26" id="q26a" value="0"><label for="q26a">1. <ruby>甚<rt>はなは</rt></ruby>だしく</label></div>
@@ -361,10 +332,9 @@ ruby{ruby-align:center}
 <div class="option"><input type="radio" name="q26" id="q26c" value="0"><label for="q26c">3. <ruby>険<rt>けわ</rt></ruby>しく</label></div>
 <div class="option"><input type="radio" name="q26" id="q26d" value="0"><label for="q26d">4. きつく</label></div>
 </div>
-<div class="explanation">✅ 正解：2. <ruby>危<rt>あや</rt></ruby>うく — 「命も危うくなるほど」＝命が危険になりそうなほどの大けが。</div>
+<div class="explanation">✅ 正解：2. <ruby>危<rt>あや</rt></ruby>うく — 「命も危うくなるほど」＝命が危険になりそうなほどの大けが。「危うい」＝危険な状態に近い・ぎりぎりのところ。1「甚だしく」は「程度がひどい」、3「険しく」は山道などの厳しさ、4「きつく」は「厳しく・強く」で「命も」の後には続かない。</div>
 </div>
 <div class="question">
-
 <div class="q-text"><span class="q-num">27</span>私は<ruby>宣伝<rt>せんでん</rt></ruby>方法のアイディアを出すことで売り上げに（　）している。</div>
 <div class="options">
 <div class="option"><input type="radio" name="q27" id="q27a" value="0"><label for="q27a">1. <ruby>尊重<rt>そんちょう</rt></ruby></label></div>
@@ -372,10 +342,9 @@ ruby{ruby-align:center}
 <div class="option"><input type="radio" name="q27" id="q27c" value="0"><label for="q27c">3. <ruby>発揮<rt>はっき</rt></ruby></label></div>
 <div class="option"><input type="radio" name="q27" id="q27d" value="1"><label for="q27d">4. <ruby>貢献<rt>こうけん</rt></ruby></label></div>
 </div>
-<div class="explanation">✅ 正解：4. <ruby>貢献<rt>こうけん</rt></ruby> — 「貢献する」＝役に立つ・力を与える。「売り上げに貢献する」は自然なビジネス表現。</div>
+<div class="explanation">✅ 正解：4. <ruby>貢献<rt>こうけん</rt></ruby> — 「貢献する」＝役に立つ・力を与える。「売り上げに貢献する」は自然なビジネス表現。1「尊重する」は大切にする、2「循環する」は繰り返し回る、3「発揮する」は能力を出す意味で「〜に発揮する」とは言わない（「実力を発揮する」）。</div>
 </div>
 <div class="question">
-
 <div class="q-text"><span class="q-num">28</span>新しいシステムを<ruby>導入<rt>どうにゅう</rt></ruby>することが良いとは、（　）言えない。</div>
 <div class="options">
 <div class="option"><input type="radio" name="q28" id="q28a" value="0"><label for="q28a">1. ひいては</label></div>
@@ -383,10 +352,9 @@ ruby{ruby-align:center}
 <div class="option"><input type="radio" name="q28" id="q28c" value="1"><label for="q28c">3. <ruby>一概<rt>いちがい</rt></ruby>に</label></div>
 <div class="option"><input type="radio" name="q28" id="q28d" value="0"><label for="q28d">4. ことごとく</label></div>
 </div>
-<div class="explanation">✅ 正解：3. <ruby>一概<rt>いちがい</rt></ruby>に — 「一概に言えない」＝一律に・すべての場合に当てはまるとは言えない。</div>
+<div class="explanation">✅ 正解：3. <ruby>一概<rt>いちがい</rt></ruby>に — 「一概に言えない」＝一律に・すべての場合に当てはまるとは言えない。状況によって異なる場合に使う。「一概に悪いとは言えない」「一概には判断できない」など。1「ひいては」は「さらに発展して」、2「まして」は「さらに言えば」、4「ことごとく」は「すべて・残らず」の意味。</div>
 </div>
 <div class="question">
-
 <div class="q-text"><span class="q-num">29</span>ご（　）いただきましたとおり、この<ruby>企画<rt>きかく</rt></ruby>には問題点がありました。</div>
 <div class="options">
 <div class="option"><input type="radio" name="q29" id="q29a" value="0"><label for="q29a">1. <ruby>勧誘<rt>かんゆう</rt></ruby></label></div>
@@ -394,10 +362,9 @@ ruby{ruby-align:center}
 <div class="option"><input type="radio" name="q29" id="q29c" value="1"><label for="q29c">3. <ruby>指摘<rt>してき</rt></ruby></label></div>
 <div class="option"><input type="radio" name="q29" id="q29d" value="0"><label for="q29d">4. <ruby>寄贈<rt>きぞう</rt></ruby></label></div>
 </div>
-<div class="explanation">✅ 正解：3. <ruby>指摘<rt>してき</rt></ruby> — 「ご指摘いただきましたとおり」＝「おっしゃった通り・教えていただいた通り」。</div>
+<div class="explanation">✅ 正解：3. <ruby>指摘<rt>してき</rt></ruby> — 「ご指摘いただきましたとおり」＝「おっしゃった通り・教えていただいた通り」。相手が問題点を指摘してくれたことを受けて使う丁寧な表現。1「勧誘」は誘うこと、2「決断」は決めること、4「寄贈」は物を贈ること。</div>
 </div>
 <div class="question">
-
 <div class="q-text"><span class="q-num">30</span>（　）が<ruby>滞<rt>とどこお</rt></ruby>り、<ruby>品揃<rt>しなぞろ</rt></ruby>えに<ruby>影響<rt>えいきょう</rt></ruby>が出ている。</div>
 <div class="options">
 <div class="option"><input type="radio" name="q30" id="q30a" value="1"><label for="q30a">1. <ruby>物流<rt>ぶつりゅう</rt></ruby></label></div>
@@ -405,15 +372,11 @@ ruby{ruby-align:center}
 <div class="option"><input type="radio" name="q30" id="q30c" value="0"><label for="q30c">3. <ruby>論議<rt>ろんぎ</rt></ruby></label></div>
 <div class="option"><input type="radio" name="q30" id="q30d" value="0"><label for="q30d">4. <ruby>豊作<rt>ほうさく</rt></ruby></label></div>
 </div>
-<div class="explanation">✅ 正解：1. <ruby>物流<rt>ぶつりゅう</rt></ruby> — 「物流が滞る」＝商品の輸送・流通がスムーズに進まないこと。</div>
+<div class="explanation">✅ 正解：1. <ruby>物流<rt>ぶつりゅう</rt></ruby> — 「物流が滞る」＝商品の輸送・流通がスムーズに進まないこと。物流が滞ると商品が届かなくなり、品揃えに影響が出るという文脈に自然につながる。2「品質」は商品の質、3「論議」は議論、4「豊作」は作物がよく取れること。</div>
 </div>
 </div>
-<div class="section">
-<div class="section-title">文法・<ruby>語彙<rt>ごい</rt></ruby><ruby>問題<rt>もんだい</rt></ruby> C — 意味に最も近いものを選びなさい（10問）</div>
-<p style="color:#000;font-size:.9em;margin-bottom:12px">次の文の＿＿＿の意味に最も近いものを1・2・3・4の中から選びなさい。</p>
-
+<div class="section"><div class="section-title">文法・語彙問題 C（10問）</div>
 <div class="question">
-
 <div class="q-text"><span class="q-num">31</span>その<ruby>会議<rt>かいぎ</rt></ruby>には<strong>出ないわけにはいかない</strong>。</div>
 <div class="options">
 <div class="option"><input type="radio" name="q31" id="q31a" value="0"><label for="q31a">1. 出ないつもりだ</label></div>
@@ -421,10 +384,9 @@ ruby{ruby-align:center}
 <div class="option"><input type="radio" name="q31" id="q31c" value="0"><label for="q31c">3. 出たことがない</label></div>
 <div class="option"><input type="radio" name="q31" id="q31d" value="0"><label for="q31d">4. 出ないほうがいい</label></div>
 </div>
-<div class="explanation">✅ 正解：2. 出なければならない — 「〜ないわけにはいかない」＝「必ず〜しなければならない」。二重否定で強い義務を表す。</div>
+<div class="explanation">✅ 正解：2. 出なければならない — 「〜ないわけにはいかない」＝「必ず〜しなければならない」。二重否定の構造で、強い義務・必要性を表す。「出ない」＋「わけにはいかない」→出ることが義務・必要。</div>
 </div>
 <div class="question">
-
 <div class="q-text"><span class="q-num">32</span>最近、ちょっとしたことで<strong><ruby>腹<rt>はら</rt></ruby>が立って</strong>しまう。</div>
 <div class="options">
 <div class="option"><input type="radio" name="q32" id="q32a" value="0"><label for="q32a">1. 疲れて</label></div>
@@ -432,10 +394,9 @@ ruby{ruby-align:center}
 <div class="option"><input type="radio" name="q32" id="q32c" value="1"><label for="q32c">3. 怒って</label></div>
 <div class="option"><input type="radio" name="q32" id="q32d" value="0"><label for="q32d">4. 喜んで</label></div>
 </div>
-<div class="explanation">✅ 正解：3. 怒って — 「腹が立つ」は「怒る・腹を立てる」という意味の慣用句。</div>
+<div class="explanation">✅ 正解：3. 怒って — 「腹が立つ」は「怒る・腹を立てる」という意味の慣用句。「腹」は感情（怒り）の座として使われる。同義語：「むかつく」「頭にくる」。</div>
 </div>
 <div class="question">
-
 <div class="q-text"><span class="q-num">33</span>新しい靴を<ruby>履<rt>は</rt></ruby>いてみたら、少し<strong><ruby>緩<rt>ゆる</rt></ruby>かった</strong>。</div>
 <div class="options">
 <div class="option"><input type="radio" name="q33" id="q33a" value="0"><label for="q33a">1. 柔らかかった</label></div>
@@ -443,10 +404,9 @@ ruby{ruby-align:center}
 <div class="option"><input type="radio" name="q33" id="q33c" value="1"><label for="q33c">3. 大きかった</label></div>
 <div class="option"><input type="radio" name="q33" id="q33d" value="0"><label for="q33d">4. 小さかった</label></div>
 </div>
-<div class="explanation">✅ 正解：3. 大きかった — 「緩い（ゆるい）」は靴・服などが体に対してゆったりしすぎている状態。靴が緩い＝サイズが大きい。</div>
+<div class="explanation">✅ 正解：3. 大きかった — 「緩い（ゆるい）」は靴・服などが体に対してゆったりしすぎている状態。靴が「緩い」＝靴のサイズが足より大きい→「大きかった」が正しい。「きつい」の反対語。</div>
 </div>
 <div class="question">
-
 <div class="q-text"><span class="q-num">34</span><ruby>商品<rt>しょうひん</rt></ruby>についての詳しい説明は<strong><ruby>省<rt>はぶ</rt></ruby>きます</strong>。</div>
 <div class="options">
 <div class="option"><input type="radio" name="q34" id="q34a" value="0"><label for="q34a">1. 後でします</label></div>
@@ -454,10 +414,9 @@ ruby{ruby-align:center}
 <div class="option"><input type="radio" name="q34" id="q34c" value="0"><label for="q34c">3. 聞きたいです</label></div>
 <div class="option"><input type="radio" name="q34" id="q34d" value="1"><label for="q34d">4. しません</label></div>
 </div>
-<div class="explanation">✅ 正解：4. しません — 「省く（はぶく）」＝省略する・省いて行わない。「説明を省く」＝説明をしない。</div>
+<div class="explanation">✅ 正解：4. しません — 「省く（はぶく）」＝省略する・省いて行わない。「説明を省く」＝説明をしない・省略する。1「後でします」は省略ではないので不正解。</div>
 </div>
 <div class="question">
-
 <div class="q-text"><span class="q-num">35</span>今年入社した<ruby>社員<rt>しゃいん</rt></ruby>は<strong><ruby>素直<rt>すなお</rt></ruby></strong>だが、自分から<ruby>積極的<rt>せっきょくてき</rt></ruby>に仕事をしない。</div>
 <div class="options">
 <div class="option"><input type="radio" name="q35" id="q35a" value="0"><label for="q35a">1. 丁寧で礼儀正しい</label></div>
@@ -465,10 +424,9 @@ ruby{ruby-align:center}
 <div class="option"><input type="radio" name="q35" id="q35c" value="0"><label for="q35c">3. 何でも一生懸命にする</label></div>
 <div class="option"><input type="radio" name="q35" id="q35d" value="1"><label for="q35d">4. 他の人の意見をよく聞く</label></div>
 </div>
-<div class="explanation">✅ 正解：4. 他の人の意見をよく聞く — 「素直」＝ひねくれず、人の言うことをそのまま受け入れる性格。</div>
+<div class="explanation">✅ 正解：4. 他の人の意見をよく聞く — 「素直（すなお）」＝ひねくれず、人の言うことをそのまま受け入れる性格。逆らわず、人の意見をよく聞く性格を指す。3「一生懸命にする」だと後半の「積極的に仕事をしない」と矛盾する。</div>
 </div>
 <div class="question">
-
 <div class="q-text"><span class="q-num">36</span><ruby>機械<rt>きかい</rt></ruby>の<ruby>故障<rt>こしょう</rt></ruby>は<strong>まれに起こる</strong>。</div>
 <div class="options">
 <div class="option"><input type="radio" name="q36" id="q36a" value="1"><label for="q36a">1. めったに起こらない</label></div>
@@ -476,10 +434,9 @@ ruby{ruby-align:center}
 <div class="option"><input type="radio" name="q36" id="q36c" value="0"><label for="q36c">3. 起こるかもしれない</label></div>
 <div class="option"><input type="radio" name="q36" id="q36d" value="0"><label for="q36d">4. よく起こる</label></div>
 </div>
-<div class="explanation">✅ 正解：1. めったに起こらない — 「まれに」＝ほとんどない・非常に少ない頻度で。「まれに起こる」＝ごくたまに起こる。</div>
+<div class="explanation">✅ 正解：1. めったに起こらない — 「まれに」＝ほとんどない・非常に少ない頻度で。「まれに起こる」＝ごくたまに起こる＝「めったに起こらないが、起こることもある」。2「起こったことがない（ゼロ）」は言い過ぎ。1が最も近い。</div>
 </div>
 <div class="question">
-
 <div class="q-text"><span class="q-num">37</span>その件を<ruby>課長<rt>かちょう</rt></ruby>は<strong><ruby>誤解<rt>ごかい</rt></ruby>している</strong>。</div>
 <div class="options">
 <div class="option"><input type="radio" name="q37" id="q37a" value="0"><label for="q37a">1. よく理解している</label></div>
@@ -487,10 +444,9 @@ ruby{ruby-align:center}
 <div class="option"><input type="radio" name="q37" id="q37c" value="0"><label for="q37c">3. 解説できない</label></div>
 <div class="option"><input type="radio" name="q37" id="q37d" value="0"><label for="q37d">4. まだ把握していない</label></div>
 </div>
-<div class="explanation">✅ 正解：2. 間違った理解をしている — 「誤解」＝「誤った解釈・理解」のこと。</div>
+<div class="explanation">✅ 正解：2. 間違った理解をしている — 「誤解（ごかい）」＝「誤（まちが）った解釈・理解」のこと。「誤」は「間違い」、「解」は「理解」なので、漢字の意味からも2が正解。</div>
 </div>
 <div class="question">
-
 <div class="q-text"><span class="q-num">38</span>彼女の<ruby>発想<rt>はっそう</rt></ruby>は<strong>ユニーク</strong>だ。</div>
 <div class="options">
 <div class="option"><input type="radio" name="q38" id="q38a" value="0"><label for="q38a">1. ありふれている</label></div>
@@ -498,10 +454,9 @@ ruby{ruby-align:center}
 <div class="option"><input type="radio" name="q38" id="q38c" value="1"><label for="q38c">3. 独特だ</label></div>
 <div class="option"><input type="radio" name="q38" id="q38d" value="0"><label for="q38d">4. <ruby>魅力的<rt>みりょくてき</rt></ruby>だ</label></div>
 </div>
-<div class="explanation">✅ 正解：3. 独特だ — 「ユニーク」＝他にはない・唯一の・独自の。「独特」と同義。</div>
+<div class="explanation">✅ 正解：3. 独特だ — 「ユニーク（unique）」＝他にはない・唯一の・独自の。「独特（どくとく）」＝その人だけに見られる特別な特徴があること。1「ありふれている」は「よくある・普通の」で反対の意味。</div>
 </div>
 <div class="question">
-
 <div class="q-text"><span class="q-num">39</span>私が通っていた高校は<strong><ruby>規則<rt>きそく</rt></ruby>ずくめ</strong>だった。</div>
 <div class="options">
 <div class="option"><input type="radio" name="q39" id="q39a" value="0"><label for="q39a">1. 規則を守らない生徒が多かった</label></div>
@@ -509,10 +464,9 @@ ruby{ruby-align:center}
 <div class="option"><input type="radio" name="q39" id="q39c" value="0"><label for="q39c">3. 規則正しい生徒が多かった</label></div>
 <div class="option"><input type="radio" name="q39" id="q39d" value="0"><label for="q39d">4. 規則に厳しくなかった</label></div>
 </div>
-<div class="explanation">✅ 正解：2. 規則が非常に多かった — 「〜ずくめ」＝「〜だらけ・〜ばかり・〜が非常に多い」という意味の接尾語。</div>
+<div class="explanation">✅ 正解：2. 規則が非常に多かった — 「〜ずくめ」＝「〜だらけ・〜ばかり・〜が非常に多い」という意味の接尾語。「規則ずくめ」＝規則がたくさんある・規則で固められている。他の例：「黒ずくめ（全身黒ばかり）」「いいことずくめ（いいことばかり）」。</div>
 </div>
 <div class="question">
-
 <div class="q-text"><span class="q-num">40</span><ruby>請求書<rt>せいきゅうしょ</rt></ruby>の山を見て、<strong>途方にくれた</strong>。</div>
 <div class="options">
 <div class="option"><input type="radio" name="q40" id="q40a" value="0"><label for="q40a">1. 同情した</label></div>
@@ -520,15 +474,11 @@ ruby{ruby-align:center}
 <div class="option"><input type="radio" name="q40" id="q40c" value="0"><label for="q40c">3. 興奮した</label></div>
 <div class="option"><input type="radio" name="q40" id="q40d" value="1"><label for="q40d">4. 困り果てた</label></div>
 </div>
-<div class="explanation">✅ 正解：4. 困り果てた — 「途方にくれる」＝どうすればいいかわからなくて、すっかり困り果てる。</div>
+<div class="explanation">✅ 正解：4. 困り果てた — 「途方にくれる」＝どうすればいいかわからなくて、すっかり困り果てる。「途方（とほう）」は手段・方法のこと。「途方にくれる」＝方法がわからず途方にくれる。「困り果てた（困り切った）」が最も近い意味。</div>
 </div>
 </div>
-<div class="section">
-<div class="section-title"><ruby>読解<rt>どっかい</rt></ruby><ruby>問題<rt>もんだい</rt></ruby> — 文章を読んで<ruby>問題<rt>もんだい</rt></ruby>に答えなさい（11問）</div>
-<p style="color:#000;font-size:.9em;margin-bottom:12px">答えは1・2・3・4の中から最も適当なものを1つ選びなさい。</p>
-
+<div class="section"><div class="section-title">2 読解問題（20問）</div>
 <div class="question">
-<div class="reading-passage">2026/03/03 11：15<br><ruby>件名<rt>けんめい</rt></ruby>：3月6日に使用する<ruby>資料<rt>しりょう</rt></ruby>について<br><br><ruby>渡辺<rt>わたなべ</rt></ruby><ruby>部長<rt>ぶちょう</rt></ruby><br><br>お<ruby>疲<rt>つか</rt></ruby>れ様です。<ruby>黒木<rt>くろき</rt></ruby>です。<br><br>3月6日の<ruby>会議<rt>かいぎ</rt></ruby>に使用する<ruby>資料<rt>しりょう</rt></ruby>作りを<ruby>担当<rt>たんとう</rt></ruby>させてくださり、ありがとうございます。その<ruby>締め切り<rt>しめきり</rt></ruby>について伺いたく、メールいたしました。<br><br><ruby>部長<rt>ぶちょう</rt></ruby>からは、3月4日の午前中までに作ったものを見せてほしいということでしたが、明日の午前中にお<ruby>客様<rt>きゃくさま</rt></ruby>との約束が入っています。<br>また、その際に<ruby>必要<rt>ひつよう</rt></ruby>な<ruby>書類<rt>しょるい</rt></ruby>を<ruby>準備<rt>じゅんび</rt></ruby>しなければならないので、<ruby>会議<rt>かいぎ</rt></ruby><ruby>資料<rt>しりょう</rt></ruby>を作り始められるのは明日の午後からとなってしまいます。<br><br>明日の午後から始めれば、5日の午前中に資料をお見せできると思います。<br>それで間に合うでしょうか。<br><br><ruby>黒木<rt>くろき</rt></ruby></div>
 <div class="q-text"><span class="q-num">41</span><ruby>渡辺<rt>わたなべ</rt></ruby><ruby>部長<rt>ぶちょう</rt></ruby>は<ruby>黒木<rt>くろき</rt></ruby>さんに何を頼みましたか。</div>
 <div class="options">
 <div class="option"><input type="radio" name="q41" id="q41a" value="1"><label for="q41a">1. <ruby>資料<rt>しりょう</rt></ruby>を作ること</label></div>
@@ -536,21 +486,19 @@ ruby{ruby-align:center}
 <div class="option"><input type="radio" name="q41" id="q41c" value="0"><label for="q41c">3. <ruby>資料<rt>しりょう</rt></ruby>を<ruby>客<rt>きゃく</rt></ruby>に送ること</label></div>
 <div class="option"><input type="radio" name="q41" id="q41d" value="0"><label for="q41d">4. <ruby>資料<rt>しりょう</rt></ruby>の<ruby>内容<rt>ないよう</rt></ruby>を直すこと</label></div>
 </div>
-<div class="explanation">✅ 正解：1. <ruby>資料<rt>しりょう</rt></ruby>を作ること — メールの冒頭に「3月6日の会議に使用する資料作りを担当させてくださり」とある。部長が依頼したのは資料を作ること。</div>
+<div class="explanation">✅ 正解：1. <ruby>資料<rt>しりょう</rt></ruby>を作ること — メールの冒頭に「3月6日の会議に使用する資料作りを担当させてくださり、ありがとうございます」とある。部長が依頼したのは資料を作ることとわかる。締め切りの変更をお願いしているのは黒木さんの側で、部長ではない。</div>
 </div>
 <div class="question">
-
 <div class="q-text"><span class="q-num">42</span><ruby>黒木<rt>くろき</rt></ruby>さんは3月4日の午前にどんな予定がありますか。</div>
 <div class="options">
 <div class="option"><input type="radio" name="q42" id="q42a" value="0"><label for="q42a">1. <ruby>会議<rt>かいぎ</rt></ruby>に出席する予定</label></div>
 <div class="option"><input type="radio" name="q42" id="q42b" value="0"><label for="q42b">2. <ruby>渡辺<rt>わたなべ</rt></ruby><ruby>部長<rt>ぶちょう</rt></ruby>に<ruby>会議<rt>かいぎ</rt></ruby><ruby>資料<rt>しりょう</rt></ruby>を見せる予定</label></div>
 <div class="option"><input type="radio" name="q42" id="q42c" value="0"><label for="q42c">3. <ruby>客<rt>きゃく</rt></ruby>に渡す<ruby>書類<rt>しょるい</rt></ruby>を<ruby>準備<rt>じゅんび</rt></ruby>する予定</label></div>
-<div class="option"><input type="radio" name="q42" id="q42d" value="1"><label for="q42d">4. <ruby>客<rt>きゃく</rt></ruby>と会う予定</label></div>
+<div class="option"><input type="radio" name="q42" id="q42d" value="1"><label for="q42d">4. 客と会う予定</label></div>
 </div>
-<div class="explanation">✅ 正解：4. <ruby>客<rt>きゃく</rt></ruby>と会う予定 — メールに「明日（＝3月4日）の午前中にお客様との約束が入っています」とある。</div>
+<div class="explanation">✅ 正解：4. 客と会う予定 — メールに「明日（＝3月4日）の午前中にお客様との約束が入っています」とある。「お客様との約束」＝客と会う予定。3の「書類を準備する予定」は客との面会「の際に必要な書類」であり、午前の予定そのものではない。</div>
 </div>
 <div class="question">
-<div class="reading-passage">2026/03/06 10：35<br><ruby>件名<rt>けんめい</rt></ruby>：新<ruby>製品<rt>せいひん</rt></ruby>「<ruby>風味<rt>ふうみ</rt></ruby>豊かな<ruby>野菜<rt>やさい</rt></ruby>スープ」<ruby>発表会<rt>はっぴょうかい</rt></ruby>のご<ruby>案内<rt>あんない</rt></ruby><br><br><ruby>株式会社<rt>かぶしきがいしゃ</rt></ruby>ゼンテン<ruby>商事<rt>しょうじ</rt></ruby>　<ruby>販売部<rt>はんばいぶ</rt></ruby>　<ruby>菅原<rt>すがわら</rt></ruby>様<br><br>お世話になっております。<ruby>株式会社<rt>かぶしきがいしゃ</rt></ruby><ruby>月美食品<rt>つきみしょくひん</rt></ruby><ruby>営業部<rt>えいぎょうぶ</rt></ruby>　<ruby>久保<rt>くぼ</rt></ruby>です。<br><br>さて、新<ruby>製品<rt>せいひん</rt></ruby><ruby>発表会<rt>はっぴょうかい</rt></ruby>のご<ruby>案内<rt>あんない</rt></ruby>です。<ruby>栄養<rt>えいよう</rt></ruby>バランスに優れ、つつも<ruby>野菜<rt>やさい</rt></ruby>のおいしさを感じられる「<ruby>風味<rt>ふうみ</rt></ruby>豊かな<ruby>野菜<rt>やさい</rt></ruby>スープ」を<ruby>数種類<rt>すうしゅるい</rt></ruby>の味で<ruby>発売<rt>はつばい</rt></ruby>する予定です。<br><br>つきましては、下記のとおり<ruby>発表会<rt>はっぴょうかい</rt></ruby>を行い、<ruby>試食<rt>ししょく</rt></ruby>していただき、ご<ruby>意見<rt>いけん</rt></ruby>・ご<ruby>感想<rt>かんそう</rt></ruby>をいただきたく存じます。ぜひお誘い合わせのうえ、ご出席くださいますようお願い申し上げます。なお、ご<ruby>来場<rt>らいじょう</rt></ruby>いただいた皆様には心ばかりのプレゼントをお渡しする予定です。お日にちが近づきましたら<ruby>文書<rt>ぶんしょ</rt></ruby>にてご<ruby>招待状<rt>しょうたいじょう</rt></ruby>をお送りいたします。<br><br>日時：2026年4月6日　午後1時〜3時<br><ruby>会場<rt>かいじょう</rt></ruby>：東京都○○<ruby>青空町<rt>あおぞらちょう</rt></ruby>7-10-5　南センター5<ruby>階<rt>かい</rt></ruby>（<ruby>小西<rt>こにし</rt></ruby><ruby>駅<rt>えき</rt></ruby>下車徒歩3分）</div>
 <div class="q-text"><span class="q-num">43</span>新<ruby>製品<rt>せいひん</rt></ruby>について、メールの内容と合っているのはどれですか。</div>
 <div class="options">
 <div class="option"><input type="radio" name="q43" id="q43a" value="1"><label for="q43a">1. <ruby>栄養<rt>えいよう</rt></ruby>のバランスが良い。</label></div>
@@ -558,10 +506,9 @@ ruby{ruby-align:center}
 <div class="option"><input type="radio" name="q43" id="q43c" value="0"><label for="q43c">3. 味の<ruby>種類<rt>しゅるい</rt></ruby>は1<ruby>種類<rt>しゅるい</rt></ruby>である。</label></div>
 <div class="option"><input type="radio" name="q43" id="q43d" value="0"><label for="q43d">4. ゼンテン<ruby>商事<rt>しょうじ</rt></ruby>が作った<ruby>商品<rt>しょうひん</rt></ruby>である。</label></div>
 </div>
-<div class="explanation">✅ 正解：1. <ruby>栄養<rt>えいよう</rt></ruby>のバランスが良い。 — メールに「栄養バランスに優れ」とある→1が正しい。</div>
+<div class="explanation">✅ 正解：1. <ruby>栄養<rt>えいよう</rt></ruby>のバランスが良い。 — メールに「栄養バランスに優れ」とある→1が正しい。2：「野菜のおいしさを感じられる」とあるので誤り。3：「数種類の味で発売する予定」とあるので1種類ではない→誤り。4：商品を作ったのは株式会社月美食品で、ゼンテン商事は送り先（取引先）→誤り。</div>
 </div>
 <div class="question">
-
 <div class="q-text"><span class="q-num">44</span>メールの<ruby>内容<rt>ないよう</rt></ruby>と合っているのはどれですか。</div>
 <div class="options">
 <div class="option"><input type="radio" name="q44" id="q44a" value="0"><label for="q44a">1. <ruby>発表会<rt>はっぴょうかい</rt></ruby>に出席するかどうかをメールで返事しなければならない。</label></div>
@@ -569,43 +516,39 @@ ruby{ruby-align:center}
 <div class="option"><input type="radio" name="q44" id="q44c" value="0"><label for="q44c">3. <ruby>発表会<rt>はっぴょうかい</rt></ruby>に参加できるのは、各<ruby>会社<rt>かいしゃ</rt></ruby>1人である。</label></div>
 <div class="option"><input type="radio" name="q44" id="q44d" value="1"><label for="q44d">4. 後で<ruby>招待状<rt>しょうたいじょう</rt></ruby>が送られる。</label></div>
 </div>
-<div class="explanation">✅ 正解：4. 後で<ruby>招待状<rt>しょうたいじょう</rt></ruby>が送られる。 — 「お日にちが近づきましたら文書にてご招待状をお送りいたします」とある→4が正しい。</div>
+<div class="explanation">✅ 正解：4. 後で<ruby>招待状<rt>しょうたいじょう</rt></ruby>が送られる。 — 「お日にちが近づきましたら文書にてご招待状をお送りいたします」とある→4が正しい。1：メールで返事をするとは書かれていない→誤り。2：プレゼントは「ご来場いただいた皆様に」とあるので、参加者のみ→誤り。3：人数制限については書かれていない→誤り。</div>
 </div>
 <div class="question">
-<div class="reading-passage">2026年3月12日<br><ruby>営業部長<rt>えいぎょうぶちょう</rt></ruby>　<ruby>寺本<rt>てらもと</rt></ruby><ruby>正樹<rt>まさき</rt></ruby>　殿　　<ruby>長谷川<rt>はせがわ</rt></ruby><ruby>鈴子<rt>すずこ</rt></ruby><br><br>新<ruby>製品<rt>せいひん</rt></ruby>RX556の<ruby>製造<rt>せいぞう</rt></ruby>の遅れについて、<ruby>長野<rt>ながの</rt></ruby><ruby>工場<rt>こうじょう</rt></ruby>に<ruby>状況<rt>じょうきょう</rt></ruby>を<ruby>確認<rt>かくにん</rt></ruby>するため、<ruby>出張<rt>しゅっちょう</rt></ruby>いたしましたので、ご<ruby>報告<rt>ほうこく</rt></ruby>いたします。<br><br>記<br>・<ruby>出張先<rt>しゅっちょうさき</rt></ruby>　<ruby>長野<rt>ながの</rt></ruby><ruby>工場<rt>こうじょう</rt></ruby>（<ruby>長野<rt>ながの</rt></ruby>県<ruby>長野<rt>ながの</rt></ruby>市）<br>・日時　　3月10日　8：00〜17：50<br>・<ruby>目的<rt>もくてき</rt></ruby>　　新<ruby>製品<rt>せいひん</rt></ruby>RX556の<ruby>製造<rt>せいぞう</rt></ruby>スケジュールについて打合せ<br>・<ruby>内容<rt>ないよう</rt></ruby>　　<ruby>長野<rt>ながの</rt></ruby><ruby>工場<rt>こうじょう</rt></ruby>訪問。<ruby>工場長<rt>こうじょうちょう</rt></ruby>から<ruby>事情<rt>じじょう</rt></ruby>の聞き取り<br><br>［聞き取りの<ruby>内容<rt>ないよう</rt></ruby>］<br>○RX556の<ruby>製造<rt>せいぞう</rt></ruby>の遅れについて<br>・RX556に使われている部品を作っている<ruby>工場<rt>こうじょう</rt></ruby>が、先月の大雨の<ruby>影響<rt>えいきょう</rt></ruby>で1週間作業を<ruby>停止<rt>ていし</rt></ruby>し、その後も<ruby>製造<rt>せいぞう</rt></ruby>が遅れている。その<ruby>結果<rt>けっか</rt></ruby>、RX556の<ruby>製造<rt>せいぞう</rt></ruby>が遅れた。他の<ruby>工場<rt>こうじょう</rt></ruby>の部品に<ruby>変更<rt>へんこう</rt></ruby>はできないとのこと。<br><br>○今後の<ruby>見通し<rt>みとおし</rt></ruby><br>・RX556の<ruby>製造<rt>せいぞう</rt></ruby>は予定より10日ほど遅れているが、遅れは少しずつ取り戻している。<ruby>工場長<rt>こうじょうちょう</rt></ruby>の<ruby>予想<rt>よそう</rt></ruby>では、遅れは最終的に1週間程度になりそうだとのこと。<br><br>○<ruby>所感<rt>しょかん</rt></ruby><br>・RX556の<ruby>販売<rt>はんばい</rt></ruby>スケジュールは多少<ruby>余裕<rt>よゆう</rt></ruby>があるので、1週間の遅れであれば、スケジュール<ruby>変更<rt>へんこう</rt></ruby>は必要ない。<ruby>工場長<rt>こうじょうちょう</rt></ruby>には、1週間以上の遅れは大きな問題になるので急いでほしいと伝えた。しかし、もしもの場合を考えて、<ruby>販売<rt>はんばい</rt></ruby>スケジュールの見直しも考えておくべきだと思う。<br><br>以上</div>
-<div class="q-text"><span class="q-num">45</span><ruby>長谷川<rt>はせがわ</rt></ruby>さんが<ruby>出張<rt>しゅっちょう</rt></ruby>で<ruby>確認<rt>かくにん</rt></ruby>できたこととは何ですか。</div>
+<div class="q-text"><span class="q-num">45</span><ruby>長谷川<rt>はせがわ</rt></ruby>さんが<strong><ruby>出張<rt>しゅっちょう</rt></ruby>で<ruby>確認<rt>かくにん</rt></ruby>できた</strong>こととは何ですか。</div>
 <div class="options">
 <div class="option"><input type="radio" name="q45" id="q45a" value="0"><label for="q45a">1. RX556の部品を<ruby>製造<rt>せいぞう</rt></ruby>している<ruby>工場<rt>こうじょう</rt></ruby>が、<ruby>現在<rt>げんざい</rt></ruby>動いていない理由</label></div>
 <div class="option"><input type="radio" name="q45" id="q45b" value="0"><label for="q45b">2. RX556の部品がない理由と<ruby>工場長<rt>こうじょうちょう</rt></ruby>が今まで行ってきた<ruby>対応<rt>たいおう</rt></ruby></label></div>
 <div class="option"><input type="radio" name="q45" id="q45c" value="0"><label for="q45c">3. RX556の<ruby>製造<rt>せいぞう</rt></ruby>のための部品の<ruby>変更<rt>へんこう</rt></ruby>の決定と、今後の予定</label></div>
 <div class="option"><input type="radio" name="q45" id="q45d" value="1"><label for="q45d">4. RX556の<ruby>製造<rt>せいぞう</rt></ruby>が遅れた理由と、今後どの程度遅れるかという<ruby>予想<rt>よそう</rt></ruby></label></div>
 </div>
-<div class="explanation">✅ 正解：4. RX556の<ruby>製造<rt>せいぞう</rt></ruby>が遅れた理由と、今後どの程度遅れるかという<ruby>予想<rt>よそう</rt></ruby> — 聞き取りの内容に①遅れた理由、②今後の見通し（1週間程度の遅れ）がある。</div>
+<div class="explanation">✅ 正解：4. RX556の<ruby>製造<rt>せいぞう</rt></ruby>が遅れた理由と、今後どの程度遅れるかという<ruby>予想<rt>よそう</rt></ruby> — 文書の「聞き取りの内容」に2つの項目がある。①「RX556の製造の遅れについて」：遅れた理由（大雨による部品工場の停止）を確認。②「今後の見通し」：最終的に1週間程度の遅れになるという工場長の予想を確認。1：現在工場は動いていると書かれている（「少しずつ取り戻している」）→誤り。3：「他の工場の部品に変更はできない」とあり、変更の決定ではない→誤り。</div>
 </div>
 <div class="question">
-
-<div class="q-text"><span class="q-num">46</span><ruby>長谷川<rt>はせがわ</rt></ruby>さんは、これから何をしたほうがいいと言っていますか。</div>
+<div class="q-text"><span class="q-num">46</span><ruby>長谷川<rt>はせがわ</rt></ruby>さんは、これから<strong>何をしたほうがいい</strong>と言っていますか。</div>
 <div class="options">
 <div class="option"><input type="radio" name="q46" id="q46a" value="0"><label for="q46a">1. <ruby>工場長<rt>こうじょうちょう</rt></ruby>にこれ以上遅れないように厳しく注意すること</label></div>
 <div class="option"><input type="radio" name="q46" id="q46b" value="1"><label for="q46b">2. <ruby>工場長<rt>こうじょうちょう</rt></ruby>の<ruby>予想<rt>よそう</rt></ruby>と違った場合の<ruby>対応<rt>たいおう</rt></ruby>を考えておくこと</label></div>
 <div class="option"><input type="radio" name="q46" id="q46c" value="0"><label for="q46c">3. RX556の<ruby>販売<rt>はんばい</rt></ruby>スケジュールを<ruby>大幅<rt>おおはば</rt></ruby>に<ruby>変更<rt>へんこう</rt></ruby>すること</label></div>
 <div class="option"><input type="radio" name="q46" id="q46d" value="0"><label for="q46d">4. <ruby>製造<rt>せいぞう</rt></ruby>の遅れを取り戻すための方法を考えておくこと</label></div>
 </div>
-<div class="explanation">✅ 正解：2. <ruby>工場長<rt>こうじょうちょう</rt></ruby>の<ruby>予想<rt>よそう</rt></ruby>と違った場合の<ruby>対応<rt>たいおう</rt></ruby>を考えておくこと — 所感に「もしもの場合を考えて、販売スケジュールの見直しも考えておくべきだと思う」とある。</div>
+<div class="explanation">✅ 正解：2. <ruby>工場長<rt>こうじょうちょう</rt></ruby>の<ruby>予想<rt>よそう</rt></ruby>と違った場合の<ruby>対応<rt>たいおう</rt></ruby>を考えておくこと — 所感の最後に「もしもの場合を考えて、販売スケジュールの見直しも考えておくべきだと思う」とある。「もしもの場合」＝工場長の予想（1週間程度の遅れ）より遅れが大きくなった場合。3：「大幅に変更すること」ではなく「見直しを考えておく」という表現。現時点では変更不要とある→誤り。</div>
 </div>
 <div class="question">
-<div class="reading-passage">2026年4月1日<br><ruby>株式会社<rt>かぶしきがいしゃ</rt></ruby>四つ葉<ruby>物産<rt>ぶっさん</rt></ruby>　御中<br><ruby>株式会社<rt>かぶしきがいしゃ</rt></ruby><ruby>青山<rt>あおやま</rt></ruby>フーズ　<ruby>代表取締役<rt>だいひょうとりしまりやく</rt></ruby><ruby>社長<rt>しゃちょう</rt></ruby>　<ruby>小川<rt>おがわ</rt></ruby><ruby>雄弁<rt>ゆうべん</rt></ruby><br><br><ruby>価格<rt>かかく</rt></ruby><ruby>改定<rt>かいてい</rt></ruby>のお願い<br><br><ruby>拝啓<rt>はいけい</rt></ruby>　貴社ますますご<ruby>清栄<rt>せいえい</rt></ruby>のこととお<ruby>慶<rt>よろこ</rt></ruby>び申し上げます。<ruby>平素<rt>へいそ</rt></ruby>は格別のご<ruby>高配<rt>こうはい</rt></ruby>を<ruby>賜<rt>たまわ</rt></ruby>り、厚く御礼申し上げます。<br>さて、この度は貴社より長年ご発注いただいております弊社のチョコパイシリーズにつきまして、<ruby>価格<rt>かかく</rt></ruby><ruby>改定<rt>かいてい</rt></ruby>をさせていただきたく思っております。<br>以前より<ruby>人件費<rt>じんけんひ</rt></ruby>、<ruby>燃料代<rt>ねんりょうだい</rt></ruby>などは<ruby>上昇<rt>じょうしょう</rt></ruby>しておりましたが、<ruby>原料<rt>げんりょう</rt></ruby>の<ruby>価格<rt>かかく</rt></ruby>を抑えることによって、近年の<ruby>物価高<rt>ぶっかこう</rt></ruby>で他<ruby>商品<rt>しょうひん</rt></ruby>を値上げせざるを得ない状況にあっても、弊社の<ruby>看板<rt>かんばん</rt></ruby><ruby>商品<rt>しょうひん</rt></ruby>であるチョコパイシリーズだけは、<ruby>価格<rt>かかく</rt></ruby>を維持してまいりました。<br>しかしながら、最近、<ruby>原料<rt>げんりょう</rt></ruby>の<ruby>乳製品<rt>にゅうせいひん</rt></ruby>の<ruby>価格<rt>かかく</rt></ruby>が<ruby>上昇<rt>じょうしょう</rt></ruby>し、それも<ruby>限界<rt>げんかい</rt></ruby>に達しております。<br>つきましては、誠に<ruby>心苦<rt>こころぐる</rt></ruby>しいのですが、2026年6月1日以降の<ruby>納品<rt>のうひん</rt></ruby>分から、以下の通り、<ruby>価格<rt>かかく</rt></ruby>を引き上げさせていただきたく、何卒ご理解のほど、よろしくお願い申し上げます。<br><br>記<br>ミルクチョコパイ6個入　1箱　380円→420円<br>ミニチョコパイ8個入　　1箱　260円→290円<br><br>以上<br><br>今後も変わらぬご<ruby>愛顧<rt>あいこ</rt></ruby>のほど、よろしくお願い申し上げます。<br><br><ruby>敬具<rt>けいぐ</rt></ruby></div>
-<div class="q-text"><span class="q-num">47</span><ruby>青山<rt>あおやま</rt></ruby>フーズでは、どうしてチョコパイシリーズの値上げをすることにしましたか。</div>
+<div class="q-text"><span class="q-num">47</span><ruby>青山<rt>あおやま</rt></ruby>フーズでは、<strong>どうして</strong>チョコパイシリーズの<strong>値上げ</strong>をすることにしましたか。</div>
 <div class="options">
 <div class="option"><input type="radio" name="q47" id="q47a" value="0"><label for="q47a">1. <ruby>人件費<rt>じんけんひ</rt></ruby>が高くなったから</label></div>
 <div class="option"><input type="radio" name="q47" id="q47b" value="1"><label for="q47b">2. <ruby>乳製品<rt>にゅうせいひん</rt></ruby>の<ruby>価格<rt>かかく</rt></ruby>が高くなったから</label></div>
 <div class="option"><input type="radio" name="q47" id="q47c" value="0"><label for="q47c">3. <ruby>燃料代<rt>ねんりょうだい</rt></ruby>が高くなったから</label></div>
 <div class="option"><input type="radio" name="q47" id="q47d" value="0"><label for="q47d">4. <ruby>物価<rt>ぶっか</rt></ruby>が高くなったから</label></div>
 </div>
-<div class="explanation">✅ 正解：2. <ruby>乳製品<rt>にゅうせいひん</rt></ruby>の<ruby>価格<rt>かかく</rt></ruby>が高くなったから — 今回値上げの直接の理由は「最近、原料の乳製品の価格が上昇し、それも限界に達した」から。</div>
+<div class="explanation">✅ 正解：2. <ruby>乳製品<rt>にゅうせいひん</rt></ruby>の<ruby>価格<rt>かかく</rt></ruby>が高くなったから — 人件費や燃料代の上昇は「以前より」あったが、チョコパイは価格を維持してきた。今回値上げに踏み切った直接の理由は「最近、原料の乳製品の価格が上昇し、それも限界に達した」から。1・3は上昇していたが今回の値上げの直接原因ではない。4は一般的すぎて直接の原因ではない。</div>
 </div>
 <div class="question">
-
 <div class="q-text"><span class="q-num">48</span>文書の内容と合っているのはどれですか。</div>
 <div class="options">
 <div class="option"><input type="radio" name="q48" id="q48a" value="0"><label for="q48a">1. 四つ葉<ruby>物産<rt>ぶっさん</rt></ruby>は<ruby>青山<rt>あおやま</rt></ruby>フーズのチョコパイを初めて注文した。</label></div>
@@ -613,21 +556,19 @@ ruby{ruby-align:center}
 <div class="option"><input type="radio" name="q48" id="q48c" value="0"><label for="q48c">3. <ruby>青山<rt>あおやま</rt></ruby>フーズのチョコパイ以外の<ruby>商品<rt>しょうひん</rt></ruby>はまだ一度も値上げしていない。</label></div>
 <div class="option"><input type="radio" name="q48" id="q48d" value="1"><label for="q48d">4. <ruby>青山<rt>あおやま</rt></ruby>フーズのチョコパイは6月1日以降の<ruby>納品<rt>のうひん</rt></ruby>分から値上げする。</label></div>
 </div>
-<div class="explanation">✅ 正解：4. <ruby>青山<rt>あおやま</rt></ruby>フーズのチョコパイは6月1日以降の<ruby>納品<rt>のうひん</rt></ruby>分から値上げする。 — 「2026年6月1日以降の納品分から価格を引き上げさせていただきたく」とある。</div>
+<div class="explanation">✅ 正解：4. <ruby>青山<rt>あおやま</rt></ruby>フーズのチョコパイは6月1日以降の<ruby>納品<rt>のうひん</rt></ruby>分から値上げする。 — 「2026年6月1日以降の納品分から価格を引き上げさせていただきたく」とある→4が正しい。1：「長年ご発注いただいております」とあり、初めてではない→誤り。2：「価格を維持してまいりました」とあり、過去に値上げした記述はない→誤り。3：「他商品を値上げせざるを得ない状況にあっても」とあり、他商品は値上げしていることがわかる→誤り。</div>
 </div>
 <div class="question">
-<div class="reading-passage">私が<ruby>作家<rt>さっか</rt></ruby>になりたいと思ったのは何時頃だったか。中学2年生くらいの時にはすでにぼんやりと考えており、少なくとも高校の<ruby>卒業<rt>そつぎょう</rt></ruby>アルバムにある将来の夢の欄には小説家と書いていた。<br>だが10代、20代は一度も書こうとはしなかった。私は<ruby>文芸誌<rt>ぶんげいし</rt></ruby>を読むような高校生だった。そこには憧れの歴史小説家たちのエッセイ、<ruby>対談<rt>たいだん</rt></ruby>などが掲載されているのだが、どの先生も口を揃えて、<br>――小説の勉強をするよりも、人生経験を積むべき。<br>と、<ruby>仰<rt>おっしゃ</rt></ruby>っていたからである。小説の勉強が無駄という訳ではない。ただそれよりも大切なことがあるといったような内容であった。そして私はまだその時ではないと本気で思っていた。<br><br>（<ruby>文芸誌<rt>ぶんげいし</rt></ruby>…小説や詩、<ruby>随筆<rt>ずいひつ</rt></ruby>などの文学作品が中心の雑誌）<br>（<ruby>対談<rt>たいだん</rt></ruby>…あるテーマについて二人で話したもの）</div>
-<div class="q-text"><span class="q-num">49</span>「その時ではない」とありますが、何をする時ではないと筆者は考えましたか。</div>
+<div class="q-text"><span class="q-num">49</span>「<strong>その時ではない</strong>」とありますが、何をする時ではないと筆者は考えましたか。</div>
 <div class="options">
 <div class="option"><input type="radio" name="q49" id="q49a" value="0"><label for="q49a">1. 将来の夢を他人に言う時</label></div>
 <div class="option"><input type="radio" name="q49" id="q49b" value="0"><label for="q49b">2. 人生経験を積む時</label></div>
 <div class="option"><input type="radio" name="q49" id="q49c" value="1"><label for="q49c">3. 小説の勉強をする時</label></div>
 <div class="option"><input type="radio" name="q49" id="q49d" value="0"><label for="q49d">4. <ruby>文芸誌<rt>ぶんげいし</rt></ruby>を読む時</label></div>
 </div>
-<div class="explanation">✅ 正解：3. 小説の勉強をする時 — 先生たちは「小説の勉強をするよりも、人生経験を積むべき」と言っていた。筆者は「まだその時ではない（＝小説の勉強をする時ではない）」と思った。</div>
+<div class="explanation">✅ 正解：3. 小説の勉強をする時 — 先生たちは「小説の勉強をするよりも、人生経験を積むべき」と言っていた。筆者はその言葉を受けて「まだその時ではない（＝小説の勉強をする時ではない）」と思い、10代・20代は一度も書こうとしなかった。「その時」が指すのは「小説の勉強をする時」であることが文脈からわかる。2は先生たちが勧めていることなので「まだその時ではない」とは言わない。</div>
 </div>
 <div class="question">
-<div class="reading-passage">人手が足りないといつも<ruby>嘆<rt>なげ</rt></ruby>いている<ruby>企業<rt>きぎょう</rt></ruby>は、自分たちの仕事内容や<ruby>将来性<rt>しょうらいせい</rt></ruby>、あるいは<ruby>賃金<rt>ちんぎん</rt></ruby>や<ruby>待遇<rt>たいぐう</rt></ruby>などの待遇が「<ruby>魅力的<rt>みりょくてき</rt></ruby>ではない」と思われているのだと、早めにわが身を振り返るべきです。<br>仕事を選ぶ基準は、人それぞれの<ruby>価値観<rt>かちかん</rt></ruby>によって違います。<br>「給料だけがすべてではないし」と面白そうで給料の安い仕事を選ぶ人もいれば、つまらなそうで高い仕事を選ぶ人もいます。その判断基準は、それぞれの<ruby>価値観<rt>かちかん</rt></ruby>になってきます。<br>だからこそ人を集めたい<ruby>企業<rt>きぎょう</rt></ruby>は、自分たちの会社の<ruby>魅力<rt>みりょく</rt></ruby>は何なのか、仕事自体の<ruby>魅力<rt>みりょく</rt></ruby>なのか、<ruby>将来性<rt>しょうらいせい</rt></ruby>なのか、<ruby>賃金<rt>ちんぎん</rt></ruby>なのか……などと、よく考えるべきです。<br><br>（わが身を振り返る…自分の発言や行動を反省する）</div>
 <div class="q-text"><span class="q-num">50</span>筆者の考えに最も近いのはどれですか。</div>
 <div class="options">
 <div class="option"><input type="radio" name="q50" id="q50a" value="0"><label for="q50a">1. <ruby>慢性的<rt>まんせいてき</rt></ruby>な人手不足に悩んでいる<ruby>企業<rt>きぎょう</rt></ruby>に<ruby>魅力<rt>みりょく</rt></ruby>は感じられないので、対策を立てても人は集まらない。</label></div>
@@ -635,10 +576,9 @@ ruby{ruby-align:center}
 <div class="option"><input type="radio" name="q50" id="q50c" value="0"><label for="q50c">3. 給料が高ければ人は自然と集まるので、<ruby>企業<rt>きぎょう</rt></ruby>はもっと<ruby>賃金<rt>ちんぎん</rt></ruby>を<ruby>重視<rt>じゅうし</rt></ruby>したほうがいい。</label></div>
 <div class="option"><input type="radio" name="q50" id="q50d" value="0"><label for="q50d">4. 仕事内容より<ruby>将来性<rt>しょうらいせい</rt></ruby>を強調すれば<ruby>優秀<rt>ゆうしゅう</rt></ruby>な<ruby>人材<rt>じんざい</rt></ruby>が集まりやすい。</label></div>
 </div>
-<div class="explanation">✅ 正解：2. 仕事を選ぶ基準は人それぞれ異なるため、人を集めるためには自社の<ruby>魅力<rt>みりょく</rt></ruby>を見直すべきである。 — ①仕事を選ぶ基準は人それぞれ、②人を集めたい企業は自社の魅力をよく考えるべき、の2点。</div>
+<div class="explanation">✅ 正解：2. 仕事を選ぶ基準は人それぞれ異なるため、人を集めるためには自社の<ruby>魅力<rt>みりょく</rt></ruby>を見直すべきである。 — 筆者の主張は2点。①「仕事を選ぶ基準は人それぞれの価値観によって違う」②「人を集めたい企業は、自社の魅力をよく考えるべき」。1：筆者は「早めに振り返るべき（＝対策を立てるべき）」と言っており、「対策を立てても無駄」とは言っていない→誤り。3：給料だけが基準ではないと文中にある→誤り。4：将来性だけを強調すればいいとは書かれていない→誤り。</div>
 </div>
 <div class="question">
-<div class="reading-passage"><ruby>松本<rt>まつもと</rt></ruby>市で8月11日〜9月9日に開くセイジ・オザワ<ruby>松本<rt>まつもと</rt></ruby>フェスティバル（OMF）の<ruby>実行<rt>じっこう</rt></ruby><ruby>委員会<rt>いいんかい</rt></ruby>は今月19日まで、<ruby>公演<rt>こうえん</rt></ruby>の運営を担うボランティア組織「OMFコンチェルト」の新規メンバーを募集している。<ruby>活動<rt>かつどう</rt></ruby>期間は7月20日〜9月9日。チケット確認や会場のドアの開閉、グッズ<ruby>販売<rt>はんばい</rt></ruby>、会場案内などを担う。<br>高校生を除く18歳以上が対象で、<ruby>活動<rt>かつどう</rt></ruby>日は申し込み後に調整する。7月26日午後1時から市まつもと市民<ruby>芸術館<rt>げいじゅつかん</rt></ruby>で開く<ruby>研修会<rt>けんしゅうかい</rt></ruby>に参加できることが<ruby>条件<rt>じょうけん</rt></ruby>。<ruby>登録<rt>とうろく</rt></ruby>フォームから申し込む。顔写真が必要。今月20日以降に<ruby>実行<rt>じっこう</rt></ruby>委事務局が<ruby>活動<rt>かつどう</rt></ruby>希望調査票をメールで送る。<br><br>（グッズ<ruby>販売<rt>はんばい</rt></ruby>…<ruby>公演<rt>こうえん</rt></ruby>に関係する商品を販売すること）</div>
 <div class="q-text"><span class="q-num">51</span><ruby>活動<rt>かつどう</rt></ruby>日について、文章の内容と合っているのはどれですか。</div>
 <div class="options">
 <div class="option"><input type="radio" name="q51" id="q51a" value="1"><label for="q51a">1. メンバーは7月20日にメールで<ruby>活動<rt>かつどう</rt></ruby>日を知らされる。</label></div>
@@ -646,10 +586,380 @@ ruby{ruby-align:center}
 <div class="option"><input type="radio" name="q51" id="q51c" value="0"><label for="q51c">3. フェスティバル期間中は全日程参加しなければならない。</label></div>
 <div class="option"><input type="radio" name="q51" id="q51d" value="0"><label for="q51d">4. フェスティバル終了後も<ruby>活動<rt>かつどう</rt></ruby>がある。</label></div>
 </div>
-<div class="explanation">✅ 正解：1. メンバーは7月20日にメールで<ruby>活動<rt>かつどう</rt></ruby>日を知らされる。 — 「今月20日以降に活動希望調査票をメールで送る」。申し込み後に活動日が調整され、メールで知らされる。</div>
+<div class="explanation">✅ 正解：1. メンバーは7月20日にメールで<ruby>活動<rt>かつどう</rt></ruby>日を知らされる。 — 活動期間は7月20日から始まり、「今月（6月）20日以降に活動希望調査票をメールで送る」とある。申し込み後に活動日が調整されるため、メンバーはメールを通じて活動日を知ることになる。2：「7月26日の研修会に参加できることが条件」とあるが、これは応募の条件であり全員に義務付けられたものではない→誤り。3：「活動日は申し込み後に調整する」とあり、全日程参加の義務はない→誤り。4：活動期間は7月20日〜9月9日、フェスティバルも8月11日〜9月9日で同じ日に終わる→誤り。</div>
+</div>
+<div class="question">
+<div class="q-text"><span class="q-num">52</span>この<ruby>職業訓練補助金<rt>しょくぎょうくんれんほじょきん</rt></ruby>が<ruby>受<rt>う</rt></ruby>け<ruby>取<rt>と</rt></ruby>れる<ruby>人<rt>ひと</rt></ruby>は、<ruby>次<rt>つぎ</rt></ruby>の4<ruby>人<rt>にん</rt></ruby>のうち、<strong><ruby>誰<rt>だれ</rt></ruby>ですか</strong>。</div>
+<div class="options">
+<div class="option"><input type="radio" name="q52" id="q52a" value="0"><label for="q52a">1. <ruby>補助金<rt>ほじょきん</rt></ruby>をもらったことがなく、<ruby>雇用保険<rt>こようほけん</rt></ruby>に<ruby>加入<rt>かにゅう</rt></ruby>していた<ruby>会社<rt>かいしゃ</rt></ruby>を<ruby>退職後<rt>たいしょくご</rt></ruby>、<ruby>職業支援センター<rt>しょくぎょうしえんせんたー</rt></ruby>に<ruby>登録<rt>とうろく</rt></ruby>された<ruby>大学<rt>だいがく</rt></ruby>に<ruby>入学<rt>にゅうがく</rt></ruby>し、<ruby>卒業<rt>そつぎょう</rt></ruby>した<ruby>人<rt>ひと</rt></ruby></label></div>
+<div class="option"><input type="radio" name="q52" id="q52b" value="0"><label for="q52b">2. <ruby>現在<rt>げんざい</rt></ruby>、<ruby>勤<rt>つと</rt></ruby>めている<ruby>会社<rt>かいしゃ</rt></ruby>で<ruby>雇用保険<rt>こようほけん</rt></ruby>に<ruby>加入<rt>かにゅう</rt></ruby>中であり、<ruby>仕事<rt>しごと</rt></ruby>に<ruby>必要<rt>ひつよう</rt></ruby>な<ruby>英語<rt>えいご</rt></ruby>を<ruby>知<rt>し</rt></ruby>り<ruby>合<rt>あ</rt></ruby>いに<ruby>授業料<rt>じゅぎょうりょう</rt></ruby>を<ruby>払<rt>はら</rt></ruby>って<ruby>英語<rt>えいご</rt></ruby>を<ruby>勉強<rt>べんきょう</rt></ruby>している<ruby>人<rt>ひと</rt></ruby></label></div>
+<div class="option"><input type="radio" name="q52" id="q52c" value="0"><label for="q52c">3. <ruby>現在<rt>げんざい</rt></ruby>、<ruby>雇用保険<rt>こようほけん</rt></ruby>に<ruby>加入<rt>かにゅう</rt></ruby>しており、<ruby>以前<rt>いぜん</rt></ruby>、<ruby>補助金<rt>ほじょきん</rt></ruby>をもらって<ruby>勉強<rt>べんきょう</rt></ruby>した<ruby>学校<rt>がっこう</rt></ruby>で、よりレベルの<ruby>高<rt>たか</rt></ruby>い<ruby>資格<rt>しかく</rt></ruby>を<ruby>目指<rt>めざ</rt></ruby>し、<ruby>勉強<rt>べんきょう</rt></ruby>した<ruby>人<rt>ひと</rt></ruby></label></div>
+<div class="option"><input type="radio" name="q52" id="q52d" value="1"><label for="q52d">4. <ruby>補助金<rt>ほじょきん</rt></ruby>をもらったことがなく、<ruby>現在<rt>げんざい</rt></ruby>、<ruby>雇用保険<rt>こようほけん</rt></ruby>に<ruby>加入<rt>かにゅう</rt></ruby>しており、<ruby>職業支援センター<rt>しょくぎょうしえんせんたー</rt></ruby>に<ruby>登録<rt>とうろく</rt></ruby>された<ruby>学校<rt>がっこう</rt></ruby>で<ruby>調理師<rt>ちょうりし</rt></ruby>の<ruby>勉強<rt>べんきょう</rt></ruby>をした<ruby>人<rt>ひと</rt></ruby></label></div>
+</div>
+<div class="explanation">✅ 正解：4. <ruby>補助金<rt>ほじょきん</rt></ruby>をもらったことがなく、<ruby>現在<rt>げんざい</rt></ruby>、<ruby>雇用保険<rt>こようほけん</rt></ruby>に<ruby>加入<rt>かにゅう</rt></ruby>しており、<ruby>職業支援センター<rt>しょくぎょうしえんせんたー</rt></ruby>に<ruby>登録<rt>とうろく</rt></ruby>された<ruby>学校<rt>がっこう</rt></ruby>で<ruby>調理師<rt>ちょうりし</rt></ruby>の<ruby>勉強<rt>べんきょう</rt></ruby>をした<ruby>人<rt>ひと</rt></ruby> — 補助金を受けられる条件は①在職中で雇用保険に加入していること、②今までに補助金をもらったことがないこと、③職業支援センターに登録された学校の講座であること。1：退職後→在職中でない→✗。2：知り合いに払って勉強→職業支援センターに登録された学校ではない→✗。3：以前補助金をもらって勉強した→今まで補助金をもらったことがある→✗。4：すべての条件を満たす→✓。</div>
+</div>
+<div class="question">
+<div class="q-text"><span class="q-num">53</span><ruby>阿部<rt>あべ</rt></ruby>さんは<ruby>職業訓練補助金<rt>しょくぎょうくんれんほじょきん</rt></ruby><ruby>制度<rt>せいど</rt></ruby>を<ruby>利用<rt>りよう</rt></ruby>し、<ruby>補助金<rt>ほじょきん</rt></ruby>の<ruby>申請<rt>しんせい</rt></ruby>をしました。<ruby>補助金<rt>ほじょきん</rt></ruby>の<ruby>対象<rt>たいしょう</rt></ruby>となる<ruby>講座<rt>こうざ</rt></ruby>で<ruby>大型自動車免許<rt>おおがたじどうしゃめんきょ</rt></ruby>を<ruby>取得<rt>しゅとく</rt></ruby>し、<ruby>掛<rt>か</rt></ruby>かった<ruby>費用<rt>ひよう</rt></ruby>は50<ruby>万円<rt>まんえん</rt></ruby>でした。<ruby>補助金<rt>ほじょきん</rt></ruby>は<ruby>最大<rt>さいだい</rt></ruby>、いくらもらえますか。</div>
+<div class="options">
+<div class="option"><input type="radio" name="q53" id="q53a" value="0"><label for="q53a">1. 50万円</label></div>
+<div class="option"><input type="radio" name="q53" id="q53b" value="0"><label for="q53b">2. 40万円</label></div>
+<div class="option"><input type="radio" name="q53" id="q53c" value="1"><label for="q53c">3. 25万円</label></div>
+<div class="option"><input type="radio" name="q53" id="q53d" value="0"><label for="q53d">4. 10万円</label></div>
+</div>
+<div class="explanation">✅ 正解：3. 25万円 — 大型自動車免許は「特定一般教育訓練」に該当（工業技術の資格→自動車整備、大型自動車免許など）。特定一般教育訓練の補助率は最大50%、年間上限50万円。費用50万円×50%＝25万円。年間上限の50万円以内なので、最大25万円もらえる。</div>
+</div>
+<div class="question">
+<div class="q-text"><span class="q-num">54</span>ＩＳＣが<ruby>提供<rt>ていきょう</rt></ruby>するパッケージツアーの<strong><ruby>料金<rt>りょうきん</rt></ruby></strong>について、<ruby>文章<rt>ぶんしょう</rt></ruby>と<ruby>合<rt>あ</rt></ruby>っているのはどれですか。</div>
+<div class="options">
+<div class="option"><input type="radio" name="q54" id="q54a" value="0"><label for="q54a">1. <ruby>宇宙<rt>うちゅう</rt></ruby>に<ruby>滞在<rt>たいざい</rt></ruby>する<ruby>日数<rt>にっすう</rt></ruby>に<ruby>応<rt>おう</rt></ruby>じて、<ruby>値段<rt>ねだん</rt></ruby>が<ruby>異<rt>こと</rt></ruby>なる。</label></div>
+<div class="option"><input type="radio" name="q54" id="q54b" value="0"><label for="q54b">2. <ruby>搭乗者<rt>とうじょうしゃ</rt></ruby>の<ruby>人数<rt>にんずう</rt></ruby>に<ruby>応<rt>おう</rt></ruby>じて、<ruby>値段<rt>ねだん</rt></ruby>が<ruby>異<rt>こと</rt></ruby>なる。</label></div>
+<div class="option"><input type="radio" name="q54" id="q54c" value="0"><label for="q54c">3. <ruby>低価格<rt>ていかかく</rt></ruby>で<ruby>提供<rt>ていきょう</rt></ruby>予定だったが、<ruby>実際<rt>じっさい</rt></ruby>は<ruby>高価格<rt>こうかかく</rt></ruby>になる<ruby>見込<rt>みこ</rt></ruby>みだ。</label></div>
+<div class="option"><input type="radio" name="q54" id="q54d" value="1"><label for="q54d">4. <ruby>航空機<rt>こうくうき</rt></ruby>のようにクラス<ruby>分<rt>わ</rt></ruby>けされた<ruby>価格<rt>かかく</rt></ruby>が<ruby>設定<rt>せってい</rt></ruby>されている。</label></div>
+</div>
+<div class="explanation">✅ 正解：4. <ruby>航空機<rt>こうくうき</rt></ruby>のようにクラス<ruby>分<rt>わ</rt></ruby>けされた<ruby>価格<rt>かかく</rt></ruby>が<ruby>設定<rt>せってい</rt></ruby>されている。 — 文章に「航空機のようにプレミアムシートも用意し、ビジネスで800万円、ファーストは1500万円」とある。エコノミー300万円・ビジネス800万円・ファースト1500万円というクラス別の料金設定→4が正しい。1：全員7泊8日で日数は同じ→誤り。2：人数ではなくクラスによる違い→誤り。3：「リーズナブルな価格設定」とあり、低価格を目指している→誤り。</div>
+</div>
+<div class="question">
+<div class="q-text"><span class="q-num">55</span>「<strong><ruby>施設<rt>しせつ</rt></ruby></strong>」とは、<ruby>何<rt>なに</rt></ruby>ですか。</div>
+<div class="options">
+<div class="option"><input type="radio" name="q55" id="q55a" value="0"><label for="q55a">1. ロケットに<ruby>搭乗<rt>とうじょう</rt></ruby>するための<ruby>訓練<rt>くんれん</rt></ruby>が<ruby>行<rt>おこな</rt></ruby>えるホテル</label></div>
+<div class="option"><input type="radio" name="q55" id="q55b" value="1"><label for="q55b">2. <ruby>地球周回軌道<rt>ちきゅうしゅうかいきどう</rt></ruby>上に<ruby>建設<rt>けんせつ</rt></ruby>されるホテル</label></div>
+<div class="option"><input type="radio" name="q55" id="q55c" value="0"><label for="q55c">3. <ruby>宇宙<rt>うちゅう</rt></ruby>に<ruby>行<rt>い</rt></ruby>かずに<ruby>無重力空間<rt>むじゅうりょくくうかん</rt></ruby>を<ruby>体験<rt>たいけん</rt></ruby>できる<ruby>施設<rt>しせつ</rt></ruby></label></div>
+<div class="option"><input type="radio" name="q55" id="q55d" value="0"><label for="q55d">4. <ruby>地球<rt>ちきゅう</rt></ruby>に<ruby>帰還後<rt>きかんご</rt></ruby>のアフターチェックが<ruby>行<rt>おこな</rt></ruby>える<ruby>施設<rt>しせつ</rt></ruby></label></div>
+</div>
+<div class="explanation">✅ 正解：2. <ruby>地球周回軌道<rt>ちきゅうしゅうかいきどう</rt></ruby>上に<ruby>建設<rt>けんせつ</rt></ruby>されるホテル — 直前の文に「待たれるのが滞在地となる宇宙ホテルの建設。こちらも世界各国の企業で計画が進み、早ければ20年代にいくつかの施設が開業予定だ」とある。「施設」＝滞在地となる宇宙ホテル＝高度400kmの地球周回軌道上に設置されるホテルのこと。</div>
+</div>
+<div class="question">
+<div class="q-text"><span class="q-num">56</span>「<strong>マネする<ruby>際<rt>さい</rt></ruby>に<ruby>忘<rt>わす</rt></ruby>れてはならないのが<ruby>自分<rt>じぶん</rt></ruby>らしさだ</strong>」とは、どういうことですか。</div>
+<div class="options">
+<div class="option"><input type="radio" name="q56" id="q56a" value="1"><label for="q56a">1. <ruby>自分<rt>じぶん</rt></ruby>に<ruby>合<rt>あ</rt></ruby>わないと<ruby>感<rt>かん</rt></ruby>じたら、マネをした<ruby>上<rt>うえ</rt></ruby>で<ruby>自分<rt>じぶん</rt></ruby>なりのアレンジを<ruby>加<rt>くわ</rt></ruby>えること</label></div>
+<div class="option"><input type="radio" name="q56" id="q56b" value="0"><label for="q56b">2. <ruby>自分<rt>じぶん</rt></ruby>に<ruby>合<rt>あ</rt></ruby>うと<ruby>感<rt>かん</rt></ruby>じるやり<ruby>方<rt>かた</rt></ruby>以外はマネしないようにすること</label></div>
+<div class="option"><input type="radio" name="q56" id="q56c" value="0"><label for="q56c">3. どんな<ruby>場合<rt>ばあい</rt></ruby>もマネをした<ruby>上<rt>うえ</rt></ruby>で<ruby>自分<rt>じぶん</rt></ruby>なりのアレンジを<ruby>加<rt>くわ</rt></ruby>えること</label></div>
+<div class="option"><input type="radio" name="q56" id="q56d" value="0"><label for="q56d">4. <ruby>自分<rt>じぶん</rt></ruby>と<ruby>似<rt>に</rt></ruby>たような<ruby>人<rt>ひと</rt></ruby>をマネする<ruby>相手<rt>あいて</rt></ruby>に<ruby>選<rt>えら</rt></ruby>ぶこと</label></div>
+</div>
+<div class="explanation">✅ 正解：1. <ruby>自分<rt>じぶん</rt></ruby>に<ruby>合<rt>あ</rt></ruby>わないと<ruby>感<rt>かん</rt></ruby>じたら、マネをした<ruby>上<rt>うえ</rt></ruby>で<ruby>自分<rt>じぶん</rt></ruby>なりのアレンジを<ruby>加<rt>くわ</rt></ruby>えること — 本文に「『これはいいな』と思ったとしても、自分には合わないと感じたら、試行錯誤して自分らしいアレンジを加える」とある。マネをベースにしながらも、合わない部分は自分なりにアレンジすることが「自分らしさ」を忘れないということ。3：「どんな場合も」ではなく、自分に合わないと感じた場合にアレンジする→誤り。</div>
+</div>
+<div class="question">
+<div class="q-text"><span class="q-num">57</span>マネすることについて、<ruby>文章<rt>ぶんしょう</rt></ruby>の<ruby>内容<rt>ないよう</rt></ruby>と<ruby>合<rt>あ</rt></ruby>っているのはどれですか。</div>
+<div class="options">
+<div class="option"><input type="radio" name="q57" id="q57a" value="0"><label for="q57a">1. マネをする<ruby>相手<rt>あいて</rt></ruby>が「できる<ruby>人<rt>ひと</rt></ruby>」であれば、<ruby>身近<rt>みぢか</rt></ruby>な<ruby>人<rt>ひと</rt></ruby>である<ruby>必要<rt>ひつよう</rt></ruby>はない。</label></div>
+<div class="option"><input type="radio" name="q57" id="q57b" value="1"><label for="q57b">2. 「できる<ruby>人<rt>ひと</rt></ruby>」を<ruby>観察<rt>かんさつ</rt></ruby>し、<ruby>優<rt>すぐ</rt></ruby>れている<ruby>理由<rt>りゆう</rt></ruby>を<ruby>理解<rt>りかい</rt></ruby>した<ruby>上<rt>うえ</rt></ruby>でマネすると<ruby>良<rt>よ</rt></ruby>い。</label></div>
+<div class="option"><input type="radio" name="q57" id="q57c" value="0"><label for="q57c">3. マネをする<ruby>相手<rt>あいて</rt></ruby>は<ruby>時間<rt>じかん</rt></ruby>をかけて<ruby>慎重<rt>しんちょう</rt></ruby>に<ruby>選<rt>えら</rt></ruby>ぶことが<ruby>重要<rt>じゅうよう</rt></ruby>である。</label></div>
+<div class="option"><input type="radio" name="q57" id="q57d" value="0"><label for="q57d">4. <ruby>自己流<rt>じこりゅう</rt></ruby>でできないことにのみ、「できる<ruby>人<rt>ひと</rt></ruby>」のマネをしたほうが<ruby>良<rt>よ</rt></ruby>い。</label></div>
+</div>
+<div class="explanation">✅ 正解：2. 「できる<ruby>人<rt>ひと</rt></ruby>」を<ruby>観察<rt>かんさつ</rt></ruby>し、<ruby>優<rt>すぐ</rt></ruby>れている<ruby>理由<rt>りゆう</rt></ruby>を<ruby>理解<rt>りかい</rt></ruby>した<ruby>上<rt>うえ</rt></ruby>でマネすると<ruby>良<rt>よ</rt></ruby>い。 — 「2週間も観察すれば、優れている理由がつかめるだろう。そして、それがつかめたら、次は実際に、その人のやり方をマネてみよう」とある。観察して理由を理解してからマネする→2が正しい。1：「職場の上司、先輩、取引先、お客さまなど、君の周囲には...」と身近な人が前提→誤り。4：「何もかも自己流でやろうとする人は時間のムダ」とあり、自己流全体を否定→誤り。</div>
+</div>
+<div class="question">
+<div class="q-text"><span class="q-num">58</span>（　A　）に<ruby>入<rt>はい</rt></ruby>る<ruby>言葉<rt>ことば</rt></ruby>はどれですか。</div>
+<div class="options">
+<div class="option"><input type="radio" name="q58" id="q58a" value="0"><label for="q58a">1. なぜなら</label></div>
+<div class="option"><input type="radio" name="q58" id="q58b" value="0"><label for="q58b">2. ところで</label></div>
+<div class="option"><input type="radio" name="q58" id="q58c" value="1"><label for="q58c">3. ですから</label></div>
+<div class="option"><input type="radio" name="q58" id="q58d" value="0"><label for="q58d">4. しかし</label></div>
+</div>
+<div class="explanation">✅ 正解：3. ですから — 前の文「教養とは...自分の人生をより彩り豊かにするためのものだと思います」という主張を受けて、「（ですから）教養を高めれば人生をもっとエンジョイできるのに、どうしてそうしないのか」という論理的な帰結が続く。前の内容から当然導かれる結論を示す「ですから」が最も適切。1「なぜなら」は理由を述べるとき、2「ところで」は話題を変えるとき、4「しかし」は逆接で使う。</div>
+</div>
+<div class="question">
+<div class="q-text"><span class="q-num">59</span><ruby>筆者<rt>ひっしゃ</rt></ruby>によると、<ruby>戦後<rt>せんご</rt></ruby>の<ruby>日本人<rt>にほんじん</rt></ruby>が<strong>「<ruby>心<rt>こころ</rt></ruby>の<ruby>幅<rt>はば</rt></ruby>」</strong>が<ruby>不足<rt>ふそく</rt></ruby>していたのはどうしてですか。</div>
+<div class="options">
+<div class="option"><input type="radio" name="q59" id="q59a" value="1"><label for="q59a">1. <ruby>町<rt>まち</rt></ruby>が<ruby>破壊<rt>はかい</rt></ruby>された<ruby>状態<rt>じょうたい</rt></ruby>からアメリカに<ruby>追<rt>お</rt></ruby>いつこうとしていたから</label></div>
+<div class="option"><input type="radio" name="q59" id="q59b" value="0"><label for="q59b">2. <ruby>経済<rt>けいざい</rt></ruby>やビジネスに<ruby>関心<rt>かんしん</rt></ruby>が<ruby>向<rt>む</rt></ruby>いていなかったから</label></div>
+<div class="option"><input type="radio" name="q59" id="q59c" value="0"><label for="q59c">3. <ruby>教養<rt>きょうよう</rt></ruby>がある<ruby>人<rt>ひと</rt></ruby>を<ruby>受<rt>う</rt></ruby>け<ruby>入<rt>い</rt></ruby>れる<ruby>気持<rt>きも</rt></ruby>ちが<ruby>不足<rt>ふそく</rt></ruby>していたから</label></div>
+<div class="option"><input type="radio" name="q59" id="q59d" value="0"><label for="q59d">4. <ruby>他人<rt>たにん</rt></ruby>からの<ruby>評価<rt>ひょうか</rt></ruby>を<ruby>受<rt>う</rt></ruby>け<ruby>入<rt>い</rt></ruby>れる<ruby>気持<rt>きも</rt></ruby>ちが<ruby>不足<rt>ふそく</rt></ruby>していたから</label></div>
+</div>
+<div class="explanation">✅ 正解：1. <ruby>町<rt>まち</rt></ruby>が<ruby>破壊<rt>はかい</rt></ruby>された<ruby>状態<rt>じょうたい</rt></ruby>からアメリカに<ruby>追<rt>お</rt></ruby>いつこうとしていたから — 「焦土から立ち上がって、とにもかくにもアメリカにキャッチアップしなければという時代が長かったので仕方がない面はあります」とある。焦土（＝戦争で町が破壊された状態）から立ち上がり、アメリカに追いつくことに必死だったため→1が正しい。2：逆で「経済やビジネスに偏りすぎている」とある→誤り。3・4：本文に記述なし→誤り。</div>
+</div>
+<div class="question">
+<div class="q-text"><span class="q-num">60</span><ruby>筆者<rt>ひっしゃ</rt></ruby>によると、<ruby>教養<rt>きょうよう</rt></ruby>とはどういうものですか。</div>
+<div class="options">
+<div class="option"><input type="radio" name="q60" id="q60a" value="0"><label for="q60a">1. <ruby>他人<rt>たにん</rt></ruby>からの<ruby>評価<rt>ひょうか</rt></ruby>を<ruby>高<rt>たか</rt></ruby>めるのに<ruby>役立<rt>やくだ</rt></ruby>つもの</label></div>
+<div class="option"><input type="radio" name="q60" id="q60b" value="1"><label for="q60b">2. <ruby>人生<rt>じんせい</rt></ruby>を<ruby>楽<rt>たの</rt></ruby>しむための<ruby>手段<rt>しゅだん</rt></ruby>になるもの</label></div>
+<div class="option"><input type="radio" name="q60" id="q60c" value="0"><label for="q60c">3. アメリカに<ruby>追<rt>お</rt></ruby>いつくために<ruby>必要不可欠<rt>ひつようふかけつ</rt></ruby>なもの</label></div>
+<div class="option"><input type="radio" name="q60" id="q60d" value="0"><label for="q60d">4. <ruby>経済<rt>けいざい</rt></ruby>やビジネスに<ruby>関心<rt>かんしん</rt></ruby>を<ruby>向<rt>む</rt></ruby>けることで<ruby>得<rt>え</rt></ruby>られるもの</label></div>
+</div>
+<div class="explanation">✅ 正解：2. <ruby>人生<rt>じんせい</rt></ruby>を<ruby>楽<rt>たの</rt></ruby>しむための<ruby>手段<rt>しゅだん</rt></ruby>になるもの — 「教養とは、人生におけるワクワクすること、面白いこと、楽しいことを増やすためのツールです」「突き詰めて言えば、教養とはそのためのツールにすぎないのです」とある。教養＝人生を楽しむための手段・ツール→2が正しい。1：「人からの評価を高めたり箔をつけたりするためのものではなく」と明記→誤り。</div>
 </div>
 </div>
-
+<div class="section"><div class="section-title">3 漢字問題 A（15問）</div>
+<div class="question">
+<div class="q-text"><span class="q-num">61</span><ruby>会議<rt>かいぎ</rt></ruby>の予定を<strong>かくにん</strong>したい。</div>
+<div class="options">
+<div class="option"><input type="radio" name="q61" id="q61a" value="0"><label for="q61a">1. 連絡</label></div>
+<div class="option"><input type="radio" name="q61" id="q61b" value="1"><label for="q61b">2. 確認</label></div>
+<div class="option"><input type="radio" name="q61" id="q61c" value="0"><label for="q61c">3. 経由</label></div>
+<div class="option"><input type="radio" name="q61" id="q61d" value="0"><label for="q61d">4. 失敗</label></div>
+</div>
+<div class="explanation">✅ 正解：2. 確認 — 「かくにん」＝確認。確かめること・チェックすること。</div>
+</div>
+<div class="question">
+<div class="q-text"><span class="q-num">62</span>息が<strong>くるしい</strong>。</div>
+<div class="options">
+<div class="option"><input type="radio" name="q62" id="q62a" value="0"><label for="q62a">1. 忙しい</label></div>
+<div class="option"><input type="radio" name="q62" id="q62b" value="0"><label for="q62b">2. 親しい</label></div>
+<div class="option"><input type="radio" name="q62" id="q62c" value="1"><label for="q62c">3. 苦しい</label></div>
+<div class="option"><input type="radio" name="q62" id="q62d" value="0"><label for="q62d">4. 正しい</label></div>
+</div>
+<div class="explanation">✅ 正解：3. 苦しい — 「くるしい」＝苦しい。つらく耐えがたい状態。</div>
+</div>
+<div class="question">
+<div class="q-text"><span class="q-num">63</span><ruby>部長<rt>ぶちょう</rt></ruby>は話が長くなる<strong>けいこう</strong>がある。</div>
+<div class="options">
+<div class="option"><input type="radio" name="q63" id="q63a" value="0"><label for="q63a">1. 被害</label></div>
+<div class="option"><input type="radio" name="q63" id="q63b" value="0"><label for="q63b">2. 効能</label></div>
+<div class="option"><input type="radio" name="q63" id="q63c" value="0"><label for="q63c">3. 歴任</label></div>
+<div class="option"><input type="radio" name="q63" id="q63d" value="1"><label for="q63d">4. 傾向</label></div>
+</div>
+<div class="explanation">✅ 正解：4. 傾向 — 「けいこう」＝傾向。ある方向に向かいやすい性質・傾き。「〜する傾向がある」はよく使う表現。</div>
+</div>
+<div class="question">
+<div class="q-text"><span class="q-num">64</span><strong>ふで</strong>で文字を書いた。</div>
+<div class="options">
+<div class="option"><input type="radio" name="q64" id="q64a" value="1"><label for="q64a">1. 筆</label></div>
+<div class="option"><input type="radio" name="q64" id="q64b" value="0"><label for="q64b">2. 柱</label></div>
+<div class="option"><input type="radio" name="q64" id="q64c" value="0"><label for="q64c">3. 灰</label></div>
+<div class="option"><input type="radio" name="q64" id="q64d" value="0"><label for="q64d">4. 竹</label></div>
+</div>
+<div class="explanation">✅ 正解：1. 筆 — 「ふで」＝筆。毛筆のこと。書道や日本画などで使う道具。</div>
+</div>
+<div class="question">
+<div class="q-text"><span class="q-num">65</span><ruby>部長<rt>ぶちょう</rt></ruby>に<strong>はんだん</strong>をお願いした。</div>
+<div class="options">
+<div class="option"><input type="radio" name="q65" id="q65a" value="0"><label for="q65a">1. 万歳</label></div>
+<div class="option"><input type="radio" name="q65" id="q65b" value="0"><label for="q65b">2. 油断</label></div>
+<div class="option"><input type="radio" name="q65" id="q65c" value="1"><label for="q65c">3. 判断</label></div>
+<div class="option"><input type="radio" name="q65" id="q65d" value="0"><label for="q65d">4. 相談</label></div>
+</div>
+<div class="explanation">✅ 正解：3. 判断 — 「はんだん」＝判断。物事を考えて決めること。「判断をお願いする」＝どうすべきか決めてもらうよう頼む。</div>
+</div>
+<div class="question">
+<div class="q-text"><span class="q-num">66</span>彼女は<strong>じゅんすい</strong>だ。</div>
+<div class="options">
+<div class="option"><input type="radio" name="q66" id="q66a" value="0"><label for="q66a">1. 清水</label></div>
+<div class="option"><input type="radio" name="q66" id="q66b" value="0"><label for="q66b">2. 最低</label></div>
+<div class="option"><input type="radio" name="q66" id="q66c" value="0"><label for="q66c">3. 快適</label></div>
+<div class="option"><input type="radio" name="q66" id="q66d" value="1"><label for="q66d">4. 純粋</label></div>
+</div>
+<div class="explanation">✅ 正解：4. 純粋 — 「じゅんすい」＝純粋。混じり気がなく、まっすぐな様子。</div>
+</div>
+<div class="question">
+<div class="q-text"><span class="q-num">67</span>みんなで<strong>かんぱい</strong>しましょう。</div>
+<div class="options">
+<div class="option"><input type="radio" name="q67" id="q67a" value="1"><label for="q67a">1. 乾杯</label></div>
+<div class="option"><input type="radio" name="q67" id="q67b" value="0"><label for="q67b">2. 競争</label></div>
+<div class="option"><input type="radio" name="q67" id="q67c" value="0"><label for="q67c">3. 観梅</label></div>
+<div class="option"><input type="radio" name="q67" id="q67d" value="0"><label for="q67d">4. 観測</label></div>
+</div>
+<div class="explanation">✅ 正解：1. 乾杯 — 「かんぱい」＝乾杯。お祝いや食事の場でグラスを合わせて飲むこと。「乾」はグラスを空にするという意味。</div>
+</div>
+<div class="question">
+<div class="q-text"><span class="q-num">68</span><ruby>高橋<rt>たかはし</rt></ruby>さんが早い時間に会社に来るのは<strong>めずらしい</strong>。</div>
+<div class="options">
+<div class="option"><input type="radio" name="q68" id="q68a" value="0"><label for="q68a">1. 易しい</label></div>
+<div class="option"><input type="radio" name="q68" id="q68b" value="1"><label for="q68b">2. 珍しい</label></div>
+<div class="option"><input type="radio" name="q68" id="q68c" value="0"><label for="q68c">3. 悲しい</label></div>
+<div class="option"><input type="radio" name="q68" id="q68d" value="0"><label for="q68d">4. 貧しい</label></div>
+</div>
+<div class="explanation">✅ 正解：2. 珍しい — 「めずらしい」＝珍しい。普通ではない・あまりないことを表す。</div>
+</div>
+<div class="question">
+<div class="q-text"><span class="q-num">69</span><ruby>工場<rt>こうじょう</rt></ruby>の門の<strong>とびら</strong>は夜8時に閉まる。</div>
+<div class="options">
+<div class="option"><input type="radio" name="q69" id="q69a" value="0"><label for="q69a">1. 麻</label></div>
+<div class="option"><input type="radio" name="q69" id="q69b" value="1"><label for="q69b">2. 扉</label></div>
+<div class="option"><input type="radio" name="q69" id="q69c" value="0"><label for="q69c">3. 崖</label></div>
+<div class="option"><input type="radio" name="q69" id="q69d" value="0"><label for="q69d">4. 尾</label></div>
+</div>
+<div class="explanation">✅ 正解：2. 扉 — 「とびら」＝扉。開け閉めするドアのこと。「扉を開ける・閉める」のように使う。</div>
+</div>
+<div class="question">
+<div class="q-text"><span class="q-num">70</span><strong>のうみん</strong>の多くが米を作って暮らしている。</div>
+<div class="options">
+<div class="option"><input type="radio" name="q70" id="q70a" value="0"><label for="q70a">1. 泥棒</label></div>
+<div class="option"><input type="radio" name="q70" id="q70b" value="1"><label for="q70b">2. 農民</label></div>
+<div class="option"><input type="radio" name="q70" id="q70c" value="0"><label for="q70c">3. 児童</label></div>
+<div class="option"><input type="radio" name="q70" id="q70d" value="0"><label for="q70d">4. 漁村</label></div>
+</div>
+<div class="explanation">✅ 正解：2. 農民 — 「のうみん」＝農民。農業を営む人のこと。「農（のう）」は農業、「民（みん）」は人を指す。</div>
+</div>
+<div class="question">
+<div class="q-text"><span class="q-num">71</span><ruby>資料<rt>しりょう</rt></ruby>にメモを<strong>そえて</strong>渡した。</div>
+<div class="options">
+<div class="option"><input type="radio" name="q71" id="q71a" value="0"><label for="q71a">1. 鍛えて</label></div>
+<div class="option"><input type="radio" name="q71" id="q71b" value="0"><label for="q71b">2. 据えて</label></div>
+<div class="option"><input type="radio" name="q71" id="q71c" value="1"><label for="q71c">3. 添えて</label></div>
+<div class="option"><input type="radio" name="q71" id="q71d" value="0"><label for="q71d">4. 衰えて</label></div>
+</div>
+<div class="explanation">✅ 正解：3. 添えて — 「そえる」＝添える。主となるものに付け加えること。「メモを添えて渡す」＝メモも一緒につけて渡す。</div>
+</div>
+<div class="question">
+<div class="q-text"><span class="q-num">72</span>虫に刺されて足が<strong>はれた</strong>。</div>
+<div class="options">
+<div class="option"><input type="radio" name="q72" id="q72a" value="0"><label for="q72a">1. 廃れた</label></div>
+<div class="option"><input type="radio" name="q72" id="q72b" value="0"><label for="q72b">2. 膨れた</label></div>
+<div class="option"><input type="radio" name="q72" id="q72c" value="0"><label for="q72c">3. 擦れた</label></div>
+<div class="option"><input type="radio" name="q72" id="q72d" value="1"><label for="q72d">4. 腫れた</label></div>
+</div>
+<div class="explanation">✅ 正解：4. 腫れた — 「はれる」＝腫れる。体の一部が炎症などで膨らむこと。虫に刺されて腫れるは日常的な表現。2「膨れた」は「ふくれた」と読む。</div>
+</div>
+<div class="question">
+<div class="q-text"><span class="q-num">73</span>空に<strong>くも</strong>がたくさん出てきた。</div>
+<div class="options">
+<div class="option"><input type="radio" name="q73" id="q73a" value="0"><label for="q73a">1. 星</label></div>
+<div class="option"><input type="radio" name="q73" id="q73b" value="0"><label for="q73b">2. 曇</label></div>
+<div class="option"><input type="radio" name="q73" id="q73c" value="0"><label for="q73c">3. 波</label></div>
+<div class="option"><input type="radio" name="q73" id="q73d" value="1"><label for="q73d">4. 雲</label></div>
+</div>
+<div class="explanation">✅ 正解：4. 雲 — 「くも」＝雲。空に浮かぶ水蒸気の塊。2「曇（どん）」は「曇り（くもり）」で空が雲に覆われた状態を表す熟語に使うが、「くも単体」は「雲」。</div>
+</div>
+<div class="question">
+<div class="q-text"><span class="q-num">74</span>外は<strong>もうれつ</strong>な雨が降っていた。</div>
+<div class="options">
+<div class="option"><input type="radio" name="q74" id="q74a" value="1"><label for="q74a">1. 猛烈</label></div>
+<div class="option"><input type="radio" name="q74" id="q74b" value="0"><label for="q74b">2. 氾濫</label></div>
+<div class="option"><input type="radio" name="q74" id="q74c" value="0"><label for="q74c">3. 憂鬱</label></div>
+<div class="option"><input type="radio" name="q74" id="q74d" value="0"><label for="q74d">4. 沸騰</label></div>
+</div>
+<div class="explanation">✅ 正解：1. 猛烈 — 「もうれつ」＝猛烈。非常に激しい様子。「猛烈な雨」＝ものすごく激しい雨。</div>
+</div>
+<div class="question">
+<div class="q-text"><span class="q-num">75</span><ruby>穀物<rt>こくもつ</rt></ruby>を<ruby>倉庫<rt>そうこ</rt></ruby>に<strong>ちょぞう</strong>する。</div>
+<div class="options">
+<div class="option"><input type="radio" name="q75" id="q75a" value="0"><label for="q75a">1. 襲撃</label></div>
+<div class="option"><input type="radio" name="q75" id="q75b" value="1"><label for="q75b">2. 貯蔵</label></div>
+<div class="option"><input type="radio" name="q75" id="q75c" value="0"><label for="q75c">3. 混乱</label></div>
+<div class="option"><input type="radio" name="q75" id="q75d" value="0"><label for="q75d">4. 序奏</label></div>
+</div>
+<div class="explanation">✅ 正解：2. 貯蔵 — 「ちょぞう」＝貯蔵。物をたくわえておくこと。「穀物を貯蔵する」＝穀物を倉庫などに保存しておく。</div>
+</div>
+</div>
+<div class="section"><div class="section-title">漢字問題 B（15問）</div>
+<div class="question readonly">
+<div class="q-text"><span class="q-num">76</span><ruby>客<rt>きゃく</rt></ruby>を<strong>紹介</strong>してもらった。</div>
+<div class="answer-box">★ 解答：しょうかい</div>
+<div class="explanation">◆ 解説：紹介（しょうかい）＝人や物を他の人に引き合わせること。</div>
+</div>
+<div class="question readonly">
+<div class="q-text"><span class="q-num">77</span>彼は<strong>挨拶</strong>も<ruby>満足<rt>まんぞく</rt></ruby>にできない。</div>
+<div class="answer-box">★ 解答：あいさつ</div>
+<div class="explanation">◆ 解説：挨拶（あいさつ）＝人と会ったときや別れるときに交わす礼儀的な言葉や動作。</div>
+</div>
+<div class="question readonly">
+<div class="q-text"><span class="q-num">78</span>A社はこの<ruby>分野<rt>ぶんや</rt></ruby>での<strong>実績</strong>がある。</div>
+<div class="answer-box">★ 解答：じっせき</div>
+<div class="explanation">◆ 解説：実績（じっせき）＝実際に成し遂げた業績・成果のこと。</div>
+</div>
+<div class="question readonly">
+<div class="q-text"><span class="q-num">79</span><ruby>事務室<rt>じむしつ</rt></ruby>の<strong>机</strong>は大きい。</div>
+<div class="answer-box">★ 解答：つくえ</div>
+<div class="explanation">◆ 解説：机（つくえ）＝仕事や勉強をするときに使う台。</div>
+</div>
+<div class="question readonly">
+<div class="q-text"><span class="q-num">80</span><ruby>会議<rt>かいぎ</rt></ruby>は<strong>延期</strong>になった。</div>
+<div class="answer-box">★ 解答：えんき</div>
+<div class="explanation">◆ 解説：延期（えんき）＝予定していた日程を後にずらすこと。</div>
+</div>
+<div class="question readonly">
+<div class="q-text"><span class="q-num">81</span><ruby>課長<rt>かちょう</rt></ruby>に<strong>許可</strong>をもらった。</div>
+<div class="answer-box">★ 解答：きょか</div>
+<div class="explanation">◆ 解説：許可（きょか）＝してもいいと認めること・認める許し。</div>
+</div>
+<div class="question readonly">
+<div class="q-text"><span class="q-num">82</span><strong>一層</strong><ruby>努力<rt>どりょく</rt></ruby>しなければならない。</div>
+<div class="answer-box">★ 解答：いっそう</div>
+<div class="explanation">◆ 解説：一層（いっそう）＝これまで以上に・さらに。「一層努力する」＝もっと一段と努力する。</div>
+</div>
+<div class="question readonly">
+<div class="q-text"><span class="q-num">83</span><strong>改めて</strong>電話します。</div>
+<div class="answer-box">★ 解答：あらためて</div>
+<div class="explanation">◆ 解説：改めて（あらためて）＝新たに・もう一度・後日また。「改めて連絡する」はビジネス表現でよく使う。</div>
+</div>
+<div class="question readonly">
+<div class="q-text"><span class="q-num">84</span>できればもっと人を<strong>雇い</strong>たい。</div>
+<div class="answer-box">★ 解答：やとい</div>
+<div class="explanation">◆ 解説：雇う（やとう）＝賃金を払って人を働かせること。「雇いたい」＝採用したい。</div>
+</div>
+<div class="question readonly">
+<div class="q-text"><span class="q-num">85</span>我が社の<ruby>事業<rt>じぎょう</rt></ruby>を<strong>拡張</strong>したい。</div>
+<div class="answer-box">★ 解答：かくちょう</div>
+<div class="explanation">◆ 解説：拡張（かくちょう）＝規模を広げること・拡大すること。</div>
+</div>
+<div class="question readonly">
+<div class="q-text"><span class="q-num">86</span>彼はずっと<strong>黙って</strong>いた。</div>
+<div class="answer-box">★ 解答：だまって</div>
+<div class="explanation">◆ 解説：黙る（だまる）＝何も言わずにいること。「黙っていた」＝ずっと何も言わなかった。</div>
+</div>
+<div class="question readonly">
+<div class="q-text"><span class="q-num">87</span>目を<strong>凝らして</strong>よく見ないと見えない。</div>
+<div class="answer-box">★ 解答：こらして</div>
+<div class="explanation">◆ 解説：目を凝らす（めをこらす）＝しっかりと注意して見ること・じっと見つめること。</div>
+</div>
+<div class="question readonly">
+<div class="q-text"><span class="q-num">88</span><strong>化粧室</strong>で<ruby>髪<rt>かみ</rt></ruby>を整えた。</div>
+<div class="answer-box">★ 解答：けしょうしつ</div>
+<div class="explanation">◆ 解説：化粧室（けしょうしつ）＝トイレ・洗面所の丁寧な呼び方。「お化粧室」とも言う。</div>
+</div>
+<div class="question readonly">
+<div class="q-text"><span class="q-num">89</span>彼女は<strong>独創的</strong>な考えをする人だ。</div>
+<div class="answer-box">★ 解答：どくそうてき</div>
+<div class="explanation">◆ 解説：独創的（どくそうてき）＝他にはない独自のアイデアや発想を持つ様子。</div>
+</div>
+<div class="question readonly">
+<div class="q-text"><span class="q-num">90</span>この<ruby>機械<rt>きかい</rt></ruby>は<strong>丁寧</strong>に<ruby>扱<rt>あつか</rt></ruby>ってください。</div>
+<div class="answer-box">★ 解答：ていねい</div>
+<div class="explanation">◆ 解説：丁寧（ていねい）＝注意深く・礼儀正しく・細かく気を配る様子。</div>
+</div>
+</div>
+<div class="section"><div class="section-title">4 記述問題（10問）</div>
+<div class="question readonly">
+<div class="q-text"><span class="q-num">91</span>うちの<ruby>犬<rt>いぬ</rt></ruby>は、雨が＿＿＿（A）いても、<ruby>散歩<rt>さんぽ</rt></ruby>に＿＿＿（B）がります。</div>
+<div class="answer-box">★ 解答：（A）降って　（B）行きた</div>
+<div class="explanation">◆ 解説：「雨が降っていても」（逆接）＋「散歩に行きたがる」（犬が望む行動）。「〜たがる」は第三者の欲求を表す表現。「降って」は「降る→降っていても」の流れから「降って」が自然。</div>
+</div>
+<div class="question readonly">
+<div class="q-text"><span class="q-num">92</span>仕事を変えて、<ruby>給料<rt>きゅうりょう</rt></ruby>が＿＿＿（A）<ruby>反面<rt>はんめん</rt></ruby>、<ruby>残業<rt>ざんぎょう</rt></ruby>が多く、<ruby>家族<rt>かぞく</rt></ruby>と過ごす＿＿＿（B）が減ってしまった。</div>
+<div class="answer-box">★ 解答：（A）増えた　（B）時間</div>
+<div class="explanation">◆ 解説：「〜反面」は「〜という良い面がある一方で」という対比の表現。給料が増えた（良い面）反面、時間が減った（悪い面）という構造。</div>
+</div>
+<div class="question readonly">
+<div class="q-text"><span class="q-num">93</span>A：お<ruby>腹<rt>なか</rt></ruby>が＿＿＿（A）たまらないよ。<br>　　B：そこのコンビニでパンでも＿＿＿（B）来て、食べたら？</div>
+<div class="answer-box">★ 解答：（A）すいて　（B）買って</div>
+<div class="explanation">◆ 解説：（A）「お腹がすいてたまらない」＝お腹がとても空いている。（B）「買って来て食べたら？」＝コンビニで買ってきたらどうかという提案。</div>
+</div>
+<div class="question readonly">
+<div class="q-text"><span class="q-num">94</span>A：この<ruby>資料<rt>しりょう</rt></ruby>は＿＿＿（A）中に返したほうがいいですか。<br>　　B：その<ruby>資料<rt>しりょう</rt></ruby>なら、明日でもさしつかえ＿＿＿（B）ですよ。</div>
+<div class="answer-box">★ 解答：（A）今日の　（B）ない</div>
+<div class="explanation">◆ 解説：（A）「今日の中に返す」＝今日中に返す。（B）「さしつかえない」＝問題ない・差し支えない。「明日でもさしつかえない」＝明日でも構わない。</div>
+</div>
+<div class="question readonly">
+<div class="q-text"><span class="q-num">95</span><ruby>孫<rt>まご</rt></ruby>から電話で、<ruby>目指<rt>めざ</rt></ruby>していた<ruby>大学<rt>だいがく</rt></ruby>の<ruby>試験<rt>しけん</rt></ruby>に＿＿＿（A）したと聞き、私はうれしい＿＿＿（B）この上ない。</div>
+<div class="answer-box">★ 解答：（A）合格　（B）こと</div>
+<div class="explanation">◆ 解説：（A）「合格した」＝試験に受かった。（B）「うれしいことこの上ない」＝これ以上ないほどうれしい。「〜この上ない」は最上級の感情を表す慣用表現。</div>
+</div>
+<div class="question readonly">
+<div class="q-text"><span class="q-num">96</span><ruby>父<rt>ちち</rt></ruby>を<ruby>空港<rt>くうこう</rt></ruby>へ<ruby>迎<rt>むか</rt></ruby>えに行きたいので、明日、<br>【1. 会社　→　2. <strong>休む</strong>　→　3. <strong>いただく</strong>】ませんか。</div>
+<div class="answer-box">★ 解答：会社を休ませていただけ</div>
+<div class="explanation">◆ 解説：「会社を休ませていただけませんか」＝上司などに対して休むことを丁寧にお願いする表現。「〜させていただく」は謙譲語で許可を求める際に使う。</div>
+</div>
+<div class="question readonly">
+<div class="q-text"><span class="q-num">97</span>日本に来てから1か<ruby>月<rt>げつ</rt></ruby>が<ruby>経<rt>た</rt></ruby>ったが、<br>私は【1. これといって　→　2. <strong>困る</strong>　→　3. いる】ことはない。</div>
+<div class="answer-box">★ 解答：これといって困っていること（は）ない</div>
+<div class="explanation">◆ 解説：「これといって」＝特にこれというものは。「これといって困っていることはない」＝特に困っていることはない、という意味。</div>
+</div>
+<div class="question readonly">
+<div class="q-text"><span class="q-num">98</span>A：この仕事は簡単なので、早く終わりそうですね。<br>B：ええ。でも、【1. 簡単　→　2. 仕事　→　3. ほど】<ruby>間違<rt>まちが</rt></ruby>えやすいから、気をつけましょう。</div>
+<div class="answer-box">★ 解答：簡単な仕事ほど</div>
+<div class="explanation">◆ 解説：「〜ほど〜」＝〜であるほど（程度・比較）。「簡単な仕事ほど間違えやすい」＝簡単だからこそ油断して間違えやすいという逆説的な表現。</div>
+</div>
+<div class="question readonly">
+<div class="q-text"><span class="q-num">99</span>私が<ruby>歌手<rt>かしゅ</rt></ruby>になりたいと言ったら、【1. <ruby>友人<rt>ゆうじん</rt></ruby>　→　2. <strong><ruby>鼻<rt>はな</rt></ruby></strong>　→　3. <strong><ruby>笑う<rt>わらう</rt></ruby></strong>】ました。</div>
+<div class="answer-box">★ 解答：友人に鼻で笑われ</div>
+<div class="explanation">◆ 解説：「鼻で笑う」＝馬鹿にしてせせら笑う・軽蔑して笑う慣用句。「友人に鼻で笑われました」＝友人に馬鹿にされて笑われた。受身形（笑われ）にすることで主語（私）の立場が表れる。</div>
+</div>
+<div class="question readonly">
+<div class="q-text"><span class="q-num">100</span><ruby>故郷<rt>こきょう</rt></ruby>の【1. あまりの　→　2. <ruby>変化<rt>へんか</rt></ruby>　→　3. <ruby>言葉<rt>ことば</rt></ruby>】出なかった。</div>
+<div class="answer-box">★ 解答：あまりの変化に言葉が</div>
+<div class="explanation">◆ 解説：「あまりの〜に言葉が出ない」＝あまりにも〜すぎて、驚きや感動で言葉が出てこない、という慣用的な表現。「故郷のあまりの変化に言葉が出なかった」＝故郷がこんなにも変わってしまったことに驚いて言葉が出なかった。</div>
+</div>
+</div>
 <button class="btn-submit" id="submitBtn" onclick="submitTest()">採点する</button>
 <div class="result-panel" id="resultPanel">
 <h2 id="resultTitle"></h2>
@@ -660,7 +970,7 @@ ruby{ruby-align:center}
 </div>
 
 <script>
-const TOTAL=51,TIME_LIMIT=4800;
+const TOTAL=75,TIME_LIMIT=4800;
 let timeLeft=TIME_LIMIT,timerInterval,submitted=false;
 function startTimer(){
 timerInterval=setInterval(()=>{
@@ -678,23 +988,25 @@ function submitTest(){
 if(submitted)return;submitted=true;
 clearInterval(timerInterval);
 let correct=0;
-const sections={grammarA:0,grammarAT:20,grammarB:0,grammarBT:10,vocabC:0,vocabCT:10,reading:0,readingT:11};
+const sections={grammarA:0,grammarAT:20,grammarB:0,grammarBT:10,grammarC:0,grammarCT:10,reading:0,readingT:20,kanji:0,kanjiT:15};
 for(let i=1;i<=TOTAL;i++){
 const sel=document.querySelector(`input[name="q${i}"]:checked`);
 const opts=document.querySelectorAll(`input[name="q${i}"]`);
 let isCorrect=false;
 if(sel&&sel.value==='1'){isCorrect=true;correct++;}
-opts.forEach(o=>{
+if(opts.length){opts.forEach(o=>{
 const p=o.parentElement;
 if(o.value==='1')p.classList.add('correct');
 else if(o.checked&&o.value!=='1')p.classList.add('wrong');
-});
+});}
 if(i<=20){if(isCorrect)sections.grammarA++;}
 else if(i<=30){if(isCorrect)sections.grammarB++;}
-else if(i<=40){if(isCorrect)sections.vocabC++;}
-else{if(isCorrect)sections.reading++;}
+else if(i<=40){if(isCorrect)sections.grammarC++;}
+else if(i<=60){if(isCorrect)sections.reading++;}
+else{if(isCorrect)sections.kanji++;}
 }
 document.querySelectorAll('.explanation').forEach(e=>e.classList.add('show'));
+document.querySelectorAll('.answer-box').forEach(e=>e.classList.add('show'));
 const pct=Math.round((correct/TOTAL)*100);
 const panel=document.getElementById('resultPanel');
 const title=document.getElementById('resultTitle');
@@ -708,10 +1020,11 @@ else if(pct>=50){title.textContent='📝 もう少し！';score.className='resul
 else{title.textContent='💪 がんばりましょう！';score.className='result-score poor';}
 const timeUsed=TIME_LIMIT-timeLeft;
 detail.innerHTML=`
-<div class="result-item"><div class="label">文法A</div><div class="value">${sections.grammarA}/${sections.grammarAT}</div></div>
-<div class="result-item"><div class="label">文法B</div><div class="value">${sections.grammarB}/${sections.grammarBT}</div></div>
-<div class="result-item"><div class="label">語彙C</div><div class="value">${sections.vocabC}/${sections.vocabCT}</div></div>
+<div class="result-item"><div class="label">文法・語彙A</div><div class="value">${sections.grammarA}/${sections.grammarAT}</div></div>
+<div class="result-item"><div class="label">文法・語彙B</div><div class="value">${sections.grammarB}/${sections.grammarBT}</div></div>
+<div class="result-item"><div class="label">文法・語彙C</div><div class="value">${sections.grammarC}/${sections.grammarCT}</div></div>
 <div class="result-item"><div class="label">読解</div><div class="value">${sections.reading}/${sections.readingT}</div></div>
+<div class="result-item"><div class="label">漢字A</div><div class="value">${sections.kanji}/${sections.kanjiT}</div></div>
 <div class="result-item"><div class="label">所要時間</div><div class="value">${Math.floor(timeUsed/60)}分${timeUsed%60}秒</div></div>
 `;
 document.getElementById('submitBtn').disabled=true;
