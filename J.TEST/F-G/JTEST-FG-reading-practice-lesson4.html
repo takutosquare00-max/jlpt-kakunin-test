@@ -1,0 +1,794 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>J.TEST F級・G級 リーディング速度向上練習教材 第4回（1時間）</title>
+    <style>
+        body {
+            font-family: "Hiragino Kaku Gothic ProN", "Hiragino Sans", "Meiryo", "MS PGothic", sans-serif;
+            line-height: 1.8;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            background-color: white;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #2c3e50;
+            border-bottom: 3px solid #3498db;
+            padding-bottom: 10px;
+            margin-bottom: 30px;
+        }
+        h2 {
+            color: #34495e;
+            border-left: 5px solid #3498db;
+            padding-left: 15px;
+            margin-top: 30px;
+            margin-bottom: 20px;
+        }
+        h3 {
+            color: #555;
+            margin-top: 25px;
+            margin-bottom: 15px;
+        }
+        h4 {
+            color: #666;
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+        ul, ol {
+            margin: 15px 0;
+            padding-left: 30px;
+        }
+        li {
+            margin: 8px 0;
+        }
+        strong {
+            color: #e74c3c;
+            font-weight: bold;
+        }
+        hr {
+            border: none;
+            border-top: 2px solid #ecf0f1;
+            margin: 30px 0;
+        }
+        .practice-point {
+            background-color: #e8f4f8;
+            padding: 15px;
+            border-left: 4px solid #3498db;
+            margin: 15px 0;
+        }
+        /* 文章と問題を横並びにするコンテナ */
+        .article-question-wrapper {
+            display: flex;
+            gap: 15px;
+            margin: 20px 0;
+            align-items: flex-start;
+        }
+        .article {
+            background-color: #f9f9f9;
+            padding: 20px;
+            border-radius: 5px;
+            flex: 0 0 62.5%;
+            min-width: 0;
+        }
+        .question {
+            background-color: #fff3cd;
+            padding: 15px;
+            border-left: 4px solid #ffc107;
+            flex: 0 0 37.5%;
+            min-width: 0;
+        }
+        .answer {
+            background-color: #d4edda;
+            padding: 15px;
+            border-left: 4px solid #28a745;
+            margin: 15px 0;
+        }
+        p {
+            margin: 10px 0;
+        }
+        
+        /* 印刷用スタイル */
+        @page {
+            size: A4 landscape;
+            margin: 12mm 15mm;
+        }
+        
+        @media print {
+            * {
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
+                color-adjust: exact !important;
+            }
+            
+            body {
+                background-color: white !important;
+                max-width: 100%;
+                padding: 0;
+                margin: 0;
+                font-size: 11pt;
+                line-height: 1.6;
+            }
+            .container {
+                background-color: white !important;
+                padding: 0;
+                border-radius: 0;
+                box-shadow: none;
+            }
+            h1 {
+                page-break-after: avoid;
+                page-break-inside: avoid;
+                margin-bottom: 12px;
+                font-size: 18pt;
+            }
+            h2 {
+                page-break-after: avoid;
+                page-break-inside: avoid;
+                page-break-before: always;
+                break-before: page;
+                margin-top: 12px;
+                margin-bottom: 8px;
+                font-size: 14pt;
+            }
+            /* 最初のh2は改ページしない */
+            h1 + h2,
+            .container > h2:first-of-type {
+                page-break-before: avoid !important;
+                break-before: auto !important;
+            }
+            h3 {
+                page-break-after: avoid;
+                page-break-inside: avoid;
+                margin-top: 10px;
+                margin-bottom: 6px;
+                font-size: 12pt;
+            }
+            h4 {
+                page-break-after: avoid;
+                page-break-inside: avoid;
+                margin-top: 8px;
+                margin-bottom: 5px;
+                font-size: 11pt;
+            }
+            /* 文章と問題を横並びにするコンテナ（印刷時） */
+            .article-question-wrapper {
+                display: flex !important;
+                flex-direction: row !important;
+                gap: 10px !important;
+                margin: 10px 0 !important;
+                page-break-inside: avoid !important;
+                break-inside: avoid !important;
+                align-items: flex-start !important;
+            }
+            /* 文章と問題を同じページに収める - より強力な設定 */
+            .article {
+                page-break-inside: avoid !important;
+                break-inside: avoid !important;
+                background-color: #f9f9f9 !important;
+                padding: 10px;
+                margin: 0;
+                border: 1px solid #ccc;
+                flex: 0 0 62.5% !important;
+                min-width: 0 !important;
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
+            }
+            .question {
+                page-break-inside: avoid !important;
+                break-inside: avoid !important;
+                background-color: #fff3cd !important;
+                padding: 10px;
+                margin: 0;
+                border: 1px solid #ffc107;
+                flex: 0 0 37.5% !important;
+                min-width: 0 !important;
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
+            }
+            /* 単独のarticleやquestion（ラッパーなしの場合） */
+            .article:not(.article-question-wrapper .article),
+            .question:not(.article-question-wrapper .question) {
+                margin: 8px 0;
+            }
+            /* h3の後のarticleをページ分割しない */
+            h3 + .article {
+                page-break-before: avoid;
+                break-before: avoid;
+            }
+            /* h4の後のarticleをページ分割しない */
+            h4 + .article {
+                page-break-before: avoid;
+                break-before: avoid;
+            }
+            .answer {
+                page-break-inside: avoid !important;
+                break-inside: avoid !important;
+                background-color: #d4edda !important;
+                padding: 10px;
+                margin: 8px 0;
+                border: 1px solid #28a745;
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
+            }
+            .practice-point {
+                page-break-inside: avoid !important;
+                break-inside: avoid !important;
+                background-color: #e8f4f8 !important;
+                padding: 8px;
+                margin: 6px 0;
+                border-left: 4px solid #3498db;
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
+            }
+            /* hrの前の要素とhrを一緒に保持する - より強力な設定 */
+            h2 + hr,
+            h3 + hr,
+            h4 + hr,
+            ul + hr,
+            ol + hr,
+            .article + hr,
+            .question + hr,
+            .answer + hr,
+            .practice-point + hr,
+            p + hr {
+                page-break-before: avoid !important;
+                break-before: avoid !important;
+            }
+            hr {
+                page-break-after: always;
+                break-after: page;
+                page-break-inside: avoid;
+                page-break-before: avoid;
+                margin: 10px 0;
+            }
+            /* hrの前の要素がページの最後に来ないように（orphans/widowsで制御） */
+            h2, h3, h4, ul, ol, .article, .question, .answer, .practice-point, p {
+                orphans: 2;
+                widows: 2;
+            }
+            /* 最後のhrは改ページしない */
+            hr:last-of-type {
+                page-break-after: avoid !important;
+                break-after: auto !important;
+            }
+            /* 最初のhrは改ページしない */
+            h1 + hr {
+                page-break-after: avoid !important;
+                break-after: auto !important;
+            }
+            ul, ol {
+                margin: 6px 0;
+                padding-left: 25px;
+                page-break-inside: avoid;
+            }
+            li {
+                margin: 3px 0;
+                page-break-inside: avoid;
+            }
+            /* 長いリストがページをまたがないように */
+            ol, ul {
+                page-break-inside: avoid;
+                break-inside: avoid;
+            }
+            /* 色を保持 */
+            strong {
+                color: #e74c3c !important;
+                font-weight: bold;
+            }
+            h1 {
+                color: #2c3e50 !important;
+            }
+            h2 {
+                color: #34495e !important;
+            }
+            h3 {
+                color: #555 !important;
+            }
+            h4 {
+                color: #666 !important;
+            }
+            p {
+                margin: 6px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+        <div class="container">
+        <h1>J.TEST F級・G級 リーディング速度向上練習教材 第4回（1時間）</h1>
+
+        <h2>授業の目標</h2>
+            <ul>
+            <li>語彙を文脈で理解する練習をする</li>
+            <li>時間測定付きの総合練習を行う</li>
+            <li>総合復習問題で実力を確認する</li>
+            </ul>
+
+        <hr>
+
+        <h2>復習：これまでのポイント確認（5分）</h2>
+
+        <p>これまで学習した内容を素早く復習しましょう。</p>
+            <ul>
+            <li>短文リーディング（文法項目1-18）</li>
+            <li>中程度の文章</li>
+            <li>長文リーディング</li>
+            </ul>
+
+        <hr>
+
+        <hr>
+
+        <h2>第1部：語彙を網羅した練習問題（20分）</h2>
+
+        <h3>練習4-1：色に関する語彙</h3>
+
+        <div class="article-question-wrapper">
+            <div class="article">
+            <strong>文章</strong>
+            <ol>
+                <li>空は青いです。</li>
+                <li>りんごは赤いです。</li>
+                <li>バナナは黄色いです。</li>
+                <li>夜は暗いです。</li>
+                <li>雪は白いです。</li>
+                <li>カラスは黒いです。</li>
+                <li>木の葉は緑です。</li>
+                <li>コーヒーは茶色いです。</li>
+            </ol>
+        </div>
+            <div class="question">
+    <strong>問題：色を答えてください</strong>
+    <ol>
+    <li>空は何色ですか。</li>
+    <li>りんごは何色ですか。</li>
+    <li>バナナは何色ですか。</li>
+    <li>雪は何色ですか。</li>
+    <li>カラスは何色ですか。</li>
+    </ol>
+            </div>
+        </div>
+
+        <hr>
+
+        <h3>練習4-2：数に関する語彙</h3>
+
+        <div class="article-question-wrapper">
+            <div class="article">
+            <strong>文章</strong>
+            <ol>
+                <li>私はりんごを3つ買いました。</li>
+                <li>本を5冊読みました。</li>
+                <li>コーヒーを2杯飲みました。</li>
+                <li>切手を10枚買いました。</li>
+                <li>友達が4人来ました。</li>
+                <li>犬が2匹います。</li>
+                <li>車が1台あります。</li>
+                <li>お金が1000円あります。</li>
+            </ol>
+        </div>
+            <div class="question">
+    <strong>問題：数を答えてください</strong>
+    <ol>
+    <li>りんごをいくつ買いましたか。</li>
+    <li>本を何冊読みましたか。</li>
+    <li>コーヒーを何杯飲みましたか。</li>
+    <li>切手を何枚買いましたか。</li>
+    <li>友達が何人来ましたか。</li>
+    </ol>
+            </div>
+        </div>
+
+        <hr>
+
+        <h3>練習4-3：時間に関する語彙</h3>
+
+        <div class="article-question-wrapper">
+            <div class="article">
+            <strong>文章</strong>
+            <ol>
+                <li>今日は月曜日です。</li>
+                <li>昨日は日曜日でした。</li>
+                <li>明日は火曜日です。</li>
+                <li>今朝は7時に起きました。</li>
+                <li>今晩は8時に寝ます。</li>
+                <li>今週は忙しいです。</li>
+                <li>来週は暇です。</li>
+                <li>今月は5月です。</li>
+                <li>来月は6月です。</li>
+                <li>今年は2024年です。</li>
+                <li>来年は2025年です。</li>
+            </ol>
+        </div>
+            <div class="question">
+    <strong>問題：時間を答えてください</strong>
+    <ol>
+    <li>今日は何曜日ですか。</li>
+    <li>昨日は何曜日でしたか。</li>
+    <li>今朝は何時に起きましたか。</li>
+    <li>今週はどうですか。</li>
+    <li>今月は何月ですか。</li>
+    </ol>
+            </div>
+        </div>
+
+        <hr>
+
+        <h3>練習4-4：家族に関する語彙</h3>
+
+        <div class="article-question-wrapper">
+            <div class="article">
+            <strong>文章</strong>
+            <ol>
+                <li>私の父は会社員です。</li>
+                <li>私の母は主婦です。</li>
+                <li>私の兄は大学生です。</li>
+                <li>私の姉は会社員です。</li>
+                <li>私の弟は高校生です。</li>
+                <li>私の妹は中学生です。</li>
+                <li>私の祖父は元気です。</li>
+                <li>私の祖母は優しいです。</li>
+            </ol>
+        </div>
+            <div class="question">
+    <strong>問題：家族を答えてください</strong>
+    <ol>
+    <li>父は何をしていますか。</li>
+    <li>母は何をしていますか。</li>
+    <li>兄は何をしていますか。</li>
+    <li>姉は何をしていますか。</li>
+    <li>弟は何をしていますか。</li>
+    </ol>
+            </div>
+        </div>
+
+        <hr>
+
+        <h3>練習4-5：食べ物に関する語彙</h3>
+
+        <div class="article-question-wrapper">
+            <div class="article">
+            <strong>文章</strong>
+            <ol>
+                <li>朝ご飯はパンとコーヒーです。</li>
+                <li>昼ご飯はお弁当です。</li>
+                <li>晩ご飯はご飯と味噌汁です。</li>
+                <li>りんごはおいしいです。</li>
+                <li>バナナは甘いです。</li>
+                <li>コーヒーは苦いです。</li>
+                <li>カレーは辛いです。</li>
+                <li>アイスクリームは冷たいです。</li>
+                <li>お茶は温かいです。</li>
+                <li>肉は高いです。</li>
+                <li>野菜は安いです。</li>
+            </ol>
+        </div>
+            <div class="question">
+    <strong>問題：食べ物を答えてください</strong>
+    <ol>
+    <li>朝ご飯は何ですか。</li>
+    <li>りんごはどうですか。</li>
+    <li>バナナはどうですか。</li>
+    <li>コーヒーはどうですか。</li>
+    <li>カレーはどうですか。</li>
+    </ol>
+            </div>
+        </div>
+
+        <hr>
+
+        <h3>練習4-6：場所に関する語彙</h3>
+
+        <div class="article-question-wrapper">
+            <div class="article">
+            <strong>文章</strong>
+            <ol>
+                <li>学校は家の近くにあります。</li>
+                <li>図書館は静かです。</li>
+                <li>病院は大きいです。</li>
+                <li>銀行は9時から3時までです。</li>
+                <li>郵便局は切手を売っています。</li>
+                <li>デパートにはたくさんの店があります。</li>
+                <li>スーパーで買い物をします。</li>
+                <li>レストランでご飯を食べます。</li>
+                <li>喫茶店でコーヒーを飲みます。</li>
+                <li>公園で散歩をします。</li>
+            </ol>
+        </div>
+            <div class="question">
+    <strong>問題：場所を答えてください</strong>
+    <ol>
+    <li>学校はどこにありますか。</li>
+    <li>図書館はどうですか。</li>
+    <li>銀行は何時から何時までですか。</li>
+    <li>どこで買い物をしますか。</li>
+    <li>どこでご飯を食べますか。</li>
+    </ol>
+            </div>
+        </div>
+
+        <hr>
+
+        <h2>第2部：時間測定付き総合練習問題（25分）</h2>
+
+        <h3>練習5-1：制限時間5分</h3>
+
+        <div class="article-question-wrapper">
+            <div class="article">
+            <strong>文章</strong><br>
+            私は毎日日本語学校に通っています。学校は月曜日から金曜日までです。学校は9時に始まります。私は毎朝7時に起きます。起きた後で、顔を洗って、歯を磨きます。それから、朝ご飯を食べます。朝ご飯はパンとコーヒーです。朝ご飯を食べてから、学校へ行きます。学校は家から電車で30分かかります。<br><br>
+            学校では日本語の授業があります。授業はおもしろいです。先生は優しくて、上手に教えてくれます。授業の後で、友達と一緒に食堂で昼ご飯を食べます。昼ご飯を食べた後で、図書館で勉強します。図書館は静かで、勉強しやすいです。学校は3時に終わります。<br><br>
+            学校が終わった後で、アルバイトをします。アルバイトはレストランで働くことです。レストランは学校の近くにあります。アルバイトは5時から9時までです。アルバイトが終わった後で、家に帰ります。家に帰ってから、晩ご飯を食べます。晩ご飯を食べた後で、宿題をします。宿題は難しくて、時間がかかります。でも、頑張って勉強しています。
+        </div>
+            <div class="question">
+    <strong>問題（5分以内に答えてください）</strong>
+    <ol>
+    <li>学校は何時に始まりますか。</li>
+    <li>学校は家からどのくらいかかりますか。</li>
+    <li>授業の後で何をしますか。</li>
+    <li>アルバイトはどこでしますか。</li>
+    <li>アルバイトは何時から何時までですか。</li>
+    <li>家に帰ってから何をしますか。</li>
+    <li>宿題はどうですか。</li>
+    <li>学校は何時に終わりますか。</li>
+    </ol>
+            </div>
+        </div>
+
+        <hr>
+
+        <h3>練習5-2：制限時間7分</h3>
+
+        <div class="article-question-wrapper">
+            <div class="article">
+            <strong>文章</strong><br>
+            田中さんは会社員です。田中さんは有名な会社で働いています。会社は東京にあります。田中さんは毎日電車で会社へ行きます。会社は家から電車で1時間かかります。<br><br>
+            田中さんは9時から5時まで働きます。仕事は忙しいです。でも、田中さんは仕事が好きです。仕事の後で、時々友達と一緒に飲みに行きます。飲みに行く時は、居酒屋へ行きます。居酒屋でビールを飲んだり、食べ物を食べたりします。とても楽しいです。<br><br>
+            田中さんの趣味は読書です。暇な時はよく本を読みます。本は小説が好きです。特に日本の小説が好きです。本を読む時は、図書館へ行きます。図書館は静かで、本を読むのにいい場所です。<br><br>
+            田中さんはスポーツも好きです。週末はよくテニスをします。テニスは友達と一緒にします。テニスをした後で、友達と一緒に食事をします。食事をしながら、いろいろな話をします。<br><br>
+            田中さんは旅行も好きです。休みの時は、よく旅行に行きます。去年は京都へ行きました。京都は古い町で、とてもきれいです。お寺や神社がたくさんあります。京都では、お寺を見学したり、おいしい食べ物を食べたりしました。とても楽しい旅行でした。<br><br>
+            今年は沖縄へ行きたいです。沖縄は海がきれいで、とても有名です。海で泳いだり、散歩をしたりしたいです。沖縄の食べ物も食べてみたいです。
+        </div>
+            <div class="question">
+    <strong>問題（7分以内に答えてください）</strong>
+    <ol>
+    <li>田中さんはどこで働いていますか。</li>
+    <li>会社は家からどのくらいかかりますか。</li>
+    <li>田中さんは何時から何時まで働きますか。</li>
+    <li>仕事の後で、時々何をしますか。</li>
+    <li>田中さんの趣味は何ですか。</li>
+    <li>週末は何をしますか。</li>
+    <li>去年はどこへ行きましたか。</li>
+    <li>京都では何をしましたか。</li>
+    <li>今年はどこへ行きたいですか。</li>
+    <li>沖縄では何をしたいですか。</li>
+    </ol>
+            </div>
+        </div>
+
+        <hr>
+
+        <h2>第3部：総合復習問題（10分）</h2>
+
+        <h3>練習8-1：総合問題1（制限時間10分）</h3>
+
+        <div class="article">
+            <strong>文章1</strong><br>
+            私は毎日日本語学校に通っています。学校は月曜日から金曜日までです。学校は9時に始まります。私は毎朝7時に起きます。起きた後で、顔を洗って、歯を磨きます。それから、朝ご飯を食べます。朝ご飯はパンとコーヒーです。朝ご飯を食べてから、学校へ行きます。学校は家から電車で30分かかります。<br><br>
+            学校では日本語の授業があります。授業はおもしろいです。先生は優しくて、上手に教えてくれます。授業の後で、友達と一緒に食堂で昼ご飯を食べます。昼ご飯を食べた後で、図書館で勉強します。図書館は静かで、勉強しやすいです。学校は3時に終わります。
+        </div>
+
+        <div class="article">
+            <strong>文章2</strong><br>
+            昨日は日曜日でした。私は友達と一緒にデパートへ買い物に行きました。デパートにはたくさんの店があります。私は服を買いたかったです。でも、服は高くて、あまり買いませんでした。友達は本を買いました。買い物をした後で、レストランで昼ご飯を食べました。レストランはきれいで、静かでした。昼ご飯を食べてから、映画を見に行きました。映画はおもしろかったです。映画を見た後で、家に帰りました。
+        </div>
+
+        <div class="article-question-wrapper">
+            <div class="article">
+            <strong>文章3</strong><br>
+            私の家族は4人です。父と母と私と弟です。父は会社員です。父は毎日会社で働いています。父の仕事は忙しいです。でも、父は仕事が好きです。母は主婦です。母は毎日家で料理を作ったり、掃除をしたりします。母の料理はとてもおいしいです。私は学生です。私は大学で勉強しています。弟は高校生です。弟はスポーツが好きです。特にサッカーが好きです。
+        </div>
+            <div class="question">
+    <strong>問題</strong>
+    <ol>
+    <li>学校は何時に始まりますか。</li>
+    <li>学校は家からどのくらいかかりますか。</li>
+    <li>授業の後で何をしますか。</li>
+    <li>昨日は何曜日でしたか。</li>
+    <li>私は何を買いましたか。</li>
+    <li>レストランはどうでしたか。</li>
+    <li>私の家族は何人ですか。</li>
+    <li>父は何をしていますか。</li>
+    <li>母は毎日何をしますか。</li>
+    <li>弟は何が好きですか。</li>
+    </ol>
+            </div>
+        </div>
+
+        <hr>
+
+        <h2>まとめ（5分）</h2>
+
+        <p>4回の授業を通して、以下のことを学習しました：</p>
+        <ol>
+            <li>基本的な文法項目を素早く読む練習</li>
+            <li>中程度の長さの文章を読む練習</li>
+            <li>長文を読む練習</li>
+            <li>語彙を文脈で理解する練習</li>
+            <li>時間測定付きの総合練習</li>
+        </ol>
+
+        <p>これからも継続的に練習を続けて、リーディング速度と語彙力を向上させましょう。</p>
+
+        <hr>
+
+        <h2>今後の学習のポイント</h2>
+
+        <h3>リーディング速度向上のための練習方法</h3>
+
+        <ol>
+            <li><strong>毎日少しずつ練習する</strong><br>
+        毎日10分でもいいので、継続的に読む練習をしましょう。</li>
+            <li><strong>時間を測って読む</strong><br>
+        常に時間を意識して読むことで、速度が向上します。</li>
+            <li><strong>音読しない</strong><br>
+        頭の中で音読せず、視覚的に理解するようにしましょう。</li>
+            <li><strong>戻り読みをしない</strong><br>
+        一度読んだ部分に戻らないようにしましょう。</li>
+            <li><strong>文の構造を素早く把握する</strong><br>
+        主語・述語・修飾語を瞬時に見分ける練習をしましょう。</li>
+            <li><strong>語彙を文脈で推測する</strong><br>
+        知らない語彙があっても、文全体から意味を推測する練習をしましょう。</li>
+            <li><strong>繰り返し読む</strong><br>
+        同じ文章を何度も読むことで、理解速度が上がります。</li>
+            <li><strong>問題を解く練習をする</strong><br>
+        読んだ内容を理解できているか、問題を解いて確認しましょう。</li>
+        </ol>
+
+        <h3>語彙力向上のための練習方法</h3>
+
+        <ol>
+            <li><strong>文脈で覚える</strong><br>
+        単語だけを覚えるのではなく、文章の中で覚えましょう。</li>
+            <li><strong>繰り返し使う</strong><br>
+        覚えた語彙を文章で使う練習をしましょう。</li>
+            <li><strong>関連語彙を一緒に覚える</strong><br>
+        関連する語彙をグループで覚えましょう。</li>
+            <li><strong>実際に使う</strong><br>
+        覚えた語彙を実際の会話や文章で使ってみましょう。</li>
+        </ol>
+
+        <hr>
+
+        <h2>解答例</h2>
+
+        <h3>語彙練習</h3>
+
+        <div class="answer">
+            <strong>練習4-1（色）</strong>
+            <ol>
+                <li>青いです。</li>
+                <li>赤いです。</li>
+                <li>黄色いです。</li>
+                <li>白いです。</li>
+                <li>黒いです。</li>
+            </ol>
+        </div>
+
+        <div class="answer">
+            <strong>練習4-2（数）</strong>
+            <ol>
+                <li>3つ買いました。</li>
+                <li>5冊読みました。</li>
+                <li>2杯飲みました。</li>
+                <li>10枚買いました。</li>
+                <li>4人来ました。</li>
+            </ol>
+        </div>
+
+        <div class="answer">
+            <strong>練習4-3（時間）</strong>
+            <ol>
+                <li>月曜日です。</li>
+                <li>日曜日でした。</li>
+                <li>7時に起きました。</li>
+                <li>忙しいです。</li>
+                <li>5月です。</li>
+            </ol>
+        </div>
+
+        <div class="answer">
+            <strong>練習4-4（家族）</strong>
+            <ol>
+                <li>会社員です。</li>
+                <li>主婦です。</li>
+                <li>大学生です。</li>
+                <li>会社員です。</li>
+                <li>高校生です。</li>
+            </ol>
+        </div>
+
+        <div class="answer">
+            <strong>練習4-5（食べ物）</strong>
+            <ol>
+                <li>パンとコーヒーです。</li>
+                <li>おいしいです。</li>
+                <li>甘いです。</li>
+                <li>苦いです。</li>
+                <li>辛いです。</li>
+            </ol>
+        </div>
+
+        <div class="answer">
+            <strong>練習4-6（場所）</strong>
+            <ol>
+                <li>家の近くにあります。</li>
+                <li>静かです。</li>
+                <li>9時から3時までです。</li>
+                <li>スーパーで買い物をします。</li>
+                <li>レストランでご飯を食べます。</li>
+            </ol>
+        </div>
+
+        <h3>時間測定練習</h3>
+
+        <div class="answer">
+            <strong>練習5-1（5分）</strong>
+            <ol>
+                <li>9時に始まります。</li>
+                <li>電車で30分かかります。</li>
+                <li>食堂で昼ご飯を食べます。</li>
+                <li>レストランでします。</li>
+                <li>5時から9時までです。</li>
+                <li>晩ご飯を食べます。</li>
+                <li>難しくて、時間がかかります。</li>
+                <li>3時に終わります。</li>
+            </ol>
+        </div>
+
+        <div class="answer">
+            <strong>練習5-2（7分）</strong>
+            <ol>
+                <li>有名な会社で働いています。</li>
+                <li>電車で1時間かかります。</li>
+                <li>9時から5時まで働きます。</li>
+                <li>友達と一緒に飲みに行きます。</li>
+                <li>読書です。</li>
+                <li>テニスをします。</li>
+                <li>京都へ行きました。</li>
+                <li>お寺を見学したり、おいしい食べ物を食べたりしました。</li>
+                <li>沖縄へ行きたいです。</li>
+                <li>海で泳いだり、散歩をしたりしたいです。</li>
+            </ol>
+        </div>
+
+        <div class="answer">
+            <strong>総合問題1（10分）</strong>
+            <ol>
+                <li>9時に始まります。</li>
+                <li>電車で30分かかります。</li>
+                <li>食堂で昼ご飯を食べます。</li>
+                <li>日曜日でした。</li>
+                <li>あまり買いませんでした。</li>
+                <li>きれいで、静かでした。</li>
+                <li>4人です。</li>
+                <li>会社で働いています。</li>
+                <li>料理を作ったり、掃除をしたりします。</li>
+                <li>スポーツが好きです。特にサッカーが好きです。</li>
+            </ol>
+        </div>
+
+        <hr>
+
+        <p>この4回の授業で学習した内容を復習し、継続的に練習を続けて、J.TEST F級・G級の合格を目指してください！</p>
+
+        </div>
+        </body>
+        </html>
