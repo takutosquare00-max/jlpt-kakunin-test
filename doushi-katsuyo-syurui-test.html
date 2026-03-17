@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<title>動詞の活用の種類 テスト（10問・10分）</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}html{-webkit-text-size-adjust:100%;-webkit-tap-highlight-color:transparent}body{font-family:'Hiragino Kaku Gothic ProN','Hiragino Sans','Noto Sans JP',Meiryo,sans-serif;background:#f0f4f8;color:#1a202c;line-height:1.7;padding:env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left)}.container{max-width:800px;margin:0 auto;padding:20px}header{background:linear-gradient(135deg,#8b5cf6 0%,#6d28d9 100%);color:#fff;padding:24px;border-radius:16px;margin-bottom:24px;text-align:center;position:sticky;top:0;z-index:100;box-shadow:0 4px 15px rgba(139,92,246,0.4)}header h1{font-size:1.5em;margin-bottom:4px}.header-info{display:flex;justify-content:center;gap:24px;align-items:center;margin-top:8px;flex-wrap:wrap}.timer{font-size:1.8em;font-weight:bold;font-variant-numeric:tabular-nums}.timer.warning{color:#ffd700;animation:pulse 1s infinite}.timer.danger{color:#ff4757;animation:pulse .5s infinite}@keyframes pulse{0%,100%{opacity:1}50%{opacity:.6}}.progress-bar{width:200px;height:8px;background:rgba(255,255,255,.3);border-radius:4px;overflow:hidden}.progress-fill{height:100%;background:#fff;border-radius:4px;transition:width .3s}.score-badge{background:rgba(255,255,255,.2);padding:4px 12px;border-radius:20px;font-size:.9em}.section{background:#fff;border-radius:12px;padding:24px;margin-bottom:20px;box-shadow:0 2px 8px rgba(0,0,0,.06)}.section-title{font-size:1.1em;font-weight:bold;color:#6d28d9;border-left:4px solid #8b5cf6;padding-left:12px;margin-bottom:16px}.question{padding:16px 0;border-bottom:1px solid #e2e8f0}.question:last-child{border-bottom:none}.q-num{display:inline-block;background:#8b5cf6;color:#fff;width:28px;height:28px;text-align:center;line-height:28px;border-radius:50%;font-size:.85em;font-weight:bold;margin-right:8px}.q-text{font-size:1.05em;margin-bottom:12px;font-weight:500}.options{display:grid;grid-template-columns:repeat(5,1fr);gap:6px}@media(max-width:600px){.options{grid-template-columns:1fr}}.option{position:relative}.option input{display:none}.option label{display:flex;align-items:center;justify-content:center;min-height:44px;padding:10px 14px;border:2px solid #e2e8f0;border-radius:8px;cursor:pointer;transition:all .2s;font-size:.95em;touch-action:manipulation;-webkit-user-select:none;user-select:none}.option label:hover{border-color:#8b5cf6;background:#f5f3ff}.option input:checked+label{border-color:#8b5cf6;background:#ede9fe;color:#5b21b6;font-weight:600}.option.correct label{border-color:#48bb78!important;background:#f0fff4!important;color:#276749!important}.option.wrong label{border-color:#fc8181!important;background:#fff5f5!important;color:#9b2c2c!important}.btn-submit{display:block;width:100%;min-height:48px;padding:16px;background:linear-gradient(135deg,#8b5cf6 0%,#6d28d9 100%);color:#fff;border:none;border-radius:12px;font-size:1.1em;font-weight:bold;cursor:pointer;transition:transform .2s,box-shadow .2s;margin-top:24px;touch-action:manipulation;-webkit-user-select:none;user-select:none}.btn-submit:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(139,92,246,0.4)}.btn-submit:disabled{opacity:.5;cursor:not-allowed;transform:none;box-shadow:none}.result-panel{background:#fff;border-radius:16px;padding:32px;text-align:center;box-shadow:0 4px 20px rgba(0,0,0,.1);margin-top:24px;display:none}.result-panel h2{font-size:1.8em;margin-bottom:8px}.result-score{font-size:3em;font-weight:bold;margin:16px 0}.result-score.excellent{color:#48bb78}.result-score.good{color:#38b2ac}.result-score.fair{color:#ed8936}.result-score.poor{color:#fc8181}.result-detail{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:12px;margin-top:20px}.result-item{background:#f7fafc;padding:12px;border-radius:8px}.result-item .label{font-size:.8em;color:#718096}.result-item .value{font-size:1.2em;font-weight:bold}.explanation{display:none;margin-top:8px;padding:10px;background:#fffbeb;border-radius:8px;font-size:.9em;border-left:3px solid #f6ad55}.explanation.show{display:block}
+ruby{font-size:1em}rt{font-size:.55em;opacity:.9}
+</style>
+</head>
+<body>
+<div class="container">
+<header>
+<h1><ruby>動詞<rt>どうし</rt></ruby>の<ruby>活用<rt>かつよう</rt></ruby>の<ruby>種類<rt>しゅるい</rt></ruby>テスト（10<ruby>問<rt>もん</rt></ruby>・10<ruby>分<rt>ぷん</rt></ruby>）</h1>
+<div class="header-info">
+<div class="timer" id="timer">10:00</div>
+<div class="progress-bar"><div class="progress-fill" id="progress" style="width:100%"></div></div>
+<div class="score-badge">全10<ruby>問<rt>もん</rt></ruby></div>
+</div>
+</header>
+
+<div class="section">
+<div class="section-title"><ruby>下線<rt>かせん</rt></ruby>の<ruby>動詞<rt>どうし</rt></ruby>の<ruby>活用<rt>かつよう</rt></ruby>の<ruby>種類<rt>しゅるい</rt></ruby>を<ruby>答<rt>こた</rt></ruby>えてください</div>
+<p style="color:#718096;font-size:.9em;margin-bottom:12px">
+「ない」の<ruby>前<rt>まえ</rt></ruby>：ア→<ruby>五<rt>ご</rt></ruby>　イ→<ruby>上一<rt>かみいち</rt></ruby>　エ→<ruby>下一<rt>しもいち</rt></ruby>　「〜する」→<ruby>サ変<rt>さへん</rt></ruby>　「<ruby>来<rt>く</rt></ruby>る」→<ruby>カ変<rt>かへん</rt></ruby>
+</p>
+
+<div class="question">
+<div class="q-text"><span class="q-num">1</span>今日は<b><ruby>走<rt>はし</rt></ruby>ら</b>ない。</div>
+<div class="options">
+<div class="option"><input type="radio" name="q1" id="q1a" value="1"><label for="q1a"><ruby>五<rt>ご</rt></ruby></label></div>
+<div class="option"><input type="radio" name="q1" id="q1b" value="0"><label for="q1b"><ruby>上一<rt>かみいち</rt></ruby></label></div>
+<div class="option"><input type="radio" name="q1" id="q1c" value="0"><label for="q1c"><ruby>下一<rt>しもいち</rt></ruby></label></div>
+<div class="option"><input type="radio" name="q1" id="q1d" value="0"><label for="q1d"><ruby>サ変<rt>さへん</rt></ruby></label></div>
+<div class="option"><input type="radio" name="q1" id="q1e" value="0"><label for="q1e"><ruby>カ変<rt>かへん</rt></ruby></label></div>
+</div>
+<div class="explanation">✅ <ruby>正解<rt>せいかい</rt></ruby>：<ruby>五<rt>ご</rt></ruby> —「<ruby>走<rt>はし</rt></ruby>る」＋「ない」＝「<ruby>走<rt>はし</rt></ruby>ら<b>ァー</b>ない」。ア<ruby>段<rt>だん</rt></ruby>なので、<ruby>五段活用<rt>ごだんかつよう</rt></ruby>。</div>
+</div>
+
+<div class="question">
+<div class="q-text"><span class="q-num">2</span><ruby>映画<rt>えいが</rt></ruby>を<b><ruby>見<rt>み</rt></ruby></b>ない。</div>
+<div class="options">
+<div class="option"><input type="radio" name="q2" id="q2a" value="0"><label for="q2a"><ruby>五<rt>ご</rt></ruby></label></div>
+<div class="option"><input type="radio" name="q2" id="q2b" value="1"><label for="q2b"><ruby>上一<rt>かみいち</rt></ruby></label></div>
+<div class="option"><input type="radio" name="q2" id="q2c" value="0"><label for="q2c"><ruby>下一<rt>しもいち</rt></ruby></label></div>
+<div class="option"><input type="radio" name="q2" id="q2d" value="0"><label for="q2d"><ruby>サ変<rt>さへん</rt></ruby></label></div>
+<div class="option"><input type="radio" name="q2" id="q2e" value="0"><label for="q2e"><ruby>カ変<rt>かへん</rt></ruby></label></div>
+</div>
+<div class="explanation">✅ <ruby>正解<rt>せいかい</rt></ruby>：<ruby>上一<rt>かみいち</rt></ruby> —「<ruby>見<rt>み</rt></ruby>る」＋「ない」＝「<ruby>見<rt>み</rt></ruby><b>ィー</b>ない」。イ<ruby>段<rt>だん</rt></ruby>なので、<ruby>上一段活用<rt>かみいちだんかつよう</rt></ruby>。</div>
+</div>
+
+<div class="question">
+<div class="q-text"><span class="q-num">3</span><ruby>朝<rt>あさ</rt></ruby>ごはんを<b><ruby>食<rt>た</rt></ruby>べ</b>ない。</div>
+<div class="options">
+<div class="option"><input type="radio" name="q3" id="q3a" value="0"><label for="q3a"><ruby>五<rt>ご</rt></ruby></label></div>
+<div class="option"><input type="radio" name="q3" id="q3b" value="0"><label for="q3b"><ruby>上一<rt>かみいち</rt></ruby></label></div>
+<div class="option"><input type="radio" name="q3" id="q3c" value="1"><label for="q3c"><ruby>下一<rt>しもいち</rt></ruby></label></div>
+<div class="option"><input type="radio" name="q3" id="q3d" value="0"><label for="q3d"><ruby>サ変<rt>さへん</rt></ruby></label></div>
+<div class="option"><input type="radio" name="q3" id="q3e" value="0"><label for="q3e"><ruby>カ変<rt>かへん</rt></ruby></label></div>
+</div>
+<div class="explanation">✅ <ruby>正解<rt>せいかい</rt></ruby>：<ruby>下一<rt>しもいち</rt></ruby> —「<ruby>食<rt>た</rt></ruby>べる」＋「ない」＝「<ruby>食<rt>た</rt></ruby>べ<b>ェー</b>ない」。エ<ruby>段<rt>だん</rt></ruby>なので、<ruby>下一段活用<rt>しもいちだんかつよう</rt></ruby>。</div>
+</div>
+
+<div class="question">
+<div class="q-text"><span class="q-num">4</span><ruby>日本語<rt>にほんご</rt></ruby>を<b><ruby>勉強<rt>べんきょう</rt></ruby>し</b>ない。</div>
+<div class="options">
+<div class="option"><input type="radio" name="q4" id="q4a" value="0"><label for="q4a"><ruby>五<rt>ご</rt></ruby></label></div>
+<div class="option"><input type="radio" name="q4" id="q4b" value="0"><label for="q4b"><ruby>上一<rt>かみいち</rt></ruby></label></div>
+<div class="option"><input type="radio" name="q4" id="q4c" value="0"><label for="q4c"><ruby>下一<rt>しもいち</rt></ruby></label></div>
+<div class="option"><input type="radio" name="q4" id="q4d" value="1"><label for="q4d"><ruby>サ変<rt>さへん</rt></ruby></label></div>
+<div class="option"><input type="radio" name="q4" id="q4e" value="0"><label for="q4e"><ruby>カ変<rt>かへん</rt></ruby></label></div>
+</div>
+<div class="explanation">✅ <ruby>正解<rt>せいかい</rt></ruby>：<ruby>サ変<rt>さへん</rt></ruby> —「<ruby>勉強<rt>べんきょう</rt></ruby>する」は「〜する」という<ruby>形<rt>かたち</rt></ruby>の<ruby>動詞<rt>どうし</rt></ruby>。<ruby>サ行変格活用<rt>さぎょうへんかくかつよう</rt></ruby>。</div>
+</div>
+
+<div class="question">
+<div class="q-text"><span class="q-num">5</span><ruby>明日<rt>あした</rt></ruby><ruby>日本<rt>にほん</rt></ruby>に<b><ruby>来<rt>こ</rt></ruby></b>ない。</div>
+<div class="options">
+<div class="option"><input type="radio" name="q5" id="q5a" value="0"><label for="q5a"><ruby>五<rt>ご</rt></ruby></label></div>
+<div class="option"><input type="radio" name="q5" id="q5b" value="0"><label for="q5b"><ruby>上一<rt>かみいち</rt></ruby></label></div>
+<div class="option"><input type="radio" name="q5" id="q5c" value="0"><label for="q5c"><ruby>下一<rt>しもいち</rt></ruby></label></div>
+<div class="option"><input type="radio" name="q5" id="q5d" value="0"><label for="q5d"><ruby>サ変<rt>さへん</rt></ruby></label></div>
+<div class="option"><input type="radio" name="q5" id="q5e" value="1"><label for="q5e"><ruby>カ変<rt>かへん</rt></ruby></label></div>
+</div>
+<div class="explanation">✅ <ruby>正解<rt>せいかい</rt></ruby>：<ruby>カ変<rt>かへん</rt></ruby> —「<ruby>来<rt>く</rt></ruby>る」は<ruby>特別<rt>とくべつ</rt></ruby>な<ruby>動詞<rt>どうし</rt></ruby>。<ruby>カ行変格活用<rt>かぎょうへんかくかつよう</rt></ruby>。</div>
+</div>
+
+<div class="question">
+<div class="q-text"><span class="q-num">6</span><ruby>明日<rt>あした</rt></ruby>、<ruby>友達<rt>ともだち</rt></ruby>に<b><ruby>会<rt>あ</rt></ruby>わ</b>ない。</div>
+<div class="options">
+<div class="option"><input type="radio" name="q6" id="q6a" value="1"><label for="q6a"><ruby>五<rt>ご</rt></ruby></label></div>
+<div class="option"><input type="radio" name="q6" id="q6b" value="0"><label for="q6b"><ruby>上一<rt>かみいち</rt></ruby></label></div>
+<div class="option"><input type="radio" name="q6" id="q6c" value="0"><label for="q6c"><ruby>下一<rt>しもいち</rt></ruby></label></div>
+<div class="option"><input type="radio" name="q6" id="q6d" value="0"><label for="q6d"><ruby>サ変<rt>さへん</rt></ruby></label></div>
+<div class="option"><input type="radio" name="q6" id="q6e" value="0"><label for="q6e"><ruby>カ変<rt>かへん</rt></ruby></label></div>
+</div>
+<div class="explanation">✅ <ruby>正解<rt>せいかい</rt></ruby>：<ruby>五<rt>ご</rt></ruby> —「<ruby>会<rt>あ</rt></ruby>う」＋「ない」＝「<ruby>会<rt>あ</rt></ruby>わ<b>ァー</b>ない」。ア<ruby>段<rt>だん</rt></ruby>なので、<ruby>五段活用<rt>ごだんかつよう</rt></ruby>。</div>
+</div>
+
+<div class="question">
+<div class="q-text"><span class="q-num">7</span><ruby>窓<rt>まど</rt></ruby>を<b><ruby>開<rt>あ</rt></ruby>け</b>ない。</div>
+<div class="options">
+<div class="option"><input type="radio" name="q7" id="q7a" value="0"><label for="q7a"><ruby>五<rt>ご</rt></ruby></label></div>
+<div class="option"><input type="radio" name="q7" id="q7b" value="0"><label for="q7b"><ruby>上一<rt>かみいち</rt></ruby></label></div>
+<div class="option"><input type="radio" name="q7" id="q7c" value="1"><label for="q7c"><ruby>下一<rt>しもいち</rt></ruby></label></div>
+<div class="option"><input type="radio" name="q7" id="q7d" value="0"><label for="q7d"><ruby>サ変<rt>さへん</rt></ruby></label></div>
+<div class="option"><input type="radio" name="q7" id="q7e" value="0"><label for="q7e"><ruby>カ変<rt>かへん</rt></ruby></label></div>
+</div>
+<div class="explanation">✅ <ruby>正解<rt>せいかい</rt></ruby>：<ruby>下一<rt>しもいち</rt></ruby> —「<ruby>開<rt>あ</rt></ruby>ける」＋「ない」＝「<ruby>開<rt>あ</rt></ruby>け<b>ェー</b>ない」。エ<ruby>段<rt>だん</rt></ruby>なので、<ruby>下一段活用<rt>しもいちだんかつよう</rt></ruby>。</div>
+</div>
+
+<div class="question">
+<div class="q-text"><span class="q-num">8</span>まだ<b><ruby>起<rt>お</rt></ruby>き</b>ない。</div>
+<div class="options">
+<div class="option"><input type="radio" name="q8" id="q8a" value="0"><label for="q8a"><ruby>五<rt>ご</rt></ruby></label></div>
+<div class="option"><input type="radio" name="q8" id="q8b" value="1"><label for="q8b"><ruby>上一<rt>かみいち</rt></ruby></label></div>
+<div class="option"><input type="radio" name="q8" id="q8c" value="0"><label for="q8c"><ruby>下一<rt>しもいち</rt></ruby></label></div>
+<div class="option"><input type="radio" name="q8" id="q8d" value="0"><label for="q8d"><ruby>サ変<rt>さへん</rt></ruby></label></div>
+<div class="option"><input type="radio" name="q8" id="q8e" value="0"><label for="q8e"><ruby>カ変<rt>かへん</rt></ruby></label></div>
+</div>
+<div class="explanation">✅ <ruby>正解<rt>せいかい</rt></ruby>：<ruby>上一<rt>かみいち</rt></ruby> —「<ruby>起<rt>お</rt></ruby>きる」＋「ない」＝「<ruby>起<rt>お</rt></ruby>き<b>ィー</b>ない」。イ<ruby>段<rt>だん</rt></ruby>なので、<ruby>上一段活用<rt>かみいちだんかつよう</rt></ruby>。</div>
+</div>
+
+<div class="question">
+<div class="q-text"><span class="q-num">9</span><ruby>駅<rt>えき</rt></ruby>まで<b><ruby>歩<rt>ある</rt></ruby>か</b>ない。</div>
+<div class="options">
+<div class="option"><input type="radio" name="q9" id="q9a" value="1"><label for="q9a"><ruby>五<rt>ご</rt></ruby></label></div>
+<div class="option"><input type="radio" name="q9" id="q9b" value="0"><label for="q9b"><ruby>上一<rt>かみいち</rt></ruby></label></div>
+<div class="option"><input type="radio" name="q9" id="q9c" value="0"><label for="q9c"><ruby>下一<rt>しもいち</rt></ruby></label></div>
+<div class="option"><input type="radio" name="q9" id="q9d" value="0"><label for="q9d"><ruby>サ変<rt>さへん</rt></ruby></label></div>
+<div class="option"><input type="radio" name="q9" id="q9e" value="0"><label for="q9e"><ruby>カ変<rt>かへん</rt></ruby></label></div>
+</div>
+<div class="explanation">✅ <ruby>正解<rt>せいかい</rt></ruby>：<ruby>五<rt>ご</rt></ruby> —「<ruby>歩<rt>ある</rt></ruby>く」＋「ない」＝「<ruby>歩<rt>ある</rt></ruby>か<b>ァー</b>ない」。ア<ruby>段<rt>だん</rt></ruby>なので、<ruby>五段活用<rt>ごだんかつよう</rt></ruby>。</div>
+</div>
+
+<div class="question">
+<div class="q-text"><span class="q-num">10</span><ruby>本<rt>ほん</rt></ruby>を<b><ruby>読<rt>よ</rt></ruby>ま</b>ない。</div>
+<div class="options">
+<div class="option"><input type="radio" name="q10" id="q10a" value="1"><label for="q10a"><ruby>五<rt>ご</rt></ruby></label></div>
+<div class="option"><input type="radio" name="q10" id="q10b" value="0"><label for="q10b"><ruby>上一<rt>かみいち</rt></ruby></label></div>
+<div class="option"><input type="radio" name="q10" id="q10c" value="0"><label for="q10c"><ruby>下一<rt>しもいち</rt></ruby></label></div>
+<div class="option"><input type="radio" name="q10" id="q10d" value="0"><label for="q10d"><ruby>サ変<rt>さへん</rt></ruby></label></div>
+<div class="option"><input type="radio" name="q10" id="q10e" value="0"><label for="q10e"><ruby>カ変<rt>かへん</rt></ruby></label></div>
+</div>
+<div class="explanation">✅ <ruby>正解<rt>せいかい</rt></ruby>：<ruby>五<rt>ご</rt></ruby> —「<ruby>読<rt>よ</rt></ruby>む」＋「ない」＝「<ruby>読<rt>よ</rt></ruby>ま<b>ァー</b>ない」。ア<ruby>段<rt>だん</rt></ruby>なので、<ruby>五段活用<rt>ごだんかつよう</rt></ruby>。</div>
+</div>
+</div>
+
+<button class="btn-submit" id="submitBtn" onclick="submitTest()"><ruby>採点<rt>さいてん</rt></ruby>する</button>
+<div class="result-panel" id="resultPanel"><h2 id="resultTitle"></h2><div class="result-score" id="resultScore"></div><div class="result-detail" id="resultDetail"></div><button class="btn-submit" onclick="location.reload()" style="margin-top:20px">もう<ruby>一度<rt>いちど</rt></ruby></button></div>
+</div>
+
+<script>
+const TOTAL=10,TIME_LIMIT=600;let timeLeft=TIME_LIMIT,timerInterval,submitted=false;
+function startTimer(){timerInterval=setInterval(()=>{timeLeft--;const m=Math.floor(timeLeft/60),s=timeLeft%60;const el=document.getElementById('timer');el.textContent=`${m}:${s.toString().padStart(2,'0')}`;document.getElementById('progress').style.width=`${(timeLeft/TIME_LIMIT)*100}%`;if(timeLeft<=60)el.className='timer danger';else if(timeLeft<=180)el.className='timer warning';if(timeLeft<=0){clearInterval(timerInterval);submitTest();}},1000);}
+function submitTest(){if(submitted)return;submitted=true;clearInterval(timerInterval);let correct=0;for(let i=1;i<=TOTAL;i++){const sel=document.querySelector(`input[name="q${i}"]:checked`);const opts=document.querySelectorAll(`input[name="q${i}"]`);let ok=false;if(sel&&sel.value==='1'){ok=true;correct++;}opts.forEach(o=>{const p=o.parentElement;if(o.value==='1')p.classList.add('correct');else if(o.checked)p.classList.add('wrong');});}document.querySelectorAll('.explanation').forEach(e=>e.classList.add('show'));const pct=Math.round((correct/TOTAL)*100);const panel=document.getElementById('resultPanel');panel.style.display='block';const score=document.getElementById('resultScore');score.textContent=`${correct} / ${TOTAL}（${pct}%）`;const title=document.getElementById('resultTitle');if(pct>=90){title.textContent='🎉 素晴らしい！';score.className='result-score excellent';}else if(pct>=70){title.textContent='👍 よくできました！';score.className='result-score good';}else if(pct>=50){title.textContent='📝 もう少し！';score.className='result-score fair';}else{title.textContent='💪 がんばりましょう！';score.className='result-score poor';}const t=TIME_LIMIT-timeLeft;document.getElementById('resultDetail').innerHTML=`<div class="result-item"><div class="label"><ruby>正解数<rt>せいかいすう</rt></ruby></div><div class="value">${correct}/10</div></div><div class="result-item"><div class="label"><ruby>所要時間<rt>しょようじかん</rt></ruby></div><div class="value">${Math.floor(t/60)}<ruby>分<rt>ぷん</rt></ruby>${t%60}<ruby>秒<rt>びょう</rt></ruby></div></div>`;document.getElementById('submitBtn').disabled=true;panel.scrollIntoView({behavior:'smooth'});}
+startTimer();
+</script>
+</body>
+</html>
