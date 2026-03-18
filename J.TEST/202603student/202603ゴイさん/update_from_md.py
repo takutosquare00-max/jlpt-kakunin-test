@@ -5,7 +5,7 @@
 import re
 
 MD_PATH = '/Users/hayashi./datax/Business/school/J.TEST/202603student/202603ゴイさん/0315ゴイさんjtest_AC_解答.md'
-HTML_PATH = '/Users/hayashi./datax/Business/school/J.TEST/202603student/jtest-ac-0315-goi.html'
+HTML_PATH = '/Users/hayashi./datax/Business/school/J.TEST/202603student/jtest-ac-202603.html'
 
 def escape_html(s):
     return s.replace('&', '&amp;').replace('<', '&lt;').replace('>', '&gt;').replace('"', '&quot;')

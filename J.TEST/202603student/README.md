@@ -5,8 +5,8 @@
 ```
 202603student/
 ├── README.md                    # このファイル
-├── jtest-ac-0315-goi.html       # A-C テスト（ゴイさん用）※生成物
-├── jtest-fg-20260308-sard.html  # F-G テスト（サードさん用）※生成物
+├── jtest-ac-202603.html         # A-C テスト（ゴイさん用）※生成物
+├── jtest-fg-202603.html         # F-G テスト（サードさん用）※生成物
 │
 ├── 202603ゴイさん/              # ゴイさん用（A-C）
 │   ├── 0315ゴイさんjtest a-c.pdf           # 元PDF
@@ -44,7 +44,7 @@ cd 202603サードさん && python3 generate_jtest_fg_html.py
 
 ## デプロイ先
 
-- `jtest-fg-deploy/ac/jtest-ac-0315-goi.html`
-- `jtest-fg-deploy/fg/jtest-fg-20260308-sard.html`
+- `jlpt-kakunin-test-deploy/jtest-ac-202603.html`
+- `jlpt-kakunin-test-deploy/jtest-fg-202603.html`
 
 生成後、必要に応じて上記へコピーしてください。

@@ -372,7 +372,7 @@ startTimer();
 
     html = '\n'.join(out)
     html = html.replace('&lt;br&gt;', '<br>')
-    out_path = '/Users/hayashi./datax/Business/school/J.TEST/202603student/jtest-fg-20260308-sard.html'
+    out_path = '/Users/hayashi./datax/Business/school/J.TEST/202603student/jtest-fg-202603.html'
     with open(out_path, 'w', encoding='utf-8') as f:
         f.write(html)
     print('Generated:', out_path)

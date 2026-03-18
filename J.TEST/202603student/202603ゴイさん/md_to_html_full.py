@@ -5,7 +5,7 @@
 import re
 
 MD_PATH = '/Users/hayashi./datax/Business/school/J.TEST/202603student/202603ゴイさん/0315ゴイさんjtest_AC_解答.md'
-HTML_PATH = '/Users/hayashi./datax/Business/school/J.TEST/202603student/jtest-ac-0315-goi.html'
+HTML_PATH = '/Users/hayashi./datax/Business/school/J.TEST/202603student/jtest-ac-202603.html'
 
 # 解答一覧から正解を取得（マークダウンの表）
 ANSWERS_TABLE = {
@@ -22,9 +22,45 @@ ANSWERS_TABLE = {
 def escape_html(s):
     return s.replace('&', '&amp;').replace('<', '&lt;').replace('>', '&gt;').replace('"', '&quot;')
 
+def escape_passage(s):
+    """Passage用：ruby/uタグを保持したままエスケープ"""
+    s = s.replace('<ruby>', '\uE001').replace('</ruby>', '\uE002').replace('<rt>', '\uE003').replace('</rt>', '\uE004')
+    s = s.replace('<u>', '\uE005').replace('</u>', '\uE006')
+    s = escape_html(s)
+    s = s.replace('\uE001', '<ruby>').replace('\uE002', '</ruby>').replace('\uE003', '<rt>').replace('\uE004', '</rt>')
+    s = s.replace('\uE005', '<u>').replace('\uE006', '</u>')
+    return s
+
+def parse_reading_passages(content):
+    """読解問題の文書・文章を抽出。問題1→41,42、問題2→43,44..."""
+    reading_section = re.search(r'# 2　読解問題(.*?)# 3　', content, re.DOTALL)
+    if not reading_section:
+        return {}
+    section = reading_section.group(1)
+    blocks = re.split(r'\n---\n', section)
+    passages = []
+    for b in blocks:
+        if re.search(r'\n\*\*\(\s*(4[1-9]|5[0-9]|60)\s*\)\*\*', b):
+            continue  # 問題ブロックは除外
+        lines = b.strip().split('\n')
+        if not lines:
+            continue
+        # 全行が > で始まるブロック（引用ブロック）のみ
+        if not all(line.strip() == '' or line.strip().startswith('>') for line in lines):
+            continue
+        quote_lines = [line.lstrip('>').lstrip() for line in lines if line.strip().startswith('>')]
+        quote_content = '\n'.join(quote_lines).strip()
+        if quote_content and '★' not in quote_content and '◆' not in quote_content:
+            passages.append(quote_content)
+    # 問題1→41,2→43,3→45,4→47,5→49,6→50,7→51,8→52,9→54,10→56,11→58
+    first_q = [41,43,45,47,49,50,51,52,54,56,58]
+    return {q: passages[i] for i, q in enumerate(first_q) if i < len(passages)}
+
 def parse_markdown():
     with open(MD_PATH, 'r', encoding='utf-8') as f:
         content = f.read()
+    
+    passages = parse_reading_passages(content)
     
     blocks = re.split(r'\n---\n', content)
     questions = {}
@@ -76,7 +112,7 @@ def parse_markdown():
             'explanation': expl,
         }
     
-    return questions
+    return questions, passages
 
 def gen_mc_question(qnum, q_text, options, ans_num, explanation):
     ans = ANSWERS_TABLE.get(qnum, ans_num)
@@ -107,14 +143,14 @@ def gen_readonly_question(qnum, q_text, ans_text, explanation):
 </div>'''
 
 def main():
-    questions = parse_markdown()
-    print(f'Parsed {len(questions)} questions')
+    questions, passages = parse_markdown()
+    print(f'Parsed {len(questions)} questions, {len(passages)} passages')
     
     # 既存のgenerate_jtest_ac_htmlの構造を参考に、全100問のHTMLを生成
     # 1-75: 選択式（インタラクティブ）
     # 76-100: 記述式（読み取り専用）
     
-    # jtest-fg-20260308-sard.html と同様の形式
+    # jtest-fg-202603.html と同様の形式
     HTML_TEMPLATE = '''<!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -215,6 +251,12 @@ ruby{ruby-align:center}
     # 4. 読解 (41-60)
     out.append('<div class="section"><div class="section-title">2 読解問題（20問）</div>')
     for q in range(41, 61):
+        if q in passages:
+            p = escape_passage(passages[q])
+            p = re.sub(r'\*\*(.+?)\*\*', r'<strong>\1</strong>', p)  # マークダウン太字を変換
+            p = re.sub(r'<u>(.*?)</u>', r'\1', p, flags=re.DOTALL)  # 下線部を除去
+            passage_html = p.replace('\n', '<br>')
+            out.append(f'<div class="reading-passage">{passage_html}</div>')
         if q in questions and questions[q]['options']:
             out.append(gen_mc_question(q, questions[q]['text'], questions[q]['options'], questions[q]['ans_num'], questions[q]['explanation']))
     out.append('</div>')
