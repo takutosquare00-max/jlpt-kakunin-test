@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<title>過去問J.TEST A-C 2026年3月度（25分・問70-100（31問））</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;-webkit-tap-highlight-color:transparent}
+body{font-family:'Hiragino Kaku Gothic ProN','Hiragino Sans','Noto Sans JP',Meiryo,sans-serif;background:#f5f5f5;color:#000;line-height:1.7;padding:env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left)}
+.container{max-width:800px;margin:0 auto;padding:20px}
+header{background:#f5f5f5;color:#000;padding:24px;border-radius:16px;margin-bottom:24px;text-align:center;position:sticky;top:0;z-index:100;border:2px solid #000;box-shadow:none}
+header h1{font-size:1.5em;margin-bottom:4px}
+.header-info{display:flex;justify-content:center;gap:24px;align-items:center;margin-top:8px;flex-wrap:wrap}
+.timer{font-size:1.8em;font-weight:bold;font-variant-numeric:tabular-nums;color:#000}
+.timer.warning{color:#333;animation:pulse 1s infinite}
+.timer.danger{color:#000;animation:pulse .5s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.6}}
+.progress-bar{width:200px;height:8px;background:#f5f5f5;border:1px solid #000;border-radius:4px;overflow:hidden}
+.progress-fill{height:100%;background:#000;border-radius:2px;transition:width .3s}
+.score-badge{background:#f5f5f5;color:#000;padding:4px 12px;border-radius:20px;font-size:.9em;border:1px solid #000}
+.section{background:#f5f5f5;border-radius:12px;padding:24px;margin-bottom:20px;border:1px solid #000;box-shadow:none}
+.section-title{font-size:1.1em;font-weight:bold;color:#000;border-left:4px solid #000;padding-left:12px;margin-bottom:16px}
+.question{padding:16px 0;border-bottom:1px solid #000}
+.question:last-child{border-bottom:none}
+.q-num{display:inline-block;background:#f5f5f5;color:#000;width:28px;height:28px;text-align:center;line-height:28px;border-radius:50%;font-size:.85em;font-weight:bold;margin-right:8px;border:2px solid #000}
+.q-text{font-size:1.05em;margin-bottom:12px;font-weight:500;color:#000}
+.options{display:grid;grid-template-columns:1fr 1fr;gap:8px;align-items:stretch}
+@media(max-width:600px){.options{grid-template-columns:1fr}}
+.option{display:flex;flex-direction:column;position:relative;min-height:0}
+.option input{display:none}
+.option label{display:block;flex:1;min-height:52px;padding:10px 14px;border:2px solid #e2e8f0;border-radius:8px;cursor:pointer;transition:all .2s;font-size:.95em;line-height:1.65;touch-action:manipulation;-webkit-user-select:none;user-select:none;color:#1a202c;background:#fff}
+ruby{ruby-align:center}
+.option label rt,.q-text rt,.reading-passage rt{font-size:.55em;line-height:1.3}
+.option label:hover{border-color:#38b2ac;background:#f0ffff}
+.option input:checked+label{border-color:#38b2ac;background:#e6fffa;color:#234e52;font-weight:600}
+.option.correct label{border-color:#48bb78!important;background:#f0fff4!important;color:#276749!important}
+.option.wrong label{border-color:#fc8181!important;background:#fff5f5!important;color:#9b2c2c!important}
+.reading-passage{background:#f5f5f5;border-left:3px solid #000;padding:16px;margin:12px 0;border-radius:0 8px 8px 0;font-size:.95em;line-height:1.9;white-space:pre-wrap;border:1px solid #000;color:#000}
+.btn-submit{display:block;width:100%;min-height:48px;padding:16px;background:#f5f5f5;color:#000;border:2px solid #000;border-radius:12px;font-size:1.1em;font-weight:bold;cursor:pointer;transition:transform .2s;margin-top:24px;touch-action:manipulation;-webkit-user-select:none;user-select:none}
+.btn-submit:hover{transform:translateY(-2px);background:#f5f5f5}
+.btn-submit:disabled{opacity:.5;cursor:not-allowed;transform:none}
+.result-panel{background:#f5f5f5;border-radius:16px;padding:32px;text-align:center;border:2px solid #000;margin-top:24px;display:none}
+.result-panel h2{font-size:1.8em;margin-bottom:8px;color:#000}
+.result-score{font-size:3em;font-weight:bold;margin:16px 0;color:#000}
+.result-score.excellent{color:#000}
+.result-score.good{color:#000}
+.result-score.fair{color:#000}
+.result-score.poor{color:#000}
+.result-detail{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:12px;margin-top:20px}
+.result-item{background:#f5f5f5;padding:12px;border-radius:8px;border:1px solid #000}
+.result-item .label{font-size:.8em;color:#000}
+.result-item .value{font-size:1.2em;font-weight:bold;color:#000}
+.explanation{display:none;margin-top:8px;padding:10px;background:#f5f5f5;border-radius:8px;font-size:.9em;border-left:3px solid #000;border:1px solid #000;color:#000}
+.explanation.show{display:block}
+.question.readonly .answer-box{display:none;background:#f0f0f0;padding:10px;margin:8px 0;border-radius:8px;border:1px solid #000;font-weight:bold}
+.question.readonly .answer-box.show{display:block}
+.question.readonly .explanation{margin-top:8px}
+</style>
+</head>
+<body>
+<div class="container">
+<header>
+<h1>過去問J.TEST A-C 2026年3月度（25分・問70-100（31問））</h1>
+<div class="header-info">
+<div class="timer" id="timer">25:00</div>
+<div class="progress-bar"><div class="progress-fill" id="progress" style="width:100%"></div></div>
+<div class="score-badge" id="scoreBadge">問70-100（31問）</div>
+</div>
+</header>
+
+<div class="section"><div class="section-title">問70-100（31問）</div>
+<div class="question">
+<div class="q-text"><span class="q-num">70</span><strong>のうみん</strong>の多くが米を作って暮らしている。</div>
+<div class="options">
+<div class="option"><input type="radio" name="q70" id="q70a" value="0"><label for="q70a">1. 泥棒</label></div>
+<div class="option"><input type="radio" name="q70" id="q70b" value="1"><label for="q70b">2. 農民</label></div>
+<div class="option"><input type="radio" name="q70" id="q70c" value="0"><label for="q70c">3. 児童</label></div>
+<div class="option"><input type="radio" name="q70" id="q70d" value="0"><label for="q70d">4. 漁村</label></div>
+</div>
+<div class="explanation">✅ 正解：2. 農民 — 「のうみん」＝農民。農業を営む人のこと。「農（のう）」は農業、「民（みん）」は人を指す。</div>
+</div>
+<div class="question">
+<div class="q-text"><span class="q-num">71</span><ruby>資料<rt>しりょう</rt></ruby>にメモを<strong>そえて</strong>渡した。</div>
+<div class="options">
+<div class="option"><input type="radio" name="q71" id="q71a" value="0"><label for="q71a">1. 鍛えて</label></div>
+<div class="option"><input type="radio" name="q71" id="q71b" value="0"><label for="q71b">2. 据えて</label></div>
+<div class="option"><input type="radio" name="q71" id="q71c" value="1"><label for="q71c">3. 添えて</label></div>
+<div class="option"><input type="radio" name="q71" id="q71d" value="0"><label for="q71d">4. 衰えて</label></div>
+</div>
+<div class="explanation">✅ 正解：3. 添えて — 「そえる」＝添える。主となるものに付け加えること。「メモを添えて渡す」＝メモも一緒につけて渡す。</div>
+</div>
+<div class="question">
+<div class="q-text"><span class="q-num">72</span>虫に刺されて足が<strong>はれた</strong>。</div>
+<div class="options">
+<div class="option"><input type="radio" name="q72" id="q72a" value="0"><label for="q72a">1. 廃れた</label></div>
+<div class="option"><input type="radio" name="q72" id="q72b" value="0"><label for="q72b">2. 膨れた</label></div>
+<div class="option"><input type="radio" name="q72" id="q72c" value="0"><label for="q72c">3. 擦れた</label></div>
+<div class="option"><input type="radio" name="q72" id="q72d" value="1"><label for="q72d">4. 腫れた</label></div>
+</div>
+<div class="explanation">✅ 正解：4. 腫れた — 「はれる」＝腫れる。体の一部が炎症などで膨らむこと。虫に刺されて腫れるは日常的な表現。2「膨れた」は「ふくれた」と読む。</div>
+</div>
+<div class="question">
+<div class="q-text"><span class="q-num">73</span>空に<strong>くも</strong>がたくさん出てきた。</div>
+<div class="options">
+<div class="option"><input type="radio" name="q73" id="q73a" value="0"><label for="q73a">1. 星</label></div>
+<div class="option"><input type="radio" name="q73" id="q73b" value="0"><label for="q73b">2. 曇</label></div>
+<div class="option"><input type="radio" name="q73" id="q73c" value="0"><label for="q73c">3. 波</label></div>
+<div class="option"><input type="radio" name="q73" id="q73d" value="1"><label for="q73d">4. 雲</label></div>
+</div>
+<div class="explanation">✅ 正解：4. 雲 — 「くも」＝雲。空に浮かぶ水蒸気の塊。2「曇（どん）」は「曇り（くもり）」で空が雲に覆われた状態を表す熟語に使うが、「くも単体」は「雲」。</div>
+</div>
+<div class="question">
+<div class="q-text"><span class="q-num">74</span>外は<strong>もうれつ</strong>な雨が降っていた。</div>
+<div class="options">
+<div class="option"><input type="radio" name="q74" id="q74a" value="1"><label for="q74a">1. 猛烈</label></div>
+<div class="option"><input type="radio" name="q74" id="q74b" value="0"><label for="q74b">2. 氾濫</label></div>
+<div class="option"><input type="radio" name="q74" id="q74c" value="0"><label for="q74c">3. 憂鬱</label></div>
+<div class="option"><input type="radio" name="q74" id="q74d" value="0"><label for="q74d">4. 沸騰</label></div>
+</div>
+<div class="explanation">✅ 正解：1. 猛烈 — 「もうれつ」＝猛烈。非常に激しい様子。「猛烈な雨」＝ものすごく激しい雨。</div>
+</div>
+<div class="question">
+<div class="q-text"><span class="q-num">75</span><ruby>穀物<rt>こくもつ</rt></ruby>を<ruby>倉庫<rt>そうこ</rt></ruby>に<strong>ちょぞう</strong>する。</div>
+<div class="options">
+<div class="option"><input type="radio" name="q75" id="q75a" value="0"><label for="q75a">1. 襲撃</label></div>
+<div class="option"><input type="radio" name="q75" id="q75b" value="1"><label for="q75b">2. 貯蔵</label></div>
+<div class="option"><input type="radio" name="q75" id="q75c" value="0"><label for="q75c">3. 混乱</label></div>
+<div class="option"><input type="radio" name="q75" id="q75d" value="0"><label for="q75d">4. 序奏</label></div>
+</div>
+<div class="explanation">✅ 正解：2. 貯蔵 — 「ちょぞう」＝貯蔵。物をたくわえておくこと。「穀物を貯蔵する」＝穀物を倉庫などに保存しておく。</div>
+</div>
+</div>
+<div class="section"><div class="section-title">漢字問題 B（15問）</div>
+<div class="question readonly">
+<div class="q-text"><span class="q-num">76</span><ruby>客<rt>きゃく</rt></ruby>を<strong>紹介</strong>してもらった。</div>
+<div class="answer-box">★ 解答：しょうかい</div>
+<div class="explanation">◆ 解説：紹介（しょうかい）＝人や物を他の人に引き合わせること。</div>
+</div>
+<div class="question readonly">
+<div class="q-text"><span class="q-num">77</span>彼は<strong>挨拶</strong>も<ruby>満足<rt>まんぞく</rt></ruby>にできない。</div>
+<div class="answer-box">★ 解答：あいさつ</div>
+<div class="explanation">◆ 解説：挨拶（あいさつ）＝人と会ったときや別れるときに交わす礼儀的な言葉や動作。</div>
+</div>
+<div class="question readonly">
+<div class="q-text"><span class="q-num">78</span>A社はこの<ruby>分野<rt>ぶんや</rt></ruby>での<strong>実績</strong>がある。</div>
+<div class="answer-box">★ 解答：じっせき</div>
+<div class="explanation">◆ 解説：実績（じっせき）＝実際に成し遂げた業績・成果のこと。</div>
+</div>
+<div class="question readonly">
+<div class="q-text"><span class="q-num">79</span><ruby>事務室<rt>じむしつ</rt></ruby>の<strong>机</strong>は大きい。</div>
+<div class="answer-box">★ 解答：つくえ</div>
+<div class="explanation">◆ 解説：机（つくえ）＝仕事や勉強をするときに使う台。</div>
+</div>
+<div class="question readonly">
+<div class="q-text"><span class="q-num">80</span><ruby>会議<rt>かいぎ</rt></ruby>は<strong>延期</strong>になった。</div>
+<div class="answer-box">★ 解答：えんき</div>
+<div class="explanation">◆ 解説：延期（えんき）＝予定していた日程を後にずらすこと。</div>
+</div>
+<div class="question readonly">
+<div class="q-text"><span class="q-num">81</span><ruby>課長<rt>かちょう</rt></ruby>に<strong>許可</strong>をもらった。</div>
+<div class="answer-box">★ 解答：きょか</div>
+<div class="explanation">◆ 解説：許可（きょか）＝してもいいと認めること・認める許し。</div>
+</div>
+<div class="question readonly">
+<div class="q-text"><span class="q-num">82</span><strong>一層</strong><ruby>努力<rt>どりょく</rt></ruby>しなければならない。</div>
+<div class="answer-box">★ 解答：いっそう</div>
+<div class="explanation">◆ 解説：一層（いっそう）＝これまで以上に・さらに。「一層努力する」＝もっと一段と努力する。</div>
+</div>
+<div class="question readonly">
+<div class="q-text"><span class="q-num">83</span><strong>改めて</strong>電話します。</div>
+<div class="answer-box">★ 解答：あらためて</div>
+<div class="explanation">◆ 解説：改めて（あらためて）＝新たに・もう一度・後日また。「改めて連絡する」はビジネス表現でよく使う。</div>
+</div>
+<div class="question readonly">
+<div class="q-text"><span class="q-num">84</span>できればもっと人を<strong>雇い</strong>たい。</div>
+<div class="answer-box">★ 解答：やとい</div>
+<div class="explanation">◆ 解説：雇う（やとう）＝賃金を払って人を働かせること。「雇いたい」＝採用したい。</div>
+</div>
+<div class="question readonly">
+<div class="q-text"><span class="q-num">85</span>我が社の<ruby>事業<rt>じぎょう</rt></ruby>を<strong>拡張</strong>したい。</div>
+<div class="answer-box">★ 解答：かくちょう</div>
+<div class="explanation">◆ 解説：拡張（かくちょう）＝規模を広げること・拡大すること。</div>
+</div>
+<div class="question readonly">
+<div class="q-text"><span class="q-num">86</span>彼はずっと<strong>黙って</strong>いた。</div>
+<div class="answer-box">★ 解答：だまって</div>
+<div class="explanation">◆ 解説：黙る（だまる）＝何も言わずにいること。「黙っていた」＝ずっと何も言わなかった。</div>
+</div>
+<div class="question readonly">
+<div class="q-text"><span class="q-num">87</span>目を<strong>凝らして</strong>よく見ないと見えない。</div>
+<div class="answer-box">★ 解答：こらして</div>
+<div class="explanation">◆ 解説：目を凝らす（めをこらす）＝しっかりと注意して見ること・じっと見つめること。</div>
+</div>
+<div class="question readonly">
+<div class="q-text"><span class="q-num">88</span><strong>化粧室</strong>で<ruby>髪<rt>かみ</rt></ruby>を整えた。</div>
+<div class="answer-box">★ 解答：けしょうしつ</div>
+<div class="explanation">◆ 解説：化粧室（けしょうしつ）＝トイレ・洗面所の丁寧な呼び方。「お化粧室」とも言う。</div>
+</div>
+<div class="question readonly">
+<div class="q-text"><span class="q-num">89</span>彼女は<strong>独創的</strong>な考えをする人だ。</div>
+<div class="answer-box">★ 解答：どくそうてき</div>
+<div class="explanation">◆ 解説：独創的（どくそうてき）＝他にはない独自のアイデアや発想を持つ様子。</div>
+</div>
+<div class="question readonly">
+<div class="q-text"><span class="q-num">90</span>この<ruby>機械<rt>きかい</rt></ruby>は<strong>丁寧</strong>に<ruby>扱<rt>あつか</rt></ruby>ってください。</div>
+<div class="answer-box">★ 解答：ていねい</div>
+<div class="explanation">◆ 解説：丁寧（ていねい）＝注意深く・礼儀正しく・細かく気を配る様子。</div>
+</div>
+</div>
+<div class="section"><div class="section-title">4 記述問題（10問）</div>
+<div class="question readonly">
+<div class="q-text"><span class="q-num">91</span>うちの<ruby>犬<rt>いぬ</rt></ruby>は、雨が＿＿＿（A）いても、<ruby>散歩<rt>さんぽ</rt></ruby>に＿＿＿（B）がります。</div>
+<div class="answer-box">★ 解答：（A）降って　（B）行きた</div>
+<div class="explanation">◆ 解説：「雨が降っていても」（逆接）＋「散歩に行きたがる」（犬が望む行動）。「〜たがる」は第三者の欲求を表す表現。「降って」は「降る→降っていても」の流れから「降って」が自然。</div>
+</div>
+<div class="question readonly">
+<div class="q-text"><span class="q-num">92</span>仕事を変えて、<ruby>給料<rt>きゅうりょう</rt></ruby>が＿＿＿（A）<ruby>反面<rt>はんめん</rt></ruby>、<ruby>残業<rt>ざんぎょう</rt></ruby>が多く、<ruby>家族<rt>かぞく</rt></ruby>と過ごす＿＿＿（B）が減ってしまった。</div>
+<div class="answer-box">★ 解答：（A）増えた　（B）時間</div>
+<div class="explanation">◆ 解説：「〜反面」は「〜という良い面がある一方で」という対比の表現。給料が増えた（良い面）反面、時間が減った（悪い面）という構造。</div>
+</div>
+<div class="question readonly">
+<div class="q-text"><span class="q-num">93</span>A：お<ruby>腹<rt>なか</rt></ruby>が＿＿＿（A）たまらないよ。<br>　　B：そこのコンビニでパンでも＿＿＿（B）来て、食べたら？</div>
+<div class="answer-box">★ 解答：（A）すいて　（B）買って</div>
+<div class="explanation">◆ 解説：（A）「お腹がすいてたまらない」＝お腹がとても空いている。（B）「買って来て食べたら？」＝コンビニで買ってきたらどうかという提案。</div>
+</div>
+<div class="question readonly">
+<div class="q-text"><span class="q-num">94</span>A：この<ruby>資料<rt>しりょう</rt></ruby>は＿＿＿（A）中に返したほうがいいですか。<br>　　B：その<ruby>資料<rt>しりょう</rt></ruby>なら、明日でもさしつかえ＿＿＿（B）ですよ。</div>
+<div class="answer-box">★ 解答：（A）今日の　（B）ない</div>
+<div class="explanation">◆ 解説：（A）「今日の中に返す」＝今日中に返す。（B）「さしつかえない」＝問題ない・差し支えない。「明日でもさしつかえない」＝明日でも構わない。</div>
+</div>
+<div class="question readonly">
+<div class="q-text"><span class="q-num">95</span><ruby>孫<rt>まご</rt></ruby>から電話で、<ruby>目指<rt>めざ</rt></ruby>していた<ruby>大学<rt>だいがく</rt></ruby>の<ruby>試験<rt>しけん</rt></ruby>に＿＿＿（A）したと聞き、私はうれしい＿＿＿（B）この上ない。</div>
+<div class="answer-box">★ 解答：（A）合格　（B）こと</div>
+<div class="explanation">◆ 解説：（A）「合格した」＝試験に受かった。（B）「うれしいことこの上ない」＝これ以上ないほどうれしい。「〜この上ない」は最上級の感情を表す慣用表現。</div>
+</div>
+<div class="question readonly">
+<div class="q-text"><span class="q-num">96</span><ruby>父<rt>ちち</rt></ruby>を<ruby>空港<rt>くうこう</rt></ruby>へ<ruby>迎<rt>むか</rt></ruby>えに行きたいので、明日、<br>【1. 会社　→　2. <strong>休む</strong>　→　3. <strong>いただく</strong>】ませんか。</div>
+<div class="answer-box">★ 解答：会社を休ませていただけ</div>
+<div class="explanation">◆ 解説：「会社を休ませていただけませんか」＝上司などに対して休むことを丁寧にお願いする表現。「〜させていただく」は謙譲語で許可を求める際に使う。</div>
+</div>
+<div class="question readonly">
+<div class="q-text"><span class="q-num">97</span>日本に来てから1か<ruby>月<rt>げつ</rt></ruby>が<ruby>経<rt>た</rt></ruby>ったが、<br>私は【1. これといって　→　2. <strong><ruby>困<rt>こま</rt></ruby>る</strong>　→　3. いる】ことはない。</div>
+<div class="answer-box">★ 解答：これといって困っていること（は）ない</div>
+<div class="explanation">◆ 解説：「これといって」＝特にこれというものは。「これといって困っていることはない」＝特に困っていることはない、という意味。</div>
+</div>
+<div class="question readonly">
+<div class="q-text"><span class="q-num">98</span>A：この仕事は簡単なので、早く終わりそうですね。<br>B：ええ。でも、【1. 簡単　→　2. 仕事　→　3. ほど】<ruby>間違<rt>まちが</rt></ruby>えやすいから、気をつけましょう。</div>
+<div class="answer-box">★ 解答：簡単な仕事ほど</div>
+<div class="explanation">◆ 解説：「〜ほど〜」＝〜であるほど（程度・比較）。「簡単な仕事ほど間違えやすい」＝簡単だからこそ油断して間違えやすいという逆説的な表現。</div>
+</div>
+<div class="question readonly">
+<div class="q-text"><span class="q-num">99</span>私が<ruby>歌手<rt>かしゅ</rt></ruby>になりたいと言ったら、【1. <ruby>友人<rt>ゆうじん</rt></ruby>　→　2. <strong><ruby>鼻<rt>はな</rt></ruby></strong>　→　3. <strong><ruby>笑う<rt>わらう</rt></ruby></strong>】ました。</div>
+<div class="answer-box">★ 解答：友人に鼻で笑われ</div>
+<div class="explanation">◆ 解説：「鼻で笑う」＝馬鹿にしてせせら笑う・軽蔑して笑う慣用句。「友人に鼻で笑われました」＝友人に馬鹿にされて笑われた。受身形（笑われ）にすることで主語（私）の立場が表れる。</div>
+</div>
+<div class="question readonly">
+<div class="q-text"><span class="q-num">100</span><ruby>故郷<rt>こきょう</rt></ruby>の【1. あまりの　→　2. <ruby>変化<rt>へんか</rt></ruby>　→　3. <ruby>言葉<rt>ことば</rt></ruby>】出なかった。</div>
+<div class="answer-box">★ 解答：あまりの変化に言葉が</div>
+<div class="explanation">◆ 解説：「あまりの〜に言葉が出ない」＝あまりにも〜すぎて、驚きや感動で言葉が出てこない、という慣用的な表現。「故郷のあまりの変化に言葉が出なかった」＝故郷がこんなにも変わってしまったことに驚いて言葉が出なかった。</div>
+</div>
+</div>
+</div>
+<button class="btn-submit" id="submitBtn" onclick="submitTest()">採点する</button>
+<div class="result-panel" id="resultPanel">
+<h2 id="resultTitle"></h2>
+<div class="result-score" id="resultScore"></div>
+<div class="result-detail" id="resultDetail"></div>
+<button class="btn-submit" onclick="location.reload()" style="margin-top:20px">もう一度</button>
+</div>
+</div>
+
+
+<script>
+const Q_START=70,Q_END=100,TOTAL=6,TIME_LIMIT=1500;
+let timeLeft=TIME_LIMIT,timerInterval,submitted=false;
+function startTimer(){
+timerInterval=setInterval(()=>{
+timeLeft--;
+const m=Math.floor(timeLeft/60),s=timeLeft%60;
+const el=document.getElementById('timer');
+el.textContent=`${m}:${s.toString().padStart(2,'0')}`;
+document.getElementById('progress').style.width=`${(timeLeft/TIME_LIMIT)*100}%`;
+if(timeLeft<=60)el.className='timer danger';
+else if(timeLeft<=300)el.className='timer warning';
+if(timeLeft<=0){clearInterval(timerInterval);submitTest();}
+},1000);
+}
+function submitTest(){
+if(submitted)return;submitted=true;
+clearInterval(timerInterval);
+let correct=0;
+const sections={kanjiA:0,kanjiAT:6,kanjiB:0,kanjiBT:15,desc:0,descT:10};
+for(let i=Q_START;i<=Q_END;i++){
+const sel=document.querySelector(`input[name="q${i}"]:checked`);
+const opts=document.querySelectorAll(`input[name="q${i}"]`);
+let isCorrect=false;
+if(sel&&sel.value==='1'){isCorrect=true;correct++;}
+if(opts.length){opts.forEach(o=>{
+const p=o.parentElement;
+if(o.value==='1')p.classList.add('correct');
+else if(o.checked&&o.value!=='1')p.classList.add('wrong');
+});}
+const qel=document.querySelector(`input[name="q${i}"]`);
+const qdiv=qel?qel.closest('.question'):null;
+if(qdiv&&!qdiv.classList.contains('readonly')){
+if(i<=75){if(isCorrect)sections.kanjiA++;}
+else if(i<=90){if(isCorrect)sections.kanjiB++;}
+else{if(isCorrect)sections.desc++;}}
+}
+document.querySelectorAll('.explanation').forEach(e=>e.classList.add('show'));
+document.querySelectorAll('.answer-box').forEach(e=>e.classList.add('show'));
+const pct=TOTAL>0?Math.round((correct/TOTAL)*100):0;
+const panel=document.getElementById('resultPanel');
+const title=document.getElementById('resultTitle');
+const score=document.getElementById('resultScore');
+const detail=document.getElementById('resultDetail');
+panel.style.display='block';
+score.textContent=`${correct} / ${TOTAL}（${pct}%）`;
+if(pct>=90){title.textContent='🎉 素晴らしい！';score.className='result-score excellent';}
+else if(pct>=70){title.textContent='👍 よくできました！';score.className='result-score good';}
+else if(pct>=50){title.textContent='📝 もう少し！';score.className='result-score fair';}
+else{title.textContent='💪 がんばりましょう！';score.className='result-score poor';}
+const timeUsed=TIME_LIMIT-timeLeft;
+detail.innerHTML=`
+<div class="result-item"><div class="label">漢字A（70-75）</div><div class="value">${sections.kanjiA}/${sections.kanjiAT}</div></div>
+<div class="result-item"><div class="label">漢字B（76-90）</div><div class="value">${sections.kanjiB}/${sections.kanjiBT}</div></div>
+<div class="result-item"><div class="label">記述（91-100）</div><div class="value">${sections.desc}/${sections.descT}</div></div>
+<div class="result-item"><div class="label">所要時間</div><div class="value">${Math.floor(timeUsed/60)}分${timeUsed%60}秒</div></div>
+`;
+document.getElementById('submitBtn').disabled=true;
+panel.scrollIntoView({behavior:'smooth'});
+}
+startTimer();
+</script>
+</body>
+</html>
