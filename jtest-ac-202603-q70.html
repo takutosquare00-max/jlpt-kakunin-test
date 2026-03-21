@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
-<title>過去問J.TEST A-C 2026年3月度（25分・問70-100（31問））</title>
+<title>過去問J.TEST A-C 2026年3月度（30分・問70-100（31問））</title>
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 html{-webkit-text-size-adjust:100%;-webkit-tap-highlight-color:transparent}
@@ -58,14 +58,16 @@ ruby{ruby-align:center}
 .question.readonly .answer-box{display:none;background:#f0f0f0;padding:10px;margin:8px 0;border-radius:8px;border:1px solid #000;font-weight:bold}
 .question.readonly .answer-box.show{display:block}
 .question.readonly .explanation{margin-top:8px}
+.submit-section{padding:16px 24px 24px;margin-bottom:20px}
+.submit-section .btn-submit{margin-top:0}
 </style>
 </head>
 <body>
 <div class="container">
 <header>
-<h1>過去問J.TEST A-C 2026年3月度（25分・問70-100（31問））</h1>
+<h1>過去問J.TEST A-C 2026年3月度（30分・問70-100（31問））</h1>
 <div class="header-info">
-<div class="timer" id="timer">25:00</div>
+<div class="timer" id="timer">30:00</div>
 <div class="progress-bar"><div class="progress-fill" id="progress" style="width:100%"></div></div>
 <div class="score-badge" id="scoreBadge">問70-100（31問）</div>
 </div>
@@ -263,7 +265,9 @@ ruby{ruby-align:center}
 </div>
 </div>
 </div>
+<div class="section submit-section">
 <button class="btn-submit" id="submitBtn" onclick="submitTest()">採点する</button>
+</div>
 <div class="result-panel" id="resultPanel">
 <h2 id="resultTitle"></h2>
 <div class="result-score" id="resultScore"></div>
@@ -274,7 +278,7 @@ ruby{ruby-align:center}
 
 
 <script>
-const Q_START=70,Q_END=100,TOTAL=6,TIME_LIMIT=1500;
+const Q_START=70,Q_END=100,TOTAL=6,TIME_LIMIT=1800;
 let timeLeft=TIME_LIMIT,timerInterval,submitted=false;
 function startTimer(){
 timerInterval=setInterval(()=>{
