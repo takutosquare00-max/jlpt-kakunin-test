@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<title>J.TEST F-G 2026/03 読解 10問（18分）</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;-webkit-tap-highlight-color:transparent}
+body{font-family:'Hiragino Kaku Gothic ProN','Hiragino Sans','Noto Sans JP',Meiryo,sans-serif;background:#f5f5f5;color:#000;line-height:1.7;padding:env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left)}
+.container{max-width:800px;margin:0 auto;padding:20px}
+header{background:#f5f5f5;color:#000;padding:24px;border-radius:16px;margin-bottom:24px;text-align:center;position:sticky;top:0;z-index:100;border:2px solid #000;box-shadow:none}
+header h1{font-size:1.5em;margin-bottom:4px}
+.header-info{display:flex;justify-content:center;gap:24px;align-items:center;margin-top:8px;flex-wrap:wrap}
+.timer{font-size:1.8em;font-weight:bold;font-variant-numeric:tabular-nums;color:#000}
+.timer.warning{color:#333;animation:pulse 1s infinite}
+.timer.danger{color:#000;animation:pulse .5s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.6}}
+.progress-bar{width:200px;height:8px;background:#f5f5f5;border:1px solid #000;border-radius:4px;overflow:hidden}
+.progress-fill{height:100%;background:#000;border-radius:2px;transition:width .3s}
+.score-badge{background:#f5f5f5;color:#000;padding:4px 12px;border-radius:20px;font-size:.9em;border:1px solid #000}
+.section{background:#f5f5f5;border-radius:12px;padding:24px;margin-bottom:20px;border:1px solid #000;box-shadow:none}
+.section-title{font-size:1.1em;font-weight:bold;color:#000;border-left:4px solid #000;padding-left:12px;margin-bottom:16px}
+.question{padding:16px 0;border-bottom:1px solid #000}
+.question:last-child{border-bottom:none}
+.q-num{display:inline-block;background:#f5f5f5;color:#000;width:28px;height:28px;text-align:center;line-height:28px;border-radius:50%;font-size:.85em;font-weight:bold;margin-right:8px;border:2px solid #000}
+.q-text{font-size:1.05em;margin-bottom:12px;font-weight:500;color:#000}
+.options{display:grid;grid-template-columns:1fr 1fr;gap:8px;align-items:stretch}
+@media(max-width:600px){.options{grid-template-columns:1fr}}
+.option{display:flex;flex-direction:column;position:relative;min-height:0}
+.option input{display:none}
+.option label{display:block;flex:1;min-height:52px;padding:10px 14px;border:2px solid #e2e8f0;border-radius:8px;cursor:pointer;transition:all .2s;font-size:.95em;line-height:1.65;touch-action:manipulation;-webkit-user-select:none;user-select:none;color:#1a202c;background:#fff}
+ruby{ruby-align:center}
+.option label rt,.q-text rt,.reading-passage rt{font-size:.55em;line-height:1.3}
+.option label:hover{border-color:#38b2ac;background:#f0ffff}
+.option input:checked+label{border-color:#38b2ac;background:#e6fffa;color:#234e52;font-weight:600}
+.option.correct label{border-color:#48bb78!important;background:#f0fff4!important;color:#276749!important}
+.option.wrong label{border-color:#fc8181!important;background:#fff5f5!important;color:#9b2c2c!important}
+.reading-passage{background:#f5f5f5;border-left:3px solid #000;padding:16px;margin:12px 0;border-radius:0 8px 8px 0;font-size:.95em;line-height:1.9;white-space:pre-wrap;border:1px solid #000;color:#000}
+.btn-submit{display:block;width:100%;min-height:48px;padding:16px;background:#f5f5f5;color:#000;border:2px solid #000;border-radius:12px;font-size:1.1em;font-weight:bold;cursor:pointer;transition:transform .2s;margin-top:24px;touch-action:manipulation;-webkit-user-select:none;user-select:none}
+.btn-submit:hover{transform:translateY(-2px);background:#f5f5f5}
+.btn-submit:disabled{opacity:.5;cursor:not-allowed;transform:none}
+.result-panel{background:#f5f5f5;border-radius:16px;padding:32px;text-align:center;border:2px solid #000;margin-top:24px;display:none}
+.result-panel h2{font-size:1.8em;margin-bottom:8px;color:#000}
+.result-score{font-size:3em;font-weight:bold;margin:16px 0;color:#000}
+.result-score.excellent{color:#000}
+.result-score.good{color:#000}
+.result-score.fair{color:#000}
+.result-score.poor{color:#000}
+.result-detail{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:12px;margin-top:20px}
+.result-item{background:#f5f5f5;padding:12px;border-radius:8px;border:1px solid #000}
+.result-item .label{font-size:.8em;color:#000}
+.result-item .value{font-size:1.2em;font-weight:bold;color:#000}
+.explanation{display:none;margin-top:8px;padding:10px;background:#f5f5f5;border-radius:8px;font-size:.9em;border-left:3px solid #000;border:1px solid #000;color:#000}
+.explanation.show{display:block}
+.submit-section{padding:16px 24px 24px;margin-bottom:20px}
+.submit-section .btn-submit{margin-top:0}
+</style>
+</head>
+<body>
+<div class="container">
+<header>
+<h1>過去問J.TEST F-G 2026年3月度【読解 10問】（18分）</h1>
+<div class="header-info">
+<div class="timer" id="timer">18:00</div>
+<div class="progress-bar"><div class="progress-fill" id="progress" style="width:100%"></div></div>
+<div class="score-badge" id="scoreBadge">読解 10問</div>
+</div>
+</header>
+
+<div class="section">
+<div class="section-title">2 <ruby>読解<rt>どっかい</rt></ruby><ruby>問題<rt>もんだい</rt></ruby> — 文章を<ruby>読<rt>よ</rt></ruby>んで<ruby>問題<rt>もんだい</rt></ruby>に<ruby>答<rt>こた</rt></ruby>えなさい（10問）</div>
+<p style="color:#000;font-size:.9em;margin-bottom:12px"><ruby>話<rt>はなし</rt></ruby>とあっているものを1・2・3・4の<ruby>中<rt>なか</rt></ruby>から1つ<ruby>選<rt>えら</rt></ruby>んでください。</p>
+
+<div class="question">
+<div class="reading-passage">わたしは、ミゲルです。ことし、メキシコから<ruby>日本<rt>にほん</rt></ruby>へ来ました。<ruby>今<rt>いま</rt></ruby>、<ruby>東京<rt>とうきょう</rt></ruby>のレストランにつとめています。まえは、メキシコのレストランで、メキシコのりょうりをつくっていました。今も、レストランで、メキシコのりょうりをつくっていますが、わたしは、<ruby>日本<rt>にほん</rt></ruby>のりょうりもつくりたいです。おなじレストランで、<ruby>島田<rt>しまだ</rt></ruby>さんは、<ruby>日本<rt>にほん</rt></ruby>のりょうりをつくっています。<ruby>島田<rt>しまだ</rt></ruby>さんは、りょうりがじょうずですから、わたしは、<ruby>島田<rt>しまだ</rt></ruby>さんから、<ruby>日本<rt>にほん</rt></ruby>のりょうりをならっています。</div>
+<div class="q-text"><span class="q-num">26</span>「わたし」について、<ruby>話<rt>はなし</rt></ruby>とあっているのは、どれですか。</div>
+<div class="options">
+<div class="option"><input type="radio" name="q26" id="q26a" value="0"><label for="q26a">1. ことし、メキシコへ来ました。</label></div>
+<div class="option"><input type="radio" name="q26" id="q26b" value="0"><label for="q26b">2. <ruby>今<rt>いま</rt></ruby>、しごとをしていません。</label></div>
+<div class="option"><input type="radio" name="q26" id="q26c" value="1"><label for="q26c">3. しごとで、メキシコのりょうりをつくっています。</label></div>
+<div class="option"><input type="radio" name="q26" id="q26d" value="0"><label for="q26d">4. <ruby>東京<rt>とうきょう</rt></ruby>のレストランへ行きたいと、おもっています。</label></div>
+</div>
+<div class="explanation">✅ 正解：3. しごとで、メキシコのりょうりをつくっています。 — 本文「今も、レストランで、メキシコのりょうりをつくっています」と一致。</div>
+</div>
+<div class="question">
+
+<div class="q-text"><span class="q-num">27</span><ruby>島田<rt>しまだ</rt></ruby>さんについて、<ruby>話<rt>はなし</rt></ruby>とあっているのは、どれですか。</div>
+<div class="options">
+<div class="option"><input type="radio" name="q27" id="q27a" value="0"><label for="q27a">1. ミゲルさんといっしょにメキシコのりょうりをつくっています。</label></div>
+<div class="option"><input type="radio" name="q27" id="q27b" value="1"><label for="q27b">2. ミゲルさんに、<ruby>日本<rt>にほん</rt></ruby>のりょうりをおしえています。</label></div>
+<div class="option"><input type="radio" name="q27" id="q27c" value="0"><label for="q27c">3. メキシコのレストランで、ミゲルさんに会いました。</label></div>
+<div class="option"><input type="radio" name="q27" id="q27d" value="0"><label for="q27d">4. りょうりは、ミゲルさんよりへたです。</label></div>
+</div>
+<div class="explanation">✅ 正解：2. ミゲルさんに、<ruby>日本<rt>にほん</rt></ruby>のりょうりをおしえています。 — 「島田さんから、日本のりょうりをならっています」＝島田さんが教えている。</div>
+</div>
+<div class="question">
+<div class="reading-passage">クミさんは、だいがくせいで、こんげつ、19さいになりました。クミさんの<ruby>大学<rt>だいがく</rt></ruby>に、<ruby>女<rt>おんな</rt></ruby>のがくせいのサッカーのチームがあります。とてもつよいチームです。クミさんは、そのチームに入って、サッカーをしています。<br>ケンさんは、クミさんのおとうとです。17さいです。スポーツは、あまりすきではありません。でも、おんがくがすきで、ピアノとバイオリンがじょうずです。ケンさんは、<ruby>来年<rt>らいねん</rt></ruby>、イタリアへ行きたいとおもっています。イタリア<ruby>人<rt>じん</rt></ruby>のせんせいに、おんがくをならいたいからです。</div>
+<div class="q-text"><span class="q-num">28</span>クミさんについて、<ruby>話<rt>はなし</rt></ruby>とあっているのは、どれですか。</div>
+<div class="options">
+<div class="option"><input type="radio" name="q28" id="q28a" value="0"><label for="q28a">1. もうすぐ、19さいのたんじょうびです。</label></div>
+<div class="option"><input type="radio" name="q28" id="q28b" value="0"><label for="q28b">2. ケンさんの、いもうとです。</label></div>
+<div class="option"><input type="radio" name="q28" id="q28c" value="0"><label for="q28c">3. <ruby>男<rt>おとこ</rt></ruby>の<ruby>人<rt>ひと</rt></ruby>たちとサッカーをしています。</label></div>
+<div class="option"><input type="radio" name="q28" id="q28d" value="1"><label for="q28d">4. <ruby>大学<rt>だいがく</rt></ruby>でサッカーをしています。</label></div>
+</div>
+<div class="explanation">✅ 正解：4. <ruby>大学<rt>だいがく</rt></ruby>でサッカーをしています。 — 「そのチームに入って、サッカーをしています」→大学でサッカー。</div>
+</div>
+<div class="question">
+
+<div class="q-text"><span class="q-num">29</span>ケンさんについて、<ruby>話<rt>はなし</rt></ruby>とあっているのは、どれですか。</div>
+<div class="options">
+<div class="option"><input type="radio" name="q29" id="q29a" value="0"><label for="q29a">1. いろいろなスポーツがすきです。</label></div>
+<div class="option"><input type="radio" name="q29" id="q29b" value="1"><label for="q29b">2. ピアノがじょうずです。</label></div>
+<div class="option"><input type="radio" name="q29" id="q29c" value="0"><label for="q29c">3. <ruby>今<rt>いま</rt></ruby>、イタリアにいます。</label></div>
+<div class="option"><input type="radio" name="q29" id="q29d" value="0"><label for="q29d">4. <ruby>大学<rt>だいがく</rt></ruby>で、おんがくの<ruby>勉強<rt>べんきょう</rt></ruby>をしています。</label></div>
+</div>
+<div class="explanation">✅ 正解：2. ピアノがじょうずです。 — 「ピアノとバイオリンがじょうずです」と一致。</div>
+</div>
+<div class="question">
+<div class="reading-passage">ノエルさんのメモ　あした（3/19） すること<br><br><ruby>午前<rt>ごぜん</rt></ruby> 7:05        いえを<ruby>出<rt>で</rt></ruby>ます。<br>    7:10〜7:40   <ruby>駅<rt>えき</rt></ruby>のまえのきっさ<ruby>店<rt>てん</rt></ruby>であさごはんを<ruby>食<rt>た</rt></ruby>べます。<br>    7:45〜10:55  <ruby>電車<rt>でんしゃ</rt></ruby>としんかんせんで、<ruby>京都<rt>きょうと</rt></ruby>へ行きます。<br>   11:05〜11:55  <ruby>京都<rt>きょうと</rt></ruby><ruby>駅<rt>えき</rt></ruby>のちかくのレストランでひるごはんを<ruby>食<rt>た</rt></ruby>べます。<br><ruby>午後<rt>ごご</rt></ruby>12:00〜12:55 ちかてつで、<ruby>森<rt>もり</rt></ruby>さんの<ruby>会社<rt>かいしゃ</rt></ruby>へ行きます。<br>    1:00〜3:30   <ruby>森<rt>もり</rt></ruby>さんの<ruby>会社<rt>かいしゃ</rt></ruby>で、<ruby>森<rt>もり</rt></ruby>さんとしごとの<ruby>話<rt>はなし</rt></ruby>をします。<br>    3:45〜5:00   きっさ<ruby>店<rt>てん</rt></ruby>で、じぶんの<ruby>会社<rt>かいしゃ</rt></ruby>にメールをします。<br>    5:30〜6:00   <ruby>京都<rt>きょうと</rt></ruby>のホテルへ行きます。<br>    6:30〜       ホテルでばんごはんを<ruby>食<rt>た</rt></ruby>べます。</div>
+<div class="q-text"><span class="q-num">30</span>ノエルさんは、ひるごはんのあと、まず<ruby>何<rt>なに</rt></ruby>をしますか。</div>
+<div class="options">
+<div class="option"><input type="radio" name="q30" id="q30a" value="1"><label for="q30a">1. ちかてつにのります。</label></div>
+<div class="option"><input type="radio" name="q30" id="q30b" value="0"><label for="q30b">2. ホテルへ行きます。</label></div>
+<div class="option"><input type="radio" name="q30" id="q30c" value="0"><label for="q30c">3. きっさ<ruby>店<rt>てん</rt></ruby>へ行きます。</label></div>
+<div class="option"><input type="radio" name="q30" id="q30d" value="0"><label for="q30d">4. <ruby>森<rt>もり</rt></ruby>さんに会います。</label></div>
+</div>
+<div class="explanation">✅ 正解：1. ちかてつにのります。 — ひるごはんの後12:00〜「ちかてつで、森さんの会社へ」→まずちかてつに乗る。</div>
+</div>
+<div class="question">
+
+<div class="q-text"><span class="q-num">31</span>メモとあっているのは、どれですか。</div>
+<div class="options">
+<div class="option"><input type="radio" name="q31" id="q31a" value="0"><label for="q31a">1. いえを<ruby>出<rt>で</rt></ruby>るまえに、あさごはんを<ruby>食<rt>た</rt></ruby>べます。</label></div>
+<div class="option"><input type="radio" name="q31" id="q31b" value="0"><label for="q31b">2. あしたのよるにうちへかえります。</label></div>
+<div class="option"><input type="radio" name="q31" id="q31c" value="1"><label for="q31c">3. しんかんせんは、<ruby>午前<rt>ごぜん</rt></ruby><ruby>中<rt>じゅう</rt></ruby>に<ruby>京都<rt>きょうと</rt></ruby><ruby>駅<rt>えき</rt></ruby>につきます。</label></div>
+<div class="option"><input type="radio" name="q31" id="q31d" value="0"><label for="q31d">4. <ruby>京都<rt>きょうと</rt></ruby><ruby>駅<rt>えき</rt></ruby>でしんかんせんにのります。</label></div>
+</div>
+<div class="explanation">✅ 正解：3. しんかんせんは、<ruby>午前<rt>ごぜん</rt></ruby><ruby>中<rt>じゅう</rt></ruby>に<ruby>京都<rt>きょうと</rt></ruby><ruby>駅<rt>えき</rt></ruby>につきます。 — 「7:45〜10:55 電車としんかんせんで京都へ」→午前中に京都着。</div>
+</div>
+<div class="question">
+<div class="reading-passage">リー→イム：「イムさん、ちかてつでもとまち<ruby>駅<rt>えき</rt></ruby>まで来ました。7ばんの<ruby>出口<rt>でぐち</rt></ruby>はなくなりましたか。6ばんと8ばんは、ありますが、7ばんがどこか、わかりません。」<br>イム→リー：「リーさん、すみません。『7ばんの<ruby>出口<rt>でぐち</rt></ruby>から<ruby>出<rt>で</rt></ruby>てください』と、わたしが言いましたが、ちがいました。7ばんの<ruby>出口<rt>でぐち</rt></ruby>は、5<ruby>月<rt>がつ</rt></ruby>のおわりまでしまっています。」<br>リー→イム：「そうですか。では、どこから<ruby>出<rt>で</rt></ruby>ますか。」<br>イム→リー：「6ばんの<ruby>出口<rt>でぐち</rt></ruby>を<ruby>出<rt>で</rt></ruby>て、50メートルくらいまえへあるいてください。おうだんほどうがありますから、わたってください。わたしたちの<ruby>会社<rt>かいしゃ</rt></ruby>は、そのすぐひだりです。」<br>リー→イム：「わかりました。すぐ行きます。」<br>イム→リー：「まっています。」</div>
+<div class="q-text"><span class="q-num">32</span>リーさんは、どこにいますか。</div>
+<div class="options">
+<div class="option"><input type="radio" name="q32" id="q32a" value="0"><label for="q32a">1. ちかてつの<ruby>駅<rt>えき</rt></ruby>と<ruby>駅<rt>えき</rt></ruby>の<ruby>間<rt>あいだ</rt></ruby>です。</label></div>
+<div class="option"><input type="radio" name="q32" id="q32b" value="0"><label for="q32b">2. イムさんの<ruby>会社<rt>かいしゃ</rt></ruby>です。</label></div>
+<div class="option"><input type="radio" name="q32" id="q32c" value="0"><label for="q32c">3. 7ばんの<ruby>出口<rt>でぐち</rt></ruby>の<ruby>外<rt>そと</rt></ruby>です。</label></div>
+<div class="option"><input type="radio" name="q32" id="q32d" value="1"><label for="q32d">4. もとまち<ruby>駅<rt>えき</rt></ruby>です。</label></div>
+</div>
+<div class="explanation">✅ 正解：4. もとまち<ruby>駅<rt>えき</rt></ruby>です。 — 「ちかてつでもとまち駅まで来ました」→もとまち駅にいる。</div>
+</div>
+<div class="question">
+
+<div class="q-text"><span class="q-num">33</span>リーさんは、このあと、まず<ruby>何<rt>なに</rt></ruby>をしますか。</div>
+<div class="options">
+<div class="option"><input type="radio" name="q33" id="q33a" value="0"><label for="q33a">1. もとまち<ruby>駅<rt>えき</rt></ruby>でイムさんをまちます。</label></div>
+<div class="option"><input type="radio" name="q33" id="q33b" value="1"><label for="q33b">2. 6ばんの<ruby>出口<rt>でぐち</rt></ruby>へ行きます。</label></div>
+<div class="option"><input type="radio" name="q33" id="q33c" value="0"><label for="q33c">3. おうだんほどうをわたります。</label></div>
+<div class="option"><input type="radio" name="q33" id="q33d" value="0"><label for="q33d">4. ちかてつにのります。</label></div>
+</div>
+<div class="explanation">✅ 正解：2. 6ばんの<ruby>出口<rt>でぐち</rt></ruby>へ行きます。 — イムの指示①6ばんの出口を出る→まず6番出口へ行く。</div>
+</div>
+<div class="question">
+<div class="reading-passage">わたしがすんでいるまちに、「まんまるマーケット」というところがありました。「まんまるマーケット」には、「ひろば」とながいたてものがありました。「ひろば」は、荷もたっていないひろいところで、いつもは、みんながすきなところをあるいたり、すきなところであそんだりしていました。でも、ときどき、ゆうめいな<ruby>人<rt>ひと</rt></ruby>が来て、うたをうたったり、おもしろい<ruby>話<rt>はなし</rt></ruby>をしたりしました。「ひろば」のちかくに、ながいたてものがありました。1かいしかないたてものでしたが、ちいさい<ruby>店<rt>みせ</rt></ruby>がたくさん入っていて、どの<ruby>店<rt>みせ</rt></ruby>も、そのすぐまえが「ひろば」でした。<br>「まんまるマーケット」は、10<ruby>年<rt>ねん</rt></ruby>まえになくなりました。<ruby>今<rt>いま</rt></ruby>は、<ruby>新<rt>あたら</rt></ruby>しいたてものがふたつたちました。ひとつは、おおきいアパートで、もうひとつは、1かいから10かいまでのデパートです。デパートには、まえよりもおおきくて、りっぱな<ruby>店<rt>みせ</rt></ruby>があります。でも、わたしは、あまり行かなくなりました。</div>
+<div class="q-text"><span class="q-num">34</span>「まんまるマーケット」について、<ruby>話<rt>はなし</rt></ruby>とあっているのは、どれですか。</div>
+<div class="options">
+<div class="option"><input type="radio" name="q34" id="q34a" value="0"><label for="q34a">1. 10<ruby>年<rt>ねん</rt></ruby>まえに、できました。</label></div>
+<div class="option"><input type="radio" name="q34" id="q34b" value="0"><label for="q34b">2. 「ひろば」の<ruby>中<rt>なか</rt></ruby>に<ruby>店<rt>みせ</rt></ruby>がありました。</label></div>
+<div class="option"><input type="radio" name="q34" id="q34c" value="1"><label for="q34c">3. ときどき、ゆうめいな<ruby>人<rt>ひと</rt></ruby>が来ました。</label></div>
+<div class="option"><input type="radio" name="q34" id="q34d" value="0"><label for="q34d">4. ながいたてものの2かいにも<ruby>店<rt>みせ</rt></ruby>がありました。</label></div>
+</div>
+<div class="explanation">✅ 正解：3. ときどき、ゆうめいな<ruby>人<rt>ひと</rt></ruby>が来ました。 — 「ときどき、ゆうめいな人が来て、うたをうたったり…」と一致。</div>
+</div>
+<div class="question">
+
+<div class="q-text"><span class="q-num">35</span>「わたし」について、<ruby>話<rt>はなし</rt></ruby>とあっているのは、どれですか。</div>
+<div class="options">
+<div class="option"><input type="radio" name="q35" id="q35a" value="1"><label for="q35a">1. 「まんまるマーケット」があったまちにすんでいます。</label></div>
+<div class="option"><input type="radio" name="q35" id="q35b" value="0"><label for="q35b">2. よく「まんまるマーケット」で、うたをうたいました。</label></div>
+<div class="option"><input type="radio" name="q35" id="q35c" value="0"><label for="q35c">3. デパートのちかくのアパートにすんでいます。</label></div>
+<div class="option"><input type="radio" name="q35" id="q35d" value="0"><label for="q35d">4. まえは、あまり「まんまるマーケット」へ行きませんでした。</label></div>
+</div>
+<div class="explanation">✅ 正解：1. 「まんまるマーケット」があったまちにすんでいます。 — 「わたしがすんでいるまちに、『まんまるマーケット』というところがありました」→今も同じまちに住んでいる。</div>
+</div>
+</div>
+<div class="section submit-section">
+<button class="btn-submit" id="submitBtn" onclick="submitTest()">採点する</button>
+</div>
+<div class="result-panel" id="resultPanel">
+<h2 id="resultTitle"></h2>
+<div class="result-score" id="resultScore"></div>
+<div class="result-detail" id="resultDetail"></div>
+<button class="btn-submit" onclick="location.reload()" style="margin-top:20px">もう一度</button>
+</div>
+</div>
+
+<script>
+const Q_START=26,Q_END=35,TOTAL=10,TIME_LIMIT=1080;
+let timeLeft=TIME_LIMIT,timerInterval,submitted=false;
+function startTimer(){
+timerInterval=setInterval(()=>{
+timeLeft--;
+const m=Math.floor(timeLeft/60),s=timeLeft%60;
+const el=document.getElementById('timer');
+el.textContent=`${m}:${s.toString().padStart(2,'0')}`;
+document.getElementById('progress').style.width=`${(timeLeft/TIME_LIMIT)*100}%`;
+if(timeLeft<=60)el.className='timer danger';
+else if(timeLeft<=300)el.className='timer warning';
+if(timeLeft<=0){clearInterval(timerInterval);submitTest();}
+},1000);
+}
+function submitTest(){
+if(submitted)return;submitted=true;
+clearInterval(timerInterval);
+let correct=0;
+for(let i=Q_START;i<=Q_END;i++){
+const sel=document.querySelector(`input[name="q${i}"]:checked`);
+const opts=document.querySelectorAll(`input[name="q${i}"]`);
+let isCorrect=false;
+if(sel&&sel.value==='1'){isCorrect=true;correct++;}
+if(opts.length){opts.forEach(o=>{
+const p=o.parentElement;
+if(o.value==='1')p.classList.add('correct');
+else if(o.checked&&o.value!=='1')p.classList.add('wrong');
+});}
+}
+document.querySelectorAll('.explanation').forEach(e=>e.classList.add('show'));
+document.querySelectorAll('.answer-box').forEach(e=>e.classList.add('show'));
+const pct=TOTAL>0?Math.round((correct/TOTAL)*100):0;
+const panel=document.getElementById('resultPanel');
+const title=document.getElementById('resultTitle');
+const score=document.getElementById('resultScore');
+const detail=document.getElementById('resultDetail');
+panel.style.display='block';
+score.textContent=`${correct} / ${TOTAL}（${pct}%）`;
+if(pct>=90){title.textContent='🎉 素晴らしい！';score.className='result-score excellent';}
+else if(pct>=70){title.textContent='👍 よくできました！';score.className='result-score good';}
+else if(pct>=50){title.textContent='📝 もう少し！';score.className='result-score fair';}
+else{title.textContent='💪 がんばりましょう！';score.className='result-score poor';}
+const timeUsed=TIME_LIMIT-timeLeft;
+detail.innerHTML=`
+<div class="result-item"><div class="label">読解</div><div class="value">${correct}/${TOTAL}</div></div>
+<div class="result-item"><div class="label">所要時間</div><div class="value">${Math.floor(timeUsed/60)}分${timeUsed%60}秒</div></div>
+`;
+document.getElementById('submitBtn').disabled=true;
+panel.scrollIntoView({behavior:'smooth'});
+}
+startTimer();
+</script>
+</body>
+</html>
