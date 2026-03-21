@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<title>J.TEST A-C 2026/03 語彙B 10問（5分）</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;-webkit-tap-highlight-color:transparent}
+body{font-family:'Hiragino Kaku Gothic ProN','Hiragino Sans','Noto Sans JP',Meiryo,sans-serif;background:#f5f5f5;color:#000;line-height:1.7;padding:env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left)}
+.container{max-width:800px;margin:0 auto;padding:20px}
+header{background:#f5f5f5;color:#000;padding:24px;border-radius:16px;margin-bottom:24px;text-align:center;position:sticky;top:0;z-index:100;border:2px solid #000;box-shadow:none}
+header h1{font-size:1.5em;margin-bottom:4px}
+.header-info{display:flex;justify-content:center;gap:24px;align-items:center;margin-top:8px;flex-wrap:wrap}
+.timer{font-size:1.8em;font-weight:bold;font-variant-numeric:tabular-nums;color:#000}
+.timer.warning{color:#333;animation:pulse 1s infinite}
+.timer.danger{color:#000;animation:pulse .5s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.6}}
+.progress-bar{width:200px;height:8px;background:#f5f5f5;border:1px solid #000;border-radius:4px;overflow:hidden}
+.progress-fill{height:100%;background:#000;border-radius:2px;transition:width .3s}
+.score-badge{background:#f5f5f5;color:#000;padding:4px 12px;border-radius:20px;font-size:.9em;border:1px solid #000}
+.section{background:#f5f5f5;border-radius:12px;padding:24px;margin-bottom:20px;border:1px solid #000;box-shadow:none}
+.section-title{font-size:1.1em;font-weight:bold;color:#000;border-left:4px solid #000;padding-left:12px;margin-bottom:16px}
+.question{padding:16px 0;border-bottom:1px solid #000}
+.question:last-child{border-bottom:none}
+.q-num{display:inline-block;background:#f5f5f5;color:#000;width:28px;height:28px;text-align:center;line-height:28px;border-radius:50%;font-size:.85em;font-weight:bold;margin-right:8px;border:2px solid #000}
+.q-text{font-size:1.05em;margin-bottom:12px;font-weight:500;color:#000}
+.options{display:grid;grid-template-columns:1fr 1fr;gap:8px;align-items:stretch}
+@media(max-width:600px){.options{grid-template-columns:1fr}}
+.option{display:flex;flex-direction:column;position:relative;min-height:0}
+.option input{display:none}
+.option label{display:block;flex:1;min-height:52px;padding:10px 14px;border:2px solid #e2e8f0;border-radius:8px;cursor:pointer;transition:all .2s;font-size:.95em;line-height:1.65;touch-action:manipulation;-webkit-user-select:none;user-select:none;color:#1a202c;background:#fff}
+ruby{ruby-align:center}
+.option label rt,.q-text rt,.reading-passage rt{font-size:.55em;line-height:1.3}
+.option label:hover{border-color:#38b2ac;background:#f0ffff}
+.option input:checked+label{border-color:#38b2ac;background:#e6fffa;color:#234e52;font-weight:600}
+.option.correct label{border-color:#48bb78!important;background:#f0fff4!important;color:#276749!important}
+.option.wrong label{border-color:#fc8181!important;background:#fff5f5!important;color:#9b2c2c!important}
+.reading-passage{background:#f5f5f5;border-left:3px solid #000;padding:16px;margin:12px 0;border-radius:0 8px 8px 0;font-size:.95em;line-height:1.9;white-space:pre-wrap;border:1px solid #000;color:#000}
+.btn-submit{display:block;width:100%;min-height:48px;padding:16px;background:#f5f5f5;color:#000;border:2px solid #000;border-radius:12px;font-size:1.1em;font-weight:bold;cursor:pointer;transition:transform .2s;margin-top:24px;touch-action:manipulation;-webkit-user-select:none;user-select:none}
+.btn-submit:hover{transform:translateY(-2px);background:#f5f5f5}
+.btn-submit:disabled{opacity:.5;cursor:not-allowed;transform:none}
+.result-panel{background:#f5f5f5;border-radius:16px;padding:32px;text-align:center;border:2px solid #000;margin-top:24px;display:none}
+.result-panel h2{font-size:1.8em;margin-bottom:8px;color:#000}
+.result-score{font-size:3em;font-weight:bold;margin:16px 0;color:#000}
+.result-score.excellent{color:#000}
+.result-score.good{color:#000}
+.result-score.fair{color:#000}
+.result-score.poor{color:#000}
+.result-detail{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:12px;margin-top:20px}
+.result-item{background:#f5f5f5;padding:12px;border-radius:8px;border:1px solid #000}
+.result-item .label{font-size:.8em;color:#000}
+.result-item .value{font-size:1.2em;font-weight:bold;color:#000}
+.explanation{display:none;margin-top:8px;padding:10px;background:#f5f5f5;border-radius:8px;font-size:.9em;border-left:3px solid #000;border:1px solid #000;color:#000}
+.explanation.show{display:block}
+.question.readonly .answer-box{display:none;background:#f0f0f0;padding:10px;margin:8px 0;border-radius:8px;border:1px solid #000;font-weight:bold}
+.question.readonly .answer-box.show{display:block}
+.question.readonly .explanation{margin-top:8px}
+.time-budget-panel{margin-bottom:20px;padding:16px 20px;background:#fafafa;border:1px solid #000;border-radius:12px;font-size:.9em}
+.time-budget-title{font-weight:bold;margin-bottom:8px;font-size:1em}
+.time-budget-intro{color:#333;margin-bottom:12px;line-height:1.55;font-size:.88em}
+.time-budget-table{width:100%;border-collapse:collapse;font-size:.82em}
+.time-budget-table th,.time-budget-table td{border:1px solid #000;padding:7px 8px;text-align:left;vertical-align:top}
+.time-budget-table th{background:#eee}
+.time-budget-table td:nth-child(3),.time-budget-table td:nth-child(4){text-align:center;font-variant-numeric:tabular-nums;white-space:nowrap}
+.time-budget-table tfoot td{font-weight:bold}
+@media(max-width:600px){.time-budget-table{font-size:.78em}.time-budget-table th,.time-budget-table td{padding:5px 6px}}
+.submit-section{padding:16px 24px 24px;margin-bottom:20px}
+.submit-section .btn-submit{margin-top:0}
+</style>
+</head>
+<body>
+<div class="container">
+<header>
+<h1>過去問J.TEST A-C 2026年3月度【語彙B 10問】（5分）</h1>
+<div class="header-info">
+<div class="timer" id="timer">5:00</div>
+<div class="progress-bar"><div class="progress-fill" id="progress" style="width:100%"></div></div>
+<div class="score-badge" id="scoreBadge">語彙B 10問</div>
+</div>
+</header>
+
+<div class="section"><div class="section-title">文法・語彙問題 B（10問）</div>
+<div class="question">
+<div class="q-text"><span class="q-num">21</span><ruby>晩<rt>ばん</rt></ruby>ご飯を作った時に（　）<ruby>材料<rt>ざいりょう</rt></ruby>で、次の日の朝ご飯を作った。</div>
+<div class="options">
+<div class="option"><input type="radio" name="q21" id="q21a" value="0"><label for="q21a">1. 吐いた</label></div>
+<div class="option"><input type="radio" name="q21" id="q21b" value="0"><label for="q21b">2. 組んだ</label></div>
+<div class="option"><input type="radio" name="q21" id="q21c" value="1"><label for="q21c">3. 余った</label></div>
+<div class="option"><input type="radio" name="q21" id="q21d" value="0"><label for="q21d">4. 枯れた</label></div>
+</div>
+<div class="explanation">✅ 正解：3. 余った — 「余る」＝使い切れずに残る。「余った材料」＝使わずに残った食材。1「吐いた」は吐き出す、2「組んだ」は組み合わせる、4「枯れた」は植物が枯れるという意味で不自然。</div>
+</div>
+<div class="question">
+<div class="q-text"><span class="q-num">22</span>毎年、<ruby>花見<rt>はなみ</rt></ruby>や<ruby>運動会<rt>うんどうかい</rt></ruby>など会社の（　）に参加している。</div>
+<div class="options">
+<div class="option"><input type="radio" name="q22" id="q22a" value="0"><label for="q22a">1. 事件</label></div>
+<div class="option"><input type="radio" name="q22" id="q22b" value="0"><label for="q22b">2. <ruby>秘密<rt>ひみつ</rt></ruby></label></div>
+<div class="option"><input type="radio" name="q22" id="q22c" value="1"><label for="q22c">3. <ruby>行事<rt>ぎょうじ</rt></ruby></label></div>
+<div class="option"><input type="radio" name="q22" id="q22d" value="0"><label for="q22d">4. <ruby>思い出<rt>おもいで</rt></ruby></label></div>
+</div>
+<div class="explanation">✅ 正解：3. <ruby>行事<rt>ぎょうじ</rt></ruby> — 「行事」＝決まった時期に行われるイベント・催し物のこと。花見や運動会は会社が定期的に行う催し物なので「行事」が最も適切。1「事件」は問題・トラブル、2「秘密」は隠し事、4「思い出」は記憶・メモリー。</div>
+</div>
+<div class="question">
+<div class="q-text"><span class="q-num">23</span><ruby>陸上<rt>りくじょう</rt></ruby><ruby>選手<rt>せんしゅ</rt></ruby>の彼は、毎日（　）を走っている。</div>
+<div class="options">
+<div class="option"><input type="radio" name="q23" id="q23a" value="0"><label for="q23a">1. トレーニング</label></div>
+<div class="option"><input type="radio" name="q23" id="q23b" value="0"><label for="q23b">2. ヘリコプター</label></div>
+<div class="option"><input type="radio" name="q23" id="q23c" value="0"><label for="q23c">3. カロリー</label></div>
+<div class="option"><input type="radio" name="q23" id="q23d" value="1"><label for="q23d">4. グラウンド</label></div>
+</div>
+<div class="explanation">✅ 正解：4. グラウンド — 「グラウンド（ground）」＝運動場・競技場。「グラウンドを走る」は自然な表現。1「トレーニングをする」は言えるが「トレーニングを走る」とは言わない。3「カロリーを消費する」は言えるが「カロリーを走る」とは言わない。</div>
+</div>
+<div class="question">
+<div class="q-text"><span class="q-num">24</span>私は（　）ので、よく<ruby>失敗<rt>しっぱい</rt></ruby>をする。</div>
+<div class="options">
+<div class="option"><input type="radio" name="q24" id="q24a" value="1"><label for="q24a">1. そそっかしい</label></div>
+<div class="option"><input type="radio" name="q24" id="q24b" value="0"><label for="q24b">2. あっけない</label></div>
+<div class="option"><input type="radio" name="q24" id="q24c" value="0"><label for="q24c">3. まぶしい</label></div>
+<div class="option"><input type="radio" name="q24" id="q24d" value="0"><label for="q24d">4. 等しい</label></div>
+</div>
+<div class="explanation">✅ 正解：1. そそっかしい — 「そそっかしい」＝落ち着きがなく、うっかりミスをしやすい性格。2「あっけない」は拍子抜けするほど簡単・呆気ない様子、3「まぶしい」は光が強い様子、4「等しい」は同じ・等しいという意味。</div>
+</div>
+<div class="question">
+<div class="q-text"><span class="q-num">25</span><ruby>片付<rt>かたづ</rt></ruby>けが済み、部屋が（　）した。</div>
+<div class="options">
+<div class="option"><input type="radio" name="q25" id="q25a" value="1"><label for="q25a">1. すっきり</label></div>
+<div class="option"><input type="radio" name="q25" id="q25b" value="0"><label for="q25b">2. ぴったり</label></div>
+<div class="option"><input type="radio" name="q25" id="q25c" value="0"><label for="q25c">3. ばったり</label></div>
+<div class="option"><input type="radio" name="q25" id="q25d" value="0"><label for="q25d">4. にっこり</label></div>
+</div>
+<div class="explanation">✅ 正解：1. すっきり — 「すっきりする」＝散らかりがなくなってきれいに整った様子。片付けが終わった後の部屋の状態を表すのに最も適切。2「ぴったり」はぴったり合う様子、3「ばったり」は突然倒れたり偶然出会う様子、4「にっこり」は笑顔の様子。</div>
+</div>
+<div class="question">
+<div class="q-text"><span class="q-num">26</span>一年前事故にあって、<ruby>命<rt>いのち</rt></ruby>も（　）なるほどの大けがをした。</div>
+<div class="options">
+<div class="option"><input type="radio" name="q26" id="q26a" value="0"><label for="q26a">1. <ruby>甚<rt>はなは</rt></ruby>だしく</label></div>
+<div class="option"><input type="radio" name="q26" id="q26b" value="1"><label for="q26b">2. <ruby>危<rt>あや</rt></ruby>うく</label></div>
+<div class="option"><input type="radio" name="q26" id="q26c" value="0"><label for="q26c">3. <ruby>険<rt>けわ</rt></ruby>しく</label></div>
+<div class="option"><input type="radio" name="q26" id="q26d" value="0"><label for="q26d">4. きつく</label></div>
+</div>
+<div class="explanation">✅ 正解：2. <ruby>危<rt>あや</rt></ruby>うく — 「命も危うくなるほど」＝命が危険になりそうなほどの大けが。「危うい」＝危険な状態に近い・ぎりぎりのところ。1「甚だしく」は「程度がひどい」、3「険しく」は山道などの厳しさ、4「きつく」は「厳しく・強く」で「命も」の後には続かない。</div>
+</div>
+<div class="question">
+<div class="q-text"><span class="q-num">27</span>私は<ruby>宣伝<rt>せんでん</rt></ruby>方法のアイディアを出すことで売り上げに（　）している。</div>
+<div class="options">
+<div class="option"><input type="radio" name="q27" id="q27a" value="0"><label for="q27a">1. <ruby>尊重<rt>そんちょう</rt></ruby></label></div>
+<div class="option"><input type="radio" name="q27" id="q27b" value="0"><label for="q27b">2. <ruby>循環<rt>じゅんかん</rt></ruby></label></div>
+<div class="option"><input type="radio" name="q27" id="q27c" value="0"><label for="q27c">3. <ruby>発揮<rt>はっき</rt></ruby></label></div>
+<div class="option"><input type="radio" name="q27" id="q27d" value="1"><label for="q27d">4. <ruby>貢献<rt>こうけん</rt></ruby></label></div>
+</div>
+<div class="explanation">✅ 正解：4. <ruby>貢献<rt>こうけん</rt></ruby> — 「貢献する」＝役に立つ・力を与える。「売り上げに貢献する」は自然なビジネス表現。1「尊重する」は大切にする、2「循環する」は繰り返し回る、3「発揮する」は能力を出す意味で「〜に発揮する」とは言わない（「実力を発揮する」）。</div>
+</div>
+<div class="question">
+<div class="q-text"><span class="q-num">28</span>新しいシステムを<ruby>導入<rt>どうにゅう</rt></ruby>することが良いとは、（　）言えない。</div>
+<div class="options">
+<div class="option"><input type="radio" name="q28" id="q28a" value="0"><label for="q28a">1. ひいては</label></div>
+<div class="option"><input type="radio" name="q28" id="q28b" value="0"><label for="q28b">2. まして</label></div>
+<div class="option"><input type="radio" name="q28" id="q28c" value="1"><label for="q28c">3. <ruby>一概<rt>いちがい</rt></ruby>に</label></div>
+<div class="option"><input type="radio" name="q28" id="q28d" value="0"><label for="q28d">4. ことごとく</label></div>
+</div>
+<div class="explanation">✅ 正解：3. <ruby>一概<rt>いちがい</rt></ruby>に — 「一概に言えない」＝一律に・すべての場合に当てはまるとは言えない。状況によって異なる場合に使う。「一概に悪いとは言えない」「一概には判断できない」など。1「ひいては」は「さらに発展して」、2「まして」は「さらに言えば」、4「ことごとく」は「すべて・残らず」の意味。</div>
+</div>
+<div class="question">
+<div class="q-text"><span class="q-num">29</span>ご（　）いただきましたとおり、この<ruby>企画<rt>きかく</rt></ruby>には問題点がありました。</div>
+<div class="options">
+<div class="option"><input type="radio" name="q29" id="q29a" value="0"><label for="q29a">1. <ruby>勧誘<rt>かんゆう</rt></ruby></label></div>
+<div class="option"><input type="radio" name="q29" id="q29b" value="0"><label for="q29b">2. <ruby>決断<rt>けつだん</rt></ruby></label></div>
+<div class="option"><input type="radio" name="q29" id="q29c" value="1"><label for="q29c">3. <ruby>指摘<rt>してき</rt></ruby></label></div>
+<div class="option"><input type="radio" name="q29" id="q29d" value="0"><label for="q29d">4. <ruby>寄贈<rt>きぞう</rt></ruby></label></div>
+</div>
+<div class="explanation">✅ 正解：3. <ruby>指摘<rt>してき</rt></ruby> — 「ご指摘いただきましたとおり」＝「おっしゃった通り・教えていただいた通り」。相手が問題点を指摘してくれたことを受けて使う丁寧な表現。1「勧誘」は誘うこと、2「決断」は決めること、4「寄贈」は物を贈ること。</div>
+</div>
+<div class="question">
+<div class="q-text"><span class="q-num">30</span>（　）が<ruby>滞<rt>とどこお</rt></ruby>り、<ruby>品揃<rt>しなぞろ</rt></ruby>えに<ruby>影響<rt>えいきょう</rt></ruby>が出ている。</div>
+<div class="options">
+<div class="option"><input type="radio" name="q30" id="q30a" value="1"><label for="q30a">1. <ruby>物流<rt>ぶつりゅう</rt></ruby></label></div>
+<div class="option"><input type="radio" name="q30" id="q30b" value="0"><label for="q30b">2. <ruby>品質<rt>ひんしつ</rt></ruby></label></div>
+<div class="option"><input type="radio" name="q30" id="q30c" value="0"><label for="q30c">3. <ruby>論議<rt>ろんぎ</rt></ruby></label></div>
+<div class="option"><input type="radio" name="q30" id="q30d" value="0"><label for="q30d">4. <ruby>豊作<rt>ほうさく</rt></ruby></label></div>
+</div>
+<div class="explanation">✅ 正解：1. <ruby>物流<rt>ぶつりゅう</rt></ruby> — 「物流が滞る」＝商品の輸送・流通がスムーズに進まないこと。物流が滞ると商品が届かなくなり、品揃えに影響が出るという文脈に自然につながる。2「品質」は商品の質、3「論議」は議論、4「豊作」は作物がよく取れること。</div>
+</div>
+</div>
+<div class="section submit-section">
+<button class="btn-submit" id="submitBtn" onclick="submitTest()">採点する</button>
+</div>
+<div class="result-panel" id="resultPanel">
+<h2 id="resultTitle"></h2>
+<div class="result-score" id="resultScore"></div>
+<div class="result-detail" id="resultDetail"></div>
+<button class="btn-submit" onclick="location.reload()" style="margin-top:20px">もう一度</button>
+</div>
+</div>
+
+<script>
+const Q_START=21,Q_END=30,TOTAL=10,TIME_LIMIT=300;
+let timeLeft=TIME_LIMIT,timerInterval,submitted=false;
+function startTimer(){
+timerInterval=setInterval(()=>{
+timeLeft--;
+const m=Math.floor(timeLeft/60),s=timeLeft%60;
+const el=document.getElementById('timer');
+el.textContent=`${m}:${s.toString().padStart(2,'0')}`;
+document.getElementById('progress').style.width=`${(timeLeft/TIME_LIMIT)*100}%`;
+if(timeLeft<=60)el.className='timer danger';
+else if(timeLeft<=300)el.className='timer warning';
+if(timeLeft<=0){clearInterval(timerInterval);submitTest();}
+},1000);
+}
+function submitTest(){
+if(submitted)return;submitted=true;
+clearInterval(timerInterval);
+let correct=0;
+for(let i=Q_START;i<=Q_END;i++){
+const sel=document.querySelector(`input[name="q${i}"]:checked`);
+const opts=document.querySelectorAll(`input[name="q${i}"]`);
+let isCorrect=false;
+if(sel&&sel.value==='1'){isCorrect=true;correct++;}
+if(opts.length){opts.forEach(o=>{
+const p=o.parentElement;
+if(o.value==='1')p.classList.add('correct');
+else if(o.checked&&o.value!=='1')p.classList.add('wrong');
+});}
+}
+document.querySelectorAll('.explanation').forEach(e=>e.classList.add('show'));
+document.querySelectorAll('.answer-box').forEach(e=>e.classList.add('show'));
+const pct=TOTAL>0?Math.round((correct/TOTAL)*100):0;
+const panel=document.getElementById('resultPanel');
+const title=document.getElementById('resultTitle');
+const score=document.getElementById('resultScore');
+const detail=document.getElementById('resultDetail');
+panel.style.display='block';
+score.textContent=`${correct} / ${TOTAL}（${pct}%）`;
+if(pct>=90){title.textContent='🎉 素晴らしい！';score.className='result-score excellent';}
+else if(pct>=70){title.textContent='👍 よくできました！';score.className='result-score good';}
+else if(pct>=50){title.textContent='📝 もう少し！';score.className='result-score fair';}
+else{title.textContent='💪 がんばりましょう！';score.className='result-score poor';}
+const timeUsed=TIME_LIMIT-timeLeft;
+detail.innerHTML=`
+<div class="result-item"><div class="label">文法・語彙B</div><div class="value">${correct}/${TOTAL}</div></div>
+<div class="result-item"><div class="label">所要時間</div><div class="value">${Math.floor(timeUsed/60)}分${timeUsed%60}秒</div></div>
+`;
+document.getElementById('submitBtn').disabled=true;
+panel.scrollIntoView({behavior:'smooth'});
+}
+startTimer();
+</script>
+</body>
+</html>

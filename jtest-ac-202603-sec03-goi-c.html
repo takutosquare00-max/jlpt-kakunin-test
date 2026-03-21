@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<title>J.TEST A-C 2026/03 語彙C 10問（5分）</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;-webkit-tap-highlight-color:transparent}
+body{font-family:'Hiragino Kaku Gothic ProN','Hiragino Sans','Noto Sans JP',Meiryo,sans-serif;background:#f5f5f5;color:#000;line-height:1.7;padding:env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left)}
+.container{max-width:800px;margin:0 auto;padding:20px}
+header{background:#f5f5f5;color:#000;padding:24px;border-radius:16px;margin-bottom:24px;text-align:center;position:sticky;top:0;z-index:100;border:2px solid #000;box-shadow:none}
+header h1{font-size:1.5em;margin-bottom:4px}
+.header-info{display:flex;justify-content:center;gap:24px;align-items:center;margin-top:8px;flex-wrap:wrap}
+.timer{font-size:1.8em;font-weight:bold;font-variant-numeric:tabular-nums;color:#000}
+.timer.warning{color:#333;animation:pulse 1s infinite}
+.timer.danger{color:#000;animation:pulse .5s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.6}}
+.progress-bar{width:200px;height:8px;background:#f5f5f5;border:1px solid #000;border-radius:4px;overflow:hidden}
+.progress-fill{height:100%;background:#000;border-radius:2px;transition:width .3s}
+.score-badge{background:#f5f5f5;color:#000;padding:4px 12px;border-radius:20px;font-size:.9em;border:1px solid #000}
+.section{background:#f5f5f5;border-radius:12px;padding:24px;margin-bottom:20px;border:1px solid #000;box-shadow:none}
+.section-title{font-size:1.1em;font-weight:bold;color:#000;border-left:4px solid #000;padding-left:12px;margin-bottom:16px}
+.question{padding:16px 0;border-bottom:1px solid #000}
+.question:last-child{border-bottom:none}
+.q-num{display:inline-block;background:#f5f5f5;color:#000;width:28px;height:28px;text-align:center;line-height:28px;border-radius:50%;font-size:.85em;font-weight:bold;margin-right:8px;border:2px solid #000}
+.q-text{font-size:1.05em;margin-bottom:12px;font-weight:500;color:#000}
+.options{display:grid;grid-template-columns:1fr 1fr;gap:8px;align-items:stretch}
+@media(max-width:600px){.options{grid-template-columns:1fr}}
+.option{display:flex;flex-direction:column;position:relative;min-height:0}
+.option input{display:none}
+.option label{display:block;flex:1;min-height:52px;padding:10px 14px;border:2px solid #e2e8f0;border-radius:8px;cursor:pointer;transition:all .2s;font-size:.95em;line-height:1.65;touch-action:manipulation;-webkit-user-select:none;user-select:none;color:#1a202c;background:#fff}
+ruby{ruby-align:center}
+.option label rt,.q-text rt,.reading-passage rt{font-size:.55em;line-height:1.3}
+.option label:hover{border-color:#38b2ac;background:#f0ffff}
+.option input:checked+label{border-color:#38b2ac;background:#e6fffa;color:#234e52;font-weight:600}
+.option.correct label{border-color:#48bb78!important;background:#f0fff4!important;color:#276749!important}
+.option.wrong label{border-color:#fc8181!important;background:#fff5f5!important;color:#9b2c2c!important}
+.reading-passage{background:#f5f5f5;border-left:3px solid #000;padding:16px;margin:12px 0;border-radius:0 8px 8px 0;font-size:.95em;line-height:1.9;white-space:pre-wrap;border:1px solid #000;color:#000}
+.btn-submit{display:block;width:100%;min-height:48px;padding:16px;background:#f5f5f5;color:#000;border:2px solid #000;border-radius:12px;font-size:1.1em;font-weight:bold;cursor:pointer;transition:transform .2s;margin-top:24px;touch-action:manipulation;-webkit-user-select:none;user-select:none}
+.btn-submit:hover{transform:translateY(-2px);background:#f5f5f5}
+.btn-submit:disabled{opacity:.5;cursor:not-allowed;transform:none}
+.result-panel{background:#f5f5f5;border-radius:16px;padding:32px;text-align:center;border:2px solid #000;margin-top:24px;display:none}
+.result-panel h2{font-size:1.8em;margin-bottom:8px;color:#000}
+.result-score{font-size:3em;font-weight:bold;margin:16px 0;color:#000}
+.result-score.excellent{color:#000}
+.result-score.good{color:#000}
+.result-score.fair{color:#000}
+.result-score.poor{color:#000}
+.result-detail{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:12px;margin-top:20px}
+.result-item{background:#f5f5f5;padding:12px;border-radius:8px;border:1px solid #000}
+.result-item .label{font-size:.8em;color:#000}
+.result-item .value{font-size:1.2em;font-weight:bold;color:#000}
+.explanation{display:none;margin-top:8px;padding:10px;background:#f5f5f5;border-radius:8px;font-size:.9em;border-left:3px solid #000;border:1px solid #000;color:#000}
+.explanation.show{display:block}
+.question.readonly .answer-box{display:none;background:#f0f0f0;padding:10px;margin:8px 0;border-radius:8px;border:1px solid #000;font-weight:bold}
+.question.readonly .answer-box.show{display:block}
+.question.readonly .explanation{margin-top:8px}
+.time-budget-panel{margin-bottom:20px;padding:16px 20px;background:#fafafa;border:1px solid #000;border-radius:12px;font-size:.9em}
+.time-budget-title{font-weight:bold;margin-bottom:8px;font-size:1em}
+.time-budget-intro{color:#333;margin-bottom:12px;line-height:1.55;font-size:.88em}
+.time-budget-table{width:100%;border-collapse:collapse;font-size:.82em}
+.time-budget-table th,.time-budget-table td{border:1px solid #000;padding:7px 8px;text-align:left;vertical-align:top}
+.time-budget-table th{background:#eee}
+.time-budget-table td:nth-child(3),.time-budget-table td:nth-child(4){text-align:center;font-variant-numeric:tabular-nums;white-space:nowrap}
+.time-budget-table tfoot td{font-weight:bold}
+@media(max-width:600px){.time-budget-table{font-size:.78em}.time-budget-table th,.time-budget-table td{padding:5px 6px}}
+.submit-section{padding:16px 24px 24px;margin-bottom:20px}
+.submit-section .btn-submit{margin-top:0}
+</style>
+</head>
+<body>
+<div class="container">
+<header>
+<h1>過去問J.TEST A-C 2026年3月度【語彙C 10問】（5分）</h1>
+<div class="header-info">
+<div class="timer" id="timer">5:00</div>
+<div class="progress-bar"><div class="progress-fill" id="progress" style="width:100%"></div></div>
+<div class="score-badge" id="scoreBadge">語彙C 10問</div>
+</div>
+</header>
+
+<div class="section"><div class="section-title">文法・語彙問題 C（10問）</div>
+<div class="question">
+<div class="q-text"><span class="q-num">31</span>その<ruby>会議<rt>かいぎ</rt></ruby>には<strong>出ないわけにはいかない</strong>。</div>
+<div class="options">
+<div class="option"><input type="radio" name="q31" id="q31a" value="0"><label for="q31a">1. 出ないつもりだ</label></div>
+<div class="option"><input type="radio" name="q31" id="q31b" value="1"><label for="q31b">2. 出なければならない</label></div>
+<div class="option"><input type="radio" name="q31" id="q31c" value="0"><label for="q31c">3. 出たことがない</label></div>
+<div class="option"><input type="radio" name="q31" id="q31d" value="0"><label for="q31d">4. 出ないほうがいい</label></div>
+</div>
+<div class="explanation">✅ 正解：2. 出なければならない — 「〜ないわけにはいかない」＝「必ず〜しなければならない」。二重否定の構造で、強い義務・必要性を表す。「出ない」＋「わけにはいかない」→出ることが義務・必要。</div>
+</div>
+<div class="question">
+<div class="q-text"><span class="q-num">32</span><ruby>最近<rt>さいきん</rt></ruby>、ちょっとしたことで<strong><ruby>腹<rt>はら</rt></ruby>が立って</strong>しまう。</div>
+<div class="options">
+<div class="option"><input type="radio" name="q32" id="q32a" value="0"><label for="q32a">1. <ruby>疲<rt>つか</rt></ruby>れて</label></div>
+<div class="option"><input type="radio" name="q32" id="q32b" value="0"><label for="q32b">2. <ruby>泣<rt>な</rt></ruby>いて</label></div>
+<div class="option"><input type="radio" name="q32" id="q32c" value="1"><label for="q32c">3. <ruby>怒<rt>おこ</rt></ruby>って</label></div>
+<div class="option"><input type="radio" name="q32" id="q32d" value="0"><label for="q32d">4. <ruby>喜<rt>よろこ</rt></ruby>んで</label></div>
+</div>
+<div class="explanation">✅ 正解：3. <ruby>怒<rt>おこ</rt></ruby>って — 「腹が立つ」は「怒る・腹を立てる」という意味の慣用句。「腹」は感情（怒り）の座として使われる。同義語：「むかつく」「頭にくる」。</div>
+</div>
+<div class="question">
+<div class="q-text"><span class="q-num">33</span>新しい靴を<ruby>履<rt>は</rt></ruby>いてみたら、少し<strong><ruby>緩<rt>ゆる</rt></ruby>かった</strong>。</div>
+<div class="options">
+<div class="option"><input type="radio" name="q33" id="q33a" value="0"><label for="q33a">1. 柔らかかった</label></div>
+<div class="option"><input type="radio" name="q33" id="q33b" value="0"><label for="q33b">2. 固かった</label></div>
+<div class="option"><input type="radio" name="q33" id="q33c" value="1"><label for="q33c">3. 大きかった</label></div>
+<div class="option"><input type="radio" name="q33" id="q33d" value="0"><label for="q33d">4. 小さかった</label></div>
+</div>
+<div class="explanation">✅ 正解：3. 大きかった — 「緩い（ゆるい）」は靴・服などが体に対してゆったりしすぎている状態。靴が「緩い」＝靴のサイズが足より大きい→「大きかった」が正しい。「きつい」の反対語。</div>
+</div>
+<div class="question">
+<div class="q-text"><span class="q-num">34</span><ruby>商品<rt>しょうひん</rt></ruby>についての詳しい説明は<strong><ruby>省<rt>はぶ</rt></ruby>きます</strong>。</div>
+<div class="options">
+<div class="option"><input type="radio" name="q34" id="q34a" value="0"><label for="q34a">1. 後でします</label></div>
+<div class="option"><input type="radio" name="q34" id="q34b" value="0"><label for="q34b">2. 書きました</label></div>
+<div class="option"><input type="radio" name="q34" id="q34c" value="0"><label for="q34c">3. 聞きたいです</label></div>
+<div class="option"><input type="radio" name="q34" id="q34d" value="1"><label for="q34d">4. しません</label></div>
+</div>
+<div class="explanation">✅ 正解：4. しません — 「省く（はぶく）」＝省略する・省いて行わない。「説明を省く」＝説明をしない・省略する。1「後でします」は省略ではないので不正解。</div>
+</div>
+<div class="question">
+<div class="q-text"><span class="q-num">35</span>今年入社した<ruby>社員<rt>しゃいん</rt></ruby>は<strong><ruby>素直<rt>すなお</rt></ruby></strong>だが、自分から<ruby>積極的<rt>せっきょくてき</rt></ruby>に仕事をしない。</div>
+<div class="options">
+<div class="option"><input type="radio" name="q35" id="q35a" value="0"><label for="q35a">1. 丁寧で礼儀正しい</label></div>
+<div class="option"><input type="radio" name="q35" id="q35b" value="0"><label for="q35b">2. 頭が良くて知識が多い</label></div>
+<div class="option"><input type="radio" name="q35" id="q35c" value="0"><label for="q35c">3. 何でも<ruby>一生懸命<rt>いっしょうけんめい</rt></ruby>にする</label></div>
+<div class="option"><input type="radio" name="q35" id="q35d" value="1"><label for="q35d">4. 他の人の意見をよく聞く</label></div>
+</div>
+<div class="explanation">✅ 正解：4. 他の人の意見をよく聞く — 「素直（すなお）」＝ひねくれず、人の言うことをそのまま受け入れる性格。逆らわず、人の意見をよく聞く性格を指す。3「一生懸命にする」だと後半の「積極的に仕事をしない」と矛盾する。</div>
+</div>
+<div class="question">
+<div class="q-text"><span class="q-num">36</span><ruby>機械<rt>きかい</rt></ruby>の<ruby>故障<rt>こしょう</rt></ruby>は<strong>まれに起こる</strong>。</div>
+<div class="options">
+<div class="option"><input type="radio" name="q36" id="q36a" value="1"><label for="q36a">1. めったに起こらない</label></div>
+<div class="option"><input type="radio" name="q36" id="q36b" value="0"><label for="q36b">2. 起こったことがない</label></div>
+<div class="option"><input type="radio" name="q36" id="q36c" value="0"><label for="q36c">3. 起こるかもしれない</label></div>
+<div class="option"><input type="radio" name="q36" id="q36d" value="0"><label for="q36d">4. よく起こる</label></div>
+</div>
+<div class="explanation">✅ 正解：1. めったに起こらない — 「まれに」＝ほとんどない・非常に少ない頻度で。「まれに起こる」＝ごくたまに起こる＝「めったに起こらないが、起こることもある」。2「起こったことがない（ゼロ）」は言い過ぎ。1が最も近い。</div>
+</div>
+<div class="question">
+<div class="q-text"><span class="q-num">37</span>その件を<ruby>課長<rt>かちょう</rt></ruby>は<strong><ruby>誤解<rt>ごかい</rt></ruby>している</strong>。</div>
+<div class="options">
+<div class="option"><input type="radio" name="q37" id="q37a" value="0"><label for="q37a">1. よく理解している</label></div>
+<div class="option"><input type="radio" name="q37" id="q37b" value="1"><label for="q37b">2. 間違った理解をしている</label></div>
+<div class="option"><input type="radio" name="q37" id="q37c" value="0"><label for="q37c">3. 解説できない</label></div>
+<div class="option"><input type="radio" name="q37" id="q37d" value="0"><label for="q37d">4. まだ<ruby>把握<rt>はあく</rt></ruby>していない</label></div>
+</div>
+<div class="explanation">✅ 正解：2. 間違った理解をしている — 「誤解（ごかい）」＝「誤（まちが）った解釈・理解」のこと。「誤」は「間違い」、「解」は「理解」なので、漢字の意味からも2が正解。</div>
+</div>
+<div class="question">
+<div class="q-text"><span class="q-num">38</span>彼女の<ruby>発想<rt>はっそう</rt></ruby>は<strong>ユニーク</strong>だ。</div>
+<div class="options">
+<div class="option"><input type="radio" name="q38" id="q38a" value="0"><label for="q38a">1. ありふれている</label></div>
+<div class="option"><input type="radio" name="q38" id="q38b" value="0"><label for="q38b">2. <ruby>柔軟<rt>じゅうなん</rt></ruby>だ</label></div>
+<div class="option"><input type="radio" name="q38" id="q38c" value="1"><label for="q38c">3. 独特だ</label></div>
+<div class="option"><input type="radio" name="q38" id="q38d" value="0"><label for="q38d">4. <ruby>魅力的<rt>みりょくてき</rt></ruby>だ</label></div>
+</div>
+<div class="explanation">✅ 正解：3. 独特だ — 「ユニーク（unique）」＝他にはない・唯一の・独自の。「独特（どくとく）」＝その人だけに見られる特別な特徴があること。1「ありふれている」は「よくある・普通の」で反対の意味。</div>
+</div>
+<div class="question">
+<div class="q-text"><span class="q-num">39</span>私が通っていた高校は<strong><ruby>規則<rt>きそく</rt></ruby>ずくめ</strong>だった。</div>
+<div class="options">
+<div class="option"><input type="radio" name="q39" id="q39a" value="0"><label for="q39a">1. 規則を守らない生徒が多かった</label></div>
+<div class="option"><input type="radio" name="q39" id="q39b" value="1"><label for="q39b">2. 規則が非常に多かった</label></div>
+<div class="option"><input type="radio" name="q39" id="q39c" value="0"><label for="q39c">3. 規則正しい生徒が多かった</label></div>
+<div class="option"><input type="radio" name="q39" id="q39d" value="0"><label for="q39d">4. 規則に厳しくなかった</label></div>
+</div>
+<div class="explanation">✅ 正解：2. 規則が非常に多かった — 「〜ずくめ」＝「〜だらけ・〜ばかり・〜が非常に多い」という意味の接尾語。「規則ずくめ」＝規則がたくさんある・規則で固められている。他の例：「黒ずくめ（全身黒ばかり）」「いいことずくめ（いいことばかり）」。</div>
+</div>
+<div class="question">
+<div class="q-text"><span class="q-num">40</span><ruby>請求書<rt>せいきゅうしょ</rt></ruby>の山を見て、<strong>途方にくれた</strong>。</div>
+<div class="options">
+<div class="option"><input type="radio" name="q40" id="q40a" value="0"><label for="q40a">1. 同情した</label></div>
+<div class="option"><input type="radio" name="q40" id="q40b" value="0"><label for="q40b">2. <ruby>怒り<rt>いかり</rt></ruby>が<ruby>湧<rt>わ</rt></ruby>いた</label></div>
+<div class="option"><input type="radio" name="q40" id="q40c" value="0"><label for="q40c">3. <ruby>興奮<rt>こうふん</rt></ruby>した</label></div>
+<div class="option"><input type="radio" name="q40" id="q40d" value="1"><label for="q40d">4. 困り果てた</label></div>
+</div>
+<div class="explanation">✅ 正解：4. 困り果てた — 「途方にくれる」＝どうすればいいかわからなくて、すっかり困り果てる。「途方（とほう）」は手段・方法のこと。「途方にくれる」＝方法がわからず途方にくれる。「困り果てた（困り切った）」が最も近い意味。</div>
+</div>
+</div>
+<div class="section submit-section">
+<button class="btn-submit" id="submitBtn" onclick="submitTest()">採点する</button>
+</div>
+<div class="result-panel" id="resultPanel">
+<h2 id="resultTitle"></h2>
+<div class="result-score" id="resultScore"></div>
+<div class="result-detail" id="resultDetail"></div>
+<button class="btn-submit" onclick="location.reload()" style="margin-top:20px">もう一度</button>
+</div>
+</div>
+
+<script>
+const Q_START=31,Q_END=40,TOTAL=10,TIME_LIMIT=300;
+let timeLeft=TIME_LIMIT,timerInterval,submitted=false;
+function startTimer(){
+timerInterval=setInterval(()=>{
+timeLeft--;
+const m=Math.floor(timeLeft/60),s=timeLeft%60;
+const el=document.getElementById('timer');
+el.textContent=`${m}:${s.toString().padStart(2,'0')}`;
+document.getElementById('progress').style.width=`${(timeLeft/TIME_LIMIT)*100}%`;
+if(timeLeft<=60)el.className='timer danger';
+else if(timeLeft<=300)el.className='timer warning';
+if(timeLeft<=0){clearInterval(timerInterval);submitTest();}
+},1000);
+}
+function submitTest(){
+if(submitted)return;submitted=true;
+clearInterval(timerInterval);
+let correct=0;
+for(let i=Q_START;i<=Q_END;i++){
+const sel=document.querySelector(`input[name="q${i}"]:checked`);
+const opts=document.querySelectorAll(`input[name="q${i}"]`);
+let isCorrect=false;
+if(sel&&sel.value==='1'){isCorrect=true;correct++;}
+if(opts.length){opts.forEach(o=>{
+const p=o.parentElement;
+if(o.value==='1')p.classList.add('correct');
+else if(o.checked&&o.value!=='1')p.classList.add('wrong');
+});}
+}
+document.querySelectorAll('.explanation').forEach(e=>e.classList.add('show'));
+document.querySelectorAll('.answer-box').forEach(e=>e.classList.add('show'));
+const pct=TOTAL>0?Math.round((correct/TOTAL)*100):0;
+const panel=document.getElementById('resultPanel');
+const title=document.getElementById('resultTitle');
+const score=document.getElementById('resultScore');
+const detail=document.getElementById('resultDetail');
+panel.style.display='block';
+score.textContent=`${correct} / ${TOTAL}（${pct}%）`;
+if(pct>=90){title.textContent='🎉 素晴らしい！';score.className='result-score excellent';}
+else if(pct>=70){title.textContent='👍 よくできました！';score.className='result-score good';}
+else if(pct>=50){title.textContent='📝 もう少し！';score.className='result-score fair';}
+else{title.textContent='💪 がんばりましょう！';score.className='result-score poor';}
+const timeUsed=TIME_LIMIT-timeLeft;
+detail.innerHTML=`
+<div class="result-item"><div class="label">文法・語彙C</div><div class="value">${correct}/${TOTAL}</div></div>
+<div class="result-item"><div class="label">所要時間</div><div class="value">${Math.floor(timeUsed/60)}分${timeUsed%60}秒</div></div>
+`;
+document.getElementById('submitBtn').disabled=true;
+panel.scrollIntoView({behavior:'smooth'});
+}
+startTimer();
+</script>
+</body>
+</html>

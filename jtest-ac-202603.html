@@ -58,6 +58,15 @@ ruby{ruby-align:center}
 .question.readonly .answer-box{display:none;background:#f0f0f0;padding:10px;margin:8px 0;border-radius:8px;border:1px solid #000;font-weight:bold}
 .question.readonly .answer-box.show{display:block}
 .question.readonly .explanation{margin-top:8px}
+.time-budget-panel{margin-bottom:20px;padding:16px 20px;background:#fafafa;border:1px solid #000;border-radius:12px;font-size:.9em}
+.time-budget-title{font-weight:bold;margin-bottom:8px;font-size:1em}
+.time-budget-intro{color:#333;margin-bottom:12px;line-height:1.55;font-size:.88em}
+.time-budget-table{width:100%;border-collapse:collapse;font-size:.82em}
+.time-budget-table th,.time-budget-table td{border:1px solid #000;padding:7px 8px;text-align:left;vertical-align:top}
+.time-budget-table th{background:#eee}
+.time-budget-table td:nth-child(3),.time-budget-table td:nth-child(4){text-align:center;font-variant-numeric:tabular-nums;white-space:nowrap}
+.time-budget-table tfoot td{font-weight:bold}
+@media(max-width:600px){.time-budget-table{font-size:.78em}.time-budget-table th,.time-budget-table td{padding:5px 6px}}
 </style>
 </head>
 <body>
@@ -70,6 +79,24 @@ ruby{ruby-align:center}
 <div class="score-badge" id="scoreBadge">全100問</div>
 </div>
 </header>
+
+<div class="time-budget-panel" aria-label="80分の時間配分の目安">
+<div class="time-budget-title">80分の時間配分（目安）</div>
+<p class="time-budget-intro"><strong>読解に全体の約48%（38分）</strong>を充てる配分です。長文・設問が多いため、1問あたり<strong>約1分50秒</strong>のイメージ。語彙40問は合計20分（平均30秒/問）で押さえ、浮いた時間を読解に回す想定です。語彙・漢字が速い人はさらに読解へシフトしてください。</p>
+<table class="time-budget-table">
+<thead><tr><th>大問</th><th>内容</th><th>目安</th><th>累計（ここまで）</th></tr></thead>
+<tbody>
+<tr><td>1</td><td>文法・語彙 A（20問）</td><td>10分</td><td>10分</td></tr>
+<tr><td>2</td><td>文法・語彙 B（10問）</td><td>5分</td><td>15分</td></tr>
+<tr><td>3</td><td>文法・語彙 C（10問）</td><td>5分</td><td>20分</td></tr>
+<tr><td>4</td><td>読解（20問）</td><td>38分</td><td>58分</td></tr>
+<tr><td>5</td><td>漢字 A（15問）</td><td>7分</td><td>65分</td></tr>
+<tr><td>6</td><td>漢字 B（15問）</td><td>7分</td><td>72分</td></tr>
+<tr><td>7</td><td>記述（10問）</td><td>8分</td><td>80分</td></tr>
+</tbody>
+<tfoot><tr><td colspan="2">合計</td><td>80分</td><td>—</td></tr></tfoot>
+</table>
+</div>
 
 <div class="section"><div class="section-title">1 文法・語彙問題 A（20問）</div>
 <div class="question">
@@ -588,12 +615,12 @@ ruby{ruby-align:center}
 <div class="question">
 <div class="q-text"><span class="q-num">51</span><ruby>活動<rt>かつどう</rt></ruby>日について、文章の内容と合っているのはどれですか。</div>
 <div class="options">
-<div class="option"><input type="radio" name="q51" id="q51a" value="1"><label for="q51a">1. メンバーは7月20日にメールで<ruby>活動<rt>かつどう</rt></ruby>日を知らされる。</label></div>
-<div class="option"><input type="radio" name="q51" id="q51b" value="0"><label for="q51b">2. 7月26日は全メンバーが参加しなければならない。</label></div>
+<div class="option"><input type="radio" name="q51" id="q51a" value="0"><label for="q51a">1. メンバーは7月20日にメールで<ruby>活動<rt>かつどう</rt></ruby>日を知らされる。</label></div>
+<div class="option"><input type="radio" name="q51" id="q51b" value="1"><label for="q51b">2. 7月26日は全メンバーが参加しなければならない。</label></div>
 <div class="option"><input type="radio" name="q51" id="q51c" value="0"><label for="q51c">3. フェスティバル期間中は全日程参加しなければならない。</label></div>
 <div class="option"><input type="radio" name="q51" id="q51d" value="0"><label for="q51d">4. フェスティバル終了後も<ruby>活動<rt>かつどう</rt></ruby>がある。</label></div>
 </div>
-<div class="explanation">✅ 正解：1. メンバーは7月20日にメールで<ruby>活動<rt>かつどう</rt></ruby>日を知らされる。 — 活動期間は7月20日から始まり、「今月（6月）20日以降に活動希望調査票をメールで送る」とある。申し込み後に活動日が調整されるため、メンバーはメールを通じて活動日を知ることになる。2：「7月26日の研修会に参加できることが条件」とあるが、これは応募の条件であり全員に義務付けられたものではない→誤り。3：「活動日は申し込み後に調整する」とあり、全日程参加の義務はない→誤り。4：活動期間は7月20日〜9月9日、フェスティバルも8月11日〜9月9日で同じ日に終わる→誤り。</div>
+<div class="explanation">✅ 正解：2. 7月26日は全メンバーが参加しなければならない。 — 本文に「7月26日午後1時から…研修会に参加できることが条件」とある。応募・採用の前提としてその研修会への参加が求められ、メンバー全員が7月26日の研修に参加する必要があると読み取れる。1：調査票は「今月20日以降に」メールで送られ、7月20日に活動日が一斉に知らされるとは限らない→誤り。3：活動日は申し込み後に調整され、フェスティバル期間の全日程参加義務とは書かれていない→誤り。4：活動期間は9月9日までで、フェスティバル終了後に別途活動があるとは読み取れない→誤り。</div>
 </div>
 <div class="reading-passage">## <ruby>職業訓練補助金<rt>しょくぎょうくんれんほじょきん</rt></ruby>のご<ruby>案内<rt>あんない</rt></ruby><br><br>●<ruby>職業訓練補助金<rt>しょくぎょうくんれんほじょきん</rt></ruby>とは<br><ruby>労働者<rt>ろうどうしゃ</rt></ruby>のみなさんを<ruby>支援<rt>しえん</rt></ruby>するために、<ruby>職業研修<rt>しょくぎょうけんしゅう</rt></ruby>の<ruby>講座<rt>こうざ</rt></ruby>に<ruby>掛<rt>か</rt></ruby>かる<ruby>費用<rt>ひよう</rt></ruby>を<ruby>補助<rt>ほじょ</rt></ruby>する<ruby>制度<rt>せいど</rt></ruby>です。<br><br>●<ruby>対象<rt>たいしょう</rt></ruby><ruby>講座<rt>こうざ</rt></ruby>：<ruby>職業支援センター<rt>しょくぎょうしえんせんたー</rt></ruby>に<ruby>登録<rt>とうろく</rt></ruby>された<ruby>学校<rt>がっこう</rt></ruby>の<ruby>講座<rt>こうざ</rt></ruby>のみが<ruby>対象<rt>たいしょう</rt></ruby>です。<br><br>| <ruby>訓練<rt>くんれん</rt></ruby>の<ruby>種類<rt>しゅるい</rt></ruby>と<ruby>補助金<rt>ほじょきん</rt></ruby> | <ruby>対象講座<rt>たいしょうこうざ</rt></ruby>の<ruby>例<rt>れい</rt></ruby> |<br>|---|---|<br>| <ruby>専門教育訓練<rt>せんもんきょういくくんれん</rt></ruby><br><ruby>最大<rt>さいだい</rt></ruby>で<ruby>費用<rt>ひよう</rt></ruby>の80%<br><ruby>年間<rt>ねんかん</rt></ruby>70<ruby>万円<rt>まんえん</rt></ruby>まで | ○<ruby>資格<rt>しかく</rt></ruby>を<ruby>取<rt>と</rt></ruby>るための<ruby>講座<rt>こうざ</rt></ruby><br>　<ruby>介護福祉士<rt>かいごふくしし</rt></ruby>　<ruby>看護師<rt>かんごし</rt></ruby>　<ruby>調理師<rt>ちょうりし</rt></ruby>など<br>○パソコン<ruby>関係<rt>かんけい</rt></ruby>の<ruby>講座<rt>こうざ</rt></ruby><br>○<ruby>専門学校<rt>せんもんがっこう</rt></ruby>の<ruby>課程<rt>かてい</rt></ruby> |<br>| <ruby>特定一般教育訓練<rt>とくていいっぱんきょういくくんれん</rt></ruby><br><ruby>最大<rt>さいだい</rt></ruby>で50%<br><ruby>年間<rt>ねんかん</rt></ruby>50<ruby>万円<rt>まんえん</rt></ruby>まで | ○<ruby>工業技術<rt>こうぎょうぎじゅつ</rt></ruby>の<ruby>資格<rt>しかく</rt></ruby>を<ruby>取<rt>と</rt></ruby>るための<ruby>講座<rt>こうざ</rt></ruby><br>　<ruby>自動車整備<rt>じどうしゃせいび</rt></ruby>　<ruby>大型自動車免許<rt>おおがたじどうしゃめんきょ</rt></ruby>など<br>○<ruby>大学<rt>だいがく</rt></ruby>・<ruby>専門学校<rt>せんもんがっこう</rt></ruby>などの<ruby>短期<rt>たんき</rt></ruby>プログラム |<br>| <ruby>一般教育訓練<rt>いっぱんきょういくくんれん</rt></ruby><br><ruby>最大<rt>さいだい</rt></ruby>で20%<br><ruby>年間最大<rt>ねんかんさいだい</rt></ruby>20<ruby>万円<rt>まんえん</rt></ruby>まで | ○ビジネス<ruby>関連<rt>かんれん</rt></ruby>の<ruby>資格<rt>しかく</rt></ruby>を<ruby>取<rt>と</rt></ruby>るための<ruby>講座<rt>こうざ</rt></ruby><br>　TOEIC　<ruby>簿記検定<rt>ぼきけんてい</rt></ruby>　など<br>○<ruby>大学院<rt>だいがくいん</rt></ruby>の<ruby>課程<rt>かてい</rt></ruby><br>　<ruby>修士<rt>しゅうし</rt></ruby>・<ruby>博士<rt>はくし</rt></ruby>の<ruby>学位<rt>がくい</rt></ruby>を<ruby>取<rt>と</rt></ruby>るための<ruby>講座<rt>こうざ</rt></ruby> |<br><br>●<ruby>補助金<rt>ほじょきん</rt></ruby>が<ruby>受<rt>う</rt></ruby>けられる<ruby>条件<rt>じょうけん</rt></ruby><br>・<ruby>在職<rt>ざいしょく</rt></ruby>中で、<ruby>雇用保険<rt>こようほけん</rt></ruby>に<ruby>加入<rt>かにゅう</rt></ruby>していること<br>・今までにこの<ruby>補助金<rt>ほじょきん</rt></ruby>をもらったことがないこと<br><br>●<ruby>補助金<rt>ほじょきん</rt></ruby>の<ruby>申請<rt>しんせい</rt></ruby>の<ruby>流<rt>なが</rt></ruby>れ<br>①<ruby>職業支援センター<rt>しょくぎょうしえんせんたー</rt></ruby>に<ruby>登録<rt>とうろく</rt></ruby>された<ruby>学校<rt>がっこう</rt></ruby>の<ruby>講座<rt>こうざ</rt></ruby>に<ruby>申<rt>もう</rt></ruby>し<ruby>込<rt>こ</rt></ruby>む。<br>②<ruby>講座<rt>こうざ</rt></ruby>を<ruby>最後<rt>さいご</rt></ruby>まで<ruby>受<rt>う</rt></ruby>ける。<br>③<ruby>講座<rt>こうざ</rt></ruby>が<ruby>終<rt>お</rt></ruby>わったら、<ruby>職業支援センター<rt>しょくぎょうしえんせんたー</rt></ruby>に、<ruby>補助金申請書<rt>ほじょきんしんせいしょ</rt></ruby>と<ruby>講座<rt>こうざ</rt></ruby>を<ruby>修了<rt>しゅうりょう</rt></ruby>した<ruby>証明書<rt>しょうめいしょ</rt></ruby>、<ruby>入学金<rt>にゅうがくきん</rt></ruby>や<ruby>授業料<rt>じゅぎょうりょう</rt></ruby>の<ruby>領収書<rt>りょうしゅうしょ</rt></ruby>を<ruby>提出<rt>ていしゅつ</rt></ruby>する。<br>④<ruby>補助金<rt>ほじょきん</rt></ruby>は1か<ruby>月<rt>げつ</rt></ruby>以内に<ruby>職業支援センター<rt>しょくぎょうしえんせんたー</rt></ruby>で<ruby>受<rt>う</rt></ruby>け<ruby>取<rt>と</rt></ruby>れるので、<ruby>連絡<rt>れんらく</rt></ruby>が<ruby>来<rt>き</rt></ruby>たら<ruby>取<rt>と</rt></ruby>りに<ruby>行<rt>い</rt></ruby>く。</div>
 <div class="question">
@@ -664,10 +691,10 @@ ruby{ruby-align:center}
 <div class="options">
 <div class="option"><input type="radio" name="q58" id="q58a" value="0"><label for="q58a">1. なぜなら</label></div>
 <div class="option"><input type="radio" name="q58" id="q58b" value="0"><label for="q58b">2. ところで</label></div>
-<div class="option"><input type="radio" name="q58" id="q58c" value="1"><label for="q58c">3. ですから</label></div>
-<div class="option"><input type="radio" name="q58" id="q58d" value="0"><label for="q58d">4. しかし</label></div>
+<div class="option"><input type="radio" name="q58" id="q58c" value="0"><label for="q58c">3. ですから</label></div>
+<div class="option"><input type="radio" name="q58" id="q58d" value="1"><label for="q58d">4. しかし</label></div>
 </div>
-<div class="explanation">✅ 正解：3. ですから — 前の文「教養とは...自分の人生をより彩り豊かにするためのものだと思います」という主張を受けて、「（ですから）教養を高めれば人生をもっとエンジョイできるのに、どうしてそうしないのか」という論理的な帰結が続く。前の内容から当然導かれる結論を示す「ですから」が最も適切。1「なぜなら」は理由を述べるとき、2「ところで」は話題を変えるとき、4「しかし」は逆接で使う。</div>
+<div class="explanation">✅ 正解：4. しかし — 直前で「人からの評価のためではなく、自分の人生を彩るためのもの」と述べたうえで、（しかし）別の視点として「教養を高めれば人生をもっとエンジョイできるのに、どうしてそうしないのか」という逆説的な問いかけを添えるのに自然。接続詞としての逆接・転換に「しかし」が適切。3「ですから」は単純な因果の帰結としては前後がやや重く、文脈の転じ方としては不自然になりやすい。1「なぜなら」、2「ところで」はここでは不適切。</div>
 </div>
 <div class="question">
 <div class="q-text"><span class="q-num">59</span><ruby>筆者<rt>ひっしゃ</rt></ruby>によると、<ruby>戦後<rt>せんご</rt></ruby>の<ruby>日本人<rt>にほんじん</rt></ruby>が<strong>「<ruby>心<rt>こころ</rt></ruby>の<ruby>幅<rt>はば</rt></ruby>」</strong>が<ruby>不足<rt>ふそく</rt></ruby>していたのはどうしてですか。</div>
@@ -904,9 +931,9 @@ ruby{ruby-align:center}
 <div class="explanation">◆ 解説：目を凝らす（めをこらす）＝しっかりと注意して見ること・じっと見つめること。</div>
 </div>
 <div class="question readonly">
-<div class="q-text"><span class="q-num">88</span><strong>化粧室</strong>で<ruby>髪<rt>かみ</rt></ruby>を整えた。</div>
-<div class="answer-box">★ 解答：けしょうしつ</div>
-<div class="explanation">◆ 解説：化粧室（けしょうしつ）＝トイレ・洗面所の丁寧な呼び方。「お化粧室」とも言う。</div>
+<div class="q-text"><span class="q-num">88</span>化粧室で<ruby>髪<rt>かみ</rt></ruby>を<strong>整えた</strong>。</div>
+<div class="answer-box">★ 解答：ととのえた</div>
+<div class="explanation">◆ 解説：整える（ととのえる）の過去形「整えた」は「ととのえた」と読む。「髪を整える」＝髪の形をきちんとそろえる・整えること。</div>
 </div>
 <div class="question readonly">
 <div class="q-text"><span class="q-num">89</span>彼女は<strong>独創的</strong>な考えをする人だ。</div>
