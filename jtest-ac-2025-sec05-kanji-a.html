@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<title>J.TEST A-C 2025年 漢字A 15問（7分）</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;-webkit-tap-highlight-color:transparent}
+body{font-family:'Hiragino Kaku Gothic ProN','Hiragino Sans','Noto Sans JP',Meiryo,sans-serif;background:#f5f5f5;color:#000;line-height:1.7;padding:env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left)}
+.container{max-width:800px;margin:0 auto;padding:20px}
+header{background:#f5f5f5;color:#000;padding:24px;border-radius:16px;margin-bottom:24px;text-align:center;position:sticky;top:0;z-index:100;border:2px solid #000;box-shadow:none}
+header h1{font-size:1.5em;margin-bottom:4px}
+.header-info{display:flex;justify-content:center;gap:24px;align-items:center;margin-top:8px;flex-wrap:wrap}
+.timer{font-size:1.8em;font-weight:bold;font-variant-numeric:tabular-nums;color:#000}
+.timer.warning{color:#333;animation:pulse 1s infinite}
+.timer.danger{color:#000;animation:pulse .5s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.6}}
+.progress-bar{width:200px;height:8px;background:#f5f5f5;border:1px solid #000;border-radius:4px;overflow:hidden}
+.progress-fill{height:100%;background:#000;border-radius:2px;transition:width .2s}
+.score-badge{background:#f5f5f5;color:#000;padding:4px 12px;border-radius:20px;font-size:.9em;border:1px solid #000}
+.section{background:#f5f5f5;border-radius:12px;padding:24px;margin-bottom:20px;border:1px solid #000;box-shadow:none}
+.section-title{font-size:1.1em;font-weight:bold;color:#000;border-left:4px solid #000;padding-left:12px;margin-bottom:16px}
+.question{padding:16px 0;border-bottom:1px solid #000}
+.question:last-child{border-bottom:none}
+.q-num{display:inline-block;background:#f5f5f5;color:#000;width:28px;height:28px;text-align:center;line-height:28px;border-radius:50%;font-size:.85em;font-weight:bold;margin-right:8px;border:2px solid #000}
+.q-text{font-size:1.05em;margin-bottom:12px;font-weight:500;color:#000}
+.options{display:grid;grid-template-columns:1fr 1fr;gap:8px;align-items:stretch}
+@media(max-width:600px){.options{grid-template-columns:1fr}}
+.option{display:flex;flex-direction:column;position:relative;min-height:0}
+.option input{display:none}
+.option label{display:block;flex:1;min-height:52px;padding:10px 14px;border:2px solid #e2e8f0;border-radius:8px;cursor:pointer;transition:all .2s;font-size:.95em;line-height:1.65;touch-action:manipulation;-webkit-user-select:none;user-select:none;color:#1a202c;background:#fff}
+ruby{ruby-align:center}
+.option label rt,.q-text rt,.reading-passage rt{font-size:.55em;line-height:1.3}
+.option label:hover{border-color:#38b2ac;background:#f0ffff}
+.option input:checked+label{border-color:#38b2ac;background:#e6fffa;color:#234e52;font-weight:600}
+.option.correct label{border-color:#48bb78!important;background:#f0fff4!important;color:#276749!important}
+.option.wrong label{border-color:#fc8181!important;background:#fff5f5!important;color:#9b2c2c!important}
+.reading-passage{background:#f5f5f5;border-left:3px solid #000;padding:16px;margin:12px 0;border-radius:0 8px 8px 0;font-size:.95em;line-height:1.9;white-space:pre-wrap;border:1px solid #000;color:#000}
+.btn-submit{display:block;width:100%;min-height:48px;padding:16px;background:#f5f5f5;color:#000;border:2px solid #000;border-radius:12px;font-size:1.1em;font-weight:bold;cursor:pointer;transition:transform .2s;margin-top:24px;touch-action:manipulation;-webkit-user-select:none;user-select:none}
+.btn-submit:hover{transform:translateY(-2px);background:#f5f5f5}
+.btn-submit:disabled{opacity:.5;cursor:not-allowed;transform:none}
+.result-panel{background:#f5f5f5;border-radius:16px;padding:32px;text-align:center;border:2px solid #000;margin-top:24px;display:none}
+.result-panel h2{font-size:1.8em;margin-bottom:8px;color:#000}
+.result-score{font-size:3em;font-weight:bold;margin:16px 0;color:#000}
+.result-score.excellent{color:#000}
+.result-score.good{color:#000}
+.result-score.fair{color:#000}
+.result-score.poor{color:#000}
+.result-detail{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:12px;margin-top:20px}
+.result-item{background:#f5f5f5;padding:12px;border-radius:8px;border:1px solid #000}
+.result-item .label{font-size:.8em;color:#000}
+.result-item .value{font-size:1.2em;font-weight:bold;color:#000}
+.explanation{display:none;margin-top:8px;padding:10px;background:#f5f5f5;border-radius:8px;font-size:.9em;border-left:3px solid #000;border:1px solid #000;color:#000}
+.explanation.show{display:block}
+.question.readonly .answer-box{display:none;background:#f0f0f0;padding:10px;margin:8px 0;border-radius:8px;border:1px solid #000;font-weight:bold}
+.question.readonly .answer-box.show{display:block}
+.question.readonly .explanation{margin-top:8px}
+.submit-section{padding:16px 24px 24px;margin-bottom:20px}
+.submit-section .btn-submit{margin-top:0}
+
+</style>
+</head>
+<body>
+<div class="container">
+<header>
+<h1>J.TEST A-C 2025年【漢字A 15問】（7分）</h1>
+<div class="header-info">
+<div class="timer" id="timer">7:00</div>
+<div class="progress-bar"><div class="progress-fill" id="progress" style="width:100%"></div></div>
+<div class="score-badge" id="scoreBadge">漢字A 15問</div>
+</div>
+</header>
+
+<div class="section"><div class="section-title">3 漢字問題 A・B 語の書き（61〜75）</div>
+<div class="question">
+<div class="q-text"><span class="q-num">61</span><ruby>荷物<rt>にもつ</rt></ruby>が<ruby>崩<rt>くず</rt></ruby>れないように、ひもを<strong>かたく</strong><ruby>結<rt>むす</rt></ruby>んだ。</div>
+<div class="options">
+<div class="option"><input type="radio" name="q61" id="q61a" value="0"><label for="q61a">1. 厚く</label></div>
+<div class="option"><input type="radio" name="q61" id="q61b" value="1"><label for="q61b">2. 固く</label></div>
+<div class="option"><input type="radio" name="q61" id="q61c" value="0"><label for="q61c">3. 招く</label></div>
+<div class="option"><input type="radio" name="q61" id="q61d" value="0"><label for="q61d">4. 焼く</label></div>
+</div>
+<div class="explanation">◆ 正解：2 — ひもを<strong>固く</strong>結びます。</div>
+</div>
+<div class="question">
+<div class="q-text"><span class="q-num">62</span>あの<strong>せ</strong>の高い人は<ruby>誰<rt>だれ</rt></ruby>ですか。</div>
+<div class="options">
+<div class="option"><input type="radio" name="q62" id="q62a" value="1"><label for="q62a">1. 背</label></div>
+<div class="option"><input type="radio" name="q62" id="q62b" value="0"><label for="q62b">2. 髪</label></div>
+<div class="option"><input type="radio" name="q62" id="q62c" value="0"><label for="q62c">3. 雪</label></div>
+<div class="option"><input type="radio" name="q62" id="q62d" value="0"><label for="q62d">4. 指</label></div>
+</div>
+<div class="explanation">◆ 正解：1 — 「<strong>背</strong>の高い人」です。</div>
+</div>
+<div class="question">
+<div class="q-text"><span class="q-num">63</span>庭の木が<strong>かれて</strong>しまった。</div>
+<div class="options">
+<div class="option"><input type="radio" name="q63" id="q63a" value="0"><label for="q63a">1. 観れて</label></div>
+<div class="option"><input type="radio" name="q63" id="q63b" value="1"><label for="q63b">2. 枯れて</label></div>
+<div class="option"><input type="radio" name="q63" id="q63c" value="0"><label for="q63c">3. 荒れて</label></div>
+<div class="option"><input type="radio" name="q63" id="q63d" value="0"><label for="q63d">4. 恐れて</label></div>
+</div>
+<div class="explanation">◆ 正解：2 — 木が<strong>枯れて</strong>しまいました。</div>
+</div>
+<div class="question">
+<div class="q-text"><span class="q-num">64</span>これは<strong>かぜい</strong>の<ruby>対象<rt>たいしょう</rt></ruby>である。</div>
+<div class="options">
+<div class="option"><input type="radio" name="q64" id="q64a" value="0"><label for="q64a">1. 過労</label></div>
+<div class="option"><input type="radio" name="q64" id="q64b" value="0"><label for="q64b">2. 乾燥</label></div>
+<div class="option"><input type="radio" name="q64" id="q64c" value="1"><label for="q64c">3. 課税</label></div>
+<div class="option"><input type="radio" name="q64" id="q64d" value="0"><label for="q64d">4. 完了</label></div>
+</div>
+<div class="explanation">◆ 正解：3 — 「<strong>課税</strong>」＝税金を取ること、です。</div>
+</div>
+<div class="question">
+<div class="q-text"><span class="q-num">65</span>寝ている<ruby>子供<rt>こども</rt></ruby>に毛布を<strong>かぶせた</strong>。</div>
+<div class="options">
+<div class="option"><input type="radio" name="q65" id="q65a" value="1"><label for="q65a">1. 被せた</label></div>
+<div class="option"><input type="radio" name="q65" id="q65b" value="0"><label for="q65b">2. 超せた</label></div>
+<div class="option"><input type="radio" name="q65" id="q65c" value="0"><label for="q65c">3. 任せた</label></div>
+<div class="option"><input type="radio" name="q65" id="q65d" value="0"><label for="q65d">4. 許せた</label></div>
+</div>
+<div class="explanation">◆ 正解：1 — 毛布を<strong>かぶせる</strong>＝上からかける、です。</div>
+</div>
+<div class="question">
+<div class="q-text"><span class="q-num">66</span>時々、部屋を<strong>かんき</strong>してください。</div>
+<div class="options">
+<div class="option"><input type="radio" name="q66" id="q66a" value="1"><label for="q66a">1. 換気</label></div>
+<div class="option"><input type="radio" name="q66" id="q66b" value="0"><label for="q66b">2. 含気</label></div>
+<div class="option"><input type="radio" name="q66" id="q66c" value="0"><label for="q66c">3. 寒気</label></div>
+<div class="option"><input type="radio" name="q66" id="q66d" value="0"><label for="q66d">4. 根気</label></div>
+</div>
+<div class="explanation">◆ 正解：1 — 部屋の「<strong>換気</strong>」＝空気を入れ替えること、です。</div>
+</div>
+<div class="question">
+<div class="q-text"><span class="q-num">67</span><ruby>努力<rt>どりょく</rt></ruby>しても勝てない相手が<strong>にくい</strong>と思うことがある。</div>
+<div class="options">
+<div class="option"><input type="radio" name="q67" id="q67a" value="0"><label for="q67a">1. 想い</label></div>
+<div class="option"><input type="radio" name="q67" id="q67b" value="0"><label for="q67b">2. 争い</label></div>
+<div class="option"><input type="radio" name="q67" id="q67c" value="0"><label for="q67c">3. 快い</label></div>
+<div class="option"><input type="radio" name="q67" id="q67d" value="1"><label for="q67d">4. 憎い</label></div>
+</div>
+<div class="explanation">◆ 正解：4 — 「<strong>憎い</strong>」＝「きらい」「じゃまだ」と感じる、です。</div>
+</div>
+<div class="question">
+<div class="q-text"><span class="q-num">68</span><ruby>自動販売機<rt>じどうはんばいき</rt></ruby>に<strong>こうか</strong>を入れた。</div>
+<div class="options">
+<div class="option"><input type="radio" name="q68" id="q68a" value="0"><label for="q68a">1. 広告</label></div>
+<div class="option"><input type="radio" name="q68" id="q68b" value="1"><label for="q68b">2. 硬貨</label></div>
+<div class="option"><input type="radio" name="q68" id="q68c" value="0"><label for="q68c">3. 宝石</label></div>
+<div class="option"><input type="radio" name="q68" id="q68d" value="0"><label for="q68d">4. 岩石</label></div>
+</div>
+<div class="explanation">◆ 正解：2 — 自販機に入れるのは「<strong>硬貨</strong>」（コイン）です。</div>
+</div>
+<div class="question">
+<div class="q-text"><span class="q-num">69</span><strong>かんべん</strong>してください。</div>
+<div class="options">
+<div class="option"><input type="radio" name="q69" id="q69a" value="1"><label for="q69a">1. 勘弁</label></div>
+<div class="option"><input type="radio" name="q69" id="q69b" value="0"><label for="q69b">2. 抗弁</label></div>
+<div class="option"><input type="radio" name="q69" id="q69c" value="0"><label for="q69c">3. 簡素</label></div>
+<div class="option"><input type="radio" name="q69" id="q69d" value="0"><label for="q69d">4. 簡便</label></div>
+</div>
+<div class="explanation">◆ 正解：1 — 「<strong>勘弁</strong>してください」＝「やめてください」のイメージです。</div>
+</div>
+<div class="question">
+<div class="q-text"><span class="q-num">70</span>彼の話にはいくつか<strong>むじゅん</strong>がある。</div>
+<div class="options">
+<div class="option"><input type="radio" name="q70" id="q70a" value="0"><label for="q70a">1. 訴訟</label></div>
+<div class="option"><input type="radio" name="q70" id="q70b" value="1"><label for="q70b">2. 矛盾</label></div>
+<div class="option"><input type="radio" name="q70" id="q70c" value="0"><label for="q70c">3. 秩序</label></div>
+<div class="option"><input type="radio" name="q70" id="q70d" value="0"><label for="q70d">4. 衝撃</label></div>
+</div>
+<div class="explanation">◆ 正解：2 — 話に「<strong>矛盾</strong>」＝前とあとで違うこと、があります。</div>
+</div>
+<div class="question">
+<div class="q-text"><span class="q-num">71</span>会社の<ruby>同僚<rt>どうりょう</rt></ruby>を<strong>さそって</strong>食事をした。</div>
+<div class="options">
+<div class="option"><input type="radio" name="q71" id="q71a" value="0"><label for="q71a">1. 酔って</label></div>
+<div class="option"><input type="radio" name="q71" id="q71b" value="0"><label for="q71b">2. 飼って</label></div>
+<div class="option"><input type="radio" name="q71" id="q71c" value="1"><label for="q71c">3. 誘って</label></div>
+<div class="option"><input type="radio" name="q71" id="q71d" value="0"><label for="q71d">4. 黙って</label></div>
+</div>
+<div class="explanation">◆ 正解：3 — 「<strong>誘って</strong>」＝一緒に来てもらうように言う、です。</div>
+</div>
+<div class="question">
+<div class="q-text"><span class="q-num">72</span><ruby>我<rt>わ</rt></ruby>が社の商品の<strong>じゅよう</strong>が高まってきている。</div>
+<div class="options">
+<div class="option"><input type="radio" name="q72" id="q72a" value="0"><label for="q72a">1. 摘要</label></div>
+<div class="option"><input type="radio" name="q72" id="q72b" value="0"><label for="q72b">2. 綱要</label></div>
+<div class="option"><input type="radio" name="q72" id="q72c" value="1"><label for="q72c">3. 需要</label></div>
+<div class="option"><input type="radio" name="q72" id="q72d" value="0"><label for="q72d">4. 概要</label></div>
+</div>
+<div class="explanation">◆ 正解：3 — 「<strong>需要</strong>」＝「ほしい人が多いこと」です。</div>
+</div>
+<div class="question">
+<div class="q-text"><span class="q-num">73</span>迷惑な客によって営業が<strong>ぼうがい</strong>された。</div>
+<div class="options">
+<div class="option"><input type="radio" name="q73" id="q73a" value="1"><label for="q73a">1. 妨害</label></div>
+<div class="option"><input type="radio" name="q73" id="q73b" value="0"><label for="q73b">2. 阻害</label></div>
+<div class="option"><input type="radio" name="q73" id="q73c" value="0"><label for="q73c">3. 迫害</label></div>
+<div class="option"><input type="radio" name="q73" id="q73d" value="0"><label for="q73d">4. 災害</label></div>
+</div>
+<div class="explanation">◆ 正解：1 — 「<strong>妨害</strong>」＝じゃまをすること、です。</div>
+</div>
+<div class="question">
+<div class="q-text"><span class="q-num">74</span>別れた後も見えなくなるまで手を<strong>ふっていた</strong>。</div>
+<div class="options">
+<div class="option"><input type="radio" name="q74" id="q74a" value="0"><label for="q74a">1. 擦って</label></div>
+<div class="option"><input type="radio" name="q74" id="q74b" value="0"><label for="q74b">2. 撮って</label></div>
+<div class="option"><input type="radio" name="q74" id="q74c" value="0"><label for="q74c">3. 慕って</label></div>
+<div class="option"><input type="radio" name="q74" id="q74d" value="1"><label for="q74d">4. 振って</label></div>
+</div>
+<div class="explanation">◆ 正解：4 — 「手を<strong>振って</strong>」＝さようならの動作です。</div>
+</div>
+<div class="question">
+<div class="q-text"><span class="q-num">75</span>彼女に研究者の道を選んだ<strong>わけ</strong>を聞いた。</div>
+<div class="options">
+<div class="option"><input type="radio" name="q75" id="q75a" value="0"><label for="q75a">1. 株</label></div>
+<div class="option"><input type="radio" name="q75" id="q75b" value="1"><label for="q75b">2. 訳</label></div>
+<div class="option"><input type="radio" name="q75" id="q75c" value="0"><label for="q75c">3. 趣</label></div>
+<div class="option"><input type="radio" name="q75" id="q75d" value="0"><label for="q75d">4. 街</label></div>
+</div>
+<div class="explanation">◆ 正解：2 — 「<strong>わけ</strong>を聞く」＝理由を聞く、です。</div>
+</div>
+</div>
+</div>
+<div class="section submit-section">
+<button class="btn-submit" id="submitBtn" onclick="submitTest()">採点する</button>
+</div>
+<div class="result-panel" id="resultPanel">
+<h2 id="resultTitle"></h2>
+<div class="result-score" id="resultScore"></div>
+<div class="result-detail" id="resultDetail"></div>
+<button class="btn-submit" onclick="location.reload()" style="margin-top:20px">もう一度</button>
+</div>
+</div>
+
+<script>
+const Q_START=61,Q_END=75,TOTAL=15,TIME_LIMIT=420;
+let timeLeft=TIME_LIMIT,timerInterval,submitted=false;
+function startTimer(){
+timerInterval=setInterval(()=>{
+timeLeft--;
+const m=Math.floor(timeLeft/60),s=timeLeft%60;
+const el=document.getElementById('timer');
+el.textContent=`${m}:${s.toString().padStart(2,'0')}`;
+document.getElementById('progress').style.width=`${(timeLeft/TIME_LIMIT)*100}%`;
+if(timeLeft<=60)el.className='timer danger';
+else if(timeLeft<=300)el.className='timer warning';
+if(timeLeft<=0){clearInterval(timerInterval);submitTest();}
+},1000);
+}
+function submitTest(){
+if(submitted)return;submitted=true;
+clearInterval(timerInterval);
+let correct=0;
+for(let i=Q_START;i<=Q_END;i++){
+const sel=document.querySelector(`input[name="q${i}"]:checked`);
+const opts=document.querySelectorAll(`input[name="q${i}"]`);
+if(sel&&sel.value==='1'){correct++;}
+if(opts.length){opts.forEach(o=>{
+const p=o.parentElement;
+if(o.value==='1')p.classList.add('correct');
+else if(o.checked&&o.value!=='1')p.classList.add('wrong');
+});}
+}
+document.querySelectorAll('.explanation').forEach(e=>e.classList.add('show'));
+document.querySelectorAll('.answer-box').forEach(e=>e.classList.add('show'));
+const pct=TOTAL>0?Math.round((correct/TOTAL)*100):0;
+const panel=document.getElementById('resultPanel');
+const title=document.getElementById('resultTitle');
+const score=document.getElementById('resultScore');
+const detail=document.getElementById('resultDetail');
+panel.style.display='block';
+score.textContent=`${correct} / ${TOTAL}（${pct}%）`;
+if(pct>=90){title.textContent='🎉 素晴らしい！';score.className='result-score excellent';}
+else if(pct>=70){title.textContent='👍 よくできました！';score.className='result-score good';}
+else if(pct>=50){title.textContent='📝 もう少し！';score.className='result-score fair';}
+else{title.textContent='💪 がんばりましょう！';score.className='result-score poor';}
+const timeUsed=TIME_LIMIT-timeLeft;
+detail.innerHTML=`
+<div class="result-item"><div class="label">漢字A</div><div class="value">${correct}/${TOTAL}</div></div>
+<div class="result-item"><div class="label">所要時間</div><div class="value">${Math.floor(timeUsed/60)}分${timeUsed%60}秒</div></div>
+`;
+document.getElementById('submitBtn').disabled=true;
+panel.scrollIntoView({behavior:'smooth'});
+}
+startTimer();
+</script>
+
+</body>
+</html>
