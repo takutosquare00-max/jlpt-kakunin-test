@@ -91,8 +91,8 @@ FOOTER_READONLY = """</div>
 SECTIONS = [
     {
         "file": "jtest-ac-2025-sec01-goi-a.html",
-        "title": "J.TEST A-C 2025年 語彙A 20問（10分）",
-        "h1": "J.TEST A-C 2025年【語彙A 20問】（10分）",
+        "title": "過去問J.TEST A-C 2025年7月度 語彙A 20問（10分）",
+        "h1": "過去問J.TEST A-C 2025年7月度【語彙A 20問】（10分）",
         "timer": "10:00",
         "time_sec": 600,
         "badge": "語彙A 20問",
@@ -103,8 +103,8 @@ SECTIONS = [
     },
     {
         "file": "jtest-ac-2025-sec02-goi-b.html",
-        "title": "J.TEST A-C 2025年 語彙B 10問（5分）",
-        "h1": "J.TEST A-C 2025年【語彙B 10問】（5分）",
+        "title": "過去問J.TEST A-C 2025年7月度 語彙B 10問（5分）",
+        "h1": "過去問J.TEST A-C 2025年7月度【語彙B 10問】（5分）",
         "timer": "5:00",
         "time_sec": 300,
         "badge": "語彙B 10問",
@@ -115,8 +115,8 @@ SECTIONS = [
     },
     {
         "file": "jtest-ac-2025-sec03-goi-c.html",
-        "title": "J.TEST A-C 2025年 語彙C 10問（5分）",
-        "h1": "J.TEST A-C 2025年【語彙C 10問】（5分）",
+        "title": "過去問J.TEST A-C 2025年7月度 語彙C 10問（5分）",
+        "h1": "過去問J.TEST A-C 2025年7月度【語彙C 10問】（5分）",
         "timer": "5:00",
         "time_sec": 300,
         "badge": "語彙C 10問",
@@ -127,8 +127,8 @@ SECTIONS = [
     },
     {
         "file": "jtest-ac-2025-sec04-dokkai.html",
-        "title": "J.TEST A-C 2025年 読解 20問（38分）",
-        "h1": "J.TEST A-C 2025年【読解 20問】（38分）",
+        "title": "過去問J.TEST A-C 2025年7月度 読解 20問（38分）",
+        "h1": "過去問J.TEST A-C 2025年7月度【読解 20問】（38分）",
         "timer": "38:00",
         "time_sec": 2280,
         "badge": "読解 20問",
@@ -139,8 +139,8 @@ SECTIONS = [
     },
     {
         "file": "jtest-ac-2025-sec05-kanji-a.html",
-        "title": "J.TEST A-C 2025年 漢字A 15問（7分）",
-        "h1": "J.TEST A-C 2025年【漢字A 15問】（7分）",
+        "title": "過去問J.TEST A-C 2025年7月度 漢字A 15問（7分）",
+        "h1": "過去問J.TEST A-C 2025年7月度【漢字A 15問】（7分）",
         "timer": "7:00",
         "time_sec": 420,
         "badge": "漢字A 15問",
@@ -151,8 +151,8 @@ SECTIONS = [
     },
     {
         "file": "jtest-ac-2025-sec06-kanji-b.html",
-        "title": "J.TEST A-C 2025年 漢字B 15問（7分）",
-        "h1": "J.TEST A-C 2025年【漢字B 15問】（7分）",
+        "title": "過去問J.TEST A-C 2025年7月度 漢字B 15問（7分）",
+        "h1": "過去問J.TEST A-C 2025年7月度【漢字B 15問】（7分）",
         "timer": "7:00",
         "time_sec": 420,
         "badge": "漢字B 15問",
@@ -161,8 +161,8 @@ SECTIONS = [
     },
     {
         "file": "jtest-ac-2025-sec07-kisshutsu.html",
-        "title": "J.TEST A-C 2025年 記述 10問（8分）",
-        "h1": "J.TEST A-C 2025年【記述 10問】（8分）",
+        "title": "過去問J.TEST A-C 2025年7月度 記述 10問（8分）",
+        "h1": "過去問J.TEST A-C 2025年7月度【記述 10問】（8分）",
         "timer": "8:00",
         "time_sec": 480,
         "badge": "記述 10問",
