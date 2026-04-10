@@ -95,6 +95,17 @@ h1 {
 }
 .icon-row .icon-link:active { transform: scale(0.96); }
 .icon-row .icon-link:hover { box-shadow: 0 4px 12px rgba(0,0,0,0.25); }
+/* N4 30分まとめ：2つのアイコンを同一サイズ（10分テストの 56px 角に合わせた高さ） */
+.icon-row.icon-row-matome-pair .icon-link {
+  box-sizing: border-box;
+  width: 72px;
+  min-width: 72px;
+  max-width: 72px;
+  flex: 0 0 72px;
+  height: 56px;
+  padding: 0 6px;
+  font-size: 1.05em;
+}
 /* J.TEST セクション別（A-C / F-G）：長いラベル用グリッド */
 .jtest-ac-section,
 .jtest-fg-section {
@@ -235,7 +246,7 @@ h1 {
     </div>
     <div class="sub-section">
       <div class="sub-section-title">30分・まとめ</div>
-      <div class="icon-row">
+      <div class="icon-row icon-row-matome-pair">
         <a href="n4-kakunin-v1-v5-summary-50.html" class="icon-link">1-5</a>
         <a href="n4-kakunin-v6-v10-summary-48.html" class="icon-link">6-10</a>
       </div>
