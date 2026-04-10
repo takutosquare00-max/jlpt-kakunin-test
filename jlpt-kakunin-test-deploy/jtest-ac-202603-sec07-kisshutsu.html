@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<title>J.TEST A-C 2026/03 記述 10問（8分）</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;-webkit-tap-highlight-color:transparent}
+body{font-family:'Hiragino Kaku Gothic ProN','Hiragino Sans','Noto Sans JP',Meiryo,sans-serif;background:#f5f5f5;color:#000;line-height:1.7;padding:env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left)}
+.container{max-width:800px;margin:0 auto;padding:20px}
+header{background:#f5f5f5;color:#000;padding:24px;border-radius:16px;margin-bottom:24px;text-align:center;position:sticky;top:0;z-index:100;border:2px solid #000;box-shadow:none}
+header h1{font-size:1.5em;margin-bottom:4px}
+.header-info{display:flex;justify-content:center;gap:24px;align-items:center;margin-top:8px;flex-wrap:wrap}
+.timer{font-size:1.8em;font-weight:bold;font-variant-numeric:tabular-nums;color:#000}
+.timer.warning{color:#333;animation:pulse 1s infinite}
+.timer.danger{color:#000;animation:pulse .5s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.6}}
+.progress-bar{width:200px;height:8px;background:#f5f5f5;border:1px solid #000;border-radius:4px;overflow:hidden}
+.progress-fill{height:100%;background:#000;border-radius:2px;transition:width .3s}
+.score-badge{background:#f5f5f5;color:#000;padding:4px 12px;border-radius:20px;font-size:.9em;border:1px solid #000}
+.section{background:#f5f5f5;border-radius:12px;padding:24px;margin-bottom:20px;border:1px solid #000;box-shadow:none}
+.section-title{font-size:1.1em;font-weight:bold;color:#000;border-left:4px solid #000;padding-left:12px;margin-bottom:16px}
+.question{padding:16px 0;border-bottom:1px solid #000}
+.question:last-child{border-bottom:none}
+.q-num{display:inline-block;background:#f5f5f5;color:#000;width:28px;height:28px;text-align:center;line-height:28px;border-radius:50%;font-size:.85em;font-weight:bold;margin-right:8px;border:2px solid #000}
+.q-text{font-size:1.05em;margin-bottom:12px;font-weight:500;color:#000}
+.options{display:grid;grid-template-columns:1fr 1fr;gap:8px;align-items:stretch}
+@media(max-width:600px){.options{grid-template-columns:1fr}}
+.option{display:flex;flex-direction:column;position:relative;min-height:0}
+.option input{display:none}
+.option label{display:block;flex:1;min-height:52px;padding:10px 14px;border:2px solid #e2e8f0;border-radius:8px;cursor:pointer;transition:all .2s;font-size:.95em;line-height:1.65;touch-action:manipulation;-webkit-user-select:none;user-select:none;color:#1a202c;background:#fff}
+ruby{ruby-align:center}
+.option label rt,.q-text rt,.reading-passage rt{font-size:.55em;line-height:1.3}
+.option label:hover{border-color:#38b2ac;background:#f0ffff}
+.option input:checked+label{border-color:#38b2ac;background:#e6fffa;color:#234e52;font-weight:600}
+.option.correct label{border-color:#48bb78!important;background:#f0fff4!important;color:#276749!important}
+.option.wrong label{border-color:#fc8181!important;background:#fff5f5!important;color:#9b2c2c!important}
+.reading-passage{background:#f5f5f5;border-left:3px solid #000;padding:16px;margin:12px 0;border-radius:0 8px 8px 0;font-size:.95em;line-height:1.9;white-space:pre-wrap;border:1px solid #000;color:#000}
+.btn-submit{display:block;width:100%;min-height:48px;padding:16px;background:#f5f5f5;color:#000;border:2px solid #000;border-radius:12px;font-size:1.1em;font-weight:bold;cursor:pointer;transition:transform .2s;margin-top:24px;touch-action:manipulation;-webkit-user-select:none;user-select:none}
+.btn-submit:hover{transform:translateY(-2px);background:#f5f5f5}
+.btn-submit:disabled{opacity:.5;cursor:not-allowed;transform:none}
+.result-panel{background:#f5f5f5;border-radius:16px;padding:32px;text-align:center;border:2px solid #000;margin-top:24px;display:none}
+.result-panel h2{font-size:1.8em;margin-bottom:8px;color:#000}
+.result-score{font-size:3em;font-weight:bold;margin:16px 0;color:#000}
+.result-score.excellent{color:#000}
+.result-score.good{color:#000}
+.result-score.fair{color:#000}
+.result-score.poor{color:#000}
+.result-detail{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:12px;margin-top:20px}
+.result-item{background:#f5f5f5;padding:12px;border-radius:8px;border:1px solid #000}
+.result-item .label{font-size:.8em;color:#000}
+.result-item .value{font-size:1.2em;font-weight:bold;color:#000}
+.explanation{display:none;margin-top:8px;padding:10px;background:#f5f5f5;border-radius:8px;font-size:.9em;border-left:3px solid #000;border:1px solid #000;color:#000}
+.explanation.show{display:block}
+.question.readonly .answer-box{display:none;background:#f0f0f0;padding:10px;margin:8px 0;border-radius:8px;border:1px solid #000;font-weight:bold}
+.question.readonly .answer-box.show{display:block}
+.question.readonly .explanation{margin-top:8px}
+.time-budget-panel{margin-bottom:20px;padding:16px 20px;background:#fafafa;border:1px solid #000;border-radius:12px;font-size:.9em}
+.time-budget-title{font-weight:bold;margin-bottom:8px;font-size:1em}
+.time-budget-intro{color:#333;margin-bottom:12px;line-height:1.55;font-size:.88em}
+.time-budget-table{width:100%;border-collapse:collapse;font-size:.82em}
+.time-budget-table th,.time-budget-table td{border:1px solid #000;padding:7px 8px;text-align:left;vertical-align:top}
+.time-budget-table th{background:#eee}
+.time-budget-table td:nth-child(3),.time-budget-table td:nth-child(4){text-align:center;font-variant-numeric:tabular-nums;white-space:nowrap}
+.time-budget-table tfoot td{font-weight:bold}
+@media(max-width:600px){.time-budget-table{font-size:.78em}.time-budget-table th,.time-budget-table td{padding:5px 6px}}
+.submit-section{padding:16px 24px 24px;margin-bottom:20px}
+.submit-section .btn-submit{margin-top:0}
+</style>
+</head>
+<body>
+<div class="container">
+<header>
+<h1>過去問J.TEST A-C 2026年3月度【記述 10問】（8分）</h1>
+<div class="header-info">
+<div class="timer" id="timer">8:00</div>
+<div class="progress-bar"><div class="progress-fill" id="progress" style="width:100%"></div></div>
+<div class="score-badge" id="scoreBadge">記述 10問</div>
+</div>
+</header>
+
+<div class="section"><div class="section-title">4 記述問題（10問）</div>
+<div class="question readonly">
+<div class="q-text"><span class="q-num">91</span>うちの<ruby>犬<rt>いぬ</rt></ruby>は、雨が＿＿＿（A）いても、<ruby>散歩<rt>さんぽ</rt></ruby>に＿＿＿（B）がります。</div>
+<div class="answer-box">★ 解答：（A）降って　（B）行きた</div>
+<div class="explanation">◆ 解説：「雨が降っていても」（逆接）＋「散歩に行きたがる」（犬が望む行動）。「〜たがる」は第三者の欲求を表す表現。「降って」は「降る→降っていても」の流れから「降って」が自然。</div>
+</div>
+<div class="question readonly">
+<div class="q-text"><span class="q-num">92</span>仕事を変えて、<ruby>給料<rt>きゅうりょう</rt></ruby>が＿＿＿（A）<ruby>反面<rt>はんめん</rt></ruby>、<ruby>残業<rt>ざんぎょう</rt></ruby>が多く、<ruby>家族<rt>かぞく</rt></ruby>と過ごす＿＿＿（B）が減ってしまった。</div>
+<div class="answer-box">★ 解答：（A）増えた　（B）時間</div>
+<div class="explanation">◆ 解説：「〜反面」は「〜という良い面がある一方で」という対比の表現。給料が増えた（良い面）反面、時間が減った（悪い面）という構造。</div>
+</div>
+<div class="question readonly">
+<div class="q-text"><span class="q-num">93</span>A：お<ruby>腹<rt>なか</rt></ruby>が＿＿＿（A）たまらないよ。<br>　　B：そこのコンビニでパンでも＿＿＿（B）来て、食べたら？</div>
+<div class="answer-box">★ 解答：（A）すいて　（B）買って</div>
+<div class="explanation">◆ 解説：（A）「お腹がすいてたまらない」＝お腹がとても空いている。（B）「買って来て食べたら？」＝コンビニで買ってきたらどうかという提案。</div>
+</div>
+<div class="question readonly">
+<div class="q-text"><span class="q-num">94</span>A：この<ruby>資料<rt>しりょう</rt></ruby>は＿＿＿（A）中に返したほうがいいですか。<br>　　B：その<ruby>資料<rt>しりょう</rt></ruby>なら、明日でもさしつかえ＿＿＿（B）ですよ。</div>
+<div class="answer-box">★ 解答：（A）今日の　（B）ない</div>
+<div class="explanation">◆ 解説：（A）「今日の中に返す」＝今日中に返す。（B）「さしつかえない」＝問題ない・差し支えない。「明日でもさしつかえない」＝明日でも構わない。</div>
+</div>
+<div class="question readonly">
+<div class="q-text"><span class="q-num">95</span><ruby>孫<rt>まご</rt></ruby>から電話で、<ruby>目指<rt>めざ</rt></ruby>していた<ruby>大学<rt>だいがく</rt></ruby>の<ruby>試験<rt>しけん</rt></ruby>に＿＿＿（A）したと聞き、私はうれしい＿＿＿（B）この上ない。</div>
+<div class="answer-box">★ 解答：（A）合格　（B）こと</div>
+<div class="explanation">◆ 解説：（A）「合格した」＝試験に受かった。（B）「うれしいことこの上ない」＝これ以上ないほどうれしい。「〜この上ない」は最上級の感情を表す慣用表現。</div>
+</div>
+<div class="question readonly">
+<div class="q-text"><span class="q-num">96</span><ruby>父<rt>ちち</rt></ruby>を<ruby>空港<rt>くうこう</rt></ruby>へ<ruby>迎<rt>むか</rt></ruby>えに行きたいので、明日、<br>【1. 会社　→　2. <strong>休む</strong>　→　3. <strong>いただく</strong>】ませんか。</div>
+<div class="answer-box">★ 解答：会社を休ませていただけ</div>
+<div class="explanation">◆ 解説：「会社を休ませていただけませんか」＝上司などに対して休むことを丁寧にお願いする表現。「〜させていただく」は謙譲語で許可を求める際に使う。</div>
+</div>
+<div class="question readonly">
+<div class="q-text"><span class="q-num">97</span>日本に来てから1か<ruby>月<rt>げつ</rt></ruby>が<ruby>経<rt>た</rt></ruby>ったが、<br>私は【1. これといって　→　2. <strong><ruby>困<rt>こま</rt></ruby>る</strong>　→　3. いる】ことはない。</div>
+<div class="answer-box">★ 解答：これといって困っていること（は）ない</div>
+<div class="explanation">◆ 解説：「これといって」＝特にこれというものは。「これといって困っていることはない」＝特に困っていることはない、という意味。</div>
+</div>
+<div class="question readonly">
+<div class="q-text"><span class="q-num">98</span>A：この仕事は簡単なので、早く終わりそうですね。<br>B：ええ。でも、【1. 簡単　→　2. 仕事　→　3. ほど】<ruby>間違<rt>まちが</rt></ruby>えやすいから、気をつけましょう。</div>
+<div class="answer-box">★ 解答：簡単な仕事ほど</div>
+<div class="explanation">◆ 解説：「〜ほど〜」＝〜であるほど（程度・比較）。「簡単な仕事ほど間違えやすい」＝簡単だからこそ油断して間違えやすいという逆説的な表現。</div>
+</div>
+<div class="question readonly">
+<div class="q-text"><span class="q-num">99</span>私が<ruby>歌手<rt>かしゅ</rt></ruby>になりたいと言ったら、【1. <ruby>友人<rt>ゆうじん</rt></ruby>　→　2. <strong><ruby>鼻<rt>はな</rt></ruby></strong>　→　3. <strong><ruby>笑う<rt>わらう</rt></ruby></strong>】ました。</div>
+<div class="answer-box">★ 解答：友人に鼻で笑われ</div>
+<div class="explanation">◆ 解説：「鼻で笑う」＝馬鹿にしてせせら笑う・軽蔑して笑う慣用句。「友人に鼻で笑われました」＝友人に馬鹿にされて笑われた。受身形（笑われ）にすることで主語（私）の立場が表れる。</div>
+</div>
+<div class="question readonly">
+<div class="q-text"><span class="q-num">100</span><ruby>故郷<rt>こきょう</rt></ruby>の【1. あまりの　→　2. <ruby>変化<rt>へんか</rt></ruby>　→　3. <ruby>言葉<rt>ことば</rt></ruby>】出なかった。</div>
+<div class="answer-box">★ 解答：あまりの変化に言葉が</div>
+<div class="explanation">◆ 解説：「あまりの〜に言葉が出ない」＝あまりにも〜すぎて、驚きや感動で言葉が出てこない、という慣用的な表現。「故郷のあまりの変化に言葉が出なかった」＝故郷がこんなにも変わってしまったことに驚いて言葉が出なかった。</div>
+</div>
+</div>
+<div class="section submit-section">
+<button class="btn-submit" id="submitBtn" onclick="submitTest()">採点する</button>
+</div>
+<div class="result-panel" id="resultPanel">
+<h2 id="resultTitle"></h2>
+<div class="result-score" id="resultScore"></div>
+<div class="result-detail" id="resultDetail"></div>
+<button class="btn-submit" onclick="location.reload()" style="margin-top:20px">もう一度</button>
+</div>
+</div>
+
+<script>
+const TIME_LIMIT=480;
+let timeLeft=TIME_LIMIT,timerInterval,submitted=false;
+function startTimer(){
+timerInterval=setInterval(()=>{
+timeLeft--;
+const m=Math.floor(timeLeft/60),s=timeLeft%60;
+const el=document.getElementById('timer');
+el.textContent=`${m}:${s.toString().padStart(2,'0')}`;
+document.getElementById('progress').style.width=`${(timeLeft/TIME_LIMIT)*100}%`;
+if(timeLeft<=60)el.className='timer danger';
+else if(timeLeft<=300)el.className='timer warning';
+if(timeLeft<=0){clearInterval(timerInterval);submitTest();}
+},1000);
+}
+function submitTest(){
+if(submitted)return;submitted=true;
+clearInterval(timerInterval);
+document.querySelectorAll('.explanation').forEach(e=>e.classList.add('show'));
+document.querySelectorAll('.answer-box').forEach(e=>e.classList.add('show'));
+const panel=document.getElementById('resultPanel');
+const title=document.getElementById('resultTitle');
+const score=document.getElementById('resultScore');
+const detail=document.getElementById('resultDetail');
+panel.style.display='block';
+title.textContent='✅ 完了';
+score.textContent='解説を表示しました';
+score.className='result-score good';
+const timeUsed=TIME_LIMIT-timeLeft;
+detail.innerHTML=`
+<div class="result-item"><div class="label">記述</div><div class="value">採点対象外（自己採点）</div></div>
+<div class="result-item"><div class="label">所要時間</div><div class="value">${Math.floor(timeUsed/60)}分${timeUsed%60}秒</div></div>
+`;
+document.getElementById('submitBtn').disabled=true;
+panel.scrollIntoView({behavior:'smooth'});
+}
+startTimer();
+</script>
+</body>
+</html>

@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<title>J.TEST A-C 2026/03 漢字B 15問（7分）</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;-webkit-tap-highlight-color:transparent}
+body{font-family:'Hiragino Kaku Gothic ProN','Hiragino Sans','Noto Sans JP',Meiryo,sans-serif;background:#f5f5f5;color:#000;line-height:1.7;padding:env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left)}
+.container{max-width:800px;margin:0 auto;padding:20px}
+header{background:#f5f5f5;color:#000;padding:24px;border-radius:16px;margin-bottom:24px;text-align:center;position:sticky;top:0;z-index:100;border:2px solid #000;box-shadow:none}
+header h1{font-size:1.5em;margin-bottom:4px}
+.header-info{display:flex;justify-content:center;gap:24px;align-items:center;margin-top:8px;flex-wrap:wrap}
+.timer{font-size:1.8em;font-weight:bold;font-variant-numeric:tabular-nums;color:#000}
+.timer.warning{color:#333;animation:pulse 1s infinite}
+.timer.danger{color:#000;animation:pulse .5s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.6}}
+.progress-bar{width:200px;height:8px;background:#f5f5f5;border:1px solid #000;border-radius:4px;overflow:hidden}
+.progress-fill{height:100%;background:#000;border-radius:2px;transition:width .3s}
+.score-badge{background:#f5f5f5;color:#000;padding:4px 12px;border-radius:20px;font-size:.9em;border:1px solid #000}
+.section{background:#f5f5f5;border-radius:12px;padding:24px;margin-bottom:20px;border:1px solid #000;box-shadow:none}
+.section-title{font-size:1.1em;font-weight:bold;color:#000;border-left:4px solid #000;padding-left:12px;margin-bottom:16px}
+.question{padding:16px 0;border-bottom:1px solid #000}
+.question:last-child{border-bottom:none}
+.q-num{display:inline-block;background:#f5f5f5;color:#000;width:28px;height:28px;text-align:center;line-height:28px;border-radius:50%;font-size:.85em;font-weight:bold;margin-right:8px;border:2px solid #000}
+.q-text{font-size:1.05em;margin-bottom:12px;font-weight:500;color:#000}
+.options{display:grid;grid-template-columns:1fr 1fr;gap:8px;align-items:stretch}
+@media(max-width:600px){.options{grid-template-columns:1fr}}
+.option{display:flex;flex-direction:column;position:relative;min-height:0}
+.option input{display:none}
+.option label{display:block;flex:1;min-height:52px;padding:10px 14px;border:2px solid #e2e8f0;border-radius:8px;cursor:pointer;transition:all .2s;font-size:.95em;line-height:1.65;touch-action:manipulation;-webkit-user-select:none;user-select:none;color:#1a202c;background:#fff}
+ruby{ruby-align:center}
+.option label rt,.q-text rt,.reading-passage rt{font-size:.55em;line-height:1.3}
+.option label:hover{border-color:#38b2ac;background:#f0ffff}
+.option input:checked+label{border-color:#38b2ac;background:#e6fffa;color:#234e52;font-weight:600}
+.option.correct label{border-color:#48bb78!important;background:#f0fff4!important;color:#276749!important}
+.option.wrong label{border-color:#fc8181!important;background:#fff5f5!important;color:#9b2c2c!important}
+.reading-passage{background:#f5f5f5;border-left:3px solid #000;padding:16px;margin:12px 0;border-radius:0 8px 8px 0;font-size:.95em;line-height:1.9;white-space:pre-wrap;border:1px solid #000;color:#000}
+.btn-submit{display:block;width:100%;min-height:48px;padding:16px;background:#f5f5f5;color:#000;border:2px solid #000;border-radius:12px;font-size:1.1em;font-weight:bold;cursor:pointer;transition:transform .2s;margin-top:24px;touch-action:manipulation;-webkit-user-select:none;user-select:none}
+.btn-submit:hover{transform:translateY(-2px);background:#f5f5f5}
+.btn-submit:disabled{opacity:.5;cursor:not-allowed;transform:none}
+.result-panel{background:#f5f5f5;border-radius:16px;padding:32px;text-align:center;border:2px solid #000;margin-top:24px;display:none}
+.result-panel h2{font-size:1.8em;margin-bottom:8px;color:#000}
+.result-score{font-size:3em;font-weight:bold;margin:16px 0;color:#000}
+.result-score.excellent{color:#000}
+.result-score.good{color:#000}
+.result-score.fair{color:#000}
+.result-score.poor{color:#000}
+.result-detail{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:12px;margin-top:20px}
+.result-item{background:#f5f5f5;padding:12px;border-radius:8px;border:1px solid #000}
+.result-item .label{font-size:.8em;color:#000}
+.result-item .value{font-size:1.2em;font-weight:bold;color:#000}
+.explanation{display:none;margin-top:8px;padding:10px;background:#f5f5f5;border-radius:8px;font-size:.9em;border-left:3px solid #000;border:1px solid #000;color:#000}
+.explanation.show{display:block}
+.question.readonly .answer-box{display:none;background:#f0f0f0;padding:10px;margin:8px 0;border-radius:8px;border:1px solid #000;font-weight:bold}
+.question.readonly .answer-box.show{display:block}
+.question.readonly .explanation{margin-top:8px}
+.time-budget-panel{margin-bottom:20px;padding:16px 20px;background:#fafafa;border:1px solid #000;border-radius:12px;font-size:.9em}
+.time-budget-title{font-weight:bold;margin-bottom:8px;font-size:1em}
+.time-budget-intro{color:#333;margin-bottom:12px;line-height:1.55;font-size:.88em}
+.time-budget-table{width:100%;border-collapse:collapse;font-size:.82em}
+.time-budget-table th,.time-budget-table td{border:1px solid #000;padding:7px 8px;text-align:left;vertical-align:top}
+.time-budget-table th{background:#eee}
+.time-budget-table td:nth-child(3),.time-budget-table td:nth-child(4){text-align:center;font-variant-numeric:tabular-nums;white-space:nowrap}
+.time-budget-table tfoot td{font-weight:bold}
+@media(max-width:600px){.time-budget-table{font-size:.78em}.time-budget-table th,.time-budget-table td{padding:5px 6px}}
+.submit-section{padding:16px 24px 24px;margin-bottom:20px}
+.submit-section .btn-submit{margin-top:0}
+</style>
+</head>
+<body>
+<div class="container">
+<header>
+<h1>過去問J.TEST A-C 2026年3月度【漢字B 15問】（7分）</h1>
+<div class="header-info">
+<div class="timer" id="timer">7:00</div>
+<div class="progress-bar"><div class="progress-fill" id="progress" style="width:100%"></div></div>
+<div class="score-badge" id="scoreBadge">漢字B 15問</div>
+</div>
+</header>
+
+<div class="section"><div class="section-title">漢字問題 B（15問）</div>
+<div class="question readonly">
+<div class="q-text"><span class="q-num">76</span><ruby>客<rt>きゃく</rt></ruby>を<strong>紹介</strong>してもらった。</div>
+<div class="answer-box">★ 解答：しょうかい</div>
+<div class="explanation">◆ 解説：紹介（しょうかい）＝人や物を他の人に引き合わせること。</div>
+</div>
+<div class="question readonly">
+<div class="q-text"><span class="q-num">77</span>彼は<strong>挨拶</strong>も<ruby>満足<rt>まんぞく</rt></ruby>にできない。</div>
+<div class="answer-box">★ 解答：あいさつ</div>
+<div class="explanation">◆ 解説：挨拶（あいさつ）＝人と会ったときや別れるときに交わす礼儀的な言葉や動作。</div>
+</div>
+<div class="question readonly">
+<div class="q-text"><span class="q-num">78</span>A社はこの<ruby>分野<rt>ぶんや</rt></ruby>での<strong>実績</strong>がある。</div>
+<div class="answer-box">★ 解答：じっせき</div>
+<div class="explanation">◆ 解説：実績（じっせき）＝実際に成し遂げた業績・成果のこと。</div>
+</div>
+<div class="question readonly">
+<div class="q-text"><span class="q-num">79</span><ruby>事務室<rt>じむしつ</rt></ruby>の<strong>机</strong>は大きい。</div>
+<div class="answer-box">★ 解答：つくえ</div>
+<div class="explanation">◆ 解説：机（つくえ）＝仕事や勉強をするときに使う台。</div>
+</div>
+<div class="question readonly">
+<div class="q-text"><span class="q-num">80</span><ruby>会議<rt>かいぎ</rt></ruby>は<strong>延期</strong>になった。</div>
+<div class="answer-box">★ 解答：えんき</div>
+<div class="explanation">◆ 解説：延期（えんき）＝予定していた日程を後にずらすこと。</div>
+</div>
+<div class="question readonly">
+<div class="q-text"><span class="q-num">81</span><ruby>課長<rt>かちょう</rt></ruby>に<strong>許可</strong>をもらった。</div>
+<div class="answer-box">★ 解答：きょか</div>
+<div class="explanation">◆ 解説：許可（きょか）＝してもいいと認めること・認める許し。</div>
+</div>
+<div class="question readonly">
+<div class="q-text"><span class="q-num">82</span><strong>一層</strong><ruby>努力<rt>どりょく</rt></ruby>しなければならない。</div>
+<div class="answer-box">★ 解答：いっそう</div>
+<div class="explanation">◆ 解説：一層（いっそう）＝これまで以上に・さらに。「一層努力する」＝もっと一段と努力する。</div>
+</div>
+<div class="question readonly">
+<div class="q-text"><span class="q-num">83</span><strong>改めて</strong>電話します。</div>
+<div class="answer-box">★ 解答：あらためて</div>
+<div class="explanation">◆ 解説：改めて（あらためて）＝新たに・もう一度・後日また。「改めて連絡する」はビジネス表現でよく使う。</div>
+</div>
+<div class="question readonly">
+<div class="q-text"><span class="q-num">84</span>できればもっと人を<strong>雇い</strong>たい。</div>
+<div class="answer-box">★ 解答：やとい</div>
+<div class="explanation">◆ 解説：雇う（やとう）＝賃金を払って人を働かせること。「雇いたい」＝採用したい。</div>
+</div>
+<div class="question readonly">
+<div class="q-text"><span class="q-num">85</span>我が社の<ruby>事業<rt>じぎょう</rt></ruby>を<strong>拡張</strong>したい。</div>
+<div class="answer-box">★ 解答：かくちょう</div>
+<div class="explanation">◆ 解説：拡張（かくちょう）＝規模を広げること・拡大すること。</div>
+</div>
+<div class="question readonly">
+<div class="q-text"><span class="q-num">86</span>彼はずっと<strong>黙って</strong>いた。</div>
+<div class="answer-box">★ 解答：だまって</div>
+<div class="explanation">◆ 解説：黙る（だまる）＝何も言わずにいること。「黙っていた」＝ずっと何も言わなかった。</div>
+</div>
+<div class="question readonly">
+<div class="q-text"><span class="q-num">87</span>目を<strong>凝らして</strong>よく見ないと見えない。</div>
+<div class="answer-box">★ 解答：こらして</div>
+<div class="explanation">◆ 解説：目を凝らす（めをこらす）＝しっかりと注意して見ること・じっと見つめること。</div>
+</div>
+<div class="question readonly">
+<div class="q-text"><span class="q-num">88</span>化粧室で<ruby>髪<rt>かみ</rt></ruby>を<strong>整えた</strong>。</div>
+<div class="answer-box">★ 解答：ととのえた</div>
+<div class="explanation">◆ 解説：整える（ととのえる）の過去形「整えた」は「ととのえた」と読む。「髪を整える」＝髪の形をきちんとそろえる・整えること。</div>
+</div>
+<div class="question readonly">
+<div class="q-text"><span class="q-num">89</span>彼女は<strong>独創的</strong>な考えをする人だ。</div>
+<div class="answer-box">★ 解答：どくそうてき</div>
+<div class="explanation">◆ 解説：独創的（どくそうてき）＝他にはない独自のアイデアや発想を持つ様子。</div>
+</div>
+<div class="question readonly">
+<div class="q-text"><span class="q-num">90</span>この<ruby>機械<rt>きかい</rt></ruby>は<strong>丁寧</strong>に<ruby>扱<rt>あつか</rt></ruby>ってください。</div>
+<div class="answer-box">★ 解答：ていねい</div>
+<div class="explanation">◆ 解説：丁寧（ていねい）＝注意深く・礼儀正しく・細かく気を配る様子。</div>
+</div>
+</div>
+<div class="section submit-section">
+<button class="btn-submit" id="submitBtn" onclick="submitTest()">採点する</button>
+</div>
+<div class="result-panel" id="resultPanel">
+<h2 id="resultTitle"></h2>
+<div class="result-score" id="resultScore"></div>
+<div class="result-detail" id="resultDetail"></div>
+<button class="btn-submit" onclick="location.reload()" style="margin-top:20px">もう一度</button>
+</div>
+</div>
+
+<script>
+const TIME_LIMIT=420;
+let timeLeft=TIME_LIMIT,timerInterval,submitted=false;
+function startTimer(){
+timerInterval=setInterval(()=>{
+timeLeft--;
+const m=Math.floor(timeLeft/60),s=timeLeft%60;
+const el=document.getElementById('timer');
+el.textContent=`${m}:${s.toString().padStart(2,'0')}`;
+document.getElementById('progress').style.width=`${(timeLeft/TIME_LIMIT)*100}%`;
+if(timeLeft<=60)el.className='timer danger';
+else if(timeLeft<=300)el.className='timer warning';
+if(timeLeft<=0){clearInterval(timerInterval);submitTest();}
+},1000);
+}
+function submitTest(){
+if(submitted)return;submitted=true;
+clearInterval(timerInterval);
+document.querySelectorAll('.explanation').forEach(e=>e.classList.add('show'));
+document.querySelectorAll('.answer-box').forEach(e=>e.classList.add('show'));
+const panel=document.getElementById('resultPanel');
+const title=document.getElementById('resultTitle');
+const score=document.getElementById('resultScore');
+panel.style.display='block';
+title.textContent='✅ 完了';
+score.textContent='解説を表示しました';
+score.className='result-score good';
+const timeUsed=TIME_LIMIT-timeLeft;
+document.getElementById('resultDetail').innerHTML=`
+<div class="result-item"><div class="label">漢字B</div><div class="value">採点対象外（自己採点）</div></div>
+<div class="result-item"><div class="label">所要時間</div><div class="value">${Math.floor(timeUsed/60)}分${timeUsed%60}秒</div></div>
+`;
+document.getElementById('submitBtn').disabled=true;
+panel.scrollIntoView({behavior:'smooth'});
+}
+startTimer();
+</script>
+</body>
+</html>

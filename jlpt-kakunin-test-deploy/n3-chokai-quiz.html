@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<title>JLPT N3 聴解 例題クイズ</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;-webkit-tap-highlight-color:transparent}
+body{font-family:'Hiragino Kaku Gothic ProN','Hiragino Sans','Noto Sans JP',Meiryo,sans-serif;background:#f0f4f8;color:#1a202c;line-height:1.7;padding:env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left)}
+.container{max-width:800px;margin:0 auto;padding:20px}
+header{background:#d81b60;color:#fff;padding:24px;border-radius:16px;margin-bottom:24px;text-align:center;position:sticky;top:0;z-index:100;box-shadow:0 4px 15px rgba(216,27,96,0.35)}
+header h1{font-size:1.5em;margin:0}
+.section{background:#fff;border-radius:12px;padding:24px;margin-bottom:20px;box-shadow:0 2px 8px rgba(0,0,0,.06)}
+.section-title{font-size:1.1em;font-weight:bold;color:#d81b60;border-left:4px solid #d81b60;padding-left:12px;margin-bottom:16px}
+.question{padding:16px 0;border-bottom:1px solid #e2e8f0}
+.question:last-of-type{border-bottom:none}
+.question.graded .option input:checked+label{pointer-events:none}
+.question.graded .option input{display:none}
+.question.graded .option label{cursor:default}
+.q-num{display:inline-block;background:#d81b60;color:#fff;width:28px;height:28px;text-align:center;line-height:28px;border-radius:50%;font-size:.85em;font-weight:bold;margin-right:8px}
+.q-text{font-size:1.05em;margin-bottom:12px;font-weight:500}
+.q-text.q-prompt{color:#718096;font-size:.9em;font-weight:400}
+.options{display:grid;grid-template-columns:1fr 1fr;gap:8px;align-items:stretch}
+@media(max-width:600px){.options{grid-template-columns:1fr}}
+.option{position:relative;display:flex;flex-direction:column;min-height:0}
+.option input{display:none}
+/* flex+align-items:center は ruby の上方向ルビと相性が悪い → ブロック＋余白で安定化 */
+.option label{
+  display:block;
+  flex:1 1 auto;
+  box-sizing:border-box;
+  min-height:3.25rem;
+  padding:0.7rem 0.875rem 0.65rem;
+  border:2px solid #e2e8f0;
+  border-radius:8px;
+  cursor:pointer;
+  transition:border-color .2s,background .2s,color .2s;
+  font-size:.95em;
+  line-height:1.65;
+  word-break:break-word;
+  overflow-wrap:anywhere;
+  touch-action:manipulation;
+  -webkit-user-select:none;
+  user-select:none;
+}
+.option label:hover{border-color:#d81b60;background:#fce4ec}
+.option input:checked+label{border-color:#d81b60;background:#fce4ec;color:#ad1457;font-weight:600}
+/* 採点後は詳細度を上げて、正解=緑・不正解=赤を常に表示（:checked のマゼンタより優先） */
+.question.graded .option.correct label,
+.question.graded .option.correct input:checked+label{
+  border-color:#48bb78 !important;
+  background:#f0fff4 !important;
+  color:#276749 !important;
+  font-weight:600;
+}
+.question.graded .option.wrong label,
+.question.graded .option.wrong input:checked+label{
+  border-color:#fc8181 !important;
+  background:#fff5f5 !important;
+  color:#9b2c2c !important;
+  font-weight:600;
+}
+.question.graded .option.correct label:hover,
+.question.graded .option.correct input:checked+label:hover{
+  border-color:#48bb78 !important;
+  background:#f0fff4 !important;
+  color:#276749 !important;
+}
+.question.graded .option.wrong label:hover,
+.question.graded .option.wrong input:checked+label:hover{
+  border-color:#fc8181 !important;
+  background:#fff5f5 !important;
+  color:#9b2c2c !important;
+}
+.question.graded .option:not(.correct):not(.wrong) label:hover{
+  border-color:#e2e8f0 !important;
+  background:#fff !important;
+  color:#1a202c !important;
+  font-weight:400;
+}
+.q-figure{margin:12px 0;text-align:center}
+.q-figure img{max-width:100%;height:auto;border-radius:8px;border:2px solid #e2e8f0}
+.q-feedback{margin-top:12px;padding:10px 12px;border-radius:8px;font-size:.95em;font-weight:600;display:none}
+.q-feedback.show{display:block}
+.q-feedback.ok{background:#f0fff4;color:#276749;border:1px solid #9ae6b4}
+.q-feedback.ng{background:#fff5f5;color:#9b2c2c;border:1px solid #feb2b2}
+.btn-submit{display:block;width:100%;min-height:48px;padding:14px 16px;background:#d81b60;color:#fff;border:none;border-radius:12px;font-size:1em;font-weight:bold;cursor:pointer;transition:transform .2s,box-shadow .2s;margin-top:12px;touch-action:manipulation;-webkit-user-select:none;user-select:none}
+.btn-submit:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(216,27,96,.35)}
+.btn-submit:disabled{opacity:.55;cursor:not-allowed;transform:none;box-shadow:none;background:#a0aec0}
+.btn-grade-example{margin-top:16px}
+.result-panel{background:#fff;border-radius:16px;padding:32px;text-align:center;box-shadow:0 4px 20px rgba(0,0,0,.1);margin-top:24px;display:none}
+.result-panel.show{display:block}
+.result-panel h2{font-size:1.8em;margin-bottom:8px}
+.result-score{font-size:3em;font-weight:bold;margin:16px 0}
+.result-score.excellent{color:#48bb78}
+.result-score.good{color:#d81b60}
+.result-score.fair{color:#ed8936}
+.result-score.poor{color:#fc8181}
+.result-detail{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:12px;margin-top:20px;text-align:left}
+.result-item{background:#f7fafc;padding:12px;border-radius:8px}
+.result-item .label{font-size:.8em;color:#718096}
+.result-item .value{font-size:1.2em;font-weight:bold}
+.script-block{background:#fff;border-radius:12px;padding:20px;margin-bottom:16px;box-shadow:0 2px 8px rgba(0,0,0,.06);text-align:left;font-size:.95em;line-height:1.85;display:none}
+.script-block.show{display:block}
+.section .script-block{margin-top:16px;margin-bottom:0;padding:16px;background:#f7fafc;border:1px solid #e2e8f0;box-shadow:none}
+.section .script-block + .script-block{margin-top:12px}
+.script-block h3{font-size:.95em;color:#718096;margin-bottom:10px}
+.script-block p{margin:.4em 0}
+.script-block .speaker{font-weight:600;color:#4a5568}
+.script-block ruby,.q-text ruby,.option label ruby{ruby-align:center}
+.script-block ruby rt,.q-text ruby rt{font-size:0.58em;font-weight:400;line-height:1.15}
+/* 選択肢内：ルビで行ボックスが跳ねないよう rt を固定し、ベース文字サイズを維持 */
+.option label ruby{font-size:1em;line-height:1.65}
+.option label rt{
+  font-size:0.52em;
+  font-weight:400;
+  line-height:1;
+  letter-spacing:0;
+}
+.hidden{display:none}
+/* 1階：例題選択 / 2階：解答 */
+.floor-quiz{margin-bottom:20px}
+.quiz-toolbar{margin-bottom:16px}
+.btn-back{
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+  padding:10px 16px;
+  background:#fff;
+  color:#d81b60;
+  border:2px solid #d81b60;
+  border-radius:10px;
+  font-size:.95em;
+  font-weight:600;
+  cursor:pointer;
+  touch-action:manipulation;
+  transition:background .2s,color .2s;
+}
+.btn-back:hover{background:#fce4ec}
+.example-picker{display:grid;gap:10px}
+.btn-pick-example{
+  display:block;width:100%;text-align:left;
+  padding:14px 16px;
+  background:#fff;
+  color:#1a202c;
+  border:2px solid #e2e8f0;
+  border-radius:12px;
+  font-size:1em;
+  font-weight:600;
+  cursor:pointer;
+  transition:border-color .2s,background .2s,box-shadow .2s;
+  touch-action:manipulation;
+}
+.btn-pick-example:hover{border-color:#d81b60;background:#fce4ec;box-shadow:0 2px 8px rgba(216,27,96,.12)}
+#quizForm .section[data-example].hidden{display:none}
+</style>
+</head>
+<body>
+<div class="container">
+
+<header>
+<h1>JLPT N3 聴解 例題</h1>
+</header>
+
+<div id="floor-menu" class="floor floor-menu">
+<div class="section">
+<div class="example-picker">
+<button type="button" class="btn-pick-example" data-example="1">例題1 — 話の要点（A 01）</button>
+<button type="button" class="btn-pick-example" data-example="2">例題2 — 要点（A 02）</button>
+<button type="button" class="btn-pick-example" data-example="3">例題3 — 話のあらまし（A 03）</button>
+<button type="button" class="btn-pick-example" data-example="4">例題4 — 表現の選択（A 04）</button>
+<button type="button" class="btn-pick-example" data-example="5">例題5 — 即応（A 05）</button>
+</div>
+</div>
+</div>
+
+<div id="floor-quiz" class="floor floor-quiz hidden">
+<div class="quiz-toolbar">
+<button type="button" class="btn-back" id="btnBackToMenu" aria-label="例題一覧に戻る">← 例題一覧に戻る</button>
+</div>
+
+<div id="quizForm">
+
+<!-- 例題1 -->
+<div class="section" data-example="1">
+<div class="section-title">例題1 — 話の要点（A 01）</div>
+
+<div class="question" data-qkey="q1">
+<div class="q-text q-prompt"><span class="q-num">1</span>この<ruby>問題<rt>もんだい</rt></ruby>では、まず<ruby>質問<rt>しつもん</rt></ruby>を<ruby>聞<rt>き</rt></ruby>いてください。それから<ruby>話<rt>はなし</rt></ruby>を<ruby>聞<rt>き</rt></ruby>いて、1〜4から<ruby>最<rt>もっと</rt></ruby>もよいものを<ruby>一<rt>ひと</rt></ruby>つ選んでください。</div>
+<div class="options">
+<div class="option"><input type="radio" name="q1" id="q1a" value="1"><label for="q1a">1. <ruby>写真<rt>しゃしん</rt></ruby>を<ruby>準備<rt>じゅんび</rt></ruby>する</label></div>
+<div class="option"><input type="radio" name="q1" id="q1b" value="2"><label for="q1b">2. <ruby>原稿<rt>げんこう</rt></ruby>を<ruby>直<rt>なお</rt></ruby>す</label></div>
+<div class="option"><input type="radio" name="q1" id="q1c" value="3"><label for="q1c">3. <ruby>発表<rt>はっぴょう</rt></ruby>の<ruby>練習<rt>れんしゅう</rt></ruby>をする</label></div>
+<div class="option"><input type="radio" name="q1" id="q1d" value="4"><label for="q1d">4. <ruby>漢字<rt>かんじ</rt></ruby>の<ruby>読<rt>よ</rt></ruby>み<ruby>方<rt>かた</rt></ruby>を<ruby>確認<rt>かくにん</rt></ruby>する</label></div>
+</div>
+<p class="q-feedback" id="feedback-q1" role="status"></p>
+</div>
+
+<button type="button" class="btn-submit btn-grade-example" data-example="1">採点</button>
+
+<div class="script-block" id="script-q1">
+<h3>スクリプト（例題1）</h3>
+<p><ruby>日本語<rt>にほんご</rt></ruby>のクラスで<ruby>女<rt>おんな</rt></ruby>の<ruby>先生<rt>せんせい</rt></ruby>が<ruby>発表<rt>はっぴょう</rt></ruby>の<ruby>準備<rt>じゅんび</rt></ruby>について<ruby>話<rt>はな</rt></ruby>しています。</p>
+<p><span class="speaker">女：</span><ruby>先週<rt>せんしゅう</rt></ruby>お<ruby>話<rt>はな</rt></ruby>ししたように、あさっての<ruby>授業<rt>じゅぎょう</rt></ruby>では<ruby>発表<rt>はっぴょう</rt></ruby>をしてもらいますから、<ruby>準備<rt>じゅんび</rt></ruby>しておいてください。</p>
+<p><span class="speaker">男：</span><ruby>発表<rt>はっぴょう</rt></ruby>の<ruby>時<rt>とき</rt></ruby>パソコンを<ruby>使<rt>つか</rt></ruby>ってもいいですか。<ruby>写真<rt>しゃしん</rt></ruby>を<ruby>見<rt>み</rt></ruby>せたいんですけど。</p>
+<p><span class="speaker">女：</span>いいですけど、リーさんはまだ<ruby>原稿<rt>げんこう</rt></ruby>ができていないでしょう？ <ruby>写真<rt>しゃしん</rt></ruby>だけでは<ruby>発表<rt>はっぴょう</rt></ruby>になりませんよ。すぐにやって、<ruby>見<rt>み</rt></ruby>せてください。</p>
+<p><span class="speaker">男：</span>はい。<ruby>書<rt>か</rt></ruby>き<ruby>直<rt>なお</rt></ruby>すのはまとめのところだけでいいですか。</p>
+<p><span class="speaker">女：</span>ええ、そこがちょっとわかりにくいので、もう<ruby>少<rt>すこ</rt></ruby>し<ruby>直<rt>なお</rt></ruby>さないと。ほかの<ruby>準備<rt>じゅんび</rt></ruby>は<ruby>原稿<rt>げんこう</rt></ruby>が<ruby>完成<rt>かんせい</rt></ruby>してからでいいです。それから、あしたはグループで<ruby>発表<rt>はっぴょう</rt></ruby>の<ruby>練習<rt>れんしゅう</rt></ruby>をするので、<ruby>漢字<rt>かんじ</rt></ruby>の<ruby>読<rt>よ</rt></ruby>み<ruby>方<rt>かた</rt></ruby>も<ruby>確認<rt>かくにん</rt></ruby>してきてくださいね。</p>
+</div>
+</div>
+
+<!-- 例題2 -->
+<div class="section" data-example="2">
+<div class="section-title">例題2 — 要点（A 02）</div>
+
+<div class="question" data-qkey="q2">
+<div class="q-text q-prompt"><span class="q-num">2</span><ruby>質問<rt>しつもん</rt></ruby>を<ruby>聞<rt>き</rt></ruby>き、そのあと<ruby>問題用紙<rt>もんだいようし</rt></ruby>を<ruby>見<rt>み</rt></ruby>て<ruby>読<rt>よ</rt></ruby>む<ruby>時間<rt>じかん</rt></ruby>があります。<ruby>話<rt>はなし</rt></ruby>を<ruby>聞<rt>き</rt></ruby>いて1〜4から選んでください。</div>
+<div class="options">
+<div class="option"><input type="radio" name="q2" id="q2a" value="1"><label for="q2a">1. アルバイトがあるから</label></div>
+<div class="option"><input type="radio" name="q2" id="q2b" value="2"><label for="q2b">2. <ruby>子供<rt>こども</rt></ruby>の<ruby>世話<rt>せわ</rt></ruby>をするから</label></div>
+<div class="option"><input type="radio" name="q2" id="q2c" value="3"><label for="q2c">3. <ruby>友達<rt>ともだち</rt></ruby>の<ruby>結婚式<rt>けっこんしき</rt></ruby>に<ruby>行<rt>い</rt></ruby>くから</label></div>
+<div class="option"><input type="radio" name="q2" id="q2d" value="4"><label for="q2d">4. <ruby>週末<rt>しゅうまつ</rt></ruby>は<ruby>休<rt>やす</rt></ruby>みではないから</label></div>
+</div>
+<p class="q-feedback" id="feedback-q2" role="status"></p>
+</div>
+
+<button type="button" class="btn-submit btn-grade-example" data-example="2">採点</button>
+
+<div class="script-block" id="script-q2">
+<h3>スクリプト（例題2）</h3>
+<p><ruby>女<rt>おんな</rt></ruby>の<ruby>人<rt>ひと</rt></ruby>と<ruby>男<rt>おとこ</rt></ruby>の<ruby>人<rt>ひと</rt></ruby>が<ruby>話<rt>はな</rt></ruby>しています。</p>
+<p><span class="speaker">女：</span><ruby>渡辺<rt>わたなべ</rt></ruby><ruby>君<rt>くん</rt></ruby>、あしたの<ruby>飲<rt>の</rt></ruby>み<ruby>会<rt>かい</rt></ruby>、<ruby>行<rt>い</rt></ruby>く？</p>
+<p><span class="speaker">男：</span>あー、<ruby>行<rt>い</rt></ruby>こうと<ruby>思<rt>おも</rt></ruby>っていたんだけど……。</p>
+<p><span class="speaker">女：</span>あ、アルバイトの<ruby>日<rt>ひ</rt></ruby>か。</p>
+<p><span class="speaker">男：</span>それは<ruby>前<rt>まえ</rt></ruby>から<ruby>休<rt>やす</rt></ruby>みもらってたからいいんだけど。あしたはさ、<ruby>姉<rt>あね</rt></ruby>の<ruby>子供<rt>こども</rt></ruby>を<ruby>預<rt>あず</rt></ruby>かってほしいって<ruby>頼<rt>たの</rt></ruby>まれちゃってね。<ruby>友達<rt>ともだち</rt></ruby>の<ruby>結婚式<rt>けっこんしき</rt></ruby>に<ruby>行<rt>い</rt></ruby>くからって。</p>
+<p><span class="speaker">女：</span>お<ruby>兄<rt>にい</rt></ruby>さんはいないの？</p>
+<p><span class="speaker">男：</span>うん、いつもなら<ruby>週末<rt>しゅうまつ</rt></ruby>は<ruby>休<rt>やす</rt></ruby>みなんだけど……。<ruby>子供<rt>こども</rt></ruby>が1<ruby>人<rt>ひとり</rt></ruby>じゃかわいそうだよね。</p>
+<p><span class="speaker">女：</span>ふうん。<ruby>大変<rt>たいへん</rt></ruby>そうだけど、<ruby>頑張<rt>がんば</rt></ruby>ってね。</p>
+</div>
+</div>
+
+<!-- 例題3 -->
+<div class="section" data-example="3">
+<div class="section-title">例題3 — 話のあらまし（A 03）</div>
+
+<div class="question" data-qkey="q3">
+<div class="q-text q-prompt"><span class="q-num">3</span><ruby>問題用紙<rt>もんだいようし</rt></ruby>には<ruby>何<rt>なに</rt></ruby>も<ruby>印刷<rt>いんさつ</rt></ruby>されていません。<ruby>話<rt>はなし</rt></ruby>を<ruby>聞<rt>き</rt></ruby>いてから、<ruby>質問<rt>しつもん</rt></ruby>と<ruby>選択肢<rt>せんたくし</rt></ruby>を<ruby>聞<rt>き</rt></ruby>いて1〜4から選んでください。</div>
+<div class="options">
+<div class="option"><input type="radio" name="q3" id="q3a" value="1"><label for="q3a">1. <ruby>人<rt>ひと</rt></ruby>が<ruby>緊張<rt>きんちょう</rt></ruby>する<ruby>理由<rt>りゆう</rt></ruby></label></div>
+<div class="option"><input type="radio" name="q3" id="q3b" value="2"><label for="q3b">2. <ruby>落<rt>お</rt></ruby>ち<ruby>着<rt>つ</rt></ruby>くための<ruby>方法<rt>ほうほう</rt></ruby></label></div>
+<div class="option"><input type="radio" name="q3" id="q3c" value="3"><label for="q3c">3. <ruby>両親<rt>りょうしん</rt></ruby>への<ruby>感謝<rt>かんしゃ</rt></ruby>の<ruby>伝<rt>つた</rt></ruby>え<ruby>方<rt>かた</rt></ruby></label></div>
+<div class="option"><input type="radio" name="q3" id="q3d" value="4"><label for="q3d">4. <ruby>力<rt>ちから</rt></ruby>の<ruby>入<rt>い</rt></ruby>れ<ruby>方<rt>かた</rt></ruby>と<ruby>緊張<rt>きんちょう</rt></ruby>の<ruby>関係<rt>かんけい</rt></ruby></label></div>
+</div>
+<p class="q-feedback" id="feedback-q3" role="status"></p>
+</div>
+
+<button type="button" class="btn-submit btn-grade-example" data-example="3">採点</button>
+
+<div class="script-block" id="script-q3">
+<h3>スクリプト（例題3）</h3>
+<p>テレビで<ruby>女<rt>おんな</rt></ruby>の<ruby>人<rt>ひと</rt></ruby>が<ruby>話<rt>はな</rt></ruby>しています。</p>
+<p><span class="speaker">女：</span><ruby>試験<rt>しけん</rt></ruby>の<ruby>時<rt>とき</rt></ruby>などに、<ruby>緊張<rt>きんちょう</rt></ruby>してしまって<ruby>困<rt>こま</rt></ruby>ったことはありませんか。そんな<ruby>時<rt>とき</rt></ruby>に<ruby>役立<rt>やくだ</rt></ruby>つ、いくつかのやり<ruby>方<rt>かた</rt></ruby>をご<ruby>紹介<rt>しょうかい</rt></ruby>しましょう。ある<ruby>人<rt>ひと</rt></ruby>は、<ruby>緊張<rt>きんちょう</rt></ruby>しているときに「お<ruby>父<rt>とう</rt></ruby>さん、ありがとう。お<ruby>母<rt>かあ</rt></ruby>さん、ありがとう」とほかの<ruby>人<rt>ひと</rt></ruby>への<ruby>感謝<rt>かんしゃ</rt></ruby>を<ruby>心<rt>こころ</rt></ruby>の<ruby>中<rt>なか</rt></ruby>で<ruby>言<rt>い</rt></ruby>うと、<ruby>落<rt>お</rt></ruby>ち<ruby>着<rt>つ</rt></ruby>けるそうです。また、<ruby>体<rt>からだ</rt></ruby>に<ruby>一度<rt>いちど</rt></ruby>ぐっと<ruby>力<rt>ちから</rt></ruby>を<ruby>入<rt>い</rt></ruby>れて、その<ruby>後<rt>あと</rt></ruby><ruby>力<rt>ちから</rt></ruby>を<ruby>抜<rt>ぬ</rt></ruby>くと、<ruby>落<rt>お</rt></ruby>ち<ruby>着<rt>つ</rt></ruby>けるという<ruby>人<rt>ひと</rt></ruby>もいます。<ruby>一度<rt>いちど</rt></ruby><ruby>試<rt>ため</rt></ruby>してみてはいかがですか。</p>
+</div>
+</div>
+
+<!-- 例題4 -->
+<div class="section" data-example="4">
+<div class="section-title">例題4 — 表現の選択（A 04）</div>
+
+<div class="question" data-qkey="q4">
+<div class="q-figure"><img src="IMG_2065のコピー.jpeg" alt="カウンターで書類を出す男性（矢印）"></div>
+<div class="q-text q-prompt"><span class="q-num">4</span><ruby>絵<rt>え</rt></ruby>を<ruby>見<rt>み</rt></ruby>ながら<ruby>質問<rt>しつもん</rt></ruby>を<ruby>聞<rt>き</rt></ruby>いてください。<ruby>矢印<rt>やじるし</rt></ruby>の<ruby>人<rt>ひと</rt></ruby>は<ruby>何<rt>なん</rt></ruby>と<ruby>言<rt>い</rt></ruby>いますか。1〜3から選んでください。</div>
+<div class="options">
+<div class="option"><input type="radio" name="q4" id="q4a" value="1"><label for="q4a">1. <ruby>教<rt>おし</rt></ruby>えてもよろしいでしょうか</label></div>
+<div class="option"><input type="radio" name="q4" id="q4b" value="2"><label for="q4b">2. <ruby>教<rt>おし</rt></ruby>えていただきたいんですけど</label></div>
+<div class="option"><input type="radio" name="q4" id="q4c" value="3"><label for="q4c">3. <ruby>教<rt>おし</rt></ruby>えていただきましょうか</label></div>
+</div>
+<p class="q-feedback" id="feedback-q4" role="status"></p>
+</div>
+
+<button type="button" class="btn-submit btn-grade-example" data-example="4">採点</button>
+
+<div class="script-block" id="script-q4">
+<h3>スクリプト（例題4）</h3>
+<p><ruby>大学<rt>だいがく</rt></ruby>で<ruby>事務<rt>じむ</rt></ruby>の<ruby>人<rt>ひと</rt></ruby>に<ruby>書類<rt>しょるい</rt></ruby>の<ruby>書<rt>か</rt></ruby>き<ruby>方<rt>かた</rt></ruby>を<ruby>聞<rt>き</rt></ruby>きます。<ruby>何<rt>なん</rt></ruby>と<ruby>言<rt>い</rt></ruby>いますか。</p>
+<p><span class="speaker">1 男：</span>あの、この<ruby>書類<rt>しょるい</rt></ruby>の<ruby>書<rt>か</rt></ruby>き<ruby>方<rt>かた</rt></ruby>、<ruby>教<rt>おし</rt></ruby>えてもよろしいでしょうか。</p>
+<p><span class="speaker">2</span> あの、この<ruby>書類<rt>しょるい</rt></ruby>の<ruby>書<rt>か</rt></ruby>き<ruby>方<rt>かた</rt></ruby>、<ruby>教<rt>おし</rt></ruby>えていただきたいんですけど。</p>
+<p><span class="speaker">3</span> あの、この<ruby>書類<rt>しょるい</rt></ruby>の<ruby>書<rt>か</rt></ruby>き<ruby>方<rt>かた</rt></ruby>、<ruby>教<rt>おし</rt></ruby>えていただきましょうか。</p>
+</div>
+</div>
+
+<!-- 例題5 -->
+<div class="section" data-example="5">
+<div class="section-title">例題5 — 即応（A 05）</div>
+
+<div class="question" data-qkey="q5a">
+<div class="q-text q-prompt"><span class="q-num">5</span>（1）<ruby>文<rt>ぶん</rt></ruby>を<ruby>聞<rt>き</rt></ruby>いてから、<ruby>返事<rt>へんじ</rt></ruby>を<ruby>聞<rt>き</rt></ruby>いて1〜3から選んでください。</div>
+<div class="options">
+<div class="option"><input type="radio" name="q5a" id="q5aa" value="1"><label for="q5aa">1. いえ、おかげさまで。</label></div>
+<div class="option"><input type="radio" name="q5a" id="q5ab" value="2"><label for="q5ab">2. はい、<ruby>失礼<rt>しつれい</rt></ruby>します。</label></div>
+<div class="option"><input type="radio" name="q5a" id="q5ac" value="3"><label for="q5ac">3. ええ、おかけください。</label></div>
+</div>
+<p class="q-feedback" id="feedback-q5a" role="status"></p>
+</div>
+
+<div class="question" data-qkey="q5b">
+<div class="q-text q-prompt"><span class="q-num">6</span>（2）<ruby>文<rt>ぶん</rt></ruby>を<ruby>聞<rt>き</rt></ruby>いてから、<ruby>返事<rt>へんじ</rt></ruby>を<ruby>聞<rt>き</rt></ruby>いて1〜3から選んでください。</div>
+<div class="options">
+<div class="option"><input type="radio" name="q5b" id="q5ba" value="1"><label for="q5ba">1. <ruby>今日<rt>きょう</rt></ruby>は<ruby>自転車<rt>じてんしゃ</rt></ruby>だよ。</label></div>
+<div class="option"><input type="radio" name="q5b" id="q5bb" value="2"><label for="q5bb">2. <ruby>電車<rt>でんしゃ</rt></ruby>が<ruby>止<rt>と</rt></ruby>まってて。</label></div>
+<div class="option"><input type="radio" name="q5b" id="q5bc" value="3"><label for="q5bc">3. ポストに<ruby>入<rt>い</rt></ruby>れたよ。</label></div>
+</div>
+<p class="q-feedback" id="feedback-q5b" role="status"></p>
+</div>
+
+<button type="button" class="btn-submit btn-grade-example" data-example="5">採点</button>
+
+<div class="script-block" id="script-q5a">
+<h3>スクリプト（例題5・（1））</h3>
+<p><span class="speaker">女：</span><ruby>座<rt>すわ</rt></ruby>ってもかまいませんか。</p>
+<p><span class="speaker">男：</span><br>1 いえ、おかげさまで。<br>2 はい、<ruby>失礼<rt>しつれい</rt></ruby>します。<br>3 ええ、おかけください。</p>
+</div>
+<div class="script-block" id="script-q5b">
+<h3>スクリプト（例題5・（2））</h3>
+<p><span class="speaker">女：</span><ruby>今日<rt>きょう</rt></ruby>、なんで<ruby>遅<rt>おく</rt></ruby>れたの？</p>
+<p><span class="speaker">男：</span><br>1 <ruby>今日<rt>きょう</rt></ruby>は<ruby>自転車<rt>じてんしゃ</rt></ruby>だよ。<br>2 <ruby>電車<rt>でんしゃ</rt></ruby>が<ruby>止<rt>と</rt></ruby>まってて。<br>3 ポストに<ruby>入<rt>い</rt></ruby>れたよ。</p>
+</div>
+</div>
+
+</div>
+
+</div>
+
+<div class="result-panel" id="resultPanel">
+<h2 id="resultTitle"></h2>
+<div class="result-score" id="resultScore"></div>
+<div class="result-detail" id="resultDetail"></div>
+<button type="button" class="btn-submit" onclick="location.reload()">最初からやり直す</button>
+</div>
+
+</div>
+
+<script>
+(function () {
+  const correct = { q1: '2', q2: '2', q3: '2', q4: '2', q5a: '3', q5b: '2' };
+  const labels = { q1: '問1', q2: '問2', q3: '問3', q4: '問4', q5a: '問5（1）', q5b: '問5（2）' };
+  const keys = Object.keys(correct);
+
+  const exampleMap = { '1': ['q1'], '2': ['q2'], '3': ['q3'], '4': ['q4'], '5': ['q5a', 'q5b'] };
+  const EXAMPLE_TOTAL = 5;
+  const SCORE_TOTAL = keys.length;
+
+  const graded = {};
+  keys.forEach(function (k) { graded[k] = false; });
+
+  const gradedExample = { '1': false, '2': false, '3': false, '4': false, '5': false };
+
+  function resetQuizState() {
+    const form = document.getElementById('quizForm');
+    form.querySelectorAll('input[type="radio"]').forEach(function (inp) {
+      inp.checked = false;
+      inp.disabled = false;
+    });
+    form.querySelectorAll('.question').forEach(function (q) {
+      q.classList.remove('graded');
+    });
+    form.querySelectorAll('.option').forEach(function (opt) {
+      opt.classList.remove('correct', 'wrong');
+    });
+    form.querySelectorAll('.q-feedback').forEach(function (el) {
+      el.className = 'q-feedback';
+      el.setAttribute('role', 'status');
+    });
+    form.querySelectorAll('.script-block').forEach(function (el) {
+      el.classList.remove('show');
+    });
+    document.querySelectorAll('.btn-grade-example').forEach(function (btn) {
+      btn.disabled = false;
+      btn.classList.remove('hidden');
+    });
+    keys.forEach(function (k) {
+      graded[k] = false;
+    });
+    for (let i = 1; i <= EXAMPLE_TOTAL; i++) {
+      gradedExample[String(i)] = false;
+    }
+  }
+
+  function showFullResult() {
+    let score = 0;
+    keys.forEach(function (k) {
+      const sel = document.querySelector('input[name="' + k + '"]:checked');
+      if (sel && sel.value === correct[k]) score++;
+    });
+    const pct = Math.round((score / SCORE_TOTAL) * 100);
+    const resultPanel = document.getElementById('resultPanel');
+    document.getElementById('resultScore').textContent = score + ' / ' + SCORE_TOTAL + '（' + pct + '%）';
+
+    const titleEl = document.getElementById('resultTitle');
+    const scoreEl = document.getElementById('resultScore');
+    scoreEl.className = 'result-score';
+    if (pct >= 90) {
+      titleEl.textContent = '🎉 全例題の採点が終わりました！';
+      scoreEl.classList.add('excellent');
+    } else if (pct >= 70) {
+      titleEl.textContent = '👍 よくできました！';
+      scoreEl.classList.add('good');
+    } else if (pct >= 50) {
+      titleEl.textContent = '📝 もう少し！';
+      scoreEl.classList.add('fair');
+    } else {
+      titleEl.textContent = '💪 がんばりましょう！';
+      scoreEl.classList.add('poor');
+    }
+
+    const detail = document.getElementById('resultDetail');
+    detail.innerHTML = '';
+    keys.forEach(function (k) {
+      const sel = document.querySelector('input[name="' + k + '"]:checked');
+      const ok = sel && sel.value === correct[k];
+      const div = document.createElement('div');
+      div.className = 'result-item';
+      div.innerHTML =
+        '<div class="label">' + labels[k] + '</div><div class="value">' +
+        (ok ? '○ 正解' : '× 正解は ' + correct[k]) +
+        '</div>';
+      detail.appendChild(div);
+    });
+
+    resultPanel.classList.add('show');
+    resultPanel.scrollIntoView({ behavior: 'smooth' });
+  }
+
+  function gradeSingleQuestion(key) {
+    const sel = document.querySelector('input[name="' + key + '"]:checked');
+    const ans = correct[key];
+    const isOk = Boolean(sel) && sel.value === ans;
+
+    const opts = document.querySelectorAll('input[name="' + key + '"]');
+    opts.forEach(function (o) {
+      const p = o.parentElement;
+      p.classList.remove('correct', 'wrong');
+      if (o.value === ans) p.classList.add('correct');
+      else if (sel && o.checked && o.value !== ans) p.classList.add('wrong');
+    });
+
+    const fb = document.getElementById('feedback-' + key);
+    fb.className = 'q-feedback show ' + (isOk ? 'ok' : 'ng');
+    if (!sel) {
+      fb.textContent = '未選択です（正解は ' + ans + ' 番）。';
+    } else if (isOk) {
+      fb.textContent = '正解です。';
+    } else {
+      fb.textContent = '不正解です（正解は ' + ans + ' 番）。';
+    }
+
+    const qEl = document.querySelector('.question[data-qkey="' + key + '"]');
+    if (qEl) qEl.classList.add('graded');
+    opts.forEach(function (o) { o.disabled = true; });
+
+    graded[key] = true;
+  }
+
+  function gradeExample(ex) {
+    if (gradedExample[ex]) return;
+
+    const qKeys = exampleMap[ex];
+    qKeys.forEach(function (k) {
+      gradeSingleQuestion(k);
+    });
+
+    gradedExample[ex] = true;
+
+    const btn = document.querySelector('.btn-grade-example[data-example="' + ex + '"]');
+    if (btn) {
+      btn.disabled = true;
+      btn.classList.add('hidden');
+    }
+
+    qKeys.forEach(function (k) {
+      const scriptEl = document.getElementById('script-' + k);
+      if (scriptEl) scriptEl.classList.add('show');
+    });
+
+    const firstScript = document.getElementById('script-' + qKeys[0]);
+    if (firstScript) firstScript.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+
+    const allExamplesDone = ['1', '2', '3', '4', '5'].every(function (e) { return gradedExample[e]; });
+    if (allExamplesDone) showFullResult();
+  }
+
+  document.querySelectorAll('.btn-grade-example').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      gradeExample(btn.getAttribute('data-example'));
+    });
+  });
+
+  function showFloorQuiz(ex) {
+    document.getElementById('floor-menu').classList.add('hidden');
+    document.getElementById('floor-quiz').classList.remove('hidden');
+    document.querySelectorAll('#quizForm .section[data-example]').forEach(function (sec) {
+      sec.classList.toggle('hidden', sec.getAttribute('data-example') !== ex);
+    });
+    window.scrollTo(0, 0);
+  }
+
+  function showFloorMenu() {
+    resetQuizState();
+    document.getElementById('floor-menu').classList.remove('hidden');
+    document.getElementById('floor-quiz').classList.add('hidden');
+    document.getElementById('resultPanel').classList.remove('show');
+  }
+
+  document.querySelectorAll('.btn-pick-example').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      showFloorQuiz(btn.getAttribute('data-example'));
+    });
+  });
+  document.getElementById('btnBackToMenu').addEventListener('click', showFloorMenu);
+})();
+</script>
+</body>
+</html>
