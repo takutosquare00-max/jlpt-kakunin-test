@@ -95,6 +95,14 @@ h1 {
 }
 .icon-row .icon-link:active { transform: scale(0.96); }
 .icon-row .icon-link:hover { box-shadow: 0 4px 12px rgba(0,0,0,0.25); }
+.icon-row .icon-link.icon-link-disabled {
+  background: #666;
+  color: #bdbdbd;
+  pointer-events: none;
+  cursor: default;
+  box-shadow: none;
+}
+.icon-row .icon-link.icon-link-disabled:hover { box-shadow: none; }
 /* N4 30分まとめ：2つのアイコンを同一サイズ（10分テストの 56px 角に合わせた高さ） */
 .icon-row.icon-row-matome-pair .icon-link {
   box-sizing: border-box;
@@ -303,10 +311,6 @@ h1 {
         <a href="n2-10min-test-v15.html" class="icon-link">15</a>
       </div>
     </div>
-    <div class="sub-section">
-      <div class="sub-section-title">読解（テキスト＋設問・採点）</div>
-      <a href="n2-reading-test.html">N2 読解 練習テスト（教材34本・全66問）</a>
-    </div>
   </div>
 </details>
 
@@ -419,16 +423,32 @@ h1 {
 </details>
 
 <details class="level">
+  <summary>読解（リーディング）</summary>
+  <div class="level-content">
+    <div class="sub-section">
+      <div class="sub-section-title">確認テスト例題</div>
+      <div class="icon-row">
+        <span class="icon-link icon-link-disabled" title="準備中">N5</span>
+        <span class="icon-link icon-link-disabled" title="準備中">N4</span>
+        <span class="icon-link icon-link-disabled" title="準備中">N3</span>
+        <a href="n2-reading-test.html" class="icon-link">N2</a>
+        <span class="icon-link icon-link-disabled" title="準備中">N1</span>
+      </div>
+    </div>
+  </div>
+</details>
+
+<details class="level">
   <summary>聴解（リスニング）</summary>
   <div class="level-content">
     <div class="sub-section">
       <div class="sub-section-title">確認テスト例題</div>
       <div class="icon-row">
-        <a href="n5-chokai-quiz.html" class="icon-link">N5</a>
-        <a href="n4-chokai-quiz.html" class="icon-link">N4</a>
+        <span class="icon-link icon-link-disabled" title="準備中">N5</span>
+        <span class="icon-link icon-link-disabled" title="準備中">N4</span>
         <a href="n3-chokai-quiz.html" class="icon-link">N3</a>
-        <a href="n2-chokai-quiz.html" class="icon-link">N2</a>
-        <a href="n1-chokai-quiz.html" class="icon-link">N1</a>
+        <span class="icon-link icon-link-disabled" title="準備中">N2</span>
+        <span class="icon-link icon-link-disabled" title="準備中">N1</span>
       </div>
     </div>
   </div>

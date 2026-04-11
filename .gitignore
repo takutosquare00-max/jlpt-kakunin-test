@@ -1,0 +1,7 @@
+# 誤って jlpt-kakunin-test を jlpt-kakunin-test-deploy 配下に clone した際の .git バックアップ
+jlpt-kakunin-test-deploy.nested-git-backup/
+
+# GitHub Pages 用は内側 jlpt-kakunin-test-deploy/ のみ追跡（外側の重複ツリーは無視）
+jlpt-kakunin-test-deploy/*
+!jlpt-kakunin-test-deploy/jlpt-kakunin-test-deploy/
+!jlpt-kakunin-test-deploy/jlpt-kakunin-test-deploy/**

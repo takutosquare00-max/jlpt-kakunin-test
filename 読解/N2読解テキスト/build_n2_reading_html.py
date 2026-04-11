@@ -2,8 +2,8 @@
 # -*- coding: utf-8 -*-
 """N2読解.md から読解テスト用 HTML を生成する。
 
-生成後、リポジトリ直下の jlpt-kakunin-test-deploy/ にも同じ成果物を同期する。
-（GitHub Pages は当該ディレクトリのみ公開するため）
+生成後、GitHub Pages 公開ルートである
+jlpt-kakunin-test-deploy/jlpt-kakunin-test-deploy/ にも同じ成果物を同期する。
 """
 
 from __future__ import annotations
@@ -19,7 +19,8 @@ IMG_DIR = ROOT / "文章用画像"
 OUT_PATH = ROOT / "n2-reading-test.html"
 # school/（リポジトリルート）= N2読解テキスト の2つ上
 REPO_ROOT = ROOT.parent.parent
-PAGES_DEPLOY_DIR = REPO_ROOT / "jlpt-kakunin-test-deploy"
+# Pages のアップロード対象は jlpt-kakunin-test-deploy/ 直下ではなく内側のこのディレクトリ
+PAGES_SITE_DIR = REPO_ROOT / "jlpt-kakunin-test-deploy" / "jlpt-kakunin-test-deploy"
 
 HEADER_RE = re.compile(
     r"^(?P<level>#{2,3})\s+No\.(?P<num>\d+)（p\.(?P<page>\d+)）(?P<title>.*)$"
@@ -765,22 +766,24 @@ document.addEventListener('DOMContentLoaded', () => {{
 
 
 def sync_to_pages_deploy() -> None:
-    """GitHub Pages 用ディレクトリへ HTML と画像をミラー同期する。"""
-    if not PAGES_DEPLOY_DIR.is_dir():
+    """GitHub Pages 公開ルートへ HTML と画像をミラー同期する。"""
+    parent = PAGES_SITE_DIR.parent
+    if not parent.is_dir():
         print(
-            f"Skip Pages sync: {PAGES_DEPLOY_DIR} がないため "
+            f"Skip Pages sync: {parent} がないため "
             "(jlpt-kakunin-test リポジトリ外など)"
         )
         return
-    shutil.copy2(OUT_PATH, PAGES_DEPLOY_DIR / OUT_PATH.name)
-    dest_img = PAGES_DEPLOY_DIR / IMG_DIR.name
+    PAGES_SITE_DIR.mkdir(parents=True, exist_ok=True)
+    shutil.copy2(OUT_PATH, PAGES_SITE_DIR / OUT_PATH.name)
+    dest_img = PAGES_SITE_DIR / IMG_DIR.name
     if IMG_DIR.is_dir():
         if dest_img.exists():
             shutil.rmtree(dest_img)
         shutil.copytree(IMG_DIR, dest_img)
     elif dest_img.exists():
         shutil.rmtree(dest_img)
-    print(f"Synced to GitHub Pages artifact dir: {PAGES_DEPLOY_DIR}")
+    print(f"Synced to GitHub Pages site dir: {PAGES_SITE_DIR}")
 
 
 def main() -> None:
