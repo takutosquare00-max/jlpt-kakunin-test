@@ -1,17 +1,25 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-"""N2読解.md から読解テスト用 HTML を生成する。"""
+"""N2読解.md から読解テスト用 HTML を生成する。
+
+生成後、リポジトリ直下の jlpt-kakunin-test-deploy/ にも同じ成果物を同期する。
+（GitHub Pages は当該ディレクトリのみ公開するため）
+"""
 
 from __future__ import annotations
 
 import html as html_lib
 import re
+import shutil
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent
 MD_PATH = ROOT / "N2読解.md"
 IMG_DIR = ROOT / "文章用画像"
 OUT_PATH = ROOT / "n2-reading-test.html"
+# school/（リポジトリルート）= N2読解テキスト の2つ上
+REPO_ROOT = ROOT.parent.parent
+PAGES_DEPLOY_DIR = REPO_ROOT / "jlpt-kakunin-test-deploy"
 
 HEADER_RE = re.compile(
     r"^(?P<level>#{2,3})\s+No\.(?P<num>\d+)（p\.(?P<page>\d+)）(?P<title>.*)$"
@@ -756,6 +764,25 @@ document.addEventListener('DOMContentLoaded', () => {{
     return html_out, len(blocks), total_q, scored_q
 
 
+def sync_to_pages_deploy() -> None:
+    """GitHub Pages 用ディレクトリへ HTML と画像をミラー同期する。"""
+    if not PAGES_DEPLOY_DIR.is_dir():
+        print(
+            f"Skip Pages sync: {PAGES_DEPLOY_DIR} がないため "
+            "(jlpt-kakunin-test リポジトリ外など)"
+        )
+        return
+    shutil.copy2(OUT_PATH, PAGES_DEPLOY_DIR / OUT_PATH.name)
+    dest_img = PAGES_DEPLOY_DIR / IMG_DIR.name
+    if IMG_DIR.is_dir():
+        if dest_img.exists():
+            shutil.rmtree(dest_img)
+        shutil.copytree(IMG_DIR, dest_img)
+    elif dest_img.exists():
+        shutil.rmtree(dest_img)
+    print(f"Synced to GitHub Pages artifact dir: {PAGES_DEPLOY_DIR}")
+
+
 def main() -> None:
     text = MD_PATH.read_text(encoding="utf-8")
     blocks = split_blocks(text)
@@ -767,6 +794,7 @@ def main() -> None:
         f"Wrote {OUT_PATH} ({n_blocks} passages, {total_q} questions, "
         f"{scored_q} with answer key)"
     )
+    sync_to_pages_deploy()
 
 
 if __name__ == "__main__":
