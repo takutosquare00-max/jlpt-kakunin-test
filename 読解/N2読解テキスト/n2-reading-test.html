@@ -71,8 +71,7 @@ body{font-family:'Hiragino Kaku Gothic ProN','Hiragino Sans','Noto Sans JP',Meir
 .q-stem-row{display:flex;align-items:flex-start;gap:12px;margin-bottom:14px}
 .q-num{flex-shrink:0;display:inline-flex;align-items:center;justify-content:center;min-width:36px;height:36px;padding:0 10px;background:#d81b60;color:#fff;border-radius:10px;font-weight:700;font-size:.95rem;line-height:1.2}
 .q-stem{flex:1;min-width:0;font-size:1rem;line-height:1.75;font-weight:500}
-.options{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-@media(max-width:640px){.options{grid-template-columns:1fr}}
+.options{display:grid;grid-template-columns:1fr;gap:10px}
 .option input{display:none}
 .option label{display:flex;align-items:flex-start;min-height:48px;padding:12px 14px;border:2px solid #e2e8f0;border-radius:10px;cursor:pointer;transition:.15s;font-size:.95rem;touch-action:manipulation}
 .option label:hover{border-color:#d81b60;background:#fce4ec}
@@ -101,8 +100,8 @@ body:has(#view-work:not([hidden])) .container{max-width:none;padding:0;height:10
 .work-top-bar .score-badge{background:rgba(255,255,255,.2);padding:3px 10px;border-radius:20px;font-size:.88em}
 #chromeBlockTitle{flex:1;font-size:.93em;font-weight:600;color:#fff;border:none;padding:0;margin:0;line-height:1.3;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .split-body{flex:1;display:flex;overflow:hidden}
-.pane-passage{flex:1.5;overflow-y:auto;padding:16px;background:#f5f7fa;border-right:2px solid #e2e8f0}
-.pane-questions{flex:1;overflow-y:auto;padding:16px;display:flex;flex-direction:column;gap:10px}
+.pane-passage{flex:2;overflow-y:auto;padding:16px;background:#f5f7fa;border-right:2px solid #e2e8f0}
+.pane-questions{flex:1;overflow-y:auto;padding:16px;display:flex;flex-direction:column;gap:10px;min-width:280px;max-width:380px}
 #questions-mount{display:flex;flex-direction:column;gap:10px}
 @media(max-width:900px){.split-body{flex-direction:column}.pane-passage{flex:0 0 45vh;border-right:none;border-bottom:2px solid #e2e8f0}.pane-questions{flex:1}}
 </style>
