@@ -196,28 +196,22 @@ function updateTimerUi() {
   const el = document.getElementById('workTimer');
   const bar = document.getElementById('workProgress');
   if (!el || !bar) return;
-  const t = Math.max(0, timeLeft);
+  const t = timeLeft;
   const m = Math.floor(t / 60);
   const s = t % 60;
   el.textContent = m + ':' + String(s).padStart(2, '0');
   el.className = 'timer';
-  if (t <= 60) el.classList.add('danger');
-  else if (t <= WARN_SEC) el.classList.add('warning');
-  bar.style.width = (Q_TIMER_SEC ? (t / Q_TIMER_SEC) * 100 : 0) + '%';
+  bar.style.width = '100%';
 }
 
 function startQTimer() {
   clearQTimer();
-  timeLeft = Q_TIMER_SEC;
+  timeLeft = 0;
   updateTimerUi();
   timerInterval = setInterval(() => {
     if (submitted) return;
-    timeLeft--;
+    timeLeft++;
     updateTimerUi();
-    if (timeLeft <= 0) {
-      clearQTimer();
-      submitTest();
-    }
   }, 1000);
 }
 
