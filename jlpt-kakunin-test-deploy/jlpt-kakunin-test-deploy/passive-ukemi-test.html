@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<title>受け身「れる・られる」テスト（10問）</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}html{-webkit-text-size-adjust:100%;-webkit-tap-highlight-color:transparent}body{font-family:'Hiragino Kaku Gothic ProN','Hiragino Sans','Noto Sans JP',Meiryo,sans-serif;background:#f0f4f8;color:#1a202c;line-height:1.7;padding:env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left)}.container{max-width:800px;margin:0 auto;padding:20px}header{background:linear-gradient(135deg,#8b5cf6 0%,#6d28d9 100%);color:#fff;padding:24px;border-radius:16px;margin-bottom:24px;text-align:center;position:sticky;top:0;z-index:100;box-shadow:0 4px 15px rgba(139,92,246,0.4)}header h1{font-size:1.5em;margin-bottom:4px}.header-info{display:flex;justify-content:center;gap:24px;align-items:center;margin-top:8px;flex-wrap:wrap}.timer{font-size:1.8em;font-weight:bold;font-variant-numeric:tabular-nums}.timer.warning{color:#ffd700;animation:pulse 1s infinite}.timer.danger{color:#ff4757;animation:pulse .5s infinite}@keyframes pulse{0%,100%{opacity:1}50%{opacity:.6}}.progress-bar{width:200px;height:8px;background:rgba(255,255,255,.3);border-radius:4px;overflow:hidden}.progress-fill{height:100%;background:#fff;border-radius:4px;transition:width .3s}.score-badge{background:rgba(255,255,255,.2);padding:4px 12px;border-radius:20px;font-size:.9em}.section{background:#fff;border-radius:12px;padding:24px;margin-bottom:20px;box-shadow:0 2px 8px rgba(0,0,0,.06)}.section-title{font-size:1.1em;font-weight:bold;color:#6d28d9;border-left:4px solid #8b5cf6;padding-left:12px;margin-bottom:16px}.question{padding:16px 0;border-bottom:1px solid #e2e8f0}.question:last-child{border-bottom:none}.q-num{display:inline-block;background:#8b5cf6;color:#fff;width:28px;height:28px;text-align:center;line-height:28px;border-radius:50%;font-size:.85em;font-weight:bold;margin-right:8px}.q-text{font-size:1.05em;margin-bottom:12px;font-weight:500}.options{display:grid;grid-template-columns:1fr 1fr;gap:8px}@media(max-width:600px){.options{grid-template-columns:1fr}}.option{position:relative}.option input{display:none}.option label{display:flex;align-items:center;min-height:44px;padding:10px 14px;border:2px solid #e2e8f0;border-radius:8px;cursor:pointer;transition:all .2s;font-size:.95em;touch-action:manipulation;-webkit-user-select:none;user-select:none}.option label:hover{border-color:#8b5cf6;background:#f5f3ff}.option input:checked+label{border-color:#8b5cf6;background:#ede9fe;color:#5b21b6;font-weight:600}.option.correct label{border-color:#48bb78!important;background:#f0fff4!important;color:#276749!important}.option.wrong label{border-color:#fc8181!important;background:#fff5f5!important;color:#9b2c2c!important}.btn-submit{display:block;width:100%;min-height:48px;padding:16px;background:linear-gradient(135deg,#8b5cf6 0%,#6d28d9 100%);color:#fff;border:none;border-radius:12px;font-size:1.1em;font-weight:bold;cursor:pointer;transition:transform .2s,box-shadow .2s;margin-top:24px;touch-action:manipulation;-webkit-user-select:none;user-select:none}.btn-submit:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(139,92,246,0.4)}.btn-submit:disabled{opacity:.5;cursor:not-allowed;transform:none;box-shadow:none}.result-panel{background:#fff;border-radius:16px;padding:32px;text-align:center;box-shadow:0 4px 20px rgba(0,0,0,.1);margin-top:24px;display:none}.result-panel h2{font-size:1.8em;margin-bottom:8px}.result-score{font-size:3em;font-weight:bold;margin:16px 0}.result-score.excellent{color:#48bb78}.result-score.good{color:#38b2ac}.result-score.fair{color:#ed8936}.result-score.poor{color:#fc8181}.result-detail{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:12px;margin-top:20px}.result-item{background:#f7fafc;padding:12px;border-radius:8px}.result-item .label{font-size:.8em;color:#718096}.result-item .value{font-size:1.2em;font-weight:bold}.explanation{display:none;margin-top:8px;padding:10px;background:#fffbeb;border-radius:8px;font-size:.9em;border-left:3px solid #f6ad55}.explanation.show{display:block}ruby{font-size:1em}rt{font-size:.55em;opacity:.9}
+</style>
+</head>
+<body>
+<div class="container">
+<header>
+<h1>受け身「れる・られる」テスト（10問）</h1>
+<div class="header-info">
+<div class="timer" id="timer">10:00</div>
+<div class="progress-bar"><div class="progress-fill" id="progress" style="width:100%"></div></div>
+<div class="score-badge">全10問</div>
+</div>
+</header>
+
+<div class="section">
+<div class="section-title">（　）に入れるのに最もよいものを選んでください</div>
+<p style="color:#718096;font-size:.9em;margin-bottom:12px">ふつうの文と受け身の文をくらべましょう。<br>「わたしは Aに Bを 〜されました」は受け身です。困ったことも受け身で言うことがあります。</p>
+
+<div class="question"><div class="q-text"><span class="q-num">1</span><ruby>母<rt>はは</rt></ruby>は<ruby>部屋<rt>へや</rt></ruby>を＿＿＿。</div><div class="options"><div class="option"><input type="radio" name="q1" id="q1a" value="1"><label for="q1a">1. そうじしました</label></div><div class="option"><input type="radio" name="q1" id="q1b" value="0"><label for="q1b">2. そうじされました</label></div></div><div class="explanation">正解：そうじしました。「母は〜しました」は、母がしたことを言うふつうの文です。</div></div>
+
+<div class="question"><div class="q-text"><span class="q-num">2</span>わたしは<ruby>母<rt>はは</rt></ruby>に<ruby>部屋<rt>へや</rt></ruby>を＿＿＿。</div><div class="options"><div class="option"><input type="radio" name="q2" id="q2a" value="0"><label for="q2a">1. そうじしました</label></div><div class="option"><input type="radio" name="q2" id="q2b" value="1"><label for="q2b">2. そうじされました</label></div></div><div class="explanation">正解：そうじされました。「わたしは母に〜されました」なので、受け身です。</div></div>
+
+<div class="question"><div class="q-text"><span class="q-num">3</span><ruby>先生<rt>せんせい</rt></ruby>は<ruby>名前<rt>なまえ</rt></ruby>を＿＿＿。</div><div class="options"><div class="option"><input type="radio" name="q3" id="q3a" value="1"><label for="q3a">1. 呼びました</label></div><div class="option"><input type="radio" name="q3" id="q3b" value="0"><label for="q3b">2. 呼ばれました</label></div></div><div class="explanation">正解：呼びました。「先生は〜しました」は、先生がしたことを言う文です。</div></div>
+
+<div class="question"><div class="q-text"><span class="q-num">4</span>わたしは<ruby>先生<rt>せんせい</rt></ruby>に<ruby>名前<rt>なまえ</rt></ruby>を＿＿＿。</div><div class="options"><div class="option"><input type="radio" name="q4" id="q4a" value="0"><label for="q4a">1. 呼びました</label></div><div class="option"><input type="radio" name="q4" id="q4b" value="1"><label for="q4b">2. 呼ばれました</label></div></div><div class="explanation">正解：呼ばれました。「わたしは先生に〜されました」の形です。</div></div>
+
+<div class="question"><div class="q-text"><span class="q-num">5</span><ruby>雨<rt>あめ</rt></ruby>が＿＿＿。</div><div class="options"><div class="option"><input type="radio" name="q5" id="q5a" value="1"><label for="q5a">1. 降りました</label></div><div class="option"><input type="radio" name="q5" id="q5b" value="0"><label for="q5b">2. 降られました</label></div></div><div class="explanation">正解：降りました。「雨が降りました」は、ふつうの文です。</div></div>
+
+<div class="question"><div class="q-text"><span class="q-num">6</span>わたしは<ruby>雨<rt>あめ</rt></ruby>に＿＿＿、<ruby>服<rt>ふく</rt></ruby>がぬれました。</div><div class="options"><div class="option"><input type="radio" name="q6" id="q6a" value="0"><label for="q6a">1. 降って</label></div><div class="option"><input type="radio" name="q6" id="q6b" value="1"><label for="q6b">2. 降られて</label></div></div><div class="explanation">正解：降られて。「雨に降られて」は、雨で困った気持ちを表します。</div></div>
+
+<div class="question"><div class="q-text"><span class="q-num">7</span><ruby>友<rt>とも</rt></ruby>だちは<ruby>家<rt>いえ</rt></ruby>に＿＿＿。</div><div class="options"><div class="option"><input type="radio" name="q7" id="q7a" value="1"><label for="q7a">1. 来ました</label></div><div class="option"><input type="radio" name="q7" id="q7b" value="0"><label for="q7b">2. 来られました</label></div></div><div class="explanation">正解：来ました。「友だちは〜来ました」は、友だちの動作です。</div></div>
+
+<div class="question"><div class="q-text"><span class="q-num">8</span>わたしは<ruby>友<rt>とも</rt></ruby>だちに<ruby>家<rt>いえ</rt></ruby>に＿＿＿、こまりました。</div><div class="options"><div class="option"><input type="radio" name="q8" id="q8a" value="0"><label for="q8a">1. 来て</label></div><div class="option"><input type="radio" name="q8" id="q8b" value="1"><label for="q8b">2. 来られて</label></div></div><div class="explanation">正解：来られて。「友だちに来られて」は、来たことで困った意味です。</div></div>
+
+<div class="question"><div class="q-text"><span class="q-num">9</span><ruby>子<rt>こ</rt></ruby>どもが<ruby>大<rt>おお</rt></ruby>きい<ruby>声<rt>こえ</rt></ruby>で＿＿＿。</div><div class="options"><div class="option"><input type="radio" name="q9" id="q9a" value="1"><label for="q9a">1. さわぎました</label></div><div class="option"><input type="radio" name="q9" id="q9b" value="0"><label for="q9b">2. さわがれました</label></div></div><div class="explanation">正解：さわぎました。「子どもが〜しました」は、子どもの動作です。</div></div>
+
+<div class="question"><div class="q-text"><span class="q-num">10</span>わたしは<ruby>子<rt>こ</rt></ruby>どもに<ruby>大<rt>おお</rt></ruby>きい<ruby>声<rt>こえ</rt></ruby>で＿＿＿、ねむれませんでした。</div><div class="options"><div class="option"><input type="radio" name="q10" id="q10a" value="0"><label for="q10a">1. さわいで</label></div><div class="option"><input type="radio" name="q10" id="q10b" value="1"><label for="q10b">2. さわがれて</label></div></div><div class="explanation">正解：さわがれて。「子どもにさわがれて」は、うるさくて困った意味です。</div></div>
+</div>
+
+<button class="btn-submit" id="submitBtn" onclick="submitTest()"><ruby>採点<rt>さいてん</rt></ruby>する</button>
+<div class="result-panel" id="resultPanel"><h2 id="resultTitle"></h2><div class="result-score" id="resultScore"></div><div class="result-detail" id="resultDetail"></div><button class="btn-submit" onclick="location.reload()" style="margin-top:20px">もう<ruby>一度<rt>いちど</rt></ruby></button></div>
+</div>
+
+<script>
+const TOTAL=10,TIME_LIMIT=600;let timeLeft=TIME_LIMIT,timerInterval,submitted=false;
+function shuffleOptions(){document.querySelectorAll('.options').forEach(group=>{const items=Array.from(group.children);for(let i=items.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[items[i],items[j]]=[items[j],items[i]];}items.forEach((item,index)=>{const label=item.querySelector('label');label.textContent=`${index+1}. ${label.textContent.replace(/^[12]\.\s*/,'')}`;group.appendChild(item);});});}
+function startTimer(){timerInterval=setInterval(()=>{timeLeft--;const m=Math.floor(timeLeft/60),s=timeLeft%60;const el=document.getElementById('timer');el.textContent=`${m}:${s.toString().padStart(2,'0')}`;document.getElementById('progress').style.width=`${(timeLeft/TIME_LIMIT)*100}%`;if(timeLeft<=60)el.className='timer danger';else if(timeLeft<=180)el.className='timer warning';if(timeLeft<=0){clearInterval(timerInterval);submitTest();}},1000);}
+function submitTest(){if(submitted)return;submitted=true;clearInterval(timerInterval);let correct=0;for(let i=1;i<=TOTAL;i++){const sel=document.querySelector(`input[name="q${i}"]:checked`);const opts=document.querySelectorAll(`input[name="q${i}"]`);if(sel&&sel.value==='1')correct++;opts.forEach(o=>{const p=o.parentElement;if(o.value==='1')p.classList.add('correct');else if(o.checked)p.classList.add('wrong');});}document.querySelectorAll('.explanation').forEach(e=>e.classList.add('show'));const pct=Math.round((correct/TOTAL)*100);const panel=document.getElementById('resultPanel');panel.style.display='block';const score=document.getElementById('resultScore');score.textContent=`${correct} / ${TOTAL}（${pct}%）`;const title=document.getElementById('resultTitle');if(pct>=90){title.textContent='すばらしいです';score.className='result-score excellent';}else if(pct>=70){title.textContent='よくできました';score.className='result-score good';}else if(pct>=50){title.textContent='もう少しです';score.className='result-score fair';}else{title.textContent='もう一度練習しましょう';score.className='result-score poor';}const t=TIME_LIMIT-timeLeft;document.getElementById('resultDetail').innerHTML=`<div class="result-item"><div class="label">正解数</div><div class="value">${correct}/10</div></div><div class="result-item"><div class="label">所要時間</div><div class="value">${Math.floor(t/60)}分${t%60}秒</div></div>`;document.getElementById('submitBtn').disabled=true;panel.scrollIntoView({behavior:'smooth'});}
+shuffleOptions();
+startTimer();
+</script>
+</body>
+</html>
