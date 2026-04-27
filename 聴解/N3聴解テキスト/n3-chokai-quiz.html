@@ -1,0 +1,2920 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<title>JLPT N3 聴解 例題クイズ</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;-webkit-tap-highlight-color:transparent}
+body{font-family:'Hiragino Kaku Gothic ProN','Hiragino Sans','Noto Sans JP',Meiryo,sans-serif;background:#f0f4f8;color:#1a202c;line-height:1.7;padding:env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left)}
+.container{max-width:800px;margin:0 auto;padding:20px}
+header{background:#d81b60;color:#fff;padding:24px;border-radius:16px;margin-bottom:24px;text-align:center;position:sticky;top:0;z-index:100;box-shadow:0 4px 15px rgba(216,27,96,0.35)}
+header h1{font-size:1.5em;margin:0}
+.section{background:#fff;border-radius:12px;padding:24px;margin-bottom:20px;box-shadow:0 2px 8px rgba(0,0,0,.06)}
+.section-title{font-size:1.1em;font-weight:bold;color:#d81b60;border-left:4px solid #d81b60;padding-left:12px;margin-bottom:16px}
+.question{padding:16px 0;border-bottom:1px solid #e2e8f0}
+.question:last-of-type{border-bottom:none}
+.question.graded .option input:checked+label{pointer-events:none}
+.question.graded .option input{display:none}
+.question.graded .option label{cursor:default}
+.q-num{display:inline-block;background:#d81b60;color:#fff;width:28px;height:28px;text-align:center;line-height:28px;border-radius:50%;font-size:.85em;font-weight:bold;margin-right:8px}
+.q-text{font-size:1.05em;margin-bottom:12px;font-weight:500}
+.q-text.q-prompt{color:#718096;font-size:.9em;font-weight:400}
+.options{display:grid;grid-template-columns:1fr 1fr;gap:8px;align-items:stretch}
+@media(max-width:600px){.options{grid-template-columns:1fr}}
+.options.options-compact{
+  display:grid;
+  width:100%;
+  max-width:100%;
+  grid-auto-flow:column;
+  grid-auto-columns:1fr;
+  gap:8px;
+}
+.options.options-compact .option label{
+  min-height:2.6rem;
+  padding:.45rem .7rem;
+  text-align:center;
+  font-size:1em;
+}
+@media(max-width:600px){
+  .options.options-compact{
+    display:grid;
+    grid-auto-flow:column;
+    grid-auto-columns:1fr;
+  }
+}
+.option{position:relative;display:flex;flex-direction:column;min-height:0}
+.option input{display:none}
+/* flex+align-items:center は ruby の上方向ルビと相性が悪い → ブロック＋余白で安定化 */
+.option label{
+  display:block;
+  flex:1 1 auto;
+  box-sizing:border-box;
+  min-height:3.25rem;
+  padding:0.7rem 0.875rem 0.65rem;
+  border:2px solid #e2e8f0;
+  border-radius:8px;
+  cursor:pointer;
+  transition:border-color .2s,background .2s,color .2s;
+  font-size:.95em;
+  line-height:1.65;
+  word-break:break-word;
+  overflow-wrap:anywhere;
+  touch-action:manipulation;
+  -webkit-user-select:none;
+  user-select:none;
+}
+.option label:hover{border-color:#d81b60;background:#fce4ec}
+.option input:checked+label{border-color:#d81b60;background:#fce4ec;color:#ad1457;font-weight:600}
+/* 採点後は詳細度を上げて、正解=緑・不正解=赤を常に表示（:checked のマゼンタより優先） */
+.question.graded .option.correct label,
+.question.graded .option.correct input:checked+label{
+  border-color:#48bb78 !important;
+  background:#f0fff4 !important;
+  color:#276749 !important;
+  font-weight:600;
+}
+.question.graded .option.wrong label,
+.question.graded .option.wrong input:checked+label{
+  border-color:#fc8181 !important;
+  background:#fff5f5 !important;
+  color:#9b2c2c !important;
+  font-weight:600;
+}
+.question.graded .option.correct label:hover,
+.question.graded .option.correct input:checked+label:hover{
+  border-color:#48bb78 !important;
+  background:#f0fff4 !important;
+  color:#276749 !important;
+}
+.question.graded .option.wrong label:hover,
+.question.graded .option.wrong input:checked+label:hover{
+  border-color:#fc8181 !important;
+  background:#fff5f5 !important;
+  color:#9b2c2c !important;
+}
+.question.graded .option:not(.correct):not(.wrong) label:hover{
+  border-color:#e2e8f0 !important;
+  background:#fff !important;
+  color:#1a202c !important;
+  font-weight:400;
+}
+.q-figure{margin:12px 0;text-align:center}
+.q-figure img{max-width:100%;height:auto;border-radius:8px;border:2px solid #e2e8f0}
+.q-feedback{margin-top:12px;padding:10px 12px;border-radius:8px;font-size:.95em;font-weight:600;display:none}
+.q-feedback.show{display:block}
+.q-feedback.ok{background:#f0fff4;color:#276749;border:1px solid #9ae6b4}
+.q-feedback.ng{background:#fff5f5;color:#9b2c2c;border:1px solid #feb2b2}
+.btn-submit{display:block;width:100%;min-height:48px;padding:14px 16px;background:#d81b60;color:#fff;border:none;border-radius:12px;font-size:1em;font-weight:bold;cursor:pointer;transition:transform .2s,box-shadow .2s;margin-top:12px;touch-action:manipulation;-webkit-user-select:none;user-select:none}
+.btn-submit:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(216,27,96,.35)}
+.btn-submit:disabled{opacity:.55;cursor:not-allowed;transform:none;box-shadow:none;background:#a0aec0}
+.btn-grade-example{margin-top:16px}
+.result-panel{background:#fff;border-radius:16px;padding:32px;text-align:center;box-shadow:0 4px 20px rgba(0,0,0,.1);margin-top:24px;display:none}
+.result-panel.show{display:block}
+.result-panel h2{font-size:1.8em;margin-bottom:8px}
+.result-score{font-size:3em;font-weight:bold;margin:16px 0}
+.result-score.excellent{color:#48bb78}
+.result-score.good{color:#d81b60}
+.result-score.fair{color:#ed8936}
+.result-score.poor{color:#fc8181}
+.result-detail{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:12px;margin-top:20px;text-align:left}
+.result-item{background:#f7fafc;padding:12px;border-radius:8px}
+.result-item .label{font-size:.8em;color:#718096}
+.result-item .value{font-size:1.2em;font-weight:bold}
+.script-block{background:#fff;border-radius:12px;padding:20px;margin-bottom:16px;box-shadow:0 2px 8px rgba(0,0,0,.06);text-align:left;font-size:.95em;line-height:1.85;display:none}
+.script-block.show{display:block}
+.section .script-block{margin-top:16px;margin-bottom:0;padding:16px;background:#f7fafc;border:1px solid #e2e8f0;box-shadow:none}
+.section .script-block + .script-block{margin-top:12px}
+.script-block h3{font-size:.95em;color:#718096;margin-bottom:10px}
+.script-block p{margin:.4em 0}
+.script-block .speaker{font-weight:600;color:#4a5568}
+.script-block ruby,.q-text ruby,.option label ruby{ruby-align:center}
+.script-block ruby rt,.q-text ruby rt{font-size:0.58em;font-weight:400;line-height:1.15}
+/* 選択肢内：ルビで行ボックスが跳ねないよう rt を固定し、ベース文字サイズを維持 */
+.option label ruby{font-size:1em;line-height:1.65}
+.option label rt{
+  font-size:0.52em;
+  font-weight:400;
+  line-height:1;
+  letter-spacing:0;
+}
+.hidden{display:none}
+/* 1階：例題選択 / 2階：解答 */
+.floor-quiz{margin-bottom:20px}
+.quiz-toolbar{margin-bottom:16px}
+.btn-back{
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+  padding:10px 16px;
+  background:#fff;
+  color:#d81b60;
+  border:2px solid #d81b60;
+  border-radius:10px;
+  font-size:.95em;
+  font-weight:600;
+  cursor:pointer;
+  touch-action:manipulation;
+  transition:background .2s,color .2s;
+}
+.btn-back:hover{background:#fce4ec}
+.example-picker{display:grid;gap:10px}
+.btn-pick-example{
+  display:block;width:100%;text-align:left;
+  padding:14px 16px;
+  background:#fff;
+  color:#1a202c;
+  border:2px solid #e2e8f0;
+  border-radius:12px;
+  font-size:1em;
+  font-weight:600;
+  cursor:pointer;
+  transition:border-color .2s,background .2s,box-shadow .2s;
+  touch-action:manipulation;
+}
+.btn-pick-example:hover{border-color:#d81b60;background:#fce4ec;box-shadow:0 2px 8px rgba(216,27,96,.12)}
+#quizForm .section[data-example].hidden{display:none}
+
+.answer-input{width:100%;min-height:48px;border:2px solid #e2e8f0;border-radius:8px;padding:10px 12px;font:inherit;background:#fff}
+.answer-table-wrap{overflow-x:auto;margin:.8em 0;border:1px solid #e2e8f0;border-radius:8px;background:#fff}
+.answer-table{width:100%;border-collapse:collapse;font-size:.94em}
+.answer-table th,.answer-table td{border-bottom:1px solid #e2e8f0;border-right:1px solid #e2e8f0;padding:8px 10px;text-align:left;vertical-align:top}
+.answer-table th{background:#fce4ec;color:#ad1457}
+.answer-table th:last-child,.answer-table td:last-child{border-right:0}
+.answer-table tr:last-child td{border-bottom:0}
+.extra-answer-block ul{margin:.4em 0 .6em 1.25em}
+
+.all-problems{display:none}
+.all-problems.show{display:block}
+.full-content{background:#fff;border-radius:12px;padding:24px;box-shadow:0 2px 8px rgba(0,0,0,.06)}
+.full-content .md-h2{font-size:1.45em;color:#1a202c;margin:1.3em 0 .6em;border-bottom:2px solid #f8bbd0;padding-bottom:.35em}
+.full-content .md-h3{font-size:1.2em;color:#d81b60;margin:1.2em 0 .5em;border-left:4px solid #d81b60;padding-left:10px}
+.full-content .md-h4{font-size:1.05em;color:#2d3748;margin:1em 0 .45em}
+.full-content .md-p{margin:.55em 0}
+.full-content .md-list{margin:.45em 0 .75em 1.25em}
+.full-content .md-list li{margin:.25em 0}
+.full-content .md-hr{border:0;border-top:1px solid #e2e8f0;margin:1.2em 0}
+.md-table-wrap{overflow-x:auto;margin:.8em 0 1.2em;border:1px solid #e2e8f0;border-radius:8px}
+.md-table{width:100%;border-collapse:collapse;background:#fff;font-size:.95em}
+.md-table th,.md-table td{border-bottom:1px solid #e2e8f0;border-right:1px solid #e2e8f0;padding:8px 10px;text-align:left;vertical-align:top;white-space:normal}
+.md-table th:last-child,.md-table td:last-child{border-right:0}
+.md-table tr:last-child td{border-bottom:0}
+.md-table th{background:#fce4ec;color:#ad1457;font-weight:700}
+
+.all-test-intro{background:#fff;border-radius:12px;padding:22px 24px;margin-bottom:16px;box-shadow:0 2px 8px rgba(0,0,0,.06)}
+.all-test-intro h2{font-size:1.35em;color:#d81b60;margin-bottom:8px}
+.test-section{background:#fff;border-radius:12px;padding:22px 24px;margin-bottom:16px;box-shadow:0 2px 8px rgba(0,0,0,.06)}
+.test-section-kicker{font-size:.82em;color:#718096;margin-bottom:4px}
+.test-section h3{font-size:1.12em;color:#d81b60;border-left:4px solid #d81b60;padding-left:10px;margin-bottom:12px}
+.test-instruction{color:#4a5568;margin:.45em 0}
+.test-question-list{display:grid;gap:12px;margin-top:14px}
+.test-question{border:1px solid #e2e8f0;border-radius:10px;padding:14px;background:#fdfdfd}
+.test-q-title{font-weight:600;margin-bottom:10px}
+.test-options{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:8px}
+.test-option{display:flex;gap:8px;align-items:flex-start;border:2px solid #e2e8f0;border-radius:8px;padding:9px 10px;background:#fff;cursor:pointer}
+.test-option:has(input:checked){border-color:#d81b60;background:#fce4ec;color:#ad1457;font-weight:600}
+.test-option input{margin-top:.35em}
+.test-text-input{width:100%;min-height:42px;border:2px solid #e2e8f0;border-radius:8px;padding:8px 10px;font:inherit;background:#fff}
+.answer-details{margin-top:14px;border:1px solid #e2e8f0;border-radius:10px;background:#f7fafc;padding:10px 12px}
+.answer-details summary{cursor:pointer;font-weight:700;color:#d81b60}
+.answer-details p{margin:.45em 0}
+.answer-list{margin:.5em 0 .5em 1.25em}
+.test-table-wrap{overflow-x:auto;margin:.8em 0;border:1px solid #e2e8f0;border-radius:8px;background:#fff}
+.test-table{width:100%;border-collapse:collapse;font-size:.94em}
+.test-table th,.test-table td{border-bottom:1px solid #e2e8f0;border-right:1px solid #e2e8f0;padding:8px 10px;text-align:left;vertical-align:top}
+.test-table th{background:#fce4ec;color:#ad1457}
+.test-table th:last-child,.test-table td:last-child{border-right:0}
+.test-table tr:last-child td{border-bottom:0}
+.test-hr{border:0;border-top:1px solid #e2e8f0;margin:1em 0}
+</style>
+</head>
+<body>
+<div class="container">
+
+<header>
+<h1>JLPT N3 聴解 例題</h1>
+</header>
+
+<div id="floor-menu" class="floor floor-menu">
+<div class="section">
+<div class="example-picker">
+<button type="button" class="btn-pick-example" data-example="1">例題1 — 話の要点（A 01）</button>
+<button type="button" class="btn-pick-example" data-example="2">例題2 — 要点（A 02）</button>
+<button type="button" class="btn-pick-example" data-example="3">例題3 — 話のあらまし（A 03）</button>
+<button type="button" class="btn-pick-example" data-example="4">例題4 — 表現の選択（A 04）</button>
+<button type="button" class="btn-pick-example" data-example="5">例題5 — 即応（A 05）</button>
+<button type="button" class="btn-pick-example" data-example="all-1">練習１－Ａ　（p.24）— A06</button>
+<button type="button" class="btn-pick-example" data-example="all-2">練習１－Ｂ　（p.25）— A07</button>
+<button type="button" class="btn-pick-example" data-example="all-3">練習１－Ｃ　（p.26）— A08</button>
+<button type="button" class="btn-pick-example" data-example="all-4">練習２－１　（p.28）— A09</button>
+<button type="button" class="btn-pick-example" data-example="all-5">練習２－２　（p.28）— A10</button>
+<button type="button" class="btn-pick-example" data-example="all-6">例題３　（p.29）— A12</button>
+<button type="button" class="btn-pick-example" data-example="all-7">練習３　（p.30）— A13</button>
+<button type="button" class="btn-pick-example" data-example="all-8">練習１　（p.32）— A14</button>
+<button type="button" class="btn-pick-example" data-example="all-9">練習２－Ａ　（p.34）— A15</button>
+<button type="button" class="btn-pick-example" data-example="all-10">練習２－Ｂ　（p.36）— A16</button>
+<button type="button" class="btn-pick-example" data-example="all-11">練習３　（p.37）— A17</button>
+<button type="button" class="btn-pick-example" data-example="all-12">練習４　（p.39）— A18</button>
+<button type="button" class="btn-pick-example" data-example="all-13">確認問題　（p.40）— A19</button>
+<button type="button" class="btn-pick-example" data-example="all-14">練習１－Ａ　（p.43）— A20</button>
+<button type="button" class="btn-pick-example" data-example="ans-1">追加問題 — 練習1-B　※ ○印が答え</button>
+<button type="button" class="btn-pick-example" data-example="ans-2">追加問題 — 練習2-A　※ ○印が答え</button>
+<button type="button" class="btn-pick-example" data-example="ans-3">追加問題 — 練習2-B　※ ○印が答え</button>
+<button type="button" class="btn-pick-example" data-example="ans-4">追加問題 — 練習3　※ ○印が答え</button>
+<button type="button" class="btn-pick-example" data-example="ans-5">追加問題 — 確認問題</button>
+<button type="button" class="btn-pick-example" data-example="ans-6">追加問題 — 練習1-1</button>
+<button type="button" class="btn-pick-example" data-example="ans-7">追加問題 — 練習1-2</button>
+<button type="button" class="btn-pick-example" data-example="ans-8">追加問題 — ステップアップ問題1</button>
+<button type="button" class="btn-pick-example" data-example="ans-9">追加問題 — 練習2</button>
+<button type="button" class="btn-pick-example" data-example="ans-10">追加問題 — 確認問題</button>
+</div>
+</div>
+</div>
+
+
+<div id="floor-quiz" class="floor floor-quiz hidden">
+<div class="quiz-toolbar">
+<button type="button" class="btn-back" id="btnBackToMenu" aria-label="例題一覧に戻る">← 例題一覧に戻る</button>
+</div>
+
+<div id="quizForm">
+
+<!-- 例題1 -->
+<div class="section" data-example="1">
+<div class="section-title">例題1 — 話の要点（A 01）</div>
+
+<div class="question" data-qkey="q1">
+<div class="q-text q-prompt"><span class="q-num">1</span>この<ruby>問題<rt>もんだい</rt></ruby>では、まず<ruby>質問<rt>しつもん</rt></ruby>を<ruby>聞<rt>き</rt></ruby>いてください。それから<ruby>話<rt>はなし</rt></ruby>を<ruby>聞<rt>き</rt></ruby>いて、1〜4から<ruby>最<rt>もっと</rt></ruby>もよいものを<ruby>一<rt>ひと</rt></ruby>つ選んでください。</div>
+<div class="options">
+<div class="option"><input type="radio" name="q1" id="q1a" value="1"><label for="q1a">1. <ruby>写真<rt>しゃしん</rt></ruby>を<ruby>準備<rt>じゅんび</rt></ruby>する</label></div>
+<div class="option"><input type="radio" name="q1" id="q1b" value="2"><label for="q1b">2. <ruby>原稿<rt>げんこう</rt></ruby>を<ruby>直<rt>なお</rt></ruby>す</label></div>
+<div class="option"><input type="radio" name="q1" id="q1c" value="3"><label for="q1c">3. <ruby>発表<rt>はっぴょう</rt></ruby>の<ruby>練習<rt>れんしゅう</rt></ruby>をする</label></div>
+<div class="option"><input type="radio" name="q1" id="q1d" value="4"><label for="q1d">4. <ruby>漢字<rt>かんじ</rt></ruby>の<ruby>読<rt>よ</rt></ruby>み<ruby>方<rt>かた</rt></ruby>を<ruby>確認<rt>かくにん</rt></ruby>する</label></div>
+</div>
+<p class="q-feedback" id="feedback-q1" role="status"></p>
+</div>
+
+<button type="button" class="btn-submit btn-grade-example" data-example="1">採点</button>
+
+<div class="script-block" id="script-q1">
+<h3>スクリプト（例題1）</h3>
+<p><ruby>日本語<rt>にほんご</rt></ruby>のクラスで<ruby>女<rt>おんな</rt></ruby>の<ruby>先生<rt>せんせい</rt></ruby>が<ruby>発表<rt>はっぴょう</rt></ruby>の<ruby>準備<rt>じゅんび</rt></ruby>について<ruby>話<rt>はな</rt></ruby>しています。</p>
+<p><span class="speaker">女：</span><ruby>先週<rt>せんしゅう</rt></ruby>お<ruby>話<rt>はな</rt></ruby>ししたように、あさっての<ruby>授業<rt>じゅぎょう</rt></ruby>では<ruby>発表<rt>はっぴょう</rt></ruby>をしてもらいますから、<ruby>準備<rt>じゅんび</rt></ruby>しておいてください。</p>
+<p><span class="speaker">男：</span><ruby>発表<rt>はっぴょう</rt></ruby>の<ruby>時<rt>とき</rt></ruby>パソコンを<ruby>使<rt>つか</rt></ruby>ってもいいですか。<ruby>写真<rt>しゃしん</rt></ruby>を<ruby>見<rt>み</rt></ruby>せたいんですけど。</p>
+<p><span class="speaker">女：</span>いいですけど、リーさんはまだ<ruby>原稿<rt>げんこう</rt></ruby>ができていないでしょう？ <ruby>写真<rt>しゃしん</rt></ruby>だけでは<ruby>発表<rt>はっぴょう</rt></ruby>になりませんよ。すぐにやって、<ruby>見<rt>み</rt></ruby>せてください。</p>
+<p><span class="speaker">男：</span>はい。<ruby>書<rt>か</rt></ruby>き<ruby>直<rt>なお</rt></ruby>すのはまとめのところだけでいいですか。</p>
+<p><span class="speaker">女：</span>ええ、そこがちょっとわかりにくいので、もう<ruby>少<rt>すこ</rt></ruby>し<ruby>直<rt>なお</rt></ruby>さないと。ほかの<ruby>準備<rt>じゅんび</rt></ruby>は<ruby>原稿<rt>げんこう</rt></ruby>が<ruby>完成<rt>かんせい</rt></ruby>してからでいいです。それから、あしたはグループで<ruby>発表<rt>はっぴょう</rt></ruby>の<ruby>練習<rt>れんしゅう</rt></ruby>をするので、<ruby>漢字<rt>かんじ</rt></ruby>の<ruby>読<rt>よ</rt></ruby>み<ruby>方<rt>かた</rt></ruby>も<ruby>確認<rt>かくにん</rt></ruby>してきてくださいね。</p>
+</div>
+</div>
+
+<!-- 例題2 -->
+<div class="section" data-example="2">
+<div class="section-title">例題2 — 要点（A 02）</div>
+
+<div class="question" data-qkey="q2">
+<div class="q-text q-prompt"><span class="q-num">2</span><ruby>質問<rt>しつもん</rt></ruby>を<ruby>聞<rt>き</rt></ruby>き、そのあと<ruby>問題用紙<rt>もんだいようし</rt></ruby>を<ruby>見<rt>み</rt></ruby>て<ruby>読<rt>よ</rt></ruby>む<ruby>時間<rt>じかん</rt></ruby>があります。<ruby>話<rt>はなし</rt></ruby>を<ruby>聞<rt>き</rt></ruby>いて1〜4から選んでください。</div>
+<div class="options">
+<div class="option"><input type="radio" name="q2" id="q2a" value="1"><label for="q2a">1. アルバイトがあるから</label></div>
+<div class="option"><input type="radio" name="q2" id="q2b" value="2"><label for="q2b">2. <ruby>子供<rt>こども</rt></ruby>の<ruby>世話<rt>せわ</rt></ruby>をするから</label></div>
+<div class="option"><input type="radio" name="q2" id="q2c" value="3"><label for="q2c">3. <ruby>友達<rt>ともだち</rt></ruby>の<ruby>結婚式<rt>けっこんしき</rt></ruby>に<ruby>行<rt>い</rt></ruby>くから</label></div>
+<div class="option"><input type="radio" name="q2" id="q2d" value="4"><label for="q2d">4. <ruby>週末<rt>しゅうまつ</rt></ruby>は<ruby>休<rt>やす</rt></ruby>みではないから</label></div>
+</div>
+<p class="q-feedback" id="feedback-q2" role="status"></p>
+</div>
+
+<button type="button" class="btn-submit btn-grade-example" data-example="2">採点</button>
+
+<div class="script-block" id="script-q2">
+<h3>スクリプト（例題2）</h3>
+<p><ruby>女<rt>おんな</rt></ruby>の<ruby>人<rt>ひと</rt></ruby>と<ruby>男<rt>おとこ</rt></ruby>の<ruby>人<rt>ひと</rt></ruby>が<ruby>話<rt>はな</rt></ruby>しています。</p>
+<p><span class="speaker">女：</span><ruby>渡辺<rt>わたなべ</rt></ruby><ruby>君<rt>くん</rt></ruby>、あしたの<ruby>飲<rt>の</rt></ruby>み<ruby>会<rt>かい</rt></ruby>、<ruby>行<rt>い</rt></ruby>く？</p>
+<p><span class="speaker">男：</span>あー、<ruby>行<rt>い</rt></ruby>こうと<ruby>思<rt>おも</rt></ruby>っていたんだけど……。</p>
+<p><span class="speaker">女：</span>あ、アルバイトの<ruby>日<rt>ひ</rt></ruby>か。</p>
+<p><span class="speaker">男：</span>それは<ruby>前<rt>まえ</rt></ruby>から<ruby>休<rt>やす</rt></ruby>みもらってたからいいんだけど。あしたはさ、<ruby>姉<rt>あね</rt></ruby>の<ruby>子供<rt>こども</rt></ruby>を<ruby>預<rt>あず</rt></ruby>かってほしいって<ruby>頼<rt>たの</rt></ruby>まれちゃってね。<ruby>友達<rt>ともだち</rt></ruby>の<ruby>結婚式<rt>けっこんしき</rt></ruby>に<ruby>行<rt>い</rt></ruby>くからって。</p>
+<p><span class="speaker">女：</span>お<ruby>兄<rt>にい</rt></ruby>さんはいないの？</p>
+<p><span class="speaker">男：</span>うん、いつもなら<ruby>週末<rt>しゅうまつ</rt></ruby>は<ruby>休<rt>やす</rt></ruby>みなんだけど……。<ruby>子供<rt>こども</rt></ruby>が1<ruby>人<rt>ひとり</rt></ruby>じゃかわいそうだよね。</p>
+<p><span class="speaker">女：</span>ふうん。<ruby>大変<rt>たいへん</rt></ruby>そうだけど、<ruby>頑張<rt>がんば</rt></ruby>ってね。</p>
+</div>
+</div>
+
+<!-- 例題3 -->
+<div class="section" data-example="3">
+<div class="section-title">例題3 — 話のあらまし（A 03）</div>
+
+<div class="question" data-qkey="q3">
+<div class="q-text q-prompt"><span class="q-num">3</span><ruby>問題用紙<rt>もんだいようし</rt></ruby>には<ruby>何<rt>なに</rt></ruby>も<ruby>印刷<rt>いんさつ</rt></ruby>されていません。<ruby>話<rt>はなし</rt></ruby>を<ruby>聞<rt>き</rt></ruby>いてから、<ruby>質問<rt>しつもん</rt></ruby>と<ruby>選択肢<rt>せんたくし</rt></ruby>を<ruby>聞<rt>き</rt></ruby>いて1〜4から選んでください。</div>
+<div class="options">
+<div class="option"><input type="radio" name="q3" id="q3a" value="1"><label for="q3a">1. <ruby>人<rt>ひと</rt></ruby>が<ruby>緊張<rt>きんちょう</rt></ruby>する<ruby>理由<rt>りゆう</rt></ruby></label></div>
+<div class="option"><input type="radio" name="q3" id="q3b" value="2"><label for="q3b">2. <ruby>落<rt>お</rt></ruby>ち<ruby>着<rt>つ</rt></ruby>くための<ruby>方法<rt>ほうほう</rt></ruby></label></div>
+<div class="option"><input type="radio" name="q3" id="q3c" value="3"><label for="q3c">3. <ruby>両親<rt>りょうしん</rt></ruby>への<ruby>感謝<rt>かんしゃ</rt></ruby>の<ruby>伝<rt>つた</rt></ruby>え<ruby>方<rt>かた</rt></ruby></label></div>
+<div class="option"><input type="radio" name="q3" id="q3d" value="4"><label for="q3d">4. <ruby>力<rt>ちから</rt></ruby>の<ruby>入<rt>い</rt></ruby>れ<ruby>方<rt>かた</rt></ruby>と<ruby>緊張<rt>きんちょう</rt></ruby>の<ruby>関係<rt>かんけい</rt></ruby></label></div>
+</div>
+<p class="q-feedback" id="feedback-q3" role="status"></p>
+</div>
+
+<button type="button" class="btn-submit btn-grade-example" data-example="3">採点</button>
+
+<div class="script-block" id="script-q3">
+<h3>スクリプト（例題3）</h3>
+<p>テレビで<ruby>女<rt>おんな</rt></ruby>の<ruby>人<rt>ひと</rt></ruby>が<ruby>話<rt>はな</rt></ruby>しています。</p>
+<p><span class="speaker">女：</span><ruby>試験<rt>しけん</rt></ruby>の<ruby>時<rt>とき</rt></ruby>などに、<ruby>緊張<rt>きんちょう</rt></ruby>してしまって<ruby>困<rt>こま</rt></ruby>ったことはありませんか。そんな<ruby>時<rt>とき</rt></ruby>に<ruby>役立<rt>やくだ</rt></ruby>つ、いくつかのやり<ruby>方<rt>かた</rt></ruby>をご<ruby>紹介<rt>しょうかい</rt></ruby>しましょう。ある<ruby>人<rt>ひと</rt></ruby>は、<ruby>緊張<rt>きんちょう</rt></ruby>しているときに「お<ruby>父<rt>とう</rt></ruby>さん、ありがとう。お<ruby>母<rt>かあ</rt></ruby>さん、ありがとう」とほかの<ruby>人<rt>ひと</rt></ruby>への<ruby>感謝<rt>かんしゃ</rt></ruby>を<ruby>心<rt>こころ</rt></ruby>の<ruby>中<rt>なか</rt></ruby>で<ruby>言<rt>い</rt></ruby>うと、<ruby>落<rt>お</rt></ruby>ち<ruby>着<rt>つ</rt></ruby>けるそうです。また、<ruby>体<rt>からだ</rt></ruby>に<ruby>一度<rt>いちど</rt></ruby>ぐっと<ruby>力<rt>ちから</rt></ruby>を<ruby>入<rt>い</rt></ruby>れて、その<ruby>後<rt>あと</rt></ruby><ruby>力<rt>ちから</rt></ruby>を<ruby>抜<rt>ぬ</rt></ruby>くと、<ruby>落<rt>お</rt></ruby>ち<ruby>着<rt>つ</rt></ruby>けるという<ruby>人<rt>ひと</rt></ruby>もいます。<ruby>一度<rt>いちど</rt></ruby><ruby>試<rt>ため</rt></ruby>してみてはいかがですか。</p>
+</div>
+</div>
+
+<!-- 例題4 -->
+<div class="section" data-example="4">
+<div class="section-title">例題4 — 表現の選択（A 04）</div>
+
+<div class="question" data-qkey="q4">
+<div class="q-figure"><img src="IMG_2065のコピー.jpeg" alt="カウンターで書類を出す男性（矢印）"></div>
+<div class="q-text q-prompt"><span class="q-num">4</span><ruby>絵<rt>え</rt></ruby>を<ruby>見<rt>み</rt></ruby>ながら<ruby>質問<rt>しつもん</rt></ruby>を<ruby>聞<rt>き</rt></ruby>いてください。<ruby>矢印<rt>やじるし</rt></ruby>の<ruby>人<rt>ひと</rt></ruby>は<ruby>何<rt>なん</rt></ruby>と<ruby>言<rt>い</rt></ruby>いますか。1〜3から選んでください。</div>
+<div class="options">
+<div class="option"><input type="radio" name="q4" id="q4a" value="1"><label for="q4a">1. <ruby>教<rt>おし</rt></ruby>えてもよろしいでしょうか</label></div>
+<div class="option"><input type="radio" name="q4" id="q4b" value="2"><label for="q4b">2. <ruby>教<rt>おし</rt></ruby>えていただきたいんですけど</label></div>
+<div class="option"><input type="radio" name="q4" id="q4c" value="3"><label for="q4c">3. <ruby>教<rt>おし</rt></ruby>えていただきましょうか</label></div>
+</div>
+<p class="q-feedback" id="feedback-q4" role="status"></p>
+</div>
+
+<button type="button" class="btn-submit btn-grade-example" data-example="4">採点</button>
+
+<div class="script-block" id="script-q4">
+<h3>スクリプト（例題4）</h3>
+<p><ruby>大学<rt>だいがく</rt></ruby>で<ruby>事務<rt>じむ</rt></ruby>の<ruby>人<rt>ひと</rt></ruby>に<ruby>書類<rt>しょるい</rt></ruby>の<ruby>書<rt>か</rt></ruby>き<ruby>方<rt>かた</rt></ruby>を<ruby>聞<rt>き</rt></ruby>きます。<ruby>何<rt>なん</rt></ruby>と<ruby>言<rt>い</rt></ruby>いますか。</p>
+<p><span class="speaker">1 男：</span>あの、この<ruby>書類<rt>しょるい</rt></ruby>の<ruby>書<rt>か</rt></ruby>き<ruby>方<rt>かた</rt></ruby>、<ruby>教<rt>おし</rt></ruby>えてもよろしいでしょうか。</p>
+<p><span class="speaker">2</span> あの、この<ruby>書類<rt>しょるい</rt></ruby>の<ruby>書<rt>か</rt></ruby>き<ruby>方<rt>かた</rt></ruby>、<ruby>教<rt>おし</rt></ruby>えていただきたいんですけど。</p>
+<p><span class="speaker">3</span> あの、この<ruby>書類<rt>しょるい</rt></ruby>の<ruby>書<rt>か</rt></ruby>き<ruby>方<rt>かた</rt></ruby>、<ruby>教<rt>おし</rt></ruby>えていただきましょうか。</p>
+</div>
+</div>
+
+<!-- 例題5 -->
+<div class="section" data-example="5">
+<div class="section-title">例題5 — 即応（A 05）</div>
+
+<div class="question" data-qkey="q5a">
+<div class="q-text q-prompt"><span class="q-num">5</span>（1）<ruby>文<rt>ぶん</rt></ruby>を<ruby>聞<rt>き</rt></ruby>いてから、<ruby>返事<rt>へんじ</rt></ruby>を<ruby>聞<rt>き</rt></ruby>いて1〜3から選んでください。</div>
+<div class="options">
+<div class="option"><input type="radio" name="q5a" id="q5aa" value="1"><label for="q5aa">1. いえ、おかげさまで。</label></div>
+<div class="option"><input type="radio" name="q5a" id="q5ab" value="2"><label for="q5ab">2. はい、<ruby>失礼<rt>しつれい</rt></ruby>します。</label></div>
+<div class="option"><input type="radio" name="q5a" id="q5ac" value="3"><label for="q5ac">3. ええ、おかけください。</label></div>
+</div>
+<p class="q-feedback" id="feedback-q5a" role="status"></p>
+</div>
+
+<div class="question" data-qkey="q5b">
+<div class="q-text q-prompt"><span class="q-num">6</span>（2）<ruby>文<rt>ぶん</rt></ruby>を<ruby>聞<rt>き</rt></ruby>いてから、<ruby>返事<rt>へんじ</rt></ruby>を<ruby>聞<rt>き</rt></ruby>いて1〜3から選んでください。</div>
+<div class="options">
+<div class="option"><input type="radio" name="q5b" id="q5ba" value="1"><label for="q5ba">1. <ruby>今日<rt>きょう</rt></ruby>は<ruby>自転車<rt>じてんしゃ</rt></ruby>だよ。</label></div>
+<div class="option"><input type="radio" name="q5b" id="q5bb" value="2"><label for="q5bb">2. <ruby>電車<rt>でんしゃ</rt></ruby>が<ruby>止<rt>と</rt></ruby>まってて。</label></div>
+<div class="option"><input type="radio" name="q5b" id="q5bc" value="3"><label for="q5bc">3. ポストに<ruby>入<rt>い</rt></ruby>れたよ。</label></div>
+</div>
+<p class="q-feedback" id="feedback-q5b" role="status"></p>
+</div>
+
+<button type="button" class="btn-submit btn-grade-example" data-example="5">採点</button>
+
+<div class="script-block" id="script-q5a">
+<h3>スクリプト（例題5・（1））</h3>
+<p><span class="speaker">女：</span><ruby>座<rt>すわ</rt></ruby>ってもかまいませんか。</p>
+<p><span class="speaker">男：</span><br>1 いえ、おかげさまで。<br>2 はい、<ruby>失礼<rt>しつれい</rt></ruby>します。<br>3 ええ、おかけください。</p>
+</div>
+<div class="script-block" id="script-q5b">
+<h3>スクリプト（例題5・（2））</h3>
+<p><span class="speaker">女：</span><ruby>今日<rt>きょう</rt></ruby>、なんで<ruby>遅<rt>おく</rt></ruby>れたの？</p>
+<p><span class="speaker">男：</span><br>1 <ruby>今日<rt>きょう</rt></ruby>は<ruby>自転車<rt>じてんしゃ</rt></ruby>だよ。<br>2 <ruby>電車<rt>でんしゃ</rt></ruby>が<ruby>止<rt>と</rt></ruby>まってて。<br>3 ポストに<ruby>入<rt>い</rt></ruby>れたよ。</p>
+</div>
+</div>
+
+
+<!-- 全問題テスト（A06〜A20・解答解説） -->
+<!-- 練習１－Ａ　（p.24） -->
+<div class="section hidden" data-example="all-1">
+<div class="section-title">練習１－Ａ　（p.24）</div>
+<div class="q-text q-prompt">1-A　聞き間違えやすい音</div>
+<div class="q-text q-prompt">最初に聞こえる言葉と同じ発音の言葉を選びましょう。　🔊 A06</div>
+<div class="question" data-qkey="all-1-1" data-answer="a">
+<div class="q-text q-prompt"><span class="q-num">1</span>(例)</div>
+<div class="options options-compact">
+<div class="option"><input type="radio" name="all-1-1" id="all-1-1-0" value="a"><label for="all-1-1-0">a</label></div>
+<div class="option"><input type="radio" name="all-1-1" id="all-1-1-1" value="b"><label for="all-1-1-1">b</label></div>
+<div class="option"><input type="radio" name="all-1-1" id="all-1-1-2" value="c"><label for="all-1-1-2">c</label></div>
+</div>
+<p class="q-feedback" id="feedback-all-1-1" role="status"></p>
+</div>
+<div class="question" data-qkey="all-1-2" data-answer="<strong>a 音</strong>　b 夫　c 元">
+<div class="q-text q-prompt"><span class="q-num">2</span>(1)</div>
+<div class="options options-compact">
+<div class="option"><input type="radio" name="all-1-2" id="all-1-2-0" value="a"><label for="all-1-2-0">a</label></div>
+<div class="option"><input type="radio" name="all-1-2" id="all-1-2-1" value="b"><label for="all-1-2-1">b</label></div>
+<div class="option"><input type="radio" name="all-1-2" id="all-1-2-2" value="c"><label for="all-1-2-2">c</label></div>
+</div>
+<p class="q-feedback" id="feedback-all-1-2" role="status"></p>
+</div>
+<div class="question" data-qkey="all-1-3" data-answer="a">
+<div class="q-text q-prompt"><span class="q-num">3</span>(2)</div>
+<div class="options options-compact">
+<div class="option"><input type="radio" name="all-1-3" id="all-1-3-0" value="a"><label for="all-1-3-0">a</label></div>
+<div class="option"><input type="radio" name="all-1-3" id="all-1-3-1" value="b"><label for="all-1-3-1">b</label></div>
+<div class="option"><input type="radio" name="all-1-3" id="all-1-3-2" value="c"><label for="all-1-3-2">c</label></div>
+</div>
+<p class="q-feedback" id="feedback-all-1-3" role="status"></p>
+</div>
+<div class="question" data-qkey="all-1-4" data-answer="a">
+<div class="q-text q-prompt"><span class="q-num">4</span>(3)</div>
+<div class="options options-compact">
+<div class="option"><input type="radio" name="all-1-4" id="all-1-4-0" value="a"><label for="all-1-4-0">a</label></div>
+<div class="option"><input type="radio" name="all-1-4" id="all-1-4-1" value="b"><label for="all-1-4-1">b</label></div>
+<div class="option"><input type="radio" name="all-1-4" id="all-1-4-2" value="c"><label for="all-1-4-2">c</label></div>
+</div>
+<p class="q-feedback" id="feedback-all-1-4" role="status"></p>
+</div>
+<div class="question" data-qkey="all-1-5" data-answer="a">
+<div class="q-text q-prompt"><span class="q-num">5</span>(4)</div>
+<div class="options options-compact">
+<div class="option"><input type="radio" name="all-1-5" id="all-1-5-0" value="a"><label for="all-1-5-0">a</label></div>
+<div class="option"><input type="radio" name="all-1-5" id="all-1-5-1" value="b"><label for="all-1-5-1">b</label></div>
+<div class="option"><input type="radio" name="all-1-5" id="all-1-5-2" value="c"><label for="all-1-5-2">c</label></div>
+</div>
+<p class="q-feedback" id="feedback-all-1-5" role="status"></p>
+</div>
+<div class="question" data-qkey="all-1-6" data-answer="a">
+<div class="q-text q-prompt"><span class="q-num">6</span>(5)</div>
+<div class="options options-compact">
+<div class="option"><input type="radio" name="all-1-6" id="all-1-6-0" value="a"><label for="all-1-6-0">a</label></div>
+<div class="option"><input type="radio" name="all-1-6" id="all-1-6-1" value="b"><label for="all-1-6-1">b</label></div>
+<div class="option"><input type="radio" name="all-1-6" id="all-1-6-2" value="c"><label for="all-1-6-2">c</label></div>
+</div>
+<p class="q-feedback" id="feedback-all-1-6" role="status"></p>
+</div>
+<div class="question" data-qkey="all-1-7" data-answer="a">
+<div class="q-text q-prompt"><span class="q-num">7</span>(6)</div>
+<div class="options options-compact">
+<div class="option"><input type="radio" name="all-1-7" id="all-1-7-0" value="a"><label for="all-1-7-0">a</label></div>
+<div class="option"><input type="radio" name="all-1-7" id="all-1-7-1" value="b"><label for="all-1-7-1">b</label></div>
+<div class="option"><input type="radio" name="all-1-7" id="all-1-7-2" value="c"><label for="all-1-7-2">c</label></div>
+</div>
+<p class="q-feedback" id="feedback-all-1-7" role="status"></p>
+</div>
+<div class="question" data-qkey="all-1-8" data-answer="a">
+<div class="q-text q-prompt"><span class="q-num">8</span>(7)</div>
+<div class="options options-compact">
+<div class="option"><input type="radio" name="all-1-8" id="all-1-8-0" value="a"><label for="all-1-8-0">a</label></div>
+<div class="option"><input type="radio" name="all-1-8" id="all-1-8-1" value="b"><label for="all-1-8-1">b</label></div>
+<div class="option"><input type="radio" name="all-1-8" id="all-1-8-2" value="c"><label for="all-1-8-2">c</label></div>
+</div>
+<p class="q-feedback" id="feedback-all-1-8" role="status"></p>
+</div>
+<div class="question" data-qkey="all-1-9" data-answer="a">
+<div class="q-text q-prompt"><span class="q-num">9</span>(8)</div>
+<div class="options options-compact">
+<div class="option"><input type="radio" name="all-1-9" id="all-1-9-0" value="a"><label for="all-1-9-0">a</label></div>
+<div class="option"><input type="radio" name="all-1-9" id="all-1-9-1" value="b"><label for="all-1-9-1">b</label></div>
+<div class="option"><input type="radio" name="all-1-9" id="all-1-9-2" value="c"><label for="all-1-9-2">c</label></div>
+</div>
+<p class="q-feedback" id="feedback-all-1-9" role="status"></p>
+</div>
+<div class="question" data-qkey="all-1-10" data-answer="<strong>a 将来</strong>　b 町内　c 場内">
+<div class="q-text q-prompt"><span class="q-num">10</span>(9)</div>
+<div class="options options-compact">
+<div class="option"><input type="radio" name="all-1-10" id="all-1-10-0" value="a"><label for="all-1-10-0">a</label></div>
+<div class="option"><input type="radio" name="all-1-10" id="all-1-10-1" value="b"><label for="all-1-10-1">b</label></div>
+<div class="option"><input type="radio" name="all-1-10" id="all-1-10-2" value="c"><label for="all-1-10-2">c</label></div>
+</div>
+<p class="q-feedback" id="feedback-all-1-10" role="status"></p>
+</div>
+<div class="question" data-qkey="all-1-11" data-answer="a">
+<div class="q-text q-prompt"><span class="q-num">11</span>(10)</div>
+<div class="options options-compact">
+<div class="option"><input type="radio" name="all-1-11" id="all-1-11-0" value="a"><label for="all-1-11-0">a</label></div>
+<div class="option"><input type="radio" name="all-1-11" id="all-1-11-1" value="b"><label for="all-1-11-1">b</label></div>
+<div class="option"><input type="radio" name="all-1-11" id="all-1-11-2" value="c"><label for="all-1-11-2">c</label></div>
+</div>
+<p class="q-feedback" id="feedback-all-1-11" role="status"></p>
+</div>
+<button type="button" class="btn-submit btn-grade-extra" data-extra-example="all-1">採点</button>
+<div class="script-block extra-answer-block" id="script-all-1">
+<h3>解答・解説（練習１－Ａ　（p.24））</h3>
+<p>例）元気（a 電気　b 元気　<strong>c 元気</strong>）</p>
+<p>(1) 音（<strong>a 音</strong>　b 夫　c 元）</p>
+<p>(2) 時計（a 続計　<strong>b 時計</strong>　c 鮮）</p>
+<p>(3) 以内（a 以来　<strong>b 以内</strong>　c 以外）</p>
+<p>(4) 数（a 勝つ　<strong>b 数</strong>　c ガス）</p>
+<p>(5) 作家（a 雑貨　b 坂　<strong>c 作家</strong>）</p>
+<p>(6) 銀色（a 金色　b 黄色　<strong>c 銀色</strong>）</p>
+<p>(7) パンダ（a バター　<strong>b パンダ</strong>　c 肌）</p>
+<p>(8) カード（a 角　b カット　<strong>c カード</strong>）</p>
+<p>(9) 将来（<strong>a 将来</strong>　b 町内　c 場内）</p>
+<p>(10) 知っている（a している　b 敷いている　<strong>c 知っている</strong>）</p>
+</div>
+</div>
+
+<!-- 練習１－Ｂ　（p.25） -->
+<div class="section hidden" data-example="all-2">
+<div class="section-title">練習１－Ｂ　（p.25）</div>
+<div class="q-text q-prompt">1-B　アクセントとイントネーション</div>
+<div class="q-text q-prompt">文を聞いて、正しいものを選びましょう。　🔊 A07</div>
+<div class="question" data-qkey="all-2-1" data-answer="a">
+<div class="q-text q-prompt"><span class="q-num">1</span>(例) これから（a 美容院　　b 病院）へ行きます。</div>
+<div class="options">
+<div class="option"><input type="radio" name="all-2-1" id="all-2-1-0" value="a"><label for="all-2-1-0">a. 美容院</label></div>
+<div class="option"><input type="radio" name="all-2-1" id="all-2-1-1" value="b"><label for="all-2-1-1">b. 病院）へ行きます。</label></div>
+</div>
+<p class="q-feedback" id="feedback-all-2-1" role="status"></p>
+</div>
+<div class="question" data-qkey="all-2-2" data-answer="b">
+<div class="q-text q-prompt"><span class="q-num">2</span>(1) すみません、（a コーヒー　　b コピー）、お願いします。</div>
+<div class="options">
+<div class="option"><input type="radio" name="all-2-2" id="all-2-2-0" value="a"><label for="all-2-2-0">a. コーヒー</label></div>
+<div class="option"><input type="radio" name="all-2-2" id="all-2-2-1" value="b"><label for="all-2-2-1">b. コピー）、お願いします。</label></div>
+</div>
+<p class="q-feedback" id="feedback-all-2-2" role="status"></p>
+</div>
+<div class="question" data-qkey="all-2-3" data-answer="b">
+<div class="q-text q-prompt"><span class="q-num">3</span>(2) （a さっき　　b 最近）、田中さんに会いました。</div>
+<div class="options">
+<div class="option"><input type="radio" name="all-2-3" id="all-2-3-0" value="a"><label for="all-2-3-0">a. さっき</label></div>
+<div class="option"><input type="radio" name="all-2-3" id="all-2-3-1" value="b"><label for="all-2-3-1">b. 最近）、田中さんに会いました。</label></div>
+</div>
+<p class="q-feedback" id="feedback-all-2-3" role="status"></p>
+</div>
+<div class="question" data-qkey="all-2-4" data-answer="a">
+<div class="q-text q-prompt"><span class="q-num">4</span>(3) これは（a 今　　b 眼）でないとできません。</div>
+<div class="options">
+<div class="option"><input type="radio" name="all-2-4" id="all-2-4-0" value="a"><label for="all-2-4-0">a. 今</label></div>
+<div class="option"><input type="radio" name="all-2-4" id="all-2-4-1" value="b"><label for="all-2-4-1">b. 眼）でないとできません。</label></div>
+</div>
+<p class="q-feedback" id="feedback-all-2-4" role="status"></p>
+</div>
+<div class="question" data-qkey="all-2-5" data-answer="a">
+<div class="q-text q-prompt"><span class="q-num">5</span>(4) （a あればいい　　b あれはいい）と思います。</div>
+<div class="options">
+<div class="option"><input type="radio" name="all-2-5" id="all-2-5-0" value="a"><label for="all-2-5-0">a. あればいい</label></div>
+<div class="option"><input type="radio" name="all-2-5" id="all-2-5-1" value="b"><label for="all-2-5-1">b. あれはいい）と思います。</label></div>
+</div>
+<p class="q-feedback" id="feedback-all-2-5" role="status"></p>
+</div>
+<div class="question" data-qkey="all-2-6" data-answer="b">
+<div class="q-text q-prompt"><span class="q-num">6</span>(5) 早く（a 傾った　　b 変えた）ほうがいいですよ。</div>
+<div class="options">
+<div class="option"><input type="radio" name="all-2-6" id="all-2-6-0" value="a"><label for="all-2-6-0">a. 傾った</label></div>
+<div class="option"><input type="radio" name="all-2-6" id="all-2-6-1" value="b"><label for="all-2-6-1">b. 変えた）ほうがいいですよ。</label></div>
+</div>
+<p class="q-feedback" id="feedback-all-2-6" role="status"></p>
+</div>
+<div class="question" data-qkey="all-2-7" data-answer="b">
+<div class="q-text q-prompt"><span class="q-num">7</span>(6) この服、（a ちょっと　　b ちょうど）いいですね。</div>
+<div class="options">
+<div class="option"><input type="radio" name="all-2-7" id="all-2-7-0" value="a"><label for="all-2-7-0">a. ちょっと</label></div>
+<div class="option"><input type="radio" name="all-2-7" id="all-2-7-1" value="b"><label for="all-2-7-1">b. ちょうど）いいですね。</label></div>
+</div>
+<p class="q-feedback" id="feedback-all-2-7" role="status"></p>
+</div>
+<div class="question" data-qkey="all-2-8" data-answer="a">
+<div class="q-text q-prompt"><span class="q-num">8</span>(7) この映画は（a もう一度見た　　b もう一度見たい）。</div>
+<div class="options">
+<div class="option"><input type="radio" name="all-2-8" id="all-2-8-0" value="a"><label for="all-2-8-0">a. もう一度見た</label></div>
+<div class="option"><input type="radio" name="all-2-8" id="all-2-8-1" value="b"><label for="all-2-8-1">b. もう一度見たい）。</label></div>
+</div>
+<p class="q-feedback" id="feedback-all-2-8" role="status"></p>
+</div>
+<div class="question" data-qkey="all-2-9" data-answer="a">
+<div class="q-text q-prompt"><span class="q-num">9</span>(8) ねえ、（a これは買った　　b これ、わかった）の?</div>
+<div class="options">
+<div class="option"><input type="radio" name="all-2-9" id="all-2-9-0" value="a"><label for="all-2-9-0">a. これは買った</label></div>
+<div class="option"><input type="radio" name="all-2-9" id="all-2-9-1" value="b"><label for="all-2-9-1">b. これ、わかった）の?</label></div>
+</div>
+<p class="q-feedback" id="feedback-all-2-9" role="status"></p>
+</div>
+<div class="question" data-qkey="all-2-10" data-answer="b">
+<div class="q-text q-prompt"><span class="q-num">10</span>(9) みんな（a 車で　　b 来るまで）待ちましょう。</div>
+<div class="options">
+<div class="option"><input type="radio" name="all-2-10" id="all-2-10-0" value="a"><label for="all-2-10-0">a. 車で</label></div>
+<div class="option"><input type="radio" name="all-2-10" id="all-2-10-1" value="b"><label for="all-2-10-1">b. 来るまで）待ちましょう。</label></div>
+</div>
+<p class="q-feedback" id="feedback-all-2-10" role="status"></p>
+</div>
+<div class="question" data-qkey="all-2-11" data-answer="a">
+<div class="q-text q-prompt"><span class="q-num">11</span>(10) あと（a もう少し、できます　　b もう少しで、来ます）よ。</div>
+<div class="options">
+<div class="option"><input type="radio" name="all-2-11" id="all-2-11-0" value="a"><label for="all-2-11-0">a. もう少し、できます</label></div>
+<div class="option"><input type="radio" name="all-2-11" id="all-2-11-1" value="b"><label for="all-2-11-1">b. もう少しで、来ます）よ。</label></div>
+</div>
+<p class="q-feedback" id="feedback-all-2-11" role="status"></p>
+</div>
+<button type="button" class="btn-submit btn-grade-extra" data-extra-example="all-2">採点</button>
+<div class="script-block extra-answer-block" id="script-all-2">
+<h3>解答・解説（練習１－Ｂ　（p.25））</h3>
+<p>例）これから美容院へ行きます。（a）</p>
+<p>(1) すみません、コピー、お願いします。（b）</p>
+<p>(2) 最近、田中さんに会いました。（b）</p>
+<p>(3) これは今でないとできません。（a）</p>
+<p>(4) あればいいと思います。（a）</p>
+<p>(5) 早く変えたほうがいいですよ。（b）</p>
+<p>(6) この服、ちょうどいいですね。（b）</p>
+<p>(7) この映画はもう一度見た。（a）</p>
+<p>(8) ねえ、これは買ったの？（a）</p>
+<p>(9) みんな来るまで待ちましょう。（b）</p>
+<p>(10) あともう少し、できますよ。（a）</p>
+</div>
+</div>
+
+<!-- 練習１－Ｃ　（p.26） -->
+<div class="section hidden" data-example="all-3">
+<div class="section-title">練習１－Ｃ　（p.26）</div>
+<div class="q-text q-prompt">1-C　まぎらわしい数字</div>
+<div class="q-text q-prompt">文を聞いて、正しいものを選びましょう。　🔊 A08</div>
+<div class="question" data-qkey="all-3-1" data-answer="">
+<div class="q-text q-prompt"><span class="q-num">1</span>(1) a 8匹　　b 100匹</div>
+<div class="options">
+<div class="option"><input type="radio" name="all-3-1" id="all-3-1-0" value="a"><label for="all-3-1-0">a. 8匹</label></div>
+<div class="option"><input type="radio" name="all-3-1" id="all-3-1-1" value="b"><label for="all-3-1-1">b. 100匹</label></div>
+</div>
+<p class="q-feedback" id="feedback-all-3-1" role="status"></p>
+</div>
+<div class="question" data-qkey="all-3-2" data-answer="">
+<div class="q-text q-prompt"><span class="q-num">2</span>(2) a 8日か9日　　b 4日か9日</div>
+<div class="options">
+<div class="option"><input type="radio" name="all-3-2" id="all-3-2-0" value="a"><label for="all-3-2-0">a. 8日か9日</label></div>
+<div class="option"><input type="radio" name="all-3-2" id="all-3-2-1" value="b"><label for="all-3-2-1">b. 4日か9日</label></div>
+</div>
+<p class="q-feedback" id="feedback-all-3-2" role="status"></p>
+</div>
+<div class="question" data-qkey="all-3-3" data-answer="">
+<div class="q-text q-prompt"><span class="q-num">3</span>(3) a 3時5分　　b 35分</div>
+<div class="options">
+<div class="option"><input type="radio" name="all-3-3" id="all-3-3-0" value="a"><label for="all-3-3-0">a. 3時5分</label></div>
+<div class="option"><input type="radio" name="all-3-3" id="all-3-3-1" value="b"><label for="all-3-3-1">b. 35分</label></div>
+</div>
+<p class="q-feedback" id="feedback-all-3-3" role="status"></p>
+</div>
+<div class="question" data-qkey="all-3-4" data-answer="">
+<div class="q-text q-prompt"><span class="q-num">4</span>(4) a 11.1パーセント　　b 10.1パーセント</div>
+<div class="options">
+<div class="option"><input type="radio" name="all-3-4" id="all-3-4-0" value="a"><label for="all-3-4-0">a. 11.1パーセント</label></div>
+<div class="option"><input type="radio" name="all-3-4" id="all-3-4-1" value="b"><label for="all-3-4-1">b. 10.1パーセント</label></div>
+</div>
+<p class="q-feedback" id="feedback-all-3-4" role="status"></p>
+</div>
+<div class="question" data-qkey="all-3-5" data-answer="">
+<div class="q-text q-prompt"><span class="q-num">5</span>(5) a 7、8分　　b 7時8分</div>
+<div class="options">
+<div class="option"><input type="radio" name="all-3-5" id="all-3-5-0" value="a"><label for="all-3-5-0">a. 7、8分</label></div>
+<div class="option"><input type="radio" name="all-3-5" id="all-3-5-1" value="b"><label for="all-3-5-1">b. 7時8分</label></div>
+</div>
+<p class="q-feedback" id="feedback-all-3-5" role="status"></p>
+</div>
+<div class="question" data-qkey="all-3-6" data-answer="">
+<div class="q-text q-prompt"><span class="q-num">6</span>(6) a 1017年　　b 1011年</div>
+<div class="options">
+<div class="option"><input type="radio" name="all-3-6" id="all-3-6-0" value="a"><label for="all-3-6-0">a. 1017年</label></div>
+<div class="option"><input type="radio" name="all-3-6" id="all-3-6-1" value="b"><label for="all-3-6-1">b. 1011年</label></div>
+</div>
+<p class="q-feedback" id="feedback-all-3-6" role="status"></p>
+</div>
+<div class="question" data-qkey="all-3-7" data-answer="">
+<div class="q-text q-prompt"><span class="q-num">7</span>(7) a 3分の2　　b 3部の2</div>
+<div class="options">
+<div class="option"><input type="radio" name="all-3-7" id="all-3-7-0" value="a"><label for="all-3-7-0">a. 3分の2</label></div>
+<div class="option"><input type="radio" name="all-3-7" id="all-3-7-1" value="b"><label for="all-3-7-1">b. 3部の2</label></div>
+</div>
+<p class="q-feedback" id="feedback-all-3-7" role="status"></p>
+</div>
+<div class="question" data-qkey="all-3-8" data-answer="">
+<div class="q-text q-prompt"><span class="q-num">8</span>(8) a 356点　　b 3百5、60点</div>
+<div class="options">
+<div class="option"><input type="radio" name="all-3-8" id="all-3-8-0" value="a"><label for="all-3-8-0">a. 356点</label></div>
+<div class="option"><input type="radio" name="all-3-8" id="all-3-8-1" value="b"><label for="all-3-8-1">b. 3百5、60点</label></div>
+</div>
+<p class="q-feedback" id="feedback-all-3-8" role="status"></p>
+</div>
+<div class="question" data-qkey="all-3-9" data-answer="">
+<div class="q-text q-prompt"><span class="q-num">9</span>(9) a 2、3冊　　b 3冊</div>
+<div class="options">
+<div class="option"><input type="radio" name="all-3-9" id="all-3-9-0" value="a"><label for="all-3-9-0">a. 2、3冊</label></div>
+<div class="option"><input type="radio" name="all-3-9" id="all-3-9-1" value="b"><label for="all-3-9-1">b. 3冊</label></div>
+</div>
+<p class="q-feedback" id="feedback-all-3-9" role="status"></p>
+</div>
+<div class="question" data-qkey="all-3-10" data-answer="">
+<div class="q-text q-prompt"><span class="q-num">10</span>(10) a 約50人　　b 150人</div>
+<div class="options">
+<div class="option"><input type="radio" name="all-3-10" id="all-3-10-0" value="a"><label for="all-3-10-0">a. 約50人</label></div>
+<div class="option"><input type="radio" name="all-3-10" id="all-3-10-1" value="b"><label for="all-3-10-1">b. 150人</label></div>
+</div>
+<p class="q-feedback" id="feedback-all-3-10" role="status"></p>
+</div>
+<button type="button" class="btn-submit btn-grade-extra" data-extra-example="all-3">採点</button>
+<div class="script-block extra-answer-block" id="script-all-3">
+<h3>解答・解説（練習１－Ｃ　（p.26））</h3>
+<p>例）</p>
+<ul>
+<li>男：ここにはどのぐらい魚がいるんですか。</li>
+<li>女：100匹ぐらいですね。（b）</li>
+</ul>
+<p>(2)</p>
+<ul>
+<li>男：いつか空いていますか。</li>
+<li>女：8日か9日なら大丈夫です。（a）</li>
+</ul>
+<p>(3)</p>
+<ul>
+<li>女：そろそろ出ないといけないかな。</li>
+<li>男：まだ35分だよ。（b）</li>
+</ul>
+<p>(4)</p>
+<ul>
+<li>女：この大学にはどのぐらい留学生がいるんですか。</li>
+<li>男：全体の11.1パーセントです。（a）</li>
+</ul>
+<p>(5)</p>
+<ul>
+<li>男：ずいぶん待つんですね。</li>
+<li>女：ええ、もう7、8分ですよ。（a）</li>
+</ul>
+<p>(6)</p>
+<ul>
+<li>女：古い建物ね。いつごろ建てられたのかな。</li>
+<li>男：1017年だそうですよ。（a）</li>
+</ul>
+<p>(7)</p>
+<ul>
+<li>女：どう、どの辺まで読んだ？</li>
+<li>男：やっと3分の2まで行ったよ。（a）</li>
+</ul>
+<p>(8)</p>
+<ul>
+<li>男：全部で何点取れた？</li>
+<li>女：3百5、60点かな。（b）</li>
+</ul>
+<p>(9)</p>
+<ul>
+<li>女：どのぐらい本読む？</li>
+<li>男：そうだな、1か月に3冊ぐらいかな。（b）</li>
+</ul>
+<p>(10)</p>
+<ul>
+<li>男：何人ぐらい集まるんですか。</li>
+<li>女：約50人です。（a）</li>
+</ul>
+</div>
+</div>
+
+<!-- 練習２－１　（p.28） -->
+<div class="section hidden" data-example="all-4">
+<div class="section-title">練習２－１　（p.28）</div>
+<div class="q-text q-prompt">2　音の変化</div>
+<div class="q-text q-prompt">文を聞いて、聞いた文と同じ意味のものを選びましょう。　🔊 A09</div>
+<div class="question" data-qkey="all-4-1" data-answer="b">
+<div class="q-text q-prompt"><span class="q-num">1</span>(例) この本、（a 読んでみる　　b 読んでいる）?</div>
+<div class="options">
+<div class="option"><input type="radio" name="all-4-1" id="all-4-1-0" value="a"><label for="all-4-1-0">a. 読んでみる</label></div>
+<div class="option"><input type="radio" name="all-4-1" id="all-4-1-1" value="b"><label for="all-4-1-1">b. 読んでいる）?</label></div>
+</div>
+<p class="q-feedback" id="feedback-all-4-1" role="status"></p>
+</div>
+<div class="question" data-qkey="all-4-2" data-answer="a">
+<div class="q-text q-prompt"><span class="q-num">2</span>(1) 今日は（a 行かなくてはならない　　b 行かなかった）。</div>
+<div class="options">
+<div class="option"><input type="radio" name="all-4-2" id="all-4-2-0" value="a"><label for="all-4-2-0">a. 行かなくてはならない</label></div>
+<div class="option"><input type="radio" name="all-4-2" id="all-4-2-1" value="b"><label for="all-4-2-1">b. 行かなかった）。</label></div>
+</div>
+<p class="q-feedback" id="feedback-all-4-2" role="status"></p>
+</div>
+<div class="question" data-qkey="all-4-3" data-answer="a">
+<div class="q-text q-prompt"><span class="q-num">3</span>(2) 昼ご飯、（a 食べていく　　b 食べに行く）ね。</div>
+<div class="options">
+<div class="option"><input type="radio" name="all-4-3" id="all-4-3-0" value="a"><label for="all-4-3-0">a. 食べていく</label></div>
+<div class="option"><input type="radio" name="all-4-3" id="all-4-3-1" value="b"><label for="all-4-3-1">b. 食べに行く）ね。</label></div>
+</div>
+<p class="q-feedback" id="feedback-all-4-3" role="status"></p>
+</div>
+<div class="question" data-qkey="all-4-4" data-answer="a">
+<div class="q-text q-prompt"><span class="q-num">4</span>(3) 水、（a 持っていった　　b 持っていた）?</div>
+<div class="options">
+<div class="option"><input type="radio" name="all-4-4" id="all-4-4-0" value="a"><label for="all-4-4-0">a. 持っていった</label></div>
+<div class="option"><input type="radio" name="all-4-4" id="all-4-4-1" value="b"><label for="all-4-4-1">b. 持っていた）?</label></div>
+</div>
+<p class="q-feedback" id="feedback-all-4-4" role="status"></p>
+</div>
+<div class="question" data-qkey="all-4-5" data-answer="b">
+<div class="q-text q-prompt"><span class="q-num">5</span>(4) 切符、（a なくしてはいけない　　b なくしてしまった）よ。</div>
+<div class="options">
+<div class="option"><input type="radio" name="all-4-5" id="all-4-5-0" value="a"><label for="all-4-5-0">a. なくしてはいけない</label></div>
+<div class="option"><input type="radio" name="all-4-5" id="all-4-5-1" value="b"><label for="all-4-5-1">b. なくしてしまった）よ。</label></div>
+</div>
+<p class="q-feedback" id="feedback-all-4-5" role="status"></p>
+</div>
+<div class="question" data-qkey="all-4-6" data-answer="b">
+<div class="q-text q-prompt"><span class="q-num">6</span>(5) かばん、（a 持っていった　　b 持つと言った）んだよ。</div>
+<div class="options">
+<div class="option"><input type="radio" name="all-4-6" id="all-4-6-0" value="a"><label for="all-4-6-0">a. 持っていった</label></div>
+<div class="option"><input type="radio" name="all-4-6" id="all-4-6-1" value="b"><label for="all-4-6-1">b. 持つと言った）んだよ。</label></div>
+</div>
+<p class="q-feedback" id="feedback-all-4-6" role="status"></p>
+</div>
+<button type="button" class="btn-submit btn-grade-extra" data-extra-example="all-4">採点</button>
+<div class="script-block extra-answer-block" id="script-all-4">
+<h3>解答・解説（練習２－１　（p.28））</h3>
+<p>例）この本、読んでる？（b　読んでいる）</p>
+<p>(1) 今日は行かなくちゃ。（a　行かなくてはならない）</p>
+<p>(2) 昼ご飯、食べてくね。（a　食べていく）</p>
+<p>(3) 水、持ってった？（a　持っていった）</p>
+<p>(4) 切符、なくしちゃったよ。（b　なくしてしまった）</p>
+<p>(5) かばん、持つって言ったんだよ。（b　持つと言った）</p>
+</div>
+</div>
+
+<!-- 練習２－２　（p.28） -->
+<div class="section hidden" data-example="all-5">
+<div class="section-title">練習２－２　（p.28）</div>
+<div class="q-text q-prompt">2　音の変化</div>
+<div class="q-text q-prompt">文を聞いて、元の形を書きましょう。　🔊 A10</div>
+<div class="question" data-qkey="all-5-1" data-answer="">
+<div class="q-text q-prompt"><span class="q-num">1</span>(例) カメラ、＿＿＿＿＿＿＿＿＿＿＿＿ よ。</div>
+<input class="answer-input" type="text" name="all-5-1" placeholder="答えを書いてください">
+<p class="q-feedback" id="feedback-all-5-1" role="status"></p>
+</div>
+<div class="question" data-qkey="all-5-2" data-answer="帰らなければ">
+<div class="q-text q-prompt"><span class="q-num">2</span>(1) あ、そろそろ ＿＿＿＿＿＿＿＿＿＿＿＿。</div>
+<input class="answer-input" type="text" name="all-5-2" placeholder="答えを書いてください">
+<p class="q-feedback" id="feedback-all-5-2" role="status"></p>
+</div>
+<div class="question" data-qkey="all-5-3" data-answer="寄っていく">
+<div class="q-text q-prompt"><span class="q-num">3</span>(2) うち、＿＿＿＿＿＿＿＿＿＿＿＿?</div>
+<input class="answer-input" type="text" name="all-5-3" placeholder="答えを書いてください">
+<p class="q-feedback" id="feedback-all-5-3" role="status"></p>
+</div>
+<div class="question" data-qkey="all-5-4" data-answer="捨てては">
+<div class="q-text q-prompt"><span class="q-num">4</span>(3) ここに ＿＿＿＿＿＿＿＿＿＿＿＿ だめだよ。</div>
+<input class="answer-input" type="text" name="all-5-4" placeholder="答えを書いてください">
+<p class="q-feedback" id="feedback-all-5-4" role="status"></p>
+</div>
+<div class="question" data-qkey="all-5-5" data-answer="聞いていた">
+<div class="q-text q-prompt"><span class="q-num">5</span>(4) 先生の話、ちゃんと ＿＿＿＿＿＿＿＿＿＿＿＿?</div>
+<input class="answer-input" type="text" name="all-5-5" placeholder="答えを書いてください">
+<p class="q-feedback" id="feedback-all-5-5" role="status"></p>
+</div>
+<div class="question" data-qkey="all-5-6" data-answer="食べてしまう">
+<div class="q-text q-prompt"><span class="q-num">6</span>(5) 先に ＿＿＿＿＿＿＿＿＿＿＿＿ ね。</div>
+<input class="answer-input" type="text" name="all-5-6" placeholder="答えを書いてください">
+<p class="q-feedback" id="feedback-all-5-6" role="status"></p>
+</div>
+<div class="question" data-qkey="all-5-7" data-answer="開いている">
+<div class="q-text q-prompt"><span class="q-num">7</span>(6) 箱、もう ＿＿＿＿＿＿＿＿＿＿＿＿ よ。</div>
+<input class="answer-input" type="text" name="all-5-7" placeholder="答えを書いてください">
+<p class="q-feedback" id="feedback-all-5-7" role="status"></p>
+</div>
+<div class="question" data-qkey="all-5-8" data-answer="買っていかない">
+<div class="q-text q-prompt"><span class="q-num">8</span>(7) 飲み物、＿＿＿＿＿＿＿＿＿＿＿＿?</div>
+<input class="answer-input" type="text" name="all-5-8" placeholder="答えを書いてください">
+<p class="q-feedback" id="feedback-all-5-8" role="status"></p>
+</div>
+<div class="question" data-qkey="all-5-9" data-answer="そちらに入れておいた">
+<div class="q-text q-prompt"><span class="q-num">9</span>(8) さっき ＿＿＿＿＿＿＿＿＿＿＿＿ んだけど。</div>
+<input class="answer-input" type="text" name="all-5-9" placeholder="答えを書いてください">
+<p class="q-feedback" id="feedback-all-5-9" role="status"></p>
+</div>
+<div class="question" data-qkey="all-5-10" data-answer="持っていった">
+<div class="q-text q-prompt"><span class="q-num">10</span>(9) DVDなら、田中さんが ＿＿＿＿＿＿＿＿＿＿＿＿ よ。</div>
+<input class="answer-input" type="text" name="all-5-10" placeholder="答えを書いてください">
+<p class="q-feedback" id="feedback-all-5-10" role="status"></p>
+</div>
+<div class="question" data-qkey="all-5-11" data-answer="ばかり見ている">
+<div class="q-text q-prompt"><span class="q-num">11</span>(10) ずっと同じの ＿＿＿＿＿＿＿＿＿＿＿＿ ね。</div>
+<input class="answer-input" type="text" name="all-5-11" placeholder="答えを書いてください">
+<p class="q-feedback" id="feedback-all-5-11" role="status"></p>
+</div>
+<button type="button" class="btn-submit btn-grade-extra" data-extra-example="all-5">採点</button>
+<div class="script-block extra-answer-block" id="script-all-5">
+<h3>解答・解説（練習２－２　（p.28））</h3>
+<p>例）カメラ、持ってるよ。（持っている）</p>
+<p>(1) あ、そろそろ帰らなきゃ。（帰らなければ）</p>
+<p>(2) うち、寄ってく？（寄っていく）</p>
+<p>(3) ここに捨てちゃだめだよ。（捨てては）</p>
+<p>(4) 先生の話、ちゃんと聞いてた？（聞いていた）</p>
+<p>(5) 先に食べちゃうね。（食べてしまう）</p>
+<p>(6) 店、もう開いてるよ。（開いている）</p>
+<p>(7) 飲み物、買ってかない？（買っていかない）</p>
+<p>(8) さっきそっちに入れといたんだけど。（そちらに入れておいた）</p>
+<p>(9) DVDなら、田中さんが持ってったよ。（持っていった）</p>
+<p>(10) ずっと同じのばっかり見てるね。（ばかり見ている）</p>
+</div>
+</div>
+
+<!-- 例題３　（p.29） -->
+<div class="section hidden" data-example="all-6">
+<div class="section-title">例題３　（p.29）</div>
+<div class="q-text q-prompt">（イントネーションや音の長短に注意する）　（p.29）</div>
+<div class="q-text q-prompt">会話を聞いて、男の人が賛成していないものに × を書きましょう。　🔊 A12</div>
+<div class="question" data-qkey="all-6-1" data-answer="">
+<div class="q-text q-prompt"><span class="q-num">1</span>(1) （　）</div>
+<input class="answer-input" type="text" name="all-6-1" placeholder="答えを書いてください">
+<p class="q-feedback" id="feedback-all-6-1" role="status"></p>
+</div>
+<div class="question" data-qkey="all-6-2" data-answer="">
+<div class="q-text q-prompt"><span class="q-num">2</span>(2) （　）</div>
+<input class="answer-input" type="text" name="all-6-2" placeholder="答えを書いてください">
+<p class="q-feedback" id="feedback-all-6-2" role="status"></p>
+</div>
+<button type="button" class="btn-submit btn-grade-extra" data-extra-example="all-6">採点</button>
+<div class="script-block extra-answer-block" id="script-all-6">
+<h3>解答・解説（例題３　（p.29））</h3>
+<p>解答解説はありません。</p>
+</div>
+</div>
+
+<!-- 練習３　（p.30） -->
+<div class="section hidden" data-example="all-7">
+<div class="section-title">練習３　（p.30）</div>
+<div class="q-text q-prompt">（イントネーションや音の長短に注意する）　（p.29）</div>
+<div class="q-text q-prompt">会話を聞いて、女の人が賛成していないものに × を書きましょう。　🔊 A13</div>
+<div class="question" data-qkey="all-7-1" data-answer="×">
+<div class="q-text q-prompt"><span class="q-num">1</span>(1) （　）</div>
+<input class="answer-input" type="text" name="all-7-1" placeholder="答えを書いてください">
+<p class="q-feedback" id="feedback-all-7-1" role="status"></p>
+</div>
+<div class="question" data-qkey="all-7-2" data-answer="－">
+<div class="q-text q-prompt"><span class="q-num">2</span>(2) （　）</div>
+<input class="answer-input" type="text" name="all-7-2" placeholder="答えを書いてください">
+<p class="q-feedback" id="feedback-all-7-2" role="status"></p>
+</div>
+<div class="question" data-qkey="all-7-3" data-answer="×">
+<div class="q-text q-prompt"><span class="q-num">3</span>(3) （　）</div>
+<input class="answer-input" type="text" name="all-7-3" placeholder="答えを書いてください">
+<p class="q-feedback" id="feedback-all-7-3" role="status"></p>
+</div>
+<div class="question" data-qkey="all-7-4" data-answer="－">
+<div class="q-text q-prompt"><span class="q-num">4</span>(4) （　）</div>
+<input class="answer-input" type="text" name="all-7-4" placeholder="答えを書いてください">
+<p class="q-feedback" id="feedback-all-7-4" role="status"></p>
+</div>
+<div class="question" data-qkey="all-7-5" data-answer="×">
+<div class="q-text q-prompt"><span class="q-num">5</span>(5) （　）</div>
+<input class="answer-input" type="text" name="all-7-5" placeholder="答えを書いてください">
+<p class="q-feedback" id="feedback-all-7-5" role="status"></p>
+</div>
+<div class="question" data-qkey="all-7-6" data-answer="×">
+<div class="q-text q-prompt"><span class="q-num">6</span>(6) （　）</div>
+<input class="answer-input" type="text" name="all-7-6" placeholder="答えを書いてください">
+<p class="q-feedback" id="feedback-all-7-6" role="status"></p>
+</div>
+<div class="question" data-qkey="all-7-7" data-answer="－">
+<div class="q-text q-prompt"><span class="q-num">7</span>(7) （　）</div>
+<input class="answer-input" type="text" name="all-7-7" placeholder="答えを書いてください">
+<p class="q-feedback" id="feedback-all-7-7" role="status"></p>
+</div>
+<div class="question" data-qkey="all-7-8" data-answer="－">
+<div class="q-text q-prompt"><span class="q-num">8</span>(8) （　）</div>
+<input class="answer-input" type="text" name="all-7-8" placeholder="答えを書いてください">
+<p class="q-feedback" id="feedback-all-7-8" role="status"></p>
+</div>
+<div class="question" data-qkey="all-7-9" data-answer="×">
+<div class="q-text q-prompt"><span class="q-num">9</span>(9) （　）</div>
+<input class="answer-input" type="text" name="all-7-9" placeholder="答えを書いてください">
+<p class="q-feedback" id="feedback-all-7-9" role="status"></p>
+</div>
+<div class="question" data-qkey="all-7-10" data-answer="×">
+<div class="q-text q-prompt"><span class="q-num">10</span>(10) （　）</div>
+<input class="answer-input" type="text" name="all-7-10" placeholder="答えを書いてください">
+<p class="q-feedback" id="feedback-all-7-10" role="status"></p>
+</div>
+<button type="button" class="btn-submit btn-grade-extra" data-extra-example="all-7">採点</button>
+<div class="script-block extra-answer-block" id="script-all-7">
+<h3>解答・解説（練習３　（p.30））</h3>
+<p>答え：(1)×　(2)－　(3)×　(4)－　(5)×　(6)×　(7)－　(8)－　(9)×　(10)×</p>
+<p>(1)</p>
+<ul>
+<li>男：スポーツ大会、出てみたらどうですか。</li>
+<li>女：うーん、そうだねえ。</li>
+</ul>
+<p>(2)</p>
+<ul>
+<li>男：あした、10時にお電話しましょうか。</li>
+<li>女：あ、10時ですね。</li>
+</ul>
+<p>(3)</p>
+<ul>
+<li>男：こっちの方がいいですよ。</li>
+<li>女：そうですかあ？</li>
+</ul>
+<p>(4)</p>
+<ul>
+<li>男：駅前の店にしませんか。</li>
+<li>女：ああ、あの店ね。</li>
+</ul>
+<p>(5)</p>
+<ul>
+<li>男：ここ、寒いよね。</li>
+<li>女：え？　寒い？</li>
+</ul>
+<p>(6)</p>
+<ul>
+<li>男：ね、もう出ようよ。</li>
+<li>女：えー、もう？</li>
+</ul>
+<p>(7)</p>
+<ul>
+<li>男：こちら、いかがですか。</li>
+<li>女：うん、5,000円か。</li>
+</ul>
+<p>(8)</p>
+<ul>
+<li>男：一緒に歌おうよ。</li>
+<li>女：うん、いいよ。</li>
+</ul>
+<p>(9)</p>
+<ul>
+<li>男：運動したほうがいいねえ。</li>
+<li>女：あー、運動ねえ。</li>
+</ul>
+<p>(10)</p>
+<ul>
+<li>男：金曜日の夜に行かない？</li>
+<li>女：うーん、金曜日かー。</li>
+</ul>
+</div>
+</div>
+
+<!-- 練習１　（p.32） -->
+<div class="section hidden" data-example="all-8">
+<div class="section-title">練習１　（p.32）</div>
+<div class="q-text q-prompt">（「言葉の選び方」のスキルを学ぼう）</div>
+<div class="q-text q-prompt">状況説明文を聞いて、だれがするのかを選びましょう。　🔊 A14</div>
+<div class="question" data-qkey="all-8-1" data-answer="友達">
+<div class="q-text q-prompt"><span class="q-num">1</span>(1) （話す人　・　友達）が教える</div>
+<div class="options">
+<div class="option"><input type="radio" name="all-8-1" id="all-8-1-0" value="話す人"><label for="all-8-1-0">話す人が教える</label></div>
+<div class="option"><input type="radio" name="all-8-1" id="all-8-1-1" value="友達"><label for="all-8-1-1">友達が教える</label></div>
+</div>
+<p class="q-feedback" id="feedback-all-8-1" role="status"></p>
+</div>
+<div class="question" data-qkey="all-8-2" data-answer="話す人">
+<div class="q-text q-prompt"><span class="q-num">2</span>(2) （話す人　・　友達）が使う</div>
+<div class="options">
+<div class="option"><input type="radio" name="all-8-2" id="all-8-2-0" value="話す人"><label for="all-8-2-0">話す人が使う</label></div>
+<div class="option"><input type="radio" name="all-8-2" id="all-8-2-1" value="友達"><label for="all-8-2-1">友達が使う</label></div>
+</div>
+<p class="q-feedback" id="feedback-all-8-2" role="status"></p>
+</div>
+<div class="question" data-qkey="all-8-3" data-answer="隣の席の人">
+<div class="q-text q-prompt"><span class="q-num">3</span>(3) （話す人　・　隣の席の人）が取る</div>
+<div class="options">
+<div class="option"><input type="radio" name="all-8-3" id="all-8-3-0" value="話す人"><label for="all-8-3-0">話す人が取る</label></div>
+<div class="option"><input type="radio" name="all-8-3" id="all-8-3-1" value="隣の席の人"><label for="all-8-3-1">隣の席の人が取る</label></div>
+</div>
+<p class="q-feedback" id="feedback-all-8-3" role="status"></p>
+</div>
+<div class="question" data-qkey="all-8-4" data-answer="店の人">
+<div class="q-text q-prompt"><span class="q-num">4</span>(4) （話す人　・　店の人）が説明する</div>
+<div class="options">
+<div class="option"><input type="radio" name="all-8-4" id="all-8-4-0" value="話す人"><label for="all-8-4-0">話す人が説明する</label></div>
+<div class="option"><input type="radio" name="all-8-4" id="all-8-4-1" value="店の人"><label for="all-8-4-1">店の人が説明する</label></div>
+</div>
+<p class="q-feedback" id="feedback-all-8-4" role="status"></p>
+</div>
+<div class="question" data-qkey="all-8-5" data-answer="話す人">
+<div class="q-text q-prompt"><span class="q-num">5</span>(5) （話す人　・　着物を着ている人）が撮る</div>
+<div class="options">
+<div class="option"><input type="radio" name="all-8-5" id="all-8-5-0" value="話す人"><label for="all-8-5-0">話す人が撮る</label></div>
+<div class="option"><input type="radio" name="all-8-5" id="all-8-5-1" value="着物を着ている人"><label for="all-8-5-1">着物を着ている人が撮る</label></div>
+</div>
+<p class="q-feedback" id="feedback-all-8-5" role="status"></p>
+</div>
+<div class="question" data-qkey="all-8-6" data-answer="近くの人">
+<div class="q-text q-prompt"><span class="q-num">6</span>(6) （話す人　・　近くの人）が手伝う</div>
+<div class="options">
+<div class="option"><input type="radio" name="all-8-6" id="all-8-6-0" value="話す人"><label for="all-8-6-0">話す人が手伝う</label></div>
+<div class="option"><input type="radio" name="all-8-6" id="all-8-6-1" value="近くの人"><label for="all-8-6-1">近くの人が手伝う</label></div>
+</div>
+<p class="q-feedback" id="feedback-all-8-6" role="status"></p>
+</div>
+<div class="question" data-qkey="all-8-7" data-answer="話す人">
+<div class="q-text q-prompt"><span class="q-num">7</span>(7) （話す人　・　図書館の人）が調べる</div>
+<div class="options">
+<div class="option"><input type="radio" name="all-8-7" id="all-8-7-0" value="話す人"><label for="all-8-7-0">話す人が調べる</label></div>
+<div class="option"><input type="radio" name="all-8-7" id="all-8-7-1" value="図書館の人"><label for="all-8-7-1">図書館の人が調べる</label></div>
+</div>
+<p class="q-feedback" id="feedback-all-8-7" role="status"></p>
+</div>
+<button type="button" class="btn-submit btn-grade-extra" data-extra-example="all-8">採点</button>
+<div class="script-block extra-answer-block" id="script-all-8">
+<h3>解答・解説（練習１　（p.32））</h3>
+<p>(1) 漢字の読み方を友達に教えてもらいたいです。（友達）</p>
+<p>(2) 友達のうちのトイレを使いたいです。（話す人）</p>
+<p>(3) 食堂で隣の席の人にしょうゆを取ってほしいです。（隣の席の人）</p>
+<p>(4) 商品の説明がわからなかったので、店の人にもう一度説明してもらいたいです。（店の人）</p>
+<p>(5) きれいな着物を着ている人の写真を撮りたいです。（話す人）</p>
+<p>(6) 机を動かすので、近くの人に手伝ってほしいです。（近くの人）</p>
+<p>(7) 図書館で日本の歴史について調べたいです。（話す人）</p>
+</div>
+</div>
+
+<!-- 練習２－Ａ　（p.34） -->
+<div class="section hidden" data-example="all-9">
+<div class="section-title">練習２－Ａ　（p.34）</div>
+<div class="q-text q-prompt">（「言葉の選び方」のスキルを学ぼう）</div>
+<div class="q-text q-prompt">状況説明文と3つの言葉を聞きましょう。場面に合う言葉には ○、合わない言葉には × を書きましょう。　🔊 A15</div>
+<div class="question" data-qkey="all-9-1" data-answer="">
+<div class="q-text q-prompt"><span class="q-num">1</span>(1) - 1</div>
+<div class="options options-compact">
+<div class="option"><input type="radio" name="all-9-1" id="all-9-1-0" value="○"><label for="all-9-1-0">○</label></div>
+<div class="option"><input type="radio" name="all-9-1" id="all-9-1-1" value="×"><label for="all-9-1-1">×</label></div>
+</div>
+<p class="q-feedback" id="feedback-all-9-1" role="status"></p>
+</div>
+<div class="question" data-qkey="all-9-2" data-answer="">
+<div class="q-text q-prompt"><span class="q-num">2</span>(1) - 2</div>
+<div class="options options-compact">
+<div class="option"><input type="radio" name="all-9-2" id="all-9-2-0" value="○"><label for="all-9-2-0">○</label></div>
+<div class="option"><input type="radio" name="all-9-2" id="all-9-2-1" value="×"><label for="all-9-2-1">×</label></div>
+</div>
+<p class="q-feedback" id="feedback-all-9-2" role="status"></p>
+</div>
+<div class="question" data-qkey="all-9-3" data-answer="">
+<div class="q-text q-prompt"><span class="q-num">3</span>(1) - 3</div>
+<div class="options options-compact">
+<div class="option"><input type="radio" name="all-9-3" id="all-9-3-0" value="○"><label for="all-9-3-0">○</label></div>
+<div class="option"><input type="radio" name="all-9-3" id="all-9-3-1" value="×"><label for="all-9-3-1">×</label></div>
+</div>
+<p class="q-feedback" id="feedback-all-9-3" role="status"></p>
+</div>
+<div class="question" data-qkey="all-9-4" data-answer="">
+<div class="q-text q-prompt"><span class="q-num">4</span>(2) - 1</div>
+<div class="options options-compact">
+<div class="option"><input type="radio" name="all-9-4" id="all-9-4-0" value="○"><label for="all-9-4-0">○</label></div>
+<div class="option"><input type="radio" name="all-9-4" id="all-9-4-1" value="×"><label for="all-9-4-1">×</label></div>
+</div>
+<p class="q-feedback" id="feedback-all-9-4" role="status"></p>
+</div>
+<div class="question" data-qkey="all-9-5" data-answer="">
+<div class="q-text q-prompt"><span class="q-num">5</span>(2) - 2</div>
+<div class="options options-compact">
+<div class="option"><input type="radio" name="all-9-5" id="all-9-5-0" value="○"><label for="all-9-5-0">○</label></div>
+<div class="option"><input type="radio" name="all-9-5" id="all-9-5-1" value="×"><label for="all-9-5-1">×</label></div>
+</div>
+<p class="q-feedback" id="feedback-all-9-5" role="status"></p>
+</div>
+<div class="question" data-qkey="all-9-6" data-answer="">
+<div class="q-text q-prompt"><span class="q-num">6</span>(2) - 3</div>
+<div class="options options-compact">
+<div class="option"><input type="radio" name="all-9-6" id="all-9-6-0" value="○"><label for="all-9-6-0">○</label></div>
+<div class="option"><input type="radio" name="all-9-6" id="all-9-6-1" value="×"><label for="all-9-6-1">×</label></div>
+</div>
+<p class="q-feedback" id="feedback-all-9-6" role="status"></p>
+</div>
+<div class="question" data-qkey="all-9-7" data-answer="">
+<div class="q-text q-prompt"><span class="q-num">7</span>(3) - 1</div>
+<div class="options options-compact">
+<div class="option"><input type="radio" name="all-9-7" id="all-9-7-0" value="○"><label for="all-9-7-0">○</label></div>
+<div class="option"><input type="radio" name="all-9-7" id="all-9-7-1" value="×"><label for="all-9-7-1">×</label></div>
+</div>
+<p class="q-feedback" id="feedback-all-9-7" role="status"></p>
+</div>
+<div class="question" data-qkey="all-9-8" data-answer="">
+<div class="q-text q-prompt"><span class="q-num">8</span>(3) - 2</div>
+<div class="options options-compact">
+<div class="option"><input type="radio" name="all-9-8" id="all-9-8-0" value="○"><label for="all-9-8-0">○</label></div>
+<div class="option"><input type="radio" name="all-9-8" id="all-9-8-1" value="×"><label for="all-9-8-1">×</label></div>
+</div>
+<p class="q-feedback" id="feedback-all-9-8" role="status"></p>
+</div>
+<div class="question" data-qkey="all-9-9" data-answer="">
+<div class="q-text q-prompt"><span class="q-num">9</span>(3) - 3</div>
+<div class="options options-compact">
+<div class="option"><input type="radio" name="all-9-9" id="all-9-9-0" value="○"><label for="all-9-9-0">○</label></div>
+<div class="option"><input type="radio" name="all-9-9" id="all-9-9-1" value="×"><label for="all-9-9-1">×</label></div>
+</div>
+<p class="q-feedback" id="feedback-all-9-9" role="status"></p>
+</div>
+<div class="question" data-qkey="all-9-10" data-answer="">
+<div class="q-text q-prompt"><span class="q-num">10</span>(4) - 1</div>
+<div class="options options-compact">
+<div class="option"><input type="radio" name="all-9-10" id="all-9-10-0" value="○"><label for="all-9-10-0">○</label></div>
+<div class="option"><input type="radio" name="all-9-10" id="all-9-10-1" value="×"><label for="all-9-10-1">×</label></div>
+</div>
+<p class="q-feedback" id="feedback-all-9-10" role="status"></p>
+</div>
+<div class="question" data-qkey="all-9-11" data-answer="">
+<div class="q-text q-prompt"><span class="q-num">11</span>(4) - 2</div>
+<div class="options options-compact">
+<div class="option"><input type="radio" name="all-9-11" id="all-9-11-0" value="○"><label for="all-9-11-0">○</label></div>
+<div class="option"><input type="radio" name="all-9-11" id="all-9-11-1" value="×"><label for="all-9-11-1">×</label></div>
+</div>
+<p class="q-feedback" id="feedback-all-9-11" role="status"></p>
+</div>
+<div class="question" data-qkey="all-9-12" data-answer="">
+<div class="q-text q-prompt"><span class="q-num">12</span>(4) - 3</div>
+<div class="options options-compact">
+<div class="option"><input type="radio" name="all-9-12" id="all-9-12-0" value="○"><label for="all-9-12-0">○</label></div>
+<div class="option"><input type="radio" name="all-9-12" id="all-9-12-1" value="×"><label for="all-9-12-1">×</label></div>
+</div>
+<p class="q-feedback" id="feedback-all-9-12" role="status"></p>
+</div>
+<div class="question" data-qkey="all-9-13" data-answer="">
+<div class="q-text q-prompt"><span class="q-num">13</span>(5) - 1</div>
+<div class="options options-compact">
+<div class="option"><input type="radio" name="all-9-13" id="all-9-13-0" value="○"><label for="all-9-13-0">○</label></div>
+<div class="option"><input type="radio" name="all-9-13" id="all-9-13-1" value="×"><label for="all-9-13-1">×</label></div>
+</div>
+<p class="q-feedback" id="feedback-all-9-13" role="status"></p>
+</div>
+<div class="question" data-qkey="all-9-14" data-answer="">
+<div class="q-text q-prompt"><span class="q-num">14</span>(5) - 2</div>
+<div class="options options-compact">
+<div class="option"><input type="radio" name="all-9-14" id="all-9-14-0" value="○"><label for="all-9-14-0">○</label></div>
+<div class="option"><input type="radio" name="all-9-14" id="all-9-14-1" value="×"><label for="all-9-14-1">×</label></div>
+</div>
+<p class="q-feedback" id="feedback-all-9-14" role="status"></p>
+</div>
+<div class="question" data-qkey="all-9-15" data-answer="">
+<div class="q-text q-prompt"><span class="q-num">15</span>(5) - 3</div>
+<div class="options options-compact">
+<div class="option"><input type="radio" name="all-9-15" id="all-9-15-0" value="○"><label for="all-9-15-0">○</label></div>
+<div class="option"><input type="radio" name="all-9-15" id="all-9-15-1" value="×"><label for="all-9-15-1">×</label></div>
+</div>
+<p class="q-feedback" id="feedback-all-9-15" role="status"></p>
+</div>
+<div class="question" data-qkey="all-9-16" data-answer="">
+<div class="q-text q-prompt"><span class="q-num">16</span>(6) - 1</div>
+<div class="options options-compact">
+<div class="option"><input type="radio" name="all-9-16" id="all-9-16-0" value="○"><label for="all-9-16-0">○</label></div>
+<div class="option"><input type="radio" name="all-9-16" id="all-9-16-1" value="×"><label for="all-9-16-1">×</label></div>
+</div>
+<p class="q-feedback" id="feedback-all-9-16" role="status"></p>
+</div>
+<div class="question" data-qkey="all-9-17" data-answer="">
+<div class="q-text q-prompt"><span class="q-num">17</span>(6) - 2</div>
+<div class="options options-compact">
+<div class="option"><input type="radio" name="all-9-17" id="all-9-17-0" value="○"><label for="all-9-17-0">○</label></div>
+<div class="option"><input type="radio" name="all-9-17" id="all-9-17-1" value="×"><label for="all-9-17-1">×</label></div>
+</div>
+<p class="q-feedback" id="feedback-all-9-17" role="status"></p>
+</div>
+<div class="question" data-qkey="all-9-18" data-answer="">
+<div class="q-text q-prompt"><span class="q-num">18</span>(6) - 3</div>
+<div class="options options-compact">
+<div class="option"><input type="radio" name="all-9-18" id="all-9-18-0" value="○"><label for="all-9-18-0">○</label></div>
+<div class="option"><input type="radio" name="all-9-18" id="all-9-18-1" value="×"><label for="all-9-18-1">×</label></div>
+</div>
+<p class="q-feedback" id="feedback-all-9-18" role="status"></p>
+</div>
+<div class="question" data-qkey="all-9-19" data-answer="">
+<div class="q-text q-prompt"><span class="q-num">19</span>(7) - 1</div>
+<div class="options options-compact">
+<div class="option"><input type="radio" name="all-9-19" id="all-9-19-0" value="○"><label for="all-9-19-0">○</label></div>
+<div class="option"><input type="radio" name="all-9-19" id="all-9-19-1" value="×"><label for="all-9-19-1">×</label></div>
+</div>
+<p class="q-feedback" id="feedback-all-9-19" role="status"></p>
+</div>
+<div class="question" data-qkey="all-9-20" data-answer="">
+<div class="q-text q-prompt"><span class="q-num">20</span>(7) - 2</div>
+<div class="options options-compact">
+<div class="option"><input type="radio" name="all-9-20" id="all-9-20-0" value="○"><label for="all-9-20-0">○</label></div>
+<div class="option"><input type="radio" name="all-9-20" id="all-9-20-1" value="×"><label for="all-9-20-1">×</label></div>
+</div>
+<p class="q-feedback" id="feedback-all-9-20" role="status"></p>
+</div>
+<div class="question" data-qkey="all-9-21" data-answer="">
+<div class="q-text q-prompt"><span class="q-num">21</span>(7) - 3</div>
+<div class="options options-compact">
+<div class="option"><input type="radio" name="all-9-21" id="all-9-21-0" value="○"><label for="all-9-21-0">○</label></div>
+<div class="option"><input type="radio" name="all-9-21" id="all-9-21-1" value="×"><label for="all-9-21-1">×</label></div>
+</div>
+<p class="q-feedback" id="feedback-all-9-21" role="status"></p>
+</div>
+<div class="question" data-qkey="all-9-22" data-answer="">
+<div class="q-text q-prompt"><span class="q-num">22</span>(8) - 1</div>
+<div class="options options-compact">
+<div class="option"><input type="radio" name="all-9-22" id="all-9-22-0" value="○"><label for="all-9-22-0">○</label></div>
+<div class="option"><input type="radio" name="all-9-22" id="all-9-22-1" value="×"><label for="all-9-22-1">×</label></div>
+</div>
+<p class="q-feedback" id="feedback-all-9-22" role="status"></p>
+</div>
+<div class="question" data-qkey="all-9-23" data-answer="">
+<div class="q-text q-prompt"><span class="q-num">23</span>(8) - 2</div>
+<div class="options options-compact">
+<div class="option"><input type="radio" name="all-9-23" id="all-9-23-0" value="○"><label for="all-9-23-0">○</label></div>
+<div class="option"><input type="radio" name="all-9-23" id="all-9-23-1" value="×"><label for="all-9-23-1">×</label></div>
+</div>
+<p class="q-feedback" id="feedback-all-9-23" role="status"></p>
+</div>
+<div class="question" data-qkey="all-9-24" data-answer="">
+<div class="q-text q-prompt"><span class="q-num">24</span>(8) - 3</div>
+<div class="options options-compact">
+<div class="option"><input type="radio" name="all-9-24" id="all-9-24-0" value="○"><label for="all-9-24-0">○</label></div>
+<div class="option"><input type="radio" name="all-9-24" id="all-9-24-1" value="×"><label for="all-9-24-1">×</label></div>
+</div>
+<p class="q-feedback" id="feedback-all-9-24" role="status"></p>
+</div>
+<button type="button" class="btn-submit btn-grade-extra" data-extra-example="all-9">採点</button>
+<div class="script-block extra-answer-block" id="script-all-9">
+<h3>解答・解説（練習２－Ａ　（p.34））</h3>
+<p>(1) 友達の隣の席に荷物を置きたいです。何と言いますか。</p>
+<ul>
+<li>1　荷物、そこに置いてもいい？（○）</li>
+<li>2　荷物、そこに置いたらどう？（×）</li>
+<li>3　荷物、そこに置かせてもらえる？（○）</li>
+</ul>
+<p>(2) 先輩にレポートを見てもらいたいです。何と言いますか。</p>
+<ul>
+<li>1　レポートをチェックしてもいいですか。（×）</li>
+<li>2　レポートをチェックしてくれませんか。（○）</li>
+<li>3　レポートをチェックしたいんですか。（×）</li>
+</ul>
+<p>(3) コンビニで英語の新聞を買いたいです。店員に何と言いますか。</p>
+<ul>
+<li>1　あの、英語の新聞、ありますか。（○）</li>
+<li>2　あの、英語の新聞、買えばいいですか。（×）</li>
+<li>3　あの、英語の新聞、貰っていただけませんか。（×）</li>
+</ul>
+<p>(4) 駅までの道がわかりません。何と言いますか。</p>
+<ul>
+<li>1　駅までの道を教えていただきたいんですが。（○）</li>
+<li>2　駅に行ったらどうですか。（×）</li>
+<li>3　駅にはどう行けばいいでしょうか。（○）</li>
+</ul>
+<p>(5) 病院に一緒に行ってほしいので、友達に頼みます。何と言いますか。</p>
+<ul>
+<li>1　一緒に病院に行ってもいい？（×）</li>
+<li>2　一緒に病院に行ってもらえない？（○）</li>
+<li>3　一緒に病院に行かせてくれない？</li>
+</ul>
+<p>(6) 一人では全部できません。友達に何と言いますか。</p>
+<ul>
+<li>1　ちょっと手伝ってもらえないかな？（○）</li>
+<li>2　何を手伝ったらいいかな？（×）</li>
+<li>3　ちょっと手伝いましょうか。（×）</li>
+</ul>
+<p>(7) 相手の名前の漢字が読めません。何と言いますか。</p>
+<ul>
+<li>1　お名前、読んでもよろしいでしょうか。（×）</li>
+<li>2　お名前、どう読めばいいでしょうか。（○）</li>
+<li>3　お名前の読み方、教えていただけませんか。（○）</li>
+</ul>
+<p>(8) 会社の車を使いたいです。何と言いますか。</p>
+<ul>
+<li>1　車、使ってくださいませんか。（×）</li>
+<li>2　車、使わせていただきたいんですけど。（○）</li>
+<li>3　車、使ったらいいでしょうか。（×）</li>
+</ul>
+</div>
+</div>
+
+<!-- 練習２－Ｂ　（p.36） -->
+<div class="section hidden" data-example="all-10">
+<div class="section-title">練習２－Ｂ　（p.36）</div>
+<div class="q-text q-prompt">（「言葉の選び方」のスキルを学ぼう）</div>
+<div class="q-text q-prompt">状況説明文と3つの言葉を聞きましょう。場面に合う言葉には ○、合わない言葉には × を書きましょう。　🔊 A16</div>
+<div class="question" data-qkey="all-10-1" data-answer="">
+<div class="q-text q-prompt"><span class="q-num">1</span>(1) - 1</div>
+<div class="options options-compact">
+<div class="option"><input type="radio" name="all-10-1" id="all-10-1-0" value="○"><label for="all-10-1-0">○</label></div>
+<div class="option"><input type="radio" name="all-10-1" id="all-10-1-1" value="×"><label for="all-10-1-1">×</label></div>
+</div>
+<p class="q-feedback" id="feedback-all-10-1" role="status"></p>
+</div>
+<div class="question" data-qkey="all-10-2" data-answer="">
+<div class="q-text q-prompt"><span class="q-num">2</span>(1) - 2</div>
+<div class="options options-compact">
+<div class="option"><input type="radio" name="all-10-2" id="all-10-2-0" value="○"><label for="all-10-2-0">○</label></div>
+<div class="option"><input type="radio" name="all-10-2" id="all-10-2-1" value="×"><label for="all-10-2-1">×</label></div>
+</div>
+<p class="q-feedback" id="feedback-all-10-2" role="status"></p>
+</div>
+<div class="question" data-qkey="all-10-3" data-answer="">
+<div class="q-text q-prompt"><span class="q-num">3</span>(1) - 3</div>
+<div class="options options-compact">
+<div class="option"><input type="radio" name="all-10-3" id="all-10-3-0" value="○"><label for="all-10-3-0">○</label></div>
+<div class="option"><input type="radio" name="all-10-3" id="all-10-3-1" value="×"><label for="all-10-3-1">×</label></div>
+</div>
+<p class="q-feedback" id="feedback-all-10-3" role="status"></p>
+</div>
+<div class="question" data-qkey="all-10-4" data-answer="">
+<div class="q-text q-prompt"><span class="q-num">4</span>(2) - 1</div>
+<div class="options options-compact">
+<div class="option"><input type="radio" name="all-10-4" id="all-10-4-0" value="○"><label for="all-10-4-0">○</label></div>
+<div class="option"><input type="radio" name="all-10-4" id="all-10-4-1" value="×"><label for="all-10-4-1">×</label></div>
+</div>
+<p class="q-feedback" id="feedback-all-10-4" role="status"></p>
+</div>
+<div class="question" data-qkey="all-10-5" data-answer="">
+<div class="q-text q-prompt"><span class="q-num">5</span>(2) - 2</div>
+<div class="options options-compact">
+<div class="option"><input type="radio" name="all-10-5" id="all-10-5-0" value="○"><label for="all-10-5-0">○</label></div>
+<div class="option"><input type="radio" name="all-10-5" id="all-10-5-1" value="×"><label for="all-10-5-1">×</label></div>
+</div>
+<p class="q-feedback" id="feedback-all-10-5" role="status"></p>
+</div>
+<div class="question" data-qkey="all-10-6" data-answer="">
+<div class="q-text q-prompt"><span class="q-num">6</span>(2) - 3</div>
+<div class="options options-compact">
+<div class="option"><input type="radio" name="all-10-6" id="all-10-6-0" value="○"><label for="all-10-6-0">○</label></div>
+<div class="option"><input type="radio" name="all-10-6" id="all-10-6-1" value="×"><label for="all-10-6-1">×</label></div>
+</div>
+<p class="q-feedback" id="feedback-all-10-6" role="status"></p>
+</div>
+<div class="question" data-qkey="all-10-7" data-answer="">
+<div class="q-text q-prompt"><span class="q-num">7</span>(3) - 1</div>
+<div class="options options-compact">
+<div class="option"><input type="radio" name="all-10-7" id="all-10-7-0" value="○"><label for="all-10-7-0">○</label></div>
+<div class="option"><input type="radio" name="all-10-7" id="all-10-7-1" value="×"><label for="all-10-7-1">×</label></div>
+</div>
+<p class="q-feedback" id="feedback-all-10-7" role="status"></p>
+</div>
+<div class="question" data-qkey="all-10-8" data-answer="">
+<div class="q-text q-prompt"><span class="q-num">8</span>(3) - 2</div>
+<div class="options options-compact">
+<div class="option"><input type="radio" name="all-10-8" id="all-10-8-0" value="○"><label for="all-10-8-0">○</label></div>
+<div class="option"><input type="radio" name="all-10-8" id="all-10-8-1" value="×"><label for="all-10-8-1">×</label></div>
+</div>
+<p class="q-feedback" id="feedback-all-10-8" role="status"></p>
+</div>
+<div class="question" data-qkey="all-10-9" data-answer="">
+<div class="q-text q-prompt"><span class="q-num">9</span>(3) - 3</div>
+<div class="options options-compact">
+<div class="option"><input type="radio" name="all-10-9" id="all-10-9-0" value="○"><label for="all-10-9-0">○</label></div>
+<div class="option"><input type="radio" name="all-10-9" id="all-10-9-1" value="×"><label for="all-10-9-1">×</label></div>
+</div>
+<p class="q-feedback" id="feedback-all-10-9" role="status"></p>
+</div>
+<div class="question" data-qkey="all-10-10" data-answer="">
+<div class="q-text q-prompt"><span class="q-num">10</span>(4) - 1</div>
+<div class="options options-compact">
+<div class="option"><input type="radio" name="all-10-10" id="all-10-10-0" value="○"><label for="all-10-10-0">○</label></div>
+<div class="option"><input type="radio" name="all-10-10" id="all-10-10-1" value="×"><label for="all-10-10-1">×</label></div>
+</div>
+<p class="q-feedback" id="feedback-all-10-10" role="status"></p>
+</div>
+<div class="question" data-qkey="all-10-11" data-answer="">
+<div class="q-text q-prompt"><span class="q-num">11</span>(4) - 2</div>
+<div class="options options-compact">
+<div class="option"><input type="radio" name="all-10-11" id="all-10-11-0" value="○"><label for="all-10-11-0">○</label></div>
+<div class="option"><input type="radio" name="all-10-11" id="all-10-11-1" value="×"><label for="all-10-11-1">×</label></div>
+</div>
+<p class="q-feedback" id="feedback-all-10-11" role="status"></p>
+</div>
+<div class="question" data-qkey="all-10-12" data-answer="">
+<div class="q-text q-prompt"><span class="q-num">12</span>(4) - 3</div>
+<div class="options options-compact">
+<div class="option"><input type="radio" name="all-10-12" id="all-10-12-0" value="○"><label for="all-10-12-0">○</label></div>
+<div class="option"><input type="radio" name="all-10-12" id="all-10-12-1" value="×"><label for="all-10-12-1">×</label></div>
+</div>
+<p class="q-feedback" id="feedback-all-10-12" role="status"></p>
+</div>
+<div class="question" data-qkey="all-10-13" data-answer="">
+<div class="q-text q-prompt"><span class="q-num">13</span>(5) - 1</div>
+<div class="options options-compact">
+<div class="option"><input type="radio" name="all-10-13" id="all-10-13-0" value="○"><label for="all-10-13-0">○</label></div>
+<div class="option"><input type="radio" name="all-10-13" id="all-10-13-1" value="×"><label for="all-10-13-1">×</label></div>
+</div>
+<p class="q-feedback" id="feedback-all-10-13" role="status"></p>
+</div>
+<div class="question" data-qkey="all-10-14" data-answer="">
+<div class="q-text q-prompt"><span class="q-num">14</span>(5) - 2</div>
+<div class="options options-compact">
+<div class="option"><input type="radio" name="all-10-14" id="all-10-14-0" value="○"><label for="all-10-14-0">○</label></div>
+<div class="option"><input type="radio" name="all-10-14" id="all-10-14-1" value="×"><label for="all-10-14-1">×</label></div>
+</div>
+<p class="q-feedback" id="feedback-all-10-14" role="status"></p>
+</div>
+<div class="question" data-qkey="all-10-15" data-answer="">
+<div class="q-text q-prompt"><span class="q-num">15</span>(5) - 3</div>
+<div class="options options-compact">
+<div class="option"><input type="radio" name="all-10-15" id="all-10-15-0" value="○"><label for="all-10-15-0">○</label></div>
+<div class="option"><input type="radio" name="all-10-15" id="all-10-15-1" value="×"><label for="all-10-15-1">×</label></div>
+</div>
+<p class="q-feedback" id="feedback-all-10-15" role="status"></p>
+</div>
+<div class="question" data-qkey="all-10-16" data-answer="">
+<div class="q-text q-prompt"><span class="q-num">16</span>(6) - 1</div>
+<div class="options options-compact">
+<div class="option"><input type="radio" name="all-10-16" id="all-10-16-0" value="○"><label for="all-10-16-0">○</label></div>
+<div class="option"><input type="radio" name="all-10-16" id="all-10-16-1" value="×"><label for="all-10-16-1">×</label></div>
+</div>
+<p class="q-feedback" id="feedback-all-10-16" role="status"></p>
+</div>
+<div class="question" data-qkey="all-10-17" data-answer="">
+<div class="q-text q-prompt"><span class="q-num">17</span>(6) - 2</div>
+<div class="options options-compact">
+<div class="option"><input type="radio" name="all-10-17" id="all-10-17-0" value="○"><label for="all-10-17-0">○</label></div>
+<div class="option"><input type="radio" name="all-10-17" id="all-10-17-1" value="×"><label for="all-10-17-1">×</label></div>
+</div>
+<p class="q-feedback" id="feedback-all-10-17" role="status"></p>
+</div>
+<div class="question" data-qkey="all-10-18" data-answer="">
+<div class="q-text q-prompt"><span class="q-num">18</span>(6) - 3</div>
+<div class="options options-compact">
+<div class="option"><input type="radio" name="all-10-18" id="all-10-18-0" value="○"><label for="all-10-18-0">○</label></div>
+<div class="option"><input type="radio" name="all-10-18" id="all-10-18-1" value="×"><label for="all-10-18-1">×</label></div>
+</div>
+<p class="q-feedback" id="feedback-all-10-18" role="status"></p>
+</div>
+<div class="question" data-qkey="all-10-19" data-answer="">
+<div class="q-text q-prompt"><span class="q-num">19</span>(7) - 1</div>
+<div class="options options-compact">
+<div class="option"><input type="radio" name="all-10-19" id="all-10-19-0" value="○"><label for="all-10-19-0">○</label></div>
+<div class="option"><input type="radio" name="all-10-19" id="all-10-19-1" value="×"><label for="all-10-19-1">×</label></div>
+</div>
+<p class="q-feedback" id="feedback-all-10-19" role="status"></p>
+</div>
+<div class="question" data-qkey="all-10-20" data-answer="">
+<div class="q-text q-prompt"><span class="q-num">20</span>(7) - 2</div>
+<div class="options options-compact">
+<div class="option"><input type="radio" name="all-10-20" id="all-10-20-0" value="○"><label for="all-10-20-0">○</label></div>
+<div class="option"><input type="radio" name="all-10-20" id="all-10-20-1" value="×"><label for="all-10-20-1">×</label></div>
+</div>
+<p class="q-feedback" id="feedback-all-10-20" role="status"></p>
+</div>
+<div class="question" data-qkey="all-10-21" data-answer="">
+<div class="q-text q-prompt"><span class="q-num">21</span>(7) - 3</div>
+<div class="options options-compact">
+<div class="option"><input type="radio" name="all-10-21" id="all-10-21-0" value="○"><label for="all-10-21-0">○</label></div>
+<div class="option"><input type="radio" name="all-10-21" id="all-10-21-1" value="×"><label for="all-10-21-1">×</label></div>
+</div>
+<p class="q-feedback" id="feedback-all-10-21" role="status"></p>
+</div>
+<div class="question" data-qkey="all-10-22" data-answer="">
+<div class="q-text q-prompt"><span class="q-num">22</span>(8) - 1</div>
+<div class="options options-compact">
+<div class="option"><input type="radio" name="all-10-22" id="all-10-22-0" value="○"><label for="all-10-22-0">○</label></div>
+<div class="option"><input type="radio" name="all-10-22" id="all-10-22-1" value="×"><label for="all-10-22-1">×</label></div>
+</div>
+<p class="q-feedback" id="feedback-all-10-22" role="status"></p>
+</div>
+<div class="question" data-qkey="all-10-23" data-answer="">
+<div class="q-text q-prompt"><span class="q-num">23</span>(8) - 2</div>
+<div class="options options-compact">
+<div class="option"><input type="radio" name="all-10-23" id="all-10-23-0" value="○"><label for="all-10-23-0">○</label></div>
+<div class="option"><input type="radio" name="all-10-23" id="all-10-23-1" value="×"><label for="all-10-23-1">×</label></div>
+</div>
+<p class="q-feedback" id="feedback-all-10-23" role="status"></p>
+</div>
+<div class="question" data-qkey="all-10-24" data-answer="">
+<div class="q-text q-prompt"><span class="q-num">24</span>(8) - 3</div>
+<div class="options options-compact">
+<div class="option"><input type="radio" name="all-10-24" id="all-10-24-0" value="○"><label for="all-10-24-0">○</label></div>
+<div class="option"><input type="radio" name="all-10-24" id="all-10-24-1" value="×"><label for="all-10-24-1">×</label></div>
+</div>
+<p class="q-feedback" id="feedback-all-10-24" role="status"></p>
+</div>
+<button type="button" class="btn-submit btn-grade-extra" data-extra-example="all-10">採点</button>
+<div class="script-block extra-answer-block" id="script-all-10">
+<h3>解答・解説（練習２－Ｂ　（p.36））</h3>
+<p>(1) 友達のメールアドレスを知りたいです。何と言いますか。</p>
+<ul>
+<li>1　メールアドレス、教えてもらえない？（○）</li>
+<li>2　メールアドレス、聞いてくれない？（×）</li>
+<li>3　メールアドレス、聞いてもいい？（○）</li>
+</ul>
+<p>(2) 会議室のかぎを使いたいです。受付の人に何と言いますか。</p>
+<ul>
+<li>1　会議室のかぎを借りていただきたいんですが。（×）</li>
+<li>2　会議室のかぎを貸してくださいますか。（○）</li>
+<li>3　会議室のかぎを貸したいんですけど。（×）</li>
+</ul>
+<p>(3) 店でケースに入った時計を近くで見たいです。店員に何と言いますか。</p>
+<ul>
+<li>1　この時計、見せてもいいですか。（×）</li>
+<li>2　この時計、見てもらいんですが。（×）</li>
+<li>3　この時計、見せていただけますか。（○）</li>
+</ul>
+<p>(4) 留守の間、猫の世話を友達に頼みます。何と言いますか。</p>
+<ul>
+<li>1　猫、預かるよ。（×）</li>
+<li>2　猫、預かってもらえる？（○）</li>
+<li>3　猫、預けてくれない？（×）</li>
+</ul>
+<p>(5) 店で商品のパンフレットがほしいです。何と言いますか。</p>
+<ul>
+<li>1　パンフレットをもらってもいいですか。（○）</li>
+<li>2　パンフレットをいただけますか。（○）</li>
+<li>3　パンフレットをもらってくださいませんか。（×）</li>
+</ul>
+<p>(6) 友達の辞書を使いたいです。何と言いますか。</p>
+<ul>
+<li>1　辞書、借りてくれない？（×）</li>
+<li>2　辞書、貸してもいい？（×）</li>
+<li>3　辞書、貸してもらえる？（○）</li>
+</ul>
+<p>(7) わからないところを先生に質問します。何と言いますか。</p>
+<ul>
+<li>1　ここ、聞いていただきたいんですけど。（×）</li>
+<li>2　ここ、教えてもよろしいでしょうか。（×）</li>
+<li>3　ここ、教えていただけませんか。（○）</li>
+</ul>
+<p>(8) 大学で隣の席の人に教科書を見せてもらいます。何と言いますか。</p>
+<ul>
+<li>1　あの、教科書、見せてくれませんか。（○）</li>
+<li>2　あの、教科書、見せてもいいでしょうか。（×）</li>
+<li>3　あの、教科書、見てほしいんですけど。（×）</li>
+</ul>
+</div>
+</div>
+
+<!-- 練習３　（p.37） -->
+<div class="section hidden" data-example="all-11">
+<div class="section-title">練習３　（p.37）</div>
+<div class="q-text q-prompt">（「言葉の選び方」のスキルを学ぼう）</div>
+<div class="q-text q-prompt">状況説明文と言葉を聞いて、3つの中から一番よいものを1つ選びましょう。　🔊 A17</div>
+<div class="question" data-qkey="all-11-1" data-answer="">
+<div class="q-text q-prompt"><span class="q-num">1</span>(1)</div>
+<div class="options options-compact">
+<div class="option"><input type="radio" name="all-11-1" id="all-11-1-0" value="1"><label for="all-11-1-0">1</label></div>
+<div class="option"><input type="radio" name="all-11-1" id="all-11-1-1" value="2"><label for="all-11-1-1">2</label></div>
+<div class="option"><input type="radio" name="all-11-1" id="all-11-1-2" value="3"><label for="all-11-1-2">3</label></div>
+</div>
+<p class="q-feedback" id="feedback-all-11-1" role="status"></p>
+</div>
+<div class="question" data-qkey="all-11-2" data-answer="">
+<div class="q-text q-prompt"><span class="q-num">2</span>(2)</div>
+<div class="options options-compact">
+<div class="option"><input type="radio" name="all-11-2" id="all-11-2-0" value="1"><label for="all-11-2-0">1</label></div>
+<div class="option"><input type="radio" name="all-11-2" id="all-11-2-1" value="2"><label for="all-11-2-1">2</label></div>
+<div class="option"><input type="radio" name="all-11-2" id="all-11-2-2" value="3"><label for="all-11-2-2">3</label></div>
+</div>
+<p class="q-feedback" id="feedback-all-11-2" role="status"></p>
+</div>
+<div class="question" data-qkey="all-11-3" data-answer="">
+<div class="q-text q-prompt"><span class="q-num">3</span>(3)</div>
+<div class="options options-compact">
+<div class="option"><input type="radio" name="all-11-3" id="all-11-3-0" value="1"><label for="all-11-3-0">1</label></div>
+<div class="option"><input type="radio" name="all-11-3" id="all-11-3-1" value="2"><label for="all-11-3-1">2</label></div>
+<div class="option"><input type="radio" name="all-11-3" id="all-11-3-2" value="3"><label for="all-11-3-2">3</label></div>
+</div>
+<p class="q-feedback" id="feedback-all-11-3" role="status"></p>
+</div>
+<div class="question" data-qkey="all-11-4" data-answer="">
+<div class="q-text q-prompt"><span class="q-num">4</span>(4)</div>
+<div class="options options-compact">
+<div class="option"><input type="radio" name="all-11-4" id="all-11-4-0" value="1"><label for="all-11-4-0">1</label></div>
+<div class="option"><input type="radio" name="all-11-4" id="all-11-4-1" value="2"><label for="all-11-4-1">2</label></div>
+<div class="option"><input type="radio" name="all-11-4" id="all-11-4-2" value="3"><label for="all-11-4-2">3</label></div>
+</div>
+<p class="q-feedback" id="feedback-all-11-4" role="status"></p>
+</div>
+<div class="question" data-qkey="all-11-5" data-answer="">
+<div class="q-text q-prompt"><span class="q-num">5</span>(5)</div>
+<div class="options options-compact">
+<div class="option"><input type="radio" name="all-11-5" id="all-11-5-0" value="1"><label for="all-11-5-0">1</label></div>
+<div class="option"><input type="radio" name="all-11-5" id="all-11-5-1" value="2"><label for="all-11-5-1">2</label></div>
+<div class="option"><input type="radio" name="all-11-5" id="all-11-5-2" value="3"><label for="all-11-5-2">3</label></div>
+</div>
+<p class="q-feedback" id="feedback-all-11-5" role="status"></p>
+</div>
+<div class="question" data-qkey="all-11-6" data-answer="">
+<div class="q-text q-prompt"><span class="q-num">6</span>(6)</div>
+<div class="options options-compact">
+<div class="option"><input type="radio" name="all-11-6" id="all-11-6-0" value="1"><label for="all-11-6-0">1</label></div>
+<div class="option"><input type="radio" name="all-11-6" id="all-11-6-1" value="2"><label for="all-11-6-1">2</label></div>
+<div class="option"><input type="radio" name="all-11-6" id="all-11-6-2" value="3"><label for="all-11-6-2">3</label></div>
+</div>
+<p class="q-feedback" id="feedback-all-11-6" role="status"></p>
+</div>
+<div class="question" data-qkey="all-11-7" data-answer="">
+<div class="q-text q-prompt"><span class="q-num">7</span>(7)</div>
+<div class="options options-compact">
+<div class="option"><input type="radio" name="all-11-7" id="all-11-7-0" value="1"><label for="all-11-7-0">1</label></div>
+<div class="option"><input type="radio" name="all-11-7" id="all-11-7-1" value="2"><label for="all-11-7-1">2</label></div>
+<div class="option"><input type="radio" name="all-11-7" id="all-11-7-2" value="3"><label for="all-11-7-2">3</label></div>
+</div>
+<p class="q-feedback" id="feedback-all-11-7" role="status"></p>
+</div>
+<div class="question" data-qkey="all-11-8" data-answer="">
+<div class="q-text q-prompt"><span class="q-num">8</span>(8)</div>
+<div class="options options-compact">
+<div class="option"><input type="radio" name="all-11-8" id="all-11-8-0" value="1"><label for="all-11-8-0">1</label></div>
+<div class="option"><input type="radio" name="all-11-8" id="all-11-8-1" value="2"><label for="all-11-8-1">2</label></div>
+<div class="option"><input type="radio" name="all-11-8" id="all-11-8-2" value="3"><label for="all-11-8-2">3</label></div>
+</div>
+<p class="q-feedback" id="feedback-all-11-8" role="status"></p>
+</div>
+<button type="button" class="btn-submit btn-grade-extra" data-extra-example="all-11">採点</button>
+<div class="script-block extra-answer-block" id="script-all-11">
+<h3>解答・解説（練習３　（p.37））</h3>
+<p>(1) 教室の窓が開きません。何と言いますか。</p>
+<ul>
+<li>1　窓を開けてもよろしいでしょうか。</li>
+<li>②　この窓、開かないんですが。</li>
+<li>3　この窓、開けませんか。</li>
+</ul>
+<p>(2) 会社でほかの人がたくさん荷物を持っています。何と言いますか。</p>
+<ul>
+<li>1　荷物、持ってあげますよ。</li>
+<li>2　荷物、持ったらいいですか。</li>
+<li>③　荷物、持ちましょうか。</li>
+</ul>
+<p>(3) 友達のシャツがソースで汚れています。何と言いますか。</p>
+<ul>
+<li>①　シャツにソースがついていますよ。</li>
+<li>2　ソースはそこにありますよ。</li>
+<li>3　シャツにソースがつきますよ。</li>
+</ul>
+<p>(4) レストランで自分のスプーンが落ちました。店の人に何と言いますか。</p>
+<ul>
+<li>1　スプーン、落ちましたよ。</li>
+<li>②　スプーン、落としちゃったんですが。</li>
+<li>3　スプーン、持ってきてもいいですか。</li>
+</ul>
+<p>(5) 会社でほかの人の仕事を手伝います。何と言いますか。</p>
+<ul>
+<li>1　手伝っていただきます。</li>
+<li>②　お手伝いしますよ。</li>
+<li>3　お手伝いしませんか。</li>
+</ul>
+<p>(6) 電車の中にかばんを忘れました。駅員に何と言いますか。</p>
+<ul>
+<li>1　電車の中にかばんを忘れていますよ。</li>
+<li>2　電車の中にかばんがありますか。</li>
+<li>3　電車の中に忘れ物をしたんですけど。</li>
+</ul>
+<p>(7) 今日は図書館は休みです。図書館に行こうとしている友達に何と言いますか。</p>
+<ul>
+<li>①　今日は図書館は閉まってるよ。</li>
+<li>2　今日は図書館で休んでるよ。</li>
+<li>3　図書館、閉まると思うよ。</li>
+</ul>
+<p>(8) 前を歩いている人の手袋を拾いました。何と言いますか。</p>
+<ul>
+<li>1　これは手袋ですよ。</li>
+<li>②　手袋、落としましたよ。</li>
+<li>3　手袋、拾ったらどうですか。</li>
+</ul>
+</div>
+</div>
+
+<!-- 練習４　（p.39） -->
+<div class="section hidden" data-example="all-12">
+<div class="section-title">練習４　（p.39）</div>
+<div class="q-text q-prompt">（「言葉の選び方」のスキルを学ぼう）</div>
+<div class="q-text q-prompt">状況説明文と言葉を聞いて、3つの中から一番よいものを1つ選びましょう。　🔊 A18</div>
+<div class="question" data-qkey="all-12-1" data-answer="">
+<div class="q-text q-prompt"><span class="q-num">1</span>(1)</div>
+<div class="options options-compact">
+<div class="option"><input type="radio" name="all-12-1" id="all-12-1-0" value="1"><label for="all-12-1-0">1</label></div>
+<div class="option"><input type="radio" name="all-12-1" id="all-12-1-1" value="2"><label for="all-12-1-1">2</label></div>
+<div class="option"><input type="radio" name="all-12-1" id="all-12-1-2" value="3"><label for="all-12-1-2">3</label></div>
+</div>
+<p class="q-feedback" id="feedback-all-12-1" role="status"></p>
+</div>
+<div class="question" data-qkey="all-12-2" data-answer="">
+<div class="q-text q-prompt"><span class="q-num">2</span>(2)</div>
+<div class="options options-compact">
+<div class="option"><input type="radio" name="all-12-2" id="all-12-2-0" value="1"><label for="all-12-2-0">1</label></div>
+<div class="option"><input type="radio" name="all-12-2" id="all-12-2-1" value="2"><label for="all-12-2-1">2</label></div>
+<div class="option"><input type="radio" name="all-12-2" id="all-12-2-2" value="3"><label for="all-12-2-2">3</label></div>
+</div>
+<p class="q-feedback" id="feedback-all-12-2" role="status"></p>
+</div>
+<div class="question" data-qkey="all-12-3" data-answer="">
+<div class="q-text q-prompt"><span class="q-num">3</span>(3)</div>
+<div class="options options-compact">
+<div class="option"><input type="radio" name="all-12-3" id="all-12-3-0" value="1"><label for="all-12-3-0">1</label></div>
+<div class="option"><input type="radio" name="all-12-3" id="all-12-3-1" value="2"><label for="all-12-3-1">2</label></div>
+<div class="option"><input type="radio" name="all-12-3" id="all-12-3-2" value="3"><label for="all-12-3-2">3</label></div>
+</div>
+<p class="q-feedback" id="feedback-all-12-3" role="status"></p>
+</div>
+<div class="question" data-qkey="all-12-4" data-answer="">
+<div class="q-text q-prompt"><span class="q-num">4</span>(4)</div>
+<div class="options options-compact">
+<div class="option"><input type="radio" name="all-12-4" id="all-12-4-0" value="1"><label for="all-12-4-0">1</label></div>
+<div class="option"><input type="radio" name="all-12-4" id="all-12-4-1" value="2"><label for="all-12-4-1">2</label></div>
+<div class="option"><input type="radio" name="all-12-4" id="all-12-4-2" value="3"><label for="all-12-4-2">3</label></div>
+</div>
+<p class="q-feedback" id="feedback-all-12-4" role="status"></p>
+</div>
+<div class="question" data-qkey="all-12-5" data-answer="">
+<div class="q-text q-prompt"><span class="q-num">5</span>(5)</div>
+<div class="options options-compact">
+<div class="option"><input type="radio" name="all-12-5" id="all-12-5-0" value="1"><label for="all-12-5-0">1</label></div>
+<div class="option"><input type="radio" name="all-12-5" id="all-12-5-1" value="2"><label for="all-12-5-1">2</label></div>
+<div class="option"><input type="radio" name="all-12-5" id="all-12-5-2" value="3"><label for="all-12-5-2">3</label></div>
+</div>
+<p class="q-feedback" id="feedback-all-12-5" role="status"></p>
+</div>
+<div class="question" data-qkey="all-12-6" data-answer="">
+<div class="q-text q-prompt"><span class="q-num">6</span>(6)</div>
+<div class="options options-compact">
+<div class="option"><input type="radio" name="all-12-6" id="all-12-6-0" value="1"><label for="all-12-6-0">1</label></div>
+<div class="option"><input type="radio" name="all-12-6" id="all-12-6-1" value="2"><label for="all-12-6-1">2</label></div>
+<div class="option"><input type="radio" name="all-12-6" id="all-12-6-2" value="3"><label for="all-12-6-2">3</label></div>
+</div>
+<p class="q-feedback" id="feedback-all-12-6" role="status"></p>
+</div>
+<div class="question" data-qkey="all-12-7" data-answer="">
+<div class="q-text q-prompt"><span class="q-num">7</span>(7)</div>
+<div class="options options-compact">
+<div class="option"><input type="radio" name="all-12-7" id="all-12-7-0" value="1"><label for="all-12-7-0">1</label></div>
+<div class="option"><input type="radio" name="all-12-7" id="all-12-7-1" value="2"><label for="all-12-7-1">2</label></div>
+<div class="option"><input type="radio" name="all-12-7" id="all-12-7-2" value="3"><label for="all-12-7-2">3</label></div>
+</div>
+<p class="q-feedback" id="feedback-all-12-7" role="status"></p>
+</div>
+<div class="question" data-qkey="all-12-8" data-answer="">
+<div class="q-text q-prompt"><span class="q-num">8</span>(8)</div>
+<div class="options options-compact">
+<div class="option"><input type="radio" name="all-12-8" id="all-12-8-0" value="1"><label for="all-12-8-0">1</label></div>
+<div class="option"><input type="radio" name="all-12-8" id="all-12-8-1" value="2"><label for="all-12-8-1">2</label></div>
+<div class="option"><input type="radio" name="all-12-8" id="all-12-8-2" value="3"><label for="all-12-8-2">3</label></div>
+</div>
+<p class="q-feedback" id="feedback-all-12-8" role="status"></p>
+</div>
+<button type="button" class="btn-submit btn-grade-extra" data-extra-example="all-12">採点</button>
+<div class="script-block extra-answer-block" id="script-all-12">
+<h3>解答・解説（練習４　（p.39））</h3>
+<p>(1) 会社で先輩より先に帰ります。何と言いますか。</p>
+<ul>
+<li>①　お先に失礼します。</li>
+<li>2　おじゃまします。</li>
+<li>3　お世話になりました。</li>
+</ul>
+<p>(2) 会社で部長に話したいことがあります。何と言いますか。</p>
+<ul>
+<li>1　ごめんください。</li>
+<li>②　ちょっとよろしいですか。</li>
+<li>3　お世話になります。</li>
+</ul>
+<p>(3) 風邪を引いた人が早く帰ります。その人に何と言いますか。</p>
+<ul>
+<li>①　お大事に。</li>
+<li>2　お元気で。</li>
+<li>3　お先に。</li>
+</ul>
+<p>(4) 先生に久しぶりに会いました。何と言いますか。</p>
+<ul>
+<li>1　お待たせしました。</li>
+<li>2　失礼いたしました。</li>
+<li>③　ごぶさたしております。</li>
+</ul>
+<p>(5) お客さんに席を勧めます。何と言いますか。</p>
+<ul>
+<li>1　お口に合うかどうか。</li>
+<li>2　お出かけください。</li>
+<li>③　おかけください。</li>
+</ul>
+<p>(6) 先生に今から話せるかどうか聞きます。何と言いますか。</p>
+<ul>
+<li>1　お話をしたいでしょうか。</li>
+<li>②　お時間ありますか。</li>
+<li>3　何か問題がありますか。</li>
+</ul>
+<p>(7) 社長室に入ります。何と言いますか。</p>
+<ul>
+<li>①　失礼します。</li>
+<li>2　ごめんください。</li>
+<li>3　うかがいます。</li>
+</ul>
+<p>(8) 会社の人があしたから出張に行きます。何と言いますか。</p>
+<ul>
+<li>1　行ってきます。</li>
+<li>②　お気をつけて。</li>
+<li>3　お元気で。</li>
+</ul>
+</div>
+</div>
+
+<!-- 確認問題　（p.40） -->
+<div class="section hidden" data-example="all-13">
+<div class="section-title">確認問題　（p.40）</div>
+<div class="q-text q-prompt">（「言葉の選び方」のスキルを学ぼう）</div>
+<div class="q-text q-prompt">🔊 A19</div>
+<div class="q-text q-prompt">えを見ながら質問を聞いてください。やじるし（→）の人は何と言いますか。1から3の中から、最もよいものを一つえらんでください。</div>
+<div class="question" data-qkey="all-13-1" data-answer="2">
+<div class="q-text q-prompt"><span class="q-num">1</span>(1)</div>
+<div class="options options-compact">
+<div class="option"><input type="radio" name="all-13-1" id="all-13-1-0" value="1"><label for="all-13-1-0">1</label></div>
+<div class="option"><input type="radio" name="all-13-1" id="all-13-1-1" value="2"><label for="all-13-1-1">2</label></div>
+<div class="option"><input type="radio" name="all-13-1" id="all-13-1-2" value="3"><label for="all-13-1-2">3</label></div>
+</div>
+<p class="q-feedback" id="feedback-all-13-1" role="status"></p>
+</div>
+<div class="question" data-qkey="all-13-2" data-answer="3">
+<div class="q-text q-prompt"><span class="q-num">2</span>(2)</div>
+<div class="options options-compact">
+<div class="option"><input type="radio" name="all-13-2" id="all-13-2-0" value="1"><label for="all-13-2-0">1</label></div>
+<div class="option"><input type="radio" name="all-13-2" id="all-13-2-1" value="2"><label for="all-13-2-1">2</label></div>
+<div class="option"><input type="radio" name="all-13-2" id="all-13-2-2" value="3"><label for="all-13-2-2">3</label></div>
+</div>
+<p class="q-feedback" id="feedback-all-13-2" role="status"></p>
+</div>
+<button type="button" class="btn-submit btn-grade-extra" data-extra-example="all-13">採点</button>
+<div class="script-block extra-answer-block" id="script-all-13">
+<h3>解答・解説（確認問題　（p.40））</h3>
+<p>答え：(1)2　(2)3</p>
+<p>(1) 先生に推薦状を書いてもらいたいです。何と言いますか。</p>
+<ul>
+<li>女：1　推薦状を書いてもいいですか。</li>
+<li>2　推薦状を書いていただけませんか。</li>
+<li>3　推薦状をお書きしましょうか。</li>
+</ul>
+<p>(2) 友達がかさがなくて困っているようです。何と言いますか。</p>
+<ul>
+<li>女：1　かさ、借りてくれない？</li>
+<li>2　かさ、貸したらどう？</li>
+<li>3　かさ、貸そうか。</li>
+</ul>
+</div>
+</div>
+
+<!-- 練習１－Ａ　（p.43） -->
+<div class="section hidden" data-example="all-14">
+<div class="section-title">練習１－Ａ　（p.43）</div>
+<div class="q-text q-prompt">（「即時応答」のスキルを学ぼう）</div>
+<div class="q-text q-prompt">文を聞いて、正しい答えを選びましょう。　🔊 A20</div>
+<div class="question" data-qkey="all-14-1" data-answer="">
+<div class="q-text q-prompt"><span class="q-num">1</span>(例)</div>
+<div class="options options-compact">
+<div class="option"><input type="radio" name="all-14-1" id="all-14-1-0" value="a"><label for="all-14-1-0">a</label></div>
+<div class="option"><input type="radio" name="all-14-1" id="all-14-1-1" value="b"><label for="all-14-1-1">b</label></div>
+<div class="option"><input type="radio" name="all-14-1" id="all-14-1-2" value="c"><label for="all-14-1-2">c</label></div>
+</div>
+<p class="q-feedback" id="feedback-all-14-1" role="status"></p>
+</div>
+<div class="question" data-qkey="all-14-2" data-answer="">
+<div class="q-text q-prompt"><span class="q-num">2</span>(1)</div>
+<div class="options options-compact">
+<div class="option"><input type="radio" name="all-14-2" id="all-14-2-0" value="a"><label for="all-14-2-0">a</label></div>
+<div class="option"><input type="radio" name="all-14-2" id="all-14-2-1" value="b"><label for="all-14-2-1">b</label></div>
+<div class="option"><input type="radio" name="all-14-2" id="all-14-2-2" value="c"><label for="all-14-2-2">c</label></div>
+</div>
+<p class="q-feedback" id="feedback-all-14-2" role="status"></p>
+</div>
+<div class="question" data-qkey="all-14-3" data-answer="">
+<div class="q-text q-prompt"><span class="q-num">3</span>(2)</div>
+<div class="options options-compact">
+<div class="option"><input type="radio" name="all-14-3" id="all-14-3-0" value="a"><label for="all-14-3-0">a</label></div>
+<div class="option"><input type="radio" name="all-14-3" id="all-14-3-1" value="b"><label for="all-14-3-1">b</label></div>
+<div class="option"><input type="radio" name="all-14-3" id="all-14-3-2" value="c"><label for="all-14-3-2">c</label></div>
+</div>
+<p class="q-feedback" id="feedback-all-14-3" role="status"></p>
+</div>
+<div class="question" data-qkey="all-14-4" data-answer="">
+<div class="q-text q-prompt"><span class="q-num">4</span>(3)</div>
+<div class="options options-compact">
+<div class="option"><input type="radio" name="all-14-4" id="all-14-4-0" value="a"><label for="all-14-4-0">a</label></div>
+<div class="option"><input type="radio" name="all-14-4" id="all-14-4-1" value="b"><label for="all-14-4-1">b</label></div>
+<div class="option"><input type="radio" name="all-14-4" id="all-14-4-2" value="c"><label for="all-14-4-2">c</label></div>
+</div>
+<p class="q-feedback" id="feedback-all-14-4" role="status"></p>
+</div>
+<div class="question" data-qkey="all-14-5" data-answer="">
+<div class="q-text q-prompt"><span class="q-num">5</span>(4)</div>
+<div class="options options-compact">
+<div class="option"><input type="radio" name="all-14-5" id="all-14-5-0" value="a"><label for="all-14-5-0">a</label></div>
+<div class="option"><input type="radio" name="all-14-5" id="all-14-5-1" value="b"><label for="all-14-5-1">b</label></div>
+<div class="option"><input type="radio" name="all-14-5" id="all-14-5-2" value="c"><label for="all-14-5-2">c</label></div>
+</div>
+<p class="q-feedback" id="feedback-all-14-5" role="status"></p>
+</div>
+<div class="question" data-qkey="all-14-6" data-answer="">
+<div class="q-text q-prompt"><span class="q-num">6</span>(5)</div>
+<div class="options options-compact">
+<div class="option"><input type="radio" name="all-14-6" id="all-14-6-0" value="a"><label for="all-14-6-0">a</label></div>
+<div class="option"><input type="radio" name="all-14-6" id="all-14-6-1" value="b"><label for="all-14-6-1">b</label></div>
+<div class="option"><input type="radio" name="all-14-6" id="all-14-6-2" value="c"><label for="all-14-6-2">c</label></div>
+</div>
+<p class="q-feedback" id="feedback-all-14-6" role="status"></p>
+</div>
+<div class="question" data-qkey="all-14-7" data-answer="">
+<div class="q-text q-prompt"><span class="q-num">7</span>(6)</div>
+<div class="options options-compact">
+<div class="option"><input type="radio" name="all-14-7" id="all-14-7-0" value="a"><label for="all-14-7-0">a</label></div>
+<div class="option"><input type="radio" name="all-14-7" id="all-14-7-1" value="b"><label for="all-14-7-1">b</label></div>
+<div class="option"><input type="radio" name="all-14-7" id="all-14-7-2" value="c"><label for="all-14-7-2">c</label></div>
+</div>
+<p class="q-feedback" id="feedback-all-14-7" role="status"></p>
+</div>
+<div class="question" data-qkey="all-14-8" data-answer="">
+<div class="q-text q-prompt"><span class="q-num">8</span>(7)</div>
+<div class="options options-compact">
+<div class="option"><input type="radio" name="all-14-8" id="all-14-8-0" value="a"><label for="all-14-8-0">a</label></div>
+<div class="option"><input type="radio" name="all-14-8" id="all-14-8-1" value="b"><label for="all-14-8-1">b</label></div>
+<div class="option"><input type="radio" name="all-14-8" id="all-14-8-2" value="c"><label for="all-14-8-2">c</label></div>
+</div>
+<p class="q-feedback" id="feedback-all-14-8" role="status"></p>
+</div>
+<div class="question" data-qkey="all-14-9" data-answer="">
+<div class="q-text q-prompt"><span class="q-num">9</span>(8)</div>
+<div class="options options-compact">
+<div class="option"><input type="radio" name="all-14-9" id="all-14-9-0" value="a"><label for="all-14-9-0">a</label></div>
+<div class="option"><input type="radio" name="all-14-9" id="all-14-9-1" value="b"><label for="all-14-9-1">b</label></div>
+<div class="option"><input type="radio" name="all-14-9" id="all-14-9-2" value="c"><label for="all-14-9-2">c</label></div>
+</div>
+<p class="q-feedback" id="feedback-all-14-9" role="status"></p>
+</div>
+<div class="question" data-qkey="all-14-10" data-answer="">
+<div class="q-text q-prompt"><span class="q-num">10</span>(9)</div>
+<div class="options options-compact">
+<div class="option"><input type="radio" name="all-14-10" id="all-14-10-0" value="a"><label for="all-14-10-0">a</label></div>
+<div class="option"><input type="radio" name="all-14-10" id="all-14-10-1" value="b"><label for="all-14-10-1">b</label></div>
+<div class="option"><input type="radio" name="all-14-10" id="all-14-10-2" value="c"><label for="all-14-10-2">c</label></div>
+</div>
+<p class="q-feedback" id="feedback-all-14-10" role="status"></p>
+</div>
+<div class="question" data-qkey="all-14-11" data-answer="">
+<div class="q-text q-prompt"><span class="q-num">11</span>(10)</div>
+<div class="options options-compact">
+<div class="option"><input type="radio" name="all-14-11" id="all-14-11-0" value="a"><label for="all-14-11-0">a</label></div>
+<div class="option"><input type="radio" name="all-14-11" id="all-14-11-1" value="b"><label for="all-14-11-1">b</label></div>
+<div class="option"><input type="radio" name="all-14-11" id="all-14-11-2" value="c"><label for="all-14-11-2">c</label></div>
+</div>
+<p class="q-feedback" id="feedback-all-14-11" role="status"></p>
+</div>
+<button type="button" class="btn-submit btn-grade-extra" data-extra-example="all-14">採点</button>
+<div class="script-block extra-answer-block" id="script-all-14">
+<h3>解答・解説（練習１－Ａ　（p.43））</h3>
+<p>例）</p>
+<ul>
+<li>女：これ、召し上がりませんか。</li>
+<li>男：<strong>a</strong>　はい、いただきます。</li>
+<li>b　はい、まいります。</li>
+<li>c　はい、うかがいます。</li>
+</ul>
+<p>(1)</p>
+<ul>
+<li>男：土曜日、よかったらうちにいらっしゃいませんか。</li>
+<li>女：a　はい、喜んで行かせます。</li>
+<li><strong>b</strong>　はい、喜んでうかがいます。</li>
+<li>c　はい、喜んでいただきます。</li>
+</ul>
+<p>(2)</p>
+<ul>
+<li>女：申込書の書き方はこれでいいでしょうか。</li>
+<li>男：<strong>a</strong>　じゃ、ちょっと拝見しますね。</li>
+<li>b　じゃ、ちょっとご覧になってください。</li>
+<li>c　じゃ、ちょっとお目にかかりましょう。</li>
+</ul>
+<p>(3)</p>
+<ul>
+<li>女：これ、1枚もらってもいいですか。</li>
+<li>男：<strong>a</strong>　ご自由にお取りください。</li>
+<li>b　いつでもいただきますよ。</li>
+<li>c　どなたでもくださいますよ。</li>
+</ul>
+<p>(4)</p>
+<ul>
+<li>女：すみません。よく聞き取れなかったのですが……。</li>
+<li>男：<strong>a</strong>　では、もう一度ご説明いたします。</li>
+<li>b　では、もう一度ご説明なさいます。</li>
+<li>c　では、もう一度ご説明になります。</li>
+</ul>
+<p>(5)</p>
+<ul>
+<li>男：あの、何かご用でしょうか。</li>
+<li>女：a　田中さんを拝見したいのですが。</li>
+<li>b　田中さんにお会いになるのですが。</li>
+<li><strong>c</strong>　田中さんにお目にかかりたいのですが。</li>
+</ul>
+<p>(6)</p>
+<ul>
+<li>女：パソコン、使わせていただきたいんですが。</li>
+<li>男：a　あちらのを使わせていただけませんか。</li>
+<li><strong>b</strong>　あちらのをお使いください。</li>
+<li>c　あちらのを使われますよ。</li>
+</ul>
+<p>(7)</p>
+<ul>
+<li>男：あの、お客様、ご予約はされましたか。</li>
+<li>女：a　いえ、されていませんが。</li>
+<li><strong>b</strong>　ええ、昨日、電話いたしました。</li>
+<li>c　ええ、お電話でなさいましたが。</li>
+</ul>
+<p>(8)</p>
+<ul>
+<li>男：今朝の新聞、お読みになりましたか。</li>
+<li>女：<strong>a</strong>　いいえ、読んでいませんが。</li>
+<li>b　いえ、お読みしませんでした。</li>
+<li>c　いえ、拝見したいんですが。</li>
+</ul>
+<p>(9)</p>
+<ul>
+<li>女：どなたがいらっしゃったんですか。</li>
+<li>男：a　京都におりました。</li>
+<li>b　昨日おいでになりました。</li>
+<li><strong>c</strong>　うちの父がまいりました。</li>
+</ul>
+<p>(10)</p>
+<ul>
+<li>女：何名様ですか。</li>
+<li>男：<strong>a</strong>　4人です。</li>
+<li>b　田中と申します。</li>
+<li>c　いえ、鈴木です。</li>
+</ul>
+</div>
+</div>
+
+<div class="section hidden" data-example="ans-1">
+<div class="section-title">練習1-B　※ ○印が答え</div>
+<div class="q-text q-prompt">III 「即時応答」のスキルを学ぼう</div>
+<div class="question" data-qkey="ans-1-1" data-answer="">
+<div class="q-text q-prompt"><span class="q-num">1</span>音声を聞いて、答えを書いてください。</div>
+<input class="answer-input" type="text" name="ans-1-1" placeholder="答えを書いてください">
+<p class="q-feedback" id="feedback-ans-1-1" role="status"></p>
+</div>
+<button type="button" class="btn-submit btn-grade-extra" data-extra-example="ans-1">採点</button>
+<div class="script-block extra-answer-block" id="script-ans-1"><h3>解答・解説</h3><p>例）</p>
+<ul>
+<li>女：この本、よかったですよ。読みますか。</li>
+<li>男：a　ええ、読みましょう。</li>
+<li><strong>b</strong>　はい、読みます。</li>
+</ul>
+<p>(1)</p>
+<ul>
+<li>男：もう3時ですね。そろそろ行きませんか。</li>
+<li>女：a　いいえ、行きますよ。</li>
+<li><strong>b</strong>　ええ、行きましょう。</li>
+</ul>
+<p>(2)</p>
+<ul>
+<li>女：暑くないですか。エアコン、つけましょうか。</li>
+<li>男：<strong>a</strong>　ええ、つけてください。</li>
+<li>b　ええ、つけませんか。</li>
+</ul>
+<p>(3)</p>
+<ul>
+<li>男：あ、薬を飲まれるなら、水をお持ちしましょう。</li>
+<li>女：<strong>a</strong>　すみません。お願いします。</li>
+<li>b　ええ、持ちますよ。</li>
+</ul>
+<p>(4)</p>
+<ul>
+<li>女：今度の会議で司会をしませんか。</li>
+<li>男：<strong>a</strong>　はい、させていただきます。</li>
+<li>b　ええ、させませんよ。</li>
+</ul>
+<p>(5)</p>
+<ul>
+<li>男：今年の夏の旅行はどこがいいでしょうか。</li>
+<li>女：<strong>a</strong>　今年も富士山にしましょうか。</li>
+<li>b　今年も富士山にします。</li>
+</ul>
+<p>(6)</p>
+<ul>
+<li>女：このDVD、面白かったから、よかったら見てみない？</li>
+<li>男：<strong>a</strong>　ありがとう、見てみるね。</li>
+<li>b　ありがとう、見てみようね。</li>
+</ul>
+<p>(7)</p>
+<ul>
+<li>男：ごみ、捨てに行くけど、ついでにこれも捨ててこようか。</li>
+<li>女：<strong>a</strong>　うん、お願い。</li>
+<li>b　うん、捨てるよ。</li>
+</ul>
+<p>(8)</p>
+<ul>
+<li>女：田中君。テニス部に入ったのね。面白い？</li>
+<li>男：<strong>a</strong>　うん、佐藤さんも入らない？</li>
+<li>b　うん、佐藤さんも入ろうか。</li>
+</ul></div>
+</div>
+
+<div class="section hidden" data-example="ans-2">
+<div class="section-title">練習2-A　※ ○印が答え</div>
+<div class="q-text q-prompt">III 「即時応答」のスキルを学ぼう</div>
+<div class="question" data-qkey="ans-2-1" data-answer="">
+<div class="q-text q-prompt"><span class="q-num">1</span>音声を聞いて、答えを書いてください。</div>
+<input class="answer-input" type="text" name="ans-2-1" placeholder="答えを書いてください">
+<p class="q-feedback" id="feedback-ans-2-1" role="status"></p>
+</div>
+<button type="button" class="btn-submit btn-grade-extra" data-extra-example="ans-2">採点</button>
+<div class="script-block extra-answer-block" id="script-ans-2"><h3>解答・解説</h3><p>(1)</p>
+<ul>
+<li>女：あした、来ないの？</li>
+<li>男：a　へえ、ないんだ。</li>
+<li><strong>b</strong>　うん、行くよ。</li>
+</ul>
+<p>(2)</p>
+<ul>
+<li>男：これ、冷蔵庫に入れておかないと。</li>
+<li>女：a　うん、入れてないよ。</li>
+<li><strong>b</strong>　うん、入れとくよ。</li>
+</ul>
+<p>(3)</p>
+<ul>
+<li>女：大切だから、書いといて。</li>
+<li>男：<strong>a</strong>　わかった。メモするよ。</li>
+<li>b　ふーん、そうか。</li>
+</ul>
+<p>(4)</p>
+<ul>
+<li>男：あの店、火曜日は休みだって。</li>
+<li>女：<strong>a</strong>　そうなんだ。じゃ、あした行こう。</li>
+<li>b　ありがとう。ゆっくり休むよ。</li>
+</ul>
+<p>(5)</p>
+<ul>
+<li>女：もう少し前の方に座ったらどう？</li>
+<li>男：a　じゃ、座ってみたらいいよ。</li>
+<li><strong>b</strong>　いや、ここで大丈夫だよ。</li>
+</ul>
+<p>(6)</p>
+<ul>
+<li>女：忘れずに名前を書くようにね。</li>
+<li>男：<strong>a</strong>　はい、わかりました。</li>
+<li>b　ええ、そのようですね。</li>
+</ul>
+<p>(7)</p>
+<ul>
+<li>女：「かるた」って何か知ってる？</li>
+<li>男：<strong>a</strong>　うん、テレビで見たことある。</li>
+<li>b　ああ、そうなんだ。</li>
+</ul>
+<p>(8)</p>
+<ul>
+<li>男：なんで昨日、来なかったの？</li>
+<li>女：a　電車で来たんだよ。</li>
+<li><strong>b</strong>　おなかが痛かったんだ。</li>
+</ul>
+<p>(9)</p>
+<ul>
+<li>女：お子さん、おいくつですか。</li>
+<li>男：<strong>a</strong>　来月8歳になります。</li>
+<li>b　男の子が3人です。</li>
+</ul>
+<p>(10)</p>
+<ul>
+<li>女：先生、何て言ってた？</li>
+<li>男：<strong>a</strong>　休んじゃだめだって。</li>
+<li>b　忙しいんだね。</li>
+</ul></div>
+</div>
+
+<div class="section hidden" data-example="ans-3">
+<div class="section-title">練習2-B　※ ○印が答え</div>
+<div class="q-text q-prompt">III 「即時応答」のスキルを学ぼう</div>
+<div class="question" data-qkey="ans-3-1" data-answer="">
+<div class="q-text q-prompt"><span class="q-num">1</span>音声を聞いて、答えを書いてください。</div>
+<input class="answer-input" type="text" name="ans-3-1" placeholder="答えを書いてください">
+<p class="q-feedback" id="feedback-ans-3-1" role="status"></p>
+</div>
+<button type="button" class="btn-submit btn-grade-extra" data-extra-example="ans-3">採点</button>
+<div class="script-block extra-answer-block" id="script-ans-3"><h3>解答・解説</h3><p>(1)</p>
+<ul>
+<li>女：ごぶさたしております。お元気ですか。</li>
+<li>男：<strong>a</strong>　ええ、おかげさまで。</li>
+<li>b　ええ、おかまいなく。</li>
+</ul>
+<p>(2)</p>
+<ul>
+<li>男：あの、今ちょっとよろしいでしょうか。</li>
+<li>女：a　ええ、どういたしまして。</li>
+<li><strong>b</strong>　ええ、何でしょうか。</li>
+</ul>
+<p>(3)</p>
+<ul>
+<li>女：お先に失礼します。</li>
+<li>男：a　お元気で。</li>
+<li><strong>b</strong>　お疲れ様でした。</li>
+</ul>
+<p>(4)</p>
+<ul>
+<li>男：冷たいお飲み物でもいかがですか。</li>
+<li>女：<strong>a</strong>　いただきます。</li>
+<li>b　おじゃまします。</li>
+</ul>
+<p>(5)</p>
+<ul>
+<li>女：いろいろお世話になりました。</li>
+<li>男：a　どうもお待たせしました。</li>
+<li><strong>b</strong>　またいらっしゃってください。</li>
+</ul></div>
+</div>
+
+<div class="section hidden" data-example="ans-4">
+<div class="section-title">練習3　※ ○印が答え</div>
+<div class="q-text q-prompt">III 「即時応答」のスキルを学ぼう</div>
+<div class="question" data-qkey="ans-4-1" data-answer="">
+<div class="q-text q-prompt"><span class="q-num">1</span>音声を聞いて、答えを書いてください。</div>
+<input class="answer-input" type="text" name="ans-4-1" placeholder="答えを書いてください">
+<p class="q-feedback" id="feedback-ans-4-1" role="status"></p>
+</div>
+<button type="button" class="btn-submit btn-grade-extra" data-extra-example="ans-4">採点</button>
+<div class="script-block extra-answer-block" id="script-ans-4"><h3>解答・解説</h3><p>(1)</p>
+<ul>
+<li>男：映画でも見ない？</li>
+<li>女：a　え、どうして見てないの？</li>
+<li><strong>b</strong>　いいよ。ちょうど見たいのがあるんだ。</li>
+</ul>
+<p>(2)</p>
+<ul>
+<li>女：もう佐々木さんに連絡した？</li>
+<li>男：a　へえ、もうしたんだ。</li>
+<li><strong>b</strong>　あー、今日は一日忙しかったんだ。</li>
+</ul>
+<p>(3)</p>
+<ul>
+<li>男：レポート、もう書けた？</li>
+<li>女：<strong>a</strong>　あと4分の1ぐらいかな。</li>
+<li>b　え、早いねえ。</li>
+</ul>
+<p>(4)</p>
+<ul>
+<li>女：ね、かさ、持ってったら？</li>
+<li>男：a　え？　持っていっちゃったの？</li>
+<li><strong>b</strong>　いいよ。今日は降りそうもないよ。</li>
+</ul>
+<p>(5)</p>
+<ul>
+<li>男：あしたのパーティー、僕も出席しなくちゃいけない？</li>
+<li>女：<strong>a</strong>　できればそうしてほしいな。</li>
+<li>b　行けなくなったんだってね。</li>
+</ul>
+<p>(6)</p>
+<ul>
+<li>男：これ、ちょっと貸してくれる？</li>
+<li>女：<strong>a</strong>　すぐ返してね。</li>
+<li>b　いいの？　じゃ、遠慮なく。</li>
+</ul>
+<p>(7)</p>
+<ul>
+<li>女：お茶、いれようか。</li>
+<li>男：a　はい、おかげさまで。</li>
+<li><strong>b</strong>　あー、さっき飲んだところ。</li>
+</ul>
+<p>(8)</p>
+<ul>
+<li>男：あの、これ、使わせてもらいたいんだけど。</li>
+<li>女：<strong>a</strong>　ごめん。これ、友達のなんだ。</li>
+<li>b　あ、じゃ、使ってみるね。</li>
+</ul>
+<p>(9)</p>
+<ul>
+<li>女：今度のスポーツ大会、出るの？</li>
+<li>男：a　へえ、体に気をつけて頑張ってね。</li>
+<li><strong>b</strong>　参加したいんだけど、用事があるんだ。</li>
+</ul>
+<p>(10)</p>
+<ul>
+<li>女：駅前のレストラン、行ってみない？</li>
+<li>男：a　行ってみなかったんだよ。</li>
+<li><strong>b</strong>　いいね。ピザがおいしいんだってね。</li>
+</ul></div>
+</div>
+
+<div class="section hidden" data-example="ans-5">
+<div class="section-title">確認問題</div>
+<div class="q-text q-prompt">III 「即時応答」のスキルを学ぼう</div>
+<div class="question" data-qkey="ans-5-1" data-answer="">
+<div class="q-text q-prompt"><span class="q-num">1</span>音声を聞いて、答えを書いてください。</div>
+<input class="answer-input" type="text" name="ans-5-1" placeholder="答えを書いてください">
+<p class="q-feedback" id="feedback-ans-5-1" role="status"></p>
+</div>
+<button type="button" class="btn-submit btn-grade-extra" data-extra-example="ans-5">採点</button>
+<div class="script-block extra-answer-block" id="script-ans-5"><h3>解答・解説</h3><p>答え：(1)2　(2)1　(3)1</p>
+<p>(1) 男：ちょっと手伝ってほしいんだけど。</p>
+<ul>
+<li>女：1　ありがとう。早く終わったよ。</li>
+<li>2　ちょっと後でもいい？</li>
+<li>3　そうだったんだ。残念だね。</li>
+</ul>
+<p>(2) 女：子供が熱が出しちゃって……。</p>
+<ul>
+<li>男：1　それはご心配ですね。</li>
+<li>2　それは心配いたしましたよ。</li>
+<li>3　それは心配をおかけしましたね。</li>
+</ul>
+<p>(3) 女：来週の試験に出るところ、教えていただけませんか。</p>
+<ul>
+<li>男：1　8課から勉強したところまでですよ。</li>
+<li>2　いつもの教室に行けばいいでしょうか。</li>
+<li>3　11時半には出たいんですけど……。</li>
+</ul></div>
+</div>
+
+<div class="section hidden" data-example="ans-6">
+<div class="section-title">練習1-1</div>
+<div class="q-text q-prompt">IV 「課題理解」のスキルを学ぼう</div>
+<div class="question" data-qkey="ans-6-1" data-answer="">
+<div class="q-text q-prompt"><span class="q-num">1</span>音声を聞いて、答えを書いてください。</div>
+<input class="answer-input" type="text" name="ans-6-1" placeholder="答えを書いてください">
+<p class="q-feedback" id="feedback-ans-6-1" role="status"></p>
+</div>
+<button type="button" class="btn-submit btn-grade-extra" data-extra-example="ans-6">採点</button>
+<div class="script-block extra-answer-block" id="script-ans-6"><h3>解答・解説</h3><p>答え：(1)入れない　(2)並べる　(3)片付けない　(4)連絡する　(5)持っていかない</p>
+<p>(1)</p>
+<ul>
+<li>男：手袋、絶対必要だよ。</li>
+<li>女：うん、さっきかばんに入れておいた。</li>
+</ul>
+<p>(2)</p>
+<ul>
+<li>女：いす、並べておいたほうがいいかな。</li>
+<li>男：そうだね。</li>
+</ul>
+<p>(3)</p>
+<ul>
+<li>女：これ、片付けましょうか。</li>
+<li>男：あ、そのままにしておいて。</li>
+</ul>
+<p>(4)</p>
+<ul>
+<li>男：田中さんに連絡しておいてもらえる？</li>
+<li>女：うん、そうする。</li>
+</ul>
+<p>(5)</p>
+<ul>
+<li>男：風邪薬も持ってく？</li>
+<li>女：うーん、それはいいよ。</li>
+</ul></div>
+</div>
+
+<div class="section hidden" data-example="ans-7">
+<div class="section-title">練習1-2</div>
+<div class="q-text q-prompt">IV 「課題理解」のスキルを学ぼう</div>
+<div class="question" data-qkey="ans-7-1" data-answer="">
+<div class="q-text q-prompt"><span class="q-num">1</span>音声を聞いて、答えを書いてください。</div>
+<input class="answer-input" type="text" name="ans-7-1" placeholder="答えを書いてください">
+<p class="q-feedback" id="feedback-ans-7-1" role="status"></p>
+</div>
+<button type="button" class="btn-submit btn-grade-extra" data-extra-example="ans-7">採点</button>
+<div class="script-block extra-answer-block" id="script-ans-7"><h3>解答・解説</h3><p>答え：(1)洗う　(2)あげない　(3)運ばない　(4)誘う　(5)つけない</p>
+<p>(1)</p>
+<ul>
+<li>男：これ、洗ったほうがいいかな。</li>
+<li>女：ああ、そうしたほうがいいんじゃない？</li>
+</ul>
+<p>(2)</p>
+<ul>
+<li>男：田中さんに、ネクタイ、プレゼントしない？</li>
+<li>男：別の物の方がいいんじゃない？</li>
+</ul>
+<p>(3)</p>
+<ul>
+<li>男：これ、どこかに運んだほうがいいよね。</li>
+<li>女：あ、それは大丈夫なんじゃない？</li>
+</ul>
+<p>(4)</p>
+<ul>
+<li>男：あしたのパーティー、佐藤さんも誘ってみる？</li>
+<li>女：ああ、誘ってみたらいいんじゃないかな。</li>
+</ul>
+<p>(5)</p>
+<ul>
+<li>男：エアコン、つけようか。</li>
+<li>女：そんなに寒くないんじゃないの？</li>
+</ul></div>
+</div>
+
+<div class="section hidden" data-example="ans-8">
+<div class="section-title">ステップアップ問題1</div>
+<div class="q-text q-prompt">IV 「課題理解」のスキルを学ぼう</div>
+<div class="question" data-qkey="ans-8-1" data-answer="">
+<div class="q-text q-prompt"><span class="q-num">1</span>音声を聞いて、答えを書いてください。</div>
+<input class="answer-input" type="text" name="ans-8-1" placeholder="答えを書いてください">
+<p class="q-feedback" id="feedback-ans-8-1" role="status"></p>
+</div>
+<button type="button" class="btn-submit btn-grade-extra" data-extra-example="ans-8">採点</button>
+<div class="script-block extra-answer-block" id="script-ans-8"><h3>解答・解説</h3><p><strong>(1) 答え：3</strong></p>
+<p>女の人と男の人が家で旅行の準備をしています。女の人はこの後何をかばんに入れますか。</p>
+<ul>
+<li>女：久しぶりの旅行、楽しみね。ね、カメラは？</li>
+<li>男：もうかばんに入ってるよ。だけど、電池がまだだから、後で忘れずに入れないと。</li>
+<li>女：あ、わたしの引き出しにあるから、入れておくね。あ、水着も入れなくちゃ。</li>
+<li>男：僕さっき入れたところ。あとは、着替え、入れないとな。</li>
+<li>女：わたしも入れたんだけど。それから帽子も忘れないほうがいいよ。わたしは一番最初に入れたんだ。あ、ビデオ、忘れた！</li>
+<li>男：カメラがあるから、それはいいんじゃない？　それに水の中じゃ使えないよ。</li>
+<li>女：ああ、そうだね。</li>
+</ul>
+<p><strong>(2) 答え：4</strong></p>
+<p>男の学生と先生が発表の準備をしています。男の学生はどのように机を並べますか。</p>
+<ul>
+<li>学生：発表の時の席なんですけど、授業の時と同じように、横に3列並べておいていいでしょうか。</li>
+<li>先生：うーん、そうですね。後で話し合いがあるので、横じゃないほうがいいかもしれませんね。前の時は四角に並べたんですけど、前の人が見にくそうだったので、今回は丸にしておきましょうか。</li>
+<li>学生：そうすると、発表する人の方を見にくい人がいるんじゃないかと思いますが。</li>
+<li>先生：そうですね。じゃ、前の方だけ並べないでおきましょう。</li>
+<li>学生：わかりました。</li>
+</ul>
+<p><strong>(3) 答え：1</strong></p>
+<p>男の人と女の人がバーベキューの準備について話しています。男の人は何を準備しますか。</p>
+<ul>
+<li>男：そろそろバーベキューの準備、考えないといけませんね。</li>
+<li>女：そうですね。まず道具を借りないと。あしたバーベキュー場に電話して頼んでおきましょうか。</li>
+<li>男：あ、うちにおおぜいで使えるのがあるんです。古いのでよかったら……。</li>
+<li>女：じゃ、お願いしていいですか。それから、コップやお皿は……。</li>
+<li>男：あ、それもキャンプ用のがありますよ。でも、何人来るんでしょうか。</li>
+<li>女：全部で20人ぐらいです。</li>
+<li>男：それじゃ、全然足りないなあ。</li>
+<li>女：洗うのも大変なので、紙皿と紙コップにしませんか。食べ物と飲み物を買うときに、ついでに用意しますね。</li>
+</ul>
+<p><strong>(4) 答え：1</strong></p>
+<p>先生が学生にあしたの工場見学について話しています。学生はあした、何を持っていかなければなりませんか。</p>
+<ul>
+<li>男：えー、あしたの自動車工場の見学ですが、工場の人にインタビューをして、後でまとめます。自分たちで考えた質問の紙を忘れないようにしてください。もちろんペンもね。それから、お菓子や飲み物を持っていこうと思っているかもしれませんが、工場の中では食べたり飲んだりできません。食べられるのはバスの中だけなので、持っていきたい人はかばんに入れて、バスの中に置いておいてください。お弁当とお茶は学校で用意します。</li>
+</ul>
+<p><strong>(5) 答え：2</strong></p>
+<p>温泉の受付で男の人が係の人と話しています。男の人は受付でいくら払いますか。</p>
+<ul>
+<li>男：すみません。大人1人、お願いします。</li>
+<li>女：はい。700円です。えーと、学生さんですか。学生証をお持ちでしたら、500円になりますが。</li>
+<li>男：そうですか。</li>
+<li>女：それから、タオルが必要でしたら、100円、お願いします。</li>
+<li>男：タオルはあります。</li>
+<li>女：あ、そうですか。それと、中に入ってからロッカーを使うときは、100円を入れてください。使った後で戻ってきますので、忘れずにお取りください。</li>
+<li>男：わかりました。</li>
+</ul></div>
+</div>
+
+<div class="section hidden" data-example="ans-9">
+<div class="section-title">練習2</div>
+<div class="q-text q-prompt">IV 「課題理解」のスキルを学ぼう</div>
+<div class="question" data-qkey="ans-9-1" data-answer="">
+<div class="q-text q-prompt"><span class="q-num">1</span>音声を聞いて、答えを書いてください。</div>
+<input class="answer-input" type="text" name="ans-9-1" placeholder="答えを書いてください">
+<p class="q-feedback" id="feedback-ans-9-1" role="status"></p>
+</div>
+<button type="button" class="btn-submit btn-grade-extra" data-extra-example="ans-9">採点</button>
+<div class="script-block extra-answer-block" id="script-ans-9"><h3>解答・解説</h3><p><strong>(1) 答え：2</strong></p>
+<p>男の人と女の人がパーティーの後で話しています。男の人はこの後まず何をしますか。</p>
+<ul>
+<li>男：今日のパーティー、楽しかったですね。さて、後片付け、しましょうか。僕、いす、片付けますね。</li>
+<li>女：わたし、お皿を洗いますから、先に使ったお皿を運ぶの、手伝ってくれますか。その後でテーブルもふかないと。</li>
+<li>男：わかりました。ごみはどうしましょうか。</li>
+<li>女：缶やペットボトルを分けないといけないので、最後に2人で分けて、外に運びましょう。</li>
+<li>男：じゃ、さっそくやりましょう。</li>
+</ul>
+<p><strong>(2) 答え：3</strong></p>
+<p>会社で男の人と女の人が話しています。女の人はこの後すぐ何をしますか。</p>
+<ul>
+<li>男：じゃ、これから岡山電気に行ってきます。3時頃には戻ると思うけど、もしいない間に、次度の仕事のことで松下さんがいらっしゃったら、この書類、渡しておいてもらえるかな。松下さんには連絡してあるから。</li>
+<li>女：はい。これをお渡しするだけでいいんですね。</li>
+<li>男：あ、これ、コピー取っておくの忘れた。悪いんだけど、すぐに1部取って、僕の机の上に置いておいてくれる？</li>
+<li>女：わかりました。</li>
+<li>男：来週の会議の資料は今週中に頼むよ。</li>
+<li>女：はい。</li>
+</ul>
+<p><strong>(3) 答え：2</strong></p>
+<p>女の人がカードの作り方について説明しています。このグループの人たちは、これからまず何をしますか。</p>
+<ul>
+<li>女：今日は、誕生日や記念日などに送るカードを作りたいと思います。カードの色は赤、白、黒、緑、青と黄色の6色あります。このカードには写真や絵を持ってきてくださいとお願いしました。皆さん、お持ちですか。まず最初にその写真や絵に合う色のカードを1枚選んでください。それに写真や絵をはりましょう。それから、こちらのペンを使って、あいさつの言葉を書きます。最後にこちらのテープとシール、スタンプなどで飾りをつけます。どれでも好きなのを使ってください。</li>
+</ul>
+<p><strong>(4) 答え：2</strong></p>
+<p>うちで夫と妻が話しています。夫はこれからまず何をしますか。</p>
+<ul>
+<li>妻：ちょっと、コンビニに行って、たばこ買ってくるよ。</li>
+<li>女：あ、その前にミケにご飯やってくれる？　さっきから、おなかかせてニャーニャー鳴いてるから。こっち、ちょっと手が離せないんだ。</li>
+<li>男：うん、わかった。</li>
+<li>女：あ、いけない。しょうゆなくなっちゃった。</li>
+<li>男：コンビニで買ってこようか。</li>
+<li>女：うーん、いつも使ってるの、コンビニにはないんだよね。じゃ、後で買い物に行くからいいわ。あ、そうそう、コンビニに行くならこの荷物、出してきてほしいんだけど。木村さんに本を送る約束したの。</li>
+<li>男：え？　コンビニから？</li>
+<li>女：そう。宅配便でね。住所はこれ。</li>
+<li>男：うん、じゃ、行ってきます。</li>
+</ul>
+<p><strong>(5) 答え：2</strong></p>
+<p>学校で先生が話しています。女の学生はまず何をしなければなりませんか。</p>
+<ul>
+<li>先生：えーと、先週は自分の性格について説明する作文を書きましたね。今日はまずそれを直しましょう。その後、みんなの前で1人ずつ発表してもらいます。発表を聞く人は、今から配るこの紙に感想を書いてください。</li>
+<li>学生：先生、わたし、先週休んでしまったんですが。</li>
+<li>先生：じゃ、今から発表のメモを作ってください。自分の性格を紹介したいところ1つと、それがよくわかる例を書きましょう。アイディアだけでいいです。それを見ながら発表してください。</li>
+<li>学生：わかりました。</li>
+</ul></div>
+</div>
+
+<div class="section hidden" data-example="ans-10">
+<div class="section-title">確認問題</div>
+<div class="q-text q-prompt">IV 「課題理解」のスキルを学ぼう</div>
+<div class="question" data-qkey="ans-10-1" data-answer="">
+<div class="q-text q-prompt"><span class="q-num">1</span>音声を聞いて、答えを書いてください。</div>
+<input class="answer-input" type="text" name="ans-10-1" placeholder="答えを書いてください">
+<p class="q-feedback" id="feedback-ans-10-1" role="status"></p>
+</div>
+<button type="button" class="btn-submit btn-grade-extra" data-extra-example="ans-10">採点</button>
+<div class="script-block extra-answer-block" id="script-ans-10"><h3>解答・解説</h3><p><strong>(1) 答え：2</strong></p>
+<p>会社で女の人と男の人が地震が起きたときのための準備について話しています。女の人はこの後何を注文しますか。</p>
+<ul>
+<li>女：あの、地震が起きたときのために用意しておく物のことなんですけど。</li>
+<li>男：あー、今週注文しなくちゃいけないんだったね。えーと、これが今ある物のリストだね。食料と水はそろそろ古いんじゃないかな。</li>
+<li>女：じゃ、新しいのが要りますね。</li>
+<li>男：うん。毛布や懐中電灯はどのぐらいある？　5点ずつかな……。毛布はもっとあったほうがいいから、あと10枚頼んでよ。</li>
+<li>女：ラジオは3台しかないんですが。</li>
+<li>男：まあ、それだけあればいいと思うよ。</li>
+<li>女：わかりました。</li>
+</ul>
+<p><strong>(2) 答え：1</strong></p>
+<p>男の人と女の人が市民会館で絵本の勉強会の準備をしています。女の人はこれから何をしますか。</p>
+<ul>
+<li>男：あしたの親子絵本教室、よろしくお願いしますね。先生に頼まれた本はもう準備してある？</li>
+<li>女：はい、先生から言われた本は図書コーナーから借りて、そろえてあります。そのほかの本も何かこちらで用意しておいたほうがいいでしょうか。</li>
+<li>男：いや、言われた本だけでいいかな。先生も何冊か持ってきてくださるらしいし……。あ、そうだ。後でもう一度聞きたい人のためにビデオを撮っておいたらいいね。</li>
+<li>女：そうですね。でも、先生にお聞きしてからでないと……ビデオの準備はすぐできるんですけど。</li>
+<li>男：あ、そうだね。じゃ、先生がいらっしゃったら聞いてみて。OKだったらビデオを準備して。</li>
+<li>女：あの、当日では失礼じゃないでしょうか。</li>
+<li>男：それもそうだね。じゃ、悪いけど、先生に電話してみて。会場の準備は朝9時からで十分だね。</li>
+</ul>
+<p><strong>(3) 答え：1</strong></p>
+<p>女の人が講師に説明しています。講師は部屋に来て最初に何をしなければなりませんか。</p>
+<ul>
+<li>女：このたびはカルチャーセンターの講師をお引き受けくださいましてありがとうございます。半年間よろしくお願いいたします。こちらのお部屋が講師室でございます。8時半にかぎを開けて、エアコンを入れておきます。おいでになったら、まずこちらのノートにサインをお願いします。あちらにコーヒーと新聞のコーナーがありますので、ご自由にお使いください。あ、それから、お昼ご飯ですが、近くに食堂がありませんので、お弁当が必要な場合はあちらに書いてある電話番号に予約の電話をなさってください。12時にここに運んできてくれます。</li>
+</ul></div>
+</div>
+
+</div>
+
+</div>
+
+<div class="result-panel" id="resultPanel">
+<h2 id="resultTitle"></h2>
+<div class="result-score" id="resultScore"></div>
+<div class="result-detail" id="resultDetail"></div>
+<button type="button" class="btn-submit" onclick="location.reload()">最初からやり直す</button>
+</div>
+
+</div>
+
+<script>
+(function () {
+  const correct = { q1: '2', q2: '2', q3: '2', q4: '2', q5a: '3', q5b: '2' };
+  const labels = { q1: '問1', q2: '問2', q3: '問3', q4: '問4', q5a: '問5（1）', q5b: '問5（2）' };
+  const keys = Object.keys(correct);
+
+  const exampleMap = { '1': ['q1'], '2': ['q2'], '3': ['q3'], '4': ['q4'], '5': ['q5a', 'q5b'] };
+  const EXAMPLE_TOTAL = 5;
+  const SCORE_TOTAL = keys.length;
+
+  const graded = {};
+  keys.forEach(function (k) { graded[k] = false; });
+
+  const gradedExample = { '1': false, '2': false, '3': false, '4': false, '5': false };
+
+  function resetQuizState() {
+    const form = document.getElementById('quizForm');
+    form.querySelectorAll('input[type="radio"]').forEach(function (inp) {
+      inp.checked = false;
+      inp.disabled = false;
+    });
+    form.querySelectorAll('.answer-input').forEach(function (inp) {
+      inp.value = '';
+      inp.disabled = false;
+    });
+    form.querySelectorAll('.question').forEach(function (q) {
+      q.classList.remove('graded');
+    });
+    form.querySelectorAll('.option').forEach(function (opt) {
+      opt.classList.remove('correct', 'wrong');
+    });
+    form.querySelectorAll('.q-feedback').forEach(function (el) {
+      el.className = 'q-feedback';
+      el.setAttribute('role', 'status');
+    });
+    form.querySelectorAll('.script-block').forEach(function (el) {
+      el.classList.remove('show');
+    });
+    document.querySelectorAll('.btn-grade-example').forEach(function (btn) {
+      btn.disabled = false;
+      btn.classList.remove('hidden');
+    });
+    document.querySelectorAll('.btn-grade-extra').forEach(function (btn) {
+      btn.disabled = false;
+      btn.classList.remove('hidden');
+    });
+    keys.forEach(function (k) {
+      graded[k] = false;
+    });
+    for (let i = 1; i <= EXAMPLE_TOTAL; i++) {
+      gradedExample[String(i)] = false;
+    }
+  }
+
+  function showFullResult() {
+    let score = 0;
+    keys.forEach(function (k) {
+      const sel = document.querySelector('input[name="' + k + '"]:checked');
+      if (sel && sel.value === correct[k]) score++;
+    });
+    const pct = Math.round((score / SCORE_TOTAL) * 100);
+    const resultPanel = document.getElementById('resultPanel');
+    document.getElementById('resultScore').textContent = score + ' / ' + SCORE_TOTAL + '（' + pct + '%）';
+
+    const titleEl = document.getElementById('resultTitle');
+    const scoreEl = document.getElementById('resultScore');
+    scoreEl.className = 'result-score';
+    if (pct >= 90) {
+      titleEl.textContent = '🎉 全例題の採点が終わりました！';
+      scoreEl.classList.add('excellent');
+    } else if (pct >= 70) {
+      titleEl.textContent = '👍 よくできました！';
+      scoreEl.classList.add('good');
+    } else if (pct >= 50) {
+      titleEl.textContent = '📝 もう少し！';
+      scoreEl.classList.add('fair');
+    } else {
+      titleEl.textContent = '💪 がんばりましょう！';
+      scoreEl.classList.add('poor');
+    }
+
+    const detail = document.getElementById('resultDetail');
+    detail.innerHTML = '';
+    keys.forEach(function (k) {
+      const sel = document.querySelector('input[name="' + k + '"]:checked');
+      const ok = sel && sel.value === correct[k];
+      const div = document.createElement('div');
+      div.className = 'result-item';
+      div.innerHTML =
+        '<div class="label">' + labels[k] + '</div><div class="value">' +
+        (ok ? '○ 正解' : '× 正解は ' + correct[k]) +
+        '</div>';
+      detail.appendChild(div);
+    });
+
+    resultPanel.classList.add('show');
+    resultPanel.scrollIntoView({ behavior: 'smooth' });
+  }
+
+  function gradeSingleQuestion(key) {
+    const sel = document.querySelector('input[name="' + key + '"]:checked');
+    const ans = correct[key];
+    const isOk = Boolean(sel) && sel.value === ans;
+
+    const opts = document.querySelectorAll('input[name="' + key + '"]');
+    opts.forEach(function (o) {
+      const p = o.parentElement;
+      p.classList.remove('correct', 'wrong');
+      if (o.value === ans) p.classList.add('correct');
+      else if (sel && o.checked && o.value !== ans) p.classList.add('wrong');
+    });
+
+    const fb = document.getElementById('feedback-' + key);
+    fb.className = 'q-feedback show ' + (isOk ? 'ok' : 'ng');
+    if (!sel) {
+      fb.textContent = '未選択です（正解は ' + ans + ' 番）。';
+    } else if (isOk) {
+      fb.textContent = '正解です。';
+    } else {
+      fb.textContent = '不正解です（正解は ' + ans + ' 番）。';
+    }
+
+    const qEl = document.querySelector('.question[data-qkey="' + key + '"]');
+    if (qEl) qEl.classList.add('graded');
+    opts.forEach(function (o) { o.disabled = true; });
+
+    graded[key] = true;
+  }
+
+  function gradeExample(ex) {
+    if (gradedExample[ex]) return;
+
+    const qKeys = exampleMap[ex];
+    qKeys.forEach(function (k) {
+      gradeSingleQuestion(k);
+    });
+
+    gradedExample[ex] = true;
+
+    const btn = document.querySelector('.btn-grade-example[data-example="' + ex + '"]');
+    if (btn) {
+      btn.disabled = true;
+      btn.classList.add('hidden');
+    }
+
+    qKeys.forEach(function (k) {
+      const scriptEl = document.getElementById('script-' + k);
+      if (scriptEl) scriptEl.classList.add('show');
+    });
+
+    const firstScript = document.getElementById('script-' + qKeys[0]);
+    if (firstScript) firstScript.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+
+    const allExamplesDone = ['1', '2', '3', '4', '5'].every(function (e) { return gradedExample[e]; });
+    if (allExamplesDone) showFullResult();
+  }
+
+  document.querySelectorAll('.btn-grade-example').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      gradeExample(btn.getAttribute('data-example'));
+    });
+  });
+
+  function showFloorQuiz(ex) {
+    document.getElementById('floor-menu').classList.add('hidden');
+    document.getElementById('floor-quiz').classList.remove('hidden');
+    document.querySelectorAll('#quizForm .section[data-example]').forEach(function (sec) {
+      sec.classList.toggle('hidden', sec.getAttribute('data-example') !== ex);
+    });
+    window.scrollTo(0, 0);
+  }
+
+  function showFloorMenu() {
+    resetQuizState();
+    document.getElementById('floor-menu').classList.remove('hidden');
+    document.getElementById('floor-quiz').classList.add('hidden');
+    document.getElementById('resultPanel').classList.remove('show');
+  }
+
+  document.querySelectorAll('.btn-pick-example[data-example]').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      showFloorQuiz(btn.getAttribute('data-example'));
+    });
+  });
+
+  function gradeExtraSection(ex) {
+    const sec = document.querySelector('.section[data-example="' + ex + '"]');
+    if (!sec) return;
+    sec.querySelectorAll('.question').forEach(function (q) {
+      const key = q.getAttribute('data-qkey');
+      const ans = q.getAttribute('data-answer') || '';
+      const fb = document.getElementById('feedback-' + key);
+      const textInput = q.querySelector('.answer-input');
+      let ok = false;
+      let selected = false;
+
+      if (textInput) {
+        selected = textInput.value.trim().length > 0;
+        ok = ans ? textInput.value.trim() === ans : false;
+        textInput.disabled = true;
+      } else {
+        const opts = q.querySelectorAll('input[type="radio"]');
+        const sel = q.querySelector('input[type="radio"]:checked');
+        selected = Boolean(sel);
+        ok = Boolean(sel && ans && sel.value === ans);
+        opts.forEach(function (o) {
+          const p = o.parentElement;
+          p.classList.remove('correct', 'wrong');
+          if (ans && o.value === ans) p.classList.add('correct');
+          else if (sel && o.checked && ans && o.value !== ans) p.classList.add('wrong');
+          o.disabled = true;
+        });
+      }
+
+      q.classList.add('graded');
+      if (fb) {
+        if (!ans) {
+          fb.className = 'q-feedback show ok';
+          fb.textContent = '解答・解説を確認してください。';
+        } else if (!selected) {
+          fb.className = 'q-feedback show ng';
+          fb.textContent = '未回答です（正解は ' + ans + '）。';
+        } else if (ok) {
+          fb.className = 'q-feedback show ok';
+          fb.textContent = '正解です。';
+        } else {
+          fb.className = 'q-feedback show ng';
+          fb.textContent = '不正解です（正解は ' + ans + '）。';
+        }
+      }
+    });
+    const btn = sec.querySelector('.btn-grade-extra');
+    if (btn) {
+      btn.disabled = true;
+      btn.classList.add('hidden');
+    }
+    const scriptEl = document.getElementById('script-' + ex);
+    if (scriptEl) {
+      scriptEl.classList.add('show');
+      scriptEl.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
+  }
+
+  document.querySelectorAll('.btn-grade-extra').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      gradeExtraSection(btn.getAttribute('data-extra-example'));
+    });
+  });
+
+  document.getElementById('btnBackToMenu').addEventListener('click', showFloorMenu);
+})();
+</script>
+</body>
+</html>
