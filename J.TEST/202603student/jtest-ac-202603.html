@@ -39,6 +39,11 @@ ruby{ruby-align:center}
 .option.correct label{border-color:#48bb78!important;background:#f0fff4!important;color:#276749!important}
 .option.wrong label{border-color:#fc8181!important;background:#fff5f5!important;color:#9b2c2c!important}
 .reading-passage{background:#f5f5f5;border-left:3px solid #000;padding:16px;margin:12px 0;border-radius:0 8px 8px 0;font-size:.95em;line-height:1.9;white-space:pre-wrap;border:1px solid #000;color:#000}
+.reading-group{display:flex;flex-direction:column;gap:12px;margin-bottom:28px;padding-bottom:28px;border-bottom:2px solid #000}
+.reading-group:last-child{border-bottom:none;margin-bottom:0;padding-bottom:0}
+.reading-group>.reading-passage{position:sticky;top:var(--sticky-top,120px);max-height:40vh;overflow-y:auto;-webkit-overflow-scrolling:touch;margin:0;z-index:5;flex-shrink:0}
+.reading-group .reading-questions .question{border-bottom:1px solid #000;padding:16px 0}
+.reading-group .reading-questions .question:last-child{border-bottom:none}
 .btn-submit{display:block;width:100%;min-height:48px;padding:16px;background:#f5f5f5;color:#000;border:2px solid #000;border-radius:12px;font-size:1.1em;font-weight:bold;cursor:pointer;transition:transform .2s;margin-top:24px;touch-action:manipulation;-webkit-user-select:none;user-select:none}
 .btn-submit:hover{transform:translateY(-2px);background:#f5f5f5}
 .btn-submit:disabled{opacity:.5;cursor:not-allowed;transform:none}
@@ -1041,6 +1046,54 @@ detail.innerHTML=`
 document.getElementById('submitBtn').disabled=true;
 panel.scrollIntoView({behavior:'smooth'});
 }
+function initReadingGroups(){
+const header=document.querySelector('header');
+const setTop=()=>{if(header)document.documentElement.style.setProperty('--sticky-top',(header.offsetHeight+8)+'px');};
+setTop();window.addEventListener('resize',setTop);
+document.querySelectorAll('.section').forEach(section=>{
+if(!section.querySelector('.reading-passage'))return;
+const directPassages=[...section.querySelectorAll(':scope > .reading-passage')];
+if(directPassages.length){
+directPassages.forEach(passage=>{
+const questions=[];
+let sib=passage.nextElementSibling;
+while(sib&&!sib.classList.contains('reading-passage')){
+if(sib.classList.contains('question'))questions.push(sib);
+sib=sib.nextElementSibling;
+}
+if(!questions.length)return;
+const group=document.createElement('div');
+group.className='reading-group';
+const qWrap=document.createElement('div');
+qWrap.className='reading-questions';
+section.insertBefore(group,passage);
+group.appendChild(passage);
+group.appendChild(qWrap);
+questions.forEach(q=>qWrap.appendChild(q));
+});
+return;
+}
+const questions=[...section.querySelectorAll(':scope > .question')];
+if(!questions.length)return;
+const groups=[];let current=null;
+questions.forEach(q=>{
+const passage=q.querySelector(':scope > .reading-passage');
+if(passage){current={passage,questions:[]};groups.push(current);passage.remove();}
+if(current)current.questions.push(q);
+});
+groups.forEach(g=>{
+const group=document.createElement('div');
+group.className='reading-group';
+group.appendChild(g.passage);
+const qWrap=document.createElement('div');
+qWrap.className='reading-questions';
+group.appendChild(qWrap);
+section.insertBefore(group,g.questions[0]);
+g.questions.forEach(q=>qWrap.appendChild(q));
+});
+});
+}
+initReadingGroups();
 startTimer();
 </script>
 </body>

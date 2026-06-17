@@ -258,6 +258,27 @@ const setTop=()=>{if(header)document.documentElement.style.setProperty('--sticky
 setTop();window.addEventListener('resize',setTop);
 document.querySelectorAll('.section').forEach(section=>{
 if(!section.querySelector('.reading-passage'))return;
+const directPassages=[...section.querySelectorAll(':scope > .reading-passage')];
+if(directPassages.length){
+directPassages.forEach(passage=>{
+const questions=[];
+let sib=passage.nextElementSibling;
+while(sib&&!sib.classList.contains('reading-passage')){
+if(sib.classList.contains('question'))questions.push(sib);
+sib=sib.nextElementSibling;
+}
+if(!questions.length)return;
+const group=document.createElement('div');
+group.className='reading-group';
+const qWrap=document.createElement('div');
+qWrap.className='reading-questions';
+section.insertBefore(group,passage);
+group.appendChild(passage);
+group.appendChild(qWrap);
+questions.forEach(q=>qWrap.appendChild(q));
+});
+return;
+}
 const questions=[...section.querySelectorAll(':scope > .question')];
 if(!questions.length)return;
 const groups=[];let current=null;
