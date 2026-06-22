@@ -1,0 +1,793 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<title>N4 読解 練習テスト（全5回・各約10分）</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;-webkit-tap-highlight-color:transparent}
+body{font-family:'Hiragino Kaku Gothic ProN','Hiragino Sans','Noto Sans JP',Meiryo,sans-serif;background:#f0f4f8;color:#1a202c;line-height:1.7;padding:env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left)}
+.container{max-width:800px;margin:0 auto;padding:20px}
+/* テスト中は横幅を広く使い、本文(左)・問題(右)の左右分割を活かす */
+body:has(#view-work:not([hidden])) .container{max-width:1180px}
+/* ふりがな（漢字のみに付与） */
+ruby{ruby-align:center;white-space:nowrap}
+rt{font-size:.58em;font-weight:400;line-height:1.1;color:inherit}
+#view-hub[hidden],#view-work[hidden]{display:none!important}
+/* ── header (hub & work share the same gradient header) ── */
+header{background:linear-gradient(135deg,#2b6cb0 0%,#2c5282 100%);color:#fff;padding:24px;border-radius:16px;margin-bottom:24px;text-align:center;position:sticky;top:0;z-index:100;box-shadow:0 4px 15px rgba(43,108,176,.4)}
+header h1{font-size:1.45em;margin-bottom:4px}
+header p{font-size:.9em;margin-top:8px;opacity:.95}
+.header-info{display:flex;justify-content:center;gap:20px;align-items:center;margin-top:12px;flex-wrap:wrap}
+.timer-group{display:flex;align-items:center;gap:8px}
+.timer{font-size:1.8em;font-weight:bold;font-variant-numeric:tabular-nums}
+.timer.warning{color:#ffd700;animation:pulse 1s infinite}
+.timer.danger{color:#ff4757;animation:pulse .5s infinite}
+.timer.paused{color:#cbd5e0;animation:none}
+.pause-btn{background:rgba(255,255,255,.25);border:none;color:#fff;width:36px;height:36px;border-radius:50%;font-size:1em;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .2s;padding:0;line-height:1;touch-action:manipulation;-webkit-user-select:none;user-select:none}
+.pause-btn:hover{background:rgba(255,255,255,.4)}
+.pause-btn:active{transform:scale(.95)}
+.pause-btn:disabled{opacity:.4;cursor:not-allowed}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.6}}
+.progress-bar{width:160px;height:8px;background:rgba(255,255,255,.3);border-radius:4px;overflow:hidden}
+.progress-fill{height:100%;background:#fff;border-radius:4px;transition:width .3s}
+.score-badge{background:rgba(255,255,255,.2);padding:4px 12px;border-radius:20px;font-size:.9em}
+.header-back{display:flex;justify-content:flex-start;margin-bottom:10px}
+.btn-back{display:inline-flex;align-items:center;gap:6px;min-height:36px;padding:6px 14px;background:rgba(255,255,255,.18);color:#fff;border:1px solid rgba(255,255,255,.5);border-radius:10px;font-size:.9em;font-weight:600;cursor:pointer;touch-action:manipulation;transition:background .2s}
+.btn-back:hover{background:rgba(255,255,255,.32)}
+/* ── work header (一段・中央タイトル・ゆとりあり) ── */
+.work-head{padding:16px 24px;border-radius:16px;margin-bottom:20px;text-align:center}
+.work-head-row{display:flex;align-items:center;gap:16px}
+.work-head h1{flex:1;min-width:0;font-size:1.2em;margin:0;font-weight:700;text-align:center;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.work-head .btn-back{flex-shrink:0;min-height:38px;padding:7px 15px;font-size:1.1em;line-height:1}
+.work-head .timer-group{flex-shrink:0}
+.work-head .timer{font-size:1.5em}
+.work-head .pause-btn{width:34px;height:34px}
+.work-head .progress-bar{width:100%;height:6px;margin-top:14px}
+.section{background:#fff;border-radius:12px;padding:24px;margin-bottom:20px;box-shadow:0 2px 8px rgba(0,0,0,.06)}
+.section-title{font-size:1.1em;font-weight:bold;color:#2b6cb0;border-left:4px solid #2b6cb0;padding-left:12px;margin-bottom:16px}
+.note-box{background:#e8f2fc;border:1px solid #90cdf4;border-radius:10px;padding:14px 16px;margin-bottom:20px;font-size:.88em;color:#1a365d;line-height:1.65}
+.example-picker{display:grid;gap:10px}
+.btn-pick-example{
+  display:block;width:100%;text-align:left;
+  padding:14px 16px;background:#fff;color:#1a202c;
+  border:2px solid #e2e8f0;border-radius:12px;
+  font-size:1em;font-weight:600;cursor:pointer;
+  transition:border-color .2s,background .2s,box-shadow .2s;
+  touch-action:manipulation;line-height:1.45;word-break:break-word;
+}
+.btn-pick-example:hover{border-color:#2b6cb0;background:#f0f7ff;box-shadow:0 2px 8px rgba(43,108,176,.12)}
+.btn-submit{display:block;width:100%;min-height:48px;padding:16px;background:linear-gradient(135deg,#2b6cb0 0%,#2c5282 100%);color:#fff;border:none;border-radius:12px;font-size:1.1em;font-weight:bold;cursor:pointer;transition:transform .2s,box-shadow .2s;margin-top:24px;touch-action:manipulation;-webkit-user-select:none;user-select:none}
+.btn-submit:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(43,108,176,.4)}
+.btn-submit:disabled{opacity:.5;cursor:not-allowed;transform:none;box-shadow:none}
+/* ── material group: 本文(左)を見ながら問題(右)を解く 2カラム ── */
+.material-group{display:flex;gap:20px;align-items:flex-start;background:#fff;border-radius:12px;padding:20px;margin-bottom:20px;box-shadow:0 2px 8px rgba(0,0,0,.06)}
+/* 本文は左側に固定。原則スクロールなしで全文表示（画面に収まらない長文のみ内部スクロール） */
+.passage-pane{flex:0 0 46%;position:sticky;top:var(--sticky-top,150px);max-height:calc(100vh - var(--sticky-top,150px) - 28px);overflow-y:auto;-webkit-overflow-scrolling:touch;z-index:5;background:#f7fafc;border:1px solid #cbd5e0;border-radius:10px;padding:14px 16px}
+.questions-col{flex:1;min-width:0}
+.passage-text{font-size:.92rem;line-height:1.8;color:#1a202c}
+.passage-text p{margin:0 0 .7em}
+.passage-text p:last-child{margin-bottom:0}
+.passage-text .speaker{font-weight:700;color:#1a365d}
+.passage-box{margin:10px 0;padding:12px 14px;background:#fff;border:1px dashed #2b6cb0;border-radius:10px;line-height:1.7}
+.passage-box .box-head{font-weight:700;color:#1a365d;margin-bottom:6px}
+.passage-text table{width:100%;border-collapse:collapse;margin:8px 0;font-size:.85rem}
+.passage-text th,.passage-text td{border:1px solid #cbd5e0;padding:5px 7px;text-align:left;vertical-align:top}
+.passage-text th{background:#e8f2fc;color:#1a365d}
+/* 縦長・狭い画面（iPad縦/スマホ）は上下に積む。本文は上部に固定して問題と同時に見える */
+@media(max-width:820px){
+  .material-group{flex-direction:column}
+  .passage-pane{flex:none;width:100%;position:sticky;top:var(--sticky-top,150px);max-height:38vh;overflow-y:auto}
+}
+.question{padding:16px 0;border-top:1px solid #e2e8f0}
+.questions-col .question:first-child{border-top:none;padding-top:0}
+.q-stem-row{display:flex;align-items:flex-start;gap:12px;margin-bottom:14px}
+.q-num{flex-shrink:0;display:inline-flex;align-items:center;justify-content:center;min-width:32px;height:32px;padding:0 10px;background:#2b6cb0;color:#fff;border-radius:50%;font-weight:700;font-size:.9rem;line-height:1.2}
+.q-stem{flex:1;min-width:0;font-size:1rem;line-height:1.95;font-weight:500}
+.options{display:grid;grid-template-columns:1fr;gap:10px}
+.option input{display:none}
+.option label{display:block;min-height:48px;padding:11px 14px;border:2px solid #e2e8f0;border-radius:8px;cursor:pointer;transition:.15s;font-size:.95rem;line-height:1.95;word-break:break-word;touch-action:manipulation}
+.option label:hover{border-color:#2b6cb0;background:#f0f7ff}
+.option input:checked+label{border-color:#2b6cb0;background:#e8f2fc;color:#1a365d;font-weight:600}
+.option.correct label{border-color:#48bb78!important;background:#f0fff4!important;color:#276749!important}
+.option.wrong label{border-color:#fc8181!important;background:#fff5f5!important;color:#9b2c2c!important}
+.option.picked-nokey label{border-color:#2b6cb0!important;background:#e8f2fc!important;color:#1a365d!important}
+.explanation{display:none;margin-top:8px;padding:10px;background:#fffbeb;border-radius:8px;font-size:.9em;border-left:3px solid #f6ad55;color:#744210}
+.explanation.show{display:block}
+.explanation-answer{font-weight:600}
+.explanation-note{margin-top:8px;padding-top:8px;border-top:1px dashed #ecc94b;font-size:.92em;line-height:1.65;color:#5c4a21}
+.result-panel{background:#fff;border-radius:16px;padding:32px;text-align:center;box-shadow:0 4px 20px rgba(0,0,0,.1);margin-top:24px;display:none}
+.result-panel.show{display:block}
+.result-panel h2{font-size:1.8em;margin-bottom:8px}
+.result-score{font-size:3em;font-weight:bold;margin:16px 0}
+.result-score.excellent{color:#48bb78}
+.result-score.good{color:#2b6cb0}
+.result-score.fair{color:#ed8936}
+.result-score.poor{color:#fc8181}
+.result-detail{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:12px;margin-top:20px}
+.result-item{background:#f7fafc;padding:12px;border-radius:8px}
+.result-item .label{font-size:.8em;color:#718096}
+.result-item .value{font-size:1.2em;font-weight:bold}
+</style>
+</head>
+<body>
+<div class="container">
+<div id="view-hub">
+<header>
+<h1>N4 読解 練習テスト</h1>
+</header>
+<div class="section">
+<div class="section-title">テストを選ぶ</div>
+<div class="example-picker">
+<button type="button" class="btn-pick-example" data-test="0">テスト1　6問・10分</button>
+<button type="button" class="btn-pick-example" data-test="1">テスト2　7問・10分</button>
+<button type="button" class="btn-pick-example" data-test="2">テスト3　6問・10分</button>
+<button type="button" class="btn-pick-example" data-test="3">テスト4　7問・10分</button>
+<button type="button" class="btn-pick-example" data-test="4">テスト5　6問・10分</button>
+</div>
+</div>
+</div>
+
+<div id="view-work" hidden>
+<header class="work-head">
+<div class="work-head-row">
+<button type="button" class="btn-back" id="btnBackHub" aria-label="テスト一覧へ戻る">←</button>
+<h1 id="chromeBlockTitle">N4<ruby>読解<rt>どっかい</rt></ruby>テスト</h1>
+<div class="timer-group">
+<div class="timer" id="workTimer">10:00</div>
+<button type="button" class="pause-btn" id="pauseBtn" aria-label="一時停止">⏸</button>
+</div>
+</div>
+<div class="progress-bar"><div class="progress-fill" id="workProgress" style="width:100%"></div></div>
+</header>
+<div id="test-mount"></div>
+<button type="button" class="btn-submit" id="submitBtnWork"><ruby>採点<rt>さいてん</rt></ruby>する</button>
+<div class="result-panel" id="resultPanel"><h2 id="resultTitle"></h2><div class="result-score" id="resultScore"></div><div class="result-detail" id="resultDetail"></div></div>
+</div>
+
+<div id="block-store" hidden>
+
+<!-- ① バレンタインデー -->
+<div class="block-player" id="block-player-0" data-player-title="No.01（p.200）① バレンタインデー" hidden>
+<div class="q-slide block-passage-once"><div class="slide-card slide-card-passage">
+<div class="passage-text">
+<p>2月14日は、<ruby>日本<rt>にほん</rt></ruby>ではバレンタインデーです。キリスト<ruby>教<rt>きょう</rt></ruby>などの<ruby>特別<rt>とくべつ</rt></ruby>な日ですが、<ruby>日本<rt>にほん</rt></ruby>では、<ruby>女<rt>おんな</rt></ruby>の<ruby>人<rt>ひと</rt></ruby>が<ruby>好<rt>す</rt></ruby>きな<ruby>人<rt>ひと</rt></ruby>にチョコレートをおくる日になりました。<ruby>世界<rt>せかい</rt></ruby>にも<ruby>同<rt>おな</rt></ruby>じような日があります。ブラジルでは、6月12日が<ruby>恋人<rt>こいびと</rt></ruby>の日と<ruby>呼<rt>よ</rt></ruby>ばれる日です。その日は<ruby>男<rt>おとこ</rt></ruby>の<ruby>人<rt>ひと</rt></ruby>と<ruby>女<rt>おんな</rt></ruby>の<ruby>人<rt>ひと</rt></ruby>とがプレゼントをおくります。</p>
+<p>ブラジルでは、<ruby>日本<rt>にほん</rt></ruby>のようにチョコレートではなく、<ruby>写真<rt>しゃしん</rt></ruby><ruby>立<rt>た</rt></ruby>てに<ruby>写真<rt>しゃしん</rt></ruby>を<ruby>入<rt>い</rt></ruby>れて、プレゼントするそうです。</p>
+</div>
+</div></div>
+<div class="q-slide" data-slide-index="1"><div class="slide-card slide-card-question"><div class="question" data-qid="1" data-scored="1"><div class="q-stem-row"><span class="q-num">1</span><div class="q-stem">ブラジルでは、だれがだれに<ruby>何<rt>なに</rt></ruby>をおくりますか。</div></div><div class="options">
+<div class="option" data-correct="0"><input type="radio" name="q1" id="q1_1" value="1"><label for="q1_1">1. <ruby>女<rt>おんな</rt></ruby>の<ruby>人<rt>ひと</rt></ruby>が<ruby>好<rt>す</rt></ruby>きな<ruby>男<rt>おとこ</rt></ruby>の<ruby>人<rt>ひと</rt></ruby>にチョコレートをおくります。</label></div>
+<div class="option" data-correct="0"><input type="radio" name="q1" id="q1_2" value="2"><label for="q1_2">2. <ruby>男<rt>おとこ</rt></ruby>の<ruby>人<rt>ひと</rt></ruby>が<ruby>好<rt>す</rt></ruby>きな<ruby>女<rt>おんな</rt></ruby>の<ruby>人<rt>ひと</rt></ruby>にチョコレートをおくります。</label></div>
+<div class="option" data-correct="1"><input type="radio" name="q1" id="q1_3" value="3"><label for="q1_3">3. <ruby>恋人<rt>こいびと</rt></ruby>が<ruby>恋人<rt>こいびと</rt></ruby>に<ruby>写真<rt>しゃしん</rt></ruby><ruby>立<rt>た</rt></ruby>てをおくります。</label></div>
+<div class="option" data-correct="0"><input type="radio" name="q1" id="q1_4" value="4"><label for="q1_4">4. <ruby>恋人<rt>こいびと</rt></ruby>が<ruby>恋人<rt>こいびと</rt></ruby>にチョコレートをおくります。</label></div>
+</div><div class="explanation"><div class="explanation-answer"><ruby>正解<rt>せいかい</rt></ruby>：3. <ruby>恋人<rt>こいびと</rt></ruby>が<ruby>恋人<rt>こいびと</rt></ruby>に<ruby>写真<rt>しゃしん</rt></ruby><ruby>立<rt>た</rt></ruby>てをおくります。</div><div class="explanation-note">ブラジルの「<ruby>恋人<rt>こいびと</rt></ruby>の日」は、<ruby>男<rt>おとこ</rt></ruby>の<ruby>人<rt>ひと</rt></ruby>と<ruby>女<rt>おんな</rt></ruby>の<ruby>人<rt>ひと</rt></ruby>（<ruby>恋人<rt>こいびと</rt></ruby>どうし）が<ruby>写真<rt>しゃしん</rt></ruby><ruby>立<rt>た</rt></ruby>てに<ruby>写真<rt>しゃしん</rt></ruby>を<ruby>入<rt>い</rt></ruby>れて<ruby>贈<rt>おく</rt></ruby>り<ruby>合<rt>あ</rt></ruby>う。</div></div></div></div></div>
+</div>
+
+<!-- ② フィリピンのお正月 -->
+<div class="block-player" id="block-player-1" data-player-title="No.02（p.201）② フィリピンのお正月" hidden>
+<div class="q-slide block-passage-once"><div class="slide-card slide-card-passage">
+<div class="passage-text">
+<p>フィリピンのお<ruby>正月<rt>しょうがつ</rt></ruby>はとてもにぎやかです。12月31日は、<ruby>家族<rt>かぞく</rt></ruby>みんなが<ruby>集<rt>あつ</rt></ruby>まって、12<ruby>時<rt>じ</rt></ruby>になるのを<ruby>待<rt>ま</rt></ruby>ちます。いろいろなところで<ruby>花火<rt>はなび</rt></ruby>をします。12<ruby>時<rt>じ</rt></ruby>にたくさんの<ruby>人<rt>ひと</rt></ruby>が、<ruby>大声<rt>おおごえ</rt></ruby>で<ruby>歌<rt>うた</rt></ruby>います。<ruby>太鼓<rt>たいこ</rt></ruby>など<ruby>楽器<rt>がっき</rt></ruby>をならしてにぎやかにします。</p>
+<p>パーティーが<ruby>大好<rt>だいす</rt></ruby>きなフィリピンの<ruby>人<rt>ひと</rt></ruby>たちは、12月のクリスマスから1月のお<ruby>正月<rt>しょうがつ</rt></ruby>まで、<ruby>毎日<rt>まいにち</rt></ruby>パーティーをします。<ruby>一年<rt>いちねん</rt></ruby>のはじめにパーティーをたくさんして、これから、<ruby>一年<rt>いちねん</rt></ruby>がんばろうという<ruby>気持<rt>きも</rt></ruby>ちになります。</p>
+</div>
+</div></div>
+<div class="q-slide" data-slide-index="1"><div class="slide-card slide-card-question"><div class="question" data-qid="2" data-scored="1"><div class="q-stem-row"><span class="q-num">2</span><div class="q-stem">フィリピンでは12月31日の12<ruby>時<rt>じ</rt></ruby>になったら、<ruby>何<rt>なに</rt></ruby>をしますか。</div></div><div class="options">
+<div class="option" data-correct="0"><input type="radio" name="q2" id="q2_1" value="1"><label for="q2_1">1. みんなが<ruby>集<rt>あつ</rt></ruby>まります。</label></div>
+<div class="option" data-correct="0"><input type="radio" name="q2" id="q2_2" value="2"><label for="q2_2">2. <ruby>太鼓<rt>たいこ</rt></ruby>の<ruby>音<rt>おと</rt></ruby>を<ruby>待<rt>ま</rt></ruby>ちます。</label></div>
+<div class="option" data-correct="1"><input type="radio" name="q2" id="q2_3" value="3"><label for="q2_3">3. <ruby>花火<rt>はなび</rt></ruby>をしたり<ruby>歌<rt>うた</rt></ruby>ったりします。</label></div>
+<div class="option" data-correct="0"><input type="radio" name="q2" id="q2_4" value="4"><label for="q2_4">4. パーティーをします。</label></div>
+</div><div class="explanation"><div class="explanation-answer"><ruby>正解<rt>せいかい</rt></ruby>：3. <ruby>花火<rt>はなび</rt></ruby>をしたり<ruby>歌<rt>うた</rt></ruby>ったりします。</div><div class="explanation-note">12<ruby>時<rt>じ</rt></ruby>になると、いろいろなところで<ruby>花火<rt>はなび</rt></ruby>をし、たくさんの<ruby>人<rt>ひと</rt></ruby>が<ruby>大声<rt>おおごえ</rt></ruby>で<ruby>歌<rt>うた</rt></ruby>う。</div></div></div></div></div>
+</div>
+
+<!-- ③ けいたいメール -->
+<div class="block-player" id="block-player-2" data-player-title="No.03（p.202）③ けいたいメール" hidden>
+<div class="q-slide block-passage-once"><div class="slide-card slide-card-passage">
+<div class="passage-text">
+<p><ruby>日本語教室<rt>にほんごきょうしつ</rt></ruby>を<ruby>休<rt>やす</rt></ruby>んでいるカルロスに、のりこからメールが<ruby>届<rt>とど</rt></ruby>きました。</p>
+<div class="passage-box"><div class="box-head">のりこからのメール</div>カルロスさん、こんにちは。<ruby>今日<rt>きょう</rt></ruby>、どうして<ruby>来<rt>こ</rt></ruby>なかったの? ずっと<ruby>待<rt>ま</rt></ruby>っていました。<ruby>今月<rt>こんげつ</rt></ruby>は、3<ruby>回<rt>かい</rt></ruby><ruby>休<rt>やす</rt></ruby>みました。<ruby>来週<rt>らいしゅう</rt></ruby>は、ゲームをしたり、お<ruby>茶<rt>ちゃ</rt></ruby>を<ruby>飲<rt>の</rt></ruby>んだりします。みんなで<ruby>待<rt>ま</rt></ruby>っているから、<ruby>来<rt>き</rt></ruby>てください。<br>のりこ</div>
+<p>ピーターからもメールが<ruby>届<rt>とど</rt></ruby>きました。</p>
+<div class="passage-box"><div class="box-head">ピーターからのメール</div>カルロス、さびしいです。どうして<ruby>日本語教室<rt>にほんごきょうしつ</rt></ruby>を3<ruby>回<rt>かい</rt></ruby>も<ruby>休<rt>やす</rt></ruby>みましたか? <ruby>仕事<rt>しごと</rt></ruby>がいそがしいですか? <ruby>心配<rt>しんぱい</rt></ruby>です…。<br>ピーター</div>
+</div>
+</div></div>
+<div class="q-slide" data-slide-index="1"><div class="slide-card slide-card-question"><div class="question" data-qid="3" data-scored="1"><div class="q-stem-row"><span class="q-num">3</span><div class="q-stem">どうして、ピーターは、さびしいと<ruby>言<rt>い</rt></ruby>っていますか。</div></div><div class="options">
+<div class="option" data-correct="0"><input type="radio" name="q3" id="q3_1" value="1"><label for="q3_1">1. カルロスがピーターの<ruby>家<rt>いえ</rt></ruby>に<ruby>来<rt>こ</rt></ruby>ないから</label></div>
+<div class="option" data-correct="0"><input type="radio" name="q3" id="q3_2" value="2"><label for="q3_2">2. カルロスの<ruby>仕事<rt>しごと</rt></ruby>がいそがしいから</label></div>
+<div class="option" data-correct="1"><input type="radio" name="q3" id="q3_3" value="3"><label for="q3_3">3. カルロスが<ruby>日本語教室<rt>にほんごきょうしつ</rt></ruby>を3<ruby>回<rt>かい</rt></ruby>も<ruby>休<rt>やす</rt></ruby>んだから</label></div>
+<div class="option" data-correct="0"><input type="radio" name="q3" id="q3_4" value="4"><label for="q3_4">4. カルロスが<ruby>病気<rt>びょうき</rt></ruby>で<ruby>国<rt>くに</rt></ruby>へ<ruby>帰<rt>かえ</rt></ruby>るから</label></div>
+</div><div class="explanation"><div class="explanation-answer"><ruby>正解<rt>せいかい</rt></ruby>：3. カルロスが<ruby>日本語教室<rt>にほんごきょうしつ</rt></ruby>を3<ruby>回<rt>かい</rt></ruby>も<ruby>休<rt>やす</rt></ruby>んだから</div><div class="explanation-note">ピーターのメールに「どうして<ruby>日本語教室<rt>にほんごきょうしつ</rt></ruby>を3<ruby>回<rt>かい</rt></ruby>も<ruby>休<rt>やす</rt></ruby>みましたか?」とある。</div></div></div></div></div>
+<div class="q-slide" data-slide-index="2"><div class="slide-card slide-card-question"><div class="question" data-qid="4" data-scored="1"><div class="q-stem-row"><span class="q-num">4</span><div class="q-stem">カルロスから<ruby>届<rt>とど</rt></ruby>いた<ruby>返事<rt>へんじ</rt></ruby>はどれですか。</div></div><div class="options">
+<div class="option" data-correct="1"><input type="radio" name="q4" id="q4_1" value="1"><label for="q4_1">1. メール、ありがとう。<ruby>来週<rt>らいしゅう</rt></ruby>は<ruby>行<rt>い</rt></ruby>きます。</label></div>
+<div class="option" data-correct="0"><input type="radio" name="q4" id="q4_2" value="2"><label for="q4_2">2. メール、ありがとう。<ruby>今月<rt>こんげつ</rt></ruby>は<ruby>休<rt>やす</rt></ruby>まないで、ごめんなさい。</label></div>
+<div class="option" data-correct="0"><input type="radio" name="q4" id="q4_3" value="3"><label for="q4_3">3. メール、ありがとう。<ruby>仕事<rt>しごと</rt></ruby>を<ruby>代<rt>か</rt></ruby>わってくれて、ありがとう。</label></div>
+<div class="option" data-correct="0"><input type="radio" name="q4" id="q4_4" value="4"><label for="q4_4">4. メール、ありがとう。<ruby>工場<rt>こうじょう</rt></ruby>を<ruby>休<rt>やす</rt></ruby>んで、ごめんなさい。</label></div>
+</div><div class="explanation"><div class="explanation-answer"><ruby>正解<rt>せいかい</rt></ruby>：1. メール、ありがとう。<ruby>来週<rt>らいしゅう</rt></ruby>は<ruby>行<rt>い</rt></ruby>きます。</div><div class="explanation-note">「<ruby>来<rt>き</rt></ruby>てください」というメールへの<ruby>返事<rt>へんじ</rt></ruby>として<ruby>自然<rt>しぜん</rt></ruby>なのは「<ruby>来週<rt>らいしゅう</rt></ruby>は<ruby>行<rt>い</rt></ruby>きます」。</div></div></div></div></div>
+</div>
+
+<!-- ④ アルバイトのチラシ -->
+<div class="block-player" id="block-player-3" data-player-title="No.04（p.204）④ アルバイトのチラシ" hidden>
+<div class="q-slide block-passage-once"><div class="slide-card slide-card-passage">
+<div class="passage-text">
+<p>マリアは、<ruby>駅前<rt>えきまえ</rt></ruby>でアルバイトのチラシをもらいました。チラシは<ruby>漢字<rt>かんじ</rt></ruby>が<ruby>多<rt>おお</rt></ruby>くて、よくわからなかったので、<ruby>日本語教室<rt>にほんごきょうしつ</rt></ruby>に<ruby>持<rt>も</rt></ruby>っていきました。</p>
+<div class="passage-box"><div class="box-head">チラシ</div><ruby>急募<rt>きゅうぼ</rt></ruby><br>まじめで<ruby>明<rt>あか</rt></ruby>るい<ruby>人<rt>ひと</rt></ruby><br>ホール<br>11:00〜15:00／16:00〜20:00<br><ruby>時間<rt>じかん</rt></ruby>、<ruby>時給<rt>じきゅう</rt></ruby>、<ruby>応相談<rt>おうそうだん</rt></ruby><br><ruby>中国料理<rt>ちゅうごくりょうり</rt></ruby>　<ruby>万福<rt>ばんぷく</rt></ruby>　<ruby>電話<rt>でんわ</rt></ruby> 123-4567</div>
+<p>「<ruby>急募<rt>きゅうぼ</rt></ruby>」は、いそいで<ruby>探<rt>さが</rt></ruby>していること、「<ruby>時給<rt>じきゅう</rt></ruby>」は1<ruby>時間<rt>じかん</rt></ruby><ruby>働<rt>はたら</rt></ruby>いたときにもらうお<ruby>金<rt>かね</rt></ruby>のこと、「<ruby>応相談<rt>おうそうだん</rt></ruby>」は、<ruby>働<rt>はたら</rt></ruby>く<ruby>時間<rt>じかん</rt></ruby>や<ruby>時給<rt>じきゅう</rt></ruby>のことなどは<ruby>相談<rt>そうだん</rt></ruby>して<ruby>決<rt>き</rt></ruby>めるということ、と、のりこが<ruby>教<rt>おし</rt></ruby>えてくれました。「<ruby>万福<rt>ばんぷく</rt></ruby>」は<ruby>家<rt>いえ</rt></ruby>から<ruby>近<rt>ちか</rt></ruby>いし、<ruby>働<rt>はたら</rt></ruby>く<ruby>時間<rt>じかん</rt></ruby>も<ruby>短<rt>みじか</rt></ruby>いので、マリアは<ruby>明日<rt>あした</rt></ruby>、<ruby>電話<rt>でんわ</rt></ruby>しようと<ruby>思<rt>おも</rt></ruby>いました。</p>
+</div>
+</div></div>
+<div class="q-slide" data-slide-index="1"><div class="slide-card slide-card-question"><div class="question" data-qid="5" data-scored="1"><div class="q-stem-row"><span class="q-num">5</span><div class="q-stem">マリアは、どうしてチラシを<ruby>日本語教室<rt>にほんごきょうしつ</rt></ruby>に<ruby>持<rt>も</rt></ruby>っていきましたか。</div></div><div class="options">
+<div class="option" data-correct="0"><input type="radio" name="q5" id="q5_1" value="1"><label for="q5_1">1. <ruby>漢字<rt>かんじ</rt></ruby>を<ruby>練習<rt>れんしゅう</rt></ruby>するためです。</label></div>
+<div class="option" data-correct="0"><input type="radio" name="q5" id="q5_2" value="2"><label for="q5_2">2. アルバイトができるかどうか<ruby>相談<rt>そうだん</rt></ruby>するためです。</label></div>
+<div class="option" data-correct="1"><input type="radio" name="q5" id="q5_3" value="3"><label for="q5_3">3. チラシには、<ruby>読<rt>よ</rt></ruby>めない<ruby>漢字<rt>かんじ</rt></ruby>が<ruby>多<rt>おお</rt></ruby>かったからです。</label></div>
+<div class="option" data-correct="0"><input type="radio" name="q5" id="q5_4" value="4"><label for="q5_4">4. いい<ruby>仕事<rt>しごと</rt></ruby>か<ruby>悪<rt>わる</rt></ruby>い<ruby>仕事<rt>しごと</rt></ruby>か、のりこに<ruby>聞<rt>き</rt></ruby>くためです。</label></div>
+</div><div class="explanation"><div class="explanation-answer"><ruby>正解<rt>せいかい</rt></ruby>：3. チラシには、<ruby>読<rt>よ</rt></ruby>めない<ruby>漢字<rt>かんじ</rt></ruby>が<ruby>多<rt>おお</rt></ruby>かったからです。</div><div class="explanation-note">「チラシは<ruby>漢字<rt>かんじ</rt></ruby>が<ruby>多<rt>おお</rt></ruby>くて、よくわからなかったので」とある。</div></div></div></div></div>
+<div class="q-slide" data-slide-index="2"><div class="slide-card slide-card-question"><div class="question" data-qid="6" data-scored="1"><div class="q-stem-row"><span class="q-num">6</span><div class="q-stem">どうしてマリアは「<ruby>万福<rt>ばんぷく</rt></ruby>」に<ruby>電話<rt>でんわ</rt></ruby>をしようと<ruby>思<rt>おも</rt></ruby>いましたか。</div></div><div class="options">
+<div class="option" data-correct="0"><input type="radio" name="q6" id="q6_1" value="1"><label for="q6_1">1. アルバイトの<ruby>店<rt>みせ</rt></ruby>をさがっているからです。</label></div>
+<div class="option" data-correct="0"><input type="radio" name="q6" id="q6_2" value="2"><label for="q6_2">2. のりこがいい<ruby>店<rt>みせ</rt></ruby>だと<ruby>言<rt>い</rt></ruby>っているからです。</label></div>
+<div class="option" data-correct="0"><input type="radio" name="q6" id="q6_3" value="3"><label for="q6_3">3. <ruby>急<rt>いそ</rt></ruby>いで<ruby>深<rt>ふか</rt></ruby>く<ruby>探<rt>さが</rt></ruby>しているからです。</label></div>
+<div class="option" data-correct="1"><input type="radio" name="q6" id="q6_4" value="4"><label for="q6_4">4. <ruby>働<rt>はたら</rt></ruby>く<ruby>時間<rt>じかん</rt></ruby>が<ruby>短<rt>みじか</rt></ruby>くて、<ruby>時給<rt>じきゅう</rt></ruby>がいいからです。</label></div>
+</div><div class="explanation"><div class="explanation-answer"><ruby>正解<rt>せいかい</rt></ruby>：4. <ruby>働<rt>はたら</rt></ruby>く<ruby>時間<rt>じかん</rt></ruby>が<ruby>短<rt>みじか</rt></ruby>くて、<ruby>時給<rt>じきゅう</rt></ruby>がいいからです。</div><div class="explanation-note">「<ruby>家<rt>いえ</rt></ruby>から<ruby>近<rt>ちか</rt></ruby>いし、<ruby>働<rt>はたら</rt></ruby>く<ruby>時間<rt>じかん</rt></ruby>も<ruby>短<rt>みじか</rt></ruby>いので」<ruby>電話<rt>でんわ</rt></ruby>しようと<ruby>思<rt>おも</rt></ruby>った。</div></div></div></div></div>
+</div>
+
+<!-- ⑤ 料理教室 -->
+<div class="block-player" id="block-player-4" data-player-title="No.05（p.206）⑤ 料理教室" hidden>
+<div class="q-slide block-passage-once"><div class="slide-card slide-card-passage">
+<div class="passage-text">
+<p><span class="speaker"><ruby>先生<rt>せんせい</rt></ruby>：</span><ruby>今日<rt>きょう</rt></ruby>は、<ruby>簡単<rt>かんたん</rt></ruby>でおいしい<ruby>牛丼<rt>ぎゅうどん</rt></ruby>を<ruby>作<rt>つく</rt></ruby>ってみましょう。</p>
+<p><span class="speaker"><ruby>生徒<rt>せいと</rt></ruby>：</span>はい、よろしくお<ruby>願<rt>ねが</rt></ruby>いします。</p>
+<p><span class="speaker"><ruby>先生<rt>せんせい</rt></ruby>：</span><ruby>材料<rt>ざいりょう</rt></ruby>は<ruby>牛肉<rt>ぎゅうにく</rt></ruby>と<ruby>玉<rt>たま</rt></ruby>ねぎ、グリーンピース、それと、さとう、しょうゆ、<ruby>油<rt>あぶら</rt></ruby>です。まず、<ruby>材料<rt>ざいりょう</rt></ruby>を<ruby>適当<rt>てきとう</rt></ruby>な<ruby>大<rt>おお</rt></ruby>きさに<ruby>切<rt>き</rt></ruby>ります。<ruby>肉<rt>にく</rt></ruby>と<ruby>玉<rt>たま</rt></ruby>ねぎを<ruby>煮<rt>に</rt></ruby>る<ruby>前<rt>まえ</rt></ruby>にフライパンを<ruby>熱<rt>あつ</rt></ruby>くしておきましょう。</p>
+<p><span class="speaker"><ruby>生徒<rt>せいと</rt></ruby>：</span><ruby>全部<rt>ぜんぶ</rt></ruby>いっしょに<ruby>入<rt>い</rt></ruby>れてもいいんですか。</p>
+<p><span class="speaker"><ruby>先生<rt>せんせい</rt></ruby>：</span><ruby>肉<rt>にく</rt></ruby>と<ruby>玉<rt>たま</rt></ruby>ねぎだけです。<ruby>牛肉<rt>ぎゅうにく</rt></ruby>は<ruby>長<rt>なが</rt></ruby>い<ruby>時間<rt>じかん</rt></ruby>いためると、かたくなっておいしくなりません。さとう、しょうゆ、お<ruby>酒<rt>さけ</rt></ruby>を<ruby>入<rt>い</rt></ruby>れます。このあと、<ruby>長<rt>なが</rt></ruby>い<ruby>時間<rt>じかん</rt></ruby><ruby>入<rt>い</rt></ruby>れてはいけません。</p>
+<p><span class="speaker"><ruby>生徒<rt>せいと</rt></ruby>：</span><ruby>先生<rt>せんせい</rt></ruby>、グリーンピースをいつ<ruby>入<rt>い</rt></ruby>れてもいいですか。</p>
+<p><span class="speaker"><ruby>先生<rt>せんせい</rt></ruby>：</span>はい、<ruby>火<rt>ひ</rt></ruby>を<ruby>止<rt>と</rt></ruby>めてから<ruby>入<rt>い</rt></ruby>れてください。</p>
+<p><span class="speaker"><ruby>生徒<rt>せいと</rt></ruby>：</span>おいしそうですね。</p>
+</div>
+</div></div>
+<div class="q-slide" data-slide-index="1"><div class="slide-card slide-card-question"><div class="question" data-qid="7" data-scored="1"><div class="q-stem-row"><span class="q-num">7</span><div class="q-stem"><ruby>先生<rt>せんせい</rt></ruby>はどう<ruby>作<rt>つく</rt></ruby>りますか。（<ruby>作<rt>つく</rt></ruby>る<ruby>順番<rt>じゅんばん</rt></ruby>）</div></div><div class="options">
+<div class="option" data-correct="0"><input type="radio" name="q7" id="q7_1" value="1"><label for="q7_1">1. フライパンを<ruby>熱<rt>あつ</rt></ruby>くする→<ruby>肉<rt>にく</rt></ruby>と<ruby>野菜<rt>やさい</rt></ruby>を<ruby>切<rt>き</rt></ruby>る→さとうしょうゆを<ruby>入<rt>い</rt></ruby>れる→いためる→グリーンピースを<ruby>入<rt>い</rt></ruby>れる→<ruby>火<rt>ひ</rt></ruby>を<ruby>止<rt>と</rt></ruby>める</label></div>
+<div class="option" data-correct="0"><input type="radio" name="q7" id="q7_2" value="2"><label for="q7_2">2. <ruby>肉<rt>にく</rt></ruby>と<ruby>野菜<rt>やさい</rt></ruby>を<ruby>切<rt>き</rt></ruby>る→フライパンを<ruby>熱<rt>あつ</rt></ruby>くする→いためる→さとうしょうゆを<ruby>入<rt>い</rt></ruby>れる→グリーンピースを<ruby>入<rt>い</rt></ruby>れる→<ruby>火<rt>ひ</rt></ruby>を<ruby>止<rt>と</rt></ruby>める</label></div>
+<div class="option" data-correct="1"><input type="radio" name="q7" id="q7_3" value="3"><label for="q7_3">3. <ruby>肉<rt>にく</rt></ruby>と<ruby>野菜<rt>やさい</rt></ruby>を<ruby>切<rt>き</rt></ruby>る→フライパンを<ruby>熱<rt>あつ</rt></ruby>くする→いためる→さとうしょうゆを<ruby>入<rt>い</rt></ruby>れる→<ruby>火<rt>ひ</rt></ruby>を<ruby>止<rt>と</rt></ruby>める→グリーンピースを<ruby>入<rt>い</rt></ruby>れる</label></div>
+<div class="option" data-correct="0"><input type="radio" name="q7" id="q7_4" value="4"><label for="q7_4">4. フライパンを<ruby>熱<rt>あつ</rt></ruby>くする→<ruby>肉<rt>にく</rt></ruby>と<ruby>野菜<rt>やさい</rt></ruby>を<ruby>切<rt>き</rt></ruby>る→いためる→さとうしょうゆを<ruby>入<rt>い</rt></ruby>れる→グリーンピースを<ruby>入<rt>い</rt></ruby>れる→<ruby>火<rt>ひ</rt></ruby>を<ruby>止<rt>と</rt></ruby>める</label></div>
+</div><div class="explanation"><div class="explanation-answer"><ruby>正解<rt>せいかい</rt></ruby>：3</div><div class="explanation-note">「<ruby>火<rt>ひ</rt></ruby>を<ruby>止<rt>と</rt></ruby>めてからグリーンピースを<ruby>入<rt>い</rt></ruby>れてください」とあるので、<ruby>火<rt>ひ</rt></ruby>を<ruby>止<rt>と</rt></ruby>める→グリーンピースの<ruby>順<rt>じゅん</rt></ruby>。</div></div></div></div></div>
+<div class="q-slide" data-slide-index="2"><div class="slide-card slide-card-question"><div class="question" data-qid="8" data-scored="1"><div class="q-stem-row"><span class="q-num">8</span><div class="q-stem">どうして<ruby>牛肉<rt>ぎゅうにく</rt></ruby>は<ruby>長<rt>なが</rt></ruby>い<ruby>時間<rt>じかん</rt></ruby>いためてはいけませんか。</div></div><div class="options">
+<div class="option" data-correct="0"><input type="radio" name="q8" id="q8_1" value="1"><label for="q8_1">1. グリーンピースを<ruby>入<rt>い</rt></ruby>れるから</label></div>
+<div class="option" data-correct="0"><input type="radio" name="q8" id="q8_2" value="2"><label for="q8_2">2. さとうしょうゆ、お<ruby>酒<rt>さけ</rt></ruby>を<ruby>入<rt>い</rt></ruby>れるから</label></div>
+<div class="option" data-correct="1"><input type="radio" name="q8" id="q8_3" value="3"><label for="q8_3">3. かたくなっておいしくなくなるから</label></div>
+<div class="option" data-correct="0"><input type="radio" name="q8" id="q8_4" value="4"><label for="q8_4">4. <ruby>玉<rt>たま</rt></ruby>ねぎをにすぎてしまうから</label></div>
+</div><div class="explanation"><div class="explanation-answer"><ruby>正解<rt>せいかい</rt></ruby>：3. かたくなっておいしくなくなるから</div><div class="explanation-note">「<ruby>牛肉<rt>ぎゅうにく</rt></ruby>は<ruby>長<rt>なが</rt></ruby>い<ruby>時間<rt>じかん</rt></ruby>いためると、かたくなっておいしくなりません」とある。</div></div></div></div></div>
+</div>
+
+<!-- ⑥ 温泉が大好き -->
+<div class="block-player" id="block-player-5" data-player-title="No.06（p.208）⑥ 温泉が大好き" hidden>
+<div class="q-slide block-passage-once"><div class="slide-card slide-card-passage">
+<div class="passage-text">
+<p>ぼくは、<ruby>一度<rt>いちど</rt></ruby>、<ruby>温泉<rt>おんせん</rt></ruby>に<ruby>行<rt>い</rt></ruby>ってみたいと<ruby>思<rt>おも</rt></ruby>っていました。</p>
+<p><ruby>日本<rt>にほん</rt></ruby>は、<ruby>火山<rt>かざん</rt></ruby>が<ruby>多<rt>おお</rt></ruby>い<ruby>国<rt>くに</rt></ruby>です。その<ruby>火山<rt>かざん</rt></ruby>の<ruby>下<rt>した</rt></ruby>、<ruby>土<rt>つち</rt></ruby>の<ruby>中<rt>なか</rt></ruby>で25℃<ruby>以上<rt>いじょう</rt></ruby>になったお<ruby>湯<rt>ゆ</rt></ruby>がでてくることがあります。それが<ruby>温泉<rt>おんせん</rt></ruby>です。<ruby>北<rt>きた</rt></ruby>から<ruby>南<rt>みなみ</rt></ruby>まで<ruby>日本中<rt>にほんじゅう</rt></ruby>にあります。</p>
+<p><ruby>温泉<rt>おんせん</rt></ruby>には、<ruby>体<rt>からだ</rt></ruby>にいい<ruby>成分<rt>せいぶん</rt></ruby>が<ruby>入<rt>はい</rt></ruby>っているそうです。<ruby>昔<rt>むかし</rt></ruby>から、<ruby>人々<rt>ひとびと</rt></ruby>は<ruby>一日<rt>いちにち</rt></ruby>に<ruby>何回<rt>なんかい</rt></ruby>もつかって、<ruby>体<rt>からだ</rt></ruby>を<ruby>温<rt>あたた</rt></ruby>めながら、つかれをとったり<ruby>病気<rt>びょうき</rt></ruby>をなおしたりしました。これは、<ruby>自然<rt>しぜん</rt></ruby>からもらう<ruby>大切<rt>たいせつ</rt></ruby>なおくり<ruby>物<rt>もの</rt></ruby>です。</p>
+<p><ruby>去年<rt>きょねん</rt></ruby>、<ruby>親<rt>おや</rt></ruby>が<ruby>日本<rt>にほん</rt></ruby>に<ruby>来<rt>き</rt></ruby>たとき、いっしょに<ruby>行<rt>い</rt></ruby>きました。ぼくたちは、<ruby>温泉<rt>おんせん</rt></ruby>が<ruby>大好<rt>だいす</rt></ruby>きになりました。<ruby>今<rt>いま</rt></ruby>では<ruby>温泉<rt>おんせん</rt></ruby>に<ruby>入<rt>はい</rt></ruby>るのは<ruby>気分<rt>きぶん</rt></ruby>がいいです。ぼくは、<ruby>広<rt>ひろ</rt></ruby>い<ruby>温泉<rt>おんせん</rt></ruby>に<ruby>入<rt>はい</rt></ruby>って<ruby>外<rt>そと</rt></ruby>の<ruby>景色<rt>けしき</rt></ruby>を<ruby>見<rt>み</rt></ruby>るのは<ruby>大好<rt>だいす</rt></ruby>きです。</p>
+</div>
+</div></div>
+<div class="q-slide" data-slide-index="1"><div class="slide-card slide-card-question"><div class="question" data-qid="9" data-scored="1"><div class="q-stem-row"><span class="q-num">9</span><div class="q-stem"><ruby>温泉<rt>おんせん</rt></ruby>はどこにありますか。</div></div><div class="options">
+<div class="option" data-correct="0"><input type="radio" name="q9" id="q9_1" value="1"><label for="q9_1">1. <ruby>日本<rt>にほん</rt></ruby>の<ruby>南<rt>みなみ</rt></ruby>の<ruby>方<rt>ほう</rt></ruby>にあります。</label></div>
+<div class="option" data-correct="1"><input type="radio" name="q9" id="q9_2" value="2"><label for="q9_2">2. <ruby>日本<rt>にほん</rt></ruby>のいろいろなところにあります。</label></div>
+<div class="option" data-correct="0"><input type="radio" name="q9" id="q9_3" value="3"><label for="q9_3">3. <ruby>日本<rt>にほん</rt></ruby>の<ruby>北<rt>きた</rt></ruby>の<ruby>方<rt>ほう</rt></ruby>にあります。</label></div>
+<div class="option" data-correct="0"><input type="radio" name="q9" id="q9_4" value="4"><label for="q9_4">4. <ruby>日本<rt>にほん</rt></ruby>の<ruby>真ん中<rt>まんなか</rt></ruby>にあります。</label></div>
+</div><div class="explanation"><div class="explanation-answer"><ruby>正解<rt>せいかい</rt></ruby>：2. <ruby>日本<rt>にほん</rt></ruby>のいろいろなところにあります。</div><div class="explanation-note">「<ruby>北<rt>きた</rt></ruby>から<ruby>南<rt>みなみ</rt></ruby>まで<ruby>日本中<rt>にほんじゅう</rt></ruby>にあります」とある。</div></div></div></div></div>
+<div class="q-slide" data-slide-index="2"><div class="slide-card slide-card-question"><div class="question" data-qid="10" data-scored="1"><div class="q-stem-row"><span class="q-num">10</span><div class="q-stem"><ruby>温泉<rt>おんせん</rt></ruby>に<ruby>入<rt>はい</rt></ruby>ると、<ruby>体<rt>からだ</rt></ruby>にどんないいことがありますか。</div></div><div class="options">
+<div class="option" data-correct="1"><input type="radio" name="q10" id="q10_1" value="1"><label for="q10_1">1. つかれがとれます。</label></div>
+<div class="option" data-correct="0"><input type="radio" name="q10" id="q10_2" value="2"><label for="q10_2">2. <ruby>景色<rt>けしき</rt></ruby>が<ruby>見<rt>み</rt></ruby>られます。</label></div>
+<div class="option" data-correct="0"><input type="radio" name="q10" id="q10_3" value="3"><label for="q10_3">3. <ruby>親<rt>おや</rt></ruby>がよろこびます。</label></div>
+<div class="option" data-correct="0"><input type="radio" name="q10" id="q10_4" value="4"><label for="q10_4">4. がんばれるようになります。</label></div>
+</div><div class="explanation"><div class="explanation-answer"><ruby>正解<rt>せいかい</rt></ruby>：1. つかれがとれます。</div><div class="explanation-note">「<ruby>体<rt>からだ</rt></ruby>を<ruby>温<rt>あたた</rt></ruby>めながら、つかれをとったり<ruby>病気<rt>びょうき</rt></ruby>をなおしたり」とある。</div></div></div></div></div>
+</div>
+
+<!-- ⑦ インフルエンザ -->
+<div class="block-player" id="block-player-6" data-player-title="No.07（p.210）⑦ インフルエンザ" hidden>
+<div class="q-slide block-passage-once"><div class="slide-card slide-card-passage">
+<div class="passage-text">
+<p><span class="speaker">ピーター：</span>カルロス、どうしたの? <ruby>顔<rt>かお</rt></ruby>が<ruby>赤<rt>あか</rt></ruby>いよ。</p>
+<p><span class="speaker">カルロス：</span><ruby>頭<rt>あたま</rt></ruby>とのどが<ruby>少<rt>すこ</rt></ruby>し<ruby>痛<rt>いた</rt></ruby>いんだ。</p>
+<p><span class="speaker">のりこ：</span><ruby>今<rt>いま</rt></ruby>、インフルエンザがはやっているから、<ruby>気<rt>き</rt></ruby>をつけないといけないよ。</p>
+<p><span class="speaker">カルロス：</span><ruby>会社<rt>かいしゃ</rt></ruby>の<ruby>人<rt>ひと</rt></ruby>が<ruby>二人<rt>ふたり</rt></ruby>、<ruby>休<rt>やす</rt></ruby>んでる。インフルエンザみたい。</p>
+<p><span class="speaker">ピーター：</span>どうして<ruby>熱<rt>ねつ</rt></ruby>があるのに、<ruby>日本語教室<rt>にほんごきょうしつ</rt></ruby>に<ruby>来<rt>き</rt></ruby>たの?</p>
+<p><span class="speaker">カルロス：</span>ピーターに<ruby>借<rt>か</rt></ruby>りたCDを<ruby>返<rt>かえ</rt></ruby>そうと<ruby>思<rt>おも</rt></ruby>ったんだ。これ、<ruby>返<rt>かえ</rt></ruby>すよ。ありがとう。</p>
+<p><span class="speaker">のりこ：</span>もう<ruby>家<rt>いえ</rt></ruby>に<ruby>帰<rt>かえ</rt></ruby>ったらどう? <ruby>家<rt>いえ</rt></ruby>に<ruby>着<rt>つ</rt></ruby>いたら、すぐに<ruby>手<rt>て</rt></ruby>を<ruby>洗<rt>あら</rt></ruby>ってね。うがいをしたほうがいいよ。</p>
+<p><span class="speaker">ピーター：</span>インフルエンザになると、<ruby>高<rt>たか</rt></ruby>い<ruby>熱<rt>ねつ</rt></ruby>が1<ruby>週間<rt>しゅうかん</rt></ruby>くらいついて、<ruby>頭<rt>あたま</rt></ruby>がいたくなるらしいよ。だいじょうぶ?</p>
+<p>…カルロスは、<ruby>家<rt>いえ</rt></ruby>に<ruby>帰<rt>かえ</rt></ruby>って、<ruby>手<rt>て</rt></ruby>を<ruby>洗<rt>あら</rt></ruby>って、ねました。そして、<ruby>明日<rt>あした</rt></ruby>は<ruby>病院<rt>びょういん</rt></ruby>へ<ruby>行<rt>い</rt></ruby>こうと<ruby>思<rt>おも</rt></ruby>いながら、ねました。</p>
+</div>
+</div></div>
+<div class="q-slide" data-slide-index="1"><div class="slide-card slide-card-question"><div class="question" data-qid="11" data-scored="1"><div class="q-stem-row"><span class="q-num">11</span><div class="q-stem">カルロスはどうして<ruby>日本語教室<rt>にほんごきょうしつ</rt></ruby>に<ruby>来<rt>き</rt></ruby>ましたか。</div></div><div class="options">
+<div class="option" data-correct="0"><input type="radio" name="q11" id="q11_1" value="1"><label for="q11_1">1. <ruby>教室<rt>きょうしつ</rt></ruby>のみんなに<ruby>会<rt>あ</rt></ruby>うためです。</label></div>
+<div class="option" data-correct="1"><input type="radio" name="q11" id="q11_2" value="2"><label for="q11_2">2. ピーターにCDを<ruby>返<rt>かえ</rt></ruby>すためです。</label></div>
+<div class="option" data-correct="0"><input type="radio" name="q11" id="q11_3" value="3"><label for="q11_3">3. <ruby>日本語<rt>にほんご</rt></ruby>を<ruby>勉強<rt>べんきょう</rt></ruby>するためです。</label></div>
+<div class="option" data-correct="0"><input type="radio" name="q11" id="q11_4" value="4"><label for="q11_4">4. <ruby>会社<rt>かいしゃ</rt></ruby>の<ruby>人<rt>ひと</rt></ruby>が<ruby>二人<rt>ふたり</rt></ruby><ruby>休<rt>やす</rt></ruby>んでいるためです。</label></div>
+</div><div class="explanation"><div class="explanation-answer"><ruby>正解<rt>せいかい</rt></ruby>：2. ピーターにCDを<ruby>返<rt>かえ</rt></ruby>すためです。</div><div class="explanation-note">「ピーターに<ruby>借<rt>か</rt></ruby>りたCDを<ruby>返<rt>かえ</rt></ruby>そうと<ruby>思<rt>おも</rt></ruby>ったんだ」とある。</div></div></div></div></div>
+<div class="q-slide" data-slide-index="2"><div class="slide-card slide-card-question"><div class="question" data-qid="12" data-scored="1"><div class="q-stem-row"><span class="q-num">12</span><div class="q-stem">のりこは、カルロスに<ruby>何<rt>なに</rt></ruby>をしたほうがいいと<ruby>言<rt>い</rt></ruby>いましたか。</div></div><div class="options">
+<div class="option" data-correct="1"><input type="radio" name="q12" id="q12_1" value="1"><label for="q12_1">1. <ruby>家<rt>いえ</rt></ruby>に<ruby>帰<rt>かえ</rt></ruby>ったら、<ruby>手<rt>て</rt></ruby>を<ruby>洗<rt>あら</rt></ruby>ってうがいをしたほうがいい。</label></div>
+<div class="option" data-correct="0"><input type="radio" name="q12" id="q12_2" value="2"><label for="q12_2">2. <ruby>熱<rt>ねつ</rt></ruby>が<ruby>下<rt>さ</rt></ruby>がったら、<ruby>病院<rt>びょういん</rt></ruby>に<ruby>行<rt>い</rt></ruby>ったほうがいい。</label></div>
+<div class="option" data-correct="0"><input type="radio" name="q12" id="q12_3" value="3"><label for="q12_3">3. <ruby>会社<rt>かいしゃ</rt></ruby>を<ruby>休<rt>やす</rt></ruby>んだほうがいい。</label></div>
+<div class="option" data-correct="0"><input type="radio" name="q12" id="q12_4" value="4"><label for="q12_4">4. <ruby>日本語教室<rt>にほんごきょうしつ</rt></ruby>をやめたほうがいい。</label></div>
+</div><div class="explanation"><div class="explanation-answer"><ruby>正解<rt>せいかい</rt></ruby>：1. <ruby>家<rt>いえ</rt></ruby>に<ruby>帰<rt>かえ</rt></ruby>ったら、<ruby>手<rt>て</rt></ruby>を<ruby>洗<rt>あら</rt></ruby>ってうがいをしたほうがいい。</div><div class="explanation-note">のりこ「<ruby>家<rt>いえ</rt></ruby>に<ruby>着<rt>つ</rt></ruby>いたら、すぐに<ruby>手<rt>て</rt></ruby>を<ruby>洗<rt>あら</rt></ruby>ってね。うがいをしたほうがいいよ」。</div></div></div></div></div>
+<div class="q-slide" data-slide-index="3"><div class="slide-card slide-card-question"><div class="question" data-qid="13" data-scored="1"><div class="q-stem-row"><span class="q-num">13</span><div class="q-stem">インフルエンザの<ruby>人<rt>ひと</rt></ruby>はどうなりますか。</div></div><div class="options">
+<div class="option" data-correct="0"><input type="radio" name="q13" id="q13_1" value="1"><label for="q13_1">1. <ruby>体<rt>からだ</rt></ruby>が<ruby>赤<rt>あか</rt></ruby>くなります。</label></div>
+<div class="option" data-correct="0"><input type="radio" name="q13" id="q13_2" value="2"><label for="q13_2">2. <ruby>頭<rt>あたま</rt></ruby>が<ruby>少<rt>すこ</rt></ruby>し<ruby>痛<rt>いた</rt></ruby>くなります。</label></div>
+<div class="option" data-correct="0"><input type="radio" name="q13" id="q13_3" value="3"><label for="q13_3">3. <ruby>一年中<rt>いちねんじゅう</rt></ruby><ruby>病気<rt>びょうき</rt></ruby>になります。</label></div>
+<div class="option" data-correct="1"><input type="radio" name="q13" id="q13_4" value="4"><label for="q13_4">4. <ruby>高<rt>たか</rt></ruby>い<ruby>熱<rt>ねつ</rt></ruby>が1<ruby>週間<rt>しゅうかん</rt></ruby>くらいつづきます。</label></div>
+</div><div class="explanation"><div class="explanation-answer"><ruby>正解<rt>せいかい</rt></ruby>：4. <ruby>高<rt>たか</rt></ruby>い<ruby>熱<rt>ねつ</rt></ruby>が1<ruby>週間<rt>しゅうかん</rt></ruby>くらいつづきます。</div><div class="explanation-note">「<ruby>高<rt>たか</rt></ruby>い<ruby>熱<rt>ねつ</rt></ruby>が1<ruby>週間<rt>しゅうかん</rt></ruby>くらいついて、<ruby>頭<rt>あたま</rt></ruby>がいたくなるらしい」とある。</div></div></div></div></div>
+</div>
+
+<!-- ⑧ レジ袋の有料化 -->
+<div class="block-player" id="block-player-7" data-player-title="No.08（p.212）⑧ レジ袋の有料化" hidden>
+<div class="q-slide block-passage-once"><div class="slide-card slide-card-passage">
+<div class="passage-text">
+<div class="passage-box"><div class="box-head">レジ<ruby>袋<rt>ふくろ</rt></ruby><ruby>有料化<rt>ゆうりょうか</rt></ruby>のご<ruby>案内<rt>あんない</rt></ruby></div>
+いつも、ABCスーパーをご<ruby>利用<rt>りよう</rt></ruby>いただき、ありがとうございます。<br>
+「<ruby>環境<rt>かんきょう</rt></ruby>にやさしく」をキーワードに、ABCスーパーは、<ruby>社会<rt>しゃかい</rt></ruby>のためにがんばっています。<br>
+<ruby>今<rt>いま</rt></ruby>まで、レジ<ruby>袋<rt>ふくろ</rt></ruby>はお<ruby>金<rt>かね</rt></ruby>をいただいていませんでしたが、10月1日から1<ruby>枚<rt>まい</rt></ruby>5<ruby>円<rt>えん</rt></ruby>いただくことになります。たくさんのレジ<ruby>袋<rt>ふくろ</rt></ruby>が、そのまま<ruby>捨<rt>す</rt></ruby>てられて、ゴミになっています。<ruby>捨<rt>す</rt></ruby>てられるレジ<ruby>袋<rt>ふくろ</rt></ruby>を<ruby>少<rt>すく</rt></ruby>なくするために、<ruby>環境<rt>かんきょう</rt></ruby>にやさしいエコバッグをお<ruby>使<rt>つか</rt></ruby>いください。<br>
+7月1日から9月30日までエコバッグを<ruby>特別<rt>とくべつ</rt></ruby>に200<ruby>円<rt>えん</rt></ruby>で<ruby>売<rt>う</rt></ruby>ります。<ruby>赤<rt>あか</rt></ruby>、<ruby>青<rt>あお</rt></ruby>、<ruby>黄色<rt>きいろ</rt></ruby>の3<ruby>色<rt>しょく</rt></ruby>がございます。10月1日から、<ruby>何度<rt>なんど</rt></ruby>でも<ruby>使<rt>つか</rt></ruby>えます。<br>
+<ruby>環境<rt>かんきょう</rt></ruby>にやさしく、<ruby>社会<rt>しゃかい</rt></ruby>のためにがんばっているABCスーパーを、これからもよろしくお<ruby>願<rt>ねが</rt></ruby>いします。<br>
+2009<ruby>年<rt>ねん</rt></ruby>6月1日　ABCスーパー</div>
+</div>
+</div></div>
+<div class="q-slide" data-slide-index="1"><div class="slide-card slide-card-question"><div class="question" data-qid="14" data-scored="1"><div class="q-stem-row"><span class="q-num">14</span><div class="q-stem">これはだれがだれに<ruby>書<rt>か</rt></ruby>いた<ruby>文<rt>ぶん</rt></ruby>ですか。</div></div><div class="options">
+<div class="option" data-correct="1"><input type="radio" name="q14" id="q14_1" value="1"><label for="q14_1">1. ABCスーパーがお<ruby>客<rt>きゃく</rt></ruby>さんに<ruby>書<rt>か</rt></ruby>いた<ruby>文<rt>ぶん</rt></ruby></label></div>
+<div class="option" data-correct="0"><input type="radio" name="q14" id="q14_2" value="2"><label for="q14_2">2. お<ruby>客<rt>きゃく</rt></ruby>さんがABCスーパーに<ruby>書<rt>か</rt></ruby>いた<ruby>文<rt>ぶん</rt></ruby></label></div>
+<div class="option" data-correct="0"><input type="radio" name="q14" id="q14_3" value="3"><label for="q14_3">3. ABCスーパーが<ruby>社会<rt>しゃかい</rt></ruby>の<ruby>人<rt>ひと</rt></ruby>に<ruby>書<rt>か</rt></ruby>いた<ruby>文<rt>ぶん</rt></ruby></label></div>
+<div class="option" data-correct="0"><input type="radio" name="q14" id="q14_4" value="4"><label for="q14_4">4. ABCスーパーが<ruby>店員<rt>てんいん</rt></ruby>に<ruby>書<rt>か</rt></ruby>いた<ruby>文<rt>ぶん</rt></ruby></label></div>
+</div><div class="explanation"><div class="explanation-answer"><ruby>正解<rt>せいかい</rt></ruby>：1. ABCスーパーがお<ruby>客<rt>きゃく</rt></ruby>さんに<ruby>書<rt>か</rt></ruby>いた<ruby>文<rt>ぶん</rt></ruby></div><div class="explanation-note">「ご<ruby>利用<rt>りよう</rt></ruby>いただきありがとうございます」は<ruby>店<rt>みせ</rt></ruby>がお<ruby>客<rt>きゃく</rt></ruby>さんに<ruby>向<rt>む</rt></ruby>けて<ruby>言<rt>い</rt></ruby>う<ruby>表現<rt>ひょうげん</rt></ruby>。</div></div></div></div></div>
+<div class="q-slide" data-slide-index="2"><div class="slide-card slide-card-question"><div class="question" data-qid="15" data-scored="1"><div class="q-stem-row"><span class="q-num">15</span><div class="q-stem">8月1日のレジ<ruby>袋<rt>ふくろ</rt></ruby>／エコバッグの<ruby>値段<rt>ねだん</rt></ruby>はいくらですか。</div></div><div class="options">
+<div class="option" data-correct="0"><input type="radio" name="q15" id="q15_1" value="1"><label for="q15_1">1. 0<ruby>円<rt>えん</rt></ruby>／5<ruby>円<rt>えん</rt></ruby></label></div>
+<div class="option" data-correct="1"><input type="radio" name="q15" id="q15_2" value="2"><label for="q15_2">2. 0<ruby>円<rt>えん</rt></ruby>／200<ruby>円<rt>えん</rt></ruby></label></div>
+<div class="option" data-correct="0"><input type="radio" name="q15" id="q15_3" value="3"><label for="q15_3">3. 5<ruby>円<rt>えん</rt></ruby>／200<ruby>円<rt>えん</rt></ruby></label></div>
+<div class="option" data-correct="0"><input type="radio" name="q15" id="q15_4" value="4"><label for="q15_4">4. 5<ruby>円<rt>えん</rt></ruby>／500<ruby>円<rt>えん</rt></ruby></label></div>
+</div><div class="explanation"><div class="explanation-answer"><ruby>正解<rt>せいかい</rt></ruby>：2. 0<ruby>円<rt>えん</rt></ruby>／200<ruby>円<rt>えん</rt></ruby></div><div class="explanation-note">レジ<ruby>袋<rt>ふくろ</rt></ruby>が<ruby>有料<rt>ゆうりょう</rt></ruby>（5<ruby>円<rt>えん</rt></ruby>）になるのは10月1日から（8月はまだ0<ruby>円<rt>えん</rt></ruby>）。エコバッグは7/1〜9/30に<ruby>特別<rt>とくべつ</rt></ruby>200<ruby>円<rt>えん</rt></ruby>。</div></div></div></div></div>
+<div class="q-slide" data-slide-index="3"><div class="slide-card slide-card-question"><div class="question" data-qid="16" data-scored="1"><div class="q-stem-row"><span class="q-num">16</span><div class="q-stem">ABCスーパーがレジ<ruby>袋<rt>ふくろ</rt></ruby>を<ruby>有料化<rt>ゆうりょうか</rt></ruby>する<ruby>理由<rt>りゆう</rt></ruby>は<ruby>何<rt>なん</rt></ruby>ですか。</div></div><div class="options">
+<div class="option" data-correct="0"><input type="radio" name="q16" id="q16_1" value="1"><label for="q16_1">1. エコバッグがふえると<ruby>世界<rt>せかい</rt></ruby>の<ruby>環境<rt>かんきょう</rt></ruby>が<ruby>悪<rt>わる</rt></ruby>くなるから</label></div>
+<div class="option" data-correct="0"><input type="radio" name="q16" id="q16_2" value="2"><label for="q16_2">2. ABCスーパーのレジ<ruby>袋<rt>ふくろ</rt></ruby>が<ruby>少<rt>すく</rt></ruby>なくなったから</label></div>
+<div class="option" data-correct="1"><input type="radio" name="q16" id="q16_3" value="3"><label for="q16_3">3. ゴミになったレジ<ruby>袋<rt>ふくろ</rt></ruby>が<ruby>世界<rt>せかい</rt></ruby>の<ruby>環境<rt>かんきょう</rt></ruby>を<ruby>悪<rt>わる</rt></ruby>くするから</label></div>
+<div class="option" data-correct="0"><input type="radio" name="q16" id="q16_4" value="4"><label for="q16_4">4. みんながエコバッグを<ruby>持<rt>も</rt></ruby>つと<ruby>世界<rt>せかい</rt></ruby>の<ruby>環境<rt>かんきょう</rt></ruby>がよくなるから</label></div>
+</div><div class="explanation"><div class="explanation-answer"><ruby>正解<rt>せいかい</rt></ruby>：3. ゴミになったレジ<ruby>袋<rt>ふくろ</rt></ruby>が<ruby>世界<rt>せかい</rt></ruby>の<ruby>環境<rt>かんきょう</rt></ruby>を<ruby>悪<rt>わる</rt></ruby>くするから</div><div class="explanation-note">「たくさんのレジ<ruby>袋<rt>ふくろ</rt></ruby>が<ruby>捨<rt>す</rt></ruby>てられてゴミになっている。<ruby>捨<rt>す</rt></ruby>てられるレジ<ruby>袋<rt>ふくろ</rt></ruby>を<ruby>少<rt>すく</rt></ruby>なくするために」とある。</div></div></div></div></div>
+</div>
+
+<!-- ⑨ 七夕に願いごとを -->
+<div class="block-player" id="block-player-8" data-player-title="No.09（p.214）⑨ 七夕に願いごとを" hidden>
+<div class="q-slide block-passage-once"><div class="slide-card slide-card-passage">
+<div class="passage-text">
+<p><span class="speaker">カルロス：</span>あれは<ruby>何<rt>なん</rt></ruby>ですか。</p>
+<p><span class="speaker">のりこ：</span><ruby>笹<rt>ささ</rt></ruby>です。</p>
+<p><span class="speaker">カルロス：</span><ruby>笹<rt>ささ</rt></ruby>? ああ、<ruby>見<rt>み</rt></ruby>たことがあります。</p>
+<p><span class="speaker">のりこ：</span><ruby>今日<rt>きょう</rt></ruby>は、<ruby>七夕<rt>たなばた</rt></ruby>の<ruby>飾<rt>かざ</rt></ruby>りつけをするのよ。</p>
+<p><span class="speaker">カルロス：</span><ruby>七夕<rt>たなばた</rt></ruby>って<ruby>何<rt>なん</rt></ruby>ですか。</p>
+<p><span class="speaker">のりこ：</span><ruby>私<rt>わたし</rt></ruby>もはっきりわからないけど、<ruby>中国<rt>ちゅうごく</rt></ruby>の<ruby>古<rt>ふる</rt></ruby>い<ruby>話<rt>はなし</rt></ruby>。「ひこぼし」と「おりひめ」という<ruby>恋人<rt>こいびと</rt></ruby>がいて、<ruby>仕事<rt>しごと</rt></ruby>をしなくてはいけないのに、デートばかりしていたそうです。お<ruby>父<rt>とう</rt></ruby>さんはおこって、<ruby>二人<rt>ふたり</rt></ruby>の<ruby>間<rt>あいだ</rt></ruby>に<ruby>大<rt>おお</rt></ruby>きな<ruby>川<rt>かわ</rt></ruby>をつくって、<ruby>会<rt>あ</rt></ruby>えないようにしました。でも、<ruby>二人<rt>ふたり</rt></ruby>は、<ruby>一年<rt>いちねん</rt></ruby>に1<ruby>回<rt>かい</rt></ruby>デートしてもいいことになりました。それが7月7日の<ruby>夜<rt>よる</rt></ruby>なんですって。<ruby>子<rt>こ</rt></ruby>どものころは、7月6日の<ruby>夜<rt>よる</rt></ruby>に「～したい」とか「～になりたい」ということを<ruby>書<rt>か</rt></ruby>いて、<ruby>笹<rt>ささ</rt></ruby>に<ruby>飾<rt>かざ</rt></ruby>って、7月7日の<ruby>朝<rt>あさ</rt></ruby>に<ruby>川<rt>かわ</rt></ruby>に<ruby>流<rt>なが</rt></ruby>したのよ。</p>
+<p><span class="speaker">カルロス：</span>かわいそうですね。<ruby>恋人<rt>こいびと</rt></ruby>は<ruby>毎日<rt>まいにち</rt></ruby><ruby>会<rt>あ</rt></ruby>いたいと<ruby>思<rt>おも</rt></ruby>います。ぼくも<ruby>願<rt>ねが</rt></ruby>いごとを<ruby>書<rt>か</rt></ruby>きます。「お<ruby>父<rt>とう</rt></ruby>さん、<ruby>二人<rt>ふたり</rt></ruby>を<ruby>毎日<rt>まいにち</rt></ruby><ruby>会<rt>あ</rt></ruby>わせてください。」</p>
+</div>
+</div></div>
+<div class="q-slide" data-slide-index="1"><div class="slide-card slide-card-question"><div class="question" data-qid="17" data-scored="1"><div class="q-stem-row"><span class="q-num">17</span><div class="q-stem"><ruby>七夕<rt>たなばた</rt></ruby>の<ruby>話<rt>はなし</rt></ruby>で<ruby>合<rt>あ</rt></ruby>わないのはどれですか。</div></div><div class="options">
+<div class="option" data-correct="0"><input type="radio" name="q17" id="q17_1" value="1"><label for="q17_1">1. <ruby>笹<rt>ささ</rt></ruby>に<ruby>願<rt>ねが</rt></ruby>いごとを<ruby>飾<rt>かざ</rt></ruby>る</label></div>
+<div class="option" data-correct="0"><input type="radio" name="q17" id="q17_2" value="2"><label for="q17_2">2. むかしの<ruby>中国<rt>ちゅうごく</rt></ruby>の<ruby>話<rt>はなし</rt></ruby></label></div>
+<div class="option" data-correct="0"><input type="radio" name="q17" id="q17_3" value="3"><label for="q17_3">3. 「むかしむかし」の<ruby>恋人<rt>こいびと</rt></ruby>の<ruby>話<rt>はなし</rt></ruby></label></div>
+<div class="option" data-correct="1"><input type="radio" name="q17" id="q17_4" value="4"><label for="q17_4">4. <ruby>川<rt>かわ</rt></ruby>でデートをする</label></div>
+</div><div class="explanation"><div class="explanation-answer"><ruby>正解<rt>せいかい</rt></ruby>：4. <ruby>川<rt>かわ</rt></ruby>でデートをする</div><div class="explanation-note"><ruby>二人<rt>ふたり</rt></ruby>は<ruby>天<rt>てん</rt></ruby>の<ruby>川<rt>かわ</rt></ruby>をはさんで<ruby>一年<rt>いちねん</rt></ruby>に1<ruby>回<rt>かい</rt></ruby><ruby>会<rt>あ</rt></ruby>うだけで、「<ruby>川<rt>かわ</rt></ruby>でデート」はしない。</div></div></div></div></div>
+<div class="q-slide" data-slide-index="2"><div class="slide-card slide-card-question"><div class="question" data-qid="18" data-scored="1"><div class="q-stem-row"><span class="q-num">18</span><div class="q-stem">どうして<ruby>二人<rt>ふたり</rt></ruby>は<ruby>一年<rt>いちねん</rt></ruby>に1<ruby>回<rt>かい</rt></ruby>しか<ruby>会<rt>あ</rt></ruby>えないのですか。</div></div><div class="options">
+<div class="option" data-correct="0"><input type="radio" name="q18" id="q18_1" value="1"><label for="q18_1">1. <ruby>仕事<rt>しごと</rt></ruby>がとてもいそがしいから</label></div>
+<div class="option" data-correct="1"><input type="radio" name="q18" id="q18_2" value="2"><label for="q18_2">2. <ruby>二人<rt>ふたり</rt></ruby>の<ruby>間<rt>あいだ</rt></ruby>に<ruby>大<rt>おお</rt></ruby>きな<ruby>川<rt>かわ</rt></ruby>ができてしまったから</label></div>
+<div class="option" data-correct="0"><input type="radio" name="q18" id="q18_3" value="3"><label for="q18_3">3. もう<ruby>好<rt>す</rt></ruby>きじゃなくなってしまったから</label></div>
+<div class="option" data-correct="0"><input type="radio" name="q18" id="q18_4" value="4"><label for="q18_4">4. <ruby>毎日<rt>まいにち</rt></ruby><ruby>会<rt>あ</rt></ruby>わなかったから</label></div>
+</div><div class="explanation"><div class="explanation-answer"><ruby>正解<rt>せいかい</rt></ruby>：2. <ruby>二人<rt>ふたり</rt></ruby>の<ruby>間<rt>あいだ</rt></ruby>に<ruby>大<rt>おお</rt></ruby>きな<ruby>川<rt>かわ</rt></ruby>ができてしまったから</div><div class="explanation-note">お<ruby>父<rt>とう</rt></ruby>さんがおこって、<ruby>二人<rt>ふたり</rt></ruby>の<ruby>間<rt>あいだ</rt></ruby>に<ruby>大<rt>おお</rt></ruby>きな<ruby>川<rt>かわ</rt></ruby>をつくり、<ruby>会<rt>あ</rt></ruby>えないようにした。</div></div></div></div></div>
+<div class="q-slide" data-slide-index="3"><div class="slide-card slide-card-question"><div class="question" data-qid="19" data-scored="1"><div class="q-stem-row"><span class="q-num">19</span><div class="q-stem">カルロスは、どうして<ruby>二人<rt>ふたり</rt></ruby>のことを<ruby>願<rt>ねが</rt></ruby>いごとに<ruby>書<rt>か</rt></ruby>いたのですか。</div></div><div class="options">
+<div class="option" data-correct="0"><input type="radio" name="q19" id="q19_1" value="1"><label for="q19_1">1. <ruby>二人<rt>ふたり</rt></ruby>がお<ruby>父<rt>とう</rt></ruby>さんに<ruby>仕事<rt>しごと</rt></ruby>ばかりさせられているから</label></div>
+<div class="option" data-correct="0"><input type="radio" name="q19" id="q19_2" value="2"><label for="q19_2">2. <ruby>恋人<rt>こいびと</rt></ruby>は<ruby>毎日<rt>まいにち</rt></ruby><ruby>会<rt>あ</rt></ruby>うことができるから</label></div>
+<div class="option" data-correct="1"><input type="radio" name="q19" id="q19_3" value="3"><label for="q19_3">3. <ruby>一年<rt>いちねん</rt></ruby>に1<ruby>回<rt>かい</rt></ruby>しか<ruby>会<rt>あ</rt></ruby>えないことをかわいそうに<ruby>思<rt>おも</rt></ruby>ったから</label></div>
+<div class="option" data-correct="0"><input type="radio" name="q19" id="q19_4" value="4"><label for="q19_4">4. <ruby>二人<rt>ふたり</rt></ruby>がカルロスに<ruby>相談<rt>そうだん</rt></ruby>したから</label></div>
+</div><div class="explanation"><div class="explanation-answer"><ruby>正解<rt>せいかい</rt></ruby>：3. <ruby>一年<rt>いちねん</rt></ruby>に1<ruby>回<rt>かい</rt></ruby>しか<ruby>会<rt>あ</rt></ruby>えないことをかわいそうに<ruby>思<rt>おも</rt></ruby>ったから</div><div class="explanation-note">カルロス「かわいそうですね。<ruby>恋人<rt>こいびと</rt></ruby>は<ruby>毎日<rt>まいにち</rt></ruby><ruby>会<rt>あ</rt></ruby>いたいと<ruby>思<rt>おも</rt></ruby>います」。</div></div></div></div></div>
+</div>
+
+<!-- ⑩ 今度、遊びに来てください -->
+<div class="block-player" id="block-player-9" data-player-title="No.10（p.216）⑩「今度、遊びに来てください」" hidden>
+<div class="q-slide block-passage-once"><div class="slide-card slide-card-passage">
+<div class="passage-text">
+<p>これは、チャン・スウォンさんが<ruby>書<rt>か</rt></ruby>いたスピーチの<ruby>文章<rt>ぶんしょう</rt></ruby>です。</p>
+<p><ruby>私<rt>わたし</rt></ruby>は<ruby>日本<rt>にほん</rt></ruby>へ<ruby>来<rt>き</rt></ruby>て、1<ruby>年<rt>ねん</rt></ruby>になります。<ruby>日本<rt>にほん</rt></ruby>へ<ruby>来<rt>く</rt></ruby>る<ruby>前<rt>まえ</rt></ruby>、<ruby>兄<rt>あに</rt></ruby>が<ruby>日本<rt>にほん</rt></ruby>に<ruby>住<rt>す</rt></ruby>んでいました。<ruby>兄<rt>あに</rt></ruby>は、3<ruby>年<rt>ねん</rt></ruby><ruby>前<rt>まえ</rt></ruby>まで<ruby>日本<rt>にほん</rt></ruby>に<ruby>住<rt>す</rt></ruby>んでいたので、<ruby>日本<rt>にほん</rt></ruby>のことをよく<ruby>話<rt>はな</rt></ruby>します。<ruby>今日<rt>きょう</rt></ruby>は、<ruby>私<rt>わたし</rt></ruby>のとても<ruby>失敗<rt>しっぱい</rt></ruby>した<ruby>話<rt>はなし</rt></ruby>をします。</p>
+<p><ruby>日本<rt>にほん</rt></ruby>に<ruby>来<rt>き</rt></ruby>て3、4か月のある日、<ruby>日本語教室<rt>にほんごきょうしつ</rt></ruby>でYさんが、「<ruby>今度<rt>こんど</rt></ruby>、<ruby>私<rt>わたし</rt></ruby>の<ruby>家<rt>いえ</rt></ruby>へ<ruby>遊<rt>あそ</rt></ruby>びに<ruby>来<rt>き</rt></ruby>てね」と<ruby>言<rt>い</rt></ruby>いました。そのとき、<ruby>私<rt>わたし</rt></ruby>は<ruby>兄<rt>あに</rt></ruby>が<ruby>日本語<rt>にほんご</rt></ruby>の<ruby>助詞<rt>じょし</rt></ruby>がむずかしいって<ruby>言<rt>い</rt></ruby>ったことを<ruby>思<rt>おも</rt></ruby>い<ruby>出<rt>だ</rt></ruby>しました。「<ruby>今度<rt>こんど</rt></ruby>」は「<ruby>今度<rt>こんど</rt></ruby>ごろ（つぎ）」かなと<ruby>考<rt>かんが</rt></ruby>えました。<ruby>私<rt>わたし</rt></ruby>は「はい、<ruby>行<rt>い</rt></ruby>きます」と<ruby>言<rt>い</rt></ruby>いました。</p>
+<p>つぎの<ruby>日曜日<rt>にちようび</rt></ruby>、<ruby>私<rt>わたし</rt></ruby>はおみやげを<ruby>買<rt>か</rt></ruby>って、<ruby>夕方<rt>ゆうがた</rt></ruby>Yさんの<ruby>家<rt>いえ</rt></ruby>へ<ruby>行<rt>い</rt></ruby>きますとYさんに<ruby>電話<rt>でんわ</rt></ruby>しました。Yさんは「<ruby>今<rt>いま</rt></ruby>いそがしいから…」と<ruby>言<rt>い</rt></ruby>いました。うちに<ruby>帰<rt>かえ</rt></ruby>ってから、<ruby>間違<rt>まちが</rt></ruby>いに<ruby>気<rt>き</rt></ruby>がつきました。</p>
+<p>つぎの<ruby>日本語教室<rt>にほんごきょうしつ</rt></ruby>の日、Yさんは<ruby>私<rt>わたし</rt></ruby>に「ごめんなさい」と<ruby>言<rt>い</rt></ruby>って、<ruby>説明<rt>せつめい</rt></ruby>してくれました。「<ruby>今度<rt>こんど</rt></ruby>、<ruby>遊<rt>あそ</rt></ruby>びに<ruby>来<rt>き</rt></ruby>てください」というのは、日にちや<ruby>時間<rt>じかん</rt></ruby>がはっきりではなくて、いつか<ruby>遊<rt>あそ</rt></ruby>びに<ruby>来<rt>き</rt></ruby>てくださいという<ruby>気持<rt>きも</rt></ruby>ちを<ruby>伝<rt>つた</rt></ruby>える<ruby>表現<rt>ひょうげん</rt></ruby>だということです。</p>
+<p>チャン・スウォン</p>
+</div>
+</div></div>
+<div class="q-slide" data-slide-index="1"><div class="slide-card slide-card-question"><div class="question" data-qid="20" data-scored="1"><div class="q-stem-row"><span class="q-num">20</span><div class="q-stem">チャンスウォンさんは「<ruby>今度<rt>こんど</rt></ruby>の<ruby>休<rt>やす</rt></ruby>み」はいつだと<ruby>思<rt>おも</rt></ruby>いましたか。</div></div><div class="options">
+<div class="option" data-correct="0"><input type="radio" name="q20" id="q20_1" value="1"><label for="q20_1">1. つぎの<ruby>土曜日<rt>どようび</rt></ruby></label></div>
+<div class="option" data-correct="1"><input type="radio" name="q20" id="q20_2" value="2"><label for="q20_2">2. つぎの<ruby>日曜日<rt>にちようび</rt></ruby></label></div>
+<div class="option" data-correct="0"><input type="radio" name="q20" id="q20_3" value="3"><label for="q20_3">3. つぎの<ruby>仕事<rt>しごと</rt></ruby>の<ruby>休<rt>やす</rt></ruby>みの日</label></div>
+<div class="option" data-correct="0"><input type="radio" name="q20" id="q20_4" value="4"><label for="q20_4">4. つぎの<ruby>日本語教室<rt>にほんごきょうしつ</rt></ruby>の<ruby>休<rt>やす</rt></ruby>みの日</label></div>
+</div><div class="explanation"><div class="explanation-answer"><ruby>正解<rt>せいかい</rt></ruby>：2. つぎの<ruby>日曜日<rt>にちようび</rt></ruby></div><div class="explanation-note">「つぎの<ruby>日曜日<rt>にちようび</rt></ruby>、…Yさんに<ruby>電話<rt>でんわ</rt></ruby>しました」とある。</div></div></div></div></div>
+<div class="q-slide" data-slide-index="2"><div class="slide-card slide-card-question"><div class="question" data-qid="21" data-scored="1"><div class="q-stem-row"><span class="q-num">21</span><div class="q-stem">どうしてチャンスウォンさんは、<ruby>間違<rt>まちが</rt></ruby>ってしまったのでしょうか。</div></div><div class="options">
+<div class="option" data-correct="0"><input type="radio" name="q21" id="q21_1" value="1"><label for="q21_1">1. <ruby>日本<rt>にほん</rt></ruby>に<ruby>来<rt>き</rt></ruby>てから、<ruby>日本語教室<rt>にほんごきょうしつ</rt></ruby>で<ruby>教<rt>おし</rt></ruby>えてもらったから</label></div>
+<div class="option" data-correct="1"><input type="radio" name="q21" id="q21_2" value="2"><label for="q21_2">2. <ruby>日本<rt>にほん</rt></ruby>に<ruby>来<rt>く</rt></ruby>る<ruby>前<rt>まえ</rt></ruby>、<ruby>兄<rt>あに</rt></ruby>から<ruby>日本語<rt>にほんご</rt></ruby>について<ruby>聞<rt>き</rt></ruby>いていたから</label></div>
+<div class="option" data-correct="0"><input type="radio" name="q21" id="q21_3" value="3"><label for="q21_3">3. <ruby>日本人<rt>にほんじん</rt></ruby>は<ruby>助詞<rt>じょし</rt></ruby>を<ruby>使<rt>つか</rt></ruby>わないという<ruby>兄<rt>あに</rt></ruby>の<ruby>話<rt>はなし</rt></ruby>があったから</label></div>
+<div class="option" data-correct="0"><input type="radio" name="q21" id="q21_4" value="4"><label for="q21_4">4. <ruby>自分<rt>じぶん</rt></ruby>の<ruby>国<rt>くに</rt></ruby>のやり<ruby>方<rt>ほう</rt></ruby>と<ruby>違<rt>ちが</rt></ruby>うから</label></div>
+</div><div class="explanation"><div class="explanation-answer"><ruby>正解<rt>せいかい</rt></ruby>：2. <ruby>日本<rt>にほん</rt></ruby>に<ruby>来<rt>く</rt></ruby>る<ruby>前<rt>まえ</rt></ruby>、<ruby>兄<rt>あに</rt></ruby>から<ruby>日本語<rt>にほんご</rt></ruby>について<ruby>聞<rt>き</rt></ruby>いていたから</div><div class="explanation-note"><ruby>兄<rt>あに</rt></ruby>が<ruby>話<rt>はな</rt></ruby>していた<ruby>日本語<rt>にほんご</rt></ruby>のことを<ruby>思<rt>おも</rt></ruby>い<ruby>出<rt>だ</rt></ruby>して「<ruby>今度<rt>こんど</rt></ruby>」を「つぎ」と<ruby>考<rt>かんが</rt></ruby>えてしまった。</div></div></div></div></div>
+<div class="q-slide" data-slide-index="3"><div class="slide-card slide-card-question"><div class="question" data-qid="22" data-scored="1"><div class="q-stem-row"><span class="q-num">22</span><div class="q-stem">「<ruby>今度<rt>こんど</rt></ruby>、<ruby>遊<rt>あそ</rt></ruby>びに<ruby>来<rt>き</rt></ruby>てください」と<ruby>言<rt>い</rt></ruby>われたら、どう<ruby>答<rt>こた</rt></ruby>えたらいいですか。</div></div><div class="options">
+<div class="option" data-correct="0"><input type="radio" name="q22" id="q22_1" value="1"><label for="q22_1">1. いいえ、<ruby>都合<rt>つごう</rt></ruby>が<ruby>悪<rt>わる</rt></ruby>いです。</label></div>
+<div class="option" data-correct="0"><input type="radio" name="q22" id="q22_2" value="2"><label for="q22_2">2. いつですか。</label></div>
+<div class="option" data-correct="0"><input type="radio" name="q22" id="q22_3" value="3"><label for="q22_3">3. <ruby>行<rt>い</rt></ruby>けるかどうか、わかりません。</label></div>
+<div class="option" data-correct="1"><input type="radio" name="q22" id="q22_4" value="4"><label for="q22_4">4. ありがとうございます。</label></div>
+</div><div class="explanation"><div class="explanation-answer"><ruby>正解<rt>せいかい</rt></ruby>：4. ありがとうございます。</div><div class="explanation-note">日にちのはっきりしない<ruby>社交的<rt>しゃこうてき</rt></ruby>なさそいなので「ありがとうございます」と<ruby>気持<rt>きも</rt></ruby>ちを<ruby>受<rt>う</rt></ruby>け<ruby>取<rt>と</rt></ruby>る。</div></div></div></div></div>
+</div>
+
+<!-- ⑪ 工場での健康診断 -->
+<div class="block-player" id="block-player-10" data-player-title="No.11（p.220）⑪ 工場での健康診断" hidden>
+<div class="q-slide block-passage-once"><div class="slide-card slide-card-passage">
+<div class="passage-text">
+<div class="passage-box"><div class="box-head">お<ruby>知<rt>し</rt></ruby>らせ・<ruby>健康診断<rt>けんこうしんだん</rt></ruby>について</div>6月10日、11日に、<ruby>工場<rt>こうじょう</rt></ruby>で<ruby>健康診断<rt>けんこうしんだん</rt></ruby>をします。<ruby>全員<rt>ぜんいん</rt></ruby>、<ruby>受<rt>う</rt></ruby>けてください。</div>
+<table>
+<tr><th>グループ</th><th><ruby>月日<rt>がっぴ</rt></ruby></th><th><ruby>検査<rt>けんさ</rt></ruby>の<ruby>順番<rt>じゅんばん</rt></ruby></th></tr>
+<tr><td>A1</td><td>6月10日</td><td>①→②→③→④→⑤</td></tr>
+<tr><td>A2</td><td>6月11日</td><td>①→②→③→④→⑤</td></tr>
+<tr><td>B1</td><td>6月10日</td><td>②→③→①→⑤→④</td></tr>
+<tr><td>B2</td><td>6月11日</td><td>②→③→①→⑤→④</td></tr>
+<tr><td>C1</td><td>6月10日</td><td>③→①→②→④→⑤</td></tr>
+<tr><td>C2</td><td>6月11日</td><td>③→①→②→⑤→④</td></tr>
+<tr><td>ABC</td><td>6月17日</td><td>①→②→③→④→⑤</td></tr>
+</table>
+<p><strong><ruby>検査<rt>けんさ</rt></ruby>の<ruby>種類<rt>しゅるい</rt></ruby></strong>　①<ruby>身長<rt>しんちょう</rt></ruby>・<ruby>体重<rt>たいじゅう</rt></ruby>　②<ruby>血圧<rt>けつあつ</rt></ruby>　③（<ruby>目<rt>め</rt></ruby>などの）<ruby>検査<rt>けんさ</rt></ruby>　④X<ruby>線<rt>せん</rt></ruby>　⑤<ruby>内科<rt>ないか</rt></ruby></p>
+<p><ruby>注意<rt>ちゅうい</rt></ruby>：6月10日と11日に<ruby>出張<rt>しゅっちょう</rt></ruby>や<ruby>病気<rt>びょうき</rt></ruby>で<ruby>休<rt>やす</rt></ruby>んだ<ruby>人<rt>ひと</rt></ruby>は、17日に<ruby>受<rt>う</rt></ruby>けてください。</p>
+</div>
+</div></div>
+<div class="q-slide" data-slide-index="1"><div class="slide-card slide-card-question"><div class="question" data-qid="23" data-scored="1"><div class="q-stem-row"><span class="q-num">23</span><div class="q-stem">カルロスさんは、B2グループで<ruby>働<rt>はたら</rt></ruby>いています。いつ、<ruby>何<rt>なに</rt></ruby>から<ruby>健康診断<rt>けんこうしんだん</rt></ruby>を<ruby>受<rt>う</rt></ruby>けますか。</div></div><div class="options">
+<div class="option" data-correct="0"><input type="radio" name="q23" id="q23_1" value="1"><label for="q23_1">1. 6月10日、<ruby>身長<rt>しんちょう</rt></ruby>、<ruby>体重<rt>たいじゅう</rt></ruby></label></div>
+<div class="option" data-correct="0"><input type="radio" name="q23" id="q23_2" value="2"><label for="q23_2">2. 6月10日、<ruby>血圧<rt>けつあつ</rt></ruby></label></div>
+<div class="option" data-correct="0"><input type="radio" name="q23" id="q23_3" value="3"><label for="q23_3">3. 6月11日、<ruby>身長<rt>しんちょう</rt></ruby>、<ruby>体重<rt>たいじゅう</rt></ruby></label></div>
+<div class="option" data-correct="1"><input type="radio" name="q23" id="q23_4" value="4"><label for="q23_4">4. 6月11日、<ruby>血圧<rt>けつあつ</rt></ruby></label></div>
+</div><div class="explanation"><div class="explanation-answer"><ruby>正解<rt>せいかい</rt></ruby>：4. 6月11日、<ruby>血圧<rt>けつあつ</rt></ruby></div><div class="explanation-note">B2は6月11日、<ruby>順番<rt>じゅんばん</rt></ruby>②→③→①→⑤→④で、<ruby>最初<rt>さいしょ</rt></ruby>の②②<ruby>血圧<rt>けつあつ</rt></ruby>。</div></div></div></div></div>
+<div class="q-slide" data-slide-index="2"><div class="slide-card slide-card-question"><div class="question" data-qid="24" data-scored="1"><div class="q-stem-row"><span class="q-num">24</span><div class="q-stem">かおりさんは、A2グループで<ruby>働<rt>はたら</rt></ruby>いています。<ruby>家族<rt>かぞく</rt></ruby>が<ruby>病気<rt>びょうき</rt></ruby>だったので、6月10日から3<ruby>日間<rt>にちかん</rt></ruby><ruby>工場<rt>こうじょう</rt></ruby>を<ruby>休<rt>やす</rt></ruby>みました。<ruby>何<rt>なに</rt></ruby>から<ruby>健康診断<rt>けんこうしんだん</rt></ruby>を<ruby>受<rt>う</rt></ruby>けますか。</div></div><div class="options">
+<div class="option" data-correct="0"><input type="radio" name="q24" id="q24_1" value="1"><label for="q24_1">1. 6月11日、<ruby>身長<rt>しんちょう</rt></ruby>、<ruby>体重<rt>たいじゅう</rt></ruby></label></div>
+<div class="option" data-correct="0"><input type="radio" name="q24" id="q24_2" value="2"><label for="q24_2">2. 6月11日、<ruby>血圧<rt>けつあつ</rt></ruby></label></div>
+<div class="option" data-correct="1"><input type="radio" name="q24" id="q24_3" value="3"><label for="q24_3">3. 6月17日、<ruby>身長<rt>しんちょう</rt></ruby>、<ruby>体重<rt>たいじゅう</rt></ruby></label></div>
+<div class="option" data-correct="0"><input type="radio" name="q24" id="q24_4" value="4"><label for="q24_4">4. 6月17日、<ruby>血圧<rt>けつあつ</rt></ruby></label></div>
+</div><div class="explanation"><div class="explanation-answer"><ruby>正解<rt>せいかい</rt></ruby>：3. 6月17日、<ruby>身長<rt>しんちょう</rt></ruby>、<ruby>体重<rt>たいじゅう</rt></ruby></div><div class="explanation-note">10・11日に<ruby>休<rt>やす</rt></ruby>んだ<ruby>人<rt>ひと</rt></ruby>は17日に<ruby>受<rt>う</rt></ruby>ける。A2は<ruby>順番<rt>じゅんばん</rt></ruby>①①<ruby>身長<rt>しんちょう</rt></ruby>・<ruby>体重<rt>たいじゅう</rt></ruby>から。</div></div></div></div></div>
+</div>
+
+<!-- ⑫ クーポン・マガジン -->
+<div class="block-player" id="block-player-11" data-player-title="No.12（p.222）⑫ クーポン・マガジン" hidden>
+<div class="q-slide block-passage-once"><div class="slide-card slide-card-passage">
+<div class="passage-text">
+<p><strong>クーポン・マガジン（3月<ruby>号<rt>ごう</rt></ruby>）P.5</strong></p>
+<table>
+<tr><th><ruby>番号<rt>ばんごう</rt></ruby></th><th><ruby>品物<rt>しなもの</rt></ruby></th><th><ruby>割引<rt>わりびき</rt></ruby></th><th><ruby>期間<rt>きかん</rt></ruby></th></tr>
+<tr><td>①</td><td><ruby>食<rt>しょく</rt></ruby>パン</td><td>20%<ruby>引<rt>ひ</rt></ruby>き</td><td>3/1〜3/10</td></tr>
+<tr><td>②</td><td>カレーパン</td><td>1<ruby>個<rt>こ</rt></ruby>30<ruby>円<rt>えん</rt></ruby><ruby>引<rt>ひ</rt></ruby>き（5<ruby>個<rt>こ</rt></ruby>まで）</td><td>3/21〜3/31</td></tr>
+<tr><td>③</td><td>カレーパン</td><td>1<ruby>個<rt>こ</rt></ruby>30<ruby>円<rt>えん</rt></ruby><ruby>引<rt>ひ</rt></ruby>き（5<ruby>個<rt>こ</rt></ruby>まで）</td><td>3/11〜3/20</td></tr>
+<tr><td>④</td><td>たまご</td><td>30<ruby>円<rt>えん</rt></ruby><ruby>引<rt>ひ</rt></ruby>き（10<ruby>個<rt>こ</rt></ruby>パック）</td><td>3/1〜3/10</td></tr>
+<tr><td>⑤</td><td>たまご</td><td>30<ruby>円<rt>えん</rt></ruby><ruby>引<rt>ひ</rt></ruby>き（10<ruby>個<rt>こ</rt></ruby>パック）</td><td>3/21〜3/31</td></tr>
+<tr><td>⑥</td><td><ruby>冷凍食品<rt>れいとうしょくひん</rt></ruby></td><td>30%<ruby>引<rt>ひ</rt></ruby>き</td><td>3/1〜3/10</td></tr>
+<tr><td>⑦</td><td><ruby>冷凍食品<rt>れいとうしょくひん</rt></ruby></td><td>30%<ruby>引<rt>ひ</rt></ruby>き</td><td>3/21〜3/31</td></tr>
+<tr><td>⑧</td><td>ハム・ソーセージ</td><td>20%<ruby>引<rt>ひ</rt></ruby>き</td><td>3/1〜3/10</td></tr>
+<tr><td>⑨</td><td>ハム・ソーセージ</td><td>10%<ruby>引<rt>ひ</rt></ruby>き</td><td>3/21〜3/31</td></tr>
+<tr><td>⑩</td><td><ruby>肉<rt>にく</rt></ruby></td><td>20%<ruby>引<rt>ひ</rt></ruby>き</td><td>3/11〜3/20</td></tr>
+<tr><td>⑪</td><td><ruby>肉<rt>にく</rt></ruby></td><td>20%<ruby>引<rt>ひ</rt></ruby>き</td><td>3/21〜3/31</td></tr>
+<tr><td>⑫</td><td><ruby>魚<rt>さかな</rt></ruby></td><td>10%<ruby>引<rt>ひ</rt></ruby>き</td><td>3/1〜3/10</td></tr>
+<tr><td>⑬</td><td><ruby>魚<rt>さかな</rt></ruby></td><td>20%<ruby>引<rt>ひ</rt></ruby>き</td><td>3/11〜3/20</td></tr>
+<tr><td>⑭</td><td><ruby>野菜<rt>やさい</rt></ruby></td><td>20%<ruby>引<rt>ひ</rt></ruby>き</td><td>3/21〜3/31</td></tr>
+<tr><td>⑮</td><td>くだもの</td><td>20%<ruby>引<rt>ひ</rt></ruby>き</td><td>3/21〜3/31</td></tr>
+</table>
+</div>
+</div></div>
+<div class="q-slide" data-slide-index="1"><div class="slide-card slide-card-question"><div class="question" data-qid="25" data-scored="1"><div class="q-stem-row"><span class="q-num">25</span><div class="q-stem"><ruby>今日<rt>きょう</rt></ruby>は3月22日です。スーパーに<ruby>買<rt>か</rt></ruby>い<ruby>物<rt>もの</rt></ruby>に<ruby>来<rt>き</rt></ruby>ました。<ruby>冷凍食品<rt>れいとうしょくひん</rt></ruby>、たまご、ご<ruby>飯<rt>はん</rt></ruby>コロッケ、キャベツ、りんごが<ruby>入<rt>はい</rt></ruby>っています。どのクーポンが<ruby>使<rt>つか</rt></ruby>えますか。</div></div><div class="options">
+<div class="option" data-correct="0"><input type="radio" name="q25" id="q25_1" value="1"><label for="q25_1">1. ①と④と⑥</label></div>
+<div class="option" data-correct="0"><input type="radio" name="q25" id="q25_2" value="2"><label for="q25_2">2. ②と⑤と⑭</label></div>
+<div class="option" data-correct="1"><input type="radio" name="q25" id="q25_3" value="3"><label for="q25_3">3. ③と⑦と⑮</label></div>
+<div class="option" data-correct="0"><input type="radio" name="q25" id="q25_4" value="4"><label for="q25_4">4. ⑥と⑦と⑭</label></div>
+</div><div class="explanation"><div class="explanation-answer"><ruby>正解<rt>せいかい</rt></ruby>：3. ③と⑦と⑮</div><div class="explanation-note">3月22日（3/21〜3/31）に<ruby>使<rt>つか</rt></ruby>え、<ruby>買<rt>か</rt></ruby>った<ruby>品物<rt>しなもの</rt></ruby>に<ruby>合<rt>あ</rt></ruby>うクーポンを<ruby>選<rt>えら</rt></ruby>ぶ。</div></div></div></div></div>
+<div class="q-slide" data-slide-index="2"><div class="slide-card slide-card-question"><div class="question" data-qid="26" data-scored="1"><div class="q-stem-row"><span class="q-num">26</span><div class="q-stem"><ruby>今日<rt>きょう</rt></ruby>は3月4日です。あなたは500<ruby>円<rt>えん</rt></ruby>の<ruby>魚<rt>さかな</rt></ruby>と300<ruby>円<rt>えん</rt></ruby>のソーセージを<ruby>買<rt>か</rt></ruby>おうと<ruby>思<rt>おも</rt></ruby>います。クーポンを<ruby>使<rt>つか</rt></ruby>うと、いくらになりますか。</div></div><div class="options">
+<div class="option" data-correct="0"><input type="radio" name="q26" id="q26_1" value="1"><label for="q26_1">1. 720<ruby>円<rt>えん</rt></ruby></label></div>
+<div class="option" data-correct="1"><input type="radio" name="q26" id="q26_2" value="2"><label for="q26_2">2. 690<ruby>円<rt>えん</rt></ruby></label></div>
+<div class="option" data-correct="0"><input type="radio" name="q26" id="q26_3" value="3"><label for="q26_3">3. 670<ruby>円<rt>えん</rt></ruby></label></div>
+<div class="option" data-correct="0"><input type="radio" name="q26" id="q26_4" value="4"><label for="q26_4">4. 640<ruby>円<rt>えん</rt></ruby></label></div>
+</div><div class="explanation"><div class="explanation-answer"><ruby>正解<rt>せいかい</rt></ruby>：2. 690<ruby>円<rt>えん</rt></ruby></div><div class="explanation-note">3/4は<ruby>魚<rt>さかな</rt></ruby>10%<ruby>引<rt>ひ</rt></ruby>き→500×0.9=450<ruby>円<rt>えん</rt></ruby>、ソーセージ20%<ruby>引<rt>ひ</rt></ruby>き→300×0.8=240<ruby>円<rt>えん</rt></ruby>。<ruby>合計<rt>ごうけい</rt></ruby>690<ruby>円<rt>えん</rt></ruby>。</div></div></div></div></div>
+</div>
+
+<!-- ⑬ 病院の薬 -->
+<div class="block-player" id="block-player-12" data-player-title="No.13（p.224）⑬ 病院の薬" hidden>
+<div class="q-slide block-passage-once"><div class="slide-card slide-card-passage">
+<div class="passage-text">
+<p>マリアは、<ruby>友<rt>とも</rt></ruby>だちと<ruby>山<rt>やま</rt></ruby>へ<ruby>行<rt>い</rt></ruby>きました。<ruby>家<rt>いえ</rt></ruby>に<ruby>帰<rt>かえ</rt></ruby>ると、<ruby>首<rt>くび</rt></ruby>がとてもかゆいです。つぎの日、<ruby>病院<rt>びょういん</rt></ruby>へ<ruby>行<rt>い</rt></ruby>って、<ruby>薬<rt>くすり</rt></ruby>をもらいました。</p>
+<div class="passage-box"><div class="box-head"><ruby>飲<rt>の</rt></ruby>み<ruby>薬<rt>くすり</rt></ruby>　マリア <ruby>様<rt>さま</rt></ruby></div>
+1日3<ruby>回<rt>かい</rt></ruby>　<ruby>食後<rt>しょくご</rt></ruby>　1<ruby>回<rt>かい</rt></ruby>1<ruby>錠<rt>じょう</rt></ruby>（カプセル）<br>
+1日2<ruby>回<rt>かい</rt></ruby>　<ruby>食後<rt>しょくご</rt></ruby>（<ruby>朝<rt>あさ</rt></ruby>・<ruby>夕<rt>ゆう</rt></ruby>）　1<ruby>回<rt>かい</rt></ruby>1<ruby>錠<rt>じょう</rt></ruby>（<ruby>白<rt>しろ</rt></ruby>い<ruby>錠剤<rt>じょうざい</rt></ruby>）<br>
+1日1<ruby>回<rt>かい</rt></ruby>　ねる<ruby>前<rt>まえ</rt></ruby>　1<ruby>回<rt>かい</rt></ruby>1<ruby>錠<rt>じょう</rt></ruby>（<ruby>赤<rt>あか</rt></ruby>い<ruby>錠剤<rt>じょうざい</rt></ruby>）<br>
+<ruby>注意<rt>ちゅうい</rt></ruby>すること：＊<ruby>薬<rt>くすり</rt></ruby>は<ruby>水<rt>みず</rt></ruby>で<ruby>飲<rt>の</rt></ruby>んでください。＊<ruby>飲<rt>の</rt></ruby>む<ruby>時間<rt>じかん</rt></ruby>や<ruby>薬<rt>くすり</rt></ruby>の<ruby>量<rt>りょう</rt></ruby>などを<ruby>守<rt>まも</rt></ruby>って<ruby>飲<rt>の</rt></ruby>んでください。<br>
+<ruby>食前<rt>しょくぜん</rt></ruby><ruby>食前<rt>しょくぜん</rt></ruby><ruby>食<rt>た</rt></ruby>べる30<ruby>分<rt>ふん</rt></ruby>くらい<ruby>前<rt>まえ</rt></ruby>／<ruby>食後<rt>しょくご</rt></ruby><ruby>食後<rt>しょくご</rt></ruby><ruby>食<rt>た</rt></ruby>べ<ruby>終<rt>お</rt></ruby>わって30<ruby>分<rt>ふん</rt></ruby>くらい<ruby>後<rt>あと</rt></ruby>／ねる<ruby>前<rt>まえ</rt></ruby><ruby>前<rt>まえ</rt></ruby>ねる30<ruby>分<rt>ふん</rt></ruby>くらい<ruby>前<rt>まえ</rt></ruby><br>アスク<ruby>医院<rt>いいん</rt></ruby></div>
+<div class="passage-box"><div class="box-head">ぬり<ruby>薬<rt>くすり</rt></ruby>　マリア <ruby>様<rt>さま</rt></ruby></div>
+1日2<ruby>回<rt>かい</rt></ruby>　<ruby>朝<rt>あさ</rt></ruby>・<ruby>夕<rt>ゆう</rt></ruby>ねる<ruby>前<rt>まえ</rt></ruby><br>
+<ruby>注意<rt>ちゅうい</rt></ruby>すること：＊<ruby>薬<rt>くすり</rt></ruby>をぬる<ruby>所<rt>ところ</rt></ruby>をきれいにしてから、ぬってください。＊<ruby>飲<rt>の</rt></ruby>まないでください。<br>アスク<ruby>医院<rt>いいん</rt></ruby></div>
+</div>
+</div></div>
+<div class="q-slide" data-slide-index="1"><div class="slide-card slide-card-question"><div class="question" data-qid="27" data-scored="1"><div class="q-stem-row"><span class="q-num">27</span><div class="q-stem">マリアは、<ruby>一日<rt>いちにち</rt></ruby>に<ruby>何<rt>なに</rt></ruby><ruby>錠<rt>じょう</rt></ruby>の<ruby>薬<rt>くすり</rt></ruby>を<ruby>飲<rt>の</rt></ruby>みますか。</div></div><div class="options">
+<div class="option" data-correct="0"><input type="radio" name="q27" id="q27_1" value="1"><label for="q27_1">1. 4<ruby>個<rt>こ</rt></ruby></label></div>
+<div class="option" data-correct="0"><input type="radio" name="q27" id="q27_2" value="2"><label for="q27_2">2. 5<ruby>個<rt>こ</rt></ruby></label></div>
+<div class="option" data-correct="1"><input type="radio" name="q27" id="q27_3" value="3"><label for="q27_3">3. 6<ruby>個<rt>こ</rt></ruby></label></div>
+<div class="option" data-correct="0"><input type="radio" name="q27" id="q27_4" value="4"><label for="q27_4">4. 7<ruby>個<rt>こ</rt></ruby></label></div>
+</div><div class="explanation"><div class="explanation-answer"><ruby>正解<rt>せいかい</rt></ruby>：3. 6<ruby>個<rt>こ</rt></ruby></div><div class="explanation-note"><ruby>飲<rt>の</rt></ruby>み<ruby>薬<rt>くすり</rt></ruby>は 3<ruby>回<rt>かい</rt></ruby>×1<ruby>錠<rt>じょう</rt></ruby>＋2<ruby>回<rt>かい</rt></ruby>×1<ruby>錠<rt>じょう</rt></ruby>＋1<ruby>回<rt>かい</rt></ruby>×1<ruby>錠<rt>じょう</rt></ruby>6<ruby>錠<rt>じょう</rt></ruby>（ぬり<ruby>薬<rt>くすり</rt></ruby>は<ruby>飲<rt>の</rt></ruby>まない）。</div></div></div></div></div>
+<div class="q-slide" data-slide-index="2"><div class="slide-card slide-card-question"><div class="question" data-qid="28" data-scored="1"><div class="q-stem-row"><span class="q-num">28</span><div class="q-stem"><ruby>薬<rt>くすり</rt></ruby>の<ruby>正<rt>ただ</rt></ruby>しい<ruby>使<rt>つか</rt></ruby>い<ruby>方<rt>かた</rt></ruby>は、どれですか。</div></div><div class="options">
+<div class="option" data-correct="0"><input type="radio" name="q28" id="q28_1" value="1"><label for="q28_1">1. お<ruby>茶<rt>ちゃ</rt></ruby>やジュースで<ruby>飲<rt>の</rt></ruby>む。</label></div>
+<div class="option" data-correct="1"><input type="radio" name="q28" id="q28_2" value="2"><label for="q28_2">2. <ruby>飲<rt>の</rt></ruby>む<ruby>時間<rt>じかん</rt></ruby>やぬる<ruby>回数<rt>かいすう</rt></ruby>を<ruby>守<rt>まも</rt></ruby>る。</label></div>
+<div class="option" data-correct="0"><input type="radio" name="q28" id="q28_3" value="3"><label for="q28_3">3. ぬる<ruby>所<rt>ところ</rt></ruby>が<ruby>汚<rt>きたな</rt></ruby>くてもぬる。</label></div>
+<div class="option" data-correct="0"><input type="radio" name="q28" id="q28_4" value="4"><label for="q28_4">4. <ruby>治<rt>なお</rt></ruby>らなかったらたくさん<ruby>飲<rt>の</rt></ruby>む。</label></div>
+</div><div class="explanation"><div class="explanation-answer"><ruby>正解<rt>せいかい</rt></ruby>：2. <ruby>飲<rt>の</rt></ruby>む<ruby>時間<rt>じかん</rt></ruby>やぬる<ruby>回数<rt>かいすう</rt></ruby>を<ruby>守<rt>まも</rt></ruby>る。</div><div class="explanation-note">「<ruby>飲<rt>の</rt></ruby>む<ruby>時間<rt>じかん</rt></ruby>や<ruby>薬<rt>くすり</rt></ruby>の<ruby>量<rt>りょう</rt></ruby>などを<ruby>守<rt>まも</rt></ruby>って」「ぬる<ruby>所<rt>ところ</rt></ruby>をきれいにしてから」など、<ruby>注意<rt>ちゅうい</rt></ruby>することを<ruby>守<rt>まも</rt></ruby>る。</div></div></div></div></div>
+</div>
+
+<!-- ⑭ 今日のランチ -->
+<div class="block-player" id="block-player-13" data-player-title="No.14（p.226）⑭ 今日のランチ" hidden>
+<div class="q-slide block-passage-once"><div class="slide-card slide-card-passage">
+<div class="passage-text">
+<p>アスクレストランは、おいしくて<ruby>安<rt>やす</rt></ruby>いので、みんながよく<ruby>行<rt>い</rt></ruby>きます。ピーターは<ruby>妻<rt>つま</rt></ruby>と<ruby>行<rt>い</rt></ruby>きます。だから<ruby>今日<rt>きょう</rt></ruby>も<ruby>行<rt>い</rt></ruby>きました。</p>
+<div class="passage-box"><div class="box-head">MENU　<ruby>今日<rt>きょう</rt></ruby>のランチ（Lunch）　AM11:00〜PM2:00</div>
+【<ruby>定食<rt>ていしょく</rt></ruby>】<br>
+・<ruby>焼肉<rt>やきにく</rt></ruby>＋ご<ruby>飯<rt>はん</rt></ruby>・みそ<ruby>汁<rt>しる</rt></ruby> ……  650<br>
+・カレーライス＋サラダ・コーヒー …… ￥650<br>
+・<ruby>天<rt>てん</rt></ruby>ぷら＋ご<ruby>飯<rt>はん</rt></ruby>・みそ<ruby>汁<rt>しる</rt></ruby> ……  750<br>
+☆3つの<ruby>中<rt>なか</rt></ruby>から<ruby>一<rt>ひと</rt></ruby>つ<ruby>選<rt>えら</rt></ruby>んでください。<br>
+・<ruby>飲<rt>の</rt></ruby>み<ruby>物<rt>もの</rt></ruby> ＋180<ruby>円<rt>えん</rt></ruby>（コーヒー・<ruby>紅茶<rt>こうちゃ</rt></ruby>・ジュース・コーラのどれか<ruby>一<rt>ひと</rt></ruby>つ）<br>
+☆デザート ＋100<ruby>円<rt>えん</rt></ruby>（<ruby>小<rt>ちい</rt></ruby>さいケーキ・<ruby>本日<rt>ほんじつ</rt></ruby>のアイスクリーム）<br>
+☆サラダ ＋200<ruby>円<rt>えん</rt></ruby>（ソースが<ruby>選<rt>えら</rt></ruby>べます）<br>アスクレストラン</div>
+</div>
+</div></div>
+<div class="q-slide" data-slide-index="1"><div class="slide-card slide-card-question"><div class="question" data-qid="29" data-scored="1"><div class="q-stem-row"><span class="q-num">29</span><div class="q-stem">アスクレストランのメニューに<ruby>書<rt>か</rt></ruby>いてあることは、<ruby>何<rt>なん</rt></ruby>ですか。</div></div><div class="options">
+<div class="option" data-correct="0"><input type="radio" name="q29" id="q29_1" value="1"><label for="q29_1">1. どのランチメニューもいつでも<ruby>注文<rt>ちゅうもん</rt></ruby>できる。</label></div>
+<div class="option" data-correct="0"><input type="radio" name="q29" id="q29_2" value="2"><label for="q29_2">2. どのランチメニューにもコーヒーがつく。</label></div>
+<div class="option" data-correct="1"><input type="radio" name="q29" id="q29_3" value="3"><label for="q29_3">3. どのランチメニューでも<ruby>飲<rt>の</rt></ruby>み<ruby>物<rt>もの</rt></ruby>、デザート、サラダは<ruby>注文<rt>ちゅうもん</rt></ruby>できる。</label></div>
+<div class="option" data-correct="0"><input type="radio" name="q29" id="q29_4" value="4"><label for="q29_4">4. どのランチメニューも<ruby>値段<rt>ねだん</rt></ruby>が<ruby>同<rt>おな</rt></ruby>じ。</label></div>
+</div><div class="explanation"><div class="explanation-answer"><ruby>正解<rt>せいかい</rt></ruby>：3. どのランチメニューでも<ruby>飲<rt>の</rt></ruby>み<ruby>物<rt>もの</rt></ruby>、デザート、サラダは<ruby>注文<rt>ちゅうもん</rt></ruby>できる。</div><div class="explanation-note"><ruby>飲<rt>の</rt></ruby>み<ruby>物<rt>もの</rt></ruby>・デザート・サラダは、いっしょに（<ruby>追加<rt>ついか</rt></ruby>で）<ruby>注文<rt>ちゅうもん</rt></ruby>できる。</div></div></div></div></div>
+<div class="q-slide" data-slide-index="2"><div class="slide-card slide-card-question"><div class="question" data-qid="30" data-scored="1"><div class="q-stem-row"><span class="q-num">30</span><div class="q-stem">ピーターは<ruby>焼肉定食<rt>やきにくていしょく</rt></ruby>とコーヒーを<ruby>注文<rt>ちゅうもん</rt></ruby>しました。<ruby>友<rt>とも</rt></ruby>だちは<ruby>天<rt>てん</rt></ruby>ぷら<ruby>定食<rt>ていしょく</rt></ruby>とコーラとサラダを<ruby>注文<rt>ちゅうもん</rt></ruby>しました。ピーターと<ruby>友<rt>とも</rt></ruby>だちはいくら<ruby>払<rt>はら</rt></ruby>いますか。</div></div><div class="options">
+<div class="option" data-correct="0"><input type="radio" name="q30" id="q30_1" value="1"><label for="q30_1">1. 820<ruby>円<rt>えん</rt></ruby>と1,030<ruby>円<rt>えん</rt></ruby></label></div>
+<div class="option" data-correct="0"><input type="radio" name="q30" id="q30_2" value="2"><label for="q30_2">2. 840<ruby>円<rt>えん</rt></ruby>と1,050<ruby>円<rt>えん</rt></ruby></label></div>
+<div class="option" data-correct="0"><input type="radio" name="q30" id="q30_3" value="3"><label for="q30_3">3. 830<ruby>円<rt>えん</rt></ruby>と1,100<ruby>円<rt>えん</rt></ruby></label></div>
+<div class="option" data-correct="1"><input type="radio" name="q30" id="q30_4" value="4"><label for="q30_4">4. 830<ruby>円<rt>えん</rt></ruby>と1,130<ruby>円<rt>えん</rt></ruby></label></div>
+</div><div class="explanation"><div class="explanation-answer"><ruby>正解<rt>せいかい</rt></ruby>：4. 830<ruby>円<rt>えん</rt></ruby>と1,130<ruby>円<rt>えん</rt></ruby></div><div class="explanation-note">ピーターピーター<ruby>焼肉定食<rt>やきにくていしょく</rt></ruby>650＋コーヒー（<ruby>飲<rt>の</rt></ruby>み<ruby>物<rt>もの</rt></ruby>）180180830<ruby>円<rt>えん</rt></ruby>。<ruby>友<rt>とも</rt></ruby>だちだち<ruby>天<rt>てん</rt></ruby>ぷら<ruby>定食<rt>ていしょく</rt></ruby>750＋コーラ180＋サラダ2002001,130<ruby>円<rt>えん</rt></ruby>。</div></div></div></div></div>
+</div>
+
+<!-- ⑮ 部屋探し -->
+<div class="block-player" id="block-player-14" data-player-title="No.15（p.228）⑮ 部屋探し" hidden>
+<div class="q-slide block-passage-once"><div class="slide-card slide-card-passage">
+<div class="passage-text">
+<p>ノーイは、<ruby>今<rt>いま</rt></ruby><ruby>住<rt>す</rt></ruby>んでいる<ruby>所<rt>ところ</rt></ruby>より<ruby>静<rt>しず</rt></ruby>かなアパートに<ruby>引<rt>ひ</rt></ruby>っこししたいと<ruby>考<rt>かんが</rt></ruby>えています。<ruby>不動産屋<rt>ふどうさんや</rt></ruby>で、<ruby>住<rt>す</rt></ruby>みたい<ruby>部屋<rt>へや</rt></ruby>を<ruby>申込書<rt>もうしこみしょ</rt></ruby>に<ruby>書<rt>か</rt></ruby>きました。</p>
+<p><strong>I　<ruby>申込書<rt>もうしこみしょ</rt></ruby></strong></p>
+<table>
+<tr><th><ruby>名前<rt>なまえ</rt></ruby></th><td>ノーイ・グリーン</td></tr>
+<tr><th><ruby>利用<rt>りよう</rt></ruby>する<ruby>駅<rt>えき</rt></ruby></th><td><ruby>公園<rt>こうえん</rt></ruby><ruby>駅<rt>えき</rt></ruby></td></tr>
+<tr><th><ruby>駅<rt>えき</rt></ruby>から<ruby>徒歩<rt>とほ</rt></ruby></th><td>15<ruby>分<rt>ふん</rt></ruby>まで</td></tr>
+<tr><th><ruby>部屋代<rt>へやだい</rt></ruby></th><td>45,000<ruby>円<rt>えん</rt></ruby>まで</td></tr>
+<tr><th><ruby>広<rt>ひろ</rt></ruby>さ</th><td>16㎡16より<ruby>広<rt>ひろ</rt></ruby>い</td></tr>
+<tr><th><ruby>築年数<rt>ちくねんすう</rt></ruby></th><td>15<ruby>年<rt>ねん</rt></ruby>まで</td></tr>
+<tr><th><ruby>必要<rt>ひつよう</rt></ruby>なこと</th><td>インターネット、<ruby>静<rt>しず</rt></ruby>かなこと</td></tr>
+</table>
+<p><strong>II　<ruby>紹介<rt>しょうかい</rt></ruby>してもらった<ruby>部屋<rt>へや</rt></ruby></strong></p>
+<table>
+<tr><th> </th><th><ruby>特徴<rt>とくちょう</rt></ruby></th><th><ruby>築年数<rt>ちくねんすう</rt></ruby></th><th><ruby>駅<rt>えき</rt></ruby>から</th><th><ruby>広<rt>ひろ</rt></ruby>さ</th><th><ruby>部屋代<rt>へやだい</rt></ruby></th><th>ネット</th></tr>
+<tr><td>A</td><td><ruby>新<rt>あたら</rt></ruby>しくてきれいな<ruby>部屋<rt>へや</rt></ruby>!</td><td><ruby>築<rt>ちく</rt></ruby>2<ruby>年<rt>ねん</rt></ruby></td><td><ruby>徒歩<rt>とほ</rt></ruby>18<ruby>分<rt>ふん</rt></ruby></td><td>18㎡</td><td>42,000<ruby>円<rt>えん</rt></ruby></td><td>○</td></tr>
+<tr><td>B</td><td><ruby>買<rt>か</rt></ruby>い<ruby>物<rt>もの</rt></ruby>に<ruby>便利<rt>べんり</rt></ruby>です!</td><td><ruby>築<rt>ちく</rt></ruby>12<ruby>年<rt>ねん</rt></ruby></td><td><ruby>徒歩<rt>とほ</rt></ruby>2<ruby>分<rt>ふん</rt></ruby></td><td>17㎡</td><td>46,000<ruby>円<rt>えん</rt></ruby></td><td>○</td></tr>
+<tr><td>C</td><td><ruby>明<rt>あか</rt></ruby>るい<ruby>部屋<rt>へや</rt></ruby>!</td><td><ruby>築<rt>ちく</rt></ruby>8<ruby>年<rt>ねん</rt></ruby></td><td><ruby>徒歩<rt>とほ</rt></ruby>10<ruby>分<rt>ふん</rt></ruby></td><td>16.5㎡</td><td>39,000<ruby>円<rt>えん</rt></ruby></td><td>×</td></tr>
+<tr><td>D</td><td>となりは<ruby>大<rt>おお</rt></ruby>きい<ruby>公園<rt>こうえん</rt></ruby>!</td><td><ruby>築<rt>ちく</rt></ruby>14<ruby>年<rt>ねん</rt></ruby></td><td><ruby>徒歩<rt>とほ</rt></ruby>12<ruby>分<rt>ふん</rt></ruby></td><td>16㎡16より<ruby>広<rt>ひろ</rt></ruby>い</td><td>43,000<ruby>円<rt>えん</rt></ruby></td><td>○</td></tr>
+</table>
+</div>
+</div></div>
+<div class="q-slide" data-slide-index="1"><div class="slide-card slide-card-question"><div class="question" data-qid="31" data-scored="1"><div class="q-stem-row"><span class="q-num">31</span><div class="q-stem"><ruby>駅<rt>えき</rt></ruby>からアパートまでの<ruby>時間<rt>じかん</rt></ruby>と、<ruby>部屋代<rt>へやだい</rt></ruby>がノーイの<ruby>申込書<rt>もうしこみしょ</rt></ruby>と<ruby>合<rt>あ</rt></ruby>っているのはどのアパートですか。</div></div><div class="options">
+<div class="option" data-correct="0"><input type="radio" name="q31" id="q31_1" value="1"><label for="q31_1">1. AアパートとBアパート</label></div>
+<div class="option" data-correct="1"><input type="radio" name="q31" id="q31_2" value="2"><label for="q31_2">2. CアパートとDアパート</label></div>
+<div class="option" data-correct="0"><input type="radio" name="q31" id="q31_3" value="3"><label for="q31_3">3. DアパートとBアパート</label></div>
+<div class="option" data-correct="0"><input type="radio" name="q31" id="q31_4" value="4"><label for="q31_4">4. CアパートとAアパート</label></div>
+</div><div class="explanation"><div class="explanation-answer"><ruby>正解<rt>せいかい</rt></ruby>：2. CアパートとDアパート</div><div class="explanation-note"><ruby>徒歩<rt>とほ</rt></ruby>15<ruby>分<rt>ふん</rt></ruby><ruby>以内<rt>いない</rt></ruby>＆45,000<ruby>円<rt>えん</rt></ruby><ruby>以内<rt>いない</rt></ruby>を<ruby>両方<rt>りょうほう</rt></ruby><ruby>満<rt>み</rt></ruby>たすのはCとD（AA<ruby>徒歩<rt>とほ</rt></ruby>18<ruby>分<rt>ふん</rt></ruby>、BB46,000<ruby>円<rt>えん</rt></ruby>でNG）。</div></div></div></div></div>
+<div class="q-slide" data-slide-index="2"><div class="slide-card slide-card-question"><div class="question" data-qid="32" data-scored="1"><div class="q-stem-row"><span class="q-num">32</span><div class="q-stem">ノーイが<ruby>引<rt>ひ</rt></ruby>っこししたい<ruby>部屋<rt>へや</rt></ruby>に<ruby>一番<rt>いちばん</rt></ruby><ruby>合<rt>あ</rt></ruby>っている<ruby>部屋<rt>へや</rt></ruby>はどれですか。</div></div><div class="options">
+<div class="option" data-correct="0"><input type="radio" name="q32" id="q32_1" value="1"><label for="q32_1">1. Aアパートの<ruby>部屋<rt>へや</rt></ruby></label></div>
+<div class="option" data-correct="0"><input type="radio" name="q32" id="q32_2" value="2"><label for="q32_2">2. Bアパートの<ruby>部屋<rt>へや</rt></ruby></label></div>
+<div class="option" data-correct="0"><input type="radio" name="q32" id="q32_3" value="3"><label for="q32_3">3. Cアパートの<ruby>部屋<rt>へや</rt></ruby></label></div>
+<div class="option" data-correct="1"><input type="radio" name="q32" id="q32_4" value="4"><label for="q32_4">4. Dアパートの<ruby>部屋<rt>へや</rt></ruby></label></div>
+</div><div class="explanation"><div class="explanation-answer"><ruby>正解<rt>せいかい</rt></ruby>：4. Dアパートの<ruby>部屋<rt>へや</rt></ruby></div><div class="explanation-note">AA<ruby>徒歩<rt>とほ</rt></ruby>18<ruby>分<rt>ふん</rt></ruby>、BB46,000<ruby>円<rt>えん</rt></ruby>、CCインターネットが<ruby>使<rt>つか</rt></ruby>えない、で<ruby>条件<rt>じょうけん</rt></ruby>に<ruby>合<rt>あ</rt></ruby>わず、すべての<ruby>条件<rt>じょうけん</rt></ruby>に<ruby>合<rt>あ</rt></ruby>うのはD。</div></div></div></div></div>
+</div>
+
+</div>
+</div>
+<script>
+// 各テストに含める教材（block-player の index）。1問90秒で約10分になるようにまとめる。
+const TESTS = [
+  { label: 'テスト1', blocks: [0, 1, 2, 3] },
+  { label: 'テスト2', blocks: [4, 5, 6] },
+  { label: 'テスト3', blocks: [7, 8] },
+  { label: 'テスト4', blocks: [9, 10, 11] },
+  { label: 'テスト5', blocks: [12, 13, 14] }
+];
+const TIME_LIMIT = 600; // 全テスト共通 10分
+
+let currentTest = -1;
+let timerInterval = null;
+let timeLeft = 0;
+let submitted = false;
+let paused = false;
+
+function clearQTimer() {
+  if (timerInterval) { clearInterval(timerInterval); timerInterval = null; }
+}
+
+function updateTimerUi() {
+  const el = document.getElementById('workTimer');
+  if (!el) return;
+  const t = Math.max(0, timeLeft);
+  const m = Math.floor(t / 60);
+  const s = t % 60;
+  el.textContent = m + ':' + String(s).padStart(2, '0');
+  if (paused) { el.className = 'timer paused'; }
+  else if (timeLeft <= 60) el.className = 'timer danger';
+  else if (timeLeft <= 300) el.className = 'timer warning';
+  else el.className = 'timer';
+  const prog = document.getElementById('workProgress');
+  if (prog) prog.style.width = Math.max(0, (t / TIME_LIMIT) * 100) + '%';
+}
+
+function startQTimer() {
+  clearQTimer();
+  paused = false;
+  const pb = document.getElementById('pauseBtn');
+  if (pb) { pb.textContent = '⏸'; pb.disabled = false; pb.setAttribute('aria-label', '一時停止'); }
+  updateTimerUi();
+  timerInterval = setInterval(() => {
+    if (submitted || paused) return;
+    timeLeft--;
+    updateTimerUi();
+    if (timeLeft <= 0) { clearQTimer(); submitTest(); }
+  }, 1000);
+}
+
+function togglePause() {
+  if (submitted) return;
+  paused = !paused;
+  const pb = document.getElementById('pauseBtn');
+  if (pb) {
+    pb.textContent = paused ? '▶' : '⏸';
+    pb.setAttribute('aria-label', paused ? '再開' : '一時停止');
+  }
+  updateTimerUi();
+}
+
+function openTest(ti) {
+  const test = TESTS[ti];
+  if (!test) return;
+  submitted = false;
+  currentTest = ti;
+  document.getElementById('view-hub').setAttribute('hidden', '');
+  document.getElementById('view-work').removeAttribute('hidden');
+
+  const mount = document.getElementById('test-mount');
+  mount.innerHTML = '';
+  test.blocks.forEach(bi => {
+    const srcPanel = document.getElementById('block-player-' + bi);
+    if (!srcPanel) return;
+    const group = document.createElement('div');
+    group.className = 'material-group';
+
+    const srcPassage = srcPanel.querySelector('.block-passage-once .slide-card-passage');
+    if (srcPassage) {
+      const pane = document.createElement('div');
+      pane.className = 'passage-pane';
+      pane.innerHTML = srcPassage.innerHTML;
+      group.appendChild(pane);
+    }
+    const qcol = document.createElement('div');
+    qcol.className = 'questions-col';
+    srcPanel.querySelectorAll('.q-slide:not(.block-passage-once) .question').forEach(q => {
+      const clone = q.cloneNode(true);
+      clone.querySelectorAll('input[type="radio"]').forEach(inp => { inp.checked = false; });
+      clone.querySelectorAll('.option').forEach(o => o.classList.remove('correct', 'wrong', 'picked-nokey'));
+      clone.querySelectorAll('.explanation').forEach(ex => ex.classList.remove('show'));
+      qcol.appendChild(clone);
+    });
+    group.appendChild(qcol);
+    mount.appendChild(group);
+  });
+
+  const nQ = mount.querySelectorAll('.question').length;
+  const ht = document.getElementById('chromeBlockTitle');
+  if (ht) ht.textContent = 'N4読解テスト' + (ti + 1) + '（10分・' + nQ + '問）';
+
+  const panel = document.getElementById('resultPanel');
+  if (panel) panel.classList.remove('show');
+  const sub = document.getElementById('submitBtnWork');
+  if (sub) sub.disabled = false;
+
+  timeLeft = TIME_LIMIT;
+  startQTimer();
+  setStickyTop();
+  window.scrollTo(0, 0);
+}
+
+// 固定表示する本文が、ヘッダーの下に重ならないように位置を計算する
+function setStickyTop() {
+  const header = document.querySelector('#view-work header');
+  const h = header ? header.offsetHeight : 120;
+  document.documentElement.style.setProperty('--sticky-top', (h + 8) + 'px');
+}
+
+function goHub() {
+  clearQTimer();
+  submitted = false;
+  paused = false;
+  currentTest = -1;
+  timeLeft = 0;
+  document.getElementById('view-work').setAttribute('hidden', '');
+  document.getElementById('view-hub').removeAttribute('hidden');
+  const mount = document.getElementById('test-mount');
+  if (mount) mount.innerHTML = '';
+  const panel = document.getElementById('resultPanel');
+  if (panel) panel.classList.remove('show');
+  const sub = document.getElementById('submitBtnWork');
+  if (sub) sub.disabled = false;
+  window.scrollTo(0, 0);
+}
+
+function submitTest() {
+  if (submitted) return;
+  if (currentTest < 0) return;
+  const mount = document.getElementById('test-mount');
+  if (!mount) return;
+  submitted = true;
+  clearQTimer();
+  const pb = document.getElementById('pauseBtn');
+  if (pb) pb.disabled = true;
+
+  const blockQs = mount.querySelectorAll('.question');
+  let nKeyed = 0;
+  let correct = 0;
+  blockQs.forEach(el => {
+    const scored = el.dataset.scored === '1';
+    const sel = el.querySelector('input[type="radio"]:checked');
+    const opts = el.querySelectorAll('.option');
+    opts.forEach(o => {
+      o.classList.remove('correct', 'wrong', 'picked-nokey');
+      if (scored) {
+        if (o.dataset.correct === '1') o.classList.add('correct');
+        else if (sel && o.contains(sel)) o.classList.add('wrong');
+      } else if (sel && o.contains(sel)) {
+        o.classList.add('picked-nokey');
+      }
+    });
+    el.querySelectorAll('.explanation').forEach(e => e.classList.add('show'));
+    if (scored) {
+      nKeyed++;
+      if (sel) {
+        const p = sel.closest('.option');
+        if (p && p.dataset.correct === '1') correct++;
+      }
+    }
+  });
+
+  const panel = document.getElementById('resultPanel');
+  const sc = document.getElementById('resultScore');
+  const tt = document.getElementById('resultTitle');
+  const pct = nKeyed > 0 ? Math.round(correct / nKeyed * 100) : 0;
+  if (panel && sc && tt) {
+    panel.classList.add('show');
+    sc.textContent = correct + ' / ' + nKeyed + '（' + pct + '%）';
+    sc.className = 'result-score ' + (pct >= 90 ? 'excellent' : pct >= 70 ? 'good' : pct >= 50 ? 'fair' : 'poor');
+    tt.textContent = pct >= 90 ? 'すばらしい！' : pct >= 70 ? 'よくできました！' : pct >= 50 ? 'もうすこし！' : 'がんばりましょう！';
+    const used = TIME_LIMIT - Math.max(0, timeLeft);
+    document.getElementById('resultDetail').innerHTML =
+      '<div class="result-item"><div class="label">せいかい</div><div class="value">' + correct + '/' + nKeyed + '</div></div>' +
+      '<div class="result-item"><div class="label">じかん</div><div class="value">' + Math.floor(used / 60) + '分' + (used % 60) + '秒</div></div>';
+    panel.scrollIntoView({ behavior: 'smooth' });
+  }
+
+  const sub = document.getElementById('submitBtnWork');
+  if (sub) sub.disabled = true;
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  document.querySelectorAll('.btn-pick-example').forEach(btn => {
+    btn.addEventListener('click', () => openTest(parseInt(btn.dataset.test, 10)));
+  });
+  document.getElementById('btnBackHub').addEventListener('click', goHub);
+  document.getElementById('submitBtnWork').addEventListener('click', submitTest);
+  document.getElementById('pauseBtn').addEventListener('click', togglePause);
+  window.addEventListener('resize', () => { if (currentTest >= 0) setStickyTop(); });
+});
+</script>
+</body>
+</html>
