@@ -29,9 +29,9 @@ def DLG(*lines):
     out = []
     for speaker, text in lines:
         if speaker:
-            out.append(f'<p><span class="speaker">{r(speaker)}</span>{r(text)}</p>')
+            out.append(f'<p class="dlg"><span class="speaker">{r(speaker)}</span>{r(text)}</p>')
         else:
-            out.append(f"<p>{r(text)}</p>")
+            out.append(f'<p class="dlg">{r(text)}</p>')
     return "".join(out)
 
 BLOCKS = [
@@ -474,6 +474,9 @@ header p{font-size:.9em;margin-top:8px;opacity:.95}
 .passage-text p{margin:0 0 .7em}
 .passage-text p:last-child{margin-bottom:0}
 .passage-text .speaker{font-weight:700;color:#3b3663}
+/* 会話形式は行間を詰める（話者ごとの行のかたまりを保つ） */
+.passage-text p.dlg{margin:0 0 .15em;line-height:1.72}
+.passage-text p.dlg:last-child{margin-bottom:0}
 .passage-box{margin:10px 0;padding:12px 14px;background:#fff;border:1px dashed #667eea;border-radius:10px;line-height:1.9}
 .passage-box .box-head{font-weight:700;color:#3b3663;margin-bottom:6px}
 .passage-text table{width:100%;border-collapse:collapse;margin:8px 0;font-size:.85rem}
