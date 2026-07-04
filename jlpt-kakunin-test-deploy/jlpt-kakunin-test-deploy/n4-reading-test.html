@@ -78,6 +78,10 @@ header p{font-size:.9em;margin-top:8px;opacity:.95}
 .passage-text p{margin:0 0 .7em}
 .passage-text p:last-child{margin-bottom:0}
 .passage-text .speaker{font-weight:700;color:#1a365d}
+/* 会話形式: 話者名(左)とせりふ(右)を2カラムで揃える */
+.dlg-grid{display:grid;grid-template-columns:max-content 1fr;column-gap:10px;row-gap:.3em;align-items:start;margin:0 0 .7em}
+.dlg-grid .dlg-name{font-weight:700;color:#1a365d;white-space:nowrap;line-height:1.72}
+.dlg-grid .dlg-say{line-height:1.72;min-width:0}
 .passage-box{margin:10px 0;padding:12px 14px;background:#fff;border:1px dashed #2b6cb0;border-radius:10px;line-height:1.7}
 .passage-box .box-head{font-weight:700;color:#1a365d;margin-bottom:6px}
 .passage-text table{width:100%;border-collapse:collapse;margin:8px 0;font-size:.85rem}
@@ -250,14 +254,7 @@ header p{font-size:.9em;margin-top:8px;opacity:.95}
 <div class="block-player" id="block-player-4" data-player-title="No.05（p.206）⑤ 料理教室" hidden>
 <div class="q-slide block-passage-once"><div class="slide-card slide-card-passage">
 <div class="passage-text">
-<p><span class="speaker"><ruby>先生<rt>せんせい</rt></ruby>：</span><ruby>今日<rt>きょう</rt></ruby>は、<ruby>簡単<rt>かんたん</rt></ruby>でおいしい<ruby>牛丼<rt>ぎゅうどん</rt></ruby>を<ruby>作<rt>つく</rt></ruby>ってみましょう。</p>
-<p><span class="speaker"><ruby>生徒<rt>せいと</rt></ruby>：</span>はい、よろしくお<ruby>願<rt>ねが</rt></ruby>いします。</p>
-<p><span class="speaker"><ruby>先生<rt>せんせい</rt></ruby>：</span><ruby>材料<rt>ざいりょう</rt></ruby>は<ruby>牛肉<rt>ぎゅうにく</rt></ruby>と<ruby>玉<rt>たま</rt></ruby>ねぎ、グリーンピース、それと、さとう、しょうゆ、<ruby>油<rt>あぶら</rt></ruby>です。まず、<ruby>材料<rt>ざいりょう</rt></ruby>を<ruby>適当<rt>てきとう</rt></ruby>な<ruby>大<rt>おお</rt></ruby>きさに<ruby>切<rt>き</rt></ruby>ります。<ruby>肉<rt>にく</rt></ruby>と<ruby>玉<rt>たま</rt></ruby>ねぎを<ruby>煮<rt>に</rt></ruby>る<ruby>前<rt>まえ</rt></ruby>にフライパンを<ruby>熱<rt>あつ</rt></ruby>くしておきましょう。</p>
-<p><span class="speaker"><ruby>生徒<rt>せいと</rt></ruby>：</span><ruby>全部<rt>ぜんぶ</rt></ruby>いっしょに<ruby>入<rt>い</rt></ruby>れてもいいんですか。</p>
-<p><span class="speaker"><ruby>先生<rt>せんせい</rt></ruby>：</span><ruby>肉<rt>にく</rt></ruby>と<ruby>玉<rt>たま</rt></ruby>ねぎだけです。<ruby>牛肉<rt>ぎゅうにく</rt></ruby>は<ruby>長<rt>なが</rt></ruby>い<ruby>時間<rt>じかん</rt></ruby>いためると、かたくなっておいしくなりません。さとう、しょうゆ、お<ruby>酒<rt>さけ</rt></ruby>を<ruby>入<rt>い</rt></ruby>れます。このあと、<ruby>長<rt>なが</rt></ruby>い<ruby>時間<rt>じかん</rt></ruby><ruby>入<rt>い</rt></ruby>れてはいけません。</p>
-<p><span class="speaker"><ruby>生徒<rt>せいと</rt></ruby>：</span><ruby>先生<rt>せんせい</rt></ruby>、グリーンピースをいつ<ruby>入<rt>い</rt></ruby>れてもいいですか。</p>
-<p><span class="speaker"><ruby>先生<rt>せんせい</rt></ruby>：</span>はい、<ruby>火<rt>ひ</rt></ruby>を<ruby>止<rt>と</rt></ruby>めてから<ruby>入<rt>い</rt></ruby>れてください。</p>
-<p><span class="speaker"><ruby>生徒<rt>せいと</rt></ruby>：</span>おいしそうですね。</p>
+<div class="dlg-grid"><div class="dlg-name"><ruby>先生<rt>せんせい</rt></ruby>：</div><div class="dlg-say"><ruby>今日<rt>きょう</rt></ruby>は、<ruby>簡単<rt>かんたん</rt></ruby>でおいしい<ruby>牛丼<rt>ぎゅうどん</rt></ruby>を<ruby>作<rt>つく</rt></ruby>ってみましょう。</div><div class="dlg-name"><ruby>生徒<rt>せいと</rt></ruby>：</div><div class="dlg-say">はい、よろしくお<ruby>願<rt>ねが</rt></ruby>いします。</div><div class="dlg-name"><ruby>先生<rt>せんせい</rt></ruby>：</div><div class="dlg-say"><ruby>材料<rt>ざいりょう</rt></ruby>は<ruby>牛肉<rt>ぎゅうにく</rt></ruby>と<ruby>玉<rt>たま</rt></ruby>ねぎ、グリーンピース、それと、さとう、しょうゆ、<ruby>油<rt>あぶら</rt></ruby>です。まず、<ruby>材料<rt>ざいりょう</rt></ruby>を<ruby>適当<rt>てきとう</rt></ruby>な<ruby>大<rt>おお</rt></ruby>きさに<ruby>切<rt>き</rt></ruby>ります。<ruby>肉<rt>にく</rt></ruby>と<ruby>玉<rt>たま</rt></ruby>ねぎを<ruby>煮<rt>に</rt></ruby>る<ruby>前<rt>まえ</rt></ruby>にフライパンを<ruby>熱<rt>あつ</rt></ruby>くしておきましょう。</div><div class="dlg-name"><ruby>生徒<rt>せいと</rt></ruby>：</div><div class="dlg-say"><ruby>全部<rt>ぜんぶ</rt></ruby>いっしょに<ruby>入<rt>い</rt></ruby>れてもいいんですか。</div><div class="dlg-name"><ruby>先生<rt>せんせい</rt></ruby>：</div><div class="dlg-say"><ruby>肉<rt>にく</rt></ruby>と<ruby>玉<rt>たま</rt></ruby>ねぎだけです。<ruby>牛肉<rt>ぎゅうにく</rt></ruby>は<ruby>長<rt>なが</rt></ruby>い<ruby>時間<rt>じかん</rt></ruby>いためると、かたくなっておいしくなりません。さとう、しょうゆ、お<ruby>酒<rt>さけ</rt></ruby>を<ruby>入<rt>い</rt></ruby>れます。このあと、<ruby>長<rt>なが</rt></ruby>い<ruby>時間<rt>じかん</rt></ruby><ruby>入<rt>い</rt></ruby>れてはいけません。</div><div class="dlg-name"><ruby>生徒<rt>せいと</rt></ruby>：</div><div class="dlg-say"><ruby>先生<rt>せんせい</rt></ruby>、グリーンピースをいつ<ruby>入<rt>い</rt></ruby>れてもいいですか。</div><div class="dlg-name"><ruby>先生<rt>せんせい</rt></ruby>：</div><div class="dlg-say">はい、<ruby>火<rt>ひ</rt></ruby>を<ruby>止<rt>と</rt></ruby>めてから<ruby>入<rt>い</rt></ruby>れてください。</div><div class="dlg-name"><ruby>生徒<rt>せいと</rt></ruby>：</div><div class="dlg-say">おいしそうですね。</div></div>
 </div>
 </div></div>
 <div class="q-slide" data-slide-index="1"><div class="slide-card slide-card-question"><div class="question" data-qid="7" data-scored="1"><div class="q-stem-row"><span class="q-num">7</span><div class="q-stem"><ruby>先生<rt>せんせい</rt></ruby>はどう<ruby>作<rt>つく</rt></ruby>りますか。（<ruby>作<rt>つく</rt></ruby>る<ruby>順番<rt>じゅんばん</rt></ruby>）</div></div><div class="options">
@@ -302,14 +299,7 @@ header p{font-size:.9em;margin-top:8px;opacity:.95}
 <div class="block-player" id="block-player-6" data-player-title="No.07（p.210）⑦ インフルエンザ" hidden>
 <div class="q-slide block-passage-once"><div class="slide-card slide-card-passage">
 <div class="passage-text">
-<p><span class="speaker">ピーター：</span>カルロス、どうしたの? <ruby>顔<rt>かお</rt></ruby>が<ruby>赤<rt>あか</rt></ruby>いよ。</p>
-<p><span class="speaker">カルロス：</span><ruby>頭<rt>あたま</rt></ruby>とのどが<ruby>少<rt>すこ</rt></ruby>し<ruby>痛<rt>いた</rt></ruby>いんだ。</p>
-<p><span class="speaker">のりこ：</span><ruby>今<rt>いま</rt></ruby>、インフルエンザがはやっているから、<ruby>気<rt>き</rt></ruby>をつけないといけないよ。</p>
-<p><span class="speaker">カルロス：</span><ruby>会社<rt>かいしゃ</rt></ruby>の<ruby>人<rt>ひと</rt></ruby>が<ruby>二人<rt>ふたり</rt></ruby>、<ruby>休<rt>やす</rt></ruby>んでる。インフルエンザみたい。</p>
-<p><span class="speaker">ピーター：</span>どうして<ruby>熱<rt>ねつ</rt></ruby>があるのに、<ruby>日本語教室<rt>にほんごきょうしつ</rt></ruby>に<ruby>来<rt>き</rt></ruby>たの?</p>
-<p><span class="speaker">カルロス：</span>ピーターに<ruby>借<rt>か</rt></ruby>りたCDを<ruby>返<rt>かえ</rt></ruby>そうと<ruby>思<rt>おも</rt></ruby>ったんだ。これ、<ruby>返<rt>かえ</rt></ruby>すよ。ありがとう。</p>
-<p><span class="speaker">のりこ：</span>もう<ruby>家<rt>いえ</rt></ruby>に<ruby>帰<rt>かえ</rt></ruby>ったらどう? <ruby>家<rt>いえ</rt></ruby>に<ruby>着<rt>つ</rt></ruby>いたら、すぐに<ruby>手<rt>て</rt></ruby>を<ruby>洗<rt>あら</rt></ruby>ってね。うがいをしたほうがいいよ。</p>
-<p><span class="speaker">ピーター：</span>インフルエンザになると、<ruby>高<rt>たか</rt></ruby>い<ruby>熱<rt>ねつ</rt></ruby>が1<ruby>週間<rt>しゅうかん</rt></ruby>くらいついて、<ruby>頭<rt>あたま</rt></ruby>がいたくなるらしいよ。だいじょうぶ?</p>
+<div class="dlg-grid"><div class="dlg-name">ピーター：</div><div class="dlg-say">カルロス、どうしたの? <ruby>顔<rt>かお</rt></ruby>が<ruby>赤<rt>あか</rt></ruby>いよ。</div><div class="dlg-name">カルロス：</div><div class="dlg-say"><ruby>頭<rt>あたま</rt></ruby>とのどが<ruby>少<rt>すこ</rt></ruby>し<ruby>痛<rt>いた</rt></ruby>いんだ。</div><div class="dlg-name">のりこ：</div><div class="dlg-say"><ruby>今<rt>いま</rt></ruby>、インフルエンザがはやっているから、<ruby>気<rt>き</rt></ruby>をつけないといけないよ。</div><div class="dlg-name">カルロス：</div><div class="dlg-say"><ruby>会社<rt>かいしゃ</rt></ruby>の<ruby>人<rt>ひと</rt></ruby>が<ruby>二人<rt>ふたり</rt></ruby>、<ruby>休<rt>やす</rt></ruby>んでる。インフルエンザみたい。</div><div class="dlg-name">ピーター：</div><div class="dlg-say">どうして<ruby>熱<rt>ねつ</rt></ruby>があるのに、<ruby>日本語教室<rt>にほんごきょうしつ</rt></ruby>に<ruby>来<rt>き</rt></ruby>たの?</div><div class="dlg-name">カルロス：</div><div class="dlg-say">ピーターに<ruby>借<rt>か</rt></ruby>りたCDを<ruby>返<rt>かえ</rt></ruby>そうと<ruby>思<rt>おも</rt></ruby>ったんだ。これ、<ruby>返<rt>かえ</rt></ruby>すよ。ありがとう。</div><div class="dlg-name">のりこ：</div><div class="dlg-say">もう<ruby>家<rt>いえ</rt></ruby>に<ruby>帰<rt>かえ</rt></ruby>ったらどう? <ruby>家<rt>いえ</rt></ruby>に<ruby>着<rt>つ</rt></ruby>いたら、すぐに<ruby>手<rt>て</rt></ruby>を<ruby>洗<rt>あら</rt></ruby>ってね。うがいをしたほうがいいよ。</div><div class="dlg-name">ピーター：</div><div class="dlg-say">インフルエンザになると、<ruby>高<rt>たか</rt></ruby>い<ruby>熱<rt>ねつ</rt></ruby>が1<ruby>週間<rt>しゅうかん</rt></ruby>くらいついて、<ruby>頭<rt>あたま</rt></ruby>がいたくなるらしいよ。だいじょうぶ?</div></div>
 <p>…カルロスは、<ruby>家<rt>いえ</rt></ruby>に<ruby>帰<rt>かえ</rt></ruby>って、<ruby>手<rt>て</rt></ruby>を<ruby>洗<rt>あら</rt></ruby>って、ねました。そして、<ruby>明日<rt>あした</rt></ruby>は<ruby>病院<rt>びょういん</rt></ruby>へ<ruby>行<rt>い</rt></ruby>こうと<ruby>思<rt>おも</rt></ruby>いながら、ねました。</p>
 </div>
 </div></div>
@@ -370,13 +360,7 @@ header p{font-size:.9em;margin-top:8px;opacity:.95}
 <div class="block-player" id="block-player-8" data-player-title="No.09（p.214）⑨ 七夕に願いごとを" hidden>
 <div class="q-slide block-passage-once"><div class="slide-card slide-card-passage">
 <div class="passage-text">
-<p><span class="speaker">カルロス：</span>あれは<ruby>何<rt>なん</rt></ruby>ですか。</p>
-<p><span class="speaker">のりこ：</span><ruby>笹<rt>ささ</rt></ruby>です。</p>
-<p><span class="speaker">カルロス：</span><ruby>笹<rt>ささ</rt></ruby>? ああ、<ruby>見<rt>み</rt></ruby>たことがあります。</p>
-<p><span class="speaker">のりこ：</span><ruby>今日<rt>きょう</rt></ruby>は、<ruby>七夕<rt>たなばた</rt></ruby>の<ruby>飾<rt>かざ</rt></ruby>りつけをするのよ。</p>
-<p><span class="speaker">カルロス：</span><ruby>七夕<rt>たなばた</rt></ruby>って<ruby>何<rt>なん</rt></ruby>ですか。</p>
-<p><span class="speaker">のりこ：</span><ruby>私<rt>わたし</rt></ruby>もはっきりわからないけど、<ruby>中国<rt>ちゅうごく</rt></ruby>の<ruby>古<rt>ふる</rt></ruby>い<ruby>話<rt>はなし</rt></ruby>。「ひこぼし」と「おりひめ」という<ruby>恋人<rt>こいびと</rt></ruby>がいて、<ruby>仕事<rt>しごと</rt></ruby>をしなくてはいけないのに、デートばかりしていたそうです。お<ruby>父<rt>とう</rt></ruby>さんはおこって、<ruby>二人<rt>ふたり</rt></ruby>の<ruby>間<rt>あいだ</rt></ruby>に<ruby>大<rt>おお</rt></ruby>きな<ruby>川<rt>かわ</rt></ruby>をつくって、<ruby>会<rt>あ</rt></ruby>えないようにしました。でも、<ruby>二人<rt>ふたり</rt></ruby>は、<ruby>一年<rt>いちねん</rt></ruby>に1<ruby>回<rt>かい</rt></ruby>デートしてもいいことになりました。それが7月7日の<ruby>夜<rt>よる</rt></ruby>なんですって。<ruby>子<rt>こ</rt></ruby>どものころは、7月6日の<ruby>夜<rt>よる</rt></ruby>に「～したい」とか「～になりたい」ということを<ruby>書<rt>か</rt></ruby>いて、<ruby>笹<rt>ささ</rt></ruby>に<ruby>飾<rt>かざ</rt></ruby>って、7月7日の<ruby>朝<rt>あさ</rt></ruby>に<ruby>川<rt>かわ</rt></ruby>に<ruby>流<rt>なが</rt></ruby>したのよ。</p>
-<p><span class="speaker">カルロス：</span>かわいそうですね。<ruby>恋人<rt>こいびと</rt></ruby>は<ruby>毎日<rt>まいにち</rt></ruby><ruby>会<rt>あ</rt></ruby>いたいと<ruby>思<rt>おも</rt></ruby>います。ぼくも<ruby>願<rt>ねが</rt></ruby>いごとを<ruby>書<rt>か</rt></ruby>きます。「お<ruby>父<rt>とう</rt></ruby>さん、<ruby>二人<rt>ふたり</rt></ruby>を<ruby>毎日<rt>まいにち</rt></ruby><ruby>会<rt>あ</rt></ruby>わせてください。」</p>
+<div class="dlg-grid"><div class="dlg-name">カルロス：</div><div class="dlg-say">あれは<ruby>何<rt>なん</rt></ruby>ですか。</div><div class="dlg-name">のりこ：</div><div class="dlg-say"><ruby>笹<rt>ささ</rt></ruby>です。</div><div class="dlg-name">カルロス：</div><div class="dlg-say"><ruby>笹<rt>ささ</rt></ruby>? ああ、<ruby>見<rt>み</rt></ruby>たことがあります。</div><div class="dlg-name">のりこ：</div><div class="dlg-say"><ruby>今日<rt>きょう</rt></ruby>は、<ruby>七夕<rt>たなばた</rt></ruby>の<ruby>飾<rt>かざ</rt></ruby>りつけをするのよ。</div><div class="dlg-name">カルロス：</div><div class="dlg-say"><ruby>七夕<rt>たなばた</rt></ruby>って<ruby>何<rt>なん</rt></ruby>ですか。</div><div class="dlg-name">のりこ：</div><div class="dlg-say"><ruby>私<rt>わたし</rt></ruby>もはっきりわからないけど、<ruby>中国<rt>ちゅうごく</rt></ruby>の<ruby>古<rt>ふる</rt></ruby>い<ruby>話<rt>はなし</rt></ruby>。「ひこぼし」と「おりひめ」という<ruby>恋人<rt>こいびと</rt></ruby>がいて、<ruby>仕事<rt>しごと</rt></ruby>をしなくてはいけないのに、デートばかりしていたそうです。お<ruby>父<rt>とう</rt></ruby>さんはおこって、<ruby>二人<rt>ふたり</rt></ruby>の<ruby>間<rt>あいだ</rt></ruby>に<ruby>大<rt>おお</rt></ruby>きな<ruby>川<rt>かわ</rt></ruby>をつくって、<ruby>会<rt>あ</rt></ruby>えないようにしました。でも、<ruby>二人<rt>ふたり</rt></ruby>は、<ruby>一年<rt>いちねん</rt></ruby>に1<ruby>回<rt>かい</rt></ruby>デートしてもいいことになりました。それが7月7日の<ruby>夜<rt>よる</rt></ruby>なんですって。<ruby>子<rt>こ</rt></ruby>どものころは、7月6日の<ruby>夜<rt>よる</rt></ruby>に「～したい」とか「～になりたい」ということを<ruby>書<rt>か</rt></ruby>いて、<ruby>笹<rt>ささ</rt></ruby>に<ruby>飾<rt>かざ</rt></ruby>って、7月7日の<ruby>朝<rt>あさ</rt></ruby>に<ruby>川<rt>かわ</rt></ruby>に<ruby>流<rt>なが</rt></ruby>したのよ。</div><div class="dlg-name">カルロス：</div><div class="dlg-say">かわいそうですね。<ruby>恋人<rt>こいびと</rt></ruby>は<ruby>毎日<rt>まいにち</rt></ruby><ruby>会<rt>あ</rt></ruby>いたいと<ruby>思<rt>おも</rt></ruby>います。ぼくも<ruby>願<rt>ねが</rt></ruby>いごとを<ruby>書<rt>か</rt></ruby>きます。「お<ruby>父<rt>とう</rt></ruby>さん、<ruby>二人<rt>ふたり</rt></ruby>を<ruby>毎日<rt>まいにち</rt></ruby><ruby>会<rt>あ</rt></ruby>わせてください。」</div></div>
 </div>
 </div></div>
 <div class="q-slide" data-slide-index="1"><div class="slide-card slide-card-question"><div class="question" data-qid="17" data-scored="1"><div class="q-stem-row"><span class="q-num">17</span><div class="q-stem"><ruby>七夕<rt>たなばた</rt></ruby>の<ruby>話<rt>はなし</rt></ruby>で<ruby>合<rt>あ</rt></ruby>わないのはどれですか。</div></div><div class="options">
@@ -1463,6 +1447,9 @@ function openTest(ti) {
     group.appendChild(qcol);
     mount.appendChild(group);
   });
+
+  // 問題番号はテストごとに1から振り直す（表示のみ。data-qid/inputのidは元のまま）
+  mount.querySelectorAll('.question .q-num').forEach((el, i) => { el.textContent = i + 1; });
 
   const nQ = mount.querySelectorAll('.question').length;
   const ht = document.getElementById('chromeBlockTitle');

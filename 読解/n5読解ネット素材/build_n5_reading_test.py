@@ -29,10 +29,10 @@ def DLG(*lines):
     out = []
     for speaker, text in lines:
         if speaker:
-            out.append(f'<p class="dlg"><span class="speaker">{r(speaker)}</span>{r(text)}</p>')
+            out.append(f'<div class="dlg-name">{r(speaker)}</div><div class="dlg-say">{r(text)}</div>')
         else:
-            out.append(f'<p class="dlg">{r(text)}</p>')
-    return "".join(out)
+            out.append(f'<div class="dlg-say dlg-say-full">{r(text)}</div>')
+    return '<div class="dlg-grid">' + "".join(out) + '</div>'
 
 BLOCKS = [
 # 0 ── 公式2009 もんだい5
@@ -474,9 +474,11 @@ header p{font-size:.9em;margin-top:8px;opacity:.95}
 .passage-text p{margin:0 0 .7em}
 .passage-text p:last-child{margin-bottom:0}
 .passage-text .speaker{font-weight:700;color:#3b3663}
-/* 会話形式は行間を詰める（話者ごとの行のかたまりを保つ） */
-.passage-text p.dlg{margin:0 0 .15em;line-height:1.72}
-.passage-text p.dlg:last-child{margin-bottom:0}
+/* 会話形式: 話者名(左)とせりふ(右)を2カラムで揃える */
+.dlg-grid{display:grid;grid-template-columns:max-content 1fr;column-gap:10px;row-gap:.3em;align-items:start}
+.dlg-grid .dlg-name{font-weight:700;color:#3b3663;white-space:nowrap;line-height:1.72;padding-top:0}
+.dlg-grid .dlg-say{line-height:1.72;min-width:0}
+.dlg-grid .dlg-say-full{grid-column:1/-1}
 .passage-box{margin:10px 0;padding:12px 14px;background:#fff;border:1px dashed #667eea;border-radius:10px;line-height:1.9}
 .passage-box .box-head{font-weight:700;color:#3b3663;margin-bottom:6px}
 .passage-text table{width:100%;border-collapse:collapse;margin:8px 0;font-size:.85rem}
@@ -648,6 +650,9 @@ function openTest(ti) {
     group.appendChild(qcol);
     mount.appendChild(group);
   });
+
+  // 問題番号はテストごとに1から振り直す（表示のみ。data-qid/inputのidは元のまま）
+  mount.querySelectorAll('.question .q-num').forEach((el, i) => { el.textContent = i + 1; });
 
   const nQ = mount.querySelectorAll('.question').length;
   const ht = document.getElementById('chromeBlockTitle');
