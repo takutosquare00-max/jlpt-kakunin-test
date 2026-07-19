@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport"/>
+<title>第31〜35課 文法テスト パート2（15分・18問）</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;-webkit-tap-highlight-color:transparent}
+body{font-family:'Hiragino Kaku Gothic ProN','Hiragino Sans','Noto Sans JP',Meiryo,sans-serif;background:#f0f4f8;color:#1a202c;line-height:1.7;padding:env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left)}
+.container{max-width:800px;margin:0 auto;padding:20px}
+header{background:linear-gradient(135deg,#1e3a8a 0%,#162d74 100%);color:#fff;padding:24px;border-radius:16px;margin-bottom:24px;text-align:center;position:sticky;top:0;z-index:100;box-shadow:0 4px 15px rgba(30,58,138,.4)}
+header h1{font-size:1.35em;margin-bottom:4px}
+.header-info{display:flex;justify-content:center;gap:24px;align-items:center;margin-top:8px;flex-wrap:wrap}
+.timer{font-size:1.8em;font-weight:bold;font-variant-numeric:tabular-nums}
+.timer.warning{color:#ffd700;animation:pulse 1s infinite}
+.timer.danger{color:#ff4757;animation:pulse .5s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.6}}
+.progress-bar{width:200px;height:8px;background:rgba(255,255,255,.3);border-radius:4px;overflow:hidden}
+.progress-fill{height:100%;background:#fff;border-radius:4px;transition:width .3s}
+.score-badge{background:rgba(255,255,255,.2);padding:4px 12px;border-radius:20px;font-size:.9em}
+.section{background:#fff;border-radius:12px;padding:24px;margin-bottom:20px;box-shadow:0 2px 8px rgba(0,0,0,.06)}
+.section-title{font-size:1.1em;font-weight:bold;color:#1e3a8a;border-left:4px solid #1e3a8a;padding-left:12px;margin-bottom:16px}
+.section-lead{font-size:1em;color:#4a5568;margin-bottom:18px;line-height:1.7}
+.question{padding:16px 0;border-bottom:1px solid #e2e8f0}
+.question:last-child{border-bottom:none}
+.q-num{display:inline-block;background:#1e3a8a;color:#fff;width:28px;height:28px;text-align:center;line-height:28px;border-radius:50%;font-size:.85em;font-weight:bold;margin-right:8px;flex-shrink:0;vertical-align:middle}
+.q-text{font-size:1.05em;margin-bottom:10px;font-weight:500;line-height:1.75}
+.options{display:grid;grid-template-columns:1fr 1fr;gap:8px;align-items:stretch}
+@media(max-width:600px){.options{grid-template-columns:1fr}}
+.options-1col{grid-template-columns:1fr!important}
+.option{position:relative;display:flex;min-height:0}
+.option input{display:none}
+.option label{flex:1;display:flex;align-items:center;gap:8px;padding:12px 14px;border:2px solid #e2e8f0;border-radius:8px;cursor:pointer;transition:all .2s;font-size:.95em;touch-action:manipulation;-webkit-user-select:none;user-select:none;min-height:48px;width:100%;box-sizing:border-box}
+.option .opt-key{flex:0 0 auto;min-width:1.75em;text-align:right;font-weight:600;line-height:1.4;align-self:center}
+.option .opt-body{flex:1;min-width:0;line-height:1.65;align-self:center;word-break:break-word}
+.option label:hover{border-color:#1e3a8a;background:#f0f4ff}
+.option input:checked+label{border-color:#1e3a8a;background:#e8eeff;color:#0f1f4d;font-weight:600}
+.option.correct label{border-color:#48bb78!important;background:#f0fff4!important;color:#276749!important}
+.option.wrong label{border-color:#fc8181!important;background:#fff5f5!important;color:#9b2c2c!important}
+.dialogue{margin:6px 0 12px;padding:14px 16px;background:#f7fafc;border-left:3px solid #1e3a8a;border-radius:0 8px 8px 0;font-size:1.02em;line-height:1.9}
+.dialogue p{margin:0 0 .5em;padding:0}
+.dialogue p:last-child{margin-bottom:0}
+.dialogue .sp{font-weight:700;color:#162d74;margin-right:.2em}
+.btn-submit{display:block;width:100%;min-height:48px;padding:16px;background:linear-gradient(135deg,#1e3a8a 0%,#162d74 100%);color:#fff;border:none;border-radius:12px;font-size:1.1em;font-weight:bold;cursor:pointer;transition:transform .2s,box-shadow .2s;margin-top:24px;touch-action:manipulation;-webkit-user-select:none;user-select:none}
+.btn-submit:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(30,58,138,.4)}
+.btn-submit:disabled{opacity:.5;cursor:not-allowed;transform:none;box-shadow:none}
+.result-panel{background:#fff;border-radius:16px;padding:32px;text-align:center;box-shadow:0 4px 20px rgba(0,0,0,.1);margin-top:24px;display:none}
+.result-panel h2{font-size:1.8em;margin-bottom:8px}
+.result-score{font-size:3em;font-weight:bold;margin:16px 0}
+.result-score.excellent{color:#48bb78}
+.result-score.good{color:#1e3a8a}
+.result-score.fair{color:#ed8936}
+.result-score.poor{color:#fc8181}
+.result-detail{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:12px;margin-top:20px}
+.result-item{background:#f7fafc;padding:12px;border-radius:8px}
+.result-item .label{font-size:.8em;color:#718096}
+.result-item .value{font-size:1.2em;font-weight:bold}
+.explanation{display:none;margin-top:8px;padding:10px;background:#fffbeb;border-radius:8px;font-size:.9em;border-left:3px solid #f6ad55;line-height:1.6}
+.explanation.show{display:block}
+.blank-paren{display:inline-block;color:#c05621;font-weight:700;white-space:nowrap}
+ruby rt{font-size:.6em;color:#555}
+</style>
+</head>
+<body>
+<div class="container">
+<header>
+<h1>第31〜35課 文法テスト　パート2</h1>
+<div class="header-info">
+<div class="timer" id="timer">15:00</div>
+<div class="progress-bar"><div class="progress-fill" id="progress" style="width:100%"></div></div>
+<div class="score-badge" id="scoreBadge">全18問</div>
+</div>
+</header>
+<div class="section">
+<div class="section-title">文法問題（問1〜18）</div>
+<p class="section-lead"><span class="blank-paren">（　　　）</span>に入る正しいものを選ぶか、正しい文・形を選んでください。</p>
+
+<!-- Q1 -->
+<div class="question">
+<div class="q-text"><span class="q-num">1</span><span class="blank-paren">（　　　）</span>に<ruby>入<rt>はい</rt></ruby>る<ruby>正<rt>ただ</rt></ruby>しいものはどれですか。</div>
+<div class="dialogue">
+<p><span class="sp">A：</span><ruby>連休<rt>れんきゅう</rt></ruby>に<ruby>九州<rt>きゅうしゅう</rt></ruby>へ<ruby>行<rt>い</rt></ruby>きたいんですが…</p>
+<p><span class="sp">B：</span>じゃ、<ruby>早<rt>はや</rt></ruby>く<span class="blank-paren">（　　　）</span>ほうがいいですよ。<ruby>連休<rt>れんきゅう</rt></ruby>は<ruby>混<rt>こ</rt></ruby>みますから。</p>
+</div>
+<div class="options">
+<div class="option"><input id="q1a" name="q1" type="radio" value="0"/><label for="q1a"><span class="opt-key">1.</span><span class="opt-body">ホテルを<ruby>予約<rt>よやく</rt></ruby>する</span></label></div>
+<div class="option"><input id="q1b" name="q1" type="radio" value="0"/><label for="q1b"><span class="opt-key">2.</span><span class="opt-body">ホテルを<ruby>予約<rt>よやく</rt></ruby>して</span></label></div>
+<div class="option"><input id="q1c" name="q1" type="radio" value="0"/><label for="q1c"><span class="opt-key">3.</span><span class="opt-body">ホテルを<ruby>予約<rt>よやく</rt></ruby>しなかった</span></label></div>
+<div class="option"><input id="q1d" name="q1" type="radio" value="1"/><label for="q1d"><span class="opt-key">4.</span><span class="opt-body">ホテルを<ruby>予約<rt>よやく</rt></ruby>した</span></label></div>
+</div>
+<div class="explanation">✅ 正解：4 — 〜たほうがいいです：動詞た形＋ほうがいいです（早く予約した）【第32課】</div>
+</div>
+
+<!-- Q2 -->
+<div class="question">
+<div class="q-text"><span class="q-num">2</span><ruby>甘<rt>あま</rt></ruby>いお<ruby>菓子<rt>かし</rt></ruby>を<span class="blank-paren">（　　　）</span>あとで、お<ruby>茶<rt>ちゃ</rt></ruby>を<ruby>飲<rt>の</rt></ruby>むとおいしいですよ。</div>
+<div class="options">
+<div class="option"><input id="q2a" name="q2" type="radio" value="0"/><label for="q2a"><span class="opt-key">1.</span><span class="opt-body"><ruby>食<rt>た</rt></ruby>べる</span></label></div>
+<div class="option"><input id="q2b" name="q2" type="radio" value="0"/><label for="q2b"><span class="opt-key">2.</span><span class="opt-body"><ruby>食<rt>た</rt></ruby>べない</span></label></div>
+<div class="option"><input id="q2c" name="q2" type="radio" value="1"/><label for="q2c"><span class="opt-key">3.</span><span class="opt-body"><ruby>食<rt>た</rt></ruby>べた</span></label></div>
+<div class="option"><input id="q2d" name="q2" type="radio" value="0"/><label for="q2d"><span class="opt-key">4.</span><span class="opt-body"><ruby>食<rt>た</rt></ruby>べて</span></label></div>
+</div>
+<div class="explanation">✅ 正解：3 — 〜たあとで：動詞た形＋あとで（食べた→食べたあとで）【第34課】</div>
+</div>
+
+<!-- Q3 -->
+<div class="question">
+<div class="q-text"><span class="q-num">3</span><span class="blank-paren">（　　　）</span>に<ruby>入<rt>はい</rt></ruby>る<ruby>正<rt>ただ</rt></ruby>しいものはどれですか。</div>
+<div class="dialogue">
+<p><span class="sp">A：</span>いつ<ruby>帰<rt>かえ</rt></ruby>りますか。</p>
+<p><span class="sp">B：</span><ruby>来週<rt>らいしゅう</rt></ruby>の<ruby>金曜日<rt>きんようび</rt></ruby>に<ruby>帰<rt>かえ</rt></ruby>る<span class="blank-paren">（　　　）</span>です。スケジュールはもう<ruby>決<rt>き</rt></ruby>まっています。</p>
+</div>
+<div class="options">
+<div class="option"><input id="q3a" name="q3" type="radio" value="1"/><label for="q3a"><span class="opt-key">1.</span><span class="opt-body">つもり</span></label></div>
+<div class="option"><input id="q3b" name="q3" type="radio" value="0"/><label for="q3b"><span class="opt-key">2.</span><span class="opt-body">ように</span></label></div>
+<div class="option"><input id="q3c" name="q3" type="radio" value="1"/><label for="q3c"><span class="opt-key">3.</span><span class="opt-body"><ruby>予定<rt>よてい</rt></ruby></span></label></div>
+<div class="option"><input id="q3d" name="q3" type="radio" value="0"/><label for="q3d"><span class="opt-key">4.</span><span class="opt-body"><ruby>計画<rt>けいかく</rt></ruby></span></label></div>
+</div>
+<div class="explanation">✅ どちらも正解 — 帰る予定です（外部的に決まったスケジュール）・帰るつもりです（自分の意図）どちらも自然な表現【第31課】</div>
+</div>
+
+<!-- Q4 -->
+<div class="question">
+<div class="q-text"><span class="q-num">4</span>「<ruby>急<rt>いそ</rt></ruby>ぎます」の<ruby>命令形<rt>めいれいけい</rt></ruby>はどれですか。</div>
+<div class="options">
+<div class="option"><input id="q4a" name="q4" type="radio" value="0"/><label for="q4a"><span class="opt-key">1.</span><span class="opt-body"><ruby>急<rt>いそ</rt></ruby>ぎろ</span></label></div>
+<div class="option"><input id="q4b" name="q4" type="radio" value="0"/><label for="q4b"><span class="opt-key">2.</span><span class="opt-body"><ruby>急<rt>いそ</rt></ruby>ごう</span></label></div>
+<div class="option"><input id="q4c" name="q4" type="radio" value="1"/><label for="q4c"><span class="opt-key">3.</span><span class="opt-body"><ruby>急<rt>いそ</rt></ruby>げ</span></label></div>
+<div class="option"><input id="q4d" name="q4" type="radio" value="0"/><label for="q4d"><span class="opt-key">4.</span><span class="opt-body"><ruby>急<rt>いそ</rt></ruby>いで</span></label></div>
+</div>
+<div class="explanation">✅ 正解：3 — 命令形（u動詞）：急ぐ→う段をえ段に→急げ【第33課】</div>
+</div>
+
+<!-- Q5 -->
+<div class="question">
+<div class="q-text"><span class="q-num">5</span><ruby>朝<rt>あさ</rt></ruby>ごはんを<span class="blank-paren">（　　　）</span><ruby>出<rt>で</rt></ruby>かけましたから、おなかがすきました。</div>
+<div class="options">
+<div class="option"><input id="q5a" name="q5" type="radio" value="0"/><label for="q5a"><span class="opt-key">1.</span><span class="opt-body"><ruby>食<rt>た</rt></ruby>べて</span></label></div>
+<div class="option"><input id="q5b" name="q5" type="radio" value="0"/><label for="q5b"><span class="opt-key">2.</span><span class="opt-body"><ruby>食<rt>た</rt></ruby>べながら</span></label></div>
+<div class="option"><input id="q5c" name="q5" type="radio" value="1"/><label for="q5c"><span class="opt-key">3.</span><span class="opt-body"><ruby>食<rt>た</rt></ruby>べないで</span></label></div>
+<div class="option"><input id="q5d" name="q5" type="radio" value="0"/><label for="q5d"><span class="opt-key">4.</span><span class="opt-body"><ruby>食<rt>た</rt></ruby>べなくて</span></label></div>
+</div>
+<div class="explanation">✅ 正解：3 — 〜ないで：食べないで＋出かける（〜をせずに次の行動へ）【第34課】</div>
+</div>
+
+<!-- Q6 -->
+<div class="question">
+<div class="q-text"><span class="q-num">6</span><ruby>西<rt>にし</rt></ruby>の<ruby>空<rt>そら</rt></ruby>が<ruby>赤<rt>あか</rt></ruby>いです。あしたは<span class="blank-paren">（　　　）</span>でしょう。</div>
+<div class="options">
+<div class="option"><input id="q6a" name="q6" type="radio" value="0"/><label for="q6a"><span class="opt-key">1.</span><span class="opt-body"><ruby>晴<rt>は</rt></ruby>れた</span></label></div>
+<div class="option"><input id="q6b" name="q6" type="radio" value="1"/><label for="q6b"><span class="opt-key">2.</span><span class="opt-body"><ruby>晴<rt>は</rt></ruby>れる</span></label></div>
+<div class="option"><input id="q6c" name="q6" type="radio" value="0"/><label for="q6c"><span class="opt-key">3.</span><span class="opt-body"><ruby>晴<rt>は</rt></ruby>れよう</span></label></div>
+<div class="option"><input id="q6d" name="q6" type="radio" value="0"/><label for="q6d"><span class="opt-key">4.</span><span class="opt-body"><ruby>晴<rt>は</rt></ruby>れれば</span></label></div>
+</div>
+<div class="explanation">✅ 正解：2 — 〜でしょう：動詞辞書形＋でしょう（晴れる→晴れるでしょう）【第32課】</div>
+</div>
+
+<!-- Q7 -->
+<div class="question">
+<div class="q-text"><span class="q-num">7</span><ruby>来月<rt>らいげつ</rt></ruby>、<ruby>大阪<rt>おおさか</rt></ruby>の<ruby>本社<rt>ほんしゃ</rt></ruby>へ<ruby>転勤<rt>てんきん</rt></ruby>します。<ruby>料理<rt>りょうり</rt></ruby>も<span class="blank-paren">（　　　）</span>と<ruby>思<rt>おも</rt></ruby>っています。</div>
+<div class="options">
+<div class="option"><input id="q7a" name="q7" type="radio" value="0"/><label for="q7a"><span class="opt-key">1.</span><span class="opt-body"><ruby>習<rt>なら</rt></ruby>う</span></label></div>
+<div class="option"><input id="q7b" name="q7" type="radio" value="0"/><label for="q7b"><span class="opt-key">2.</span><span class="opt-body"><ruby>習<rt>なら</rt></ruby>い</span></label></div>
+<div class="option"><input id="q7c" name="q7" type="radio" value="0"/><label for="q7c"><span class="opt-key">3.</span><span class="opt-body"><ruby>習<rt>なら</rt></ruby>って</span></label></div>
+<div class="option"><input id="q7d" name="q7" type="radio" value="1"/><label for="q7d"><span class="opt-key">4.</span><span class="opt-body"><ruby>習<rt>なら</rt></ruby>おう</span></label></div>
+</div>
+<div class="explanation">✅ 正解：4 — 〜(よ)うと思っています：習う（u動詞）→ 習おう＋と思っています【第31課】</div>
+</div>
+
+<!-- Q8 -->
+<div class="question">
+<div class="q-text"><span class="q-num">8</span><ruby>鈴木<rt>すずき</rt></ruby>さんは「ミーティングに<ruby>出席<rt>しゅっせき</rt></ruby>できません」と<ruby>言<rt>い</rt></ruby>っていました。<br>この<ruby>文<rt>ぶん</rt></ruby>と<ruby>同<rt>おな</rt></ruby>じ<ruby>意味<rt>いみ</rt></ruby>の<ruby>文<rt>ぶん</rt></ruby>はどれですか。</div>
+<div class="options options-1col">
+<div class="option"><input id="q8a" name="q8" type="radio" value="1"/><label for="q8a"><span class="opt-key">1.</span><span class="opt-body"><ruby>鈴木<rt>すずき</rt></ruby>さんはミーティングに<ruby>出席<rt>しゅっせき</rt></ruby>できないと<ruby>言<rt>い</rt></ruby>っていました。</span></label></div>
+<div class="option"><input id="q8b" name="q8" type="radio" value="0"/><label for="q8b"><span class="opt-key">2.</span><span class="opt-body"><ruby>鈴木<rt>すずき</rt></ruby>さんはミーティングに<ruby>出席<rt>しゅっせき</rt></ruby>できませんと<ruby>言<rt>い</rt></ruby>っていました。</span></label></div>
+<div class="option"><input id="q8c" name="q8" type="radio" value="0"/><label for="q8c"><span class="opt-key">3.</span><span class="opt-body"><ruby>鈴木<rt>すずき</rt></ruby>さんはミーティングに<ruby>出席<rt>しゅっせき</rt></ruby>できなかったと<ruby>言<rt>い</rt></ruby>っていました。</span></label></div>
+<div class="option"><input id="q8d" name="q8" type="radio" value="0"/><label for="q8d"><span class="opt-key">4.</span><span class="opt-body"><ruby>鈴木<rt>すずき</rt></ruby>さんはミーティングに<ruby>出席<rt>しゅっせき</rt></ruby>できないでと<ruby>言<rt>い</rt></ruby>っていました。</span></label></div>
+</div>
+<div class="explanation">✅ 正解：1 — 〜と言っていました：否定の普通形（できない）＋と言っていました【第33課】</div>
+</div>
+
+<!-- Q9 -->
+<div class="question">
+<div class="q-text"><span class="q-num">9</span><ruby>説明書<rt>せつめいしょ</rt></ruby>を<span class="blank-paren">（　　　）</span>、<ruby>使<rt>つか</rt></ruby>い<ruby>方<rt>かた</rt></ruby>がわかります。</div>
+<div class="options">
+<div class="option"><input id="q9a" name="q9" type="radio" value="0"/><label for="q9a"><span class="opt-key">1.</span><span class="opt-body"><ruby>読<rt>よ</rt></ruby>んだら</span></label></div>
+<div class="option"><input id="q9b" name="q9" type="radio" value="1"/><label for="q9b"><span class="opt-key">2.</span><span class="opt-body"><ruby>読<rt>よ</rt></ruby>めば</span></label></div>
+<div class="option"><input id="q9c" name="q9" type="radio" value="0"/><label for="q9c"><span class="opt-key">3.</span><span class="opt-body"><ruby>読<rt>よ</rt></ruby>むなら</span></label></div>
+<div class="option"><input id="q9d" name="q9" type="radio" value="0"/><label for="q9d"><span class="opt-key">4.</span><span class="opt-body"><ruby>読<rt>よ</rt></ruby>むと</span></label></div>
+</div>
+<div class="explanation">✅ 正解：2 — 〜ば：読む（u動詞）→ 読めば（一般的な条件）【第35課】</div>
+</div>
+
+<!-- Q10 -->
+<div class="question">
+<div class="q-text"><span class="q-num">10</span><span class="blank-paren">（　　　）</span>に<ruby>入<rt>はい</rt></ruby>る<ruby>正<rt>ただ</rt></ruby>しいものはどれですか。</div>
+<div class="dialogue">
+<p><span class="sp">A：</span>きのうから<ruby>熱<rt>ねつ</rt></ruby>があるんです。</p>
+<p><span class="sp">B：</span>じゃ、<ruby>今日<rt>きょう</rt></ruby>は<ruby>無理<rt>むり</rt></ruby>を<span class="blank-paren">（　　　）</span>ほうがいいですよ。</p>
+</div>
+<div class="options">
+<div class="option"><input id="q10a" name="q10" type="radio" value="0"/><label for="q10a"><span class="opt-key">1.</span><span class="opt-body">しなくて</span></label></div>
+<div class="option"><input id="q10b" name="q10" type="radio" value="1"/><label for="q10b"><span class="opt-key">2.</span><span class="opt-body">しない</span></label></div>
+<div class="option"><input id="q10c" name="q10" type="radio" value="0"/><label for="q10c"><span class="opt-key">3.</span><span class="opt-body">してない</span></label></div>
+<div class="option"><input id="q10d" name="q10" type="radio" value="0"/><label for="q10d"><span class="opt-key">4.</span><span class="opt-body">しなかった</span></label></div>
+</div>
+<div class="explanation">✅ 正解：2 — 〜ないほうがいいです：動詞ない形＋ほうがいいです（無理をしない）【第32課】</div>
+</div>
+
+<!-- Q11 -->
+<div class="question">
+<div class="q-text"><span class="q-num">11</span>グプタさんは「２<ruby>時<rt>じ</rt></ruby>ごろ<ruby>事務所<rt>じむしょ</rt></ruby>に<ruby>戻<rt>もど</rt></ruby>ります」と<ruby>言<rt>い</rt></ruby>っていました。<br>この<ruby>文<rt>ぶん</rt></ruby>と<ruby>同<rt>おな</rt></ruby>じ<ruby>意味<rt>いみ</rt></ruby>の<ruby>文<rt>ぶん</rt></ruby>はどれですか。</div>
+<div class="options options-1col">
+<div class="option"><input id="q11a" name="q11" type="radio" value="0"/><label for="q11a"><span class="opt-key">1.</span><span class="opt-body">グプタさんは２<ruby>時<rt>じ</rt></ruby>ごろ<ruby>事務所<rt>じむしょ</rt></ruby>に<ruby>戻<rt>もど</rt></ruby>りますと<ruby>言<rt>い</rt></ruby>っていました。</span></label></div>
+<div class="option"><input id="q11b" name="q11" type="radio" value="1"/><label for="q11b"><span class="opt-key">2.</span><span class="opt-body">グプタさんは２<ruby>時<rt>じ</rt></ruby>ごろ<ruby>事務所<rt>じむしょ</rt></ruby>に<ruby>戻<rt>もど</rt></ruby>ると<ruby>言<rt>い</rt></ruby>っていました。</span></label></div>
+<div class="option"><input id="q11c" name="q11" type="radio" value="0"/><label for="q11c"><span class="opt-key">3.</span><span class="opt-body">グプタさんは２<ruby>時<rt>じ</rt></ruby>ごろ<ruby>事務所<rt>じむしょ</rt></ruby>に<ruby>戻<rt>もど</rt></ruby>ろうと<ruby>言<rt>い</rt></ruby>っていました。</span></label></div>
+<div class="option"><input id="q11d" name="q11" type="radio" value="0"/><label for="q11d"><span class="opt-key">4.</span><span class="opt-body">グプタさんは２<ruby>時<rt>じ</rt></ruby>ごろ<ruby>事務所<rt>じむしょ</rt></ruby>に<ruby>戻<rt>もど</rt></ruby>れると<ruby>言<rt>い</rt></ruby>っていました。</span></label></div>
+</div>
+<div class="explanation">✅ 正解：2 — 〜と言っていました：普通形（辞書形）＋と言っていました（戻る）【第33課】</div>
+</div>
+
+<!-- Q12 -->
+<div class="question">
+<div class="q-text"><span class="q-num">12</span><ruby>国<rt>くに</rt></ruby>へ<ruby>帰<rt>かえ</rt></ruby>っても、<ruby>日本語<rt>にほんご</rt></ruby>の<ruby>勉強<rt>べんきょう</rt></ruby>を<span class="blank-paren">（　　　）</span>つもりです。</div>
+<div class="options">
+<div class="option"><input id="q12a" name="q12" type="radio" value="0"/><label for="q12a"><span class="opt-key">1.</span><span class="opt-body"><ruby>続<rt>つづ</rt></ruby>け</span></label></div>
+<div class="option"><input id="q12b" name="q12" type="radio" value="0"/><label for="q12b"><span class="opt-key">2.</span><span class="opt-body"><ruby>続<rt>つづ</rt></ruby>けて</span></label></div>
+<div class="option"><input id="q12c" name="q12" type="radio" value="0"/><label for="q12c"><span class="opt-key">3.</span><span class="opt-body"><ruby>続<rt>つづ</rt></ruby>けよう</span></label></div>
+<div class="option"><input id="q12d" name="q12" type="radio" value="1"/><label for="q12d"><span class="opt-key">4.</span><span class="opt-body"><ruby>続<rt>つづ</rt></ruby>ける</span></label></div>
+</div>
+<div class="explanation">✅ 正解：4 — 〜つもりです：動詞辞書形＋つもりです（続ける→続けるつもりです）【第31課】</div>
+</div>
+
+<!-- Q13 -->
+<div class="question">
+<div class="q-text"><span class="q-num">13</span><ruby>最近<rt>さいきん</rt></ruby>、エレベーターに<span class="blank-paren">（　　　）</span>、<ruby>階段<rt>かいだん</rt></ruby>を<ruby>使<rt>つか</rt></ruby>っています。<ruby>運動<rt>うんどう</rt></ruby>のために。</div>
+<div class="options">
+<div class="option"><input id="q13a" name="q13" type="radio" value="0"/><label for="q13a"><span class="opt-key">1.</span><span class="opt-body"><ruby>乗<rt>の</rt></ruby>って</span></label></div>
+<div class="option"><input id="q13b" name="q13" type="radio" value="0"/><label for="q13b"><span class="opt-key">2.</span><span class="opt-body"><ruby>乗<rt>の</rt></ruby>りながら</span></label></div>
+<div class="option"><input id="q13c" name="q13" type="radio" value="0"/><label for="q13c"><span class="opt-key">3.</span><span class="opt-body"><ruby>乗<rt>の</rt></ruby>らなくて</span></label></div>
+<div class="option"><input id="q13d" name="q13" type="radio" value="1"/><label for="q13d"><span class="opt-key">4.</span><span class="opt-body"><ruby>乗<rt>の</rt></ruby>らないで</span></label></div>
+</div>
+<div class="explanation">✅ 正解：4 — 〜ないで：乗らないで＋別の行動（〜をせずに別の行動をとる）【第34課】</div>
+</div>
+
+<!-- Q14 -->
+<div class="question">
+<div class="q-text"><span class="q-num">14</span><span class="blank-paren">（　　　）</span>に<ruby>入<rt>はい</rt></ruby>る<ruby>正<rt>ただ</rt></ruby>しいものはどれですか。</div>
+<div class="dialogue">
+<p><span class="sp">A：</span><ruby>道<rt>みち</rt></ruby>が<ruby>込<rt>こ</rt></ruby>んでいますね。</p>
+<p><span class="sp">B：</span>ええ。<ruby>約束<rt>やくそく</rt></ruby>の<ruby>時間<rt>じかん</rt></ruby>に<span class="blank-paren">（　　　）</span>かもしれませんから、<ruby>電話<rt>でんわ</rt></ruby>をかけましょう。</p>
+</div>
+<div class="options">
+<div class="option"><input id="q14a" name="q14" type="radio" value="0"/><label for="q14a"><span class="opt-key">1.</span><span class="opt-body"><ruby>間<rt>ま</rt></ruby>に<ruby>合<rt>あ</rt></ruby>う</span></label></div>
+<div class="option"><input id="q14b" name="q14" type="radio" value="0"/><label for="q14b"><span class="opt-key">2.</span><span class="opt-body"><ruby>間<rt>ま</rt></ruby>に<ruby>合<rt>あ</rt></ruby>い</span></label></div>
+<div class="option"><input id="q14c" name="q14" type="radio" value="0"/><label for="q14c"><span class="opt-key">3.</span><span class="opt-body"><ruby>間<rt>ま</rt></ruby>に<ruby>合<rt>あ</rt></ruby>おう</span></label></div>
+<div class="option"><input id="q14d" name="q14" type="radio" value="1"/><label for="q14d"><span class="opt-key">4.</span><span class="opt-body"><ruby>間<rt>ま</rt></ruby>に<ruby>合<rt>あ</rt></ruby>わない</span></label></div>
+</div>
+<div class="explanation">✅ 正解：4 — 〜ないかもしれません：動詞ない形＋かもしれません（間に合わない）【第32課】</div>
+</div>
+
+<!-- Q15 -->
+<div class="question">
+<div class="q-text"><span class="q-num">15</span><span class="blank-paren">（　　　）</span>に<ruby>入<rt>はい</rt></ruby>る<ruby>正<rt>ただ</rt></ruby>しいものはどれですか。</div>
+<div class="dialogue">
+<p><span class="sp">A：</span>あしたの<ruby>試合<rt>しあい</rt></ruby>、IMCのチームは<ruby>勝<rt>か</rt></ruby>てるでしょうか。</p>
+<p><span class="sp">B：</span>あんなに<ruby>練習<rt>れんしゅう</rt></ruby>していましたから、きっと<span class="blank-paren">（　　　）</span>でしょう。</p>
+</div>
+<div class="options">
+<div class="option"><input id="q15a" name="q15" type="radio" value="1"/><label for="q15a"><span class="opt-key">1.</span><span class="opt-body"><ruby>勝<rt>か</rt></ruby>てる</span></label></div>
+<div class="option"><input id="q15b" name="q15" type="radio" value="0"/><label for="q15b"><span class="opt-key">2.</span><span class="opt-body"><ruby>勝<rt>か</rt></ruby>てた</span></label></div>
+<div class="option"><input id="q15c" name="q15" type="radio" value="0"/><label for="q15c"><span class="opt-key">3.</span><span class="opt-body"><ruby>勝<rt>か</rt></ruby>てて</span></label></div>
+<div class="option"><input id="q15d" name="q15" type="radio" value="0"/><label for="q15d"><span class="opt-key">4.</span><span class="opt-body"><ruby>勝<rt>か</rt></ruby>てよう</span></label></div>
+</div>
+<div class="explanation">✅ 正解：1 — 〜でしょう：動詞辞書形＋でしょう（勝てる→勝てるでしょう）【第32課】</div>
+</div>
+
+<!-- Q16 -->
+<div class="question">
+<div class="q-text"><span class="q-num">16</span>「<ruby>暑<rt>あつ</rt></ruby>いです」の<ruby>条件形<rt>じょうけんけい</rt></ruby>はどれですか。</div>
+<div class="options">
+<div class="option"><input id="q16a" name="q16" type="radio" value="0"/><label for="q16a"><span class="opt-key">1.</span><span class="opt-body"><ruby>暑<rt>あつ</rt></ruby>いば</span></label></div>
+<div class="option"><input id="q16b" name="q16" type="radio" value="1"/><label for="q16b"><span class="opt-key">2.</span><span class="opt-body"><ruby>暑<rt>あつ</rt></ruby>ければ</span></label></div>
+<div class="option"><input id="q16c" name="q16" type="radio" value="0"/><label for="q16c"><span class="opt-key">3.</span><span class="opt-body"><ruby>暑<rt>あつ</rt></ruby>かったら</span></label></div>
+<div class="option"><input id="q16d" name="q16" type="radio" value="0"/><label for="q16d"><span class="opt-key">4.</span><span class="opt-body"><ruby>暑<rt>あつ</rt></ruby>なら</span></label></div>
+</div>
+<div class="explanation">✅ 正解：2 — い形容詞の条件形：暑い→い→ければ→暑ければ【第35課】</div>
+</div>
+
+<!-- Q17 -->
+<div class="question">
+<div class="q-text"><span class="q-num">17</span>「<ruby>続<rt>つづ</rt></ruby>けます」の<ruby>意向形<rt>いこうけい</rt></ruby>はどれですか。</div>
+<div class="options">
+<div class="option"><input id="q17a" name="q17" type="radio" value="0"/><label for="q17a"><span class="opt-key">1.</span><span class="opt-body"><ruby>続<rt>つづ</rt></ruby>けろ</span></label></div>
+<div class="option"><input id="q17b" name="q17" type="radio" value="0"/><label for="q17b"><span class="opt-key">2.</span><span class="opt-body"><ruby>続<rt>つづ</rt></ruby>こう</span></label></div>
+<div class="option"><input id="q17c" name="q17" type="radio" value="1"/><label for="q17c"><span class="opt-key">3.</span><span class="opt-body"><ruby>続<rt>つづ</rt></ruby>けよう</span></label></div>
+<div class="option"><input id="q17d" name="q17" type="radio" value="0"/><label for="q17d"><span class="opt-key">4.</span><span class="opt-body"><ruby>続<rt>つづ</rt></ruby>けおう</span></label></div>
+</div>
+<div class="explanation">✅ 正解：3 — 意向形（ru動詞）：続ける→る→よう→続けよう【第31課】</div>
+</div>
+
+<!-- Q18 -->
+<div class="question">
+<div class="q-text"><span class="q-num">18</span><ruby>説明書<rt>せつめいしょ</rt></ruby><span class="blank-paren">（　　　）</span>とおりに、<ruby>棚<rt>たな</rt></ruby>を<ruby>組<rt>く</rt></ruby>み<ruby>立<rt>た</rt></ruby>ててください。</div>
+<div class="options">
+<div class="option"><input id="q18a" name="q18" type="radio" value="0"/><label for="q18a"><span class="opt-key">1.</span><span class="opt-body">に</span></label></div>
+<div class="option"><input id="q18b" name="q18" type="radio" value="0"/><label for="q18b"><span class="opt-key">2.</span><span class="opt-body">で</span></label></div>
+<div class="option"><input id="q18c" name="q18" type="radio" value="0"/><label for="q18c"><span class="opt-key">3.</span><span class="opt-body">を</span></label></div>
+<div class="option"><input id="q18d" name="q18" type="radio" value="1"/><label for="q18d"><span class="opt-key">4.</span><span class="opt-body">の</span></label></div>
+</div>
+<div class="explanation">✅ 正解：4 — 名詞＋のとおりに：説明書のとおりに（名詞に「の」をつけてとおりに接続）【第34課】</div>
+</div>
+
+</div>
+<button class="btn-submit" id="submitBtn" onclick="submitTest()">採点する</button>
+<div class="result-panel" id="resultPanel">
+<h2 id="resultTitle"></h2>
+<div class="result-score" id="resultScore"></div>
+<div class="result-detail" id="resultDetail"></div>
+</div>
+</div>
+<script>
+const TOTAL=18,TIME_LIMIT=900;
+let timeLeft=TIME_LIMIT,timerInterval,submitted=false;
+function shuffleAllOptions(){
+  function randBelow(n){
+    if(n<=1)return 0;
+    try{
+      if(typeof crypto!=='undefined'&&crypto.getRandomValues){
+        const lim=Math.floor(4294967296/n)*n;
+        const buf=new Uint32Array(1);
+        let x;
+        do{crypto.getRandomValues(buf);x=buf[0];}while(x>=lim);
+        return x%n;
+      }
+    }catch(e){}
+    return Math.floor(Math.random()*n);
+  }
+  function fisherYates(arr){
+    for(let i=arr.length-1;i>0;i--){
+      const j=randBelow(i+1);
+      const t=arr[i];arr[i]=arr[j];arr[j]=t;
+    }
+  }
+  function relabel(optsDiv,items,prefix){
+    items.forEach(function(el){optsDiv.appendChild(el);});
+    items.forEach(function(el,idx){
+      const inp=el.querySelector('input[type="radio"]');
+      const lbl=el.querySelector('label');
+      if(!inp||!lbl)return;
+      inp.id=prefix+(idx+1);
+      lbl.setAttribute('for',prefix+(idx+1));
+      const key=el.querySelector('.opt-key');
+      if(key)key.textContent=(idx+1)+'.';
+    });
+    const explain=optsDiv.nextElementSibling;
+    if(explain&&explain.classList.contains('explanation')){
+      const correctInp=optsDiv.querySelector('input[value="1"]');
+      if(correctInp){
+        const keyEl=correctInp.closest('.option').querySelector('.opt-key');
+        if(keyEl){
+          const mk=keyEl.textContent.match(/^(\d+)\./);
+          if(mk)explain.innerHTML=explain.innerHTML.replace(/正解：\d+/,'正解：'+mk[1]);
+        }
+      }
+    }
+    return items.findIndex(function(el){return el.querySelector('input[value="1"]');});
+  }
+  const posCounts=[0,0,0,0];
+  document.querySelectorAll('.options').forEach(function(optsDiv){
+    const items=Array.from(optsDiv.children).filter(el=>el.classList.contains('option'));
+    if(items.length<2)return;
+    fisherYates(items);
+    const prefix=optsDiv.querySelector('input[type="radio"]').name;
+    let slot=relabel(optsDiv,items,prefix);
+    if(slot<0)return;
+    let minC=9999;
+    for(let i=0;i<items.length;i++)minC=Math.min(minC,posCounts[i]);
+    const cand=[];
+    for(let i=0;i<items.length;i++)if(posCounts[i]===minC)cand.push(i);
+    const ideal=cand[randBelow(cand.length)];
+    if(slot!==ideal&&posCounts[slot]>posCounts[ideal]){
+      const t=items[slot];items[slot]=items[ideal];items[ideal]=t;
+      slot=relabel(optsDiv,items,prefix);
+    }
+    if(slot>=0)posCounts[slot]++;
+  });
+}
+try{shuffleAllOptions();}catch(e){}
+function startTimer(){
+  timerInterval=setInterval(()=>{
+    timeLeft--;
+    const m=Math.floor(timeLeft/60),s=timeLeft%60;
+    const el=document.getElementById('timer');
+    el.textContent=`${m}:${s.toString().padStart(2,'0')}`;
+    document.getElementById('progress').style.width=`${(timeLeft/TIME_LIMIT)*100}%`;
+    if(timeLeft<=60)el.className='timer danger';
+    else if(timeLeft<=300)el.className='timer warning';
+    else el.className='timer';
+    if(timeLeft<=0){clearInterval(timerInterval);submitTest();}
+  },1000);
+}
+function submitTest(){
+  if(submitted)return;submitted=true;
+  if(timerInterval)clearInterval(timerInterval);
+  let correct=0;
+  for(let i=1;i<=TOTAL;i++){
+    const sel=document.querySelector(`input[name="q${i}"]:checked`);
+    document.querySelectorAll(`input[name="q${i}"]`).forEach(o=>{
+      const p=o.parentElement;
+      if(o.value==='1')p.classList.add('correct');
+      else if(o.checked)p.classList.add('wrong');
+    });
+    if(sel&&sel.value==='1')correct++;
+  }
+  document.querySelectorAll('.explanation').forEach(e=>e.classList.add('show'));
+  const pct=Math.round((correct/TOTAL)*100);
+  const panel=document.getElementById('resultPanel');
+  panel.style.display='block';
+  document.getElementById('resultScore').textContent=`${correct} / ${TOTAL}（${pct}%）`;
+  const title=document.getElementById('resultTitle');
+  const sc=document.getElementById('resultScore');
+  if(pct>=90){title.textContent='🎉 すばらしい！';sc.className='result-score excellent';}
+  else if(pct>=70){title.textContent='👍 よくできました！';sc.className='result-score good';}
+  else if(pct>=50){title.textContent='📝 もうすこし！';sc.className='result-score fair';}
+  else{title.textContent='💪 がんばりましょう！';sc.className='result-score poor';}
+  const timeUsed=TIME_LIMIT-timeLeft;
+  document.getElementById('resultDetail').innerHTML=`
+    <div class="result-item"><div class="label">せいかい</div><div class="value">${correct}/${TOTAL}</div></div>
+    <div class="result-item"><div class="label">じかん</div><div class="value">${Math.floor(timeUsed/60)}分${timeUsed%60}秒</div></div>
+  `;
+  document.getElementById('submitBtn').disabled=true;
+  panel.scrollIntoView({behavior:'smooth'});
+}
+startTimer();
+</script>
+</body>
+</html>

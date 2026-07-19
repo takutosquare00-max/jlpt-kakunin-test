@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<title>JLPT N3 確認テスト v7（10分・10問）</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}html{-webkit-text-size-adjust:100%;-webkit-tap-highlight-color:transparent}body{font-family:'Hiragino Kaku Gothic ProN','Hiragino Sans','Noto Sans JP',Meiryo,sans-serif;background:#f0f4f8;color:#1a202c;line-height:1.7;padding:env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left)}.container{max-width:800px;margin:0 auto;padding:20px}header{background:linear-gradient(135deg,#ed8936 0%,#dd6b20 100%);color:#fff;padding:24px;border-radius:16px;margin-bottom:24px;text-align:center;position:sticky;top:0;z-index:100;box-shadow:0 4px 15px rgba(237,137,54,0.4)}header h1{font-size:1.5em;margin-bottom:4px}.header-info{display:flex;justify-content:center;gap:24px;align-items:center;margin-top:8px;flex-wrap:wrap}.timer{font-size:1.8em;font-weight:bold;font-variant-numeric:tabular-nums}.timer.warning{color:#ffd700;animation:pulse 1s infinite}.timer.danger{color:#fff5f5;animation:pulse .5s infinite}@keyframes pulse{0%,100%{opacity:1}50%{opacity:.6}}.progress-bar{width:200px;height:8px;background:rgba(255,255,255,.3);border-radius:4px;overflow:hidden}.progress-fill{height:100%;background:#fff;border-radius:4px;transition:width .3s}.score-badge{background:rgba(255,255,255,.2);padding:4px 12px;border-radius:20px;font-size:.9em}.section{background:#fff;border-radius:12px;padding:24px;margin-bottom:20px;box-shadow:0 2px 8px rgba(0,0,0,.06)}.section-title{font-size:1.1em;font-weight:bold;color:#c05621;border-left:4px solid #ed8936;padding-left:12px;margin-bottom:16px}.question{padding:16px 0;border-bottom:1px solid #e2e8f0}.question:last-child{border-bottom:none}.q-num{display:inline-block;background:#ed8936;color:#fff;width:28px;height:28px;text-align:center;line-height:28px;border-radius:50%;font-size:.85em;font-weight:bold;margin-right:8px}.q-text{font-size:1.05em;margin-bottom:12px;font-weight:500}.options{display:grid;grid-template-columns:1fr 1fr;gap:8px}@media(max-width:600px){.options{grid-template-columns:1fr}}.option{position:relative}.option input{display:none}.option label{display:flex;align-items:center;min-height:44px;padding:10px 14px;border:2px solid #e2e8f0;border-radius:8px;cursor:pointer;transition:all .2s;font-size:.95em;touch-action:manipulation;-webkit-user-select:none;user-select:none}.option label:hover{border-color:#ed8936;background:#fffaf0}.option input:checked+label{border-color:#ed8936;background:#fefcf3;color:#7b341e;font-weight:600}.option.correct label{border-color:#48bb78!important;background:#f0fff4!important;color:#276749!important}.option.wrong label{border-color:#fc8181!important;background:#fff5f5!important;color:#9b2c2c!important}.reading-passage{background:#fffaf0;border-left:3px solid #ed8936;padding:16px;margin:12px 0;border-radius:0 8px 8px 0;font-size:.95em;line-height:1.9}.btn-submit{display:block;width:100%;min-height:48px;padding:16px;background:linear-gradient(135deg,#ed8936 0%,#dd6b20 100%);color:#fff;border:none;border-radius:12px;font-size:1.1em;font-weight:bold;cursor:pointer;transition:transform .2s,box-shadow .2s;margin-top:24px;touch-action:manipulation;-webkit-user-select:none;user-select:none}.btn-submit:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(237,137,54,.4)}.btn-submit:disabled{opacity:.5;cursor:not-allowed;transform:none;box-shadow:none}.result-panel{background:#fff;border-radius:16px;padding:32px;text-align:center;box-shadow:0 4px 20px rgba(0,0,0,.1);margin-top:24px;display:none}.result-panel h2{font-size:1.8em;margin-bottom:8px}.result-score{font-size:3em;font-weight:bold;margin:16px 0}.result-score.excellent{color:#48bb78}.result-score.good{color:#ed8936}.result-score.fair{color:#e53e3e}.result-score.poor{color:#9b2c2c}.result-detail{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:12px;margin-top:20px}.result-item{background:#f7fafc;padding:12px;border-radius:8px}.result-item .label{font-size:.8em;color:#718096}.result-item .value{font-size:1.2em;font-weight:bold}.explanation{display:none;margin-top:8px;padding:10px;background:#fffbeb;border-radius:8px;font-size:.9em;border-left:3px solid #f6ad55}.explanation.show{display:block}
+</style>
+</head>
+<body>
+<div class="container">
+<header>
+<h1>JLPT N3 確認テスト v7（10分・10問）</h1>
+<div class="header-info">
+<div class="timer" id="timer">10:00</div>
+<div class="progress-bar"><div class="progress-fill" id="progress" style="width:100%"></div></div>
+<div class="score-badge">全10問</div>
+</div>
+</header>
+
+<div class="section">
+<div class="section-title">もんだい1 — 漢字の読み（2問）</div>
+<p style="color:#718096;font-size:.9em;margin-bottom:12px">＿＿の言葉の読み方として最もよいものを、1・2・3・4から一つ選んでください。</p>
+
+<div class="question"><div class="q-text"><span class="q-num">1</span>試験に　合格するために　<strong>集中</strong>して　勉強しました。</div><div class="options"><div class="option"><input type="radio" name="q1" id="q1a" value="1"><label for="q1a">1. しゅうちゅう</label></div><div class="option"><input type="radio" name="q1" id="q1b" value="0"><label for="q1b">2. しゅうちゅ</label></div><div class="option"><input type="radio" name="q1" id="q1c" value="0"><label for="q1c">3. じゅうちゅう</label></div><div class="option"><input type="radio" name="q1" id="q1d" value="0"><label for="q1d">4. しゅうちう</label></div></div><div class="explanation">✅ 正解：1. しゅうちゅう — 「集中」=「しゅうちゅう」。concentration。</div></div>
+
+<div class="question"><div class="q-text"><span class="q-num">2</span><strong>輸入</strong>品の　価格が　上がりました。</div><div class="options"><div class="option"><input type="radio" name="q2" id="q2a" value="0"><label for="q2a">1. ゆしゅつ</label></div><div class="option"><input type="radio" name="q2" id="q2b" value="1"><label for="q2b">2. ゆにゅう</label></div><div class="option"><input type="radio" name="q2" id="q2c" value="0"><label for="q2c">3. ようにゅう</label></div><div class="option"><input type="radio" name="q2" id="q2d" value="0"><label for="q2d">4. ゆうにゅう</label></div></div><div class="explanation">✅ 正解：2. ゆにゅう — 「輸入」=「ゆにゅう」。import。1は「輸出」の読み。</div></div>
+</div>
+
+<div class="section">
+<div class="section-title">もんだい2 — 語彙（2問）</div>
+<p style="color:#718096;font-size:.9em;margin-bottom:12px">（　）に入れるのに最もよいものを選んでください。</p>
+
+<div class="question"><div class="q-text"><span class="q-num">3</span>この　地域は　水が　（　）しています。</div><div class="options"><div class="option"><input type="radio" name="q3" id="q3a" value="1"><label for="q3a">1. 不足</label></div><div class="option"><input type="radio" name="q3" id="q3b" value="0"><label for="q3b">2. 不満</label></div><div class="option"><input type="radio" name="q3" id="q3c" value="0"><label for="q3c">3. 不利</label></div><div class="option"><input type="radio" name="q3" id="q3d" value="0"><label for="q3d">4. 不便</label></div></div><div class="explanation">✅ 正解：1. 不足 — 「水が不足している」で water is in short supply。不足＝shortage、lack。</div></div>
+
+<div class="question"><div class="q-text"><span class="q-num">4</span>彼は　（　）　勉強する　学生です。</div><div class="options"><div class="option"><input type="radio" name="q4" id="q4a" value="1"><label for="q4a">1. 熱心に</label></div><div class="option"><input type="radio" name="q4" id="q4b" value="0"><label for="q4b">2. 急に</label></div><div class="option"><input type="radio" name="q4" id="q4c" value="0"><label for="q4c">3. 突然</label></div><div class="option"><input type="radio" name="q4" id="q4d" value="0"><label for="q4d">4. 偶然</label></div></div><div class="explanation">✅ 正解：1. 熱心に — 「熱心に勉強する」で study enthusiastically。熱心＝enthusiastic、eager。</div></div>
+</div>
+
+<div class="section">
+<div class="section-title">もんだい3 — 文法（3問）</div>
+
+<div class="question"><div class="q-text"><span class="q-num">5</span>健康（　）　運動を　続けています。</div><div class="options"><div class="option"><input type="radio" name="q5" id="q5a" value="0"><label for="q5a">1. によって</label></div><div class="option"><input type="radio" name="q5" id="q5b" value="0"><label for="q5b">2. について</label></div><div class="option"><input type="radio" name="q5" id="q5c" value="1"><label for="q5c">3. のために</label></div><div class="option"><input type="radio" name="q5" id="q5d" value="0"><label for="q5d">4. として</label></div></div><div class="explanation">✅ 正解：3. のために — 「健康のために」で for the sake of health。目的を表す。</div></div>
+
+<div class="question"><div class="q-text"><span class="q-num">6</span>この　問題は　子ども（　）　難しいです。</div><div class="options"><div class="option"><input type="radio" name="q6" id="q6a" value="1"><label for="q6a">1. には</label></div><div class="option"><input type="radio" name="q6" id="q6b" value="0"><label for="q6b">2. では</label></div><div class="option"><input type="radio" name="q6" id="q6c" value="0"><label for="q6c">3. から</label></div><div class="option"><input type="radio" name="q6" id="q6d" value="0"><label for="q6d">4. まで</label></div></div><div class="explanation">✅ 正解：1. には — 「子どもには難しい」で difficult for children。〜には＝for (someone)。</div></div>
+
+<div class="question"><div class="q-text"><span class="q-num">7</span>彼は　日本語が　上手になる（　）　毎日　勉強しています。</div><div class="options"><div class="option"><input type="radio" name="q7" id="q7a" value="1"><label for="q7a">1. ように</label></div><div class="option"><input type="radio" name="q7" id="q7b" value="0"><label for="q7b">2. ために</label></div><div class="option"><input type="radio" name="q7" id="q7c" value="0"><label for="q7c">3. うえで</label></div><div class="option"><input type="radio" name="q7" id="q7d" value="0"><label for="q7d">4. のに</label></div></div><div class="explanation">✅ 正解：1. ように — 「上手になるように」で in order to become good at。意志のない動詞（なる）の目的には「ように」。</div></div>
+</div>
+
+<div class="section">
+<div class="section-title">もんだい4 — 言い換え（1問）</div>
+
+<div class="question"><div class="q-text"><span class="q-num">8</span>いろいろ　考えたが、<strong>つまり</strong>　同じ　ことだ。</div><div class="options"><div class="option"><input type="radio" name="q8" id="q8a" value="0"><label for="q8a">1. 最初</label></div><div class="option"><input type="radio" name="q8" id="q8b" value="0"><label for="q8b">2. 例えば</label></div><div class="option"><input type="radio" name="q8" id="q8c" value="1"><label for="q8c">3. 要するに</label></div><div class="option"><input type="radio" name="q8" id="q8d" value="0"><label for="q8d">4. すぐに</label></div></div><div class="explanation">✅ 正解：3. 要するに — 「つまり」= in other words、in short。「要するに」と同義。</div></div>
+</div>
+
+<div class="section">
+<div class="section-title">もんだい5 — 文の組み立て（1問）</div>
+
+<div class="question"><div class="q-text"><span class="q-num">9</span>彼は　＿＿ ＿＿ ★ ＿＿ 来ました。</div><div class="options"><div class="option"><input type="radio" name="q9" id="q9a" value="0"><label for="q9a">1. わざわざ</label></div><div class="option"><input type="radio" name="q9" id="q9b" value="0"><label for="q9b">2. 会いに</label></div><div class="option"><input type="radio" name="q9" id="q9c" value="1"><label for="q9c">3. 私に</label></div><div class="option"><input type="radio" name="q9" id="q9d" value="0"><label for="q9d">4. 駅まで</label></div></div><div class="explanation">✅ 正解：3. 私に — 正しい語順「彼は わざわざ 駅まで 私に 会いに 来ました。」4つすべてを使って自然な文。（〜に会いに＝to meet）</div></div>
+</div>
+
+<div class="section">
+<div class="section-title">もんだい6 — 読解（1問）</div>
+
+<div class="question">
+<div class="reading-passage">
+奨学金を申請したい人は、まず学校の事務所で申込用紙をもらってください。必要な書類は、成績証明書、保護者の収入証明書、志望理由書です。締め切りは3月15日です。書類が揃っていないと審査を受けられません。結果は4月下旬に郵送でお知らせします。
+</div>
+<div class="q-text"><span class="q-num">10</span>奨学金について正しいものはどれですか。</div>
+<div class="options"><div class="option"><input type="radio" name="q10" id="q10a" value="0"><label for="q10a">1. 申込用紙は郵送で請求します</label></div><div class="option"><input type="radio" name="q10" id="q10b" value="1"><label for="q10b">2. 書類が揃っていないと審査を受けられません</label></div><div class="option"><input type="radio" name="q10" id="q10c" value="0"><label for="q10c">3. 締め切りは4月です</label></div><div class="option"><input type="radio" name="q10" id="q10d" value="0"><label for="q10d">4. 結果は電話で連絡します</label></div></div>
+<div class="explanation">✅ 正解：2 — 本文に「書類が揃っていないと審査を受けられません」と書かれています。</div>
+</div>
+</div>
+
+<button class="btn-submit" id="submitBtn" onclick="submitTest()">採点する</button>
+<div class="result-panel" id="resultPanel"><h2 id="resultTitle"></h2><div class="result-score" id="resultScore"></div><div class="result-detail" id="resultDetail"></div><button class="btn-submit" onclick="location.reload()" style="margin-top:20px">もう一度</button></div>
+</div>
+
+<script>
+const TOTAL=10,TIME_LIMIT=600;let timeLeft=TIME_LIMIT,timerInterval,submitted=false;
+function startTimer(){timerInterval=setInterval(()=>{timeLeft--;const m=Math.floor(timeLeft/60),s=timeLeft%60;const el=document.getElementById('timer');el.textContent=`${m}:${s.toString().padStart(2,'0')}`;document.getElementById('progress').style.width=`${(timeLeft/TIME_LIMIT)*100}%`;if(timeLeft<=60)el.className='timer danger';else if(timeLeft<=180)el.className='timer warning';if(timeLeft<=0){clearInterval(timerInterval);submitTest();}},1000);}
+function submitTest(){if(submitted)return;submitted=true;clearInterval(timerInterval);let correct=0;const sec={kanji:0,vocab:0,gram:0,para:0,sent:0,read:0};for(let i=1;i<=TOTAL;i++){const sel=document.querySelector(`input[name="q${i}"]:checked`);const opts=document.querySelectorAll(`input[name="q${i}"]`);let ok=false;if(sel&&sel.value==='1'){ok=true;correct++;}opts.forEach(o=>{const p=o.parentElement;if(o.value==='1')p.classList.add('correct');else if(o.checked)p.classList.add('wrong');});if(i<=2){if(ok)sec.kanji++;}else if(i<=4){if(ok)sec.vocab++;}else if(i<=7){if(ok)sec.gram++;}else if(i===8){if(ok)sec.para++;}else if(i===9){if(ok)sec.sent++;}else{if(ok)sec.read++;}}document.querySelectorAll('.explanation').forEach(e=>e.classList.add('show'));const pct=Math.round((correct/TOTAL)*100);const panel=document.getElementById('resultPanel');panel.style.display='block';const score=document.getElementById('resultScore');score.textContent=`${correct} / ${TOTAL}（${pct}%）`;const title=document.getElementById('resultTitle');if(pct>=90){title.textContent='🎉 素晴らしい！';score.className='result-score excellent';}else if(pct>=70){title.textContent='👍 よくできました！';score.className='result-score good';}else if(pct>=50){title.textContent='📝 もう少し！';score.className='result-score fair';}else{title.textContent='💪 がんばりましょう！';score.className='result-score poor';}const t=TIME_LIMIT-timeLeft;document.getElementById('resultDetail').innerHTML=`<div class="result-item"><div class="label">漢字の読み</div><div class="value">${sec.kanji}/2</div></div><div class="result-item"><div class="label">語彙</div><div class="value">${sec.vocab}/2</div></div><div class="result-item"><div class="label">文法</div><div class="value">${sec.gram}/3</div></div><div class="result-item"><div class="label">言い換え</div><div class="value">${sec.para}/1</div></div><div class="result-item"><div class="label">文の組み立て</div><div class="value">${sec.sent}/1</div></div><div class="result-item"><div class="label">読解</div><div class="value">${sec.read}/1</div></div><div class="result-item"><div class="label">所要時間</div><div class="value">${Math.floor(t/60)}分${t%60}秒</div></div>`;document.getElementById('submitBtn').disabled=true;panel.scrollIntoView({behavior:'smooth'});}
+startTimer();
+</script>
+</body>
+</html>

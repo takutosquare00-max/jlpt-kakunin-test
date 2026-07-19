@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>みんなの日本語 34 漢字・語彙クイズ</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;-webkit-tap-highlight-color:transparent}
+body{font-family:'Hiragino Kaku Gothic ProN','Hiragino Sans','Noto Sans JP',Meiryo,sans-serif;background:#f0f4f8;color:#1a202c;line-height:1.7;padding:env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left)}
+.container{max-width:800px;margin:0 auto;padding:20px}
+header{background:linear-gradient(135deg,#2b6cb0 0%,#2c5282 100%);color:#fff;padding:24px;border-radius:16px;margin-bottom:24px;text-align:center;position:sticky;top:0;z-index:100;box-shadow:0 4px 15px rgba(43,108,176,.4)}
+header h1{font-size:1.45em;margin-bottom:4px}
+.header-info{display:flex;justify-content:center;gap:24px;align-items:center;margin-top:8px;flex-wrap:wrap}
+.timer{font-size:1.8em;font-weight:bold;font-variant-numeric:tabular-nums}
+.timer.warning{color:#ffd700;animation:pulse 1s infinite}
+.timer.danger{color:#ff4757;animation:pulse .5s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.6}}
+.progress-bar{width:200px;height:8px;background:rgba(255,255,255,.3);border-radius:4px;overflow:hidden}
+.progress-fill{height:100%;background:#fff;border-radius:4px;transition:width .3s}
+.score-badge{background:rgba(255,255,255,.2);padding:4px 12px;border-radius:20px;font-size:.9em}
+.section{background:#fff;border-radius:12px;padding:24px;margin-bottom:20px;box-shadow:0 2px 8px rgba(0,0,0,.06)}
+.section-title{font-size:1.1em;font-weight:bold;color:#2b6cb0;border-left:4px solid #2b6cb0;padding-left:12px;margin-bottom:16px}
+.section-lead{font-size:1.05em;font-weight:500;color:#2d3748;line-height:1.65;margin-bottom:18px}
+.question{padding:16px 0;border-bottom:1px solid #e2e8f0}
+.question:last-child{border-bottom:none}
+.q-num{display:inline-block;background:#2b6cb0;color:#fff;width:28px;height:28px;text-align:center;line-height:28px;border-radius:50%;font-size:.85em;font-weight:bold;margin-right:8px}
+.q-text{font-size:1.05em;margin-bottom:12px;font-weight:500}
+.kanji-prompt{font-size:clamp(1.6rem,5vw,2.1rem);font-weight:700;text-align:center;margin:4px 0 12px;letter-spacing:.05em;color:#1a365d}
+.options{display:grid;grid-template-columns:1fr 1fr;gap:8px;align-items:stretch}
+@media(max-width:600px){.options{grid-template-columns:1fr}}
+.option{position:relative;display:flex;min-height:0}
+.option input{display:none}
+.option label{flex:1;display:flex;align-items:center;gap:8px;padding:12px 14px;border:2px solid #e2e8f0;border-radius:8px;cursor:pointer;transition:all .2s;font-size:.95em;touch-action:manipulation;-webkit-user-select:none;user-select:none;min-height:48px;width:100%;box-sizing:border-box}
+.option .opt-key{flex:0 0 auto;min-width:1.75em;text-align:right;font-weight:600;font-variant-numeric:tabular-nums;line-height:1.4;align-self:center}
+.option .opt-body{flex:1;min-width:0;line-height:1.65;align-self:center;word-break:break-word}
+.option label:hover{border-color:#2b6cb0;background:#f0f7ff}
+.option input:checked+label{border-color:#2b6cb0;background:#e8f2fc;color:#1a365d;font-weight:600}
+.option.correct label{border-color:#48bb78!important;background:#f0fff4!important;color:#276749!important}
+.option.wrong label{border-color:#fc8181!important;background:#fff5f5!important;color:#9b2c2c!important}
+.btn-submit{display:block;width:100%;min-height:48px;padding:16px;background:linear-gradient(135deg,#2b6cb0 0%,#2c5282 100%);color:#fff;border:none;border-radius:12px;font-size:1.1em;font-weight:bold;cursor:pointer;transition:transform .2s,box-shadow .2s;margin-top:24px;touch-action:manipulation;-webkit-user-select:none;user-select:none}
+.btn-submit:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(43,108,176,.4)}
+.btn-submit:disabled{opacity:.5;cursor:not-allowed;transform:none;box-shadow:none}
+.result-panel{background:#fff;border-radius:16px;padding:32px;text-align:center;box-shadow:0 4px 20px rgba(0,0,0,.1);margin-top:24px;display:none}
+.result-panel h2{font-size:1.8em;margin-bottom:8px}
+.result-score{font-size:3em;font-weight:bold;margin:16px 0}
+.result-score.excellent{color:#48bb78}
+.result-score.good{color:#2b6cb0}
+.result-score.fair{color:#ed8936}
+.result-score.poor{color:#fc8181}
+.result-detail{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:12px;margin-top:20px}
+.result-item{background:#f7fafc;padding:12px;border-radius:8px}
+.result-item .label{font-size:.8em;color:#718096}
+.result-item .value{font-size:1.2em;font-weight:bold}
+.explanation{display:none;margin-top:8px;padding:10px;background:#fffbeb;border-radius:8px;font-size:.9em;border-left:3px solid #f6ad55}
+.explanation.show{display:block}
+ruby{ruby-align:center}
+rt{font-size:0.55em;font-weight:400;line-height:1.1}
+.option label ruby rt{font-size:0.5em}
+</style>
+</head>
+<body>
+<div class="container">
+<header>
+<h1>みんなの<ruby>日本語<rt>にほんご</rt></ruby> 34 <ruby>漢字<rt>かんじ</rt></ruby>・<ruby>語彙<rt>ごい</rt></ruby>クイズ（15<ruby>分<rt>ふん</rt></ruby>・26<ruby>問<rt>もん</rt></ruby>）</h1>
+<div class="header-info">
+<div class="timer" id="timer">15:00</div>
+<div class="progress-bar"><div class="progress-fill" id="progress" style="width:100%"></div></div>
+<div class="score-badge" id="scoreBadge"><ruby>全<rt>ぜん</rt></ruby>26<ruby>問<rt>もん</rt></ruby></div>
+</div>
+</header>
+
+<!-- Section 1: 読み方（語彙全般）q1–q10 -->
+<div class="section">
+<div class="section-title"><ruby>読<rt>よ</rt></ruby>み<ruby>方<rt>かた</rt></ruby>（<ruby>問題<rt>もんだい</rt></ruby> 1–10）</div>
+<p class="section-lead"><ruby>読<rt>よ</rt></ruby>み<ruby>方<rt>かた</rt></ruby>として<ruby>正<rt>ただ</rt></ruby>しいものはどれですか。</p>
+
+<div class="question">
+<div class="q-text"><span class="q-num">1</span></div>
+<p class="kanji-prompt" lang="ja">磨きます</p>
+<div class="options">
+<div class="option"><input type="radio" name="q1" id="q11" value="0"><label for="q11"><span class="opt-key">1.</span><span class="opt-body">とぎます</span></label></div>
+<div class="option"><input type="radio" name="q1" id="q12" value="0"><label for="q12"><span class="opt-key">2.</span><span class="opt-body">きざみます</span></label></div>
+<div class="option"><input type="radio" name="q1" id="q13" value="1"><label for="q13"><span class="opt-key">3.</span><span class="opt-body">みがきます</span></label></div>
+<div class="option"><input type="radio" name="q1" id="q14" value="0"><label for="q14"><span class="opt-key">4.</span><span class="opt-body">むきます</span></label></div>
+</div>
+<div class="explanation">✅ 正解：3 — みがきます（磨く）</div>
+</div>
+
+<div class="question">
+<div class="q-text"><span class="q-num">2</span></div>
+<p class="kanji-prompt" lang="ja">組み立てます</p>
+<div class="options">
+<div class="option"><input type="radio" name="q2" id="q21" value="0"><label for="q21"><span class="opt-key">1.</span><span class="opt-body">とりたてます</span></label></div>
+<div class="option"><input type="radio" name="q2" id="q22" value="1"><label for="q22"><span class="opt-key">2.</span><span class="opt-body">くみたてます</span></label></div>
+<div class="option"><input type="radio" name="q2" id="q23" value="0"><label for="q23"><span class="opt-key">3.</span><span class="opt-body">つみたてます</span></label></div>
+<div class="option"><input type="radio" name="q2" id="q24" value="0"><label for="q24"><span class="opt-key">4.</span><span class="opt-body">かきたてます</span></label></div>
+</div>
+<div class="explanation">✅ 正解：2 — くみたてます（組み立てる＝assemble）</div>
+</div>
+
+<div class="question">
+<div class="q-text"><span class="q-num">3</span></div>
+<p class="kanji-prompt" lang="ja">折ります</p>
+<div class="options">
+<div class="option"><input type="radio" name="q3" id="q31" value="0"><label for="q31"><span class="opt-key">1.</span><span class="opt-body">きります</span></label></div>
+<div class="option"><input type="radio" name="q3" id="q32" value="0"><label for="q32"><span class="opt-key">2.</span><span class="opt-body">とります</span></label></div>
+<div class="option"><input type="radio" name="q3" id="q33" value="0"><label for="q33"><span class="opt-key">3.</span><span class="opt-body">たります</span></label></div>
+<div class="option"><input type="radio" name="q3" id="q34" value="1"><label for="q34"><span class="opt-key">4.</span><span class="opt-body">おります</span></label></div>
+</div>
+<div class="explanation">✅ 正解：4 — おります（折る＝fold/break）</div>
+</div>
+
+<div class="question">
+<div class="q-text"><span class="q-num">4</span></div>
+<p class="kanji-prompt" lang="ja">質問します</p>
+<div class="options">
+<div class="option"><input type="radio" name="q4" id="q41" value="0"><label for="q41"><span class="opt-key">1.</span><span class="opt-body">しつれいします</span></label></div>
+<div class="option"><input type="radio" name="q4" id="q42" value="0"><label for="q42"><span class="opt-key">2.</span><span class="opt-body">しゅっせきします</span></label></div>
+<div class="option"><input type="radio" name="q4" id="q43" value="1"><label for="q43"><span class="opt-key">3.</span><span class="opt-body">しつもんします</span></label></div>
+<div class="option"><input type="radio" name="q4" id="q44" value="0"><label for="q44"><span class="opt-key">4.</span><span class="opt-body">しようします</span></label></div>
+</div>
+<div class="explanation">✅ 正解：3 — しつもんします（質問＝question）</div>
+</div>
+
+<div class="question">
+<div class="q-text"><span class="q-num">5</span></div>
+<p class="kanji-prompt" lang="ja">説明書</p>
+<div class="options">
+<div class="option"><input type="radio" name="q5" id="q51" value="0"><label for="q51"><span class="opt-key">1.</span><span class="opt-body">せつめいかい</span></label></div>
+<div class="option"><input type="radio" name="q5" id="q52" value="0"><label for="q52"><span class="opt-key">2.</span><span class="opt-body">しょうめいしょ</span></label></div>
+<div class="option"><input type="radio" name="q5" id="q53" value="0"><label for="q53"><span class="opt-key">3.</span><span class="opt-body">りょうしゅうしょ</span></label></div>
+<div class="option"><input type="radio" name="q5" id="q54" value="1"><label for="q54"><span class="opt-key">4.</span><span class="opt-body">せつめいしょ</span></label></div>
+</div>
+<div class="explanation">✅ 正解：4 — せつめいしょ（説明書＝instruction manual）</div>
+</div>
+
+<div class="question">
+<div class="q-text"><span class="q-num">6</span></div>
+<p class="kanji-prompt" lang="ja">茶道</p>
+<div class="options">
+<div class="option"><input type="radio" name="q6" id="q61" value="0"><label for="q61"><span class="opt-key">1.</span><span class="opt-body">ちゃかい</span></label></div>
+<div class="option"><input type="radio" name="q6" id="q62" value="0"><label for="q62"><span class="opt-key">2.</span><span class="opt-body">さほう</span></label></div>
+<div class="option"><input type="radio" name="q6" id="q63" value="1"><label for="q63"><span class="opt-key">3.</span><span class="opt-body">さどう</span></label></div>
+<div class="option"><input type="radio" name="q6" id="q64" value="0"><label for="q64"><span class="opt-key">4.</span><span class="opt-body">ちゃしつ</span></label></div>
+</div>
+<div class="explanation">✅ 正解：3 — さどう（茶道＝the way of tea）</div>
+</div>
+
+<div class="question">
+<div class="q-text"><span class="q-num">7</span></div>
+<p class="kanji-prompt" lang="ja">矢印</p>
+<div class="options">
+<div class="option"><input type="radio" name="q7" id="q71" value="0"><label for="q71"><span class="opt-key">1.</span><span class="opt-body">やきとり</span></label></div>
+<div class="option"><input type="radio" name="q7" id="q72" value="0"><label for="q72"><span class="opt-key">2.</span><span class="opt-body">めじるし</span></label></div>
+<div class="option"><input type="radio" name="q7" id="q73" value="1"><label for="q73"><span class="opt-key">3.</span><span class="opt-body">やじるし</span></label></div>
+<div class="option"><input type="radio" name="q7" id="q74" value="0"><label for="q74"><span class="opt-key">4.</span><span class="opt-body">やおや</span></label></div>
+</div>
+<div class="explanation">✅ 正解：3 — やじるし（矢印＝arrow mark）</div>
+</div>
+
+<div class="question">
+<div class="q-text"><span class="q-num">8</span></div>
+<p class="kanji-prompt" lang="ja">砂糖</p>
+<div class="options">
+<div class="option"><input type="radio" name="q8" id="q81" value="0"><label for="q81"><span class="opt-key">1.</span><span class="opt-body">しょうゆ</span></label></div>
+<div class="option"><input type="radio" name="q8" id="q82" value="0"><label for="q82"><span class="opt-key">2.</span><span class="opt-body">しゃどう</span></label></div>
+<div class="option"><input type="radio" name="q8" id="q83" value="0"><label for="q83"><span class="opt-key">3.</span><span class="opt-body">さどう</span></label></div>
+<div class="option"><input type="radio" name="q8" id="q84" value="1"><label for="q84"><span class="opt-key">4.</span><span class="opt-body">さとう</span></label></div>
+</div>
+<div class="explanation">✅ 正解：4 — さとう（砂糖＝sugar）</div>
+</div>
+
+<div class="question">
+<div class="q-text"><span class="q-num">9</span></div>
+<p class="kanji-prompt" lang="ja">苦い</p>
+<div class="options">
+<div class="option"><input type="radio" name="q9" id="q91" value="0"><label for="q91"><span class="opt-key">1.</span><span class="opt-body">からい</span></label></div>
+<div class="option"><input type="radio" name="q9" id="q92" value="1"><label for="q92"><span class="opt-key">2.</span><span class="opt-body">にがい</span></label></div>
+<div class="option"><input type="radio" name="q9" id="q93" value="0"><label for="q93"><span class="opt-key">3.</span><span class="opt-body">すっぱい</span></label></div>
+<div class="option"><input type="radio" name="q9" id="q94" value="0"><label for="q94"><span class="opt-key">4.</span><span class="opt-body">あまい</span></label></div>
+</div>
+<div class="explanation">✅ 正解：2 — にがい（苦い＝bitter）</div>
+</div>
+
+<div class="question">
+<div class="q-text"><span class="q-num">10</span></div>
+<p class="kanji-prompt" lang="ja">載せます</p>
+<div class="options">
+<div class="option"><input type="radio" name="q10" id="q101" value="0"><label for="q101"><span class="opt-key">1.</span><span class="opt-body">みせます</span></label></div>
+<div class="option"><input type="radio" name="q10" id="q102" value="0"><label for="q102"><span class="opt-key">2.</span><span class="opt-body">あわせます</span></label></div>
+<div class="option"><input type="radio" name="q10" id="q103" value="0"><label for="q103"><span class="opt-key">3.</span><span class="opt-body">はなせます</span></label></div>
+<div class="option"><input type="radio" name="q10" id="q104" value="1"><label for="q104"><span class="opt-key">4.</span><span class="opt-body">のせます</span></label></div>
+</div>
+<div class="explanation">✅ 正解：4 — のせます（載せる＝place on top of）</div>
+</div>
+</div>
+
+<!-- Section 2: 調理法の読み方 q11–q16 -->
+<div class="section">
+<div class="section-title"><ruby>調理法<rt>ちょうりほう</rt></ruby>の<ruby>読<rt>よ</rt></ruby>み<ruby>方<rt>かた</rt></ruby>（<ruby>問題<rt>もんだい</rt></ruby> 11–16）</div>
+<p class="section-lead"><ruby>読<rt>よ</rt></ruby>み<ruby>方<rt>かた</rt></ruby>として<ruby>正<rt>ただ</rt></ruby>しいものはどれですか。</p>
+
+<div class="question">
+<div class="q-text"><span class="q-num">11</span></div>
+<p class="kanji-prompt" lang="ja">煮る</p>
+<div class="options">
+<div class="option"><input type="radio" name="q11" id="q111" value="0"><label for="q111"><span class="opt-key">1.</span><span class="opt-body">いる</span></label></div>
+<div class="option"><input type="radio" name="q11" id="q112" value="0"><label for="q112"><span class="opt-key">2.</span><span class="opt-body">やく</span></label></div>
+<div class="option"><input type="radio" name="q11" id="q113" value="1"><label for="q113"><span class="opt-key">3.</span><span class="opt-body">にる</span></label></div>
+<div class="option"><input type="radio" name="q11" id="q114" value="0"><label for="q114"><span class="opt-key">4.</span><span class="opt-body">ゆでる</span></label></div>
+</div>
+<div class="explanation">✅ 正解：3 — にる（煮る＝boil/simmer）</div>
+</div>
+
+<div class="question">
+<div class="q-text"><span class="q-num">12</span></div>
+<p class="kanji-prompt" lang="ja">焼く</p>
+<div class="options">
+<div class="option"><input type="radio" name="q12" id="q121" value="0"><label for="q121"><span class="opt-key">1.</span><span class="opt-body">にく</span></label></div>
+<div class="option"><input type="radio" name="q12" id="q122" value="0"><label for="q122"><span class="opt-key">2.</span><span class="opt-body">あげく</span></label></div>
+<div class="option"><input type="radio" name="q12" id="q123" value="1"><label for="q123"><span class="opt-key">3.</span><span class="opt-body">やく</span></label></div>
+<div class="option"><input type="radio" name="q12" id="q124" value="0"><label for="q124"><span class="opt-key">4.</span><span class="opt-body">むく</span></label></div>
+</div>
+<div class="explanation">✅ 正解：3 — やく（焼く＝grill/bake）</div>
+</div>
+
+<div class="question">
+<div class="q-text"><span class="q-num">13</span></div>
+<p class="kanji-prompt" lang="ja">揚げる</p>
+<div class="options">
+<div class="option"><input type="radio" name="q13" id="q131" value="0"><label for="q131"><span class="opt-key">1.</span><span class="opt-body">いためる</span></label></div>
+<div class="option"><input type="radio" name="q13" id="q132" value="1"><label for="q132"><span class="opt-key">2.</span><span class="opt-body">あげる</span></label></div>
+<div class="option"><input type="radio" name="q13" id="q133" value="0"><label for="q133"><span class="opt-key">3.</span><span class="opt-body">やける</span></label></div>
+<div class="option"><input type="radio" name="q13" id="q134" value="0"><label for="q134"><span class="opt-key">4.</span><span class="opt-body">むける</span></label></div>
+</div>
+<div class="explanation">✅ 正解：2 — あげる（揚げる＝deep-fry）</div>
+</div>
+
+<div class="question">
+<div class="q-text"><span class="q-num">14</span></div>
+<p class="kanji-prompt" lang="ja">蒸す</p>
+<div class="options">
+<div class="option"><input type="radio" name="q14" id="q141" value="0"><label for="q141"><span class="opt-key">1.</span><span class="opt-body">たく</span></label></div>
+<div class="option"><input type="radio" name="q14" id="q142" value="0"><label for="q142"><span class="opt-key">2.</span><span class="opt-body">むく</span></label></div>
+<div class="option"><input type="radio" name="q14" id="q143" value="0"><label for="q143"><span class="opt-key">3.</span><span class="opt-body">ゆでる</span></label></div>
+<div class="option"><input type="radio" name="q14" id="q144" value="1"><label for="q144"><span class="opt-key">4.</span><span class="opt-body">むす</span></label></div>
+</div>
+<div class="explanation">✅ 正解：4 — むす（蒸す＝steam）</div>
+</div>
+
+<div class="question">
+<div class="q-text"><span class="q-num">15</span></div>
+<p class="kanji-prompt" lang="ja">炊く</p>
+<div class="options">
+<div class="option"><input type="radio" name="q15" id="q151" value="0"><label for="q151"><span class="opt-key">1.</span><span class="opt-body">やく</span></label></div>
+<div class="option"><input type="radio" name="q15" id="q152" value="0"><label for="q152"><span class="opt-key">2.</span><span class="opt-body">むく</span></label></div>
+<div class="option"><input type="radio" name="q15" id="q153" value="1"><label for="q153"><span class="opt-key">3.</span><span class="opt-body">たく</span></label></div>
+<div class="option"><input type="radio" name="q15" id="q154" value="0"><label for="q154"><span class="opt-key">4.</span><span class="opt-body">にく</span></label></div>
+</div>
+<div class="explanation">✅ 正解：3 — たく（炊く＝cook rice）</div>
+</div>
+
+<div class="question">
+<div class="q-text"><span class="q-num">16</span></div>
+<p class="kanji-prompt" lang="ja">刻む</p>
+<div class="options">
+<div class="option"><input type="radio" name="q16" id="q161" value="0"><label for="q161"><span class="opt-key">1.</span><span class="opt-body">むく</span></label></div>
+<div class="option"><input type="radio" name="q16" id="q162" value="0"><label for="q162"><span class="opt-key">2.</span><span class="opt-body">おろす</span></label></div>
+<div class="option"><input type="radio" name="q16" id="q163" value="1"><label for="q163"><span class="opt-key">3.</span><span class="opt-body">きざむ</span></label></div>
+<div class="option"><input type="radio" name="q16" id="q164" value="0"><label for="q164"><span class="opt-key">4.</span><span class="opt-body">かきまぜる</span></label></div>
+</div>
+<div class="explanation">✅ 正解：3 — きざむ（刻む＝chop/mince）</div>
+</div>
+</div>
+
+<!-- Section 3: 台所用品の読み方 q17–q20 -->
+<div class="section">
+<div class="section-title"><ruby>台所<rt>だいどころ</rt></ruby><ruby>用品<rt>ようひん</rt></ruby>の<ruby>読<rt>よ</rt></ruby>み<ruby>方<rt>かた</rt></ruby>（<ruby>問題<rt>もんだい</rt></ruby> 17–20）</div>
+<p class="section-lead"><ruby>読<rt>よ</rt></ruby>み<ruby>方<rt>かた</rt></ruby>として<ruby>正<rt>ただ</rt></ruby>しいものはどれですか。</p>
+
+<div class="question">
+<div class="q-text"><span class="q-num">17</span></div>
+<p class="kanji-prompt" lang="ja">鍋</p>
+<div class="options">
+<div class="option"><input type="radio" name="q17" id="q171" value="0"><label for="q171"><span class="opt-key">1.</span><span class="opt-body">やかん</span></label></div>
+<div class="option"><input type="radio" name="q17" id="q172" value="0"><label for="q172"><span class="opt-key">2.</span><span class="opt-body">ふた</span></label></div>
+<div class="option"><input type="radio" name="q17" id="q173" value="0"><label for="q173"><span class="opt-key">3.</span><span class="opt-body">おたま</span></label></div>
+<div class="option"><input type="radio" name="q17" id="q174" value="1"><label for="q174"><span class="opt-key">4.</span><span class="opt-body">なべ</span></label></div>
+</div>
+<div class="explanation">✅ 正解：4 — なべ（鍋＝pot/pan）</div>
+</div>
+
+<div class="question">
+<div class="q-text"><span class="q-num">18</span></div>
+<p class="kanji-prompt" lang="ja">包丁</p>
+<div class="options">
+<div class="option"><input type="radio" name="q18" id="q181" value="0"><label for="q181"><span class="opt-key">1.</span><span class="opt-body">まないた</span></label></div>
+<div class="option"><input type="radio" name="q18" id="q182" value="0"><label for="q182"><span class="opt-key">2.</span><span class="opt-body">ふきん</span></label></div>
+<div class="option"><input type="radio" name="q18" id="q183" value="1"><label for="q183"><span class="opt-key">3.</span><span class="opt-body">ほうちょう</span></label></div>
+<div class="option"><input type="radio" name="q18" id="q184" value="0"><label for="q184"><span class="opt-key">4.</span><span class="opt-body">しゃもじ</span></label></div>
+</div>
+<div class="explanation">✅ 正解：3 — ほうちょう（包丁＝kitchen knife）</div>
+</div>
+
+<div class="question">
+<div class="q-text"><span class="q-num">19</span></div>
+<p class="kanji-prompt" lang="ja">缶切り</p>
+<div class="options">
+<div class="option"><input type="radio" name="q19" id="q191" value="0"><label for="q191"><span class="opt-key">1.</span><span class="opt-body">せんぬき</span></label></div>
+<div class="option"><input type="radio" name="q19" id="q192" value="0"><label for="q192"><span class="opt-key">2.</span><span class="opt-body">かんぬき</span></label></div>
+<div class="option"><input type="radio" name="q19" id="q193" value="0"><label for="q193"><span class="opt-key">3.</span><span class="opt-body">せんきり</span></label></div>
+<div class="option"><input type="radio" name="q19" id="q194" value="1"><label for="q194"><span class="opt-key">4.</span><span class="opt-body">かんきり</span></label></div>
+</div>
+<div class="explanation">✅ 正解：4 — かんきり（缶切り＝can opener）</div>
+</div>
+
+<div class="question">
+<div class="q-text"><span class="q-num">20</span></div>
+<p class="kanji-prompt" lang="ja">炊飯器</p>
+<div class="options">
+<div class="option"><input type="radio" name="q20" id="q201" value="0"><label for="q201"><span class="opt-key">1.</span><span class="opt-body">かんきせん</span></label></div>
+<div class="option"><input type="radio" name="q20" id="q202" value="0"><label for="q202"><span class="opt-key">2.</span><span class="opt-body">ながしだい</span></label></div>
+<div class="option"><input type="radio" name="q20" id="q203" value="1"><label for="q203"><span class="opt-key">3.</span><span class="opt-body">すいはんき</span></label></div>
+<div class="option"><input type="radio" name="q20" id="q204" value="0"><label for="q204"><span class="opt-key">4.</span><span class="opt-body">でんしオーブン</span></label></div>
+</div>
+<div class="explanation">✅ 正解：3 — すいはんき（炊飯器＝rice cooker）</div>
+</div>
+</div>
+
+<!-- Section 4: 漢字選択 q21–q26 -->
+<div class="section">
+<div class="section-title"><ruby>漢字<rt>かんじ</rt></ruby>を<ruby>選<rt>えら</rt></ruby>んでください（<ruby>問題<rt>もんだい</rt></ruby> 21–26）</div>
+<p class="section-lead"><ruby>漢字<rt>かんじ</rt></ruby>として<ruby>正<rt>ただ</rt></ruby>しいものはどれですか。</p>
+
+<div class="question">
+<div class="q-text"><span class="q-num">21</span>「さとう」の<ruby>漢字<rt>かんじ</rt></ruby>はどれですか。</div>
+<p class="kanji-prompt" lang="ja">さとう</p>
+<div class="options">
+<div class="option"><input type="radio" name="q21" id="q211" value="0"><label for="q211"><span class="opt-key">1.</span><span class="opt-body">佐糖</span></label></div>
+<div class="option"><input type="radio" name="q21" id="q212" value="0"><label for="q212"><span class="opt-key">2.</span><span class="opt-body">沙糖</span></label></div>
+<div class="option"><input type="radio" name="q21" id="q213" value="0"><label for="q213"><span class="opt-key">3.</span><span class="opt-body">石糖</span></label></div>
+<div class="option"><input type="radio" name="q21" id="q214" value="1"><label for="q214"><span class="opt-key">4.</span><span class="opt-body">砂糖</span></label></div>
+</div>
+<div class="explanation">✅ 正解：4 — 砂糖（さとう＝sugar）</div>
+</div>
+
+<div class="question">
+<div class="q-text"><span class="q-num">22</span>「なべ」の<ruby>漢字<rt>かんじ</rt></ruby>はどれですか。</div>
+<p class="kanji-prompt" lang="ja">なべ</p>
+<div class="options">
+<div class="option"><input type="radio" name="q22" id="q221" value="0"><label for="q221"><span class="opt-key">1.</span><span class="opt-body">釜</span></label></div>
+<div class="option"><input type="radio" name="q22" id="q222" value="0"><label for="q222"><span class="opt-key">2.</span><span class="opt-body">壺</span></label></div>
+<div class="option"><input type="radio" name="q22" id="q223" value="1"><label for="q223"><span class="opt-key">3.</span><span class="opt-body">鍋</span></label></div>
+<div class="option"><input type="radio" name="q22" id="q224" value="0"><label for="q224"><span class="opt-key">4.</span><span class="opt-body">缶</span></label></div>
+</div>
+<div class="explanation">✅ 正解：3 — 鍋（なべ＝pot）。釜＝かま、壺＝つぼ、缶＝かん。</div>
+</div>
+
+<div class="question">
+<div class="q-text"><span class="q-num">23</span>「ほうちょう」の<ruby>漢字<rt>かんじ</rt></ruby>はどれですか。</div>
+<p class="kanji-prompt" lang="ja">ほうちょう</p>
+<div class="options">
+<div class="option"><input type="radio" name="q23" id="q231" value="0"><label for="q231"><span class="opt-key">1.</span><span class="opt-body">包帯</span></label></div>
+<div class="option"><input type="radio" name="q23" id="q232" value="1"><label for="q232"><span class="opt-key">2.</span><span class="opt-body">包丁</span></label></div>
+<div class="option"><input type="radio" name="q23" id="q233" value="0"><label for="q233"><span class="opt-key">3.</span><span class="opt-body">包装</span></label></div>
+<div class="option"><input type="radio" name="q23" id="q234" value="0"><label for="q234"><span class="opt-key">4.</span><span class="opt-body">法定</span></label></div>
+</div>
+<div class="explanation">✅ 正解：2 — 包丁（ほうちょう＝kitchen knife）。包帯＝ほうたい、包装＝ほうそう。</div>
+</div>
+
+<div class="question">
+<div class="q-text"><span class="q-num">24</span>「しお」の<ruby>漢字<rt>かんじ</rt></ruby>はどれですか。</div>
+<p class="kanji-prompt" lang="ja">しお</p>
+<div class="options">
+<div class="option"><input type="radio" name="q24" id="q241" value="0"><label for="q241"><span class="opt-key">1.</span><span class="opt-body">浜</span></label></div>
+<div class="option"><input type="radio" name="q24" id="q242" value="0"><label for="q242"><span class="opt-key">2.</span><span class="opt-body">潮</span></label></div>
+<div class="option"><input type="radio" name="q24" id="q243" value="1"><label for="q243"><span class="opt-key">3.</span><span class="opt-body">塩</span></label></div>
+<div class="option"><input type="radio" name="q24" id="q244" value="0"><label for="q244"><span class="opt-key">4.</span><span class="opt-body">沼</span></label></div>
+</div>
+<div class="explanation">✅ 正解：3 — 塩（しお＝salt）。潮＝しお・ちょう（tide）と同じ読みに注意。</div>
+</div>
+
+<div class="question">
+<div class="q-text"><span class="q-num">25</span>「ながしだい」の<ruby>漢字<rt>かんじ</rt></ruby>はどれですか。</div>
+<p class="kanji-prompt" lang="ja">ながしだい</p>
+<div class="options">
+<div class="option"><input type="radio" name="q25" id="q251" value="0"><label for="q251"><span class="opt-key">1.</span><span class="opt-body">中し台</span></label></div>
+<div class="option"><input type="radio" name="q25" id="q252" value="0"><label for="q252"><span class="opt-key">2.</span><span class="opt-body">長台</span></label></div>
+<div class="option"><input type="radio" name="q25" id="q253" value="0"><label for="q253"><span class="opt-key">3.</span><span class="opt-body">長し台</span></label></div>
+<div class="option"><input type="radio" name="q25" id="q254" value="1"><label for="q254"><span class="opt-key">4.</span><span class="opt-body">流し台</span></label></div>
+</div>
+<div class="explanation">✅ 正解：4 — 流し台（ながしだい＝kitchen sink）。流す（ながす）から。</div>
+</div>
+
+<div class="question">
+<div class="q-text"><span class="q-num">26</span>「でんし」レンジの<ruby>漢字<rt>かんじ</rt></ruby>はどれですか。</div>
+<p class="kanji-prompt" lang="ja">でんし</p>
+<div class="options">
+<div class="option"><input type="radio" name="q26" id="q261" value="0"><label for="q261"><span class="opt-key">1.</span><span class="opt-body">伝子</span></label></div>
+<div class="option"><input type="radio" name="q26" id="q262" value="0"><label for="q262"><span class="opt-key">2.</span><span class="opt-body">電史</span></label></div>
+<div class="option"><input type="radio" name="q26" id="q263" value="1"><label for="q263"><span class="opt-key">3.</span><span class="opt-body">電子</span></label></div>
+<div class="option"><input type="radio" name="q26" id="q264" value="0"><label for="q264"><span class="opt-key">4.</span><span class="opt-body">電士</span></label></div>
+</div>
+<div class="explanation">✅ 正解：3 — 電子（でんし＝electronic）。電子レンジ＝microwave oven。</div>
+</div>
+</div>
+
+<button class="btn-submit" id="submitBtn" onclick="submitTest()"><ruby>採点<rt>さいてん</rt></ruby>する</button>
+<div class="result-panel" id="resultPanel">
+<h2 id="resultTitle"></h2><div class="result-score" id="resultScore"></div>
+<div class="result-detail" id="resultDetail"></div>
+</div>
+</div>
+<script>
+const TOTAL=26,TIME_LIMIT=900;
+let timeLeft=TIME_LIMIT,timerInterval,submitted=false;
+function shuffleAllOptions(){
+function randBelow(n){
+if(n<=1)return 0;
+try{
+if(typeof crypto!=='undefined'&&crypto.getRandomValues){
+const lim=Math.floor(4294967296/n)*n;
+const buf=new Uint32Array(1);
+let x;
+do{crypto.getRandomValues(buf);x=buf[0];}while(x>=lim);
+return x%n;
+}
+}catch(e){}
+return Math.floor(Math.random()*n);
+}
+function fisherYates(arr){
+for(let i=arr.length-1;i>0;i--){
+const j=randBelow(i+1);
+const t=arr[i];arr[i]=arr[j];arr[j]=t;
+}
+}
+function relabel(optsDiv,items,isLetter,prefix){
+items.forEach(function(el){optsDiv.appendChild(el);});
+items.forEach(function(el,idx){
+const inp=el.querySelector('input[type="radio"]');
+const lbl=el.querySelector('label');
+if(!inp||!lbl)return;
+const suf=isLetter?String.fromCharCode(97+idx):String(idx+1);
+const newId=prefix+suf;
+inp.id=newId;
+lbl.setAttribute('for',newId);
+const key=el.querySelector('.opt-key');
+if(key)key.textContent=(idx+1)+'.';
+});
+const explain=optsDiv.nextElementSibling;
+if(explain&&explain.classList&&explain.classList.contains('explanation')){
+const correctInp=optsDiv.querySelector('input[type="radio"][value="1"]');
+if(correctInp){
+const opt=correctInp.closest('.option');
+if(opt){
+const keyEl=opt.querySelector('.opt-key');
+if(keyEl){
+const mk=keyEl.textContent.match(/^(\d+)\./);
+if(mk)explain.innerHTML=explain.innerHTML.replace(/正解：\d+/,'正解：'+mk[1]);
+}
+}
+}
+}
+return items.findIndex(function(el){return el.querySelector('input[type="radio"][value="1"]');});
+}
+const posCounts=[0,0,0,0];
+document.querySelectorAll('.options').forEach(function(optsDiv){
+const items=Array.prototype.filter.call(optsDiv.children,function(el){
+return el.classList&&el.classList.contains('option');
+});
+const n=items.length;
+if(n<2)return;
+fisherYates(items);
+const sample=optsDiv.querySelector('input[type="radio"]');
+if(!sample)return;
+const prefix=sample.name;
+if(!prefix)return;
+const firstInp=items[0].querySelector('input[type="radio"]');
+if(!firstInp)return;
+const sid=firstInp.id;
+if(!sid||!sid.startsWith(prefix))return;
+const firstSuffix=sid.slice(prefix.length);
+const isLetter=/^[a-d]$/.test(firstSuffix);
+let slot=relabel(optsDiv,items,isLetter,prefix);
+if(slot<0)return;
+let minC=9999;
+for(let i=0;i<n;i++)minC=Math.min(minC,posCounts[i]);
+const cand=[];
+for(let i=0;i<n;i++)if(posCounts[i]===minC)cand.push(i);
+const ideal=cand[randBelow(cand.length)];
+if(slot!==ideal&&posCounts[slot]>posCounts[ideal]){
+const t=items[slot];items[slot]=items[ideal];items[ideal]=t;
+slot=relabel(optsDiv,items,isLetter,prefix);
+if(slot<0)return;
+}
+posCounts[slot]++;
+});
+}
+try{shuffleAllOptions();}catch(e){}
+function startTimer(){
+timerInterval=setInterval(()=>{
+timeLeft--;
+const m=Math.floor(timeLeft/60),s=timeLeft%60;
+const el=document.getElementById('timer');
+el.textContent=`${m}:${s.toString().padStart(2,'0')}`;
+document.getElementById('progress').style.width=`${(timeLeft/TIME_LIMIT)*100}%`;
+if(timeLeft<=60)el.className='timer danger';
+else if(timeLeft<=300)el.className='timer warning';
+else el.className='timer';
+if(timeLeft<=0){clearInterval(timerInterval);submitTest();}
+},1000);
+}
+function stripRubyFromExplanations(){
+document.querySelectorAll('.explanation').forEach(function(box){
+let rubies;
+while((rubies=box.querySelectorAll('ruby')).length){
+rubies.forEach(function(ruby){
+let t='';
+for(let i=0;i<ruby.childNodes.length;i++){
+const ch=ruby.childNodes[i];
+if(ch.nodeName==='RT')break;
+t+=ch.textContent||'';
+}
+ruby.replaceWith(document.createTextNode(t));
+});
+}
+});
+}
+function submitTest(){
+if(submitted)return;submitted=true;
+if(timerInterval)clearInterval(timerInterval);
+let correct=0;
+for(let i=1;i<=TOTAL;i++){
+const sel=document.querySelector(`input[name="q${i}"]:checked`);
+const opts=document.querySelectorAll(`input[name="q${i}"]`);
+if(sel&&sel.value==='1'){correct++;}
+opts.forEach(o=>{
+const p=o.parentElement;
+if(o.value==='1')p.classList.add('correct');
+else if(o.checked&&o.value!=='1')p.classList.add('wrong');
+});
+}
+stripRubyFromExplanations();
+document.querySelectorAll('.explanation').forEach(e=>e.classList.add('show'));
+const pct=Math.round((correct/TOTAL)*100);
+const panel=document.getElementById('resultPanel');
+const title=document.getElementById('resultTitle');
+const score=document.getElementById('resultScore');
+const detail=document.getElementById('resultDetail');
+panel.style.display='block';
+score.textContent=`${correct} / ${TOTAL}（${pct}%）`;
+if(pct>=90){title.textContent='🎉 すばらしい！';score.className='result-score excellent';}
+else if(pct>=70){title.textContent='👍 よくできました！';score.className='result-score good';}
+else if(pct>=50){title.textContent='📝 もうすこし！';score.className='result-score fair';}
+else{title.textContent='💪 がんばりましょう！';score.className='result-score poor';}
+const timeUsed=TIME_LIMIT-timeLeft;
+detail.innerHTML=`
+<div class="result-item"><div class="label">せいかい</div><div class="value">${correct}/${TOTAL}</div></div>
+<div class="result-item"><div class="label">じかん</div><div class="value">${Math.floor(timeUsed/60)}分${timeUsed%60}秒</div></div>
+`;
+document.getElementById('submitBtn').disabled=true;
+panel.scrollIntoView({behavior:'smooth'});
+}
+startTimer();
+</script>
+</body></html>

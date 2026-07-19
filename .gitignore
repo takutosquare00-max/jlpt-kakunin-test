@@ -5,3 +5,15 @@ jlpt-kakunin-test-deploy.nested-git-backup/
 jlpt-kakunin-test-deploy/*
 !jlpt-kakunin-test-deploy/jlpt-kakunin-test-deploy/
 !jlpt-kakunin-test-deploy/jlpt-kakunin-test-deploy/**
+.DS_Store
+__pycache__/
+.ocr_tmp/
+/jtest-fg-deploy/
+/kanji-deploy/
+/minnanonihongo-bunpo-deploy/
+/minnanonihongo-quiz-deploy/
+/moji-gakushu/
+/romaji-typing-practice/
+/ひらがな/0.description/
+/ひらがな/1.ひらがな/
+/ひらがな/2.カタカナ/

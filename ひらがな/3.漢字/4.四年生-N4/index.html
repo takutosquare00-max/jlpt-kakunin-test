@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>漢字（四年生）筆順 学習プリント</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Hiragino Sans', 'Hiragino Kaku Gothic ProN', 'Noto Sans JP', sans-serif; background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%); min-height: 100vh; display: flex; flex-direction: column; align-items: center; padding-bottom: 30px; -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none; -webkit-touch-callout: none; }
+  h1 { margin: 18px 0 8px; font-size: 1.9rem; color: #2e7d32; text-shadow: 1px 1px 2px rgba(0,0,0,0.1); }
+  .kanji-grid { display: grid; grid-template-columns: repeat(10, 1fr); gap: 4px; max-width: 520px; width: 95%; margin: 8px auto; }
+  .kanji-grid .cell { background: #fff; border: 2px solid #ddd; border-radius: 8px; text-align: center; font-size: 1.1rem; padding: 5px 0; cursor: pointer; transition: all .2s; user-select: none; }
+  .kanji-grid .cell:hover { background: #e8f5e9; transform: scale(1.05); }
+  .kanji-grid .cell.active { background: #c8e6c9; border-color: #2e7d32; font-weight: bold; }
+  .mode-tabs { display: flex; gap: 4px; margin: 10px 0 6px; }
+  .mode-tab { padding: 6px 16px; border: 2px solid #2e7d32; border-radius: 20px; background: #fff; color: #2e7d32; cursor: pointer; font-size: .9rem; font-family: inherit; transition: all .2s; }
+  .mode-tab.active { background: #2e7d32; color: #fff; }
+  #learnArea { width: 95%; max-width: 900px; margin: 0 auto; }
+  .stroke-section { display: flex; flex-wrap: wrap; gap: 16px; justify-content: center; align-items: stretch; margin-bottom: 16px; }
+  .big-char-panel { background: #fff; border-radius: 16px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); padding: 16px; text-align: center; width: 280px; display: flex; flex-direction: column; align-items: center; justify-content: center; }
+  .big-char-panel .reading { font-size: 2.2rem; color: #888; margin-bottom: 0; }
+  .big-char-panel .big-char { font-size: 10rem; line-height: 1; color: #333; }
+  .big-char-panel .stroke-count { font-size: 1rem; color: #2e7d32; margin-top: 4px; font-weight: bold; }
+  .stroke-order-panel { background: #fff; border-radius: 16px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); padding: 16px; text-align: center; flex: 1; min-width: 300px; max-width: 580px; }
+  .stroke-order-panel h2 { font-size: 1.05rem; color: #555; margin-bottom: 8px; }
+  .nazorigaki-img-wrap { margin: 8px auto; border: 2px solid #ccc; border-radius: 10px; overflow: hidden; background: #fafafa; position: relative; cursor: crosshair; -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none; -webkit-touch-callout: none; }
+  .nazorigaki-img-wrap img { display: block; width: 100%; height: auto; max-width: 100%; -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none; -webkit-touch-callout: none; pointer-events: none; }
+  .nazorigaki-img-wrap canvas { position: absolute; top: 0; left: 0; pointer-events: auto; touch-action: none; }
+  .btn-clear { background: #f44336; color: #fff; margin-top: 8px; }
+  .btn-clear:hover { background: #c62828; }
+  .btn-row { display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; margin-top: 8px; }
+  .btn { padding: 7px 16px; border: none; border-radius: 8px; font-size: .95rem; cursor: pointer; transition: all .2s; font-family: inherit; }
+  .btn-prev { background: #2196f3; color: #fff; }
+  .btn-prev:hover { background: #1565c0; }
+  .btn-next { background: #2e7d32; color: #fff; }
+  .btn-next:hover { background: #1b5e20; }
+  .quiz-panel { background: #fff; border-radius: 16px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); padding: 20px; text-align: center; width: 95%; max-width: 500px; display: none; }
+  .quiz-panel h2 { font-size: 1.3rem; color: #555; margin-bottom: 12px; }
+  .quiz-question { font-size: 5rem; color: #333; margin: 10px 0; }
+  .quiz-choices { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 16px auto; max-width: 360px; }
+  .quiz-choice { padding: 14px; border: 2px solid #ddd; border-radius: 12px; font-size: 1.2rem; cursor: pointer; transition: all .2s; background: #fafafa; font-family: inherit; }
+  .quiz-choice:hover { border-color: #2e7d32; background: #e8f5e9; }
+  .quiz-choice.correct { background: #c8e6c9; border-color: #4caf50; }
+  .quiz-choice.wrong { background: #ffcdd2; border-color: #f44336; }
+  .quiz-score { font-size: 1.1rem; color: #666; margin: 10px 0; }
+  .quiz-feedback { font-size: 1.2rem; min-height: 1.5em; margin: 8px 0; }
+  footer { margin: 20px 0; color: #999; font-size: .8rem; }
+  @media (max-width: 640px) { .kanji-grid { grid-template-columns: repeat(8, 1fr); } .stroke-section { flex-direction: column; align-items: center; } .big-char-panel { width: 95%; } .stroke-order-panel { min-width: auto; width: 95%; } }
+</style>
+</head>
+<body>
+<h1>漢字（四年生）</h1>
+<div class="mode-tabs">
+  <button class="mode-tab active" onclick="setMode('learn')">学習モード</button>
+  <button class="mode-tab" onclick="setMode('quiz')">クイズモード</button>
+</div>
+<div class="kanji-grid" id="kanjiGrid"></div>
+<div id="learnArea">
+  <div class="stroke-section">
+    <div class="big-char-panel">
+      <p class="reading" id="readingDisplay">-</p>
+      <p class="big-char" id="charDisplay">-</p>
+      <p class="stroke-count" id="strokeCount">-画</p>
+      <div class="btn-row" style="margin-top:10px;">
+        <button class="btn btn-prev" onclick="prevChar()">◀ 前</button>
+        <button class="btn btn-next" onclick="nextChar()">次 ▶</button>
+      </div>
+    </div>
+    <div class="stroke-order-panel">
+      <h2>ひつじゅん・れんしゅう（なぞりがき）</h2>
+      <p style="font-size:.85rem;color:#777;margin-bottom:8px;">© <a href="https://kakijun.com/" target="_blank" rel="noopener">漢字書き順辞典</a> 筆順画像を使用</p>
+      <div class="nazorigaki-img-wrap" id="nazorigakiWrap">
+        <img id="nazorigakiImg" src="" alt="ひつじゅん・れんしゅう" draggable="false" />
+        <canvas id="nazorigakiCanvas"></canvas>
+      </div>
+      <div class="btn-row">
+        <button class="btn btn-clear" onclick="clearNazorigakiCanvas()">けす</button>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="quiz-panel" id="quizArea">
+  <h2>漢字（四年生）クイズ</h2>
+  <p class="quiz-score" id="quizScore">正解: 0 / 0</p>
+  <p class="quiz-question" id="quizQuestion">-</p>
+  <p class="quiz-feedback" id="quizFeedback">&nbsp;</p>
+  <div class="quiz-choices" id="quizChoices"></div>
+  <div class="btn-row" style="margin-top:14px;">
+    <button class="btn btn-next" id="btnNextQuiz" onclick="nextQuiz()" style="display:none;">次の問題 ▶</button>
+  </div>
+</div>
+<footer>漢字（四年生） 学習プリント ― © <a href="https://kakijun.com/" target="_blank" rel="noopener" style="color:#999;">漢字書き順辞典</a></footer>
+<script>
+const KANJI = [
+  {ch:'士',reading:'さむらい・し',unicode:'58eb',strokes:3},
+  {ch:'欠',reading:'か・けつ',unicode:'6b20',strokes:4},
+  {ch:'氏',reading:'うじ・し',unicode:'6c0f',strokes:4},
+  {ch:'不',reading:'ふ',unicode:'4e0d',strokes:4},
+  {ch:'夫',reading:'おっと・ふ',unicode:'592b',strokes:4},
+  {ch:'以',reading:'もっ・い',unicode:'4ee5',strokes:5},
+  {ch:'加',reading:'くわ・か',unicode:'52a0',strokes:5},
+  {ch:'功',reading:'いさお・こう',unicode:'529f',strokes:5},
+  {ch:'札',reading:'ふだ・さつ',unicode:'672d',strokes:5},
+  {ch:'史',reading:'し',unicode:'53f2',strokes:5},
+  {ch:'司',reading:'つかさど・し',unicode:'53f8',strokes:5},
+  {ch:'失',reading:'うしな・しつ',unicode:'5931',strokes:5},
+  {ch:'必',reading:'かなら・ひつ',unicode:'5fc5',strokes:5},
+  {ch:'付',reading:'つ・ふ',unicode:'4ed8',strokes:5},
+  {ch:'辺',reading:'あた・へん',unicode:'8fba',strokes:5},
+  {ch:'包',reading:'つつ・ほう',unicode:'5305',strokes:5},
+  {ch:'末',reading:'すえ・まつ',unicode:'672b',strokes:5},
+  {ch:'未',reading:'いま・み',unicode:'672a',strokes:5},
+  {ch:'民',reading:'たみ・みん',unicode:'6c11',strokes:5},
+  {ch:'令',reading:'れい',unicode:'4ee4',strokes:5},
+  {ch:'衣',reading:'ころも・い',unicode:'8863',strokes:6},
+  {ch:'印',reading:'しるし・いん',unicode:'5370',strokes:6},
+  {ch:'各',reading:'おのおの・かく',unicode:'5404',strokes:6},
+  {ch:'共',reading:'とも・きょう',unicode:'5171',strokes:6},
+  {ch:'好',reading:'この・こう',unicode:'597d',strokes:6},
+  {ch:'成',reading:'な・せい',unicode:'6210',strokes:6},
+  {ch:'争',reading:'あらそ・そう',unicode:'4e89',strokes:6},
+  {ch:'仲',reading:'なか・ちゅう',unicode:'4ef2',strokes:6},
+  {ch:'兆',reading:'きざ・ちょう',unicode:'5146',strokes:6},
+  {ch:'伝',reading:'つた・でん',unicode:'4f1d',strokes:6},
+  {ch:'灯',reading:'ひ・とう',unicode:'706f',strokes:6},
+  {ch:'老',reading:'お・ろう',unicode:'8001',strokes:6},
+  {ch:'位',reading:'くらい・い',unicode:'4f4d',strokes:7},
+  {ch:'囲',reading:'かこ・い',unicode:'56f2',strokes:7},
+  {ch:'改',reading:'あらた・かい',unicode:'6539',strokes:7},
+  {ch:'完',reading:'かん',unicode:'5b8c',strokes:7},
+  {ch:'希',reading:'まれ・き',unicode:'5e0c',strokes:7},
+  {ch:'求',reading:'もと・きゅう',unicode:'6c42',strokes:7},
+  {ch:'芸',reading:'う・げい',unicode:'82b8',strokes:7},
+  {ch:'告',reading:'つ・こく',unicode:'544a',strokes:7},
+  {ch:'材',reading:'ざい',unicode:'6750',strokes:7},
+  {ch:'児',reading:'こ・じ',unicode:'5150',strokes:7},
+  {ch:'初',reading:'はじ・しょ',unicode:'521d',strokes:7},
+  {ch:'臣',reading:'しん',unicode:'81e3',strokes:7},
+  {ch:'折',reading:'お・せつ',unicode:'6298',strokes:7},
+  {ch:'束',reading:'たば・そく',unicode:'675f',strokes:7},
+  {ch:'低',reading:'ひく・てい',unicode:'4f4e',strokes:7},
+  {ch:'努',reading:'つと・ど',unicode:'52aa',strokes:7},
+  {ch:'兵',reading:'つわもの・へい',unicode:'5175',strokes:7},
+  {ch:'別',reading:'わか・べつ',unicode:'5225',strokes:7},
+  {ch:'利',reading:'き・り',unicode:'5229',strokes:7},
+  {ch:'良',reading:'よ・りょう',unicode:'826f',strokes:7},
+  {ch:'冷',reading:'つめ・れい',unicode:'51b7',strokes:7},
+  {ch:'労',reading:'ろう・ろう',unicode:'52b4',strokes:7},
+  {ch:'英',reading:'はなぶさ・えい',unicode:'82f1',strokes:8},
+  {ch:'果',reading:'は・か',unicode:'679c',strokes:8},
+  {ch:'芽',reading:'め・が',unicode:'82bd',strokes:8},
+  {ch:'官',reading:'かん',unicode:'5b98',strokes:8},
+  {ch:'季',reading:'き',unicode:'5b63',strokes:8},
+  {ch:'泣',reading:'な・きゅう',unicode:'6ce3',strokes:8},
+  {ch:'協',reading:'きょう',unicode:'5354',strokes:8},
+  {ch:'径',reading:'みち・けい',unicode:'5f84',strokes:8},
+  {ch:'固',reading:'かた・こ',unicode:'56fa',strokes:8},
+  {ch:'刷',reading:'す・さつ',unicode:'5237',strokes:8},
+  {ch:'参',reading:'まい・さん',unicode:'53c2',strokes:8},
+  {ch:'治',reading:'おさ・じ',unicode:'6cbb',strokes:8},
+  {ch:'周',reading:'まわ・しゅう',unicode:'5468',strokes:8},
+  {ch:'松',reading:'まつ・しょう',unicode:'677e',strokes:8},
+  {ch:'卒',reading:'そっ・そつ',unicode:'5352',strokes:8},
+  {ch:'底',reading:'そこ・てい',unicode:'5e95',strokes:8},
+  {ch:'的',reading:'まと・てき',unicode:'7684',strokes:8},
+  {ch:'典',reading:'てん',unicode:'5178',strokes:8},
+  {ch:'毒',reading:'どく',unicode:'6bd2',strokes:8},
+  {ch:'念',reading:'ねん',unicode:'5ff5',strokes:8},
+  {ch:'府',reading:'ふ',unicode:'5e9c',strokes:8},
+  {ch:'法',reading:'のり・ほう',unicode:'6cd5',strokes:8},
+  {ch:'牧',reading:'まき・ぼく',unicode:'7267',strokes:8},
+  {ch:'例',reading:'たと・れい',unicode:'4f8b',strokes:8},
+  {ch:'胃',reading:'い',unicode:'80c3',strokes:9},
+  {ch:'栄',reading:'さか・えい',unicode:'6804',strokes:9},
+  {ch:'紀',reading:'き',unicode:'7d00',strokes:9},
+  {ch:'軍',reading:'いくさ・ぐん',unicode:'8ecd',strokes:9},
+  {ch:'型',reading:'かた・けい',unicode:'578b',strokes:9},
+  {ch:'建',reading:'た・けん',unicode:'5efa',strokes:9},
+  {ch:'昨',reading:'さく',unicode:'6628',strokes:9},
+  {ch:'祝',reading:'いわ・しゅく',unicode:'795d',strokes:9},
+  {ch:'省',reading:'かえり・せい',unicode:'7701',strokes:9},
+  {ch:'信',reading:'しん',unicode:'4fe1',strokes:9},
+  {ch:'浅',reading:'あさ・せん',unicode:'6d45',strokes:9},
+  {ch:'単',reading:'ひとえ・たん',unicode:'5358',strokes:9},
+  {ch:'飛',reading:'と・ひ',unicode:'98db',strokes:9},
+  {ch:'変',reading:'か・へん',unicode:'5909',strokes:9},
+  {ch:'便',reading:'たよ・べん',unicode:'4fbf',strokes:9},
+  {ch:'約',reading:'つづ・やく',unicode:'7d04',strokes:9},
+  {ch:'勇',reading:'いさ・ゆう',unicode:'52c7',strokes:9},
+  {ch:'要',reading:'い・よう',unicode:'8981',strokes:9},
+  {ch:'案',reading:'つくえ・あん',unicode:'6848',strokes:10},
+  {ch:'害',reading:'がい',unicode:'5bb3',strokes:10},
+  {ch:'挙',reading:'あ・きょ',unicode:'6319',strokes:10},
+  {ch:'訓',reading:'おし・くん',unicode:'8a13',strokes:10},
+  {ch:'郡',reading:'こおり・ぐん',unicode:'90e1',strokes:10},
+  {ch:'候',reading:'そうろう・こう',unicode:'5019',strokes:10},
+  {ch:'航',reading:'こう',unicode:'822a',strokes:10},
+  {ch:'差',reading:'さ・さ',unicode:'5dee',strokes:10},
+  {ch:'殺',reading:'ころ・さつ',unicode:'6bba',strokes:10},
+  {ch:'残',reading:'のこ・ざん',unicode:'6b8b',strokes:10},
+  {ch:'借',reading:'か・しゃく',unicode:'501f',strokes:10},
+  {ch:'笑',reading:'わら・しょう',unicode:'7b11',strokes:10},
+  {ch:'席',reading:'むしろ・せき',unicode:'5e2d',strokes:10},
+  {ch:'倉',reading:'くら・そう',unicode:'5009',strokes:10},
+  {ch:'孫',reading:'まご・そん',unicode:'5b6b',strokes:10},
+  {ch:'帯',reading:'お・たい',unicode:'5e2f',strokes:10},
+  {ch:'徒',reading:'いたずら・と',unicode:'5f92',strokes:10},
+  {ch:'特',reading:'とく',unicode:'7279',strokes:10},
+  {ch:'梅',reading:'うめ・ばい',unicode:'6885',strokes:10},
+  {ch:'粉',reading:'デシメートル・ふん',unicode:'7c89',strokes:10},
+  {ch:'脈',reading:'すじ・みゃく',unicode:'8108',strokes:10},
+  {ch:'浴',reading:'あ・よく',unicode:'6d74',strokes:10},
+  {ch:'料',reading:'りょう',unicode:'6599',strokes:10},
+  {ch:'連',reading:'つら・れん',unicode:'9023',strokes:10},
+  {ch:'副',reading:'ふく',unicode:'526f',strokes:11},
+  {ch:'望',reading:'のぞ・ぼう',unicode:'671b',strokes:11},
+  {ch:'陸',reading:'おか・りく',unicode:'9678',strokes:11},
+  {ch:'貨',reading:'たから・か',unicode:'8ca8',strokes:11},
+  {ch:'械',reading:'かせ・かい',unicode:'68b0',strokes:11},
+  {ch:'救',reading:'すく・きゅう',unicode:'6551',strokes:11},
+  {ch:'健',reading:'すこ・けん',unicode:'5065',strokes:11},
+  {ch:'康',reading:'こう',unicode:'5eb7',strokes:11},
+  {ch:'菜',reading:'な・さい',unicode:'83dc',strokes:11},
+  {ch:'産',reading:'う・さん',unicode:'7523',strokes:11},
+  {ch:'唱',reading:'とな・しょう',unicode:'5531',strokes:11},
+  {ch:'清',reading:'きよ・せい',unicode:'6e05',strokes:11},
+  {ch:'巣',reading:'す・そう',unicode:'5de3',strokes:11},
+  {ch:'側',reading:'かわ・そく',unicode:'5074',strokes:11},
+  {ch:'停',reading:'と・てい',unicode:'505c',strokes:11},
+  {ch:'堂',reading:'どう',unicode:'5802',strokes:11},
+  {ch:'得',reading:'え・とく',unicode:'5f97',strokes:11},
+  {ch:'敗',reading:'やぶ・はい',unicode:'6557',strokes:11},
+  {ch:'票',reading:'ひょう',unicode:'7968',strokes:11},
+  {ch:'街',reading:'まち・がい',unicode:'8857',strokes:12},
+  {ch:'覚',reading:'おぼ・かく',unicode:'899a',strokes:12},
+  {ch:'喜',reading:'よろこ・き',unicode:'559c',strokes:12},
+  {ch:'給',reading:'たま・きゅう',unicode:'7d66',strokes:12},
+  {ch:'極',reading:'きわ・きょく',unicode:'6975',strokes:12},
+  {ch:'景',reading:'けい',unicode:'666f',strokes:12},
+  {ch:'結',reading:'むす・けつ',unicode:'7d50',strokes:12},
+  {ch:'最',reading:'もっと・さい',unicode:'6700',strokes:12},
+  {ch:'散',reading:'ち・さん',unicode:'6563',strokes:12},
+  {ch:'順',reading:'じゅん',unicode:'9806',strokes:12},
+  {ch:'焼',reading:'や・しょう',unicode:'713c',strokes:12},
+  {ch:'象',reading:'かたど・しょう',unicode:'8c61',strokes:12},
+  {ch:'隊',reading:'たい',unicode:'968a',strokes:12},
+  {ch:'達',reading:'・たつ',unicode:'9054',strokes:12},
+  {ch:'貯',reading:'た・ちょ',unicode:'8caf',strokes:12},
+  {ch:'然',reading:'しか・ぜん',unicode:'7136',strokes:12},
+  {ch:'博',reading:'はく',unicode:'535a',strokes:12},
+  {ch:'飯',reading:'めし・はん',unicode:'98ef',strokes:12},
+  {ch:'費',reading:'つい・ひ',unicode:'8cbb',strokes:12},
+  {ch:'無',reading:'な・む',unicode:'7121',strokes:12},
+  {ch:'満',reading:'み・まん',unicode:'6e80',strokes:12},
+  {ch:'量',reading:'はか・りょう',unicode:'91cf',strokes:12},
+  {ch:'愛',reading:'いと・あい',unicode:'611b',strokes:13},
+  {ch:'塩',reading:'しお・えん',unicode:'5869',strokes:13},
+  {ch:'試',reading:'こころ・し',unicode:'8a66',strokes:13},
+  {ch:'辞',reading:'や・じ',unicode:'8f9e',strokes:13},
+  {ch:'照',reading:'て・しょう',unicode:'7167',strokes:13},
+  {ch:'節',reading:'ふし・せつ',unicode:'7bc0',strokes:13},
+  {ch:'戦',reading:'いくさ・せん',unicode:'6226',strokes:13},
+  {ch:'続',reading:'つづ・ぞく',unicode:'7d9a',strokes:13},
+  {ch:'置',reading:'お・ち',unicode:'7f6e',strokes:13},
+  {ch:'腸',reading:'はらわた・ちょう',unicode:'8178',strokes:13},
+  {ch:'働',reading:'はたら・どう',unicode:'50cd',strokes:13},
+  {ch:'関',reading:'せき・かん',unicode:'95a2',strokes:14},
+  {ch:'管',reading:'くだ・かん',unicode:'7ba1',strokes:14},
+  {ch:'旗',reading:'はた・き',unicode:'65d7',strokes:14},
+  {ch:'察',reading:'さつ',unicode:'5bdf',strokes:14},
+  {ch:'種',reading:'たね・しゅ',unicode:'7a2e',strokes:14},
+  {ch:'静',reading:'しず・せい',unicode:'9759',strokes:14},
+  {ch:'説',reading:'と・せつ',unicode:'8aac',strokes:14},
+  {ch:'漁',reading:'あさ・ぎょ',unicode:'6f01',strokes:14},
+  {ch:'歴',reading:'れき',unicode:'6b74',strokes:14},
+  {ch:'億',reading:'おく',unicode:'5104',strokes:15},
+  {ch:'課',reading:'か',unicode:'8ab2',strokes:15},
+  {ch:'器',reading:'うつわ・き',unicode:'5668',strokes:15},
+  {ch:'賞',reading:'ほ・しょう',unicode:'8cde',strokes:15},
+  {ch:'選',reading:'えら・せん',unicode:'9078',strokes:15},
+  {ch:'熱',reading:'あつ・ねつ',unicode:'71b1',strokes:15},
+  {ch:'標',reading:'しるべ・ひょう',unicode:'6a19',strokes:15},
+  {ch:'養',reading:'やしな・よう',unicode:'990a',strokes:15},
+  {ch:'輪',reading:'わ・りん',unicode:'8f2a',strokes:15},
+  {ch:'機',reading:'はた・き',unicode:'6a5f',strokes:16},
+  {ch:'積',reading:'つ・せき',unicode:'7a4d',strokes:16},
+  {ch:'録',reading:'しる・ろく',unicode:'9332',strokes:16},
+  {ch:'観',reading:'み・かん',unicode:'89b3',strokes:18},
+  {ch:'験',reading:'あかし・けん',unicode:'9a13',strokes:18},
+  {ch:'類',reading:'たぐ・るい',unicode:'985e',strokes:18},
+  {ch:'願',reading:'ねが・がん',unicode:'9858',strokes:19},
+  {ch:'鏡',reading:'かがみ・きょう',unicode:'93e1',strokes:19},
+  {ch:'議',reading:'ぎ',unicode:'8b70',strokes:20},
+  {ch:'競',reading:'きそ・きょう',unicode:'7af6',strokes:20}
+];
+let currentIndex = 0; let mode = 'learn'; let quizCorrect = 0, quizTotal = 0, quizAnswered = false;
+const KAKIJUN_BASE = 'https://kakijun.com/kanjiphoto/worksheet/1/kanji-kakijun-worksheet-1-';
+function buildGrid() { const grid = document.getElementById('kanjiGrid'); grid.innerHTML = ''; KANJI.forEach((k, i) => { const div = document.createElement('div'); div.className = 'cell'; div.textContent = k.ch; div.onclick = () => { currentIndex = i; updateDisplay(); }; grid.appendChild(div); }); }
+function highlightGrid() { const ch = KANJI[currentIndex].ch; document.querySelectorAll('.kanji-grid .cell').forEach((c, i) => { c.classList.toggle('active', KANJI[i].ch === ch); }); }
+function updateDisplay() { const k = KANJI[currentIndex]; document.getElementById('charDisplay').textContent = k.ch; document.getElementById('readingDisplay').textContent = k.reading; document.getElementById('strokeCount').textContent = k.strokes + '画'; highlightGrid(); const img = document.getElementById('nazorigakiImg'); img.src = KAKIJUN_BASE + k.unicode + '.png'; img.alt = k.ch + ' の書き順'; clearNazorigakiCanvas(); if (img.complete && img.naturalWidth) resizeNazorigakiCanvas(); }
+function resizeNazorigakiCanvas() { const canvas = document.getElementById('nazorigakiCanvas'); const wrap = document.getElementById('nazorigakiWrap'); const rect = wrap.getBoundingClientRect(); if (rect.width < 10 || rect.height < 10) return; const dpr = window.devicePixelRatio || 1; const w = Math.round(rect.width * dpr); const h = Math.round(rect.height * dpr); if (canvas.width !== w || canvas.height !== h) { canvas.width = w; canvas.height = h; canvas.style.width = rect.width + 'px'; canvas.style.height = rect.height + 'px'; } }
+function clearNazorigakiCanvas() { const canvas = document.getElementById('nazorigakiCanvas'); const ctx = canvas.getContext('2d'); ctx.clearRect(0, 0, canvas.width, canvas.height); }
+function setupNazorigakiDrawing() { const canvas = document.getElementById('nazorigakiCanvas'); const ctx = canvas.getContext('2d'); let drawing = false; canvas.addEventListener('touchstart', e => e.preventDefault(), { passive: false }); canvas.addEventListener('pointerdown', e => { drawing = true; ctx.beginPath(); const r = canvas.getBoundingClientRect(); ctx.moveTo((e.clientX-r.left)*canvas.width/r.width, (e.clientY-r.top)*canvas.height/r.height); canvas.setPointerCapture(e.pointerId); }); canvas.addEventListener('pointermove', e => { if (!drawing) return; const r = canvas.getBoundingClientRect(); ctx.lineWidth = 9; ctx.lineCap = 'round'; ctx.lineJoin = 'round'; ctx.strokeStyle = '#333'; ctx.lineTo((e.clientX-r.left)*canvas.width/r.width, (e.clientY-r.top)*canvas.height/r.height); ctx.stroke(); }); canvas.addEventListener('pointerup', () => drawing = false); canvas.addEventListener('pointerleave', () => drawing = false); }
+function initNazorigakiCanvas() { const img = document.getElementById('nazorigakiImg'); const wrap = document.getElementById('nazorigakiWrap'); wrap.addEventListener('contextmenu', e => e.preventDefault()); function syncCanvas() { resizeNazorigakiCanvas(); } img.addEventListener('load', syncCanvas); window.addEventListener('resize', syncCanvas); new ResizeObserver(syncCanvas).observe(wrap); syncCanvas(); setupNazorigakiDrawing(); }
+function prevChar() { currentIndex = (currentIndex - 1 + KANJI.length) % KANJI.length; updateDisplay(); }
+function nextChar() { currentIndex = (currentIndex + 1) % KANJI.length; updateDisplay(); }
+function setMode(m) { mode = m; document.querySelectorAll('.mode-tab').forEach(t => t.classList.toggle('active', t.textContent.includes(m==='learn'?'学習':'クイズ'))); document.getElementById('learnArea').style.display = m==='learn' ? 'block' : 'none'; document.getElementById('quizArea').style.display = m==='quiz' ? 'block' : 'none'; if (m==='quiz') { quizCorrect=0; quizTotal=0; nextQuiz(); } }
+function nextQuiz() { quizAnswered = false; document.getElementById('quizFeedback').innerHTML = '&nbsp;'; document.getElementById('btnNextQuiz').style.display = 'none'; const qi = Math.floor(Math.random()*KANJI.length); const {ch, reading} = KANJI[qi]; const mainReading = reading.split('・')[0]; const type = Math.random() < 0.5 ? 'k2r' : 'r2k'; let question, answer, pool; if (type==='k2r') { question = ch; answer = mainReading; pool = KANJI.map(k => k.reading.split('・')[0]); } else { question = mainReading; answer = ch; pool = KANJI.map(k => k.ch); } const choices = genChoices(answer, pool); document.getElementById('quizQuestion').textContent = question; document.getElementById('quizScore').textContent = `正解: ${quizCorrect} / ${quizTotal}`; const div = document.getElementById('quizChoices'); div.innerHTML = ''; choices.forEach(c => { const btn = document.createElement('button'); btn.className = 'quiz-choice'; btn.textContent = c; btn.onclick = () => checkAnswer(btn, c, answer); div.appendChild(btn); }); }
+function genChoices(correct, pool) { const s = new Set([correct]); while (s.size < 4) s.add(pool[Math.floor(Math.random()*pool.length)]); return shuffle([...s]); }
+function shuffle(a) { for (let i=a.length-1;i>0;i--){ const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]; } return a; }
+function checkAnswer(btn, sel, cor) { if (quizAnswered) return; quizAnswered = true; quizTotal++; if (sel===cor) { quizCorrect++; btn.classList.add('correct'); document.getElementById('quizFeedback').textContent='⭕ 正解！'; document.getElementById('quizFeedback').style.color='#4caf50'; } else { btn.classList.add('wrong'); document.getElementById('quizFeedback').textContent=`❌ 不正解… 正解は「${cor}」`; document.getElementById('quizFeedback').style.color='#f44336'; document.querySelectorAll('.quiz-choice').forEach(b=>{ if(b.textContent===cor) b.classList.add('correct'); }); } document.getElementById('quizScore').textContent=`正解: ${quizCorrect} / ${quizTotal}`; document.getElementById('btnNextQuiz').style.display='inline-block'; }
+document.addEventListener('keydown', e => { if (mode==='learn') { if (e.key==='ArrowLeft') prevChar(); else if (e.key==='ArrowRight') nextChar(); } });
+buildGrid(); updateDisplay(); initNazorigakiCanvas();
+</script>
+</body>
+</html>

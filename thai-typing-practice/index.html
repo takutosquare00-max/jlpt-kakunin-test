@@ -1,0 +1,834 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="theme-color" content="#111111">
+  <title>タイピングで覚えるタイ文字の読み</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html {
+      -webkit-text-size-adjust: 100%;
+      -webkit-tap-highlight-color: transparent;
+      font-size: 16px;
+    }
+    body {
+      min-height: 100vh;
+      min-height: 100dvh;
+      padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
+      background: #101112;
+      color: #f7f4ec;
+      font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Noto Sans JP", "Noto Sans Thai", "Tahoma", sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
+    button, input { font: inherit; }
+    .container {
+      width: min(100%, 640px);
+      margin: 0 auto;
+      padding: 14px 14px 18px;
+    }
+    header {
+      padding: 8px 0 14px;
+      text-align: center;
+    }
+    h1 {
+      font-size: 1.12rem;
+      font-weight: 700;
+    }
+    .subtitle {
+      margin-top: 3px;
+      color: #a6a29a;
+      font-size: 0.78rem;
+    }
+    .panel {
+      background: #17191b;
+      border: 1px solid #2a2d30;
+      border-radius: 8px;
+      padding: 14px;
+    }
+    .toolbar {
+      display: grid;
+      gap: 10px;
+      margin-bottom: 14px;
+    }
+    .segmented {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 4px;
+      padding: 4px;
+      border-radius: 8px;
+      background: #24272a;
+    }
+    .segmented.hints {
+      grid-template-columns: repeat(3, 1fr);
+    }
+    .segmented input {
+      position: absolute;
+      opacity: 0;
+      pointer-events: none;
+    }
+    .segmented label {
+      min-height: 34px;
+      display: grid;
+      place-items: center;
+      border-radius: 6px;
+      color: #c8c2b6;
+      font-size: 0.78rem;
+      cursor: pointer;
+      user-select: none;
+      white-space: nowrap;
+    }
+    .segmented input:checked + span {
+      width: 100%;
+      height: 100%;
+      display: grid;
+      place-items: center;
+      border-radius: 6px;
+      background: #f4c95d;
+      color: #151515;
+      font-weight: 700;
+    }
+    .stats {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      color: #a6a29a;
+      font-size: 0.84rem;
+      font-variant-numeric: tabular-nums;
+    }
+    .thai-display {
+      min-height: 130px;
+      display: grid;
+      place-items: center;
+      padding: 16px 10px;
+      border-radius: 8px;
+      background: #0f1418;
+      border: 1px solid #26343d;
+      text-align: center;
+    }
+    .thai-main {
+      font-family: "Noto Sans Thai", "Tahoma", sans-serif;
+      font-size: clamp(2.5rem, 12vw, 4.8rem);
+      line-height: 1.2;
+      overflow-wrap: anywhere;
+    }
+    .thai-main.sentence {
+      font-size: clamp(1.8rem, 7vw, 3rem);
+      line-height: 1.35;
+    }
+    .meta {
+      margin-top: 8px;
+      min-height: 1.4em;
+      color: #d4c7a3;
+      font-size: 0.9rem;
+      text-align: center;
+    }
+    .answer-track {
+      margin-top: 12px;
+      min-height: 54px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 12px;
+      border-radius: 8px;
+      background: #222426;
+      font-family: "SF Mono", Menlo, Consolas, monospace;
+      font-size: 1rem;
+      line-height: 1.7;
+      letter-spacing: 0;
+      overflow-wrap: anywhere;
+      text-align: center;
+    }
+    .typing-wrapper {
+      position: relative;
+      margin-top: 12px;
+      cursor: text;
+      touch-action: manipulation;
+      -webkit-tap-highlight-color: rgba(255,255,255,0.1);
+    }
+    .typing-wrapper .answer-track {
+      margin-top: 0;
+    }
+    .char.correct { color: #59d98e; }
+    .char.current {
+      color: #222426;
+    }
+    .char.remaining { color: #222426; }
+    .answer-track.show-guide .char.current,
+    .answer-track.show-guide .char.remaining {
+      color: #6f7478;
+    }
+    .char.space { display: inline; }
+    .typing-input {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      min-height: 54px;
+      opacity: 0;
+      cursor: text;
+      font-size: 16px;
+      appearance: none;
+      -webkit-appearance: none;
+      border: 0;
+      background: transparent;
+    }
+    .feedback {
+      min-height: 42px;
+      margin-top: 10px;
+      padding: 10px 12px;
+      border-radius: 8px;
+      color: #a6a29a;
+      font-size: 0.9rem;
+      display: none;
+    }
+    .feedback.show { display: block; }
+    .feedback.correct {
+      color: #59d98e;
+      background: rgba(89, 217, 142, 0.12);
+    }
+    .feedback.wrong {
+      color: #ff847c;
+      background: rgba(255, 132, 124, 0.12);
+    }
+    .feedback .expected {
+      font-family: "SF Mono", Menlo, Consolas, monospace;
+      color: #f7f4ec;
+    }
+    .btn-row {
+      display: flex;
+      gap: 10px;
+      margin-top: 12px;
+    }
+    .btn {
+      flex: 1;
+      min-height: 46px;
+      border: 0;
+      border-radius: 8px;
+      cursor: pointer;
+      touch-action: manipulation;
+      user-select: none;
+    }
+    .btn-primary {
+      background: #f4c95d;
+      color: #151515;
+      font-weight: 700;
+    }
+    .btn-secondary {
+      background: #303337;
+      color: #f7f4ec;
+    }
+    .btn:active { transform: translateY(1px); }
+    .result-panel {
+      display: none;
+      text-align: center;
+      padding: 26px 14px;
+    }
+    .result-panel.show { display: block; }
+    .result-panel h2 {
+      font-size: 1.25rem;
+      margin-bottom: 12px;
+    }
+    .result-score {
+      margin: 10px 0;
+      font-size: 2.5rem;
+      font-weight: 800;
+      color: #f4c95d;
+      font-variant-numeric: tabular-nums;
+    }
+    @media (max-width: 420px) {
+      .container { padding: 10px 10px 14px; }
+      .panel { padding: 10px; }
+      .segmented { grid-template-columns: repeat(3, 1fr); }
+      .segmented.hints { grid-template-columns: repeat(3, 1fr); }
+      .segmented label { font-size: 0.74rem; }
+      .thai-display { min-height: 116px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>タイピングで覚えるタイ文字の読み</h1>
+      <p class="subtitle">อ่านอักษรไทยด้วยการพิมพ์</p>
+    </header>
+
+    <section class="panel" id="practicePanel">
+      <div class="toolbar">
+        <div class="segmented" aria-label="練習レベル">
+          <label><input type="radio" name="level" value="all" checked><span>すべて</span></label>
+          <label><input type="radio" name="level" value="letter"><span>文字</span></label>
+          <label><input type="radio" name="level" value="syllable"><span>音節</span></label>
+          <label><input type="radio" name="level" value="word"><span>単語</span></label>
+          <label><input type="radio" name="level" value="sentence"><span>短文</span></label>
+        </div>
+        <div class="segmented hints" aria-label="ヒント">
+          <label><input type="radio" name="hintMode" value="none" checked><span>ヒントなし</span></label>
+          <label><input type="radio" name="hintMode" value="meaning"><span>意味</span></label>
+          <label><input type="radio" name="hintMode" value="parts"><span>分解</span></label>
+        </div>
+        <div class="stats">
+          <span>正解: <span id="correctCount">0</span>/<span id="answeredCount">0</span></span>
+          <span id="remainingCount">0問</span>
+        </div>
+      </div>
+
+      <div class="thai-display">
+        <div>
+          <div class="thai-main" id="thaiDisplay">読み込み中</div>
+          <div class="meta" id="hintDisplay"></div>
+        </div>
+      </div>
+
+      <div class="typing-wrapper">
+        <div class="answer-track" id="answerTrack" tabindex="0" contenteditable="false"
+          role="application" aria-label="ラテン文字入力エリア" lang="en" aria-live="polite"></div>
+        <input type="text" id="typingInput" class="typing-input" autocomplete="off" autocapitalize="off"
+          autocorrect="off" spellcheck="false" inputmode="latin" lang="en" aria-label="発音をラテン文字で入力">
+      </div>
+
+      <div class="feedback" id="feedback"></div>
+
+      <div class="btn-row">
+        <button type="button" class="btn btn-secondary" id="btnReveal">答え</button>
+        <button type="button" class="btn btn-secondary" id="btnSkip">スキップ</button>
+      </div>
+    </section>
+
+    <section class="panel result-panel" id="resultPanel">
+      <h2>終了</h2>
+      <p>正解数</p>
+      <div class="result-score" id="resultScore">0</div>
+      <p><span id="resultTotal">0</span>問中</p>
+      <div class="btn-row">
+        <button type="button" class="btn btn-primary" id="btnRestart">もう一度</button>
+      </div>
+    </section>
+  </div>
+
+  <script type="application/json" id="thai-data">
+[]
+  </script>
+
+  <script>
+    (function() {
+      'use strict';
+
+      var items = [];
+      var queue = [];
+      var currentIndex = 0;
+      var correctCount = 0;
+      var answeredCount = 0;
+      var advancing = false;
+      var advanceTimer = null;
+      var answerRevealed = false;
+
+      var thaiDisplay = document.getElementById('thaiDisplay');
+      var hintDisplay = document.getElementById('hintDisplay');
+      var answerTrack = document.getElementById('answerTrack');
+      var typingInput = document.getElementById('typingInput');
+      var feedback = document.getElementById('feedback');
+      var practicePanel = document.getElementById('practicePanel');
+      var resultPanel = document.getElementById('resultPanel');
+      var correctCountEl = document.getElementById('correctCount');
+      var answeredCountEl = document.getElementById('answeredCount');
+      var remainingCountEl = document.getElementById('remainingCount');
+
+      function escapeHtml(s) {
+        var div = document.createElement('div');
+        div.textContent = String(s || '');
+        return div.innerHTML;
+      }
+
+      function getRadioValue(name) {
+        var checked = document.querySelector('input[name="' + name + '"]:checked');
+        return checked ? checked.value : '';
+      }
+
+      function normalizeLatin(s) {
+        return String(s || '')
+          .toLowerCase()
+          .normalize('NFKD')
+          .replace(/[\u0300-\u036f]/g, '')
+          .replace(/[^a-z0-9]+/g, '');
+      }
+
+      function normalizeForDisplay(s) {
+        return String(s || '')
+          .toLowerCase()
+          .replace(/\s+/g, ' ')
+          .trim();
+      }
+
+      function withAnswers(reading, extra) {
+        var answers = [reading];
+        if (Array.isArray(extra)) answers = answers.concat(extra);
+        var compact = String(reading || '').replace(/\s+/g, '');
+        if (compact && compact !== reading) answers.push(compact);
+        return answers;
+      }
+
+      function makeItem(thai, reading, meaning, level, category, hint, extraAnswers) {
+        return {
+          thai: thai,
+          reading: reading,
+          display_reading: reading,
+          answers: withAnswers(reading, extraAnswers),
+          meaning_ja: meaning,
+          level: level,
+          category: category,
+          hint: hint
+        };
+      }
+
+      function buildCompleteThaiData() {
+        var data = [];
+        var consonants = [
+          ['ก','ko kai','鶏','中子音','k'], ['ข','kho khai','卵','高子音','kh'], ['ฃ','kho khuat','瓶・廃字','高子音','kh'],
+          ['ค','kho khwai','水牛','低子音','kh'], ['ฅ','kho khon','人・廃字','低子音','kh'], ['ฆ','kho ra khang','鐘','低子音','kh'],
+          ['ง','ngo ngu','蛇','低子音','ng'], ['จ','cho chan','皿','中子音','ch'], ['ฉ','cho ching','シンバル','高子音','ch'],
+          ['ช','cho chang','象','低子音','ch'], ['ซ','so so','鎖','低子音','s'], ['ฌ','cho choe','木','低子音','ch'],
+          ['ญ','yo ying','女性','低子音','y'], ['ฎ','do cha da','冠','中子音','d'], ['ฏ','to pa tak','槍','中子音','t'],
+          ['ฐ','tho than','台座','高子音','th'], ['ฑ','tho nang montho','モントー夫人','低子音','th'], ['ฒ','tho phu thao','老人','低子音','th'],
+          ['ณ','no nen','小僧','低子音','n'], ['ด','do dek','子ども','中子音','d'], ['ต','to tao','亀','中子音','t'],
+          ['ถ','tho thung','袋','高子音','th'], ['ท','tho thahan','兵士','低子音','th'], ['ธ','tho thong','旗','低子音','th'],
+          ['น','no nu','ねずみ','低子音','n'], ['บ','bo bai mai','葉','中子音','b'], ['ป','po pla','魚','中子音','p'],
+          ['ผ','pho phueng','蜂','高子音','ph'], ['ฝ','fo fa','ふた','高子音','f'], ['พ','pho phan','盆','低子音','ph'],
+          ['ฟ','fo fan','歯','低子音','f'], ['ภ','pho sam phao','帆船','低子音','ph'], ['ม','mo ma','馬','低子音','m'],
+          ['ย','yo yak','夜叉','低子音','y'], ['ร','ro ruea','船','低子音','r'], ['ล','lo ling','猿','低子音','l'],
+          ['ว','wo waen','指輪','低子音','w'], ['ศ','so sala','あずまや','高子音','s'], ['ษ','so rue si','仙人','高子音','s'],
+          ['ส','so suea','虎','高子音','s'], ['ห','ho hip','箱','高子音','h'], ['ฬ','lo chu la','凧','低子音','l'],
+          ['อ','o ang','洗面器','中子音','母音の台'], ['ฮ','ho nok huk','ふくろう','低子音','h']
+        ];
+        consonants.forEach(function(c) {
+          data.push(makeItem(c[0], c[1], c[2], 'letter', '子音44字', c[3] + ' / ' + c[4], [c[1].split(' ')[0]]));
+        });
+
+        var vowels = [
+          ['-ะ','a','短い a','短母音'], ['-า','aa','長い a','長母音',['a']], ['-ิ','i','短い i','短母音'], ['-ี','ii','長い i','長母音',['i']],
+          ['-ึ','ue','短い ue','短母音'], ['-ือ','uue','長い uue','長母音',['ue']], ['-ุ','u','短い u','短母音'], ['-ู','uu','長い u','長母音',['u']],
+          ['เ-ะ','e','短い e','短母音'], ['เ-','ee','長い e','長母音',['e']], ['แ-ะ','ae','短い ae','短母音'], ['แ-','aae','長い ae','長母音',['ae']],
+          ['โ-ะ','o','短い o','短母音'], ['โ-','oo','長い o','長母音',['o']], ['เ-าะ','aw','短い aw','短母音',['o']], ['-อ','aaw','長い aw','長母音',['aw','o']],
+          ['เ-อะ','oe','短い oe','短母音'], ['เ-อ','ooe','長い oe','長母音',['oe']], ['เ-ียะ','ia','短い ia','二重母音'], ['เ-ีย','iia','長い ia','二重母音',['ia']],
+          ['เ-ือะ','uea','短い uea','二重母音'], ['เ-ือ','uuea','長い uea','二重母音',['uea']], ['-ัวะ','ua','短い ua','二重母音'], ['-ัว','uua','長い ua','二重母音',['ua']],
+          ['ใ-','ai','ai','特殊母音'], ['ไ-','ai','ai','特殊母音'], ['เ-า','ao','ao','特殊母音'], ['-ำ','am','am','特殊母音'],
+          ['ฤ','rue','rue','特殊文字'], ['ฤๅ','ruee','ruee','特殊文字',['rue']], ['ฦ','lue','lue・廃用','特殊文字'], ['ฦๅ','luee','luee・廃用','特殊文字',['lue']]
+        ];
+        vowels.forEach(function(v) {
+          data.push(makeItem(v[0], v[1], v[2], 'letter', '母音記号', v[3]));
+        });
+
+        var bases = [
+          ['ก','k'], ['ข','kh'], ['ค','kh'], ['ง','ng'], ['จ','ch'], ['ฉ','ch'], ['ช','ch'], ['ซ','s'],
+          ['ด','d'], ['ต','t'], ['ถ','th'], ['ท','th'], ['น','n'], ['บ','b'], ['ป','p'], ['ผ','ph'],
+          ['พ','ph'], ['ฟ','f'], ['ม','m'], ['ย','y'], ['ร','r'], ['ล','l'], ['ว','w'], ['ส','s'], ['ห','h'], ['อ','']
+        ];
+        var syllableVowels = [
+          ['-ะ','a', function(c){ return c + 'ะ'; }], ['-า','aa', function(c){ return c + 'า'; }],
+          ['-ิ','i', function(c){ return c + 'ิ'; }], ['-ี','ii', function(c){ return c + 'ี'; }],
+          ['-ึ','ue', function(c){ return c + 'ึ'; }], ['-ือ','uue', function(c){ return c + 'ือ'; }],
+          ['-ุ','u', function(c){ return c + 'ุ'; }], ['-ู','uu', function(c){ return c + 'ู'; }],
+          ['เ-ะ','e', function(c){ return 'เ' + c + 'ะ'; }], ['เ-','ee', function(c){ return 'เ' + c; }],
+          ['แ-ะ','ae', function(c){ return 'แ' + c + 'ะ'; }], ['แ-','aae', function(c){ return 'แ' + c; }],
+          ['โ-ะ','o', function(c){ return 'โ' + c + 'ะ'; }], ['โ-','oo', function(c){ return 'โ' + c; }],
+          ['เ-าะ','aw', function(c){ return 'เ' + c + 'าะ'; }], ['-อ','aaw', function(c){ return c + 'อ'; }],
+          ['เ-อะ','oe', function(c){ return 'เ' + c + 'อะ'; }], ['เ-อ','ooe', function(c){ return 'เ' + c + 'อ'; }],
+          ['เ-ีย','iia', function(c){ return 'เ' + c + 'ีย'; }], ['เ-ือ','uuea', function(c){ return 'เ' + c + 'ือ'; }],
+          ['-ัว','uua', function(c){ return c + 'ัว'; }], ['ไ-','ai', function(c){ return 'ไ' + c; }],
+          ['ใ-','ai', function(c){ return 'ใ' + c; }], ['เ-า','ao', function(c){ return 'เ' + c + 'า'; }],
+          ['-ำ','am', function(c){ return c + 'ำ'; }]
+        ];
+        bases.forEach(function(base) {
+          syllableVowels.forEach(function(v) {
+            var thai = v[2](base[0]);
+            var reading = base[1] + v[1];
+            if (!reading) return;
+            var item = makeItem(thai, reading, '音節練習', 'syllable', '母音体系', base[0] + ' + ' + v[0]);
+            item.display_reading = base[1] + ' ' + v[1];
+            data.push(item);
+          });
+        });
+
+        var finals = [
+          ['น','n'], ['ม','m'], ['ง','ng'], ['ก','k'], ['ด','t'], ['บ','p']
+        ];
+        var finalVowels = [
+          ['', 'o', function(c, f){ return c + f; }, '暗黙母音'],
+          ['ั', 'a', function(c, f){ return c + 'ั' + f; }, '短母音 + 末子音'],
+          ['า', 'aa', function(c, f){ return c + 'า' + f; }, '長母音 + 末子音'],
+          ['ิ', 'i', function(c, f){ return c + 'ิ' + f; }, '短母音 + 末子音'],
+          ['ี', 'ii', function(c, f){ return c + 'ี' + f; }, '長母音 + 末子音'],
+          ['ุ', 'u', function(c, f){ return c + 'ุ' + f; }, '短母音 + 末子音'],
+          ['ู', 'uu', function(c, f){ return c + 'ู' + f; }, '長母音 + 末子音']
+        ];
+        bases.slice(0, 18).forEach(function(base) {
+          finals.forEach(function(final) {
+          finalVowels.forEach(function(v) {
+              var reading = base[1] + v[1] + final[1];
+              var item = makeItem(v[2](base[0], final[0]), reading, '末子音つき音節', 'syllable', '末子音', base[0] + ' + ' + v[0] + ' + ' + final[0]);
+              item.display_reading = base[1] + ' ' + v[1] + ' ' + final[1];
+              data.push(item);
+            });
+          });
+        });
+
+        bases.forEach(function(base) {
+          [
+            ['าย', 'aai', 'า + ย', 'aa i'],
+            ['าว', 'aao', 'า + ว', 'aa o']
+          ].forEach(function(v) {
+            var reading = base[1] + v[1];
+            if (!reading) return;
+            var item = makeItem(base[0] + v[0], reading, '半母音末尾の音節', 'syllable', 'ย・ว末尾', base[0] + ' + ' + v[2]);
+            item.display_reading = base[1] + ' ' + v[3];
+            data.push(item);
+          });
+        });
+
+        [
+          ['กา','kaa','k aa','ka'], ['ก่า','kaa','k aa','ka + mai ek'], ['ก้า','kaa','k aa','ka + mai tho'], ['ก๊า','kaa','k aa','ka + mai tri'], ['ก๋า','kaa','k aa','ka + mai chattawa'],
+          ['นา','naa','n aa','na'], ['น่า','naa','n aa','na + mai ek'], ['น้า','naa','n aa','na + mai tho'], ['ค้า','khaa','kh aa','kha + mai tho'],
+          ['บ้าน','baan','b aa n','ba + mai tho + n'], ['ข้าว','khaao','kh aa o','kha + mai tho + w'], ['น้ำ','naam','n aa m','nam mai tho']
+        ].forEach(function(x) {
+          var item = makeItem(x[0], x[1], '声調記号の形を読む', 'syllable', '声調記号', x[3]);
+          item.display_reading = x[2];
+          data.push(item);
+        });
+
+        var words = [
+          ['สวัสดี','sawat dii','こんにちは','あいさつ',['sawadii','sawasdee']], ['ขอบคุณ','khop khun','ありがとう','あいさつ',['khob khun']],
+          ['ขอโทษ','kho thoot','すみません','あいさつ',['kho thot']], ['ใช่','chai','はい・そうです','基本語'], ['ไม่','mai','否定・いいえ','基本語'],
+          ['ครับ','khrap','丁寧語・男性','基本語',['krap']], ['ค่ะ','kha','丁寧語・女性','基本語'], ['ผม','phom','私・男性','人称'], ['ฉัน','chan','私','人称'],
+          ['คุณ','khun','あなた','人称'], ['เขา','khao','彼・彼女','人称'], ['เรา','rao','私たち','人称'], ['นี่','nii','これ','指示語'], ['นั่น','nan','それ・あれ','指示語'],
+          ['อะไร','arai','何','疑問詞'], ['ใคร','khrai','誰','疑問詞'], ['ที่ไหน','thii nai','どこ','疑問詞'], ['เมื่อไร','muea rai','いつ','疑問詞'],
+          ['ทำไม','tham mai','なぜ','疑問詞'], ['เท่าไร','thao rai','いくら','疑問詞'], ['กิน','kin','食べる','動詞'], ['ดื่ม','duuem','飲む','動詞',['duem']],
+          ['ไป','pai','行く','動詞'], ['มา','maa','来る','動詞',['ma']], ['ดู','duu','見る','動詞',['du']], ['ฟัง','fang','聞く','動詞'], ['อ่าน','aan','読む','動詞'],
+          ['เขียน','khian','書く','動詞'], ['พูด','phuut','話す','動詞',['phut']], ['เรียน','rian','勉強する','動詞'], ['ทำงาน','tham ngaan','働く','動詞',['tham ngan']],
+          ['ซื้อ','suee','買う','動詞',['sue']], ['ขาย','khaai','売る','動詞',['khai']], ['อยู่','yuu','いる・住む','動詞',['yu']],
+          ['มี','mii','ある・持つ','動詞',['mi']], ['เป็น','pen','である','動詞'], ['ชอบ','chaawp','好き','動詞',['chawp','chop']],
+          ['รัก','rak','愛する','動詞'], ['รู้','ruu','知っている','動詞',['ru']], ['เข้าใจ','khao chai','理解する','動詞'],
+          ['ดี','dii','良い','形容詞',['di']], ['ร้อน','ron','暑い・熱い','形容詞'], ['เย็น','yen','冷たい・涼しい','形容詞'],
+          ['อร่อย','aroi','おいしい','形容詞'], ['สวย','suai','美しい','形容詞'], ['ใหญ่','yai','大きい','形容詞'], ['เล็ก','lek','小さい','形容詞'],
+          ['ใหม่','mai','新しい','形容詞'], ['เก่า','kao','古い','形容詞'], ['แพง','phaaeng','高い・値段','形容詞',['phaeng']], ['ถูก','thuuk','安い・正しい','形容詞',['thuk']],
+          ['บ้าน','baan','家','場所',['ban']], ['โรงเรียน','roong rian','学校','場所',['rong rian']], ['มหาวิทยาลัย','mahaa witthayaalai','大学','場所',['maha witthayalai']],
+          ['ตลาด','ta laat','市場','場所',['talat']], ['ร้านอาหาร','raan aa haan','レストラン','場所',['ran ahan']], ['ห้องน้ำ','hong naam','トイレ','場所',['hong nam']],
+          ['โรงแรม','roong raem','ホテル','場所',['rong raem']], ['สถานี','sa thaa nii','駅','場所',['sathani']], ['สนามบิน','sa naam bin','空港','場所',['sanam bin']],
+          ['อาหาร','aa haan','食べ物','生活',['ahan']], ['ข้าว','khaao','ご飯','生活',['khao']], ['น้ำ','naam','水','生活',['nam']], ['กาแฟ','kaa fae','コーヒー','生活',['kafe']],
+          ['ชา','chaa','お茶','生活',['cha']], ['นม','nom','牛乳','生活'], ['ผลไม้','phon la mai','果物','生活'], ['เงิน','ngoen','お金','生活'],
+          ['รถ','rot','車','交通'], ['รถไฟ','rot fai','電車','交通'], ['รถเมล์','rot mee','バス','交通'], ['แท็กซี่','thaek sii','タクシー','交通'],
+          ['วันนี้','wan nii','今日','時間',['wanni']], ['พรุ่งนี้','phrung nii','明日','時間',['prung nii']], ['เมื่อวาน','muea waan','昨日','時間',['muea wan']],
+          ['ตอนเช้า','toon chao','朝','時間'], ['ตอนเย็น','toon yen','夕方','時間'], ['วันจันทร์','wan jan','月曜日','曜日'], ['วันอังคาร','wan ang khaan','火曜日','曜日'],
+          ['วันพุธ','wan phut','水曜日','曜日'], ['วันพฤหัสบดี','wan phra huet sa baw dii','木曜日','曜日',['wan pharuehat']], ['วันศุกร์','wan suk','金曜日','曜日'],
+          ['วันเสาร์','wan sao','土曜日','曜日'], ['วันอาทิตย์','wan aa thit','日曜日','曜日',['wan athit']]
+        ];
+        words.forEach(function(w) {
+          data.push(makeItem(w[0], w[1], w[2], 'word', w[3], w[0], w[4]));
+        });
+
+        var sentences = [
+          ['ผมกินข้าว','phom kin khaao','私はご飯を食べます','基本文',['phom kin khao']],
+          ['ฉันดื่มน้ำ','chan duuem naam','私は水を飲みます','基本文',['chan duem nam']],
+          ['คุณไปไหน','khun pai nai','あなたはどこへ行きますか','疑問文'],
+          ['ผมไปโรงเรียน','phom pai roong rian','私は学校へ行きます','基本文',['phom pai rong rian']],
+          ['กาแฟร้อน','kaa fae ron','コーヒーは熱い','形容詞文',['ka fae ron']],
+          ['บ้านนี้ดี','baan nii dii','この家は良い','形容詞文',['ban ni di']],
+          ['วันนี้ไม่ไป','wan nii mai pai','今日は行きません','否定文',['wan ni mai pai']],
+          ['เขาอยู่บ้าน','khao yuu baan','彼・彼女は家にいます','基本文',['khao yu ban']],
+          ['นี่คืออะไร','nii khue arai','これは何ですか','疑問文'],
+          ['คุณชื่ออะไร','khun chue arai','あなたの名前は何ですか','疑問文'],
+          ['ฉันชื่อทาโร่','chan chue taaroo','私は太郎です','自己紹介',['chan chue taro']],
+          ['อันนี้เท่าไร','an nii thao rai','これはいくらですか','買い物'],
+          ['ขอน้ำหน่อย','kho naam noi','水をください','依頼',['kho nam noi']],
+          ['ผมชอบกาแฟ','phom chaawp kaa fae','私はコーヒーが好きです','好み',['phom chawp kafe']],
+          ['ฉันเรียนภาษาไทย','chan rian phaa saa thai','私はタイ語を勉強します','学習',['chan rian phasa thai']],
+          ['เขาทำงานที่บ้าน','khao tham ngaan thii baan','彼・彼女は家で働きます','基本文',['khao tham ngan thi ban']],
+          ['ตลาดอยู่ที่ไหน','ta laat yuu thii nai','市場はどこですか','場所',['talat yu thi nai']],
+          ['วันนี้อากาศร้อน','wan nii aa kaat ron','今日は天気が暑いです','天気',['wan ni akat ron']],
+          ['อาหารนี้อร่อย','aa haan nii aroi','この食べ物はおいしいです','形容詞文',['ahan ni aroi']],
+          ['พรุ่งนี้ผมไปทำงาน','phrung nii phom pai tham ngaan','明日私は仕事に行きます','時間',['prung ni phom pai tham ngan']]
+        ];
+        sentences.forEach(function(s) {
+          data.push(makeItem(s[0], s[1], s[2], 'sentence', s[3], s[0].split('').join(' / '), s[4]));
+        });
+
+        return data;
+      }
+
+      function prepareItem(raw) {
+        if (!raw || !raw.thai || !raw.reading || !raw.level) return null;
+        var answers = Array.isArray(raw.answers) && raw.answers.length ? raw.answers.slice() : [raw.reading];
+        answers.unshift(raw.reading);
+        var seen = {};
+        answers = answers.filter(function(answer) {
+          var normalized = normalizeLatin(answer);
+          if (!normalized || seen[normalized]) return false;
+          seen[normalized] = true;
+          return true;
+        });
+        if (!answers.length) return null;
+        return {
+          thai: String(raw.thai),
+          reading: normalizeForDisplay(raw.reading),
+          answers: answers.map(normalizeForDisplay),
+          meaning_ja: String(raw.meaning_ja || ''),
+          level: String(raw.level),
+          category: String(raw.category || ''),
+          hint: String(raw.hint || ''),
+          _normAnswers: answers.map(normalizeLatin),
+          _display: normalizeForDisplay(raw.display_reading || raw.reading)
+        };
+      }
+
+      function loadData() {
+        try {
+          var el = document.getElementById('thai-data');
+          var parsed = JSON.parse(el.textContent || '[]');
+          var completeData = parsed.concat(buildCompleteThaiData());
+          var prepared = completeData.map(prepareItem).filter(Boolean);
+          var seen = {};
+          items = prepared.filter(function(item) {
+            var key = item.level + '|' + item.thai + '|' + item._normAnswers[0];
+            if (seen[key]) return false;
+            seen[key] = true;
+            return true;
+          });
+        } catch (e) {
+          items = [];
+        }
+      }
+
+      function shuffle(list) {
+        for (var i = list.length - 1; i > 0; i--) {
+          var j = Math.floor(Math.random() * (i + 1));
+          var t = list[i];
+          list[i] = list[j];
+          list[j] = t;
+        }
+        return list;
+      }
+
+      function buildQueue() {
+        var level = getRadioValue('level') || 'all';
+        queue = items.filter(function(item) {
+          return level === 'all' || item.level === level;
+        });
+        shuffle(queue);
+        currentIndex = 0;
+        correctCount = 0;
+        answeredCount = 0;
+        updateStats();
+      }
+
+      function getCurrent() {
+        return queue[currentIndex] || null;
+      }
+
+      function updateStats() {
+        if (correctCountEl) correctCountEl.textContent = correctCount;
+        if (answeredCountEl) answeredCountEl.textContent = answeredCount;
+        if (remainingCountEl) remainingCountEl.textContent = Math.max(queue.length - currentIndex, 0) + '問';
+      }
+
+      function hintText(item) {
+        var mode = getRadioValue('hintMode') || 'none';
+        if (!item || mode === 'none') return '';
+        if (mode === 'meaning') {
+          var parts = [];
+          if (item.meaning_ja) parts.push(item.meaning_ja);
+          if (item.category) parts.push(item.category);
+          return parts.join(' / ');
+        }
+        return item.hint || item.category || '';
+      }
+
+      function renderAnswerTrack() {
+        var item = getCurrent();
+        if (!item) {
+          answerTrack.textContent = '';
+          return;
+        }
+        answerTrack.classList.toggle('show-guide', item.level === 'letter');
+        var expected = normalizeLatin(item._display);
+        var display = item._display;
+        var typed = normalizeLatin(typingInput.value);
+        var pos = 0;
+        for (var i = 0; i < typed.length; i++) {
+          if (pos < expected.length && typed[i] === expected[pos]) pos++;
+        }
+
+        var normIndex = 0;
+        var html = '';
+        for (var di = 0; di < display.length; di++) {
+          var ch = display[di];
+          if (/\s/.test(ch)) {
+            html += '<span class="char space"> </span>';
+            continue;
+          }
+          var cls = 'char';
+          if (normIndex < pos) cls += ' correct';
+          else if (normIndex === pos) cls += ' current';
+          else cls += ' remaining';
+          html += '<span class="' + cls + '">' + escapeHtml(ch) + '</span>';
+          normIndex++;
+        }
+        answerTrack.innerHTML = html;
+      }
+
+      function matchedPrefixLength(typed, expected) {
+        var pos = 0;
+        for (var i = 0; i < typed.length; i++) {
+          if (pos < expected.length && typed[i] === expected[pos]) pos++;
+        }
+        return pos;
+      }
+
+      function hasCompletedAnswer(item, typed) {
+        for (var i = 0; i < item._normAnswers.length; i++) {
+          var expected = item._normAnswers[i];
+          if (expected && matchedPrefixLength(typed, expected) >= expected.length) return true;
+        }
+        return false;
+      }
+
+      function isExactAnswer(item, typed) {
+        return item._normAnswers.indexOf(typed) !== -1;
+      }
+
+      function focusTypingInput() {
+        try { typingInput.focus(); } catch (e) {}
+      }
+
+      function showCurrent() {
+        var item = getCurrent();
+        if (!item) {
+          showResult();
+          return;
+        }
+        answerRevealed = false;
+        thaiDisplay.textContent = item.thai;
+        thaiDisplay.className = 'thai-main' + (item.level === 'sentence' ? ' sentence' : '');
+        hintDisplay.textContent = hintText(item);
+        typingInput.value = '';
+        feedback.className = 'feedback';
+        feedback.textContent = '';
+        renderAnswerTrack();
+        updateStats();
+        focusTypingInput();
+      }
+
+      function showResult() {
+        practicePanel.style.display = 'none';
+        resultPanel.classList.add('show');
+        document.getElementById('resultScore').textContent = correctCount;
+        document.getElementById('resultTotal').textContent = queue.length;
+      }
+
+      function advanceSoon(delay) {
+        if (advanceTimer) clearTimeout(advanceTimer);
+        advanceTimer = setTimeout(function() {
+          advanceTimer = null;
+          advancing = false;
+          currentIndex++;
+          if (currentIndex >= queue.length) showResult();
+          else showCurrent();
+        }, delay || 500);
+      }
+
+      function onTypingInput() {
+        var item = getCurrent();
+        if (!item || advancing) return;
+        var typed = normalizeLatin(typingInput.value);
+        var exact = isExactAnswer(item, typed);
+        var completed = hasCompletedAnswer(item, typed);
+        renderAnswerTrack();
+        if (!completed) return;
+        advancing = true;
+        answeredCount++;
+        if (exact && !answerRevealed) {
+          correctCount++;
+          feedback.className = 'feedback show correct';
+          feedback.textContent = '正解';
+        } else {
+          feedback.className = 'feedback show correct';
+          feedback.textContent = '次の問題へ';
+        }
+        updateStats();
+        advanceSoon(450);
+      }
+
+      function revealAnswer() {
+        var item = getCurrent();
+        if (!item || advancing) return;
+        answerRevealed = true;
+        feedback.className = 'feedback show wrong';
+        feedback.innerHTML = '答え: <span class="expected">' + escapeHtml(item._display) + '</span>';
+        renderAnswerTrack();
+      }
+
+      function skip() {
+        var item = getCurrent();
+        if (!item || advancing) return;
+        advancing = true;
+        answeredCount++;
+        feedback.className = 'feedback show wrong';
+        feedback.innerHTML = '答え: <span class="expected">' + escapeHtml(item._display) + '</span>';
+        updateStats();
+        advanceSoon(850);
+      }
+
+      function restart() {
+        if (advanceTimer) {
+          clearTimeout(advanceTimer);
+          advanceTimer = null;
+        }
+        advancing = false;
+        answerRevealed = false;
+        resultPanel.classList.remove('show');
+        practicePanel.style.display = 'block';
+        buildQueue();
+        showCurrent();
+      }
+
+      var typingWrapper = document.querySelector('.typing-wrapper');
+      if (typingWrapper) {
+        typingWrapper.addEventListener('click', focusTypingInput);
+      }
+      if (answerTrack) {
+        answerTrack.addEventListener('click', focusTypingInput);
+        answerTrack.addEventListener('focus', focusTypingInput);
+      }
+      typingInput.addEventListener('input', onTypingInput);
+      typingInput.addEventListener('compositionend', onTypingInput);
+      typingInput.addEventListener('paste', function(e) { e.preventDefault(); });
+      typingInput.addEventListener('keydown', function(e) {
+        if (e.code === 'Enter') {
+          e.preventDefault();
+          skip();
+        }
+      });
+      document.getElementById('btnReveal').addEventListener('click', revealAnswer);
+      document.getElementById('btnSkip').addEventListener('click', skip);
+      document.getElementById('btnRestart').addEventListener('click', restart);
+
+      var levelRadios = document.querySelectorAll('input[name="level"]');
+      for (var i = 0; i < levelRadios.length; i++) {
+        levelRadios[i].addEventListener('change', restart);
+      }
+      var hintRadios = document.querySelectorAll('input[name="hintMode"]');
+      for (var h = 0; h < hintRadios.length; h++) {
+        hintRadios[h].addEventListener('change', function() {
+          var item = getCurrent();
+          hintDisplay.textContent = hintText(item);
+        });
+      }
+
+      loadData();
+      buildQueue();
+      showCurrent();
+    })();
+  </script>
+</body>
+</html>

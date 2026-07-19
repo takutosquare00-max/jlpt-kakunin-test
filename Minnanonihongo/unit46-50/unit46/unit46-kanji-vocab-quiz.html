@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>みんなの日本語 46 漢字・語彙クイズ</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;-webkit-tap-highlight-color:transparent}
+body{font-family:'Hiragino Kaku Gothic ProN','Hiragino Sans','Noto Sans JP',Meiryo,sans-serif;background:#f0f4f8;color:#1a202c;line-height:1.7;padding:env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left)}
+.container{max-width:800px;margin:0 auto;padding:20px}
+header{background:linear-gradient(135deg,#2b6cb0 0%,#2c5282 100%);color:#fff;padding:24px;border-radius:16px;margin-bottom:24px;text-align:center;position:sticky;top:0;z-index:100;box-shadow:0 4px 15px rgba(43,108,176,.4)}
+header h1{font-size:1.45em;margin-bottom:4px}
+.header-info{display:flex;justify-content:center;gap:24px;align-items:center;margin-top:8px;flex-wrap:wrap}
+.timer{font-size:1.8em;font-weight:bold;font-variant-numeric:tabular-nums}
+.timer.warning{color:#ffd700;animation:pulse 1s infinite}
+.timer.danger{color:#ff4757;animation:pulse .5s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.6}}
+.progress-bar{width:200px;height:8px;background:rgba(255,255,255,.3);border-radius:4px;overflow:hidden}
+.progress-fill{height:100%;background:#fff;border-radius:4px;transition:width .3s}
+.score-badge{background:rgba(255,255,255,.2);padding:4px 12px;border-radius:20px;font-size:.9em}
+.section{background:#fff;border-radius:12px;padding:24px;margin-bottom:20px;box-shadow:0 2px 8px rgba(0,0,0,.06)}
+.section-lead{font-size:1.05em;font-weight:500;color:#2d3748;line-height:1.65;margin-bottom:18px}
+.section-title{font-size:1.1em;font-weight:bold;color:#2b6cb0;border-left:4px solid #2b6cb0;padding-left:12px;margin-bottom:16px}
+.question{padding:16px 0;border-bottom:1px solid #e2e8f0}
+.question:last-child{border-bottom:none}
+.q-num{display:inline-block;background:#2b6cb0;color:#fff;width:28px;height:28px;text-align:center;line-height:28px;border-radius:50%;font-size:.85em;font-weight:bold;margin-right:8px}
+.q-text{font-size:1.05em;margin-bottom:12px;font-weight:500}
+.kanji-prompt{font-size:clamp(1.6rem,5vw,2.1rem);font-weight:700;text-align:center;margin:4px 0 12px;letter-spacing:.05em;color:#1a365d}
+.options{display:grid;grid-template-columns:1fr 1fr;gap:8px;align-items:stretch}
+@media(max-width:600px){.options{grid-template-columns:1fr}}
+.option{position:relative;display:flex;min-height:0}
+.option input{display:none}
+.option label{flex:1;display:flex;align-items:center;gap:8px;padding:12px 14px;border:2px solid #e2e8f0;border-radius:8px;cursor:pointer;transition:all .2s;font-size:.95em;touch-action:manipulation;-webkit-user-select:none;user-select:none;min-height:48px;width:100%;box-sizing:border-box}
+.option .opt-key{flex:0 0 auto;min-width:1.75em;text-align:right;font-weight:600;font-variant-numeric:tabular-nums;line-height:1.4;align-self:center}
+.option .opt-body{flex:1;min-width:0;line-height:1.65;align-self:center;word-break:break-word}
+.option label:hover{border-color:#2b6cb0;background:#f0f7ff}
+.option input:checked+label{border-color:#2b6cb0;background:#e8f2fc;color:#1a365d;font-weight:600}
+.option.correct label{border-color:#48bb78!important;background:#f0fff4!important;color:#276749!important}
+.option.wrong label{border-color:#fc8181!important;background:#fff5f5!important;color:#9b2c2c!important}
+.btn-submit{display:block;width:100%;min-height:48px;padding:16px;background:linear-gradient(135deg,#2b6cb0 0%,#2c5282 100%);color:#fff;border:none;border-radius:12px;font-size:1.1em;font-weight:bold;cursor:pointer;transition:transform .2s,box-shadow .2s;margin-top:24px;touch-action:manipulation;-webkit-user-select:none;user-select:none}
+.btn-submit:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(43,108,176,.4)}
+.btn-submit:disabled{opacity:.5;cursor:not-allowed;transform:none;box-shadow:none}
+.result-panel{background:#fff;border-radius:16px;padding:32px;text-align:center;box-shadow:0 4px 20px rgba(0,0,0,.1);margin-top:24px;display:none}
+.result-panel h2{font-size:1.8em;margin-bottom:8px}
+.result-score{font-size:3em;font-weight:bold;margin:16px 0}
+.result-score.excellent{color:#48bb78}
+.result-score.good{color:#2b6cb0}
+.result-score.fair{color:#ed8936}
+.result-score.poor{color:#fc8181}
+.result-detail{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:12px;margin-top:20px}
+.result-item{background:#f7fafc;padding:12px;border-radius:8px}
+.result-item .label{font-size:.8em;color:#718096}
+.result-item .value{font-size:1.2em;font-weight:bold}
+.explanation{display:none;margin-top:8px;padding:10px;background:#fffbeb;border-radius:8px;font-size:.9em;border-left:3px solid #f6ad55}
+.explanation.show{display:block}
+ruby{ruby-align:center}
+rt{font-size:0.55em;font-weight:400;line-height:1.1}
+.option label ruby rt{font-size:0.5em}
+</style>
+</head>
+<body>
+<div class="container">
+<header>
+<h1>みんなの<ruby>日本語<rt>にほんご</rt></ruby> 46 <ruby>漢字<rt>かんじ</rt></ruby>・<ruby>語彙<rt>ごい</rt></ruby>クイズ</h1>
+<div class="header-info">
+<div class="timer" id="timer">15:00</div>
+<div class="progress-bar"><div class="progress-fill" id="progress" style="width:100%"></div></div>
+<div class="score-badge" id="scoreBadge"><ruby>全<rt>ぜん</rt></ruby>23<ruby>問<rt>もん</rt></ruby></div>
+</div>
+</header>
+
+<!-- 読み方問題 -->
+<div class="section">
+<div class="section-title"><ruby>問題<rt>もんだい</rt></ruby>（1〜10）：<ruby>読<rt>よ</rt></ruby>み<ruby>方<rt>かた</rt></ruby>を<ruby>選<rt>えら</rt></ruby>んでください</div>
+<p class="section-lead"><ruby>次<rt>つぎ</rt></ruby>の<ruby>漢字<rt>かんじ</rt></ruby>の<ruby>読<rt>よ</rt></ruby>みとして<ruby>正<rt>ただ</rt></ruby>しいものはどれですか。</p>
+
+<div class="question">
+<div class="q-text"><span class="q-num">1</span></div>
+<p class="kanji-prompt" lang="ja">渡します</p>
+<div class="options">
+<div class="option"><input id="q11" name="q1" type="radio" value="0"/><label for="q11"><span class="opt-key">1.</span><span class="opt-body">もらします</span></label></div>
+<div class="option"><input id="q12" name="q1" type="radio" value="1"/><label for="q12"><span class="opt-key">2.</span><span class="opt-body">わたします</span></label></div>
+<div class="option"><input id="q13" name="q1" type="radio" value="0"/><label for="q13"><span class="opt-key">3.</span><span class="opt-body">かたします</span></label></div>
+<div class="option"><input id="q14" name="q1" type="radio" value="0"/><label for="q14"><span class="opt-key">4.</span><span class="opt-body">みとします</span></label></div>
+</div>
+<div class="explanation">✅ 正解：2 — 「渡します」は「わたします」と読みます。渡（わた）す＝手から手へ伝える・橋などを通って向こう側へ行く。</div>
+</div>
+
+<div class="question">
+<div class="q-text"><span class="q-num">2</span></div>
+<p class="kanji-prompt" lang="ja">届きます</p>
+<div class="options">
+<div class="option"><input id="q21" name="q2" type="radio" value="0"/><label for="q21"><span class="opt-key">1.</span><span class="opt-body">つきます</span></label></div>
+<div class="option"><input id="q22" name="q2" type="radio" value="0"/><label for="q22"><span class="opt-key">2.</span><span class="opt-body">むきます</span></label></div>
+<div class="option"><input id="q23" name="q2" type="radio" value="1"/><label for="q23"><span class="opt-key">3.</span><span class="opt-body">とどきます</span></label></div>
+<div class="option"><input id="q24" name="q2" type="radio" value="0"/><label for="q24"><span class="opt-key">4.</span><span class="opt-body">でます</span></label></div>
+</div>
+<div class="explanation">✅ 正解：3 — 「届きます」は「とどきます」と読みます。荷物や手紙が相手のところに到着する意味です。</div>
+</div>
+
+<div class="question">
+<div class="q-text"><span class="q-num">3</span></div>
+<p class="kanji-prompt" lang="ja">卒業します</p>
+<div class="options">
+<div class="option"><input id="q31" name="q3" type="radio" value="0"/><label for="q31"><span class="opt-key">1.</span><span class="opt-body">そうぎょうします</span></label></div>
+<div class="option"><input id="q32" name="q3" type="radio" value="1"/><label for="q32"><span class="opt-key">2.</span><span class="opt-body">そつぎょうします</span></label></div>
+<div class="option"><input id="q33" name="q3" type="radio" value="0"/><label for="q33"><span class="opt-key">3.</span><span class="opt-body">そつごうします</span></label></div>
+<div class="option"><input id="q34" name="q3" type="radio" value="0"/><label for="q34"><span class="opt-key">4.</span><span class="opt-body">そつきょうします</span></label></div>
+</div>
+<div class="explanation">✅ 正解：2 — 「卒業します」は「そつぎょうします」と読みます。卒（そつ）＋業（ぎょう）。学校の課程を修了することです。</div>
+</div>
+
+<div class="question">
+<div class="q-text"><span class="q-num">4</span></div>
+<p class="kanji-prompt" lang="ja">入学します</p>
+<div class="options">
+<div class="option"><input id="q41" name="q4" type="radio" value="1"/><label for="q41"><span class="opt-key">1.</span><span class="opt-body">にゅうがくします</span></label></div>
+<div class="option"><input id="q42" name="q4" type="radio" value="0"/><label for="q42"><span class="opt-key">2.</span><span class="opt-body">いりがくします</span></label></div>
+<div class="option"><input id="q43" name="q4" type="radio" value="0"/><label for="q43"><span class="opt-key">3.</span><span class="opt-body">にゅうかくします</span></label></div>
+<div class="option"><input id="q44" name="q4" type="radio" value="0"/><label for="q44"><span class="opt-key">4.</span><span class="opt-body">はいがくします</span></label></div>
+</div>
+<div class="explanation">✅ 正解：1 — 「入学します」は「にゅうがくします」と読みます。入（にゅう）＋学（がく）。学校に入ることです。</div>
+</div>
+
+<div class="question">
+<div class="q-text"><span class="q-num">5</span></div>
+<p class="kanji-prompt" lang="ja">原因</p>
+<div class="options">
+<div class="option"><input id="q51" name="q5" type="radio" value="0"/><label for="q51"><span class="opt-key">1.</span><span class="opt-body">げんにん</span></label></div>
+<div class="option"><input id="q52" name="q5" type="radio" value="1"/><label for="q52"><span class="opt-key">2.</span><span class="opt-body">げんいん</span></label></div>
+<div class="option"><input id="q53" name="q5" type="radio" value="0"/><label for="q53"><span class="opt-key">3.</span><span class="opt-body">げんいい</span></label></div>
+<div class="option"><input id="q54" name="q5" type="radio" value="0"/><label for="q54"><span class="opt-key">4.</span><span class="opt-body">げんき</span></label></div>
+</div>
+<div class="explanation">✅ 正解：2 — 「原因」は「げんいん」と読みます。原（げん）＋因（いん）。物事が起こった理由・もととなる事柄です。</div>
+</div>
+
+<div class="question">
+<div class="q-text"><span class="q-num">6</span></div>
+<p class="kanji-prompt" lang="ja">宅配便</p>
+<div class="options">
+<div class="option"><input id="q61" name="q6" type="radio" value="1"/><label for="q61"><span class="opt-key">1.</span><span class="opt-body">たくはいびん</span></label></div>
+<div class="option"><input id="q62" name="q6" type="radio" value="0"/><label for="q62"><span class="opt-key">2.</span><span class="opt-body">たくはいへん</span></label></div>
+<div class="option"><input id="q63" name="q6" type="radio" value="0"/><label for="q63"><span class="opt-key">3.</span><span class="opt-body">たくはいびょう</span></label></div>
+<div class="option"><input id="q64" name="q6" type="radio" value="0"/><label for="q64"><span class="opt-key">4.</span><span class="opt-body">たっぱいびん</span></label></div>
+</div>
+<div class="explanation">✅ 正解：1 — 「宅配便」は「たくはいびん」と読みます。宅（たく）＋配（はい）＋便（びん）。家まで荷物を届けてくれるサービスです。</div>
+</div>
+
+<div class="question">
+<div class="q-text"><span class="q-num">7</span></div>
+<p class="kanji-prompt" lang="ja">留守</p>
+<div class="options">
+<div class="option"><input id="q71" name="q7" type="radio" value="0"/><label for="q71"><span class="opt-key">1.</span><span class="opt-body">るじゅ</span></label></div>
+<div class="option"><input id="q72" name="q7" type="radio" value="0"/><label for="q72"><span class="opt-key">2.</span><span class="opt-body">りゅうす</span></label></div>
+<div class="option"><input id="q73" name="q7" type="radio" value="1"/><label for="q73"><span class="opt-key">3.</span><span class="opt-body">るす</span></label></div>
+<div class="option"><input id="q74" name="q7" type="radio" value="0"/><label for="q74"><span class="opt-key">4.</span><span class="opt-body">りゅうじゅ</span></label></div>
+</div>
+<div class="explanation">✅ 正解：3 — 「留守」は「るす」と読みます。留（る）＋守（す）。家や職場を不在にしていることです。</div>
+</div>
+
+<div class="question">
+<div class="q-text"><span class="q-num">8</span></div>
+<p class="kanji-prompt" lang="ja">半年</p>
+<div class="options">
+<div class="option"><input id="q81" name="q8" type="radio" value="1"/><label for="q81"><span class="opt-key">1.</span><span class="opt-body">はんとし</span></label></div>
+<div class="option"><input id="q82" name="q8" type="radio" value="0"/><label for="q82"><span class="opt-key">2.</span><span class="opt-body">はんねん</span></label></div>
+<div class="option"><input id="q83" name="q8" type="radio" value="0"/><label for="q83"><span class="opt-key">3.</span><span class="opt-body">なかとし</span></label></div>
+<div class="option"><input id="q84" name="q8" type="radio" value="0"/><label for="q84"><span class="opt-key">4.</span><span class="opt-body">はんとき</span></label></div>
+</div>
+<div class="explanation">✅ 正解：1 — 「半年」は「はんとし」と読みます。半（はん）＋年（とし）で6か月のことです。「はんねん」は誤りです。</div>
+</div>
+
+<div class="question">
+<div class="q-text"><span class="q-num">9</span>（パンが〜）</div>
+<p class="kanji-prompt" lang="ja">焼けます</p>
+<div class="options">
+<div class="option"><input id="q91" name="q9" type="radio" value="0"/><label for="q91"><span class="opt-key">1.</span><span class="opt-body">かけます</span></label></div>
+<div class="option"><input id="q92" name="q9" type="radio" value="0"/><label for="q92"><span class="opt-key">2.</span><span class="opt-body">たけます</span></label></div>
+<div class="option"><input id="q93" name="q9" type="radio" value="1"/><label for="q93"><span class="opt-key">3.</span><span class="opt-body">やけます</span></label></div>
+<div class="option"><input id="q94" name="q9" type="radio" value="0"/><label for="q94"><span class="opt-key">4.</span><span class="opt-body">おけます</span></label></div>
+</div>
+<div class="explanation">✅ 正解：3 — 「焼けます」は「やけます」と読みます。焼（や）ける＝火や熱で加熱されて調理される。「パンが焼けました」でパンが出来上がった意味です。</div>
+</div>
+
+<div class="question">
+<div class="q-text"><span class="q-num">10</span></div>
+<p class="kanji-prompt" lang="ja">向かいます</p>
+<div class="options">
+<div class="option"><input id="q101" name="q10" type="radio" value="0"/><label for="q101"><span class="opt-key">1.</span><span class="opt-body">いかいます</span></label></div>
+<div class="option"><input id="q102" name="q10" type="radio" value="0"/><label for="q102"><span class="opt-key">2.</span><span class="opt-body">さかいます</span></label></div>
+<div class="option"><input id="q103" name="q10" type="radio" value="0"/><label for="q103"><span class="opt-key">3.</span><span class="opt-body">むこいます</span></label></div>
+<div class="option"><input id="q104" name="q10" type="radio" value="1"/><label for="q104"><span class="opt-key">4.</span><span class="opt-body">むかいます</span></label></div>
+</div>
+<div class="explanation">✅ 正解：4 — 「向かいます」は「むかいます」と読みます。向（む）かう＝ある方向・目的地へ進む。「空港に向かいます」のように使います。</div>
+</div>
+</div>
+
+<!-- 漢字選択問題 -->
+<div class="section">
+<div class="section-title"><ruby>問題<rt>もんだい</rt></ruby>（11〜18）：<ruby>漢字<rt>かんじ</rt></ruby>を<ruby>選<rt>えら</rt></ruby>んでください</div>
+<p class="section-lead"><ruby>次<rt>つぎ</rt></ruby>の<ruby>読<rt>よ</rt></ruby>み<ruby>方<rt>かた</rt></ruby>の<ruby>漢字<rt>かんじ</rt></ruby>として<ruby>正<rt>ただ</rt></ruby>しいものはどれですか。</p>
+
+<div class="question">
+<div class="q-text"><span class="q-num">11</span></div>
+<p class="kanji-prompt" lang="ja">とどきます</p>
+<div class="options">
+<div class="option"><input id="q111" name="q11" type="radio" value="0"/><label for="q111"><span class="opt-key">1.</span><span class="opt-body">着きます</span></label></div>
+<div class="option"><input id="q112" name="q11" type="radio" value="1"/><label for="q112"><span class="opt-key">2.</span><span class="opt-body">届きます</span></label></div>
+<div class="option"><input id="q113" name="q11" type="radio" value="0"/><label for="q113"><span class="opt-key">3.</span><span class="opt-body">到きます</span></label></div>
+<div class="option"><input id="q114" name="q11" type="radio" value="0"/><label for="q114"><span class="opt-key">4.</span><span class="opt-body">来きます</span></label></div>
+</div>
+<div class="explanation">✅ 正解：2 — 「とどきます」の漢字は「届きます」です。「着く（つく）」は到着の意味で別の読み方です。</div>
+</div>
+
+<div class="question">
+<div class="q-text"><span class="q-num">12</span></div>
+<p class="kanji-prompt" lang="ja">そつぎょうします</p>
+<div class="options">
+<div class="option"><input id="q121" name="q12" type="radio" value="0"/><label for="q121"><span class="opt-key">1.</span><span class="opt-body">入学します</span></label></div>
+<div class="option"><input id="q122" name="q12" type="radio" value="1"/><label for="q122"><span class="opt-key">2.</span><span class="opt-body">卒業します</span></label></div>
+<div class="option"><input id="q123" name="q12" type="radio" value="0"/><label for="q123"><span class="opt-key">3.</span><span class="opt-body">卒学します</span></label></div>
+<div class="option"><input id="q124" name="q12" type="radio" value="0"/><label for="q124"><span class="opt-key">4.</span><span class="opt-body">終業します</span></label></div>
+</div>
+<div class="explanation">✅ 正解：2 — 「そつぎょうします」の漢字は「卒業します」です。「卒学・終業」は存在しない語です。</div>
+</div>
+
+<div class="question">
+<div class="q-text"><span class="q-num">13</span></div>
+<p class="kanji-prompt" lang="ja">にゅうがくします</p>
+<div class="options">
+<div class="option"><input id="q131" name="q13" type="radio" value="0"/><label for="q131"><span class="opt-key">1.</span><span class="opt-body">入社します</span></label></div>
+<div class="option"><input id="q132" name="q13" type="radio" value="1"/><label for="q132"><span class="opt-key">2.</span><span class="opt-body">入学します</span></label></div>
+<div class="option"><input id="q133" name="q13" type="radio" value="0"/><label for="q133"><span class="opt-key">3.</span><span class="opt-body">卒業します</span></label></div>
+<div class="option"><input id="q134" name="q13" type="radio" value="0"/><label for="q134"><span class="opt-key">4.</span><span class="opt-body">入校します</span></label></div>
+</div>
+<div class="explanation">✅ 正解：2 — 「にゅうがくします」の漢字は「入学します」です。「入社（にゅうしゃ）」は会社に入ること、「卒業」はそつぎょう、「入校（にゅうこう）」は学校への入学に使う場合もありますが一般的ではありません。</div>
+</div>
+
+<div class="question">
+<div class="q-text"><span class="q-num">14</span></div>
+<p class="kanji-prompt" lang="ja">げんいん</p>
+<div class="options">
+<div class="option"><input id="q141" name="q14" type="radio" value="0"/><label for="q141"><span class="opt-key">1.</span><span class="opt-body">源泉</span></label></div>
+<div class="option"><input id="q142" name="q14" type="radio" value="0"/><label for="q142"><span class="opt-key">2.</span><span class="opt-body">元気</span></label></div>
+<div class="option"><input id="q143" name="q14" type="radio" value="1"/><label for="q143"><span class="opt-key">3.</span><span class="opt-body">原因</span></label></div>
+<div class="option"><input id="q144" name="q14" type="radio" value="0"/><label for="q144"><span class="opt-key">4.</span><span class="opt-body">原稿</span></label></div>
+</div>
+<div class="explanation">✅ 正解：3 — 「げんいん」の漢字は「原因」です。「源泉（げんせん）」「元気（げんき）」「原稿（げんこう）」はいずれも別の語です。</div>
+</div>
+
+<div class="question">
+<div class="q-text"><span class="q-num">15</span></div>
+<p class="kanji-prompt" lang="ja">たくはいびん</p>
+<div class="options">
+<div class="option"><input id="q151" name="q15" type="radio" value="0"/><label for="q151"><span class="opt-key">1.</span><span class="opt-body">宅急便</span></label></div>
+<div class="option"><input id="q152" name="q15" type="radio" value="0"/><label for="q152"><span class="opt-key">2.</span><span class="opt-body">配達便</span></label></div>
+<div class="option"><input id="q153" name="q15" type="radio" value="1"/><label for="q153"><span class="opt-key">3.</span><span class="opt-body">宅配便</span></label></div>
+<div class="option"><input id="q154" name="q15" type="radio" value="0"/><label for="q154"><span class="opt-key">4.</span><span class="opt-body">宅送便</span></label></div>
+</div>
+<div class="explanation">✅ 正解：3 — 「たくはいびん」の漢字は「宅配便」です。「宅急便（たっきゅうびん）」はヤマト運輸の商標名で、「たくはいびん」とは読みません。</div>
+</div>
+
+<div class="question">
+<div class="q-text"><span class="q-num">16</span></div>
+<p class="kanji-prompt" lang="ja">るす</p>
+<div class="options">
+<div class="option"><input id="q161" name="q16" type="radio" value="0"/><label for="q161"><span class="opt-key">1.</span><span class="opt-body">留学</span></label></div>
+<div class="option"><input id="q162" name="q16" type="radio" value="1"/><label for="q162"><span class="opt-key">2.</span><span class="opt-body">留守</span></label></div>
+<div class="option"><input id="q163" name="q16" type="radio" value="0"/><label for="q163"><span class="opt-key">3.</span><span class="opt-body">留年</span></label></div>
+<div class="option"><input id="q164" name="q16" type="radio" value="0"/><label for="q164"><span class="opt-key">4.</span><span class="opt-body">留置</span></label></div>
+</div>
+<div class="explanation">✅ 正解：2 — 「るす」の漢字は「留守」です。「留学（りゅうがく）」「留年（りゅうねん）」「留置（りゅうち）」はいずれも「りゅう〜」と読みます。</div>
+</div>
+
+<div class="question">
+<div class="q-text"><span class="q-num">17</span>（パンが〜）</div>
+<p class="kanji-prompt" lang="ja">やけます</p>
+<div class="options">
+<div class="option"><input id="q171" name="q17" type="radio" value="0"/><label for="q171"><span class="opt-key">1.</span><span class="opt-body">燃えます</span></label></div>
+<div class="option"><input id="q172" name="q17" type="radio" value="0"/><label for="q172"><span class="opt-key">2.</span><span class="opt-body">炒めます</span></label></div>
+<div class="option"><input id="q173" name="q17" type="radio" value="1"/><label for="q173"><span class="opt-key">3.</span><span class="opt-body">焼けます</span></label></div>
+<div class="option"><input id="q174" name="q17" type="radio" value="0"/><label for="q174"><span class="opt-key">4.</span><span class="opt-body">揚げます</span></label></div>
+</div>
+<div class="explanation">✅ 正解：3 — 「やけます」の漢字は「焼けます」です。「燃える（もえる）」は燃焼、「炒める（いためる）」は炒める調理法、「揚げる（あげる）」は油で揚げることです。</div>
+</div>
+
+<div class="question">
+<div class="q-text"><span class="q-num">18</span></div>
+<p class="kanji-prompt" lang="ja">むかいます</p>
+<div class="options">
+<div class="option"><input id="q181" name="q18" type="radio" value="1"/><label for="q181"><span class="opt-key">1.</span><span class="opt-body">向かいます</span></label></div>
+<div class="option"><input id="q182" name="q18" type="radio" value="0"/><label for="q182"><span class="opt-key">2.</span><span class="opt-body">向きます</span></label></div>
+<div class="option"><input id="q183" name="q18" type="radio" value="0"/><label for="q183"><span class="opt-key">3.</span><span class="opt-body">対います</span></label></div>
+<div class="option"><input id="q184" name="q18" type="radio" value="0"/><label for="q184"><span class="opt-key">4.</span><span class="opt-body">前います</span></label></div>
+</div>
+<div class="explanation">✅ 正解：1 — 「むかいます」の漢字は「向かいます」です。「向く（むく）」は方向を向くこと、「向かう（むかう）」はある場所へ進むことです。</div>
+</div>
+</div>
+
+<!-- 読み物語彙 -->
+<div class="section">
+<div class="section-title"><ruby>問題<rt>もんだい</rt></ruby>（19〜23）：<ruby>読<rt>よ</rt></ruby>み<ruby>物<rt>もの</rt></ruby><ruby>語彙<rt>ごい</rt></ruby></div>
+<p class="section-lead"><ruby>読<rt>よ</rt></ruby>み<ruby>方<rt>かた</rt></ruby>として<ruby>正<rt>ただ</rt></ruby>しいものはどれですか。</p>
+
+<div class="question">
+<div class="q-text"><span class="q-num">19</span>（<ruby>部屋<rt>へや</rt></ruby>の〜）</div>
+<p class="kanji-prompt" lang="ja">床</p>
+<div class="options">
+<div class="option"><input id="q191" name="q19" type="radio" value="0"/><label for="q191"><span class="opt-key">1.</span><span class="opt-body">てんじょう</span></label></div>
+<div class="option"><input id="q192" name="q19" type="radio" value="1"/><label for="q192"><span class="opt-key">2.</span><span class="opt-body">ゆか</span></label></div>
+<div class="option"><input id="q193" name="q19" type="radio" value="0"/><label for="q193"><span class="opt-key">3.</span><span class="opt-body">かべ</span></label></div>
+<div class="option"><input id="q194" name="q19" type="radio" value="0"/><label for="q194"><span class="opt-key">4.</span><span class="opt-body">まど</span></label></div>
+</div>
+<div class="explanation">✅ 正解：2 — 「床」（部屋の）は「ゆか」と読みます。部屋の足の下の面のことです。「天井（てんじょう）」は上、「壁（かべ）」は側面、「窓（まど）」は開口部です。</div>
+</div>
+
+<div class="question">
+<div class="q-text"><span class="q-num">20</span></div>
+<p class="kanji-prompt" lang="ja">転びます</p>
+<div class="options">
+<div class="option"><input id="q201" name="q20" type="radio" value="0"/><label for="q201"><span class="opt-key">1.</span><span class="opt-body">しずみます</span></label></div>
+<div class="option"><input id="q202" name="q20" type="radio" value="0"/><label for="q202"><span class="opt-key">2.</span><span class="opt-body">たおれます</span></label></div>
+<div class="option"><input id="q203" name="q20" type="radio" value="1"/><label for="q203"><span class="opt-key">3.</span><span class="opt-body">ころびます</span></label></div>
+<div class="option"><input id="q204" name="q20" type="radio" value="0"/><label for="q204"><span class="opt-key">4.</span><span class="opt-body">ちります</span></label></div>
+</div>
+<div class="explanation">✅ 正解：3 — 「転びます」は「ころびます」と読みます。転（ころ）ぶ＝バランスを崩して倒れること。「倒れる（たおれる）」は別の語です。</div>
+</div>
+
+<div class="question">
+<div class="q-text"><span class="q-num">21</span>（ベルが〜）</div>
+<p class="kanji-prompt" lang="ja">鳴ります</p>
+<div class="options">
+<div class="option"><input id="q211" name="q21" type="radio" value="1"/><label for="q211"><span class="opt-key">1.</span><span class="opt-body">なります</span></label></div>
+<div class="option"><input id="q212" name="q21" type="radio" value="0"/><label for="q212"><span class="opt-key">2.</span><span class="opt-body">もえます</span></label></div>
+<div class="option"><input id="q213" name="q21" type="radio" value="0"/><label for="q213"><span class="opt-key">3.</span><span class="opt-body">きこえます</span></label></div>
+<div class="option"><input id="q214" name="q21" type="radio" value="0"/><label for="q214"><span class="opt-key">4.</span><span class="opt-body">ひびきます</span></label></div>
+</div>
+<div class="explanation">✅ 正解：1 — 「鳴ります」は「なります」と読みます。ベル・電話・楽器などが音を出すことです。「なります（成ります）」と区別が必要です。</div>
+</div>
+
+<div class="question">
+<div class="q-text"><span class="q-num">22</span></div>
+<p class="kanji-prompt" lang="ja">出来事</p>
+<div class="options">
+<div class="option"><input id="q221" name="q22" type="radio" value="0"/><label for="q221"><span class="opt-key">1.</span><span class="opt-body">しゅっきごと</span></label></div>
+<div class="option"><input id="q222" name="q22" type="radio" value="0"/><label for="q222"><span class="opt-key">2.</span><span class="opt-body">できこと</span></label></div>
+<div class="option"><input id="q223" name="q22" type="radio" value="0"/><label for="q223"><span class="opt-key">3.</span><span class="opt-body">でかごと</span></label></div>
+<div class="option"><input id="q224" name="q22" type="radio" value="1"/><label for="q224"><span class="opt-key">4.</span><span class="opt-body">できごと</span></label></div>
+</div>
+<div class="explanation">✅ 正解：4 — 「出来事」は「できごと」と読みます。起きた出来事・事柄という意味です。「出来（でき）＋事（ごと）」の複合語です。</div>
+</div>
+
+<div class="question">
+<div class="q-text"><span class="q-num">23</span></div>
+<p class="kanji-prompt" lang="ja">順番に</p>
+<div class="options">
+<div class="option"><input id="q231" name="q23" type="radio" value="0"/><label for="q231"><span class="opt-key">1.</span><span class="opt-body">じゅんじょに</span></label></div>
+<div class="option"><input id="q232" name="q23" type="radio" value="1"/><label for="q232"><span class="opt-key">2.</span><span class="opt-body">じゅんばんに</span></label></div>
+<div class="option"><input id="q233" name="q23" type="radio" value="0"/><label for="q233"><span class="opt-key">3.</span><span class="opt-body">じゅんぐりに</span></label></div>
+<div class="option"><input id="q234" name="q23" type="radio" value="0"/><label for="q234"><span class="opt-key">4.</span><span class="opt-body">じゅんばいに</span></label></div>
+</div>
+<div class="explanation">✅ 正解：2 — 「順番に」は「じゅんばんに」と読みます。順（じゅん）＋番（ばん）で、決まった順序で一つずつ行うことです。「順序（じゅんじょ）」は別の語です。</div>
+</div>
+</div>
+
+<button class="btn-submit" id="submitBtn" onclick="submitTest()"><ruby>採点<rt>さいてん</rt></ruby>する</button>
+<div class="result-panel" id="resultPanel">
+<h2 id="resultTitle"></h2><div class="result-score" id="resultScore"></div>
+<div class="result-detail" id="resultDetail"></div>
+</div>
+</div>
+<script>
+const TOTAL=23,TIME_LIMIT=900;
+let timeLeft=TIME_LIMIT,timerInterval,submitted=false;
+function shuffleAllOptions(){
+function randBelow(n){
+if(n<=1)return 0;
+try{
+if(typeof crypto!=='undefined'&&crypto.getRandomValues){
+const lim=Math.floor(4294967296/n)*n;
+const buf=new Uint32Array(1);
+let x;
+do{crypto.getRandomValues(buf);x=buf[0];}while(x>=lim);
+return x%n;
+}
+}catch(e){}
+return Math.floor(Math.random()*n);
+}
+function fisherYates(arr){
+for(let i=arr.length-1;i>0;i--){
+const j=randBelow(i+1);
+const t=arr[i];arr[i]=arr[j];arr[j]=t;
+}
+}
+function relabel(optsDiv,items,isLetter,prefix){
+items.forEach(function(el){optsDiv.appendChild(el);});
+items.forEach(function(el,idx){
+const inp=el.querySelector('input[type="radio"]');
+const lbl=el.querySelector('label');
+if(!inp||!lbl)return;
+const suf=isLetter?String.fromCharCode(97+idx):String(idx+1);
+const newId=prefix+suf;
+inp.id=newId;
+lbl.setAttribute('for',newId);
+const key=el.querySelector('.opt-key');
+if(key)key.textContent=(idx+1)+'.';
+});
+const explain=optsDiv.nextElementSibling;
+if(explain&&explain.classList&&explain.classList.contains('explanation')){
+const correctInp=optsDiv.querySelector('input[type="radio"][value="1"]');
+if(correctInp){
+const opt=correctInp.closest('.option');
+if(opt){
+const keyEl=opt.querySelector('.opt-key');
+if(keyEl){
+const mk=keyEl.textContent.match(/^(\d+)\./);
+if(mk)explain.innerHTML=explain.innerHTML.replace(/正解：\d+/,'正解：'+mk[1]);
+}
+}
+}
+}
+return items.findIndex(function(el){return el.querySelector('input[type="radio"][value="1"]');});
+}
+const posCounts=[0,0,0,0];
+document.querySelectorAll('.options').forEach(function(optsDiv){
+const items=Array.prototype.filter.call(optsDiv.children,function(el){
+return el.classList&&el.classList.contains('option');
+});
+const n=items.length;
+if(n<2)return;
+fisherYates(items);
+const sample=optsDiv.querySelector('input[type="radio"]');
+if(!sample)return;
+const prefix=sample.name;
+if(!prefix)return;
+const firstInp=items[0].querySelector('input[type="radio"]');
+if(!firstInp)return;
+const sid=firstInp.id;
+if(!sid||!sid.startsWith(prefix))return;
+const firstSuffix=sid.slice(prefix.length);
+const isLetter=/^[a-d]$/.test(firstSuffix);
+let slot=relabel(optsDiv,items,isLetter,prefix);
+if(slot<0)return;
+let minC=9999;
+for(let i=0;i<n;i++)minC=Math.min(minC,posCounts[i]);
+const cand=[];
+for(let i=0;i<n;i++)if(posCounts[i]===minC)cand.push(i);
+const ideal=cand[randBelow(cand.length)];
+if(slot!==ideal&&posCounts[slot]>posCounts[ideal]){
+const t=items[slot];items[slot]=items[ideal];items[ideal]=t;
+slot=relabel(optsDiv,items,isLetter,prefix);
+if(slot<0)return;
+}
+posCounts[slot]++;
+});
+}
+try{shuffleAllOptions();}catch(e){}
+function startTimer(){
+timerInterval=setInterval(()=>{
+timeLeft--;
+const m=Math.floor(timeLeft/60),s=timeLeft%60;
+const el=document.getElementById('timer');
+el.textContent=`${m}:${s.toString().padStart(2,'0')}`;
+document.getElementById('progress').style.width=`${(timeLeft/TIME_LIMIT)*100}%`;
+if(timeLeft<=60)el.className='timer danger';
+else if(timeLeft<=300)el.className='timer warning';
+else el.className='timer';
+if(timeLeft<=0){clearInterval(timerInterval);submitTest();}
+},1000);
+}
+function submitTest(){
+if(submitted)return;submitted=true;
+if(timerInterval)clearInterval(timerInterval);
+let correct=0;
+for(let i=1;i<=TOTAL;i++){
+const sel=document.querySelector(`input[name="q${i}"]:checked`);
+const opts=document.querySelectorAll(`input[name="q${i}"]`);
+if(sel&&sel.value==='1'){correct++;}
+opts.forEach(o=>{
+const p=o.parentElement;
+if(o.value==='1')p.classList.add('correct');
+else if(o.checked&&o.value!=='1')p.classList.add('wrong');
+});
+}
+document.querySelectorAll('.explanation').forEach(e=>e.classList.add('show'));
+const pct=Math.round((correct/TOTAL)*100);
+const panel=document.getElementById('resultPanel');
+const title=document.getElementById('resultTitle');
+const score=document.getElementById('resultScore');
+const detail=document.getElementById('resultDetail');
+panel.style.display='block';
+score.textContent=`${correct} / ${TOTAL}（${pct}%）`;
+if(pct>=90){title.textContent='🎉 すばらしい！';score.className='result-score excellent';}
+else if(pct>=70){title.textContent='👍 よくできました！';score.className='result-score good';}
+else if(pct>=50){title.textContent='📝 もうすこし！';score.className='result-score fair';}
+else{title.textContent='💪 がんばりましょう！';score.className='result-score poor';}
+const timeUsed=TIME_LIMIT-timeLeft;
+detail.innerHTML=`
+<div class="result-item"><div class="label">せいかい</div><div class="value">${correct}/${TOTAL}</div></div>
+<div class="result-item"><div class="label">じかん</div><div class="value">${Math.floor(timeUsed/60)}分${timeUsed%60}秒</div></div>
+`;
+document.getElementById('submitBtn').disabled=true;
+panel.scrollIntoView({behavior:'smooth'});
+}
+startTimer();
+</script>
+</body></html>

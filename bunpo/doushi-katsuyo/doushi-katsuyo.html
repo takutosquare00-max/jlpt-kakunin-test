@@ -1,0 +1,1306 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>動詞の活用形 完全ガイド</title>
+  <style>
+    :root {
+      --primary: #2c5f8a;
+      --primary-light: #e8f2fb;
+      --accent: #e85d04;
+      --accent-light: #fff3eb;
+      --green: #2d7a4f;
+      --green-light: #eaf5ef;
+      --purple: #6b3fa0;
+      --purple-light: #f3eeff;
+      --yellow: #e6a817;
+      --yellow-light: #fffbeb;
+      --red: #c0392b;
+      --red-light: #fdf0ef;
+      --gray: #6b7280;
+      --gray-light: #f3f4f6;
+      --bg: #fafafa;
+      --text: #1a1a2e;
+      --border: #dde3ea;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: "Hiragino Sans", "Meiryo", "Yu Gothic", sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.8;
+      font-size: 15px;
+    }
+
+    /* ===== HEADER ===== */
+    header {
+      background: linear-gradient(135deg, var(--primary) 0%, #1a3f5e 100%);
+      color: white;
+      padding: 40px 20px;
+      text-align: center;
+    }
+    header h1 { font-size: 2rem; letter-spacing: 0.1em; margin-bottom: 8px; }
+    header p  { font-size: 1rem; opacity: 0.85; }
+
+    /* ===== NAV ===== */
+    nav {
+      background: white;
+      border-bottom: 2px solid var(--primary);
+      padding: 0 20px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    }
+    nav ul {
+      list-style: none;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+    nav ul li a {
+      display: block;
+      padding: 14px 16px;
+      color: var(--primary);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.9rem;
+      border-bottom: 3px solid transparent;
+      transition: all 0.2s;
+    }
+    nav ul li a:hover {
+      color: var(--accent);
+      border-bottom-color: var(--accent);
+      background: var(--accent-light);
+    }
+
+    /* ===== MAIN LAYOUT ===== */
+    main {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 30px 20px 60px;
+    }
+
+    section { margin-bottom: 50px; }
+
+    /* ===== SECTION TITLE ===== */
+    .section-title {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 24px;
+      padding-bottom: 10px;
+      border-bottom: 3px solid var(--primary);
+    }
+    .section-title .num {
+      background: var(--primary);
+      color: white;
+      width: 36px; height: 36px;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-weight: 700;
+      font-size: 1rem;
+      flex-shrink: 0;
+    }
+    .section-title h2 { font-size: 1.4rem; color: var(--primary); }
+
+    /* ===== CARDS ===== */
+    .card {
+      background: white;
+      border-radius: 12px;
+      padding: 24px;
+      margin-bottom: 20px;
+      border: 1px solid var(--border);
+      box-shadow: 0 2px 6px rgba(0,0,0,0.04);
+    }
+    .card h3 {
+      font-size: 1.1rem;
+      margin-bottom: 14px;
+      padding-left: 12px;
+      border-left: 4px solid var(--primary);
+      color: var(--primary);
+    }
+
+    /* ===== POINT BOX ===== */
+    .point-box {
+      background: var(--primary-light);
+      border-left: 5px solid var(--primary);
+      border-radius: 0 8px 8px 0;
+      padding: 16px 20px;
+      margin: 16px 0;
+    }
+    .point-box .label {
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      color: var(--primary);
+      margin-bottom: 4px;
+    }
+    .point-box.green  { background: var(--green-light);  border-color: var(--green);  }
+    .point-box.green .label  { color: var(--green); }
+    .point-box.orange { background: var(--accent-light); border-color: var(--accent); }
+    .point-box.orange .label { color: var(--accent); }
+    .point-box.yellow { background: var(--yellow-light); border-color: var(--yellow); }
+    .point-box.yellow .label { color: var(--yellow); }
+    .point-box.red    { background: var(--red-light);    border-color: var(--red);    }
+    .point-box.red .label    { color: var(--red); }
+
+    /* ===== TABLES ===== */
+    .table-wrap { overflow-x: auto; margin: 16px 0; }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.92rem;
+    }
+    th {
+      background: var(--primary);
+      color: white;
+      padding: 10px 14px;
+      text-align: center;
+      font-weight: 600;
+    }
+    td {
+      padding: 9px 14px;
+      border: 1px solid var(--border);
+      text-align: center;
+    }
+    tr:nth-child(even) td { background: var(--gray-light); }
+    td.form-name {
+      font-weight: 700;
+      background: var(--primary-light) !important;
+      color: var(--primary);
+      white-space: nowrap;
+    }
+    td.verb-type {
+      font-weight: 700;
+      background: #fff !important;
+      color: var(--accent);
+    }
+    td.highlight { color: var(--red); font-weight: 700; }
+    td.left { text-align: left; }
+
+    /* ===== GRID ===== */
+    .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+    .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    @media (max-width: 640px) {
+      .grid-2, .grid-3 { grid-template-columns: 1fr; }
+    }
+
+    /* ===== VERB TYPE BADGE ===== */
+    .badge {
+      display: inline-block;
+      padding: 3px 10px;
+      border-radius: 20px;
+      font-size: 0.78rem;
+      font-weight: 700;
+      margin-right: 6px;
+    }
+    .badge.godan    { background: #dbeafe; color: #1d4ed8; }
+    .badge.ichidan  { background: #dcfce7; color: #166534; }
+    .badge.ka-henkaku { background: #fce7f3; color: #9d174d; }
+    .badge.sa-henkaku { background: #fef3c7; color: #92400e; }
+
+    /* ===== FORM TAGS ===== */
+    .form-tag {
+      display: inline-block;
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.82rem;
+      font-weight: 700;
+      margin: 2px;
+    }
+
+    /* ===== STEP BOX ===== */
+    .step-box {
+      display: flex;
+      gap: 16px;
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 18px;
+      margin: 12px 0;
+      align-items: flex-start;
+    }
+    .step-num {
+      background: var(--accent);
+      color: white;
+      min-width: 30px; height: 30px;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-weight: 700;
+      font-size: 0.9rem;
+      flex-shrink: 0;
+    }
+
+    /* ===== FLOW CHART ===== */
+    .flow {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 0;
+    }
+    .flow-item {
+      background: white;
+      border: 2px solid var(--border);
+      border-radius: 8px;
+      padding: 12px 20px;
+      width: 100%;
+      position: relative;
+    }
+    .flow-arrow {
+      text-align: center;
+      font-size: 1.5rem;
+      color: var(--gray);
+      line-height: 1.4;
+    }
+    .flow-item.q { border-color: var(--accent); background: var(--accent-light); }
+    .flow-item.a-yes { border-color: var(--green); background: var(--green-light); }
+    .flow-item.a-no  { border-color: var(--primary); background: var(--primary-light); }
+    .flow-label { font-size: 0.75rem; font-weight: 700; color: var(--gray); }
+
+    /* ===== QUIZ ===== */
+    .quiz-section { background: white; border: 1px solid var(--border); border-radius: 12px; padding: 24px; }
+    .quiz-q {
+      font-size: 1rem;
+      font-weight: 600;
+      margin-bottom: 16px;
+      padding: 14px;
+      background: var(--primary-light);
+      border-radius: 8px;
+    }
+    .quiz-q span.num { color: var(--accent); font-size: 1.1rem; margin-right: 6px; }
+    .quiz-choices { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 10px; }
+    .choice-btn {
+      background: var(--gray-light);
+      border: 2px solid var(--border);
+      border-radius: 8px;
+      padding: 10px 20px;
+      cursor: pointer;
+      font-size: 0.95rem;
+      font-family: inherit;
+      transition: all 0.2s;
+      font-weight: 500;
+    }
+    .choice-btn:hover { border-color: var(--primary); background: var(--primary-light); }
+    .choice-btn.correct { background: var(--green-light); border-color: var(--green); color: var(--green); font-weight: 700; }
+    .choice-btn.wrong   { background: var(--red-light);   border-color: var(--red);   color: var(--red);   }
+    .quiz-result { font-size: 0.9rem; min-height: 24px; margin-top: 8px; font-weight: 600; }
+    .score-box {
+      text-align: center;
+      padding: 24px;
+      background: var(--primary-light);
+      border-radius: 10px;
+      display: none;
+    }
+    .score-box h3 { font-size: 1.5rem; color: var(--primary); }
+    .reset-btn {
+      background: var(--accent);
+      color: white;
+      border: none;
+      border-radius: 8px;
+      padding: 10px 24px;
+      font-size: 1rem;
+      font-family: inherit;
+      cursor: pointer;
+      margin-top: 12px;
+      font-weight: 600;
+      transition: background 0.2s;
+    }
+    .reset-btn:hover { background: #c44f00; }
+
+    /* ===== EXAMPLE BOX ===== */
+    .ex {
+      background: var(--gray-light);
+      border-radius: 6px;
+      padding: 8px 14px;
+      font-size: 0.9rem;
+      margin: 6px 0;
+      border-left: 3px solid var(--gray);
+    }
+    .ex em { color: var(--accent); font-style: normal; font-weight: 700; }
+
+    /* ===== FOOTER ===== */
+    footer {
+      background: var(--text);
+      color: #aaa;
+      text-align: center;
+      padding: 20px;
+      font-size: 0.85rem;
+    }
+
+    /* ===== MEMO ===== */
+    .memo {
+      background: #fffde7;
+      border: 1px dashed #e6c200;
+      border-radius: 8px;
+      padding: 14px 18px;
+      font-size: 0.88rem;
+      margin: 12px 0;
+    }
+    .memo::before { content: "📝 "; }
+
+    /* ===== TOC ===== */
+    .toc {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 20px 24px;
+      margin-bottom: 40px;
+    }
+    .toc h3 { font-size: 1rem; color: var(--primary); margin-bottom: 10px; }
+    .toc ol { padding-left: 20px; }
+    .toc ol li { margin: 5px 0; }
+    .toc ol li a { color: var(--primary); text-decoration: none; font-size: 0.92rem; }
+    .toc ol li a:hover { text-decoration: underline; }
+
+    /* ===== SUMMARY TABLE ===== */
+    .summary-table th { font-size: 0.85rem; }
+    .summary-table td { font-size: 0.88rem; text-align: left; }
+    .summary-table td.center { text-align: center; }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>動詞の活用形 完全ガイド</h1>
+  <p>国文法 ｜ 中学生・高校生向け｜活用の種類と6つの活用形をマスターしよう</p>
+</header>
+
+<nav>
+  <ul>
+    <li><a href="#sec1">動詞とは</a></li>
+    <li><a href="#sec2">活用形の6種類</a></li>
+    <li><a href="#sec3">活用の種類</a></li>
+    <li><a href="#sec4">活用表</a></li>
+    <li><a href="#sec5">見分け方</a></li>
+    <li><a href="#sec6">練習問題</a></li>
+  </ul>
+</nav>
+
+<main>
+
+  <!-- 目次 -->
+  <div class="toc">
+    <h3>目次</h3>
+    <ol>
+      <li><a href="#sec1">動詞とは何か</a></li>
+      <li><a href="#sec2">6つの活用形とその使い方</a></li>
+      <li><a href="#sec3">活用の種類（5種類）</a></li>
+      <li><a href="#sec4">活用表まとめ</a></li>
+      <li><a href="#sec5">活用の種類の見分け方</a></li>
+      <li><a href="#sec6">確認テスト</a></li>
+    </ol>
+  </div>
+
+  <!-- ========== SECTION 1 ========== -->
+  <section id="sec1">
+    <div class="section-title">
+      <div class="num">1</div>
+      <h2>動詞とは何か</h2>
+    </div>
+
+    <div class="card">
+      <h3>動詞の定義</h3>
+      <p>動詞とは、<strong>物事の動作・存在・状態</strong>を表す自立語で、活用があり、単独で述語になれる品詞です。</p>
+      <div class="point-box">
+        <div class="label">POINT</div>
+        <ul style="padding-left:18px; margin-top:4px;">
+          <li>自立語（単独で意味を持つ）</li>
+          <li>活用する（後に続く語によって形が変わる）</li>
+          <li>言い切りの形が「ウ段」の音で終わる</li>
+        </ul>
+      </div>
+      <div class="grid-2" style="margin-top:16px;">
+        <div>
+          <p style="font-weight:600; color:var(--primary); margin-bottom:8px;">動詞の例</p>
+          <div class="ex">書く・読む・走る・食べる・来る・する</div>
+          <div class="ex">ある・いる・なる・できる</div>
+        </div>
+        <div>
+          <p style="font-weight:600; color:var(--primary); margin-bottom:8px;">動詞でないもの（注意）</p>
+          <div class="ex">赤い（形容詞）・静かだ（形容動詞）</div>
+          <div class="ex">学生だ（助動詞「だ」）</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>活用とは</h3>
+      <p>活用とは、後に続く語や文中での働きによって、<strong>語の形（語尾）が変化する</strong>ことです。</p>
+      <div class="ex">書か<em>ない</em>　→　書き<em>ます</em>　→　書く　→　書く<em>とき</em>　→　書け<em>ば</em>　→　書け！</div>
+      <p style="margin-top:10px;">「書く」という動詞が後に続く語によって「書か・書き・書く・書け」と変化しています。変化しない部分（書）を<strong>語幹</strong>、変化する部分（か・き・く・け）を<strong>活用語尾</strong>といいます。</p>
+    </div>
+  </section>
+
+  <!-- ========== SECTION 2 ========== -->
+  <section id="sec2">
+    <div class="section-title">
+      <div class="num">2</div>
+      <h2>6つの活用形とその使い方</h2>
+    </div>
+
+    <div class="point-box yellow" style="margin-bottom:20px;">
+      <div class="label">基本ルール</div>
+      活用形は全部で<strong>6種類</strong>あります。どの形かを見分けるには、後に続く語（接続する語）に注目しましょう。
+    </div>
+
+    <!-- 未然形 -->
+    <div class="card">
+      <h3 style="border-left-color:#e85d04; color:#e85d04;">① 未然形（みぜんけい）</h3>
+      <div class="grid-2">
+        <div>
+          <p><strong>接続する語の代表例：</strong></p>
+          <ul style="padding-left:18px; margin:8px 0;">
+            <li>〜<strong>ない</strong>（否定）</li>
+            <li>〜<strong>う・よう</strong>（意志・勧誘）</li>
+            <li>〜<strong>れる・られる</strong>（受身・可能）</li>
+            <li>〜<strong>せる・させる</strong>（使役）</li>
+          </ul>
+        </div>
+        <div>
+          <p><strong>例文：</strong></p>
+          <div class="ex">書か<em>ない</em>　（否定）</div>
+          <div class="ex">書こ<em>う</em>　　（意志）</div>
+          <div class="ex">書か<em>れる</em>　（受身）</div>
+          <div class="ex">食べ<em>ない</em>　（否定・一段）</div>
+        </div>
+      </div>
+      <div class="memo">「未然」とは「まだそうなっていない」という意味。主に否定・意志を表す語に接続します。</div>
+    </div>
+
+    <!-- 連用形 -->
+    <div class="card">
+      <h3 style="border-left-color:#2d7a4f; color:#2d7a4f;">② 連用形（れんようけい）</h3>
+      <div class="grid-2">
+        <div>
+          <p><strong>接続する語の代表例：</strong></p>
+          <ul style="padding-left:18px; margin:8px 0;">
+            <li>〜<strong>ます</strong>（丁寧）</li>
+            <li>〜<strong>た・て</strong>（過去・接続）</li>
+            <li>〜<strong>ながら</strong>（同時進行）</li>
+            <li>名詞につながる（名詞化）</li>
+          </ul>
+        </div>
+        <div>
+          <p><strong>例文：</strong></p>
+          <div class="ex">書き<em>ます</em>　（丁寧）</div>
+          <div class="ex">書い<em>た</em>　　（過去）</div>
+          <div class="ex">書い<em>て</em>　　（接続）</div>
+          <div class="ex">書き<em>ながら</em>（同時）</div>
+        </div>
+      </div>
+      <div class="memo">「連用」とは「用言（動詞・形容詞）に連なる」という意味。最もよく使われる活用形です。</div>
+    </div>
+
+    <!-- 終止形 -->
+    <div class="card">
+      <h3 style="border-left-color:#6b3fa0; color:#6b3fa0;">③ 終止形（しゅうしけい）</h3>
+      <div class="grid-2">
+        <div>
+          <p><strong>特徴：</strong></p>
+          <ul style="padding-left:18px; margin:8px 0;">
+            <li>文を<strong>言い切る</strong>形（辞書の見出し語）</li>
+            <li>文末に置かれる</li>
+            <li>「。」で終わる</li>
+          </ul>
+          <p style="margin-top:10px;"><strong>接続する語：</strong></p>
+          <ul style="padding-left:18px; margin:8px 0;">
+            <li>〜<strong>から・が・けれど</strong></li>
+          </ul>
+        </div>
+        <div>
+          <p><strong>例文：</strong></p>
+          <div class="ex">彼は毎日本を<em>読む</em>。</div>
+          <div class="ex">私は走る<em>から</em>、先に行って。</div>
+          <div class="ex">食べる<em>けれど</em>、好きじゃない。</div>
+        </div>
+      </div>
+      <div class="memo">終止形＝辞書形。「書く」「食べる」「来る」「する」がそれぞれの終止形です。</div>
+    </div>
+
+    <!-- 連体形 -->
+    <div class="card">
+      <h3 style="border-left-color:#2c5f8a; color:#2c5f8a;">④ 連体形（れんたいけい）</h3>
+      <div class="grid-2">
+        <div>
+          <p><strong>特徴：</strong></p>
+          <ul style="padding-left:18px; margin:8px 0;">
+            <li>後ろに<strong>名詞・体言</strong>が続く</li>
+            <li>形は終止形と同じ場合が多い</li>
+          </ul>
+          <p style="margin-top:10px;"><strong>接続する語：</strong></p>
+          <ul style="padding-left:18px; margin:8px 0;">
+            <li>〜<strong>とき・こと・もの・の</strong></li>
+          </ul>
+        </div>
+        <div>
+          <p><strong>例文：</strong></p>
+          <div class="ex">本を<em>読む</em><strong>とき</strong></div>
+          <div class="ex">走る<em>こと</em>が好きだ。</div>
+          <div class="ex">食べる<em>もの</em>がない。</div>
+        </div>
+      </div>
+      <div class="memo">「連体」とは「体言（名詞）に連なる」という意味。口語では終止形と同形のことがほとんどです。</div>
+    </div>
+
+    <!-- 仮定形 -->
+    <div class="card">
+      <h3 style="border-left-color:#e6a817; color:#d48a00;">⑤ 仮定形（かていけい）</h3>
+      <div class="grid-2">
+        <div>
+          <p><strong>接続する語：</strong></p>
+          <ul style="padding-left:18px; margin:8px 0;">
+            <li>〜<strong>ば</strong>（仮定・条件）</li>
+          </ul>
+          <p style="margin-top:10px;"><strong>特徴：</strong></p>
+          <ul style="padding-left:18px; margin:8px 0;">
+            <li>五段動詞は「エ段」になる</li>
+            <li>一段動詞は「れ」になる</li>
+          </ul>
+        </div>
+        <div>
+          <p><strong>例文：</strong></p>
+          <div class="ex">書け<em>ば</em>わかる。</div>
+          <div class="ex">走れ<em>ば</em>間に合う。</div>
+          <div class="ex">食べれ<em>ば</em>いい。</div>
+          <div class="ex">来れ<em>ば</em>よかった。</div>
+        </div>
+      </div>
+      <div class="memo">「〜ば」が続く場合は仮定形です。文中で「ば」を探しましょう。</div>
+    </div>
+
+    <!-- 命令形 -->
+    <div class="card">
+      <h3 style="border-left-color:#c0392b; color:#c0392b;">⑥ 命令形（めいれいけい）</h3>
+      <div class="grid-2">
+        <div>
+          <p><strong>特徴：</strong></p>
+          <ul style="padding-left:18px; margin:8px 0;">
+            <li>命令を表す言い切りの形</li>
+            <li>後ろに何も続かない（文末）</li>
+            <li>五段動詞は「エ段」になる</li>
+            <li>一段動詞は「ろ・よ」になる</li>
+          </ul>
+        </div>
+        <div>
+          <p><strong>例文：</strong></p>
+          <div class="ex">早く<em>書け</em>！</div>
+          <div class="ex">もっと<em>走れ</em>！</div>
+          <div class="ex">全部<em>食べろ</em>！</div>
+          <div class="ex">早く<em>来い</em>！（カ変）</div>
+        </div>
+      </div>
+      <div class="memo">命令形は文末に単独で置かれます。「！」がついていることが多いです。</div>
+    </div>
+
+    <!-- 活用形 まとめ表 -->
+    <div class="card">
+      <h3>活用形まとめ（接続する語）</h3>
+      <div class="table-wrap">
+        <table class="summary-table">
+          <thead>
+            <tr>
+              <th>活用形</th>
+              <th>主に続く語・特徴</th>
+              <th>例（書く）</th>
+              <th>例（食べる）</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="form-name">未然形</td>
+              <td class="left">ない・う・よう・れる・られる・せる・させる</td>
+              <td>書か・書こ</td>
+              <td>食べ</td>
+            </tr>
+            <tr>
+              <td class="form-name">連用形</td>
+              <td class="left">ます・た・て・ながら・に（名詞化）</td>
+              <td>書き・書い</td>
+              <td>食べ</td>
+            </tr>
+            <tr>
+              <td class="form-name">終止形</td>
+              <td class="left">文末・から・が・けれど</td>
+              <td>書く</td>
+              <td>食べる</td>
+            </tr>
+            <tr>
+              <td class="form-name">連体形</td>
+              <td class="left">名詞（とき・こと・もの・の）</td>
+              <td>書く</td>
+              <td>食べる</td>
+            </tr>
+            <tr>
+              <td class="form-name">仮定形</td>
+              <td class="left">ば</td>
+              <td>書け</td>
+              <td>食べれ</td>
+            </tr>
+            <tr>
+              <td class="form-name">命令形</td>
+              <td class="left">文末で命令（何もつかない）</td>
+              <td>書け</td>
+              <td>食べろ・食べよ</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== SECTION 3 ========== -->
+  <section id="sec3">
+    <div class="section-title">
+      <div class="num">3</div>
+      <h2>活用の種類（5種類）</h2>
+    </div>
+
+    <div class="point-box orange" style="margin-bottom:20px;">
+      <div class="label">POINT</div>
+      動詞の活用には<strong>5種類</strong>あります。それぞれ活用のパターンが異なります。
+    </div>
+
+    <div class="grid-2">
+      <div class="card">
+        <h3>① 五段活用<span class="badge godan">五段</span></h3>
+        <p>活用語尾が<strong>ア・イ・ウ・エ・オ段</strong>（5段）にわたって変化する。</p>
+        <div class="point-box" style="margin-top:12px;">
+          <div class="label">見分け方</div>
+          未然形（ない）に続けたとき、語尾が<strong>ア段</strong>になる
+        </div>
+        <div class="ex" style="margin-top:10px;">書く・読む・走る・歩く・飲む・聞く・話す</div>
+        <div class="ex">泳ぐ・急ぐ・遊ぶ・待つ・勝つ・売る・取る</div>
+      </div>
+
+      <div class="card">
+        <h3>② 上一段活用<span class="badge ichidan">上一段</span></h3>
+        <p>活用語尾が<strong>イ段</strong>だけで変化する。</p>
+        <div class="point-box green" style="margin-top:12px;">
+          <div class="label">見分け方</div>
+          語幹が「イ段」の音で終わる動詞（い・き・し・ち・に・ひ・み・り＋る）
+        </div>
+        <div class="ex" style="margin-top:10px;">起きる・着る・似る・干る・見る・居る・射る</div>
+        <div class="memo" style="margin-top:8px;">「ひいきにみゐる」と覚えると便利！（ひ・い・き・に・み・ゐる＋る）</div>
+      </div>
+
+      <div class="card">
+        <h3>③ 下一段活用<span class="badge ichidan" style="background:#d1fae5;">下一段</span></h3>
+        <p>活用語尾が<strong>エ段</strong>だけで変化する。</p>
+        <div class="point-box green" style="margin-top:12px;">
+          <div class="label">見分け方</div>
+          「〜ない」をつけたとき語尾が「エ段＋ない」になる（食べない・起こせない）
+        </div>
+        <div class="ex" style="margin-top:10px;">食べる・起きる・受ける・教える・考える</div>
+        <div class="ex">答える・調べる・捨てる・並べる・集める</div>
+      </div>
+
+      <div class="card">
+        <h3>④ カ行変格活用<span class="badge ka-henkaku">カ変</span></h3>
+        <p>「<strong>来る（くる）</strong>」だけが該当する不規則変化。</p>
+        <div class="point-box red" style="margin-top:12px;">
+          <div class="label">特徴</div>
+          「来る」1語のみ！活用が不規則
+        </div>
+        <div class="table-wrap" style="margin-top:10px;">
+          <table>
+            <thead><tr><th>未然</th><th>連用</th><th>終止</th><th>連体</th><th>仮定</th><th>命令</th></tr></thead>
+            <tbody><tr><td>こ</td><td>き</td><td>くる</td><td>くる</td><td>くれ</td><td>こい</td></tr></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <div class="card" style="margin-top:20px;">
+      <h3>⑤ サ行変格活用<span class="badge sa-henkaku">サ変</span></h3>
+      <p>「<strong>する</strong>」（および「〜する」の複合語）だけが該当する不規則変化。</p>
+      <div class="grid-2" style="margin-top:12px;">
+        <div>
+          <div class="point-box yellow">
+            <div class="label">特徴</div>
+            「する」1語 + 複合動詞（勉強する・運動する・料理する など）
+          </div>
+          <div class="ex" style="margin-top:10px;">する・勉強する・運動する・掃除する・電話する</div>
+        </div>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>未然</th><th>連用</th><th>終止</th><th>連体</th><th>仮定</th><th>命令</th></tr></thead>
+            <tbody>
+              <tr><td>し・せ・さ</td><td>し</td><td>する</td><td>する</td><td>すれ</td><td>しろ・せよ</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== SECTION 4 ========== -->
+  <section id="sec4">
+    <div class="section-title">
+      <div class="num">4</div>
+      <h2>活用表まとめ</h2>
+    </div>
+
+    <p style="margin-bottom:20px;">各活用の種類ごとに、6つの活用形の形を確認しましょう。</p>
+
+    <!-- 五段活用 -->
+    <div class="card">
+      <h3>五段活用の活用表</h3>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>動詞</th>
+              <th>語幹</th>
+              <th>未然形</th>
+              <th>連用形</th>
+              <th>終止形</th>
+              <th>連体形</th>
+              <th>仮定形</th>
+              <th>命令形</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="verb-type">書く（カ行）</td>
+              <td>書</td>
+              <td class="highlight">か・こ</td>
+              <td class="highlight">き・い</td>
+              <td>く</td>
+              <td>く</td>
+              <td class="highlight">け</td>
+              <td class="highlight">け</td>
+            </tr>
+            <tr>
+              <td class="verb-type">急ぐ（ガ行）</td>
+              <td>急</td>
+              <td class="highlight">が・ご</td>
+              <td class="highlight">ぎ・い</td>
+              <td>ぐ</td>
+              <td>ぐ</td>
+              <td class="highlight">げ</td>
+              <td class="highlight">げ</td>
+            </tr>
+            <tr>
+              <td class="verb-type">話す（サ行）</td>
+              <td>話</td>
+              <td class="highlight">さ</td>
+              <td class="highlight">し</td>
+              <td>す</td>
+              <td>す</td>
+              <td class="highlight">せ</td>
+              <td class="highlight">せ</td>
+            </tr>
+            <tr>
+              <td class="verb-type">待つ（タ行）</td>
+              <td>待</td>
+              <td class="highlight">た・と</td>
+              <td class="highlight">ち・っ</td>
+              <td>つ</td>
+              <td>つ</td>
+              <td class="highlight">て</td>
+              <td class="highlight">て</td>
+            </tr>
+            <tr>
+              <td class="verb-type">死ぬ（ナ行）</td>
+              <td>死</td>
+              <td class="highlight">な・の</td>
+              <td class="highlight">に・ん</td>
+              <td>ぬ</td>
+              <td>ぬ</td>
+              <td class="highlight">ね</td>
+              <td class="highlight">ね</td>
+            </tr>
+            <tr>
+              <td class="verb-type">遊ぶ（バ行）</td>
+              <td>遊</td>
+              <td class="highlight">ば・ぼ</td>
+              <td class="highlight">び・ん</td>
+              <td>ぶ</td>
+              <td>ぶ</td>
+              <td class="highlight">べ</td>
+              <td class="highlight">べ</td>
+            </tr>
+            <tr>
+              <td class="verb-type">読む（マ行）</td>
+              <td>読</td>
+              <td class="highlight">ま・も</td>
+              <td class="highlight">み・ん</td>
+              <td>む</td>
+              <td>む</td>
+              <td class="highlight">め</td>
+              <td class="highlight">め</td>
+            </tr>
+            <tr>
+              <td class="verb-type">取る（ラ行）</td>
+              <td>取</td>
+              <td class="highlight">ら・ろ</td>
+              <td class="highlight">り・っ</td>
+              <td>る</td>
+              <td>る</td>
+              <td class="highlight">れ</td>
+              <td class="highlight">れ</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="memo">赤字の部分は活用語尾が変化しているところです。未然形の「こ・ご・と・の・ぼ・も・ろ」は意志（〜う）に接続するときの形です。</div>
+    </div>
+
+    <!-- 上一段・下一段 -->
+    <div class="card">
+      <h3>上一段・下一段活用の活用表</h3>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>種類</th>
+              <th>動詞</th>
+              <th>語幹</th>
+              <th>未然形</th>
+              <th>連用形</th>
+              <th>終止形</th>
+              <th>連体形</th>
+              <th>仮定形</th>
+              <th>命令形</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="verb-type">上一段</td>
+              <td>起きる</td>
+              <td>起</td>
+              <td class="highlight">き</td>
+              <td class="highlight">き</td>
+              <td>きる</td>
+              <td>きる</td>
+              <td class="highlight">きれ</td>
+              <td class="highlight">きろ・きよ</td>
+            </tr>
+            <tr>
+              <td class="verb-type">上一段</td>
+              <td>見る</td>
+              <td>見</td>
+              <td class="highlight">み</td>
+              <td class="highlight">み</td>
+              <td>みる</td>
+              <td>みる</td>
+              <td class="highlight">みれ</td>
+              <td class="highlight">みろ・みよ</td>
+            </tr>
+            <tr>
+              <td class="verb-type">下一段</td>
+              <td>食べる</td>
+              <td>食べ</td>
+              <td class="highlight">べ</td>
+              <td class="highlight">べ</td>
+              <td>べる</td>
+              <td>べる</td>
+              <td class="highlight">べれ</td>
+              <td class="highlight">べろ・べよ</td>
+            </tr>
+            <tr>
+              <td class="verb-type">下一段</td>
+              <td>教える</td>
+              <td>教え</td>
+              <td class="highlight">え</td>
+              <td class="highlight">え</td>
+              <td>える</td>
+              <td>える</td>
+              <td class="highlight">えれ</td>
+              <td class="highlight">えろ・えよ</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="memo">上一段・下一段活用では、未然形と連用形の語尾が同じになります。</div>
+    </div>
+
+    <!-- カ変・サ変 -->
+    <div class="card">
+      <h3>カ行変格・サ行変格活用の活用表</h3>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>種類</th>
+              <th>動詞</th>
+              <th>語幹</th>
+              <th>未然形</th>
+              <th>連用形</th>
+              <th>終止形</th>
+              <th>連体形</th>
+              <th>仮定形</th>
+              <th>命令形</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="verb-type">カ変</td>
+              <td>来る（くる）</td>
+              <td>（なし）</td>
+              <td class="highlight">こ</td>
+              <td class="highlight">き</td>
+              <td>くる</td>
+              <td>くる</td>
+              <td class="highlight">くれ</td>
+              <td class="highlight">こい</td>
+            </tr>
+            <tr>
+              <td class="verb-type">サ変</td>
+              <td>する</td>
+              <td>（なし）</td>
+              <td class="highlight">し・さ・せ</td>
+              <td class="highlight">し</td>
+              <td>する</td>
+              <td>する</td>
+              <td class="highlight">すれ</td>
+              <td class="highlight">しろ・せよ</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="memo">カ変・サ変は各1語（または複合語）のみ。不規則な変化をするため、丸ごと覚えてしまいましょう！</div>
+    </div>
+  </section>
+
+  <!-- ========== SECTION 5 ========== -->
+  <section id="sec5">
+    <div class="section-title">
+      <div class="num">5</div>
+      <h2>活用の種類の見分け方</h2>
+    </div>
+
+    <div class="card">
+      <h3>フローチャートで判定しよう</h3>
+      <div class="flow">
+        <div class="flow-item q">
+          <div class="flow-label">STEP 1</div>
+          「来る（くる）」 ですか？
+        </div>
+        <div class="flow-arrow">↓ YES &nbsp;&nbsp; ↓ NO</div>
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px;">
+          <div class="flow-item a-yes"><span style="color:var(--green); font-weight:700;">→ カ行変格活用</span></div>
+          <div class="flow-item q">
+            <div class="flow-label">STEP 2</div>
+            「する」または「〜する」ですか？
+          </div>
+        </div>
+        <div class="flow-arrow" style="text-align:right; padding-right: calc(25% + 6px);">↓ YES &nbsp;&nbsp; ↓ NO</div>
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px;">
+          <div></div>
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px;">
+            <div class="flow-item a-yes"><span style="color:var(--green); font-weight:700;">→ サ行変格活用</span></div>
+            <div class="flow-item q">
+              <div class="flow-label">STEP 3</div>
+              「〜ない」に続けてみよう<br>語尾は何段？
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="grid-3" style="margin-top:16px;">
+        <div class="point-box">
+          <div class="label">ア段になる</div>
+          → <strong>五段活用</strong><br>
+          例）書か<em>ない</em>（か＝ア段）
+        </div>
+        <div class="point-box green">
+          <div class="label">イ段になる</div>
+          → <strong>上一段活用</strong><br>
+          例）起き<em>ない</em>（き＝イ段）
+        </div>
+        <div class="point-box orange">
+          <div class="label">エ段になる</div>
+          → <strong>下一段活用</strong><br>
+          例）食べ<em>ない</em>（べ＝エ段）
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>注意が必要な動詞</h3>
+      <div class="grid-2">
+        <div>
+          <p style="font-weight:600; color:var(--red); margin-bottom:8px;">「〜る」で終わるが五段活用のもの</p>
+          <p style="font-size:0.9rem; margin-bottom:8px;">「〜ない」をつけて判断しましょう。</p>
+          <div class="ex">走る → 走ら<em>ない</em>（ら＝ア段）→ <strong>五段</strong></div>
+          <div class="ex">売る → 売ら<em>ない</em>（ら＝ア段）→ <strong>五段</strong></div>
+          <div class="ex">取る → 取ら<em>ない</em>（ら＝ア段）→ <strong>五段</strong></div>
+          <div class="ex">帰る → 帰ら<em>ない</em>（ら＝ア段）→ <strong>五段</strong></div>
+        </div>
+        <div>
+          <p style="font-weight:600; color:var(--green); margin-bottom:8px;">「〜る」で終わり下一段活用のもの</p>
+          <p style="font-size:0.9rem; margin-bottom:8px;">「〜ない」をつけて判断しましょう。</p>
+          <div class="ex">起きる → 起き<em>ない</em>（き＝イ段）→ <strong>上一段</strong></div>
+          <div class="ex">食べる → 食べ<em>ない</em>（べ＝エ段）→ <strong>下一段</strong></div>
+          <div class="ex">教える → 教え<em>ない</em>（え＝エ段）→ <strong>下一段</strong></div>
+          <div class="ex">答える → 答え<em>ない</em>（え＝エ段）→ <strong>下一段</strong></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>活用形の見分け方ステップ</h3>
+      <div class="step-box">
+        <div class="step-num">1</div>
+        <div>後ろに続く語・助動詞を確認する<br><span style="font-size:0.88rem; color:var(--gray);">「〜ない」「〜た」「〜ば」「〜名詞」など</span></div>
+      </div>
+      <div class="step-box">
+        <div class="step-num">2</div>
+        <div>活用形の接続表と照合する<br><span style="font-size:0.88rem; color:var(--gray);">ない→未然形、た・て・ます→連用形、ば→仮定形、など</span></div>
+      </div>
+      <div class="step-box">
+        <div class="step-num">3</div>
+        <div>後ろに名詞が来ていれば「連体形」、文末で命令なら「命令形」と判断<br><span style="font-size:0.88rem; color:var(--gray);">終止形と連体形は形が同じことが多いので後に続くもので判断！</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== SECTION 6 ========== -->
+  <section id="sec6">
+    <div class="section-title">
+      <div class="num">6</div>
+      <h2>確認テスト</h2>
+    </div>
+
+    <div class="quiz-section">
+      <p style="margin-bottom:20px; font-size:0.95rem; color:var(--gray);">各問題の下線部の活用形または活用の種類を選んでください。</p>
+
+      <!-- Q1 -->
+      <div class="quiz-q" id="q1">
+        <span class="num">問1</span>「早く<u>走れ</u>ば間に合う」── 「走れ」の活用形は？
+      </div>
+      <div class="quiz-choices" id="q1-choices">
+        <button class="choice-btn" onclick="checkAnswer(this,'q1','仮定形')">未然形</button>
+        <button class="choice-btn" onclick="checkAnswer(this,'q1','仮定形')">連用形</button>
+        <button class="choice-btn" onclick="checkAnswer(this,'q1','仮定形')">仮定形</button>
+        <button class="choice-btn" onclick="checkAnswer(this,'q1','仮定形')">命令形</button>
+      </div>
+      <div class="quiz-result" id="q1-result"></div>
+
+      <hr style="border:none; border-top:1px solid var(--border); margin:20px 0;">
+
+      <!-- Q2 -->
+      <div class="quiz-q" id="q2">
+        <span class="num">問2</span>「本を<u>読む</u>ことが好きだ」── 「読む」の活用形は？
+      </div>
+      <div class="quiz-choices" id="q2-choices">
+        <button class="choice-btn" onclick="checkAnswer(this,'q2','連体形')">終止形</button>
+        <button class="choice-btn" onclick="checkAnswer(this,'q2','連体形')">連体形</button>
+        <button class="choice-btn" onclick="checkAnswer(this,'q2','連体形')">連用形</button>
+        <button class="choice-btn" onclick="checkAnswer(this,'q2','連体形')">仮定形</button>
+      </div>
+      <div class="quiz-result" id="q2-result"></div>
+
+      <hr style="border:none; border-top:1px solid var(--border); margin:20px 0;">
+
+      <!-- Q3 -->
+      <div class="quiz-q" id="q3">
+        <span class="num">問3</span>「音楽を聞き<u>ながら</u>勉強する」── 「聞き」の活用形は？
+      </div>
+      <div class="quiz-choices" id="q3-choices">
+        <button class="choice-btn" onclick="checkAnswer(this,'q3','連用形')">未然形</button>
+        <button class="choice-btn" onclick="checkAnswer(this,'q3','連用形')">連用形</button>
+        <button class="choice-btn" onclick="checkAnswer(this,'q3','連用形')">終止形</button>
+        <button class="choice-btn" onclick="checkAnswer(this,'q3','連用形')">命令形</button>
+      </div>
+      <div class="quiz-result" id="q3-result"></div>
+
+      <hr style="border:none; border-top:1px solid var(--border); margin:20px 0;">
+
+      <!-- Q4 -->
+      <div class="quiz-q" id="q4">
+        <span class="num">問4</span>「彼女は毎日日記を<u>書く</u>。」── 「書く」の活用形は？
+      </div>
+      <div class="quiz-choices" id="q4-choices">
+        <button class="choice-btn" onclick="checkAnswer(this,'q4','終止形')">連体形</button>
+        <button class="choice-btn" onclick="checkAnswer(this,'q4','終止形')">仮定形</button>
+        <button class="choice-btn" onclick="checkAnswer(this,'q4','終止形')">終止形</button>
+        <button class="choice-btn" onclick="checkAnswer(this,'q4','終止形')">未然形</button>
+      </div>
+      <div class="quiz-result" id="q4-result"></div>
+
+      <hr style="border:none; border-top:1px solid var(--border); margin:20px 0;">
+
+      <!-- Q5 -->
+      <div class="quiz-q" id="q5">
+        <span class="num">問5</span>「食べ<u>ない</u>でください」── 「食べ」の活用形は？
+      </div>
+      <div class="quiz-choices" id="q5-choices">
+        <button class="choice-btn" onclick="checkAnswer(this,'q5','未然形')">未然形</button>
+        <button class="choice-btn" onclick="checkAnswer(this,'q5','未然形')">連用形</button>
+        <button class="choice-btn" onclick="checkAnswer(this,'q5','未然形')">仮定形</button>
+        <button class="choice-btn" onclick="checkAnswer(this,'q5','未然形')">命令形</button>
+      </div>
+      <div class="quiz-result" id="q5-result"></div>
+
+      <hr style="border:none; border-top:1px solid var(--border); margin:20px 0;">
+
+      <!-- Q6 -->
+      <div class="quiz-q" id="q6">
+        <span class="num">問6</span>「起きる」の活用の種類は？
+      </div>
+      <div class="quiz-choices" id="q6-choices">
+        <button class="choice-btn" onclick="checkAnswer(this,'q6','上一段活用')">五段活用</button>
+        <button class="choice-btn" onclick="checkAnswer(this,'q6','上一段活用')">上一段活用</button>
+        <button class="choice-btn" onclick="checkAnswer(this,'q6','上一段活用')">下一段活用</button>
+        <button class="choice-btn" onclick="checkAnswer(this,'q6','上一段活用')">カ行変格活用</button>
+      </div>
+      <div class="quiz-result" id="q6-result"></div>
+
+      <hr style="border:none; border-top:1px solid var(--border); margin:20px 0;">
+
+      <!-- Q7 -->
+      <div class="quiz-q" id="q7">
+        <span class="num">問7</span>「帰る」の活用の種類は？
+      </div>
+      <div class="quiz-choices" id="q7-choices">
+        <button class="choice-btn" onclick="checkAnswer(this,'q7','五段活用')">五段活用</button>
+        <button class="choice-btn" onclick="checkAnswer(this,'q7','五段活用')">上一段活用</button>
+        <button class="choice-btn" onclick="checkAnswer(this,'q7','五段活用')">下一段活用</button>
+        <button class="choice-btn" onclick="checkAnswer(this,'q7','五段活用')">サ行変格活用</button>
+      </div>
+      <div class="quiz-result" id="q7-result"></div>
+
+      <hr style="border:none; border-top:1px solid var(--border); margin:20px 0;">
+
+      <!-- Q8 -->
+      <div class="quiz-q" id="q8">
+        <span class="num">問8</span>「勉強する」の活用の種類は？
+      </div>
+      <div class="quiz-choices" id="q8-choices">
+        <button class="choice-btn" onclick="checkAnswer(this,'q8','サ行変格活用')">五段活用</button>
+        <button class="choice-btn" onclick="checkAnswer(this,'q8','サ行変格活用')">下一段活用</button>
+        <button class="choice-btn" onclick="checkAnswer(this,'q8','サ行変格活用')">カ行変格活用</button>
+        <button class="choice-btn" onclick="checkAnswer(this,'q8','サ行変格活用')">サ行変格活用</button>
+      </div>
+      <div class="quiz-result" id="q8-result"></div>
+
+      <hr style="border:none; border-top:1px solid var(--border); margin:20px 0;">
+
+      <!-- Q9 -->
+      <div class="quiz-q" id="q9">
+        <span class="num">問9</span>「全部食べ<u>ろ</u>！」── 「食べろ」の活用形は？
+      </div>
+      <div class="quiz-choices" id="q9-choices">
+        <button class="choice-btn" onclick="checkAnswer(this,'q9','命令形')">未然形</button>
+        <button class="choice-btn" onclick="checkAnswer(this,'q9','命令形')">仮定形</button>
+        <button class="choice-btn" onclick="checkAnswer(this,'q9','命令形')">連体形</button>
+        <button class="choice-btn" onclick="checkAnswer(this,'q9','命令形')">命令形</button>
+      </div>
+      <div class="quiz-result" id="q9-result"></div>
+
+      <hr style="border:none; border-top:1px solid var(--border); margin:20px 0;">
+
+      <!-- Q10 -->
+      <div class="quiz-q" id="q10">
+        <span class="num">問10</span>「書か<u>れる</u>」── 「書か」の活用形は？
+      </div>
+      <div class="quiz-choices" id="q10-choices">
+        <button class="choice-btn" onclick="checkAnswer(this,'q10','未然形')">未然形</button>
+        <button class="choice-btn" onclick="checkAnswer(this,'q10','未然形')">連用形</button>
+        <button class="choice-btn" onclick="checkAnswer(this,'q10','未然形')">終止形</button>
+        <button class="choice-btn" onclick="checkAnswer(this,'q10','未然形')">仮定形</button>
+      </div>
+      <div class="quiz-result" id="q10-result"></div>
+
+      <!-- スコア表示 -->
+      <div class="score-box" id="score-box">
+        <h3 id="score-text"></h3>
+        <p id="score-msg" style="margin-top:8px; color:var(--gray);"></p>
+        <button class="reset-btn" onclick="resetQuiz()">もう一度挑戦する</button>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <p>動詞の活用形 完全ガイド ｜ 国文法学習教材</p>
+</footer>
+
+<script>
+  const answers = {};
+  const correct = {
+    q1: '仮定形', q2: '連体形', q3: '連用形', q4: '終止形', q5: '未然形',
+    q6: '上一段活用', q7: '五段活用', q8: 'サ行変格活用', q9: '命令形', q10: '未然形'
+  };
+  const explanations = {
+    q1: '「ば」が続いているので仮定形です。',
+    q2: '「こと」（名詞）が続いているので連体形です。終止形と形は同じですが、後ろに名詞があれば連体形。',
+    q3: '「ながら」が続いているので連用形です。',
+    q4: '文末（句点）で言い切っているので終止形です。',
+    q5: '「ない」が続いているので未然形です。',
+    q6: '「起き＋ない」→「き」はイ段 → 上一段活用。',
+    q7: '「帰ら＋ない」→「ら」はア段 → 五段活用。「る」で終わっていても五段活用のものに注意！',
+    q8: '「する」がつく複合語はサ行変格活用です。',
+    q9: '文末で命令を表しているので命令形です。',
+    q10: '「れる」（受身の助動詞）が続いているので未然形です。'
+  };
+
+  const total = Object.keys(correct).length;
+  let answered = 0;
+  let score = 0;
+
+  function checkAnswer(btn, qid, ans) {
+    if (answers[qid]) return; // already answered
+    answers[qid] = btn.textContent;
+    answered++;
+
+    const isCorrect = btn.textContent === ans;
+    if (isCorrect) {
+      btn.classList.add('correct');
+      score++;
+    } else {
+      btn.classList.add('wrong');
+      // highlight correct
+      document.querySelectorAll(`#${qid}-choices .choice-btn`).forEach(b => {
+        if (b.textContent === ans) b.classList.add('correct');
+      });
+    }
+
+    const result = document.getElementById(`${qid}-result`);
+    result.innerHTML = isCorrect
+      ? `<span style="color:var(--green);">✓ 正解！</span> ${explanations[qid]}`
+      : `<span style="color:var(--red);">✗ 不正解。正解は「${ans}」。</span> ${explanations[qid]}`;
+
+    // disable all buttons for this question
+    document.querySelectorAll(`#${qid}-choices .choice-btn`).forEach(b => b.style.pointerEvents = 'none');
+
+    if (answered === total) showScore();
+  }
+
+  function showScore() {
+    const box = document.getElementById('score-box');
+    box.style.display = 'block';
+    const pct = Math.round(score / total * 100);
+    document.getElementById('score-text').textContent = `${score} / ${total} 点 (${pct}%)`;
+    let msg = '';
+    if (pct === 100) msg = '完璧です！全問正解おめでとうございます！🎉';
+    else if (pct >= 80) msg = 'よくできました！もう少しで完璧です。';
+    else if (pct >= 60) msg = 'まずまずです。間違えた問題を復習しましょう。';
+    else msg = '復習が必要です。活用形の表をもう一度確認しましょう。';
+    document.getElementById('score-msg').textContent = msg;
+    box.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  }
+
+  function resetQuiz() {
+    Object.keys(answers).forEach(k => delete answers[k]);
+    answered = 0; score = 0;
+    document.querySelectorAll('.choice-btn').forEach(b => {
+      b.classList.remove('correct', 'wrong');
+      b.style.pointerEvents = '';
+    });
+    document.querySelectorAll('.quiz-result').forEach(r => r.innerHTML = '');
+    document.getElementById('score-box').style.display = 'none';
+  }
+</script>
+
+</body>
+</html>

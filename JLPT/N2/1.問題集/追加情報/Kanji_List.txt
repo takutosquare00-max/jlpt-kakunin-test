@@ -1,0 +1,376 @@
+|#|Kanji|Onyomi|Kunyomi|Kanji Meaning|
+|---|---|---|---|---|
+|1|党|tou|nakama, mura|party, faction, clique|
+|2|協|kyou||co-, cooperation|
+|3|総|sou|sube(te), fusa|general, whole, all|
+|4|区|ku||ward, district|
+|5|領|ryou|eri|jurisdiction, dominion|
+|6|県|ken|ka(keru)|prefecture|
+|7|設|setsu|mou(keru)|establishment, provision|
+|8|保|ho, hou|tamo(tsu)|protect, guarantee, keep|
+|9|改|kai|arata(meru)|reformation, change, modify|
+|10|第|dai||No., number|
+|11|結|ketsu|musu(bu), yu(u)|tie, bind, contract|
+|12|派|ha||faction, group, party|
+|13|府|fu||borough, urban prefecture, govt office|
+|14|査|sa||investigate|
+|15|委|i|yuda(neru)|committee, entrust to|
+|16|軍|gun|ikusa|army, force, troops|
+|17|案|an|tsukue|plan, suggestion, draft|
+|18|策|saku||scheme, plan, policy|
+|19|団|dan, ton|katamari, maru(i)|group, association|
+|20|各|kaku|onoono|each; every; either|
+|21|島|tou|shima|island|
+|22|革|kaku|kawa|leather; skin; reform; become serious|
+|23|村|son|mura|village; town|
+|24|勢|sei|ikio(i)|forces; energy; military strength|
+|25|減|gen|he(ru)|dwindle; decrease; reduce|
+|26|再|sai, sa|futata(bi)|again, twice, second time|
+|27|税|zei||tax; duty|
+|28|営|ei|itona(mu)|occupation; camp; perform; build; conduct (business)|
+|29|比|hi|kura(beru)|compare; race; ratio|
+|30|防|bou|fuse(gu)|ward off; defend; protect; resist|
+|31|補|ho|ogina(u)|supplement; supply; offset; compensate|
+|32|境|kyou|sakai|boundary, border, region|
+|33|導|dou|michibi(ku)|guidance; leading; conduct; usher|
+|34|副|fuku||vice-; assistant; aide; duplicate; copy|
+|35|算|san|soro|calculate; divining; number; probability|
+|36|輸|yu, shu||transport, send, be inferior|
+|37|述|jutsu|no(beru)|mention; state; speak|
+|38|線|sen|suji|line; track|
+|39|農|nou||agriculture; farmers|
+|40|州|shuu|su|state; province|
+|41|武|bu, mu|take(shi)|warrior; military; chivalry; arms|
+|42|象|shou, zou|katado(ru)|elephant; pattern after; image; shape|
+|43|域|iki||range; region; limits; stage; level|
+|44|額|gaku|hitai|forehead; tablet; framed picture; sum; amount; volume|
+|45|欧|ou|uta(u), ha(ku)|Europe|
+|46|担|tan|katsu(gu), nina(u)|shouldering; carry; raise; bear|
+|47|準|jun|jun(jiru), nazora(eru)|semi-; correspond to; imitate|
+|48|賞|shou|ho(meru)|prize; reward; praise|
+|49|辺|hen|ata(ri), hoto(ri)|environs; boundary; border; vicinity|
+|50|造|zou|tsuku(ru)|create; make; structure; physique|
+|51|被|hi|koumu(ru), kabu(ru)|incur; cover; shelter; wear; put on|
+|52|技|gi|waza|skill; art; craft; ability; vocation; arts|
+|53|低|tei|hiku(i)|lower; short; humble|
+|54|復|fuku|mata|restore, return to, revert|
+|55|移|i|utsu(ru)|shift, move, change|
+|56|個|ko||individual; counter for articles|
+|57|門|mon|kado, to|gate|
+|58|課|ka||chapter, lesson, section, department|
+|59|脳|nou|nouzuru|brain; memory|
+|60|極|kyoku, goku|kiwa(meru)|poles; settlement; conclusion; end|
+|61|含|gan|fuku(mu)|contain; include|
+|62|蔵|zou|kura|storehouse; hide; own; have; possess|
+|63|量|ryou|haka(ru)|quantity; measure; weight; amount|
+|64|型|kei|kata|type; model|
+|65|況|kyou|mashi(te)|condition; situation|
+|66|針|shin|hari|needle; pin; staple; stinger|
+|67|専|sen|moppa(ra)|specialty; exclusive; mainly; solely|
+|68|谷|koku|tani, kiwa(maru)|valley|
+|69|史|shi||history; chronicle|
+|70|階|kai|kizahashi|stair; counter for building story|
+|71|管|kan|kuda|pipe; tube; wind instrument; control; jurisdiction|
+|72|兵|hei, hyou|tsuwamono|soldier; private; troops; army|
+|73|接|setsu|tsu(gu)|touch; contact; adjoin; piece together|
+|74|細|sai|hoso(i), koma(kai)|slender; narrow; detailed; precise|
+|75|効|kou|ki(ku)|merit; efficacy; efficiency; benefit|
+|76|丸|gan|maru, maru(i)|round; full (month); perfection|
+|77|湾|wan|irie|gulf; bay; inlet|
+|78|録|roku|to(ru)|record|
+|79|省|sei, shou|kaeri(miru), habu(ku)|focus; government ministry; conserve|
+|80|旧|kyuu|furu(i), moto|old times; old things; former; ex-|
+|81|橋|kyou|hashi|bridge|
+|82|岸|gan|kishi|beach|
+|83|周|shuu|mawa(ri)|circumference; circuit; lap|
+|84|材|zai||lumber, log, timber, wood|
+|85|戸|ko|to|door; counter for houses|
+|86|央|ou||center; middle|
+|87|券|ken||ticket|
+|88|編|hen|a(mu)|compilation; knit; braid; twist; editing|
+|89|捜|sou|saga(su)|search; look for; locate|
+|90|竹|chiku|take|bamboo|
+|91|超|chou|ko(eru)|transcend; super-; ultra-|
+|92|並|hei|na(mi), nami, nara(beru)|row, and, besides|
+|93|療|ryou||heal; cure|
+|94|採|sai|to(ru)|pick; take; fetch; take up|
+|95|森|shin|mori|forest, woods|
+|96|競|kyou, kei|kiso(u), se(ru)|compete with; bid; contest; race|
+|97|介|kai||jammed in; shellfish; mediate|
+|98|根|kon|ne|root; radical|
+|99|販|han||marketing, sell, trade|
+|100|歴|reki||curriculum; continuation; passage of time|
+|101|将|shou|masa(ni), hata|leader; commander; general; admiral|
+|102|幅|fuku|haba|hanging scroll; width|
+|103|般|han||carrier; carry; all; general; sort; kind|
+|104|貿|bou||trade; exchange|
+|105|講|kou||lecture; club; association|
+|106|林|rin|hayashi|grove; forest|
+|107|装|sou, shou|yosoo(u)|attire; dress; pretend; disguise|
+|108|諸|sho|moro|various; many; several; together|
+|109|劇|geki||drama; play|
+|110|河|ka|kawa|river|
+|111|航|kou||navigate; sail; cruise; fly|
+|112|鉄|tetsu|kurogane|iron|
+|113|児|ji|ko|newborn babe; child|
+|114|禁|kin||prohibition; ban; forbid|
+|115|印|in|shirushi|stamp; seal; mark; symbol; trademark|
+|116|逆|gyaku|saka(rau)|inverted; reverse; opposite|
+|117|換|kan|ka(eru)|interchange; period; change; convert; replace; renew|
+|118|久|kyuu, ku|hisa(shii)|long time; old story|
+|119|短|tan|mijika(i)|short; fault; defect; weak point|
+|120|油|yu|abura|oil; fat|
+|121|暴|bou, baku|aba(ku)|outburst; force; violence|
+|122|輪|rin|wa|wheel; ring; circle; link; loop; counter for wheels and flowers|
+|123|占|sen|shi(meru), urana(u)|fortune-telling; divining; forecasting|
+|124|植|shoku|u(eru)|plant|
+|125|清|sei|kiyo(i)|pure; purify; cleanse|
+|126|倍|bai||double; twice; times; fold|
+|127|均|kin|nara(su)|level; average|
+|128|億|oku||hundred million; 10**8|
+|129|圧|atsu|o(su)|pressure; push; overwhelm; oppress|
+|130|芸|gei|u(eru), nori, waza|technique; art; craft; performance; acting|
+|131|署|sho||signature; govt office; police station|
+|132|伸|shin|no(biru)|expand; stretch; extend|
+|133|停|tei|to(meru)|halt; stopping|
+|134|爆|baku|ha(zeru)|bomb; burst open|
+|135|陸|riku, roku|oka|land; six|
+|136|玉|gyoku|tama|jewel; ball|
+|137|波|ha|nami|waves; billows|
+|138|帯|tai|o(biru)|sash; belt; obi; zone; region|
+|139|延|en|no(biru)|prolong; stretching|
+|140|羽|u|ha, wa, hane|feathers; counter for birds, rabbits|
+|141|固|ko|kata(meru)|harden; set; clot; curdle|
+|142|則|soku|notto(ru)|rule; follow; based on|
+|143|乱|ran|mida(reru)|riot; war; disorder; disturb|
+|144|普|fu|amane(ku)|universal; generally|
+|145|測|soku|haka(ru)|fathom; plan; scheme; measure|
+|146|豊|hou, bu|yuta(ka), toyo|bountiful; excellent; rich|
+|147|厚|kou|atsu(i)|thick; heavy; rich|
+|148|齢|rei|yowai, toshi|age|
+|149|囲|i|kako(mu)|surround; enclosure; preserve; keep|
+|150|卒|sotsu|so(ssuru)|graduate; soldier; private; die|
+|151|略|ryaku|hobo|abbreviation; omission; outline; shorten|
+|152|承|shou|uketamawa(ru)|hear; listen to; be informed; receive|
+|153|順|jun||obey; order; turn; occasion|
+|154|岩|gan|iwa|boulder; rock; cliff|
+|155|練|ren|ne(ru)|practice, gloss, train, drill, polish, refine|
+|156|軽|kei|karu(i)|lightly; trifling; unimportant|
+|157|了|ryou||complete; finish|
+|158|庁|chou|yakusho|government office|
+|159|城|jou, sei|shiro|castle|
+|160|患|kan|wazura(u)|afflicted; disease; suffer from; be ill|
+|161|層|sou||stratum; social class; layer; story; floor|
+|162|版|han||printing block; edition; impression; label|
+|163|令|rei||orders; command; decree|
+|164|角|kaku|kado, tsuno|angle; corner; square|
+|165|絡|raku|kara(mu)|entwine; coil around; get caught in|
+|166|損|son|soko(nau)|damage; loss; disadvantage; hurt; injure|
+|167|募|bo|tsuno(ru)|recruit; campaign|
+|168|裏|ri|ura|back; reverse; inside; rear|
+|169|仏|butsu|hotoke|Buddha, the dead, France|
+|170|績|seki||exploits; achievements|
+|171|築|chiku|kizu(ku)|fabricate; build; construct|
+|172|貨|ka|takara|freight; goods; property|
+|173|混|kon|ma(jiru)|mix; blend; confuse|
+|174|昇|shou|nobo(ru)|rise up|
+|175|池|chi|ike|pond; pool; reservoir|
+|176|血|ketsu|chi|blood|
+|177|温|on|atata(kai), nuku|warm|
+|178|季|ki||seasons|
+|179|星|sei|hoshi|star|
+|180|永|ei|naga(i)|eternity; long; lengthy|
+|181|著|cho, chaku|arawa(su), ichijiru(shii)|renowned; publish; write|
+|182|誌|shi||document; records|
+|183|庫|ko, ku|kura|warehouse; storehouse|
+|184|刊|kan||publish; carve; engrave|
+|185|像|zou||statue; picture; image; figure|
+|186|香|kou, kyou|kao(ri)|incense; smell; perfume|
+|187|坂|han|saka|slope; incline; hill|
+|188|底|tei|soko|bottom; sole; depth; bottom price|
+|189|布|fu|nuno, shi(ku)|linen; cloth; spread; distribute|
+|190|寺|ji|tera|Buddhist temple|
+|191|宇|u||eaves; roof; house; heaven|
+|192|巨|kyo||gigantic; big; large; great|
+|193|震|shin|furu(u)|quake; shake; tremble; quiver|
+|194|希|ki|mare, koinega(u)|hope; beg; request; pray|
+|195|触|shoku|fu(reru), sawa(ru)|contact; touch; feel; hit; proclaim; announce|
+|196|依|i, e|yo(ru)|reliant; depend on; consequently; therefore; due to|
+|197|籍|seki||enroll; register; membership|
+|198|汚|o|yogo(su), kitana(i), kega(su)|dirty; pollute; disgrace; defile|
+|199|枚|mai, bai||sheet of...; counter for flat thin objects|
+|200|複|fuku||duplicate; double; compound; multiple|
+|201|郵|yuu||mail; stagecoach stop|
+|202|仲|chuu|naka|go-between; relationship|
+|203|栄|ei|saka(eru)|flourish; prosperity; honor|
+|204|札|satsu|fuda|ticket; paper money; banknote; note|
+|205|板|han, ban|ita|plank; board; plate; stage|
+|206|骨|kotsu|hone|skeleton; bone; remains; frame|
+|207|傾|kei|katamu(ku)|lean; incline; tilt; trend; bias|
+|208|届|kai|todo(keru)|deliver; reach; arrive; report|
+|209|巻|kan|ma(ku), maki|scroll; volume; book; part; roll up; wind up; coil; counter for texts (or book scrolls)|
+|210|燃|nen|mo(eru)|burn; blaze; glow|
+|211|跡|seki|ato|tracks; mark; print; impression|
+|212|包|hou|tsutsu(mu), kuru(mu)|wrap; pack up; cover; conceal|
+|213|駐|chuu||stop-over; reside in; resident|
+|214|弱|jaku|yowa(i)|weak; frail|
+|215|紹|shou||introduce; inherit; help|
+|216|雇|ko|yato(u)|employ; hire|
+|217|替|tai|ka(waru)|exchange, spare, substitute|
+|218|預|yo|azu(keru)|deposit; custody; leave with; entrust to|
+|219|焼|shou|ya(ku)|bake; burning|
+|220|簡|kan|fuda, era(bu)|simplicity; brevity|
+|221|章|shou||badge; chapter; composition; poem|
+|222|臓|zou|harawata|entrails; viscera; bowels|
+|223|律|ritsu, richi||rhythm; law; regulation; control|
+|224|贈|zou|oku(ru)|presents; send; give to; award to|
+|225|照|shou|te(ru)|illuminate; shine; compare|
+|226|薄|haku|usu(i)|dilute; thin; weak (tea)|
+|227|群|gun|mu(reru), mura(garu)|flock; group; crowd; herd|
+|228|秒|byou||second|
+|229|奥|ou|oku|heart; interior|
+|230|詰|kitsu|tsu(meru)|packed; close; rebuke; blame|
+|231|双|sou|futa|pair; set; comparison; counter for pairs|
+|232|刺|shi|sa(su), toge|thorn, pierce, stab, prick, sting|
+|233|純|jun||genuine; purity; innocence|
+|234|翌|yoku||the following; next|
+|235|快|kai|kokoroyo(i)|cheerful; pleasant; agreeable; comfortable|
+|236|片|hen|kata|one-sided; piece|
+|237|敬|kei|uyama(u)|awe; respect; honor; revere|
+|238|悩|nou|naya(mu)|trouble; worry; in pain; distress; illness|
+|239|泉|sen|izumi|spring; fountain|
+|240|皮|hi|kawa|skin; hide; leather|
+|241|漁|gyo, ryou|asa(ru)|fishing; fishery|
+|242|荒|kou|ara(i), a(reru)|rough; wild|
+|243|貯|cho|ta(meru)|savings; store|
+|244|硬|kou|kata(i)|stiff; hard|
+|245|埋|mai|u(meru)|bury; be filled up; embedded|
+|246|柱|chuu|hashira|pillar; post; cylinder; support|
+|247|祭|sai|matsuri|ritual; offer prayers; celebrate|
+|248|袋|tai|fukuro|sack; bag; pouch|
+|249|筆|hitsu|fude|writing brush; writing; painting brush; handwriting|
+|250|訓|kun|yo(mu), kun(zuru)|instruction, explanation, read|
+|251|浴|yoku|a(biru)|bathe; be favored with; bask in|
+|252|童|dou|warabe|juvenile; child|
+|253|宝|hou|takara|treasure; wealth; valuables|
+|254|封|fuu, hou||seal; closing|
+|255|胸|kyou|mune|bosom; breast; chest; heart; feelings|
+|256|砂|sa, sha|suna|sand|
+|257|塩|en|shio|salt|
+|258|賢|ken|kashiko(i)|intelligent; wise; wisdom; cleverness|
+|259|腕|wan|ude|arm; ability; talent|
+|260|兆|chou|kiza(su)|trillion; sign; omen; symptoms|
+|261|床|shou|toko, yuka|bed; counter for beds; floor; padding; tatami|
+|262|毛|mou|ke|fur; hair; feather|
+|263|緑|ryoku, roku|midori|green|
+|264|尊|son|touto(i)|revered; valuable; precious; noble|
+|265|祝|shuku|iwa(u)|celebrate; congratulate|
+|266|柔|juu, nyuu|yawa(rakai)|tender; weakness; gentleness; softness|
+|267|殿|den|tono, dono|Mr.; hall; mansion; palace; temple; lord|
+|268|濃|nou|ko(i)|concentrated; thick; dark; undiluted|
+|269|液|eki||fluid; liquid; juice; sap; secretion|
+|270|衣|i, e|koromo, kinu|garment; clothes; dressing|
+|271|肩|ken|kata|shoulder|
+|272|零|rei|zero|zero; spill; overflow; nothing|
+|273|幼|you|osana(i)|infancy; childhood|
+|274|荷|ka|ni|baggage; load; cargo; freight|
+|275|泊|haku|to(maru)|overnight stay|
+|276|黄|kou, ou|ki|yellow|
+|277|甘|kan|ama(i)|sweet; coax; pamper; sugary|
+|278|臣|shin, jin||retainer; subject|
+|279|浅|sen|asa(i)|shallow; superficial; frivolous|
+|280|掃|sou|ha(ku)|sweep; brush|
+|281|雲|un|kumo|cloud|
+|282|掘|kutsu|ho(ru)|dig; delve; excavate|
+|283|捨|sha|su(teru)|discard; throw away; abandon|
+|284|軟|nan|yawa(rakai)|soft|
+|285|沈|chin, jin|shizu(mu)|sink; be submerged; subside; be depressed|
+|286|凍|tou|koo(ru), kogo(eru)|frozen; refrigerate|
+|287|乳|nyuu|chichi, chi|milk, breasts|
+|288|恋|ren|koi(shii)|romance; in love; yearn for; miss|
+|289|紅|kou, ku|beni, kurenai|crimson; deep red|
+|290|郊|kou||outskirts, suburbs, rural area|
+|291|腰|you|koshi|loins; hips; waist|
+|292|炭|tan|sumi|charcoal; coal|
+|293|踊|you|odo(ru)|jump; dance; leap; skip|
+|294|冊|satsu|fumi|counter for books; volume|
+|295|勇|yuu|isa(mu)|courage; cheer up; bravery; heroism|
+|296|械|kai|kase|contraption; machine; instrument|
+|297|菜|sai|na|vegetable; side dish; greens|
+|298|珍|chin|mezura(shii)|rare; curious; strange|
+|299|卵|ran|tamago|egg|
+|300|湖|ko|mizuumi|lake|
+|301|喫|kitsu|no(mu)|consume, eat, drink, smoke, receive|
+|302|干|kan|ho(su), hi(ru)|dry; parch|
+|303|虫|chuu, ki|mushi|insect; bug|
+|304|刷|satsu|su(ru), ha(ku)|printing; print; brush|
+|305|湯|tou|yu|hot water; bath; hot spring|
+|306|溶|you|to(keru)|melt; dissolve; thaw|
+|307|鉱|kou|aragane|mineral; ore|
+|308|涙|rui|namida|tears; sympathy|
+|309|匹|hitsu|hiki|counter for small animals|
+|310|孫|son|mago|grandchild; descendants|
+|311|鋭|ei|surudo(i)|pointed; sharpness; edge; weapon; sharp; violent|
+|312|枝|shi|eda|bough; branch; twig; limb; counter for branches|
+|313|塗|to|nu(ru), nu(ri)|paint; smear; coating|
+|314|軒|ken|noki|flats; counter for houses|
+|315|毒|doku||poison; germ; harm|
+|316|叫|kyou|sake(bu)|shout; exclaim; yell|
+|317|拝|hai|oga(mu)|worship; adore; pray to|
+|318|氷|hyou|koori, hi|ice; hail; freeze|
+|319|乾|kan|kawa(ku)|drought; dry; drink up; heaven|
+|320|棒|bou||rod; stick; cane; pole|
+|321|祈|ki|ino(ru)|pray; wish|
+|322|拾|shuu|hiro(u)|pick up; gather; find|
+|323|粉|fun|ko, kona|flour; powder; dust|
+|324|糸|shi|ito|thread|
+|325|綿|men|wata|cotton|
+|326|汗|kan|ase|sweat; perspire|
+|327|銅|dou|akagane|copper|
+|328|湿|shitsu|shime(ru)|damp; wet; moist|
+|329|瓶|bin|kame, hei|bottle; jar; jug; urn|
+|330|咲|shou|sa(ku)|blossom; bloom|
+|331|召|shou|me(su)|call; send for; wear; buy, to eat, to drink|
+|332|缶|kan|kama|tin can; container|
+|333|隻|seki||vessels; counter for ships; fish; one of a pair|
+|334|脂|shi|abura|fat; grease; lard|
+|335|蒸|jou, sei|mu(su)|steam; heat; foment|
+|336|肌|ki|hada|texture; skin; body; grain|
+|337|耕|kou|tagaya(su)|till; plow; cultivate|
+|338|鈍|don|nibu(i), namaku(ra)|dull; slow; foolish; blunt|
+|339|泥|dei|doro|mud; adhere to; be attached to|
+|340|隅|guu|sumi|corner; nook|
+|341|灯|tou|hi, tomo(su)|lamp; a light; counter for lights|
+|342|辛|shin|kara(i), tsura(i)|spicy; hot|
+|343|磨|ma|miga(ku)|grind; polish; improve; brush (teeth)|
+|344|麦|baku|mugi|barley; wheat|
+|345|姓|sei, shou||surname|
+|346|筒|tou|tsutsu|cylinder; pipe; tube|
+|347|鼻|bi|hana|nose; snout|
+|348|粒|ryuu|tsubu|grains; drop; counter for tiny particles|
+|349|詞|shi|kotoba|part of speech; words|
+|350|胃|i||stomach; crop|
+|351|畳|jou, chou|tatami|tatami mat; fold|
+|352|机|ki|tsukue|desk; table|
+|353|膚|fu|hada|skin; body; texture|
+|354|濯|taku|susu(gu)|laundry; wash; rinse|
+|355|塔|tou||pagoda; tower; steeple|
+|356|沸|futsu|wa(ku)|seethe; boil; ferment|
+|357|灰|kai|hai|ashes; cremate|
+|358|菓|ka||candy; cakes; fruit|
+|359|帽|bou|ずきん、 おお(う)|cap; headgear|
+|360|枯|ko|ka(reru)|wither; die; dry up; be seasoned|
+|361|涼|ryou|suzu(shii)|refreshing; nice and cool|
+|362|舟|shuu|fune|boat; ship|
+|363|貝|bai|kai|shellfish|
+|364|符|fu||token; sign; mark|
+|365|憎|zou|niku(mu)|hate; detest|
+|366|皿|bei|sara, zara|dish; a helping; plate|
+|367|肯|kou|gaenji(ru)|agreement; consent; comply with|
+|368|燥|sou|hasha(gu)|parch; dry up|
+|369|畜|chiku||livestock; domestic fowl and animals|
+|370|坊|bou, bo||boy, priest|
+|371|挟|kyou|hasa(mu)|pinch; between|
+|372|曇|don|kumo(ru)|cloudy weather|
+|373|滴|teki|shizuku, shitata(ru)|drip; drop|
+|374|伺|shi|ukaga(u)|visit; ask; inquire; question|

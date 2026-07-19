@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>漢字 N5（一年生）筆順 学習プリント</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: 'Hiragino Sans', 'Hiragino Kaku Gothic ProN', 'Noto Sans JP', sans-serif;
+    background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-bottom: 30px;
+    -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none;
+    -webkit-touch-callout: none;
+  }
+  h1 { margin: 18px 0 8px; font-size: 1.9rem; color: #2e7d32; text-shadow: 1px 1px 2px rgba(0,0,0,0.1); }
+
+  /* 漢字グリッド */
+  .kanji-grid { display: grid; grid-template-columns: repeat(10, 1fr); gap: 4px; max-width: 520px; width: 95%; margin: 8px auto; }
+  .kanji-grid .cell {
+    background: #fff; border: 2px solid #ddd; border-radius: 8px;
+    text-align: center; font-size: 1.1rem; padding: 5px 0;
+    cursor: pointer; transition: all .2s; user-select: none;
+  }
+  .kanji-grid .cell:hover { background: #e8f5e9; transform: scale(1.05); }
+  .kanji-grid .cell.active { background: #c8e6c9; border-color: #2e7d32; font-weight: bold; }
+
+  /* モード切り替え */
+  .mode-tabs { display: flex; gap: 4px; margin: 10px 0 6px; }
+  .mode-tab {
+    padding: 6px 16px; border: 2px solid #2e7d32; border-radius: 20px;
+    background: #fff; color: #2e7d32; cursor: pointer;
+    font-size: .9rem; font-family: inherit; transition: all .2s;
+  }
+  .mode-tab.active { background: #2e7d32; color: #fff; }
+
+  /* 学習エリア */
+  #learnArea { width: 95%; max-width: 900px; margin: 0 auto; }
+
+  .stroke-section {
+    display: flex; flex-wrap: wrap; gap: 16px;
+    justify-content: center; align-items: stretch; margin-bottom: 16px;
+  }
+
+  /* 大きな文字パネル */
+  .big-char-panel {
+    background: #fff; border-radius: 16px; box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    padding: 16px; text-align: center; width: 280px;
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+  }
+  .big-char-panel .reading { font-size: 2.2rem; color: #888; margin-bottom: 0; }
+  .big-char-panel .big-char { font-size: 10rem; line-height: 1; color: #333; }
+  .big-char-panel .stroke-count { font-size: 1rem; color: #2e7d32; margin-top: 4px; font-weight: bold; }
+
+  /* ひつじゅん・れんしゅう */
+  .stroke-order-panel {
+    background: #fff; border-radius: 16px; box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    padding: 16px; text-align: center; flex: 1; min-width: 300px; max-width: 580px;
+  }
+  .stroke-order-panel h2 { font-size: 1.05rem; color: #555; margin-bottom: 8px; }
+
+  .nazorigaki-img-wrap {
+    margin: 8px auto; border: 2px solid #ccc; border-radius: 10px; overflow: hidden; background: #fafafa;
+    position: relative; cursor: crosshair;
+    -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none;
+    -webkit-touch-callout: none;
+  }
+  .nazorigaki-img-wrap img {
+    display: block; width: 100%; height: auto; max-width: 100%;
+    -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none;
+    -webkit-touch-callout: none;
+    pointer-events: none;
+  }
+  .nazorigaki-img-wrap canvas {
+    position: absolute; top: 0; left: 0;
+    pointer-events: auto; touch-action: none;
+  }
+  .btn-clear { background: #f44336; color: #fff; margin-top: 8px; }
+  .btn-clear:hover { background: #c62828; }
+
+  .btn-row { display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; margin-top: 8px; }
+  .btn {
+    padding: 7px 16px; border: none; border-radius: 8px;
+    font-size: .95rem; cursor: pointer; transition: all .2s; font-family: inherit;
+  }
+  .btn-prev { background: #2196f3; color: #fff; }
+  .btn-prev:hover { background: #1565c0; }
+  .btn-next { background: #2e7d32; color: #fff; }
+  .btn-next:hover { background: #1b5e20; }
+
+  /* クイズ */
+  .quiz-panel {
+    background: #fff; border-radius: 16px; box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    padding: 20px; text-align: center; width: 95%; max-width: 500px; display: none;
+  }
+  .quiz-panel h2 { font-size: 1.3rem; color: #555; margin-bottom: 12px; }
+  .quiz-question { font-size: 5rem; color: #333; margin: 10px 0; }
+  .quiz-choices { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 16px auto; max-width: 360px; }
+  .quiz-choice {
+    padding: 14px; border: 2px solid #ddd; border-radius: 12px;
+    font-size: 1.2rem; cursor: pointer; transition: all .2s; background: #fafafa; font-family: inherit;
+  }
+  .quiz-choice:hover { border-color: #2e7d32; background: #e8f5e9; }
+  .quiz-choice.correct { background: #c8e6c9; border-color: #4caf50; }
+  .quiz-choice.wrong { background: #ffcdd2; border-color: #f44336; }
+  .quiz-score { font-size: 1.1rem; color: #666; margin: 10px 0; }
+  .quiz-feedback { font-size: 1.2rem; min-height: 1.5em; margin: 8px 0; }
+
+  footer { margin: 20px 0; color: #999; font-size: .8rem; }
+
+  @media (max-width: 640px) {
+    .kanji-grid { grid-template-columns: repeat(8, 1fr); }
+    .stroke-section { flex-direction: column; align-items: center; }
+    .big-char-panel { width: 95%; }
+    .stroke-order-panel { min-width: auto; width: 95%; }
+  }
+</style>
+</head>
+<body>
+
+<h1>漢字 N5（一年生）</h1>
+
+<div class="mode-tabs">
+  <button class="mode-tab active" onclick="setMode('learn')">学習モード</button>
+  <button class="mode-tab" onclick="setMode('quiz')">クイズモード</button>
+</div>
+
+<div class="kanji-grid" id="kanjiGrid"></div>
+
+<div id="learnArea">
+  <div class="stroke-section">
+    <div class="big-char-panel">
+      <p class="reading" id="readingDisplay">ひ</p>
+      <p class="big-char" id="charDisplay">日</p>
+      <p class="stroke-count" id="strokeCount">4画</p>
+      <div class="btn-row" style="margin-top:10px;">
+        <button class="btn btn-prev" onclick="prevChar()">◀ 前</button>
+        <button class="btn btn-next" onclick="nextChar()">次 ▶</button>
+      </div>
+    </div>
+    <div class="stroke-order-panel">
+      <h2>ひつじゅん・れんしゅう（なぞりがき）</h2>
+      <p style="font-size:.85rem;color:#777;margin-bottom:8px;">© <a href="https://kakijun.com/" target="_blank" rel="noopener">漢字書き順辞典</a> 筆順画像を使用</p>
+      <div class="nazorigaki-img-wrap" id="nazorigakiWrap">
+        <img id="nazorigakiImg" src="" alt="ひつじゅん・れんしゅう" draggable="false" />
+        <canvas id="nazorigakiCanvas"></canvas>
+      </div>
+      <div class="btn-row">
+        <button class="btn btn-clear" onclick="clearNazorigakiCanvas()">けす</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="quiz-panel" id="quizArea">
+  <h2>漢字 N5 クイズ</h2>
+  <p class="quiz-score" id="quizScore">正解: 0 / 0</p>
+  <p class="quiz-question" id="quizQuestion">日</p>
+  <p class="quiz-feedback" id="quizFeedback">&nbsp;</p>
+  <div class="quiz-choices" id="quizChoices"></div>
+  <div class="btn-row" style="margin-top:14px;">
+    <button class="btn btn-next" id="btnNextQuiz" onclick="nextQuiz()" style="display:none;">次の問題 ▶</button>
+  </div>
+</div>
+
+<footer>漢字 N5（一年生） 学習プリント ― © <a href="https://kakijun.com/" target="_blank" rel="noopener" style="color:#999;">漢字書き順辞典</a> ｜ <a href="一年生.pdf" target="_blank" style="color:#999;">PDF版（一覧）</a> ｜ <a href="nazorigaki_images/poster-01.png" target="_blank" style="color:#999;">80字一覧ポスター</a></footer>
+<script>
+// ======================================================
+//  漢字 N5（一年生80字）筆順 学習プリント
+//  筆順画像: © 漢字書き順辞典 https://kakijun.com/
+// ======================================================
+
+// ----- 一年生漢字リスト（N5レベル）80字 -----
+// kakijun.com 小学一年生準拠
+const KANJI = [
+  {ch:'一',reading:'いち・ひと',unicode:'4e00',strokes:1},{ch:'二',reading:'に・ふた',unicode:'4e8c',strokes:2},
+  {ch:'三',reading:'さん・み',unicode:'4e09',strokes:3},{ch:'四',reading:'よん・し',unicode:'56db',strokes:5},
+  {ch:'五',reading:'ご・いつ',unicode:'4e94',strokes:4},{ch:'六',reading:'ろく・む',unicode:'516d',strokes:4},
+  {ch:'七',reading:'なな・しち',unicode:'4e03',strokes:2},{ch:'八',reading:'はち・や',unicode:'516b',strokes:2},
+  {ch:'九',reading:'きゅう・ここの',unicode:'4e5d',strokes:2},{ch:'十',reading:'じゅう・とお',unicode:'5341',strokes:2},
+  {ch:'百',reading:'ひゃく・もも',unicode:'767e',strokes:6},{ch:'千',reading:'せん・ち',unicode:'5343',strokes:3},
+  {ch:'上',reading:'うえ・あ',unicode:'4e0a',strokes:3},{ch:'下',reading:'した・さ',unicode:'4e0b',strokes:3},
+  {ch:'左',reading:'ひだり・さ',unicode:'5de6',strokes:5},{ch:'右',reading:'みぎ・う',unicode:'53f3',strokes:5},
+  {ch:'中',reading:'なか・ちゅう',unicode:'4e2d',strokes:4},{ch:'大',reading:'おお・だい',unicode:'5927',strokes:3},
+  {ch:'小',reading:'ちい・しょう',unicode:'5c0f',strokes:3},{ch:'月',reading:'つき・げつ',unicode:'6708',strokes:4},
+  {ch:'日',reading:'ひ・にち',unicode:'65e5',strokes:4},{ch:'年',reading:'とし・ねん',unicode:'5e74',strokes:6},
+  {ch:'早',reading:'はや・そう',unicode:'65e9',strokes:6},{ch:'木',reading:'き・もく',unicode:'6728',strokes:4},
+  {ch:'林',reading:'はやし・りん',unicode:'6797',strokes:8},{ch:'森',reading:'もり・しん',unicode:'68ee',strokes:12},
+  {ch:'山',reading:'やま・さん',unicode:'5c71',strokes:3},{ch:'子',reading:'こ・し',unicode:'5b50',strokes:3},
+  {ch:'川',reading:'かわ・せん',unicode:'5ddd',strokes:3},{ch:'土',reading:'つち・ど',unicode:'571f',strokes:3},
+  {ch:'空',reading:'そら・くう',unicode:'7a7a',strokes:8},{ch:'田',reading:'た・でん',unicode:'7530',strokes:5},
+  {ch:'天',reading:'あめ・てん',unicode:'5929',strokes:4},{ch:'生',reading:'い・せい',unicode:'751f',strokes:5},
+  {ch:'花',reading:'はな・か',unicode:'82b1',strokes:7},{ch:'草',reading:'くさ・そう',unicode:'8349',strokes:9},
+  {ch:'虫',reading:'むし・ちゅう',unicode:'866b',strokes:6},{ch:'人',reading:'ひと・じん',unicode:'4eba',strokes:2},
+  {ch:'名',reading:'な・めい',unicode:'540d',strokes:6},{ch:'女',reading:'おんな・じょ',unicode:'5973',strokes:3},
+  {ch:'男',reading:'おとこ・だん',unicode:'7537',strokes:7},{ch:'学',reading:'まな・がく',unicode:'5b66',strokes:8},
+  {ch:'校',reading:'こう・こう',unicode:'6821',strokes:10},{ch:'村',reading:'むら・そん',unicode:'6751',strokes:7},
+  {ch:'町',reading:'まち・ちょう',unicode:'753a',strokes:7},{ch:'目',reading:'め・もく',unicode:'76ee',strokes:5},
+  {ch:'耳',reading:'みみ・じ',unicode:'8033',strokes:6},{ch:'口',reading:'くち・こう',unicode:'53e3',strokes:3},
+  {ch:'手',reading:'て・しゅ',unicode:'624b',strokes:4},{ch:'足',reading:'あし・そく',unicode:'8db3',strokes:7},
+  {ch:'見',reading:'み・けん',unicode:'898b',strokes:7},{ch:'音',reading:'おと・おん',unicode:'97f3',strokes:9},
+  {ch:'力',reading:'ちから・りょく',unicode:'529b',strokes:2},{ch:'犬',reading:'いぬ・けん',unicode:'72ac',strokes:4},
+  {ch:'王',reading:'おう・おう',unicode:'738b',strokes:4},{ch:'玉',reading:'たま・ぎょく',unicode:'7389',strokes:5},
+  {ch:'雨',reading:'あめ・う',unicode:'96e8',strokes:8},{ch:'石',reading:'いし・せき',unicode:'77f3',strokes:5},
+  {ch:'白',reading:'しろ・はく',unicode:'767d',strokes:5},{ch:'立',reading:'た・りつ',unicode:'7acb',strokes:5},
+  {ch:'休',reading:'やす・きゅう',unicode:'4f11',strokes:6},
+  {ch:'気',reading:'き・け',unicode:'6c17',strokes:6},{ch:'糸',reading:'いと・し',unicode:'7cf8',strokes:6},
+  {ch:'字',reading:'あざ・じ',unicode:'5b57',strokes:6},{ch:'先',reading:'さき・せん',unicode:'5148',strokes:6},
+  {ch:'竹',reading:'たけ・ちく',unicode:'7af9',strokes:6},{ch:'貝',reading:'かい・ばい',unicode:'8c9d',strokes:7},
+  {ch:'車',reading:'くるま・しゃ',unicode:'8eca',strokes:7},{ch:'赤',reading:'あか・せき',unicode:'8d64',strokes:7},
+  {ch:'円',reading:'えん・まる',unicode:'5186',strokes:4},{ch:'火',reading:'ひ・か',unicode:'706b',strokes:4},
+  {ch:'水',reading:'みず・すい',unicode:'6c34',strokes:4},{ch:'金',reading:'かね・きん',unicode:'91d1',strokes:8},
+  {ch:'本',reading:'もと・ほん',unicode:'672c',strokes:5},{ch:'文',reading:'ふみ・ぶん',unicode:'6587',strokes:4},
+  {ch:'出',reading:'で・しゅつ',unicode:'51fa',strokes:5},{ch:'正',reading:'ただ・せい',unicode:'6b63',strokes:5},
+  {ch:'入',reading:'はい・にゅう',unicode:'5165',strokes:2},{ch:'青',reading:'あお・せい',unicode:'9752',strokes:8},
+  {ch:'夕',reading:'ゆう・せき',unicode:'5915',strokes:3}
+];
+
+// ----- 状態 -----
+let currentIndex = 0;
+let mode = 'learn';
+let quizCorrect = 0, quizTotal = 0, quizAnswered = false;
+
+const KAKIJUN_BASE = 'https://kakijun.com/kanjiphoto/worksheet/1/kanji-kakijun-worksheet-1-';
+
+// ============================================================
+//  漢字グリッド
+// ============================================================
+function buildGrid() {
+  const grid = document.getElementById('kanjiGrid');
+  grid.innerHTML = '';
+  KANJI.forEach((k, i) => {
+    const div = document.createElement('div');
+    div.className = 'cell';
+    div.textContent = k.ch;
+    div.onclick = () => { currentIndex = i; updateDisplay(); };
+    grid.appendChild(div);
+  });
+}
+
+function highlightGrid() {
+  const ch = KANJI[currentIndex].ch;
+  document.querySelectorAll('.kanji-grid .cell').forEach((c, i) => {
+    c.classList.toggle('active', KANJI[i].ch === ch);
+  });
+}
+
+// ============================================================
+//  表示更新（kakijun.com 筆順画像）
+// ============================================================
+function updateDisplay() {
+  const k = KANJI[currentIndex];
+  document.getElementById('charDisplay').textContent = k.ch;
+  document.getElementById('readingDisplay').textContent = k.reading;
+  document.getElementById('strokeCount').textContent = k.strokes + '画';
+  highlightGrid();
+
+  const imgUrl = KAKIJUN_BASE + k.unicode + '.png';
+  const img = document.getElementById('nazorigakiImg');
+  img.src = imgUrl;
+  img.alt = k.ch + ' の書き順';
+  clearNazorigakiCanvas();
+  if (img.complete && img.naturalWidth) resizeNazorigakiCanvas();
+}
+
+// ============================================================
+//  PNG上からの書き込み
+// ============================================================
+function resizeNazorigakiCanvas() {
+  const canvas = document.getElementById('nazorigakiCanvas');
+  const wrap = document.getElementById('nazorigakiWrap');
+  const rect = wrap.getBoundingClientRect();
+  if (rect.width < 10 || rect.height < 10) return;
+  const dpr = window.devicePixelRatio || 1;
+  const w = Math.round(rect.width * dpr);
+  const h = Math.round(rect.height * dpr);
+  if (canvas.width !== w || canvas.height !== h) {
+    canvas.width = w;
+    canvas.height = h;
+    canvas.style.width = rect.width + 'px';
+    canvas.style.height = rect.height + 'px';
+  }
+}
+
+function clearNazorigakiCanvas() {
+  const canvas = document.getElementById('nazorigakiCanvas');
+  const ctx = canvas.getContext('2d');
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+}
+
+function setupNazorigakiDrawing() {
+  const canvas = document.getElementById('nazorigakiCanvas');
+  const ctx = canvas.getContext('2d');
+  let drawing = false;
+  canvas.addEventListener('touchstart', e => e.preventDefault(), { passive: false });
+  canvas.addEventListener('pointerdown', e => {
+    drawing = true; ctx.beginPath();
+    const r = canvas.getBoundingClientRect();
+    ctx.moveTo((e.clientX-r.left)*canvas.width/r.width, (e.clientY-r.top)*canvas.height/r.height);
+    canvas.setPointerCapture(e.pointerId);
+  });
+  canvas.addEventListener('pointermove', e => {
+    if (!drawing) return;
+    const r = canvas.getBoundingClientRect();
+    ctx.lineWidth = 9; ctx.lineCap = 'round'; ctx.lineJoin = 'round'; ctx.strokeStyle = '#333';
+    ctx.lineTo((e.clientX-r.left)*canvas.width/r.width, (e.clientY-r.top)*canvas.height/r.height);
+    ctx.stroke();
+  });
+  canvas.addEventListener('pointerup', () => drawing = false);
+  canvas.addEventListener('pointerleave', () => drawing = false);
+}
+
+function initNazorigakiCanvas() {
+  const img = document.getElementById('nazorigakiImg');
+  const wrap = document.getElementById('nazorigakiWrap');
+  wrap.addEventListener('contextmenu', e => e.preventDefault());
+  function syncCanvas() { resizeNazorigakiCanvas(); }
+  img.addEventListener('load', syncCanvas);
+  window.addEventListener('resize', syncCanvas);
+  new ResizeObserver(syncCanvas).observe(wrap);
+  syncCanvas();
+  setupNazorigakiDrawing();
+}
+
+// ============================================================
+//  ナビゲーション
+// ============================================================
+function prevChar() { currentIndex = (currentIndex - 1 + KANJI.length) % KANJI.length; updateDisplay(); }
+function nextChar() { currentIndex = (currentIndex + 1) % KANJI.length; updateDisplay(); }
+
+// ============================================================
+//  モード切り替え
+// ============================================================
+function setMode(m) {
+  mode = m;
+  document.querySelectorAll('.mode-tab').forEach(t => t.classList.toggle('active', t.textContent.includes(m==='learn'?'学習':'クイズ')));
+  document.getElementById('learnArea').style.display = m==='learn' ? 'block' : 'none';
+  document.getElementById('quizArea').style.display = m==='quiz' ? 'block' : 'none';
+  if (m==='quiz') { quizCorrect=0; quizTotal=0; nextQuiz(); }
+}
+
+// ============================================================
+//  クイズ（漢字⇔読み）
+// ============================================================
+function nextQuiz() {
+  quizAnswered = false;
+  document.getElementById('quizFeedback').innerHTML = '&nbsp;';
+  document.getElementById('btnNextQuiz').style.display = 'none';
+  const qi = Math.floor(Math.random()*KANJI.length);
+  const {ch, reading} = KANJI[qi];
+  const mainReading = reading.split('・')[0];
+  const type = Math.random() < 0.5 ? 'k2r' : 'r2k';
+  let question, answer, pool;
+  if (type==='k2r') {
+    question = ch; answer = mainReading;
+    pool = KANJI.map(k => k.reading.split('・')[0]);
+  } else {
+    question = mainReading; answer = ch;
+    pool = KANJI.map(k => k.ch);
+  }
+  const choices = genChoices(answer, pool);
+  document.getElementById('quizQuestion').textContent = question;
+  document.getElementById('quizScore').textContent = `正解: ${quizCorrect} / ${quizTotal}`;
+  const div = document.getElementById('quizChoices');
+  div.innerHTML = '';
+  choices.forEach(c => {
+    const btn = document.createElement('button');
+    btn.className = 'quiz-choice'; btn.textContent = c;
+    btn.onclick = () => checkAnswer(btn, c, answer);
+    div.appendChild(btn);
+  });
+}
+function genChoices(correct, pool) {
+  const s = new Set([correct]);
+  while (s.size < 4) s.add(pool[Math.floor(Math.random()*pool.length)]);
+  return shuffle([...s]);
+}
+function shuffle(a) { for (let i=a.length-1;i>0;i--){ const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]; } return a; }
+function checkAnswer(btn, sel, cor) {
+  if (quizAnswered) return;
+  quizAnswered = true; quizTotal++;
+  if (sel===cor) { quizCorrect++; btn.classList.add('correct'); document.getElementById('quizFeedback').textContent='⭕ 正解！'; document.getElementById('quizFeedback').style.color='#4caf50'; }
+  else { btn.classList.add('wrong'); document.getElementById('quizFeedback').textContent=`❌ 不正解… 正解は「${cor}」`; document.getElementById('quizFeedback').style.color='#f44336';
+    document.querySelectorAll('.quiz-choice').forEach(b=>{ if(b.textContent===cor) b.classList.add('correct'); });
+  }
+  document.getElementById('quizScore').textContent=`正解: ${quizCorrect} / ${quizTotal}`;
+  document.getElementById('btnNextQuiz').style.display='inline-block';
+}
+
+// キーボードショートカット
+document.addEventListener('keydown', e => {
+  if (mode==='learn') {
+    if (e.key==='ArrowLeft') prevChar();
+    else if (e.key==='ArrowRight') nextChar();
+  }
+});
+
+// ============================================================
+//  初期化
+// ============================================================
+buildGrid();
+updateDisplay();
+initNazorigakiCanvas();
+</script>
+</body>
+</html>

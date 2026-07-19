@@ -1,0 +1,193 @@
+|#|語彙|Vocabulary|Type|Meaning|
+|1|明かり|akariあかり|Noun|light; illumination; glow; gleam|
+|2|明ける|akeruあける|Verb, Ichidan verb, Transitive verb|to dawn,to become daylight|
+|3|明らか|akirakaあきらか|Adjective, な-adjective|clear; obvious|
+|4|悪魔|akumaあくま|Noun|devil; demon; fiend; Satan|
+|5|暗記|ankiあんき|Noun, Verb, Suru verb|memorization; learning by heart|
+|6|新た|arataあらた|Noun, Adjective, な-adjective|new; fresh; novel|
+|7|有らゆる|arayuruあらゆる|Pre-noun adjectival|all; every​|
+|8|集まり|atsumariあつまり|Noun|gathering; meeting; assembly; collection; attendance|
+|9|部分|bubunぶぶん|Noun|portion; section; part|
+|10|分|bunぶん|Noun, Suffixpart|;segment; share; ration|
+|11|文明|bunmeiぶんめい|Noun|civilization; culture|
+|12|分析|bunsekiぶんせき|Noun, Verb, Suru verb|analysis|
+|13|分野|bunyaぶんや|Noun|field; sphere; realm; division; branch|
+|14|父親|chichioyaちちおや|Noun|father|
+|15|地平線|chiheisenちへいせん|Noun|horizon (related to land)​|
+|16|地位|chiiちい|Noun(social) position|;status|
+|17|長期|choukiちょうき|Noun|long-term|
+|18|中|chuuちゅう|Noun, Prefix, Suffixduring|;while; medium; middle|
+|19|中学|chuugakuちゅうがく|Noun|junior high school; middle school|
+|20|昼食|chuushokuちゅうしょく|Noun|lunch; midday meal|
+|21|大部分|daibubunだいぶぶん|Noun|most part; greater part; majority|
+|22|駄目|dameだめ|Noun, Adjective, な-adjective|no good; cannot|
+|23|男子|danshiだんし|Noun|youth; young man|
+|24|出会い|deaiであい|Noun|meeting; rendezvous; encounter|
+|25|出会う|deauであう|Verb|to meet (by chance); to come across; to run across; to encounter|
+|26|読書|dokushoどくしょ|Noun, Verb, Suru verb|reading|
+|27|努力|doryokuどりょく|Noun, Verb, Suru verb|effort; exertion; endeavor; hard work; striving|
+|28|同一|douitsuどういつ|Adjective, な-adjective|identical; same; one and the same; equal|
+|29|円|enえん|Noun|yen; Japanese monetary unit; circle|
+|30|不利|furiふり|Noun, Adjective, な-adjective|disadvantage; handicap; unfavorable position|
+|31|不足|fusokuふそく|Noun, Adjective, な-adjective, Verb, Suru verb|insufficiency; shortage; deficiency; lack; dearth|
+|32|再び|futatabiふたたび|Adverb|again; once more; a second time|
+|33|外交|gaikouがいこう|Noun|diplomacy|
+|34|外出|gaishutsuがいしゅつ|Noun, Verb, Suru verb|going out; outing; leaving (one's home, office, etc.)|
+|35|学期|gakkiがっき|Noun|school term; semester|
+|36|学|gakuがく|Noun, Suffixlearning|;education; study of|
+|37|学問|gakumonがくもん|Noun, Verb, Suru verb|scholarship; study; learning|
+|38|学者|gakushaがくしゃ|Noun|scholar|
+|39|学習|gakushuuがくしゅう|Noun, Verb, Suru verb|study; learning; tutorial|
+|40|議長|gichouぎちょう|Noun|chairman; president; moderator|
+|41|議会|gikaiぎかい|Noun|congress; parliament; diet; legislative assembly|
+|42|語学|gogakuごがく|Noun|study of foreign languages; linguistics|
+|43|激しい|hageshiiはげしい|Adjective, い-adjectiveviolent|;extreme; intense|
+|44|母親|hahaoyaははおや|Noun|mother|
+|45|博物館|hakubutsukanはくぶつかん|Noun|museum|
+|46|販売|hanbaiはんばい|Noun, Verb, Suru verb|sales; selling; marketing|
+|47|発明|hatsumeiはつめい|Noun, Adjective, な-adjective, Verb, Suru verb|invention|
+|48|外す|hazusuはずす|Verb, Godan verb, Transitive verb|to remove; to undo; to drop; to miss|
+|49|品|hinひん|Noun|elegance, article|
+|50|一言|hitokotoひとこと|Noun, Verb, Suru verb|single word; a few words; brief comment|
+|51|一人一人|hitorihitoriひとりひとり|Noun, Suffixone by one|;each; one at a time|
+|52|本物|honmonoほんもの|Noun|genuine article; real thing; real deal​|
+|53|本人|honninほんにん|Noun|the person in question; the person themselves; said person|
+|54|一致|icchiいっち|Noun, Verb, Suru verb|agreement; union; match​; coincidence|
+|55|一時|ichijiいちじ|Noun|one o'clock|
+|56|意外|igaiいがい|Adjective, な-adjective, Adverb|unexpected; surprising|
+|57|一家|ikkaいっか|Noun|a family; a household; a home; one's family; whole family|
+|58|今に|imaniいまに|Adverb|before long; even now|
+|59|今にも|imanimoいまにも|Adverb|at any moment; at any minute; on the verge of|
+|60|一般|ippanいっぱん|Noun, Adjective, な-adjective|general; universal; ordinary; average; common|
+|61|一方|ippouいっぽう|Noun|one (esp. of two); one way; the other direction; although|
+|62|一生|isshouいっしょう|Noun|whole life; a lifetime; a generation|
+|63|一種|isshuいっしゅ|Noun, Adverb|species; kind; variety|
+|64|一瞬|isshunいっしゅん|Noun|instant; moment; for an instant|
+|65|一層|issouいっそう|Noun, Adverb|much more; still more; all the more; single layer; sooner; preferably​|
+|66|一体|ittaiいったい|Noun, Adverb(what) the heck|;(why) in the world|
+|67|所謂|iwayuruいわゆる|Pre-noun adjectival|what is called; as it is called; the so-called; so to speak​|
+|68|邪魔|jamaじゃま|Noun, Adjective, な-adjective, Suru verb|hindrance|
+|69|化学|kagakuかがく|Noun|chemistry|
+|70|会|kaiかい|Noun, Suffixmeeting|;assembly; party; association; club|
+|71|会員|kai'inかいいん|Noun|member|
+|72|海外|kaigaiかいがい|Noun, Adjectiveforeign|;abroad; overseas|
+|73|会合|kaigouかいごう|Noun, Verb, Suru verb|meeting; assembly; gathering; association|
+|74|会計|kaikeiかいけい|Noun|finance; account; treasurer; bill|
+|75|開始|kaishiかいし|Noun, Verb, Suru verb|start; commencement; beginning; initiation​|
+|76|科目|kamokuかもく|Noun(school) subject|;curriculum; course|
+|77|権利|kenriけんり|Noun|right; privilege|
+|78|基本|kihonきほん|Noun|basics; fundamentals; basis; foundation|
+|79|記事|kijiきじ|Noun|article; news story; report; account|
+|80|気味|kimiきみ|Noun|sensation; feeling​; tendency|
+|81|記念|kinenきねん|Noun, Verb, Suru verb|commemoration; celebration; honoring the memory of something|
+|82|気に入る|kiniiruきにいる|Verb, Godan verb, Expressionto like|;to take a liking to|
+|83|記入|kinyuuきにゅう|Noun, Verb, Suru verb|entry; filling in; filling out|
+|84|記憶|kiokuきおく|Noun, Verb, Suru verb|memory; recollection; remembrance|
+|85|記者|kishaきしゃ|Noun|reporter; journalist|
+|86|期待|kitaiきたい|Noun, Verb, Suru verb|expectation; anticipation; hope|
+|87|国家|kokkaこっか|Noun|state; country; nation|
+|88|国会|kokkaiこっかい|NounNational Diet|;legislative assembly of Japan; parliament; congress|
+|89|国境|kokkyouこっきょう|Noun|national border|
+|90|国語|kokugoこくご|Noun|national language|
+|91|国民|kokuminこくみん|Noun|people (of a country); nation; citizen; national|
+|92|今後|kongoこんご|Noun, Adverbial Noun|from now on; hereafter|
+|93|今回|konkaiこんかい|Noun, Adverbial Noun|now; this time; lately|
+|94|今日|konnichiこんにち|Expressiontoday|;this day|
+|95|転ぶ|korobuころぶ|Verb, Godan verb, Intransitive verb|to fall down; to fall over|
+|96|高速|kousokuこうそく|Noun, Adjective, な-adjective|high-speed; rapid; express|
+|97|訓練|kunrenくんれん|Noun, Verb, Suru verb|training; drill; practice; discipline|
+|98|教科書|kyoukashoきょうかしょ|Noun|textbook; coursebook; schoolbook|
+|99|協力|kyouryokuきょうりょく|Noun, Verb, Suru verb|cooperation; collaboration|
+|100|強力|kyouryokuきょうりょく|Noun, Adjective, な-adjective|powerful; strong|
+|101|急激|kyuugekiきゅうげき|Adjective, な-adjective|sudden; abrupt; rapid; sharp; drastic; radical|
+|102|急に|kyuuniきゅうに|Adverb|swiftly; rapidly; quickly; immediately; hastily|
+|103|吸収|kyuushuuきゅうしゅう|Noun, Verb, Suru verb|absorption; suction; attraction|
+|104|急速|kyuusokuきゅうそく|Noun, Adjective, な-adjective|rapid (e.g. progress)|
+|105|真面目|majimeまじめ|Noun, Adjective, な-adjective|serious; earnest|
+|106|真っ赤|makkaまっか|Noun, Adjective, な-adjective|bright red; deep red; flushed (of face)|
+|107|学ぶ|manabuまなぶ|Verb, Godan verb, Transitive verb|to study (in depth); to learn; to take lessons in|
+|108|万一|manichiまんいち|Noun, Adverb|emergency; unlikely event​; by some chance; by some possibility|
+|109|満足|manzokuまんぞく|Noun, Adjective, な-adjective, Verb, Suru verb|satisfaction; contentment;​ sufficient; enough|
+|110|明確|meikakuめいかく|Adjective, な-adjective|clear; precise; definite; distinct|
+|111|飯|meshiめし|Noun|cooked rice; meal|
+|112|味方|mikataみかた|Noun, Verb, Suru verb|friend; ally; supporter; taking sides with; supporting|
+|113|魅力|miryokuみりょく|Noun|charm; fascination; glamour; attraction; appeal|
+|114|木曜|mokuyouもくよう|Noun, Adverb|ial NounThursday|
+|115|半ば|nakabaなかば|Noun, Adverb|ial Noun, Suffix, Adverbial nounmiddle; half; semi; halfway; partly|
+|116|熱心|nesshinねっしん|Noun, Adjective, な-adjective|enthusiastic; eager|
+|117|日本|nihonにほん||NounJapan|
+|118|能力|nouryokuのうりょく|Noun|ability; faculty|
+|119|入場|nyuujouにゅうじょう|Noun, Verb, Suru verb|entrance; admission; entering|
+|120|お昼|ohiruおひる|Noun|lunch; midday; daytime|
+|121|収める|osameruおさめる|Verb, Ichidan verb, Transitive verb|to supply; to dedicate; to make an offering; to pay|
+|122|連続|renzokuれんぞく|Noun, Verb, Suru verb|continuation; succession; series|
+|123|利益|riekiりえき|Noun, Verb, Suru verb|profit; gains; benefit|
+|124|利口|rikouりこう|Noun, Adjective, な-adjective|clever; intelligent; wise; bright; sharp|
+|125|留学|ryuugakuりゅうがく|Noun, Verb, Suru verb|studying abroad|
+|126|作品|sakuhinさくひん|Noun|work of art; performance|
+|127|左右|sayuuさゆう|Noun, Verb, Suru verb|left and right|
+|128|成長|seichouせいちょう|Noun, Verb, Suru verb|growth; development; growing up; becoming an adult|
+|129|製品|seihinせいひん|Noun|manufactured goods; finished goods; product|
+|130|青年|seinenせいねん|Noun|youth; young man|
+|131|刺激|shigekiしげき|Noun, Verb, Suru verb|stimulus; impetus; incentive; encouragement; motivation; provocation; excitement; thrill|
+|132|資本|shihonしほん|Noun|funds; capital|
+|133|品|shinaしな|Noun|article; item; thing; goods; stock; quality|
+|134|身長|shinchouしんちょう|Noun|body height; stature|
+|135|進学|shingakuしんがく|Noun, Verb, Suru verb|entering a higher-level school (often university)|
+|136|新鮮|shinsenしんせん|Adjective, な-adjective|fresh|
+|137|支店|shitenしてん|Noun|branch office; branch store​|
+|138|使用|shiyouしよう|Noun, Verb, Suru verb|use; application; employment; utilization.|
+|139|食品|shokuhinしょくひん|Noun|food; food products|
+|140|書物|shomotsuしょもつ|Noun|book; volume|
+|141|書類|shoruiしょるい|Noun|document; official papers|
+|142|書斎|shosaiしょさい|Noun|study; library; den; home office; reading room|
+|143|商売|shoubaiしょうばい|Noun|trade; business; commerce; transaction; occupation|
+|144|奨学金|shougakukinしょうがくきん|Noun|scholarship; stipend; student loan|
+|145|正午|shougoしょうご|Noun, Adverbial Noun|midday|
+|146|商品|shouhinしょうひん|Noun|commodity; article of commerce; goods; stock; merchandise|
+|147|少女|shoujoしょうじょ|Noun|little girl; maiden; young lady|
+|148|証明|shoumeiしょうめい|Noun, Verb, Suru verb|proof; verification; certification|
+|149|少年|shounenしょうねん|Noun|boy; juvenile; young boy; youth; lad|
+|150|少々|shoushouしょうしょう|Noun, Adverbial Noun|just a minute; small quantity|
+|151|招待|shoutaiしょうたい|Noun, Verb, Suru verb|invitation|
+|152|週|shuuしゅう||Noun, Suffixweek|
+|153|集中|shuuchuuしゅうちゅう|Noun, Verb, Suru verb|concentration; focusing; centralization; integration|
+|154|集団|shuudanしゅうだん|Noun|group; mass|
+|155|収穫|shuukakuしゅうかく|Noun, Verb, Suru verb|harvest; crop; fruits (of one's labors)|
+|156|週間|shuukanしゅうかん|Noun|week|
+|157|週刊|shuukanしゅうかん|Noun|weekly publication|
+|158|収入|shuunyuuしゅうにゅう|Noun|income; receipts; revenue; salary|
+|159|速度|sokudoそくど|Noun|speed; velocity; pace; rate|
+|160|少しも|sukoshimoすこしも|Adverb|anything of; not one bit (with negative sentence)|
+|161|大半|taihanたいはん|Noun, Adverbial Noun|majority; more than half; most; largely; mainly|
+|162|大会|taikaiたいかい|Noun|convention; rally; conference; tournament;|
+|163|大した|taishitaたいした|Pre-noun adjectival|considerable; great; important; significant; a big deal|
+|164|単なる|tannaruたんなる|Pre-noun adjectival|mere; simple; sheer|
+|165|多少|tashouたしょう|Noun, Adverb|more or less; somewhat; a little; a few; some|
+|166|手品|tejinaてじな|Noun|magic trick; illusion|
+|167|哲学|tetsugakuてつがく|Noun|philosophy|
+|168|徹夜|tetsuyaてつや|Noun, Verb, Suru verb|staying up all night|
+|169|土地|tochiとち|Noun|plot of land; lot; soil|
+|170|都会|tokaiとかい||Noun(big) city|
+|171|取れる|toreruとれる|Verb, Ichidan verb, Intransitive verb, Transitive verb|to come off; to be removed; to be obtainable|
+|172|取り上げる|toriageruとりあげる|Verb, Ichidan verb, Transitive verb|to pick up|
+|173|図書|toshoとしょ|Noun|books|
+|174|通学|tsuugakuつうがく|Noun, Verb, Suru verb|commuting to school; school commute|
+|175|受け取る|uketoruうけとる|Verb, Godan verb, Transitive verb|to receive; to understand|
+|176|上手い|umaiうまい|Adjective, い-adjectiveskillful|;delicious|
+|177|運転|untenうんてん|Noun, Verb, Suru verb|operation; driving|
+|178|売れる|ureruうれる|Verb, Ichidan verb, Intransitive verb|to sell (well)|
+|179|分ける|wakeruわける|Verb, Ichidan verb, Transitive verb|to divide; to split; to part; to separate|
+|180|悪口|waruguchiわるぐち|Noun, Verb, Suru verb|slander; bad-mouthing; abuse; insult; speaking ill (of)|
+|181|夜明け|yoakeよあけ|Noun|dawn; daybreak|
+|182|余分|yobunよぶん|Noun|extra; excess; surplus|
+|183|読み|yomiよみ|Noun|reading (of a kanji, situation, etc)|
+|184|夜中|yonakaよなか|Noun, Adverbial Noun|middle of the night; dead of night|
+|185|宜しい|yoroshiiよろしい|Adjective, い-adjective(respectful) OK|;all right|
+|186|唯一|yuiitsuゆいいつ|Noun, Adverbial Noun|only; sole; unique|
+|187|輸入|yunyuuゆにゅう|Noun, Verb, Suru verb|import; importation; introduction|
+|188|輸出|yushutsuゆしゅつ|Noun, Verb, Suru verb|export; exportation​|
+|189|夕べ|yuubeゆうべ|Noun, Adverbial Noun|evening / last night; yesterday evening|
+|190|有利|yuuriゆうり|Noun, な-adjective|advantageous; favorable; profitable|
+|191|全国|zenkokuぜんこく|Noun|the whole country|
+|192|随分|zuibunずいぶん|Adjective, な-adjective, Adverb|very; extremely; surprisingly; considerably; awfully|

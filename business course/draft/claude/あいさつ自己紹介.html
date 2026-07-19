@@ -1,0 +1,660 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ビジネスの挨拶・自己紹介</title>
+  <style>
+    :root {
+      --primary: #1a5276;
+      --accent: #2980b9;
+      --highlight: #f39c12;
+      --light-bg: #eaf4fb;
+      --green: #1e8449;
+      --light-green: #eafaf1;
+      --red: #c0392b;
+      --gray: #555;
+      --border: #bdc3c7;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Hiragino Sans', 'Meiryo', 'Yu Gothic', sans-serif;
+      font-size: 18px;
+      line-height: 1.7;
+      background: #f5f6fa;
+      color: #222;
+    }
+
+    /* ========== HEADER ========== */
+    header {
+      background: var(--primary);
+      color: #fff;
+      padding: 18px 32px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    }
+    header h1 { font-size: 1.4rem; letter-spacing: 0.05em; }
+    header .subtitle { font-size: 0.85rem; opacity: 0.8; margin-top: 2px; }
+
+    /* ========== NAV TABS ========== */
+    nav {
+      display: flex;
+      gap: 6px;
+      background: #13406b;
+      padding: 0 24px;
+      overflow-x: auto;
+    }
+    nav button {
+      background: none;
+      border: none;
+      color: rgba(255,255,255,0.7);
+      font-size: 0.95rem;
+      padding: 12px 18px;
+      cursor: pointer;
+      border-bottom: 3px solid transparent;
+      white-space: nowrap;
+      transition: all 0.2s;
+      font-family: inherit;
+    }
+    nav button:hover { color: #fff; }
+    nav button.active {
+      color: #fff;
+      border-bottom-color: var(--highlight);
+    }
+
+    /* ========== SECTIONS ========== */
+    main { max-width: 960px; margin: 0 auto; padding: 24px 20px 40px; }
+
+    .section {
+      display: none;
+      animation: fadeIn 0.3s ease;
+    }
+    .section.active { display: block; }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(8px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ========== SECTION TITLE ========== */
+    .section-header {
+      background: var(--primary);
+      color: #fff;
+      border-radius: 10px 10px 0 0;
+      padding: 14px 22px;
+      margin-top: 20px;
+    }
+    .section-header h2 { font-size: 1.25rem; }
+    .section-header .eng { font-size: 0.8rem; opacity: 0.75; margin-top: 2px; }
+
+    .section-body {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-top: none;
+      border-radius: 0 0 10px 10px;
+      padding: 24px 24px 28px;
+      margin-bottom: 28px;
+    }
+
+    /* ========== SUBSECTION ========== */
+    h3 {
+      font-size: 1.05rem;
+      color: var(--accent);
+      border-left: 4px solid var(--accent);
+      padding-left: 10px;
+      margin: 24px 0 14px;
+    }
+    h3:first-child { margin-top: 8px; }
+
+    /* ========== TABLES ========== */
+    .table-wrap { overflow-x: auto; margin-bottom: 12px; }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.97rem;
+    }
+    th {
+      background: var(--primary);
+      color: #fff;
+      padding: 10px 14px;
+      text-align: left;
+      white-space: nowrap;
+    }
+    td {
+      padding: 9px 14px;
+      border-bottom: 1px solid #e0e6ed;
+      vertical-align: middle;
+    }
+    tr:nth-child(even) td { background: var(--light-bg); }
+    tr:hover td { background: #d6eaf8; }
+
+    .daily { color: var(--gray); }
+    .biz { color: var(--green); font-weight: bold; }
+
+    /* ========== POINT BOX ========== */
+    .point-box {
+      background: #fff8e1;
+      border: 1px solid #f1c40f;
+      border-left: 5px solid var(--highlight);
+      border-radius: 6px;
+      padding: 14px 18px;
+      margin: 16px 0;
+      font-size: 0.95rem;
+    }
+    .point-box strong { color: var(--highlight); }
+    .point-box ul { margin: 6px 0 0 18px; }
+    .point-box li { margin-bottom: 4px; }
+
+    .warn-box {
+      background: #fdedec;
+      border: 1px solid #f5b7b1;
+      border-left: 5px solid var(--red);
+      border-radius: 6px;
+      padding: 12px 18px;
+      margin: 14px 0;
+      font-size: 0.92rem;
+      color: var(--red);
+    }
+
+    /* ========== MEISHI BOX ========== */
+    .meishi-box {
+      background: #eafaf1;
+      border: 1px solid #a9dfbf;
+      border-left: 5px solid var(--green);
+      border-radius: 6px;
+      padding: 14px 18px;
+      margin: 16px 0;
+    }
+    .meishi-box strong { color: var(--green); }
+    .meishi-box ul { margin: 6px 0 0 18px; }
+
+    /* ========== PRACTICE ITEMS ========== */
+    .practice-item {
+      background: var(--light-bg);
+      border: 1px solid #aed6f1;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+    }
+    .practice-item .q {
+      font-size: 1rem;
+      margin-bottom: 8px;
+    }
+    .blank {
+      display: inline-block;
+      min-width: 80px;
+      border-bottom: 2px solid var(--accent);
+      text-align: center;
+      font-weight: bold;
+      color: var(--accent);
+    }
+    .blank.long { min-width: 160px; }
+
+    /* ========== ANSWER TOGGLE ========== */
+    .answer-btn {
+      display: inline-block;
+      background: var(--accent);
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      padding: 7px 18px;
+      margin-top: 12px;
+      cursor: pointer;
+      font-size: 0.9rem;
+      font-family: inherit;
+      transition: background 0.2s;
+    }
+    .answer-btn:hover { background: var(--primary); }
+    .answer-area {
+      display: none;
+      margin-top: 10px;
+      background: #eafaf1;
+      border: 1px solid #a9dfbf;
+      border-radius: 6px;
+      padding: 12px 16px;
+    }
+    .answer-area.open { display: block; }
+    .answer-area strong { color: var(--green); }
+    .answer-area ol { margin-left: 20px; }
+    .answer-area li { margin-bottom: 4px; }
+
+    /* ========== TEMPLATE BOX ========== */
+    .template-box {
+      background: #f0f0f0;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      padding: 16px 20px;
+      font-family: 'Courier New', monospace;
+      font-size: 1rem;
+      line-height: 2;
+      margin-bottom: 16px;
+      white-space: pre-line;
+    }
+    .example-box {
+      background: #eafaf1;
+      border: 1px solid #a9dfbf;
+      border-radius: 8px;
+      padding: 16px 20px;
+      font-size: 1rem;
+      line-height: 2;
+      margin-bottom: 16px;
+      white-space: pre-line;
+    }
+
+    /* ========== ROLEPLAY ========== */
+    .scene-card {
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      overflow: hidden;
+      margin-bottom: 20px;
+    }
+    .scene-title {
+      background: var(--accent);
+      color: #fff;
+      padding: 10px 18px;
+      font-size: 0.95rem;
+    }
+    .scene-body { padding: 16px 20px; }
+    .dialog { margin-bottom: 8px; display: flex; gap: 10px; align-items: flex-start; }
+    .speaker {
+      min-width: 100px;
+      font-weight: bold;
+      color: var(--primary);
+      font-size: 0.9rem;
+    }
+    .speaker.thai { color: var(--green); }
+    .line { flex: 1; }
+
+    /* ========== REVIEW ========== */
+    .review-card {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+      margin-bottom: 20px;
+    }
+    .review-table { flex: 1; min-width: 280px; }
+
+    /* ========== PRINT ========== */
+    @media print {
+      nav, header, .answer-btn { display: none !important; }
+      .section { display: block !important; }
+      .answer-area { display: block !important; }
+      body { font-size: 14px; background: #fff; }
+      .section-header { background: #444 !important; -webkit-print-color-adjust: exact; }
+    }
+
+    @media (max-width: 600px) {
+      body { font-size: 16px; }
+      .speaker { min-width: 80px; font-size: 0.85rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ===== HEADER ===== -->
+<header>
+  <div>
+    <h1>ビジネスの挨拶・自己紹介</h1>
+    <div class="subtitle">Business Greetings &amp; Self-Introduction</div>
+  </div>
+</header>
+
+<!-- ===== NAV ===== -->
+<nav>
+  <button class="active" onclick="showSection('s1', this)">① 比較・解説</button>
+  <button onclick="showSection('s2', this)">② 変換練習</button>
+  <button onclick="showSection('s3', this)">③ ロールプレイ</button>
+  <button onclick="showSection('s4', this)">④ おさらい</button>
+</nav>
+
+<!-- ===== MAIN ===== -->
+<main>
+
+<!-- ======================================
+     ① 比較・解説
+     ====================================== -->
+<div id="s1" class="section active">
+
+  <!-- 挨拶比較 -->
+  <div class="section-header">
+    <h2>① 日常会話 vs. ビジネス会話 ― 挨拶</h2>
+    <div class="eng">Daily vs. Business Expressions — Greetings</div>
+  </div>
+  <div class="section-body">
+    <h3>場面別・挨拶の比較</h3>
+    <div class="table-wrap">
+      <table>
+        <tr>
+          <th>場面</th>
+          <th>日常会話 <span style="font-weight:normal;opacity:0.8;">(Casual)</span></th>
+          <th>ビジネス表現 <span style="font-weight:normal;opacity:0.8;">(Business)</span></th>
+        </tr>
+        <tr><td>初対面</td><td class="daily">よろしく</td><td class="biz">はじめまして。○○と申します。どうぞよろしくお願いいたします。</td></tr>
+        <tr><td>2回目以降の挨拶</td><td class="daily">また！ / こんにちは</td><td class="biz">お世話になっております。</td></tr>
+        <tr><td>久しぶりに会う</td><td class="daily">久しぶり！</td><td class="biz">ご無沙汰しております。</td></tr>
+        <tr><td>仕事中のすれ違い</td><td class="daily">お疲れ</td><td class="biz">お疲れ様です。</td></tr>
+        <tr><td>先に帰るとき</td><td class="daily">もう帰るね</td><td class="biz">お先に失礼します。</td></tr>
+        <tr><td>相手が帰るとき</td><td class="daily">またね</td><td class="biz">お疲れ様でした。お気をつけて。</td></tr>
+        <tr><td>前回のお礼</td><td class="daily">この前はありがとう</td><td class="biz">先日はありがとうございました。</td></tr>
+      </table>
+    </div>
+
+    <div class="point-box">
+      <strong>📌 ポイント</strong>
+      <ul>
+        <li>「<strong>お世話になっております</strong>」は2回目以降の万能フレーズ</li>
+        <li>お辞儀は <strong>15〜30度</strong> が基本（深いほど丁寧）</li>
+        <li>相手より <strong>先に挨拶する</strong> のがマナー</li>
+        <li>日常語をそのままビジネスで使わないよう注意！</li>
+      </ul>
+    </div>
+
+    <!-- 自己紹介フレーズ -->
+    <h3>自己紹介フレーズの比較</h3>
+    <div class="table-wrap">
+      <table>
+        <tr>
+          <th>内容</th>
+          <th>日常表現</th>
+          <th>ビジネス表現</th>
+        </tr>
+        <tr><td>名前を言う</td><td class="daily">〜です（山田です）</td><td class="biz">〜と申します</td></tr>
+        <tr><td>所属を伝える</td><td class="daily">〜の〜です</td><td class="biz">〜の〜と申します</td></tr>
+        <tr><td>出身を伝える</td><td class="daily">タイから来ました</td><td class="biz">タイから参りました</td></tr>
+        <tr><td>勉強中であることを伝える</td><td class="daily">日本語を勉強しています</td><td class="biz">日本語を勉強しております</td></tr>
+        <tr><td>謙遜する</td><td class="daily">まだ下手です</td><td class="biz">まだ不慣れな点もございます</td></tr>
+        <tr><td>締めの言葉</td><td class="daily">よろしく</td><td class="biz">どうぞよろしくお願いいたします</td></tr>
+      </table>
+    </div>
+
+    <!-- 語彙比較 -->
+    <h3>語彙の比較（日常語 → ビジネス語）</h3>
+    <p style="color:var(--gray);font-size:0.9rem;margin-bottom:10px;">同じ意味でも、日常とビジネスでは言い方が違います。</p>
+    <div class="table-wrap">
+      <table>
+        <tr>
+          <th>意味</th>
+          <th>日常会話</th>
+          <th>ビジネス</th>
+        </tr>
+        <tr><td>ありがとう</td><td class="daily">ありがとう</td><td class="biz">ありがとうございます／恐れ入ります</td></tr>
+        <tr><td>ごめんなさい</td><td class="daily">ごめん／ごめんなさい</td><td class="biz">申し訳ございません</td></tr>
+        <tr><td>わかりました</td><td class="daily">わかった／わかりました</td><td class="biz">承知いたしました／かしこまりました</td></tr>
+        <tr><td>どうぞ</td><td class="daily">どうぞ</td><td class="biz">よろしければどうぞ</td></tr>
+        <tr><td>来ます</td><td class="daily">来ます</td><td class="biz">参ります</td></tr>
+        <tr><td>行きます</td><td class="daily">行きます</td><td class="biz">伺います（相手の場所へ）／参ります</td></tr>
+        <tr><td>います</td><td class="daily">います</td><td class="biz">おります</td></tr>
+        <tr><td>もらいます</td><td class="daily">もらいます</td><td class="biz">頂戴いたします／いただきます</td></tr>
+        <tr><td>見ます</td><td class="daily">見ます</td><td class="biz">拝見します</td></tr>
+        <tr><td>言います</td><td class="daily">言います</td><td class="biz">申します</td></tr>
+        <tr><td>知っています</td><td class="daily">知っています</td><td class="biz">存じております</td></tr>
+        <tr><td>知りません</td><td class="daily">知りません</td><td class="biz">存じません</td></tr>
+        <tr><td>少し待ってください</td><td class="daily">ちょっと待って</td><td class="biz">少々お待ちくださいませ</td></tr>
+        <tr><td>どうですか？</td><td class="daily">どうですか？</td><td class="biz">いかがでしょうか？</td></tr>
+        <tr><td>できません</td><td class="daily">できません</td><td class="biz">いたしかねます</td></tr>
+      </table>
+    </div>
+
+    <div class="meishi-box">
+      <strong>🪪 名刺交換のとき</strong>
+      <ul>
+        <li>渡すとき：「<strong>よろしくお願いいたします。</strong>」</li>
+        <li>もらうとき：「<strong>頂戴いたします。</strong>」</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+
+<!-- ======================================
+     ② 変換練習
+     ====================================== -->
+<div id="s2" class="section">
+  <div class="section-header">
+    <h2>② 変換練習</h2>
+    <div class="eng">Conversion Practice — Daily → Business</div>
+  </div>
+  <div class="section-body">
+
+    <!-- 練習1 -->
+    <h3>練習１：穴埋め練習</h3>
+    <p style="margin-bottom:14px;color:var(--gray);font-size:0.95rem;">（　）に適切なビジネス表現を入れましょう。</p>
+
+    <div class="practice-item">
+      <div class="q">1. 「ごめんなさい」 →「<span class="blank long">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>ございません。」</div>
+      <div class="q">2. 「ちょっと待って」 → 「<span class="blank">&nbsp;&nbsp;&nbsp;&nbsp;</span>お待ちくださいませ。」</div>
+      <div class="q">3. 「来ます」 → 「<span class="blank">&nbsp;&nbsp;&nbsp;&nbsp;</span>ます。」</div>
+      <div class="q">4. 「知りません」 → 「<span class="blank">&nbsp;&nbsp;&nbsp;&nbsp;</span>ません。」</div>
+      <div class="q">5. 「見ます」 → 「<span class="blank">&nbsp;&nbsp;&nbsp;&nbsp;</span>します。」</div>
+      <button class="answer-btn" onclick="toggleAnswer(this)">答えを見る ▼</button>
+      <div class="answer-area">
+        <strong>✅ 答え</strong>
+        <ol>
+          <li>申し訳</li>
+          <li>少々</li>
+          <li>参り</li>
+          <li>存じ</li>
+          <li>拝見</li>
+        </ol>
+      </div>
+    </div>
+
+    <!-- 練習2 -->
+    <h3>練習２：文変換練習</h3>
+    <p style="margin-bottom:14px;color:var(--gray);font-size:0.95rem;">日常会話をビジネス表現に直しましょう。</p>
+
+    <div class="practice-item">
+      <div class="q">
+        1. 「山田です。よろしく。」<br>
+        → 「山田と<span class="blank">&nbsp;①&nbsp;</span>します。どうぞよろしくお<span class="blank">&nbsp;②&nbsp;</span>いたします。」
+      </div>
+      <div class="q" style="margin-top:10px;">
+        2. 「また会ったね。」<br>
+        → 「<span class="blank long">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>。」
+      </div>
+      <div class="q" style="margin-top:10px;">
+        3. 「もう帰るね。またね。」<br>
+        → 「お<span class="blank">&nbsp;①&nbsp;</span>に<span class="blank">&nbsp;②&nbsp;</span>します。」 ／ 「お<span class="blank">&nbsp;③&nbsp;</span>様でした。お気をつけて。」
+      </div>
+      <button class="answer-btn" onclick="toggleAnswer(this)">答えを見る ▼</button>
+      <div class="answer-area">
+        <strong>✅ 答え</strong>
+        <ol>
+          <li>①申・②願い → 「山田と<strong>申</strong>します。どうぞよろしくお<strong>願い</strong>いたします。」</li>
+          <li>「<strong>お世話になっております。</strong>」</li>
+          <li>①先・②失礼 → 「お<strong>先</strong>に<strong>失礼</strong>します。」　③疲れ → 「お<strong>疲れ</strong>様でした。」</li>
+        </ol>
+      </div>
+    </div>
+
+    <!-- 練習3 -->
+    <h3>練習３：自己紹介スピーチ</h3>
+    <p style="margin-bottom:12px;color:var(--gray);font-size:0.95rem;">テンプレートを使って自己紹介をしましょう。</p>
+
+    <div class="template-box">はじめまして。（名前）と申します。
+（出身地）から参りました。
+現在、（仕事／勉強）をしております。
+まだ不慣れな点もございますが、どうぞよろしくお願いいたします。</div>
+
+    <p style="color:var(--green);font-weight:bold;margin-bottom:8px;">例文</p>
+    <div class="example-box">はじめまして。ソムチャイと申します。
+タイのバンコクから参りました。
+現在、日本語を勉強しております。
+まだ不慣れな点もございますが、どうぞよろしくお願いいたします。</div>
+  </div>
+</div>
+
+
+<!-- ======================================
+     ③ ロールプレイ
+     ====================================== -->
+<div id="s3" class="section">
+  <div class="section-header">
+    <h2>③ ロールプレイ</h2>
+    <div class="eng">Role Play — Business Conversation Practice</div>
+  </div>
+  <div class="section-body">
+    <p style="color:var(--gray);font-size:0.92rem;margin-bottom:16px;">
+      登場人物：<strong style="color:var(--primary);">田中さん</strong>（日本人）・<strong style="color:var(--green);">ソムチャイさん</strong>（タイ人・日本語学習中）
+    </p>
+
+    <!-- シーン1 -->
+    <div class="scene-card">
+      <div class="scene-title">シーン① 初対面 ― ビジネスイベントにて</div>
+      <div class="scene-body">
+        <div class="dialog"><span class="speaker">田中：</span><span class="line">はじめまして。田中と申します。よろしくお願いいたします。</span></div>
+        <div class="dialog"><span class="speaker thai">ソムチャイ：</span><span class="line">はじめまして。ソムチャイと申します。タイから参りました。日本語を勉強中ですので、よろしくお願いいたします。</span></div>
+        <div class="dialog"><span class="speaker">田中：</span><span class="line">そうですか！日本語、お上手ですね。</span></div>
+        <div class="dialog"><span class="speaker thai">ソムチャイ：</span><span class="line">ありがとうございます。まだまだです。</span></div>
+        <div class="dialog"><span class="speaker">田中：</span><span class="line">いえいえ。何かあれば、気軽に声をかけてください。</span></div>
+        <div class="dialog"><span class="speaker thai">ソムチャイ：</span><span class="line">ありがとうございます。よろしくお願いします。</span></div>
+      </div>
+    </div>
+
+    <!-- シーン2 -->
+    <div class="scene-card">
+      <div class="scene-title">シーン② 2回目の出会い ― 社内・廊下にて</div>
+      <div class="scene-body">
+        <div class="dialog"><span class="speaker">田中：</span><span class="line">あ、ソムチャイさん、お世話になっております。</span></div>
+        <div class="dialog"><span class="speaker thai">ソムチャイ：</span><span class="line">田中さん、お世話になっております。先日はありがとうございました。</span></div>
+        <div class="dialog"><span class="speaker">田中：</span><span class="line">こちらこそ。最近、日本語の調子はどうですか？</span></div>
+        <div class="dialog"><span class="speaker thai">ソムチャイ：</span><span class="line">少しずつ、上手になっていると思います（笑）</span></div>
+        <div class="dialog"><span class="speaker">田中：</span><span class="line">それは良かった。また何かあれば、いつでもどうぞ。</span></div>
+        <div class="dialog"><span class="speaker thai">ソムチャイ：</span><span class="line">はい、ありがとうございます。よろしくお願いします。</span></div>
+      </div>
+    </div>
+
+    <!-- シーン3 -->
+    <div class="scene-card">
+      <div class="scene-title">シーン③ 社内ですれ違うとき</div>
+      <div class="scene-body">
+        <div class="dialog"><span class="speaker">田中：</span><span class="line">ソムチャイさん、お疲れ様です。</span></div>
+        <div class="dialog"><span class="speaker thai">ソムチャイ：</span><span class="line">田中さん、お疲れ様です。</span></div>
+      </div>
+    </div>
+
+    <!-- シーン4 -->
+    <div class="scene-card">
+      <div class="scene-title">シーン④ 帰るとき・仕事が終わったとき</div>
+      <div class="scene-body">
+        <div class="dialog"><span class="speaker">田中：</span><span class="line">お先に失礼します。</span></div>
+        <div class="dialog"><span class="speaker thai">ソムチャイ：</span><span class="line">お疲れ様でした。お気をつけて。</span></div>
+        <div style="border-top:1px solid #e0e0e0;margin:12px 0;"></div>
+        <div class="dialog"><span class="speaker thai">ソムチャイ：</span><span class="line">田中さん、お疲れ様でした。お先に失礼します。</span></div>
+        <div class="dialog"><span class="speaker">田中：</span><span class="line">お疲れ様でした。またね。</span></div>
+      </div>
+    </div>
+
+    <!-- 返し言葉 -->
+    <h3>よく使う返し言葉</h3>
+    <div class="table-wrap">
+      <table>
+        <tr>
+          <th>相手の言葉</th>
+          <th>返し方</th>
+        </tr>
+        <tr><td>「日本語、お上手ですね。」</td><td class="biz">ありがとうございます。まだまだです。</td></tr>
+        <tr><td>「どうぞよろしく。」</td><td class="biz">こちらこそ、よろしくお願いいたします。</td></tr>
+        <tr><td>「先日はありがとう。」</td><td class="biz">こちらこそ、ありがとうございました。</td></tr>
+        <tr><td>「お疲れ様です。」</td><td class="biz">お疲れ様です。</td></tr>
+        <tr><td>「お先に失礼します。」</td><td class="biz">お疲れ様でした。お気をつけて。</td></tr>
+      </table>
+    </div>
+  </div>
+</div>
+
+
+<!-- ======================================
+     ④ おさらい
+     ====================================== -->
+<div id="s4" class="section">
+  <div class="section-header">
+    <h2>④ おさらい</h2>
+    <div class="eng">Review — Key Phrases</div>
+  </div>
+  <div class="section-body">
+
+    <h3>重要フレーズ一覧</h3>
+    <div class="table-wrap">
+      <table>
+        <tr>
+          <th>フレーズ</th>
+          <th>場面</th>
+        </tr>
+        <tr><td class="biz">はじめまして。○○と申します。</td><td>初対面の自己紹介</td></tr>
+        <tr><td class="biz">どうぞよろしくお願いいたします。</td><td>自己紹介の締め</td></tr>
+        <tr><td class="biz">お世話になっております。</td><td>2回目以降のビジネス挨拶</td></tr>
+        <tr><td class="biz">ご無沙汰しております。</td><td>久しぶりに会ったとき</td></tr>
+        <tr><td class="biz">先日はありがとうございました。</td><td>前回のお礼</td></tr>
+        <tr><td class="biz">お疲れ様です。</td><td>仕事中のすれ違い</td></tr>
+        <tr><td class="biz">お先に失礼します。</td><td>退社・先に帰るとき</td></tr>
+      </table>
+    </div>
+
+    <h3 style="margin-top:24px;">「お疲れ様」の使い分け</h3>
+    <div class="table-wrap">
+      <table>
+        <tr>
+          <th>フレーズ</th>
+          <th>使うタイミング</th>
+        </tr>
+        <tr><td class="biz">お疲れ様です</td><td>仕事中に同僚・上司と会ったとき</td></tr>
+        <tr><td class="biz">お疲れ様でした</td><td>仕事が終わったとき・相手が帰るとき</td></tr>
+      </table>
+    </div>
+
+    <div class="warn-box">
+      ⚠️ 「ご苦労様」は上司が部下に使う言葉です。目上の人には <strong>使わないこと！</strong>
+    </div>
+
+    <!-- 語彙クイックリファレンス -->
+    <h3 style="margin-top:24px;">語彙クイックリファレンス</h3>
+    <div class="table-wrap">
+      <table>
+        <tr>
+          <th>日常語</th>
+          <th>ビジネス語</th>
+        </tr>
+        <tr><td class="daily">ごめん</td><td class="biz">申し訳ございません</td></tr>
+        <tr><td class="daily">わかった</td><td class="biz">承知いたしました／かしこまりました</td></tr>
+        <tr><td class="daily">来ます</td><td class="biz">参ります</td></tr>
+        <tr><td class="daily">行きます</td><td class="biz">伺います／参ります</td></tr>
+        <tr><td class="daily">見ます</td><td class="biz">拝見します</td></tr>
+        <tr><td class="daily">言います</td><td class="biz">申します</td></tr>
+        <tr><td class="daily">知りません</td><td class="biz">存じません</td></tr>
+        <tr><td class="daily">ちょっと待って</td><td class="biz">少々お待ちくださいませ</td></tr>
+        <tr><td class="daily">できません</td><td class="biz">いたしかねます</td></tr>
+      </table>
+    </div>
+  </div>
+</div>
+
+</main>
+
+<!-- ===== SCRIPTS ===== -->
+<script>
+  // --- Section Navigation ---
+  function showSection(id, btn) {
+    document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+    document.querySelectorAll('nav button').forEach(b => b.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+    btn.classList.add('active');
+  }
+
+  // --- Answer Toggle ---
+  function toggleAnswer(btn) {
+    const area = btn.nextElementSibling;
+    area.classList.toggle('open');
+    btn.textContent = area.classList.contains('open') ? '答えを隠す ▲' : '答えを見る ▼';
+  }
+</script>
+
+</body>
+</html>

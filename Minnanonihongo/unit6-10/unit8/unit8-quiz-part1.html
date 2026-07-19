@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+
+<html lang="ja">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport"/>
+<title>みんなの日本語 8 クイズ（パート1・15分・20問）</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;-webkit-tap-highlight-color:transparent}
+body{font-family:'Hiragino Kaku Gothic ProN','Hiragino Sans','Noto Sans JP',Meiryo,sans-serif;background:#f0f4f8;color:#1a202c;line-height:1.7;padding:env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left)}
+.container{max-width:800px;margin:0 auto;padding:20px}
+header{background:linear-gradient(135deg,#2b6cb0 0%,#2c5282 100%);color:#fff;padding:24px;border-radius:16px;margin-bottom:24px;text-align:center;position:sticky;top:0;z-index:100;box-shadow:0 4px 15px rgba(43,108,176,.4)}
+header h1{font-size:1.45em;margin-bottom:4px}
+.header-info{display:flex;justify-content:center;gap:24px;align-items:center;margin-top:8px;flex-wrap:wrap}
+.timer{font-size:1.8em;font-weight:bold;font-variant-numeric:tabular-nums}
+.timer.warning{color:#ffd700;animation:pulse 1s infinite}
+.timer.danger{color:#ff4757;animation:pulse .5s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.6}}
+.progress-bar{width:200px;height:8px;background:rgba(255,255,255,.3);border-radius:4px;overflow:hidden}
+.progress-fill{height:100%;background:#fff;border-radius:4px;transition:width .3s}
+.score-badge{background:rgba(255,255,255,.2);padding:4px 12px;border-radius:20px;font-size:.9em}
+.section{background:#fff;border-radius:12px;padding:24px;margin-bottom:20px;box-shadow:0 2px 8px rgba(0,0,0,.06)}
+.section-title{font-size:1.1em;font-weight:bold;color:#2b6cb0;border-left:4px solid #2b6cb0;padding-left:12px;margin-bottom:16px}
+.section-lead{font-size:1.05em;font-weight:500;color:#2d3748;line-height:1.65;margin-bottom:18px}
+.question{padding:16px 0;border-bottom:1px solid #e2e8f0}
+.question:last-child{border-bottom:none}
+.q-num{display:inline-block;background:#2b6cb0;color:#fff;width:28px;height:28px;text-align:center;line-height:28px;border-radius:50%;font-size:.85em;font-weight:bold;margin-right:8px}
+.q-text{font-size:1.05em;margin-bottom:12px;font-weight:500}
+.options{display:grid;grid-template-columns:1fr 1fr;gap:8px;align-items:stretch}
+@media(max-width:600px){.options{grid-template-columns:1fr}}
+.option{position:relative;display:flex;min-height:0}
+.option input{display:none}
+.option label{flex:1;display:flex;align-items:center;gap:8px;padding:12px 14px;border:2px solid #e2e8f0;border-radius:8px;cursor:pointer;transition:all .2s;font-size:.95em;touch-action:manipulation;-webkit-user-select:none;user-select:none;min-height:48px;width:100%;box-sizing:border-box}
+.option .opt-key{flex:0 0 auto;min-width:1.75em;text-align:right;font-weight:600;font-variant-numeric:tabular-nums;line-height:1.4;align-self:center}
+.option .opt-body{flex:1;min-width:0;line-height:1.65;align-self:center;word-break:break-word}
+.option label:hover{border-color:#2b6cb0;background:#f0f7ff}
+.option input:checked+label{border-color:#2b6cb0;background:#e8f2fc;color:#1a365d;font-weight:600}
+.option.correct label{border-color:#48bb78!important;background:#f0fff4!important;color:#276749!important}
+.option.wrong label{border-color:#fc8181!important;background:#fff5f5!important;color:#9b2c2c!important}
+.btn-submit{display:block;width:100%;min-height:48px;padding:16px;background:linear-gradient(135deg,#2b6cb0 0%,#2c5282 100%);color:#fff;border:none;border-radius:12px;font-size:1.1em;font-weight:bold;cursor:pointer;transition:transform .2s,box-shadow .2s;margin-top:24px;touch-action:manipulation;-webkit-user-select:none;user-select:none}
+.btn-submit:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(43,108,176,.4)}
+.btn-submit:disabled{opacity:.5;cursor:not-allowed;transform:none;box-shadow:none}
+.result-panel{background:#fff;border-radius:16px;padding:32px;text-align:center;box-shadow:0 4px 20px rgba(0,0,0,.1);margin-top:24px;display:none}
+.result-panel h2{font-size:1.8em;margin-bottom:8px}
+.result-score{font-size:3em;font-weight:bold;margin:16px 0}
+.result-score.excellent{color:#48bb78}
+.result-score.good{color:#2b6cb0}
+.result-score.fair{color:#ed8936}
+.result-score.poor{color:#fc8181}
+.result-detail{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:12px;margin-top:20px}
+.result-item{background:#f7fafc;padding:12px;border-radius:8px}
+.result-item .label{font-size:.8em;color:#718096}
+.result-item .value{font-size:1.2em;font-weight:bold}
+.explanation{display:none;margin-top:8px;padding:10px;background:#fffbeb;border-radius:8px;font-size:.9em;border-left:3px solid #f6ad55}
+.explanation.show{display:block}
+ruby{ruby-align:center}
+rt{font-size:.55em;font-weight:400;line-height:1.1}
+.option label ruby rt{font-size:.5em}
+.blank-paren{display:inline-block;color:#c05621;font-weight:700;white-space:nowrap}
+</style>
+</head>
+<body>
+<div class="container">
+<header>
+<h1>みんなの<ruby>日本語<rt>にほんご</rt></ruby> 8 クイズ（パート1・15<ruby>分<rt>ふん</rt></ruby>・20<ruby>問<rt>もん</rt></ruby>）</h1>
+<div class="header-info">
+<div class="timer" id="timer">15:00</div>
+<div class="progress-bar"><div class="progress-fill" id="progress" style="width:100%"></div></div>
+<div class="score-badge" id="scoreBadge"><ruby>全<rt>ぜん</rt></ruby>20<ruby>問<rt>もん</rt></ruby></div>
+</div>
+</header>
+<div class="section">
+<div class="section-title">な形容詞の肯定文（問題 1-4）</div>
+<p class="section-lead">（　）に入る正しいものはどれですか。</p>
+<div class="question"><div class="q-text"><span class="q-num">1</span><ruby>大阪<rt>おおさか</rt></ruby>は　<span class="blank-paren">（　　）</span>　です。</div><div class="options">
+<div class="option"><input id="q1a" name="q1" type="radio" value="1"/><label for="q1a"><span class="opt-key">1.</span><span class="opt-body">にぎやか</span></label></div>
+<div class="option"><input id="q1b" name="q1" type="radio" value="0"/><label for="q1b"><span class="opt-key">2.</span><span class="opt-body">にぎやかな</span></label></div>
+<div class="option"><input id="q1c" name="q1" type="radio" value="0"/><label for="q1c"><span class="opt-key">3.</span><span class="opt-body">にぎやかで</span></label></div>
+<div class="option"><input id="q1d" name="q1" type="radio" value="0"/><label for="q1d"><span class="opt-key">4.</span><span class="opt-body">にぎやかく</span></label></div>
+</div><div class="explanation">✅ 正解：1 — 文末では「にぎやかです」と言います。</div></div>
+<div class="question"><div class="q-text"><span class="q-num">2</span>ワンさんの　<ruby>部屋<rt>へや</rt></ruby>は　<span class="blank-paren">（　　）</span>　です。</div><div class="options">
+<div class="option"><input id="q2a" name="q2" type="radio" value="0"/><label for="q2a"><span class="opt-key">1.</span><span class="opt-body">きれいな</span></label></div>
+<div class="option"><input id="q2b" name="q2" type="radio" value="0"/><label for="q2b"><span class="opt-key">2.</span><span class="opt-body">きれいく</span></label></div>
+<div class="option"><input id="q2c" name="q2" type="radio" value="1"/><label for="q2c"><span class="opt-key">3.</span><span class="opt-body">きれい</span></label></div>
+<div class="option"><input id="q2d" name="q2" type="radio" value="0"/><label for="q2d"><span class="opt-key">4.</span><span class="opt-body">きれいで</span></label></div>
+</div><div class="explanation">✅ 正解：3 — な形容詞は文末で「きれいです」です。</div></div>
+<div class="question"><div class="q-text"><span class="q-num">3</span>ミラーさんは　<span class="blank-paren">（　　）</span>　です。</div><div class="options">
+<div class="option"><input id="q3a" name="q3" type="radio" value="0"/><label for="q3a"><span class="opt-key">1.</span><span class="opt-body"><ruby>親切<rt>しんせつ</rt></ruby>な</span></label></div>
+<div class="option"><input id="q3b" name="q3" type="radio" value="0"/><label for="q3b"><span class="opt-key">2.</span><span class="opt-body"><ruby>親切<rt>しんせつ</rt></ruby>く</span></label></div>
+<div class="option"><input id="q3c" name="q3" type="radio" value="1"/><label for="q3c"><span class="opt-key">3.</span><span class="opt-body"><ruby>親切<rt>しんせつ</rt></ruby></span></label></div>
+<div class="option"><input id="q3d" name="q3" type="radio" value="0"/><label for="q3d"><span class="opt-key">4.</span><span class="opt-body"><ruby>親切<rt>しんせつ</rt></ruby>で</span></label></div>
+</div><div class="explanation">✅ 正解：3 — 文末の形は「親切です」です。</div></div>
+<div class="question"><div class="q-text"><span class="q-num">4</span>この　<ruby>大学<rt>だいがく</rt></ruby>は　<span class="blank-paren">（　　）</span>　ですか。</div><div class="options">
+<div class="option"><input id="q4a" name="q4" type="radio" value="1"/><label for="q4a"><span class="opt-key">1.</span><span class="opt-body"><ruby>有名<rt>ゆうめい</rt></ruby></span></label></div>
+<div class="option"><input id="q4b" name="q4" type="radio" value="0"/><label for="q4b"><span class="opt-key">2.</span><span class="opt-body"><ruby>有名<rt>ゆうめい</rt></ruby>な</span></label></div>
+<div class="option"><input id="q4c" name="q4" type="radio" value="0"/><label for="q4c"><span class="opt-key">3.</span><span class="opt-body"><ruby>有名<rt>ゆうめい</rt></ruby>に</span></label></div>
+<div class="option"><input id="q4d" name="q4" type="radio" value="0"/><label for="q4d"><span class="opt-key">4.</span><span class="opt-body"><ruby>有名<rt>ゆうめい</rt></ruby>で</span></label></div>
+</div><div class="explanation">✅ 正解：1 — 「有名ですか」が正しい形です。</div></div>
+</div>
+<div class="section">
+<div class="section-title">な形容詞の否定文（問題 5-7）</div>
+<p class="section-lead">（　）に入る正しいものはどれですか。</p>
+<div class="question"><div class="q-text"><span class="q-num">5</span>IMCは　<ruby>有名<rt>ゆうめい</rt></ruby>　<span class="blank-paren">（　　）</span>　ありません。</div><div class="options">
+<div class="option"><input id="q5a" name="q5" type="radio" value="0"/><label for="q5a"><span class="opt-key">1.</span><span class="opt-body">じゃ</span></label></div>
+<div class="option"><input id="q5b" name="q5" type="radio" value="0"/><label for="q5b"><span class="opt-key">2.</span><span class="opt-body">では</span></label></div>
+<div class="option"><input id="q5c" name="q5" type="radio" value="1"/><label for="q5c"><span class="opt-key">3.</span><span class="opt-body">じゃ・では<ruby>両方<rt>りょうほう</rt></ruby><ruby>正<rt>ただ</rt></ruby>しい</span></label></div>
+<div class="option"><input id="q5d" name="q5" type="radio" value="0"/><label for="q5d"><span class="opt-key">4.</span><span class="opt-body">くない</span></label></div>
+</div><div class="explanation">✅ 正解：3 — 「有名じゃありません」「有名ではありません」の両方が使えます。</div></div>
+<div class="question"><div class="q-text"><span class="q-num">6</span><ruby>大学<rt>だいがく</rt></ruby>の　<ruby>寮<rt>りょう</rt></ruby>は　<ruby>便利<rt>べんり</rt></ruby>　<span class="blank-paren">（　　）</span>。</div><div class="options">
+<div class="option"><input id="q6a" name="q6" type="radio" value="0"/><label for="q6a"><span class="opt-key">1.</span><span class="opt-body">じゃ　ありません</span></label></div>
+<div class="option"><input id="q6b" name="q6" type="radio" value="0"/><label for="q6b"><span class="opt-key">2.</span><span class="opt-body">くないです</span></label></div>
+<div class="option"><input id="q6c" name="q6" type="radio" value="0"/><label for="q6c"><span class="opt-key">3.</span><span class="opt-body">ではないです</span></label></div>
+<div class="option"><input id="q6d" name="q6" type="radio" value="1"/><label for="q6d"><span class="opt-key">4.</span><span class="opt-body">a と c <ruby>両方<rt>りょうほう</rt></ruby><ruby>正<rt>ただ</rt></ruby>しい</span></label></div>
+</div><div class="explanation">✅ 正解：4 — な形容詞の否定は「じゃありません」と「ではないです」の両方が使えます。</div></div>
+<div class="question"><div class="q-text"><span class="q-num">7</span>あした　<ruby>暇<rt>ひま</rt></ruby>　<span class="blank-paren">（　　）</span>。</div><div class="options">
+<div class="option"><input id="q7a" name="q7" type="radio" value="0"/><label for="q7a"><span class="opt-key">1.</span><span class="opt-body">じゃ　ありません</span></label></div>
+<div class="option"><input id="q7b" name="q7" type="radio" value="0"/><label for="q7b"><span class="opt-key">2.</span><span class="opt-body">くないです</span></label></div>
+<div class="option"><input id="q7c" name="q7" type="radio" value="0"/><label for="q7c"><span class="opt-key">3.</span><span class="opt-body">ではないです</span></label></div>
+<div class="option"><input id="q7d" name="q7" type="radio" value="1"/><label for="q7d"><span class="opt-key">4.</span><span class="opt-body">a と c <ruby>両方<rt>りょうほう</rt></ruby><ruby>正<rt>ただ</rt></ruby>しい</span></label></div>
+</div><div class="explanation">✅ 正解：4 — 「暇じゃありません」と「暇ではないです」が正しいです。</div></div>
+</div>
+<div class="section">
+<div class="section-title">い形容詞の肯定文・否定文（問題 8-11）</div>
+<p class="section-lead">（　）に入る正しいものはどれですか。</p>
+<div class="question"><div class="q-text"><span class="q-num">8</span><ruby>富士山<rt>ふじさん</rt></ruby>は　<span class="blank-paren">（　　）</span>　です。</div><div class="options">
+<div class="option"><input id="q8a" name="q8" type="radio" value="0"/><label for="q8a"><span class="opt-key">1.</span><span class="opt-body"><ruby>高<rt>たか</rt></ruby>く</span></label></div>
+<div class="option"><input id="q8b" name="q8" type="radio" value="1"/><label for="q8b"><span class="opt-key">2.</span><span class="opt-body"><ruby>高<rt>たか</rt></ruby>い</span></label></div>
+<div class="option"><input id="q8c" name="q8" type="radio" value="0"/><label for="q8c"><span class="opt-key">3.</span><span class="opt-body"><ruby>高<rt>たか</rt></ruby>な</span></label></div>
+<div class="option"><input id="q8d" name="q8" type="radio" value="0"/><label for="q8d"><span class="opt-key">4.</span><span class="opt-body"><ruby>高<rt>たか</rt></ruby>で</span></label></div>
+</div><div class="explanation">✅ 正解：2 — い形容詞はそのまま「高いです」と言います。</div></div>
+<div class="question"><div class="q-text"><span class="q-num">9</span><ruby>日本語<rt>にほんご</rt></ruby>は　<ruby>難<rt>むずか</rt></ruby>しく　<span class="blank-paren">（　　）</span>。</div><div class="options">
+<div class="option"><input id="q9a" name="q9" type="radio" value="0"/><label for="q9a"><span class="opt-key">1.</span><span class="opt-body">ありません</span></label></div>
+<div class="option"><input id="q9b" name="q9" type="radio" value="0"/><label for="q9b"><span class="opt-key">2.</span><span class="opt-body">ないです</span></label></div>
+<div class="option"><input id="q9c" name="q9" type="radio" value="0"/><label for="q9c"><span class="opt-key">3.</span><span class="opt-body">じゃ　ありません</span></label></div>
+<div class="option"><input id="q9d" name="q9" type="radio" value="1"/><label for="q9d"><span class="opt-key">4.</span><span class="opt-body">a と b <ruby>両方<rt>りょうほう</rt></ruby><ruby>正<rt>ただ</rt></ruby>しい</span></label></div>
+</div><div class="explanation">✅ 正解：4 — い形容詞の否定は「難しくありません」「難しくないです」の両方が使えます。</div></div>
+<div class="question"><div class="q-text"><span class="q-num">10</span>この　お<ruby>茶<rt>ちゃ</rt></ruby>は　あまり　<ruby>熱<rt>あつ</rt></ruby>く　<span class="blank-paren">（　　）</span>。</div><div class="options">
+<div class="option"><input id="q10a" name="q10" type="radio" value="0"/><label for="q10a"><span class="opt-key">1.</span><span class="opt-body">ありません</span></label></div>
+<div class="option"><input id="q10b" name="q10" type="radio" value="0"/><label for="q10b"><span class="opt-key">2.</span><span class="opt-body">ないです</span></label></div>
+<div class="option"><input id="q10c" name="q10" type="radio" value="0"/><label for="q10c"><span class="opt-key">3.</span><span class="opt-body">じゃ　ありません</span></label></div>
+<div class="option"><input id="q10d" name="q10" type="radio" value="1"/><label for="q10d"><span class="opt-key">4.</span><span class="opt-body">a と b <ruby>両方<rt>りょうほう</rt></ruby><ruby>正<rt>ただ</rt></ruby>しい</span></label></div>
+</div><div class="explanation">✅ 正解：4 — 「あまり」は否定といっしょに使い、「熱くありません」「熱くないです」が自然です。</div></div>
+<div class="question"><div class="q-text"><span class="q-num">11</span>「いい」の<ruby>否定<rt>ひてい</rt></ruby><ruby>形<rt>かたち</rt></ruby>として<ruby>正<rt>ただ</rt></ruby>しいものはどれですか。</div><div class="options">
+<div class="option"><input id="q11a" name="q11" type="radio" value="0"/><label for="q11a"><span class="opt-key">1.</span><span class="opt-body">いくないです</span></label></div>
+<div class="option"><input id="q11b" name="q11" type="radio" value="0"/><label for="q11b"><span class="opt-key">2.</span><span class="opt-body">いいじゃ　ありません</span></label></div>
+<div class="option"><input id="q11c" name="q11" type="radio" value="1"/><label for="q11c"><span class="opt-key">3.</span><span class="opt-body">よくないです</span></label></div>
+<div class="option"><input id="q11d" name="q11" type="radio" value="0"/><label for="q11d"><span class="opt-key">4.</span><span class="opt-body">いいくないです</span></label></div>
+</div><div class="explanation">✅ 正解：3 — 「いい」の否定は特別で「よくないです」です。</div></div>
+</div>
+<div class="section">
+<div class="section-title">い形容詞の活用変換（問題 12-14）</div>
+<p class="section-lead">活用形として正しいものはどれですか。</p>
+<div class="question"><div class="q-text"><span class="q-num">12</span>「<ruby>高<rt>たか</rt></ruby>い」→ <ruby>否定<rt>ひてい</rt></ruby><ruby>形<rt>かたち</rt></ruby></div><div class="options">
+<div class="option"><input id="q12a" name="q12" type="radio" value="1"/><label for="q12a"><span class="opt-key">1.</span><span class="opt-body"><ruby>高<rt>たか</rt></ruby>くないです</span></label></div>
+<div class="option"><input id="q12b" name="q12" type="radio" value="0"/><label for="q12b"><span class="opt-key">2.</span><span class="opt-body"><ruby>高<rt>たか</rt></ruby>なくないです</span></label></div>
+<div class="option"><input id="q12c" name="q12" type="radio" value="0"/><label for="q12c"><span class="opt-key">3.</span><span class="opt-body"><ruby>高<rt>こう</rt></ruby>じゃ　ありません</span></label></div>
+<div class="option"><input id="q12d" name="q12" type="radio" value="0"/><label for="q12d"><span class="opt-key">4.</span><span class="opt-body"><ruby>高<rt>たか</rt></ruby>いじゃ　ありません</span></label></div>
+</div><div class="explanation">✅ 正解：1 — い形容詞は「い」を「く」に変えて否定を作ります。</div></div>
+<div class="question"><div class="q-text"><span class="q-num">13</span>「おいしい」→ <ruby>否定<rt>ひてい</rt></ruby><ruby>形<rt>かたち</rt></ruby></div><div class="options">
+<div class="option"><input id="q13a" name="q13" type="radio" value="0"/><label for="q13a"><span class="opt-key">1.</span><span class="opt-body">おいしなくないです</span></label></div>
+<div class="option"><input id="q13b" name="q13" type="radio" value="1"/><label for="q13b"><span class="opt-key">2.</span><span class="opt-body">おいしくないです</span></label></div>
+<div class="option"><input id="q13c" name="q13" type="radio" value="0"/><label for="q13c"><span class="opt-key">3.</span><span class="opt-body">おいしじゃ　ありません</span></label></div>
+<div class="option"><input id="q13d" name="q13" type="radio" value="0"/><label for="q13d"><span class="opt-key">4.</span><span class="opt-body">おいしいくないです</span></label></div>
+</div><div class="explanation">✅ 正解：2 — 正しい否定形は「おいしくないです」です。</div></div>
+<div class="question"><div class="q-text"><span class="q-num">14</span>「いい」→ <ruby>否定<rt>ひてい</rt></ruby><ruby>形<rt>かたち</rt></ruby></div><div class="options">
+<div class="option"><input id="q14a" name="q14" type="radio" value="0"/><label for="q14a"><span class="opt-key">1.</span><span class="opt-body">いくないです</span></label></div>
+<div class="option"><input id="q14b" name="q14" type="radio" value="0"/><label for="q14b"><span class="opt-key">2.</span><span class="opt-body">いいじゃ　ありません</span></label></div>
+<div class="option"><input id="q14c" name="q14" type="radio" value="1"/><label for="q14c"><span class="opt-key">3.</span><span class="opt-body">よくないです</span></label></div>
+<div class="option"><input id="q14d" name="q14" type="radio" value="0"/><label for="q14d"><span class="opt-key">4.</span><span class="opt-body">いいくないです</span></label></div>
+</div><div class="explanation">✅ 正解：3 — 「いい」は活用すると「よい」と同じ形になります。</div></div>
+</div>
+<div class="section">
+<div class="section-title">な形容詞の連体修飾（問題 15-17）</div>
+<p class="section-lead">（　）に入る正しいものはどれですか。</p>
+<div class="question"><div class="q-text"><span class="q-num">15</span><ruby>奈良<rt>なら</rt></ruby>は　<ruby>静<rt>しず</rt></ruby>か<span class="blank-paren">（　）</span>　<ruby>町<rt>まち</rt></ruby>です。</div><div class="options">
+<div class="option"><input id="q15a" name="q15" type="radio" value="0"/><label for="q15a"><span class="opt-key">1.</span><span class="opt-body">い</span></label></div>
+<div class="option"><input id="q15b" name="q15" type="radio" value="1"/><label for="q15b"><span class="opt-key">2.</span><span class="opt-body">な</span></label></div>
+<div class="option"><input id="q15c" name="q15" type="radio" value="0"/><label for="q15c"><span class="opt-key">3.</span><span class="opt-body">の</span></label></div>
+<div class="option"><input id="q15d" name="q15" type="radio" value="0"/><label for="q15d"><span class="opt-key">4.</span><span class="opt-body">で</span></label></div>
+</div><div class="explanation">✅ 正解：2 — 名詞の前では「静かな町」です。</div></div>
+<div class="question"><div class="q-text"><span class="q-num">16</span><ruby>神戸<rt>こうべ</rt></ruby><ruby>病院<rt>びょういん</rt></ruby>は　<ruby>有名<rt>ゆうめい</rt></ruby><span class="blank-paren">（　）</span>　<ruby>病院<rt>びょういん</rt></ruby>です。</div><div class="options">
+<div class="option"><input id="q16a" name="q16" type="radio" value="0"/><label for="q16a"><span class="opt-key">1.</span><span class="opt-body">い</span></label></div>
+<div class="option"><input id="q16b" name="q16" type="radio" value="1"/><label for="q16b"><span class="opt-key">2.</span><span class="opt-body">な</span></label></div>
+<div class="option"><input id="q16c" name="q16" type="radio" value="0"/><label for="q16c"><span class="opt-key">3.</span><span class="opt-body">の</span></label></div>
+<div class="option"><input id="q16d" name="q16" type="radio" value="0"/><label for="q16d"><span class="opt-key">4.</span><span class="opt-body">で</span></label></div>
+</div><div class="explanation">✅ 正解：2 — 「有名な病院」が正しい形です。</div></div>
+<div class="question"><div class="q-text"><span class="q-num">17</span>ワット<ruby>先生<rt>せんせい</rt></ruby>は　<span class="blank-paren">（　　）</span>　<ruby>先生<rt>せんせい</rt></ruby>です。</div><div class="options">
+<div class="option"><input id="q17a" name="q17" type="radio" value="0"/><label for="q17a"><span class="opt-key">1.</span><span class="opt-body">いい</span></label></div>
+<div class="option"><input id="q17b" name="q17" type="radio" value="0"/><label for="q17b"><span class="opt-key">2.</span><span class="opt-body">よい</span></label></div>
+<div class="option"><input id="q17c" name="q17" type="radio" value="1"/><label for="q17c"><span class="opt-key">3.</span><span class="opt-body">a と b <ruby>両方<rt>りょうほう</rt></ruby><ruby>正<rt>ただ</rt></ruby>しい</span></label></div>
+<div class="option"><input id="q17d" name="q17" type="radio" value="0"/><label for="q17d"><span class="opt-key">4.</span><span class="opt-body">よくない</span></label></div>
+</div><div class="explanation">✅ 正解：3 — 連体修飾では「いい先生」「よい先生」の両方が使えます。</div></div>
+</div>
+<div class="section">
+<div class="section-title">い形容詞の連体修飾（問題 18-20）</div>
+<p class="section-lead">（　）に入る正しいものはどれですか。</p>
+<div class="question"><div class="q-text"><span class="q-num">18</span><ruby>東京駅<rt>とうきょうえき</rt></ruby>は　<span class="blank-paren">（　　）</span>　<ruby>駅<rt>えき</rt></ruby>です。</div><div class="options">
+<div class="option"><input id="q18a" name="q18" type="radio" value="0"/><label for="q18a"><span class="opt-key">1.</span><span class="opt-body"><ruby>大<rt>おお</rt></ruby>きな</span></label></div>
+<div class="option"><input id="q18b" name="q18" type="radio" value="1"/><label for="q18b"><span class="opt-key">2.</span><span class="opt-body"><ruby>大<rt>おお</rt></ruby>きい</span></label></div>
+<div class="option"><input id="q18c" name="q18" type="radio" value="0"/><label for="q18c"><span class="opt-key">3.</span><span class="opt-body"><ruby>大<rt>おお</rt></ruby>きく</span></label></div>
+<div class="option"><input id="q18d" name="q18" type="radio" value="0"/><label for="q18d"><span class="opt-key">4.</span><span class="opt-body"><ruby>大<rt>おお</rt></ruby>き</span></label></div>
+</div><div class="explanation">✅ 正解：2 — い形容詞は名詞の前でも「大きい駅」です。</div></div>
+<div class="question"><div class="q-text"><span class="q-num">19</span>きのう　<span class="blank-paren">（　　）</span>　<ruby>映画<rt>えいが</rt></ruby>を　<ruby>見<rt>み</rt></ruby>ました。</div><div class="options">
+<div class="option"><input id="q19a" name="q19" type="radio" value="1"/><label for="q19a"><span class="opt-key">1.</span><span class="opt-body">おもしろい</span></label></div>
+<div class="option"><input id="q19b" name="q19" type="radio" value="0"/><label for="q19b"><span class="opt-key">2.</span><span class="opt-body">おもしろな</span></label></div>
+<div class="option"><input id="q19c" name="q19" type="radio" value="0"/><label for="q19c"><span class="opt-key">3.</span><span class="opt-body">おもしろく</span></label></div>
+<div class="option"><input id="q19d" name="q19" type="radio" value="0"/><label for="q19d"><span class="opt-key">4.</span><span class="opt-body">おもしろで</span></label></div>
+</div><div class="explanation">✅ 正解：1 — 名詞の前では「おもしろい映画」です。</div></div>
+<div class="question"><div class="q-text"><span class="q-num">20</span>きれいな　<ruby>花<rt>はな</rt></ruby>を　<ruby>買<rt>か</rt></ruby>いました。<ruby>下線部<rt>かせんぶ</rt></ruby>と<ruby>同<rt>おな</rt></ruby>じ<ruby>使い方<rt>つかいかた</rt></ruby>はどれですか。</div><div class="options" style="grid-template-columns:1fr">
+<div class="option"><input id="q20a" name="q20" type="radio" value="1"/><label for="q20a"><span class="opt-key">1.</span><span class="opt-body"><ruby>富士山<rt>ふじさん</rt></ruby>は　<ruby>高<rt>たか</rt></ruby>い　<ruby>山<rt>やま</rt></ruby>です。</span></label></div>
+<div class="option"><input id="q20b" name="q20" type="radio" value="0"/><label for="q20b"><span class="opt-key">2.</span><span class="opt-body"><ruby>富士山<rt>ふじさん</rt></ruby>は　<ruby>高<rt>たか</rt></ruby>いです。</span></label></div>
+<div class="option"><input id="q20c" name="q20" type="radio" value="0"/><label for="q20c"><span class="opt-key">3.</span><span class="opt-body"><ruby>高<rt>たか</rt></ruby>くないです。</span></label></div>
+<div class="option"><input id="q20d" name="q20" type="radio" value="0"/><label for="q20d"><span class="opt-key">4.</span><span class="opt-body">どんな　<ruby>山<rt>やま</rt></ruby>ですか。</span></label></div>
+</div><div class="explanation">✅ 正解：1 — どちらも形容詞が名詞を修飾しています。</div></div>
+</div>
+<button class="btn-submit" id="submitBtn" onclick="submitTest()"><ruby>採点<rt>さいてん</rt></ruby>する</button>
+<div class="result-panel" id="resultPanel">
+<h2 id="resultTitle"></h2><div class="result-score" id="resultScore"></div>
+<div class="result-detail" id="resultDetail"></div>
+</div>
+</div>
+<script>
+const TOTAL=20,TIME_LIMIT=900;
+let timeLeft=TIME_LIMIT,timerInterval,submitted=false;
+function shuffleAllOptions(){
+function randBelow(n){
+if(n<=1)return 0;
+try{
+if(typeof crypto!=='undefined'&&crypto.getRandomValues){
+const lim=Math.floor(4294967296/n)*n;
+const buf=new Uint32Array(1);
+let x;
+do{crypto.getRandomValues(buf);x=buf[0];}while(x>=lim);
+return x%n;
+}
+}catch(e){}
+return Math.floor(Math.random()*n);
+}
+function fisherYates(arr){
+for(let i=arr.length-1;i>0;i--){
+const j=randBelow(i+1);
+const t=arr[i];arr[i]=arr[j];arr[j]=t;
+}
+}
+function relabel(optsDiv,items,isLetter,prefix){
+items.forEach(function(el){optsDiv.appendChild(el);});
+items.forEach(function(el,idx){
+const inp=el.querySelector('input');
+const lbl=el.querySelector('label');
+if(!inp||!lbl)return;
+const suf=isLetter?String.fromCharCode(97+idx):String(idx+1);
+const newId=prefix+suf;
+inp.id=newId;
+lbl.setAttribute('for',newId);
+const key=el.querySelector('.opt-key');
+if(key)key.textContent=(idx+1)+'.';
+});
+const explain=optsDiv.nextElementSibling;
+if(explain&&explain.classList&&explain.classList.contains('explanation')){
+const correctKeys=Array.from(optsDiv.querySelectorAll('input[value="1"]')).map(function(inp){
+const keyEl=inp.closest('.option').querySelector('.opt-key');
+const mk=keyEl&&keyEl.textContent.match(/^(\d+)\./);
+return mk?mk[1]:'';
+}).filter(Boolean);
+if(correctKeys.length)explain.innerHTML=explain.innerHTML.replace(/正解：[0-9・]+/,'正解：'+correctKeys.join('・'));
+}
+const firstCorrect=items.findIndex(function(el){return el.querySelector('input[value="1"]');});
+return firstCorrect;
+}
+const posCounts=[0,0,0,0];
+document.querySelectorAll('.options').forEach(function(optsDiv){
+const items=Array.prototype.filter.call(optsDiv.children,function(el){
+return el.classList&&el.classList.contains('option');
+});
+const n=items.length;
+if(n<2)return;
+fisherYates(items);
+const sample=optsDiv.querySelector('input');
+if(!sample)return;
+const prefix=sample.name;
+if(!prefix)return;
+const firstInp=items[0].querySelector('input');
+if(!firstInp)return;
+const sid=firstInp.id;
+if(!sid||!sid.startsWith(prefix))return;
+const firstSuffix=sid.slice(prefix.length);
+const isLetter=/^[a-d]$/.test(firstSuffix);
+let slot=relabel(optsDiv,items,isLetter,prefix);
+if(slot<0)return;
+let minC=9999;
+for(let i=0;i<n;i++)minC=Math.min(minC,posCounts[i]);
+const cand=[];
+for(let i=0;i<n;i++)if(posCounts[i]===minC)cand.push(i);
+const ideal=cand[randBelow(cand.length)];
+if(slot!==ideal&&posCounts[slot]>posCounts[ideal]){
+const t=items[slot];items[slot]=items[ideal];items[ideal]=t;
+slot=relabel(optsDiv,items,isLetter,prefix);
+if(slot<0)return;
+}
+posCounts[slot]++;
+});
+}
+try{shuffleAllOptions();}catch(e){}
+function startTimer(){
+timerInterval=setInterval(()=>{
+timeLeft--;
+const m=Math.floor(timeLeft/60),s=timeLeft%60;
+const el=document.getElementById('timer');
+el.textContent=`${m}:${s.toString().padStart(2,'0')}`;
+document.getElementById('progress').style.width=`${(timeLeft/TIME_LIMIT)*100}%`;
+if(timeLeft<=60)el.className='timer danger';
+else if(timeLeft<=300)el.className='timer warning';
+else el.className='timer';
+if(timeLeft<=0){clearInterval(timerInterval);submitTest();}
+},1000);
+}
+function isQuestionCorrect(inputs){
+const checked=inputs.filter(function(inp){return inp.checked;});
+const corrects=inputs.filter(function(inp){return inp.value==='1';});
+if(!checked.length)return false;
+if(checked.length!==corrects.length)return false;
+return checked.every(function(inp){return inp.value==='1';});
+}
+function submitTest(){
+if(submitted)return;submitted=true;
+if(timerInterval)clearInterval(timerInterval);
+let correct=0;
+for(let i=1;i<=TOTAL;i++){
+const opts=Array.from(document.querySelectorAll(`input[name="q${i}"]`));
+if(isQuestionCorrect(opts))correct++;
+opts.forEach(function(o){
+const p=o.parentElement;
+if(o.value==='1')p.classList.add('correct');
+else if(o.checked&&o.value!=='1')p.classList.add('wrong');
+});
+}
+document.querySelectorAll('.explanation').forEach(function(e){e.classList.add('show');});
+const pct=Math.round((correct/TOTAL)*100);
+const panel=document.getElementById('resultPanel');
+const title=document.getElementById('resultTitle');
+const score=document.getElementById('resultScore');
+const detail=document.getElementById('resultDetail');
+panel.style.display='block';
+score.textContent=`${correct} / ${TOTAL}（${pct}%）`;
+if(pct>=90){title.textContent='🎉 すばらしい！';score.className='result-score excellent';}
+else if(pct>=70){title.textContent='👍 よくできました！';score.className='result-score good';}
+else if(pct>=50){title.textContent='📝 もうすこし！';score.className='result-score fair';}
+else{title.textContent='💪 がんばりましょう！';score.className='result-score poor';}
+const timeUsed=TIME_LIMIT-timeLeft;
+detail.innerHTML=`
+<div class="result-item"><div class="label">せいかい</div><div class="value">${correct}/${TOTAL}</div></div>
+<div class="result-item"><div class="label">じかん</div><div class="value">${Math.floor(timeUsed/60)}分${timeUsed%60}秒</div></div>
+`;
+document.getElementById('submitBtn').disabled=true;
+panel.scrollIntoView({behavior:'smooth'});
+}
+startTimer();
+</script>
+</body>
+</html>

@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+
+<html lang="ja">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport"/>
+<title>みんなの日本語 3 パート1（15分・18問）</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;-webkit-tap-highlight-color:transparent}
+body{font-family:'Hiragino Kaku Gothic ProN','Hiragino Sans','Noto Sans JP',Meiryo,sans-serif;background:#f0f4f8;color:#1a202c;line-height:1.7;padding:env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left)}
+.container{max-width:800px;margin:0 auto;padding:20px}
+header{background:linear-gradient(135deg,#2b6cb0 0%,#2c5282 100%);color:#fff;padding:24px;border-radius:16px;margin-bottom:24px;text-align:center;position:sticky;top:0;z-index:100;box-shadow:0 4px 15px rgba(43,108,176,.4)}
+header h1{font-size:1.45em;margin-bottom:4px}
+.header-info{display:flex;justify-content:center;gap:24px;align-items:center;margin-top:8px;flex-wrap:wrap}
+.timer{font-size:1.8em;font-weight:bold;font-variant-numeric:tabular-nums}
+.timer.warning{color:#ffd700;animation:pulse 1s infinite}
+.timer.danger{color:#ff4757;animation:pulse .5s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.6}}
+.progress-bar{width:200px;height:8px;background:rgba(255,255,255,.3);border-radius:4px;overflow:hidden}
+.progress-fill{height:100%;background:#fff;border-radius:4px;transition:width .3s}
+.score-badge{background:rgba(255,255,255,.2);padding:4px 12px;border-radius:20px;font-size:.9em}
+.section{background:#fff;border-radius:12px;padding:24px;margin-bottom:20px;box-shadow:0 2px 8px rgba(0,0,0,.06)}
+.section-title{font-size:1.1em;font-weight:bold;color:#2b6cb0;border-left:4px solid #2b6cb0;padding-left:12px;margin-bottom:16px}
+.section-lead{font-size:1.05em;font-weight:500;color:#2d3748;line-height:1.65;margin-bottom:18px}
+.question{padding:16px 0;border-bottom:1px solid #e2e8f0}
+.question:last-child{border-bottom:none}
+.q-num{display:inline-block;background:#2b6cb0;color:#fff;width:28px;height:28px;text-align:center;line-height:28px;border-radius:50%;font-size:.85em;font-weight:bold;margin-right:8px}
+.q-text{font-size:1.05em;margin-bottom:12px;font-weight:500}
+.options{display:grid;grid-template-columns:1fr 1fr;gap:8px;align-items:stretch}
+@media(max-width:600px){.options{grid-template-columns:1fr}}
+.option{position:relative;display:flex;min-height:0}
+.option input{display:none}
+.option label{flex:1;display:flex;align-items:center;gap:8px;padding:12px 14px;border:2px solid #e2e8f0;border-radius:8px;cursor:pointer;transition:all .2s;font-size:.95em;touch-action:manipulation;-webkit-user-select:none;user-select:none;min-height:48px;width:100%;box-sizing:border-box}
+.option .opt-key{flex:0 0 auto;min-width:1.75em;text-align:right;font-weight:600;font-variant-numeric:tabular-nums;line-height:1.4;align-self:center}
+.option .opt-body{flex:1;min-width:0;line-height:1.65;align-self:center;word-break:break-word}
+.option label:hover{border-color:#2b6cb0;background:#f0f7ff}
+.option input:checked+label{border-color:#2b6cb0;background:#e8f2fc;color:#1a365d;font-weight:600}
+.option.correct label{border-color:#48bb78!important;background:#f0fff4!important;color:#276749!important}
+.option.wrong label{border-color:#fc8181!important;background:#fff5f5!important;color:#9b2c2c!important}
+.dialogue{margin:8px 0 12px;padding:14px 16px;background:#f7fafc;border-left:3px solid #2b6cb0;border-radius:0 8px 8px 0;font-size:1.02em;line-height:1.85}
+.dialogue p{margin:0 0 .55em;padding:0}
+.dialogue p:last-child{margin-bottom:0}
+.dialogue .sp{font-weight:700;color:#2c5282;margin-right:.15em}
+.btn-submit{display:block;width:100%;min-height:48px;padding:16px;background:linear-gradient(135deg,#2b6cb0 0%,#2c5282 100%);color:#fff;border:none;border-radius:12px;font-size:1.1em;font-weight:bold;cursor:pointer;transition:transform .2s,box-shadow .2s;margin-top:24px;touch-action:manipulation;-webkit-user-select:none;user-select:none}
+.btn-submit:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(43,108,176,.4)}
+.btn-submit:disabled{opacity:.5;cursor:not-allowed;transform:none;box-shadow:none}
+.result-panel{background:#fff;border-radius:16px;padding:32px;text-align:center;box-shadow:0 4px 20px rgba(0,0,0,.1);margin-top:24px;display:none}
+.result-panel h2{font-size:1.8em;margin-bottom:8px}
+.result-score{font-size:3em;font-weight:bold;margin:16px 0}
+.result-score.excellent{color:#48bb78}
+.result-score.good{color:#2b6cb0}
+.result-score.fair{color:#ed8936}
+.result-score.poor{color:#fc8181}
+.result-detail{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:12px;margin-top:20px}
+.result-item{background:#f7fafc;padding:12px;border-radius:8px}
+.result-item .label{font-size:.8em;color:#718096}
+.result-item .value{font-size:1.2em;font-weight:bold}
+.explanation{display:none;margin-top:8px;padding:10px;background:#fffbeb;border-radius:8px;font-size:.9em;border-left:3px solid #f6ad55}
+.explanation.show{display:block}
+ruby{ruby-align:center}
+rt{font-size:0.55em;font-weight:400;line-height:1.1}
+.option label ruby rt{font-size:0.5em}
+.blank-paren{display:inline-block;color:#c05621;font-weight:700;white-space:nowrap}
+</style>
+</head>
+<body>
+<div class="container">
+<header>
+<h1>みんなの<ruby>日本語<rt>にほんご</rt></ruby> 3 クイズ（パート1・15<ruby>分<rt>ふん</rt></ruby>・18<ruby>問<rt>もん</rt></ruby>）</h1>
+<div class="header-info">
+<div class="timer" id="timer">15:00</div>
+<div class="progress-bar"><div class="progress-fill" id="progress" style="width:100%"></div></div>
+<div class="score-badge" id="scoreBadge"><ruby>全<rt>ぜん</rt></ruby>18<ruby>問<rt>もん</rt></ruby></div>
+</div>
+</header>
+<!-- Section 1 -->
+<div class="section">
+<div class="section-title">ここ・そこ・あそこ・どこ（<ruby>問題<rt>もんだい</rt></ruby> 1–4）</div>
+<p class="section-lead"><span class="blank-paren">（　　　　）</span>に<ruby>入<rt>はい</rt></ruby>る<ruby>正<rt>ただ</rt></ruby>しいものを<ruby>選<rt>えら</rt></ruby>びましょう。</p>
+<div class="question">
+<div class="q-text"><span class="q-num">1</span><span class="blank-paren">（　　　　）</span>に<ruby>入<rt>はい</rt></ruby>る<ruby>正<rt>ただ</rt></ruby>しいものはどれですか。（<ruby>話<rt>はな</rt></ruby>し<ruby>手<rt>て</rt></ruby>からも<ruby>聞<rt>き</rt></ruby>き<ruby>手<rt>て</rt></ruby>からも<ruby>遠<rt>とお</rt></ruby>い<ruby>場所<rt>ばしょ</rt></ruby>を<ruby>指<rt>さ</rt></ruby>して）</div>
+<div class="dialogue">
+<p><span class="sp">A：</span>「<ruby>会議室<rt>かいぎしつ</rt></ruby>はどこですか。」</p>
+<p><span class="sp">B：</span>「<span class="blank-paren">（　　　　）</span>です。」</p>
+</div>
+<div class="options">
+<div class="option"><input id="q1a" name="q1" type="radio" value="0"/><label for="q1a"><span class="opt-key">1.</span><span class="opt-body">ここ</span></label></div>
+<div class="option"><input id="q1b" name="q1" type="radio" value="0"/><label for="q1b"><span class="opt-key">2.</span><span class="opt-body">そこ</span></label></div>
+<div class="option"><input id="q1c" name="q1" type="radio" value="1"/><label for="q1c"><span class="opt-key">3.</span><span class="opt-body">あそこ</span></label></div>
+<div class="option"><input id="q1d" name="q1" type="radio" value="0"/><label for="q1d"><span class="opt-key">4.</span><span class="opt-body">こちら</span></label></div>
+</div>
+<div class="explanation">✅ 正解：3 — 話し手からも聞き手からも遠い場所は「あそこ」。</div>
+</div>
+<div class="question">
+<div class="q-text"><span class="q-num">2</span><span class="blank-paren">（　　　　）</span>に<ruby>入<rt>はい</rt></ruby>る<ruby>正<rt>ただ</rt></ruby>しいものはどれですか。（<ruby>話<rt>はな</rt></ruby>し<ruby>手<rt>て</rt></ruby>のすぐそばを<ruby>指<rt>さ</rt></ruby>して）</div>
+<div class="dialogue">
+<p>「<ruby>受付<rt>うけつけ</rt></ruby>は<span class="blank-paren">（　　　　）</span>です。」</p>
+</div>
+<div class="options">
+<div class="option"><input id="q2a" name="q2" type="radio" value="0"/><label for="q2a"><span class="opt-key">1.</span><span class="opt-body">あそこ</span></label></div>
+<div class="option"><input id="q2b" name="q2" type="radio" value="0"/><label for="q2b"><span class="opt-key">2.</span><span class="opt-body">そこ</span></label></div>
+<div class="option"><input id="q2c" name="q2" type="radio" value="1"/><label for="q2c"><span class="opt-key">3.</span><span class="opt-body">ここ</span></label></div>
+<div class="option"><input id="q2d" name="q2" type="radio" value="0"/><label for="q2d"><span class="opt-key">4.</span><span class="opt-body">どこ</span></label></div>
+</div>
+<div class="explanation">✅ 正解：3 — 話し手のすぐそばは「ここ」。</div>
+</div>
+<div class="question">
+<div class="q-text"><span class="q-num">3</span><span class="blank-paren">（　　　　）</span>に<ruby>入<rt>はい</rt></ruby>る<ruby>正<rt>ただ</rt></ruby>しいものはどれですか。</div>
+<div class="dialogue">
+<p><span class="sp">A：</span>「<ruby>食堂<rt>しょくどう</rt></ruby>は<span class="blank-paren">（　　　　）</span>ですか。」</p>
+<p><span class="sp">B：</span>「あそこです。」</p>
+</div>
+<div class="options">
+<div class="option"><input id="q3a" name="q3" type="radio" value="0"/><label for="q3a"><span class="opt-key">1.</span><span class="opt-body">だれ</span></label></div>
+<div class="option"><input id="q3b" name="q3" type="radio" value="0"/><label for="q3b"><span class="opt-key">2.</span><span class="opt-body">いつ</span></label></div>
+<div class="option"><input id="q3c" name="q3" type="radio" value="1"/><label for="q3c"><span class="opt-key">3.</span><span class="opt-body">どこ</span></label></div>
+<div class="option"><input id="q3d" name="q3" type="radio" value="0"/><label for="q3d"><span class="opt-key">4.</span><span class="opt-body">いくら</span></label></div>
+</div>
+<div class="explanation">✅ 正解：3 — 場所を尋ねる疑問詞は「どこ」。</div>
+</div>
+<div class="question">
+<div class="q-text"><span class="q-num">4</span><span class="blank-paren">（　　　　）</span>に<ruby>入<rt>はい</rt></ruby>る<ruby>正<rt>ただ</rt></ruby>しいものはどれですか。</div>
+<div class="dialogue">
+<p><span class="sp">A：</span>「<ruby>自動販売機<rt>じどうはんばいき</rt></ruby>は<span class="blank-paren">（　　　　）</span>ですか。」</p>
+<p><span class="sp">B：</span>「2<ruby>階<rt>かい</rt></ruby>です。」</p>
+</div>
+<div class="options">
+<div class="option"><input id="q4a" name="q4" type="radio" value="1"/><label for="q4a"><span class="opt-key">1.</span><span class="opt-body">どこ</span></label></div>
+<div class="option"><input id="q4b" name="q4" type="radio" value="0"/><label for="q4b"><span class="opt-key">2.</span><span class="opt-body">いくら</span></label></div>
+<div class="option"><input id="q4c" name="q4" type="radio" value="0"/><label for="q4c"><span class="opt-key">3.</span><span class="opt-body">なん</span></label></div>
+<div class="option"><input id="q4d" name="q4" type="radio" value="0"/><label for="q4d"><span class="opt-key">4.</span><span class="opt-body">いつ</span></label></div>
+</div>
+<div class="explanation">✅ 正解：1 — 場所を尋ねるので「どこ」。</div>
+</div>
+</div>
+<!-- Section 2 -->
+<div class="section">
+<div class="section-title">こちら・そちら・あちら・どちら（<ruby>問題<rt>もんだい</rt></ruby> 5–7）</div>
+<p class="section-lead"><span class="blank-paren">（　　　　）</span>に<ruby>入<rt>はい</rt></ruby>る<ruby>正<rt>ただ</rt></ruby>しいものを<ruby>選<rt>えら</rt></ruby>びましょう。また、<ruby>使<rt>つか</rt></ruby>い<ruby>方<rt>かた</rt></ruby>を<ruby>選<rt>えら</rt></ruby>ぶ<ruby>問題<rt>もんだい</rt></ruby>もあります。</p>
+<div class="question">
+<div class="q-text"><span class="q-num">5</span><span class="blank-paren">（　　　　）</span>に<ruby>入<rt>はい</rt></ruby>る<ruby>正<rt>ただ</rt></ruby>しいものはどれですか。</div>
+<div class="dialogue">
+<p><span class="sp">A：</span>「<ruby>事務所<rt>じむしょ</rt></ruby>は<span class="blank-paren">（　　　　）</span>ですか。」</p>
+<p><span class="sp">B：</span>「あちらです。」</p>
+</div>
+<div class="options">
+<div class="option"><input id="q5a" name="q5" type="radio" value="0"/><label for="q5a"><span class="opt-key">1.</span><span class="opt-body">どこ</span></label></div>
+<div class="option"><input id="q5b" name="q5" type="radio" value="0"/><label for="q5b"><span class="opt-key">2.</span><span class="opt-body">どれ</span></label></div>
+<div class="option"><input id="q5c" name="q5" type="radio" value="1"/><label for="q5c"><span class="opt-key">3.</span><span class="opt-body">どちら</span></label></div>
+<div class="option"><input id="q5d" name="q5" type="radio" value="0"/><label for="q5d"><span class="opt-key">4.</span><span class="opt-body">どの</span></label></div>
+</div>
+<div class="explanation">✅ 正解：3 — 答えが「あちら」なので、丁寧な場所の疑問詞「どちら」を使う。</div>
+</div>
+<div class="question">
+<div class="q-text"><span class="q-num">6</span>「こちら」と「あちら」の<ruby>使<rt>つか</rt></ruby>い<ruby>方<rt>かた</rt></ruby>について<ruby>正<rt>ただ</rt></ruby>しいものはどれですか。</div>
+<div class="options" style="grid-template-columns:1fr">
+<div class="option"><input id="q6a" name="q6" type="radio" value="0"/><label for="q6a"><span class="opt-key">1.</span><span class="opt-body">こちらとあちらは<ruby>同<rt>おな</rt></ruby>じ<ruby>意味<rt>いみ</rt></ruby>だ</span></label></div>
+<div class="option"><input id="q6b" name="q6" type="radio" value="1"/><label for="q6b"><span class="opt-key">2.</span><span class="opt-body">こちらは<ruby>話<rt>はな</rt></ruby>し<ruby>手<rt>て</rt></ruby>のそば、あちらは<ruby>遠<rt>とお</rt></ruby>い<ruby>場所<rt>ばしょ</rt></ruby>を<ruby>指<rt>さ</rt></ruby>す<ruby>丁寧<rt>ていねい</rt></ruby>な<ruby>言<rt>い</rt></ruby>い<ruby>方<rt>かた</rt></ruby></span></label></div>
+<div class="option"><input id="q6c" name="q6" type="radio" value="0"/><label for="q6c"><span class="opt-key">3.</span><span class="opt-body">こちらは<ruby>疑問詞<rt>ぎもんし</rt></ruby>だ</span></label></div>
+<div class="option"><input id="q6d" name="q6" type="radio" value="0"/><label for="q6d"><span class="opt-key">4.</span><span class="opt-body">あちらは<ruby>話<rt>はな</rt></ruby>し<ruby>手<rt>て</rt></ruby>のそばを<ruby>指<rt>さ</rt></ruby>す</span></label></div>
+</div>
+<div class="explanation">✅ 正解：2 — こちら＝話し手のそば、あちら＝遠い場所、どちらも丁寧な表現。</div>
+</div>
+<div class="question">
+<div class="q-text"><span class="q-num">7</span>「〜どちら〜」が<ruby>使<rt>つか</rt></ruby>われる<ruby>場面<rt>ばめん</rt></ruby>として<ruby>正<rt>ただ</rt></ruby>しいものはどれですか。</div>
+<div class="options" style="grid-template-columns:1fr">
+<div class="option"><input id="q7a" name="q7" type="radio" value="0"/><label for="q7a"><span class="opt-key">1.</span><span class="opt-body"><ruby>値段<rt>ねだん</rt></ruby>を<ruby>尋<rt>たず</rt></ruby>ねるとき</span></label></div>
+<div class="option"><input id="q7b" name="q7" type="radio" value="1"/><label for="q7b"><span class="opt-key">2.</span><span class="opt-body"><ruby>丁寧<rt>ていねい</rt></ruby>に<ruby>場所<rt>ばしょ</rt></ruby>や<ruby>方向<rt>ほうこう</rt></ruby>を<ruby>尋<rt>たず</rt></ruby>ねるとき</span></label></div>
+<div class="option"><input id="q7c" name="q7" type="radio" value="0"/><label for="q7c"><span class="opt-key">3.</span><span class="opt-body"><ruby>物<rt>もの</rt></ruby>の<ruby>名前<rt>なまえ</rt></ruby>を<ruby>尋<rt>たず</rt></ruby>ねるとき</span></label></div>
+<div class="option"><input id="q7d" name="q7" type="radio" value="0"/><label for="q7d"><span class="opt-key">4.</span><span class="opt-body"><ruby>人<rt>ひと</rt></ruby>の<ruby>年齢<rt>ねんれい</rt></ruby>を<ruby>尋<rt>たず</rt></ruby>ねるとき</span></label></div>
+</div>
+<div class="explanation">✅ 正解：2 — 「どちら」は場所や方向を丁寧に尋ねる疑問詞。</div>
+</div>
+</div>
+<!-- Section 3 -->
+<div class="section">
+<div class="section-title">〜はどこ・どちらですか（<ruby>問題<rt>もんだい</rt></ruby> 8–10）</div>
+<p class="section-lead"><span class="blank-paren">（　　　　）</span>に<ruby>入<rt>はい</rt></ruby>る<ruby>正<rt>ただ</rt></ruby>しいものや、<ruby>正<rt>ただ</rt></ruby>しい<ruby>答<rt>こた</rt></ruby>えを<ruby>選<rt>えら</rt></ruby>びましょう。</p>
+<div class="question">
+<div class="q-text"><span class="q-num">8</span><span class="blank-paren">（　　　　）</span>に<ruby>入<rt>はい</rt></ruby>る<ruby>正<rt>ただ</rt></ruby>しいものはどれですか。</div>
+<div class="dialogue">
+<p><span class="sp">A：</span>「<ruby>山田<rt>やまだ</rt></ruby>さんはどこですか。」</p>
+<p><span class="sp">B：</span>「<span class="blank-paren">（　　　　）</span>です。」</p>
+</div>
+<div class="options">
+<div class="option"><input id="q8a" name="q8" type="radio" value="1"/><label for="q8a"><span class="opt-key">1.</span><span class="opt-body"><ruby>会議室<rt>かいぎしつ</rt></ruby></span></label></div>
+<div class="option"><input id="q8b" name="q8" type="radio" value="0"/><label for="q8b"><span class="opt-key">2.</span><span class="opt-body">150<ruby>円<rt>えん</rt></ruby></span></label></div>
+<div class="option"><input id="q8c" name="q8" type="radio" value="0"/><label for="q8c"><span class="opt-key">3.</span><span class="opt-body">7<ruby>時<rt>じ</rt></ruby></span></label></div>
+<div class="option"><input id="q8d" name="q8" type="radio" value="0"/><label for="q8d"><span class="opt-key">4.</span><span class="opt-body"><ruby>日本語<rt>にほんご</rt></ruby></span></label></div>
+</div>
+<div class="explanation">✅ 正解：1 — 「どこですか」は場所を尋ねるので、答えは場所「会議室」。</div>
+</div>
+<div class="question">
+<div class="q-text"><span class="q-num">9</span>「お<ruby>国<rt>くに</rt></ruby>はどちらですか。」に<ruby>対<rt>たい</rt></ruby>する<ruby>正<rt>ただ</rt></ruby>しい<ruby>答<rt>こた</rt></ruby>えはどれですか。</div>
+<div class="options" style="grid-template-columns:1fr">
+<div class="option"><input id="q9a" name="q9" type="radio" value="0"/><label for="q9a"><span class="opt-key">1.</span><span class="opt-body">10<ruby>時<rt>じ</rt></ruby>からです。</span></label></div>
+<div class="option"><input id="q9b" name="q9" type="radio" value="0"/><label for="q9b"><span class="opt-key">2.</span><span class="opt-body">2,500<ruby>円<rt>えん</rt></ruby>です。</span></label></div>
+<div class="option"><input id="q9c" name="q9" type="radio" value="1"/><label for="q9c"><span class="opt-key">3.</span><span class="opt-body">アメリカです。</span></label></div>
+<div class="option"><input id="q9d" name="q9" type="radio" value="0"/><label for="q9d"><span class="opt-key">4.</span><span class="opt-body">5<ruby>階<rt>かい</rt></ruby>です。</span></label></div>
+</div>
+<div class="explanation">✅ 正解：3 — 「お国はどちらですか」は出身国を尋ねる表現。答えは国名。</div>
+</div>
+<div class="question">
+<div class="q-text"><span class="q-num">10</span>「これはどこのワインですか。」の「どこの」が<ruby>確認<rt>かくにん</rt></ruby>していることはどれですか。</div>
+<div class="options" style="grid-template-columns:1fr">
+<div class="option"><input id="q10a" name="q10" type="radio" value="0"/><label for="q10a"><span class="opt-key">1.</span><span class="opt-body">ワインの<ruby>値段<rt>ねだん</rt></ruby></span></label></div>
+<div class="option"><input id="q10b" name="q10" type="radio" value="1"/><label for="q10b"><span class="opt-key">2.</span><span class="opt-body">ワインの<ruby>産地<rt>さんち</rt></ruby>・<ruby>原産地<rt>げんさんち</rt></ruby></span></label></div>
+<div class="option"><input id="q10c" name="q10" type="radio" value="0"/><label for="q10c"><span class="opt-key">3.</span><span class="opt-body">ワインの<ruby>種類<rt>しゅるい</rt></ruby></span></label></div>
+<div class="option"><input id="q10d" name="q10" type="radio" value="0"/><label for="q10d"><span class="opt-key">4.</span><span class="opt-body">ワインの<ruby>量<rt>りょう</rt></ruby></span></label></div>
+</div>
+<div class="explanation">✅ 正解：2 — 「どこのN」は産地・原産地・所属を尋ねる表現。</div>
+</div>
+</div>
+<!-- Section 4 -->
+<div class="section">
+<div class="section-title">〜の〜（<ruby>原産地<rt>げんさんち</rt></ruby>・<ruby>所属<rt>しょぞく</rt></ruby>）（<ruby>問題<rt>もんだい</rt></ruby> 11–13）</div>
+<p class="section-lead"><span class="blank-paren">（　　　　）</span>に<ruby>入<rt>はい</rt></ruby>る<ruby>正<rt>ただ</rt></ruby>しいものを<ruby>選<rt>えら</rt></ruby>びましょう。<ruby>正<rt>ただ</rt></ruby>しい<ruby>文<rt>ぶん</rt></ruby>を<ruby>選<rt>えら</rt></ruby>ぶ<ruby>問題<rt>もんだい</rt></ruby>もあります。</p>
+<div class="question">
+<div class="q-text"><span class="q-num">11</span><span class="blank-paren">（　　　　）</span>に<ruby>入<rt>はい</rt></ruby>る<ruby>正<rt>ただ</rt></ruby>しいものはどれですか。</div>
+<div class="dialogue">
+<p><span class="sp">A：</span>「それはドイツ<span class="blank-paren">（　　　　）</span><ruby>車<rt>くるま</rt></ruby>ですか。」</p>
+<p><span class="sp">B：</span>「はい、ドイツの<ruby>車<rt>くるま</rt></ruby>です。」</p>
+</div>
+<div class="options">
+<div class="option"><input id="q11a" name="q11" type="radio" value="0"/><label for="q11a"><span class="opt-key">1.</span><span class="opt-body">は</span></label></div>
+<div class="option"><input id="q11b" name="q11" type="radio" value="1"/><label for="q11b"><span class="opt-key">2.</span><span class="opt-body">の</span></label></div>
+<div class="option"><input id="q11c" name="q11" type="radio" value="0"/><label for="q11c"><span class="opt-key">3.</span><span class="opt-body">を</span></label></div>
+<div class="option"><input id="q11d" name="q11" type="radio" value="0"/><label for="q11d"><span class="opt-key">4.</span><span class="opt-body">が</span></label></div>
+</div>
+<div class="explanation">✅ 正解：2 — N₁のN₂で原産地を表す。「ドイツの車」が正しい。</div>
+</div>
+<div class="question">
+<div class="q-text"><span class="q-num">12</span>「あれはどこの<ruby>靴<rt>くつ</rt></ruby>ですか。」の<ruby>答<rt>こた</rt></ruby>えとして<ruby>正<rt>ただ</rt></ruby>しいものはどれですか。</div>
+<div class="options" style="grid-template-columns:1fr">
+<div class="option"><input id="q12a" name="q12" type="radio" value="0"/><label for="q12a"><span class="opt-key">1.</span><span class="opt-body">3,500<ruby>円<rt>えん</rt></ruby>です。</span></label></div>
+<div class="option"><input id="q12b" name="q12" type="radio" value="1"/><label for="q12b"><span class="opt-key">2.</span><span class="opt-body">イタリアの<ruby>靴<rt>くつ</rt></ruby>です。</span></label></div>
+<div class="option"><input id="q12c" name="q12" type="radio" value="0"/><label for="q12c"><span class="opt-key">3.</span><span class="opt-body">あそこです。</span></label></div>
+<div class="option"><input id="q12d" name="q12" type="radio" value="0"/><label for="q12d"><span class="opt-key">4.</span><span class="opt-body"><ruby>田中<rt>たなか</rt></ruby>さんです。</span></label></div>
+</div>
+<div class="explanation">✅ 正解：2 — 「どこの靴」は産地を尋ねるので、答えは「○○の靴」。</div>
+</div>
+<div class="question">
+<div class="q-text"><span class="q-num">13</span><ruby>正<rt>ただ</rt></ruby>しい<ruby>文<rt>ぶん</rt></ruby>はどれですか。</div>
+<div class="options" style="grid-template-columns:1fr">
+<div class="option"><input id="q13a" name="q13" type="radio" value="0"/><label for="q13a"><span class="opt-key">1.</span><span class="opt-body">これはカメラの<ruby>日本<rt>にほん</rt></ruby>です。</span></label></div>
+<div class="option"><input id="q13b" name="q13" type="radio" value="0"/><label for="q13b"><span class="opt-key">2.</span><span class="opt-body">これの<ruby>日本<rt>にほん</rt></ruby>はカメラです。</span></label></div>
+<div class="option"><input id="q13c" name="q13" type="radio" value="1"/><label for="q13c"><span class="opt-key">3.</span><span class="opt-body">これは<ruby>日本<rt>にほん</rt></ruby>のカメラです。</span></label></div>
+<div class="option"><input id="q13d" name="q13" type="radio" value="0"/><label for="q13d"><span class="opt-key">4.</span><span class="opt-body">これは<ruby>日本<rt>にほん</rt></ruby>でカメラです。</span></label></div>
+</div>
+<div class="explanation">✅ 正解：3 — 「N₁のN₂」の語順は「日本のカメラ」（原産地＋物）。</div>
+</div>
+</div>
+<!-- Section 5 -->
+<div class="section">
+<div class="section-title">いくらですか・<ruby>金額<rt>きんがく</rt></ruby>の<ruby>読<rt>よ</rt></ruby>み<ruby>方<rt>かた</rt></ruby>（<ruby>問題<rt>もんだい</rt></ruby> 14–16）</div>
+<p class="section-lead"><span class="blank-paren">（　　　　）</span>に<ruby>入<rt>はい</rt></ruby>る<ruby>正<rt>ただ</rt></ruby>しいものや、<ruby>金額<rt>きんがく</rt></ruby>の<ruby>読<rt>よ</rt></ruby>み<ruby>方<rt>かた</rt></ruby>を<ruby>選<rt>えら</rt></ruby>びましょう。</p>
+<div class="question">
+<div class="q-text"><span class="q-num">14</span><span class="blank-paren">（　　　　）</span>に<ruby>入<rt>はい</rt></ruby>る<ruby>正<rt>ただ</rt></ruby>しいものはどれですか。</div>
+<div class="dialogue">
+<p><span class="sp">A：</span>「このネクタイは<span class="blank-paren">（　　　　）</span>ですか。」</p>
+<p><span class="sp">B：</span>「1,500<ruby>円<rt>えん</rt></ruby>です。」</p>
+</div>
+<div class="options">
+<div class="option"><input id="q14a" name="q14" type="radio" value="0"/><label for="q14a"><span class="opt-key">1.</span><span class="opt-body">なん</span></label></div>
+<div class="option"><input id="q14b" name="q14" type="radio" value="0"/><label for="q14b"><span class="opt-key">2.</span><span class="opt-body">いくつ</span></label></div>
+<div class="option"><input id="q14c" name="q14" type="radio" value="1"/><label for="q14c"><span class="opt-key">3.</span><span class="opt-body">いくら</span></label></div>
+<div class="option"><input id="q14d" name="q14" type="radio" value="0"/><label for="q14d"><span class="opt-key">4.</span><span class="opt-body">どのくらい</span></label></div>
+</div>
+<div class="explanation">✅ 正解：3 — 値段を尋ねる疑問詞は「いくら」。</div>
+</div>
+<div class="question">
+<div class="q-text"><span class="q-num">15</span>「1,500<ruby>円<rt>えん</rt></ruby>」の<ruby>読<rt>よ</rt></ruby>み<ruby>方<rt>かた</rt></ruby>はどれですか。</div>
+<div class="options">
+<div class="option"><input id="q15a" name="q15" type="radio" value="0"/><label for="q15a"><span class="opt-key">1.</span><span class="opt-body">じゅうごひゃくえん</span></label></div>
+<div class="option"><input id="q15b" name="q15" type="radio" value="0"/><label for="q15b"><span class="opt-key">2.</span><span class="opt-body">いちせんごひゃくえん</span></label></div>
+<div class="option"><input id="q15c" name="q15" type="radio" value="0"/><label for="q15c"><span class="opt-key">3.</span><span class="opt-body">いちまんごひゃくえん</span></label></div>
+<div class="option"><input id="q15d" name="q15" type="radio" value="1"/><label for="q15d"><span class="opt-key">4.</span><span class="opt-body">せんごひゃくえん</span></label></div>
+</div>
+<div class="explanation">✅ 正解：4 — 1,500は「せん（1000）＋ごひゃく（500）」で「せんごひゃく」。</div>
+</div>
+<div class="question">
+<div class="q-text"><span class="q-num">16</span>「25,800<ruby>円<rt>えん</rt></ruby>」の<ruby>読<rt>よ</rt></ruby>み<ruby>方<rt>かた</rt></ruby>はどれですか。</div>
+<div class="options">
+<div class="option"><input id="q16a" name="q16" type="radio" value="0"/><label for="q16a"><span class="opt-key">1.</span><span class="opt-body">にじゅうごせんはっぴゃくえん</span></label></div>
+<div class="option"><input id="q16b" name="q16" type="radio" value="1"/><label for="q16b"><span class="opt-key">2.</span><span class="opt-body">にまんごせんはっぴゃくえん</span></label></div>
+<div class="option"><input id="q16c" name="q16" type="radio" value="0"/><label for="q16c"><span class="opt-key">3.</span><span class="opt-body">にまんはっぴゃくえん</span></label></div>
+<div class="option"><input id="q16d" name="q16" type="radio" value="0"/><label for="q16d"><span class="opt-key">4.</span><span class="opt-body">ごまんはっぴゃくえん</span></label></div>
+</div>
+<div class="explanation">✅ 正解：2 — 25,800＝にまん（20000）＋ごせん（5000）＋はっぴゃく（800）。</div>
+</div>
+</div>
+<!-- Section 6 -->
+<div class="section">
+<div class="section-title">〜をください・<ruby>見<rt>み</rt></ruby>せてください（<ruby>問題<rt>もんだい</rt></ruby> 17–18）</div>
+<p class="section-lead"><span class="blank-paren">（　　　　）</span>に<ruby>入<rt>はい</rt></ruby>る<ruby>正<rt>ただ</rt></ruby>しいものや、<ruby>意味<rt>いみ</rt></ruby>を<ruby>選<rt>えら</rt></ruby>びましょう。</p>
+<div class="question">
+<div class="q-text"><span class="q-num">17</span><span class="blank-paren">（　　　　）</span>に<ruby>入<rt>はい</rt></ruby>る<ruby>正<rt>ただ</rt></ruby>しいものはどれですか。（<ruby>店<rt>みせ</rt></ruby>でワインを<ruby>購入<rt>こうにゅう</rt></ruby>するとき）</div>
+<div class="dialogue">
+<p>「じゃ、<span class="blank-paren">（　　　　）</span>ください。」</p>
+</div>
+<div class="options">
+<div class="option"><input id="q17a" name="q17" type="radio" value="0"/><label for="q17a"><span class="opt-key">1.</span><span class="opt-body">これに</span></label></div>
+<div class="option"><input id="q17b" name="q17" type="radio" value="0"/><label for="q17b"><span class="opt-key">2.</span><span class="opt-body">これが</span></label></div>
+<div class="option"><input id="q17c" name="q17" type="radio" value="1"/><label for="q17c"><span class="opt-key">3.</span><span class="opt-body">これを</span></label></div>
+<div class="option"><input id="q17d" name="q17" type="radio" value="0"/><label for="q17d"><span class="opt-key">4.</span><span class="opt-body">これは</span></label></div>
+</div>
+<div class="explanation">✅ 正解：3 — 「Nをください」の形。目的語には「を」。</div>
+</div>
+<div class="question">
+<div class="q-text"><span class="q-num">18</span>「すみません。そのワインを<ruby>見<rt>み</rt></ruby>せてください。」の<ruby>意味<rt>いみ</rt></ruby>はどれですか。</div>
+<div class="options" style="grid-template-columns:1fr">
+<div class="option"><input id="q18a" name="q18" type="radio" value="0"/><label for="q18a"><span class="opt-key">1.</span><span class="opt-body">そのワインを<ruby>一緒<rt>いっしょ</rt></ruby>に<ruby>見<rt>み</rt></ruby>よう</span></label></div>
+<div class="option"><input id="q18b" name="q18" type="radio" value="0"/><label for="q18b"><span class="opt-key">2.</span><span class="opt-body">そのワインを<ruby>見<rt>み</rt></ruby>てはいけない</span></label></div>
+<div class="option"><input id="q18c" name="q18" type="radio" value="1"/><label for="q18c"><span class="opt-key">3.</span><span class="opt-body">そのワインを<ruby>見<rt>み</rt></ruby>せてほしい</span></label></div>
+<div class="option"><input id="q18d" name="q18" type="radio" value="0"/><label for="q18d"><span class="opt-key">4.</span><span class="opt-body">そのワインを<ruby>買<rt>か</rt></ruby>わなくていい</span></label></div>
+</div>
+<div class="explanation">✅ 正解：3 — 「見せてください」は「見せてほしい」という依頼表現。</div>
+</div>
+</div>
+<button class="btn-submit" id="submitBtn" onclick="submitTest()"><ruby>採点<rt>さいてん</rt></ruby>する</button>
+<div class="result-panel" id="resultPanel">
+<h2 id="resultTitle"></h2><div class="result-score" id="resultScore"></div>
+<div class="result-detail" id="resultDetail"></div>
+</div>
+</div>
+<script>
+const TOTAL=18,TIME_LIMIT=900;
+let timeLeft=TIME_LIMIT,timerInterval,submitted=false;
+function shuffleAllOptions(){
+function randBelow(n){
+if(n<=1)return 0;
+try{
+if(typeof crypto!=='undefined'&&crypto.getRandomValues){
+const lim=Math.floor(4294967296/n)*n;
+const buf=new Uint32Array(1);
+let x;
+do{crypto.getRandomValues(buf);x=buf[0];}while(x>=lim);
+return x%n;
+}
+}catch(e){}
+return Math.floor(Math.random()*n);
+}
+function fisherYates(arr){
+for(let i=arr.length-1;i>0;i--){
+const j=randBelow(i+1);
+const t=arr[i];arr[i]=arr[j];arr[j]=t;
+}
+}
+function relabel(optsDiv,items,isLetter,prefix){
+items.forEach(function(el){optsDiv.appendChild(el);});
+items.forEach(function(el,idx){
+const inp=el.querySelector('input[type="radio"]');
+const lbl=el.querySelector('label');
+if(!inp||!lbl)return;
+const suf=isLetter?String.fromCharCode(97+idx):String(idx+1);
+const newId=prefix+suf;
+inp.id=newId;
+lbl.setAttribute('for',newId);
+const key=el.querySelector('.opt-key');
+if(key)key.textContent=(idx+1)+'.';
+});
+const explain=optsDiv.nextElementSibling;
+if(explain&&explain.classList&&explain.classList.contains('explanation')){
+const correctInp=optsDiv.querySelector('input[type="radio"][value="1"]');
+if(correctInp){
+const opt=correctInp.closest('.option');
+if(opt){
+const keyEl=opt.querySelector('.opt-key');
+if(keyEl){
+const mk=keyEl.textContent.match(/^(\d+)\./);
+if(mk)explain.innerHTML=explain.innerHTML.replace(/正解：\d+/,'正解：'+mk[1]);
+}
+}
+}
+}
+return items.findIndex(function(el){return el.querySelector('input[type="radio"][value="1"]');});
+}
+const posCounts=[0,0,0,0];
+document.querySelectorAll('.options').forEach(function(optsDiv){
+const items=Array.prototype.filter.call(optsDiv.children,function(el){
+return el.classList&&el.classList.contains('option');
+});
+const n=items.length;
+if(n<2)return;
+fisherYates(items);
+const sample=optsDiv.querySelector('input[type="radio"]');
+if(!sample)return;
+const prefix=sample.name;
+if(!prefix)return;
+const firstInp=items[0].querySelector('input[type="radio"]');
+if(!firstInp)return;
+const sid=firstInp.id;
+if(!sid||!sid.startsWith(prefix))return;
+const firstSuffix=sid.slice(prefix.length);
+const isLetter=/^[a-d]$/.test(firstSuffix);
+let slot=relabel(optsDiv,items,isLetter,prefix);
+if(slot<0)return;
+let minC=9999;
+for(let i=0;i<n;i++)minC=Math.min(minC,posCounts[i]);
+const cand=[];
+for(let i=0;i<n;i++)if(posCounts[i]===minC)cand.push(i);
+const ideal=cand[randBelow(cand.length)];
+if(slot!==ideal&&posCounts[slot]>posCounts[ideal]){
+const t=items[slot];items[slot]=items[ideal];items[ideal]=t;
+slot=relabel(optsDiv,items,isLetter,prefix);
+if(slot<0)return;
+}
+posCounts[slot]++;
+});
+}
+try{shuffleAllOptions();}catch(e){}
+function startTimer(){
+timerInterval=setInterval(()=>{
+timeLeft--;
+const m=Math.floor(timeLeft/60),s=timeLeft%60;
+const el=document.getElementById('timer');
+el.textContent=`${m}:${s.toString().padStart(2,'0')}`;
+document.getElementById('progress').style.width=`${(timeLeft/TIME_LIMIT)*100}%`;
+if(timeLeft<=60)el.className='timer danger';
+else if(timeLeft<=300)el.className='timer warning';
+else el.className='timer';
+if(timeLeft<=0){clearInterval(timerInterval);submitTest();}
+},1000);
+}
+function submitTest(){
+if(submitted)return;submitted=true;
+if(timerInterval)clearInterval(timerInterval);
+let correct=0;
+for(let i=1;i<=TOTAL;i++){
+const sel=document.querySelector(`input[name="q${i}"]:checked`);
+const opts=document.querySelectorAll(`input[name="q${i}"]`);
+if(sel&&sel.value==='1'){correct++;}
+opts.forEach(o=>{
+const p=o.parentElement;
+if(o.value==='1')p.classList.add('correct');
+else if(o.checked&&o.value!=='1')p.classList.add('wrong');
+});
+}
+document.querySelectorAll('.explanation').forEach(e=>e.classList.add('show'));
+const pct=Math.round((correct/TOTAL)*100);
+const panel=document.getElementById('resultPanel');
+const title=document.getElementById('resultTitle');
+const score=document.getElementById('resultScore');
+const detail=document.getElementById('resultDetail');
+panel.style.display='block';
+score.textContent=`${correct} / ${TOTAL}（${pct}%）`;
+if(pct>=90){title.textContent='🎉 すばらしい！';score.className='result-score excellent';}
+else if(pct>=70){title.textContent='👍 よくできました！';score.className='result-score good';}
+else if(pct>=50){title.textContent='📝 もうすこし！';score.className='result-score fair';}
+else{title.textContent='💪 がんばりましょう！';score.className='result-score poor';}
+const timeUsed=TIME_LIMIT-timeLeft;
+detail.innerHTML=`
+<div class="result-item"><div class="label">せいかい</div><div class="value">${correct}/${TOTAL}</div></div>
+<div class="result-item"><div class="label">じかん</div><div class="value">${Math.floor(timeUsed/60)}分${timeUsed%60}秒</div></div>
+`;
+document.getElementById('submitBtn').disabled=true;
+panel.scrollIntoView({behavior:'smooth'});
+}
+startTimer();
+</script>
+</body></html>

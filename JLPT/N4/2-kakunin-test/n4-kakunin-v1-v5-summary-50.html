@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<title>JLPT N4 1-5まとめテスト（30分・47問）</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;-webkit-tap-highlight-color:transparent}
+body{font-family:'Hiragino Kaku Gothic ProN','Hiragino Sans','Noto Sans JP',Meiryo,sans-serif;background:#f0f4f8;color:#1a202c;line-height:1.7;padding:env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left)}
+.container{max-width:800px;margin:0 auto;padding:20px}
+header{background:linear-gradient(135deg,#38b2ac 0%,#2c7a7b 100%);color:#fff;padding:24px;border-radius:16px;margin-bottom:24px;text-align:center;position:sticky;top:0;z-index:100;box-shadow:0 4px 15px rgba(56,178,172,0.4)}
+header h1{font-size:1.5em;margin-bottom:4px}
+.header-info{display:flex;justify-content:center;gap:24px;align-items:center;margin-top:8px;flex-wrap:wrap}
+.timer{font-size:1.8em;font-weight:bold;font-variant-numeric:tabular-nums}
+.timer.warning{color:#ffd700;animation:pulse 1s infinite}
+.timer.danger{color:#ff4757;animation:pulse .5s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.6}}
+.progress-bar{width:200px;height:8px;background:rgba(255,255,255,.3);border-radius:4px;overflow:hidden}
+.progress-fill{height:100%;background:#fff;border-radius:4px;transition:width .3s}
+.score-badge{background:rgba(255,255,255,.2);padding:4px 12px;border-radius:20px;font-size:.9em}
+.section{background:#fff;border-radius:12px;padding:24px;margin-bottom:20px;box-shadow:0 2px 8px rgba(0,0,0,.06)}
+.section-title{font-size:1.1em;font-weight:bold;color:#2c7a7b;border-left:4px solid #38b2ac;padding-left:12px;margin-bottom:16px}
+.question{padding:16px 0;border-bottom:1px solid #e2e8f0}
+.question:last-child{border-bottom:none}
+.q-num{display:inline-block;background:#38b2ac;color:#fff;width:28px;height:28px;text-align:center;line-height:28px;border-radius:50%;font-size:.85em;font-weight:bold;margin-right:8px}
+.q-text{font-size:1.05em;margin-bottom:12px;font-weight:500}
+.options{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+@media(max-width:600px){.options{grid-template-columns:1fr}}
+.option{position:relative}
+.option input{display:none}
+.option label{display:flex;align-items:center;min-height:44px;padding:10px 14px;border:2px solid #e2e8f0;border-radius:8px;cursor:pointer;transition:all .2s;font-size:.95em;touch-action:manipulation;-webkit-user-select:none;user-select:none}
+.option label:hover{border-color:#38b2ac;background:#f0ffff}
+.option input:checked+label{border-color:#38b2ac;background:#e6fffa;color:#234e52;font-weight:600}
+.option.correct label{border-color:#48bb78!important;background:#f0fff4!important;color:#276749!important}
+.option.wrong label{border-color:#fc8181!important;background:#fff5f5!important;color:#9b2c2c!important}
+.reading-passage{background:#f7fafc;border-left:3px solid #38b2ac;padding:16px;margin:12px 0;border-radius:0 8px 8px 0;font-size:.95em;line-height:1.9}
+.btn-submit{display:block;width:100%;min-height:48px;padding:16px;background:linear-gradient(135deg,#38b2ac 0%,#2c7a7b 100%);color:#fff;border:none;border-radius:12px;font-size:1.1em;font-weight:bold;cursor:pointer;transition:transform .2s,box-shadow .2s;margin-top:24px;touch-action:manipulation;-webkit-user-select:none;user-select:none}
+.btn-submit:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(56,178,172,.4)}
+.btn-submit:disabled{opacity:.5;cursor:not-allowed;transform:none;box-shadow:none}
+.result-panel{background:#fff;border-radius:16px;padding:32px;text-align:center;box-shadow:0 4px 20px rgba(0,0,0,.1);margin-top:24px;display:none}
+.result-panel h2{font-size:1.8em;margin-bottom:8px}
+.result-score{font-size:3em;font-weight:bold;margin:16px 0}
+.result-score.excellent{color:#48bb78}.result-score.good{color:#38b2ac}.result-score.fair{color:#ed8936}.result-score.poor{color:#fc8181}
+.result-detail{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:12px;margin-top:20px}
+.result-item{background:#f7fafc;padding:12px;border-radius:8px}
+.result-item .label{font-size:.8em;color:#718096}.result-item .value{font-size:1.2em;font-weight:bold}
+.explanation{display:none;margin-top:8px;padding:10px;background:#fffbeb;border-radius:8px;font-size:.9em;border-left:3px solid #f6ad55}
+.explanation.show{display:block}
+</style>
+
+<style>
+.reading-bundle{border:1px solid #e2e8f0;border-radius:12px;padding:16px 18px;margin-bottom:22px;background:#fafcff;box-shadow:0 1px 3px rgba(0,0,0,.04)}
+.reading-bundle .reading-passage{margin-bottom:8px}
+.reading-bundle .question{padding-top:14px;margin-top:12px;border-top:1px solid #e2e8f0}
+</style>
+
+</head>
+<body>
+<div class="container">
+<header>
+<h1>JLPT N4 1-5まとめテスト（30分・47問）</h1>
+<div class="header-info">
+<div class="timer" id="timer">30:00</div>
+<div class="progress-bar"><div class="progress-fill" id="progress" style="width:100%"></div></div>
+<div class="score-badge">全47問・制限30分</div>
+</div>
+</header>
+
+<div class="section">
+<div class="section-title">もんだい1 — 漢字の読み（10問）</div>
+<p style="color:#718096;font-size:.9em;margin-bottom:12px">＿＿のことばの読み方として最もよいものを、1・2・3・4から一つ選んでください。</p>
+<div class="question">
+<div class="q-text"><span class="q-num">1</span>この　<strong>場所</strong>は　とても　しずかです。</div>
+<div class="options">
+<div class="option"><input id="q1a" name="q1" type="radio" value="0"/><label for="q1a">1. ばしょう</label></div>
+<div class="option"><input id="q1b" name="q1" type="radio" value="1"/><label for="q1b">2. ばしょ</label></div>
+<div class="option"><input id="q1c" name="q1" type="radio" value="0"/><label for="q1c">3. ばじょ</label></div>
+<div class="option"><input id="q1d" name="q1" type="radio" value="0"/><label for="q1d">4. はしょ</label></div>
+</div>
+<div class="explanation">✅ 正解：2. ばしょ — 「場所」=「ばしょ」。「場」=ば、「所」=しょ。</div>
+</div>
+<div class="question">
+<div class="q-text"><span class="q-num">2</span>あの　<strong>特別</strong>な　りょうりを　たべたいです。</div>
+<div class="options">
+<div class="option"><input id="q2a" name="q2" type="radio" value="1"/><label for="q2a">1. とくべつ</label></div>
+<div class="option"><input id="q2b" name="q2" type="radio" value="0"/><label for="q2b">2. とくべち</label></div>
+<div class="option"><input id="q2c" name="q2" type="radio" value="0"/><label for="q2c">3. とっべつ</label></div>
+<div class="option"><input id="q2d" name="q2" type="radio" value="0"/><label for="q2d">4. どくべつ</label></div>
+</div>
+<div class="explanation">✅ 正解：1. とくべつ — 「特別」=「とくべつ」。「特」=とく、「別」=べつ。</div>
+</div>
+<div class="question"><div class="q-text"><span class="q-num">3</span>この　<strong>説明</strong>は　分かりやすいです。</div><div class="options"><div class="option"><input id="q3a" name="q3" type="radio" value="1"/><label for="q3a">1. せつめい</label></div><div class="option"><input id="q3b" name="q3" type="radio" value="0"/><label for="q3b">2. せつめ</label></div><div class="option"><input id="q3c" name="q3" type="radio" value="0"/><label for="q3c">3. せいめい</label></div><div class="option"><input id="q3d" name="q3" type="radio" value="0"/><label for="q3d">4. せつめん</label></div></div><div class="explanation">✅ 正解：1. せつめい — 「説明」=「せつめい」。explanation。</div></div>
+<div class="question"><div class="q-text"><span class="q-num">4</span><strong>経験</strong>が　ないので、ふあんです。</div><div class="options"><div class="option"><input id="q4a" name="q4" type="radio" value="0"/><label for="q4a">1. けいげん</label></div><div class="option"><input id="q4b" name="q4" type="radio" value="0"/><label for="q4b">2. きょうけん</label></div><div class="option"><input id="q4c" name="q4" type="radio" value="1"/><label for="q4c">3. けいけん</label></div><div class="option"><input id="q4d" name="q4" type="radio" value="0"/><label for="q4d">4. きけん</label></div></div><div class="explanation">✅ 正解：3. けいけん — 「経験」=「けいけん」。experience。</div></div>
+<div class="question"><div class="q-text"><span class="q-num">5</span>来週の　<strong>会議</strong>は　何時からですか。</div><div class="options"><div class="option"><input id="q5a" name="q5" type="radio" value="0"/><label for="q5a">1. かいき</label></div><div class="option"><input id="q5b" name="q5" type="radio" value="1"/><label for="q5b">2. かいぎ</label></div><div class="option"><input id="q5c" name="q5" type="radio" value="0"/><label for="q5c">3. えいき</label></div><div class="option"><input id="q5d" name="q5" type="radio" value="0"/><label for="q5d">4. かいきょう</label></div></div><div class="explanation">✅ 正解：2. かいぎ — 「会議」=「かいぎ」。meeting。</div></div>
+<div class="question"><div class="q-text"><span class="q-num">6</span>この　<strong>小説</strong>は　おもしろそうです。</div><div class="options"><div class="option"><input id="q6a" name="q6" type="radio" value="0"/><label for="q6a">1. しょうがく</label></div><div class="option"><input id="q6b" name="q6" type="radio" value="0"/><label for="q6b">2. こせつ</label></div><div class="option"><input id="q6c" name="q6" type="radio" value="1"/><label for="q6c">3. しょうせつ</label></div><div class="option"><input id="q6d" name="q6" type="radio" value="0"/><label for="q6d">4. しょせつ</label></div></div><div class="explanation">✅ 正解：3. しょうせつ — 「小説」=「しょうせつ」。novel。</div></div>
+<div class="question"><div class="q-text"><span class="q-num">7</span>この　<strong>準備</strong>は　大変です。</div><div class="options"><div class="option"><input id="q7a" name="q7" type="radio" value="0"/><label for="q7a">1. しゅんび</label></div><div class="option"><input id="q7b" name="q7" type="radio" value="0"/><label for="q7b">2. じゅび</label></div><div class="option"><input id="q7c" name="q7" type="radio" value="1"/><label for="q7c">3. じゅんび</label></div><div class="option"><input id="q7d" name="q7" type="radio" value="0"/><label for="q7d">4. じゅうび</label></div></div><div class="explanation">✅ 正解：3. じゅんび — 「準備」=「じゅんび」。preparation。</div></div>
+<div class="question"><div class="q-text"><span class="q-num">8</span><strong>連絡</strong>を　おねがいします。</div><div class="options"><div class="option"><input id="q8a" name="q8" type="radio" value="1"/><label for="q8a">1. れんらく</label></div><div class="option"><input id="q8b" name="q8" type="radio" value="0"/><label for="q8b">2. れんだく</label></div><div class="option"><input id="q8c" name="q8" type="radio" value="0"/><label for="q8c">3. れんけつ</label></div><div class="option"><input id="q8d" name="q8" type="radio" value="0"/><label for="q8d">4. れんどう</label></div></div><div class="explanation">✅ 正解：1. れんらく — 「連絡」=「れんらく」。contact。</div></div>
+<div class="question"><div class="q-text"><span class="q-num">9</span>この　<strong>予定</strong>は　かわりました。</div><div class="options"><div class="option"><input id="q9a" name="q9" type="radio" value="1"/><label for="q9a">1. よてい</label></div><div class="option"><input id="q9b" name="q9" type="radio" value="0"/><label for="q9b">2. よて</label></div><div class="option"><input id="q9c" name="q9" type="radio" value="0"/><label for="q9c">3. よち</label></div><div class="option"><input id="q9d" name="q9" type="radio" value="0"/><label for="q9d">4. よってい</label></div></div><div class="explanation">✅ 正解：1. よてい — 「予定」=「よてい」。plan。</div></div>
+<div class="question"><div class="q-text"><span class="q-num">10</span><strong>予習</strong>を　して　じゅぎょうに　出ました。</div><div class="options"><div class="option"><input id="q10a" name="q10" type="radio" value="0"/><label for="q10a">1. よしゅ</label></div><div class="option"><input id="q10b" name="q10" type="radio" value="1"/><label for="q10b">2. よしゅう</label></div><div class="option"><input id="q10c" name="q10" type="radio" value="0"/><label for="q10c">3. よすう</label></div><div class="option"><input id="q10d" name="q10" type="radio" value="0"/><label for="q10d">4. よしゅく</label></div></div><div class="explanation">✅ 正解：2. よしゅう — 「予習」=「よしゅう」。preparation for a lesson。</div></div>
+</div>
+
+<div class="section">
+<div class="section-title">もんだい2 — 語彙（10問）</div>
+<p style="color:#718096;font-size:.9em;margin-bottom:12px">（　）に入れるのに最もよいものを、1・2・3・4から一つ選んでください。</p>
+<div class="question">
+<div class="q-text"><span class="q-num">11</span>きのう　はじめて　ひこうきに　（　）。</div>
+<div class="options">
+<div class="option"><input id="q11a" name="q11" type="radio" value="0"/><label for="q11a">1. すわりました</label></div>
+<div class="option"><input id="q11b" name="q11" type="radio" value="1"/><label for="q11b">2. のりました</label></div>
+<div class="option"><input id="q11c" name="q11" type="radio" value="0"/><label for="q11c">3. あがりました</label></div>
+<div class="option"><input id="q11d" name="q11" type="radio" value="0"/><label for="q11d">4. はいりました</label></div>
+</div>
+<div class="explanation">✅ 正解：2. のりました — 飛行機・電車・バスには「乗る」を使います。</div>
+</div>
+<div class="question">
+<div class="q-text"><span class="q-num">12</span>この　しごとは　とても　（　）ですが、たのしいです。</div>
+<div class="options">
+<div class="option"><input id="q12a" name="q12" type="radio" value="0"/><label for="q12a">1. かんたん</label></div>
+<div class="option"><input id="q12b" name="q12" type="radio" value="1"/><label for="q12b">2. たいへん</label></div>
+<div class="option"><input id="q12c" name="q12" type="radio" value="0"/><label for="q12c">3. じゆう</label></div>
+<div class="option"><input id="q12d" name="q12" type="radio" value="0"/><label for="q12d">4. あんぜん</label></div>
+</div>
+<div class="explanation">✅ 正解：2. たいへん — 「大変ですが、楽しい」で「大変だけど楽しい」という逆接の意味。</div>
+</div>
+<div class="question"><div class="q-text"><span class="q-num">13</span>この　レストランは　いつも　（　）いるので、よやくしたほうがいいですよ。</div><div class="options"><div class="option"><input id="q13a" name="q13" type="radio" value="0"/><label for="q13a">1. ならんで</label></div><div class="option"><input id="q13b" name="q13" type="radio" value="1"/><label for="q13b">2. こんで</label></div><div class="option"><input id="q13c" name="q13" type="radio" value="0"/><label for="q13c">3. あつまって</label></div><div class="option"><input id="q13d" name="q13" type="radio" value="0"/><label for="q13d">4. つまって</label></div></div><div class="explanation">✅ 正解：2. こんで — 「込んでいる」= 混雑している。予約が必要な理由に合う。</div></div>
+<div class="question"><div class="q-text"><span class="q-num">14</span>さいきん　うんどうしていないので、（　）が　ふえました。</div><div class="options"><div class="option"><input id="q14a" name="q14" type="radio" value="0"/><label for="q14a">1. せ</label></div><div class="option"><input id="q14b" name="q14" type="radio" value="1"/><label for="q14b">2. たいじゅう</label></div><div class="option"><input id="q14c" name="q14" type="radio" value="0"/><label for="q14c">3. きおん</label></div><div class="option"><input id="q14d" name="q14" type="radio" value="0"/><label for="q14d">4. ねんれい</label></div></div><div class="explanation">✅ 正解：2. たいじゅう — 運動しないと「体重」が増える。</div></div>
+<div class="question"><div class="q-text"><span class="q-num">15</span>この　カメラは　よく　（　）ので、かいました。</div><div class="options"><div class="option"><input id="q15a" name="q15" type="radio" value="0"/><label for="q15a">1. うごく</label></div><div class="option"><input id="q15b" name="q15" type="radio" value="0"/><label for="q15b">2. うる</label></div><div class="option"><input id="q15c" name="q15" type="radio" value="1"/><label for="q15c">3. うれている</label></div><div class="option"><input id="q15d" name="q15" type="radio" value="0"/><label for="q15d">4. かう</label></div></div><div class="explanation">✅ 正解：3. うれている — 「売れている」（うれている）= 売れ行きが良い。人気があるので買った。</div></div>
+<div class="question"><div class="q-text"><span class="q-num">16</span>しけんの　（　）を　しました。</div><div class="options"><div class="option"><input id="q16a" name="q16" type="radio" value="1"/><label for="q16a">1. じゅんび</label></div><div class="option"><input id="q16b" name="q16" type="radio" value="0"/><label for="q16b">2. れんらく</label></div><div class="option"><input id="q16c" name="q16" type="radio" value="0"/><label for="q16c">3. よやく</label></div><div class="option"><input id="q16d" name="q16" type="radio" value="0"/><label for="q16d">4. よてい</label></div></div><div class="explanation">✅ 正解：1. じゅんび — 「試験の準備」は exam preparation。準備をしました。</div></div>
+<div class="question"><div class="q-text"><span class="q-num">17</span>この　本は　（　）　読めます。</div><div class="options"><div class="option"><input id="q17a" name="q17" type="radio" value="1"/><label for="q17a">1. かんたんに</label></div><div class="option"><input id="q17b" name="q17" type="radio" value="0"/><label for="q17b">2. たいへんに</label></div><div class="option"><input id="q17c" name="q17" type="radio" value="0"/><label for="q17c">3. ふくざつに</label></div><div class="option"><input id="q17d" name="q17" type="radio" value="0"/><label for="q17d">4. むずかしく</label></div></div><div class="explanation">✅ 正解：1. かんたんに — 「簡単に読める」= 難しくなく読める。easily readable。</div></div>
+<div class="question"><div class="q-text"><span class="q-num">18</span>レストランを　（　）　しました。</div><div class="options"><div class="option"><input id="q18a" name="q18" type="radio" value="0"/><label for="q18a">1. れんらく</label></div><div class="option"><input id="q18b" name="q18" type="radio" value="1"/><label for="q18b">2. よやく</label></div><div class="option"><input id="q18c" name="q18" type="radio" value="0"/><label for="q18c">3. じゅんび</label></div><div class="option"><input id="q18d" name="q18" type="radio" value="0"/><label for="q18d">4. よてい</label></div></div><div class="explanation">✅ 正解：2. よやく — 「レストランを予約しました」は reservation。</div></div>
+<div class="question"><div class="q-text"><span class="q-num">19</span>この　みせは　（　）　あいている。</div><div class="options"><div class="option"><input id="q19a" name="q19" type="radio" value="0"/><label for="q19a">1. ときどき</label></div><div class="option"><input id="q19b" name="q19" type="radio" value="1"/><label for="q19b">2. いつも</label></div><div class="option"><input id="q19c" name="q19" type="radio" value="0"/><label for="q19c">3. たまに</label></div><div class="option"><input id="q19d" name="q19" type="radio" value="0"/><label for="q19d">4. めったに</label></div></div><div class="explanation">✅ 正解：2. いつも — 「いつも開いている」= always open。</div></div>
+<div class="question"><div class="q-text"><span class="q-num">20</span>ともだちに　かさを　（　）　もらいました。</div><div class="options"><div class="option"><input id="q20a" name="q20" type="radio" value="1"/><label for="q20a">1. かして</label></div><div class="option"><input id="q20b" name="q20" type="radio" value="0"/><label for="q20b">2. かりて</label></div><div class="option"><input id="q20c" name="q20" type="radio" value="0"/><label for="q20c">3. かって</label></div><div class="option"><input id="q20d" name="q20" type="radio" value="0"/><label for="q20d">4. きいて</label></div></div><div class="explanation">✅ 正解：1. かして — 「貸してもらう」= to have someone lend。友達に傘を貸してもらった。</div></div>
+</div>
+
+<div class="section">
+<div class="section-title">もんだい3 — 文法（12問）</div>
+<p style="color:#718096;font-size:.9em;margin-bottom:12px">（　）に入れるのに最もよいものを、1・2・3・4から一つ選んでください。</p>
+<div class="question">
+<div class="q-text"><span class="q-num">21</span>しゅくだいを　わすれて　しまった。先生に　（　）かもしれない。</div>
+<div class="options">
+<div class="option"><input id="q21a" name="q21" type="radio" value="0"/><label for="q21a">1. おこる</label></div>
+<div class="option"><input id="q21b" name="q21" type="radio" value="1"/><label for="q21b">2. おこられる</label></div>
+<div class="option"><input id="q21c" name="q21" type="radio" value="0"/><label for="q21c">3. おこらせる</label></div>
+<div class="option"><input id="q21d" name="q21" type="radio" value="0"/><label for="q21d">4. おこらせられる</label></div>
+</div>
+<div class="explanation">✅ 正解：2. おこられる — 「先生に怒られる」は受身形。先生が怒る→自分が怒られる。</div>
+</div>
+<div class="question">
+<div class="q-text"><span class="q-num">22</span>A「日本語が　じょうずに　なりましたね。」<br/>B「ありがとうございます。毎日　（　）ようにしています。」</div>
+<div class="options">
+<div class="option"><input id="q22a" name="q22" type="radio" value="1"/><label for="q22a">1. べんきょうする</label></div>
+<div class="option"><input id="q22b" name="q22" type="radio" value="0"/><label for="q22b">2. べんきょうした</label></div>
+<div class="option"><input id="q22c" name="q22" type="radio" value="0"/><label for="q22c">3. べんきょうして</label></div>
+<div class="option"><input id="q22d" name="q22" type="radio" value="0"/><label for="q22d">4. べんきょうしている</label></div>
+</div>
+<div class="explanation">✅ 正解：1. べんきょうする — 「〜ようにする」は努力・心がけを表します。辞書形＋ようにする。</div>
+</div>
+<div class="question">
+<div class="q-text"><span class="q-num">23</span>もし　100万円（　）、何が　したいですか。</div>
+<div class="options">
+<div class="option"><input id="q23a" name="q23" type="radio" value="0"/><label for="q23a">1. あると</label></div>
+<div class="option"><input id="q23b" name="q23" type="radio" value="1"/><label for="q23b">2. あったら</label></div>
+<div class="option"><input id="q23c" name="q23" type="radio" value="0"/><label for="q23c">3. あるので</label></div>
+<div class="option"><input id="q23d" name="q23" type="radio" value="0"/><label for="q23d">4. あるために</label></div>
+</div>
+<div class="explanation">✅ 正解：2. あったら — 「もし〜たら」で仮定条件を表します。「もし100万円あったら」が自然。</div>
+</div>
+<div class="question"><div class="q-text"><span class="q-num">24</span>じゅぎょうが　おわった（　）、しょくいんしつに　来てください。</div><div class="options"><div class="option"><input id="q24a" name="q24" type="radio" value="1"/><label for="q24a">1. あとで</label></div><div class="option"><input id="q24b" name="q24" type="radio" value="0"/><label for="q24b">2. まえに</label></div><div class="option"><input id="q24c" name="q24" type="radio" value="0"/><label for="q24c">3. まえで</label></div><div class="option"><input id="q24d" name="q24" type="radio" value="0"/><label for="q24d">4. とき</label></div></div><div class="explanation">✅ 正解：1. あとで — 「〜あとで」で after 〜。授業が終わった後に来てください。</div></div>
+<div class="question"><div class="q-text"><span class="q-num">25</span>来週の　水曜日（　）　レポートを　出してください。</div><div class="options"><div class="option"><input id="q25a" name="q25" type="radio" value="1"/><label for="q25a">1. までに</label></div><div class="option"><input id="q25b" name="q25" type="radio" value="0"/><label for="q25b">2. まで</label></div><div class="option"><input id="q25c" name="q25" type="radio" value="0"/><label for="q25c">3. あいだ</label></div><div class="option"><input id="q25d" name="q25" type="radio" value="0"/><label for="q25d">4. まえに</label></div></div><div class="explanation">✅ 正解：1. までに — 「〜までに」で by (time)。期限を表す。</div></div>
+<div class="question"><div class="q-text"><span class="q-num">26</span>あの　レストランは　おいしい（　）です。</div><div class="options"><div class="option"><input id="q26a" name="q26" type="radio" value="0"/><label for="q26a">1. そう</label></div><div class="option"><input id="q26b" name="q26" type="radio" value="1"/><label for="q26b">2. らしい</label></div><div class="option"><input id="q26c" name="q26" type="radio" value="0"/><label for="q26c">3. よう</label></div><div class="option"><input id="q26d" name="q26" type="radio" value="0"/><label for="q26d">4. みたい</label></div></div><div class="explanation">✅ 正解：2. らしい — 「〜らしい」で I heard、apparently。伝聞を表す。</div></div>
+<div class="question"><div class="q-text"><span class="q-num">27</span>日本に　来てから、日本語が　（　）ようになりました。</div><div class="options"><div class="option"><input id="q27a" name="q27" type="radio" value="0"/><label for="q27a">1. 話す</label></div><div class="option"><input id="q27b" name="q27" type="radio" value="1"/><label for="q27b">2. 話せる</label></div><div class="option"><input id="q27c" name="q27" type="radio" value="0"/><label for="q27c">3. 話した</label></div><div class="option"><input id="q27d" name="q27" type="radio" value="0"/><label for="q27d">4. 話して</label></div></div><div class="explanation">✅ 正解：2. 話せる — 「〜ようになる」の前は可能形。日本語が話せるようになった。</div></div>
+<div class="question"><div class="q-text"><span class="q-num">28</span>テニスを　（　）　みませんか。</div><div class="options"><div class="option"><input id="q28a" name="q28" type="radio" value="0"/><label for="q28a">1. する</label></div><div class="option"><input id="q28b" name="q28" type="radio" value="1"/><label for="q28b">2. して</label></div><div class="option"><input id="q28c" name="q28" type="radio" value="0"/><label for="q28c">3. した</label></div><div class="option"><input id="q28d" name="q28" type="radio" value="0"/><label for="q28d">4. しよう</label></div></div><div class="explanation">✅ 正解：2. して — 「〜てみる」で try doing。テニスをしてみませんか＝やってみませんか。</div></div>
+<div class="question"><div class="q-text"><span class="q-num">29</span>でんきを　（　）　でかけてください。</div><div class="options"><div class="option"><input id="q29a" name="q29" type="radio" value="0"/><label for="q29a">1. けした</label></div><div class="option"><input id="q29b" name="q29" type="radio" value="1"/><label for="q29b">2. けして</label></div><div class="option"><input id="q29c" name="q29" type="radio" value="0"/><label for="q29c">3. けす</label></div><div class="option"><input id="q29d" name="q29" type="radio" value="0"/><label for="q29d">4. けし</label></div></div><div class="explanation">✅ 正解：2. けして — 「電気を消して出かけて」で て形で接続。</div></div>
+<div class="question"><div class="q-text"><span class="q-num">30</span>雨が　（　）　かさを　かりましょう。</div><div class="options"><div class="option"><input id="q30a" name="q30" type="radio" value="0"/><label for="q30a">1. ふって</label></div><div class="option"><input id="q30b" name="q30" type="radio" value="1"/><label for="q30b">2. ふったら</label></div><div class="option"><input id="q30c" name="q30" type="radio" value="0"/><label for="q30c">3. ふるので</label></div><div class="option"><input id="q30d" name="q30" type="radio" value="0"/><label for="q30d">4. ふるから</label></div></div><div class="explanation">✅ 正解：2. ふったら — 「〜たら」で条件。雨が降ったら傘を借りましょう。</div></div>
+<div class="question"><div class="q-text"><span class="q-num">31</span>この　ほんは　やさしい（　）　おもしろいです。</div><div class="options"><div class="option"><input id="q31a" name="q31" type="radio" value="0"/><label for="q31a">1. ので</label></div><div class="option"><input id="q31b" name="q31" type="radio" value="1"/><label for="q31b">2. し</label></div><div class="option"><input id="q31c" name="q31" type="radio" value="0"/><label for="q31c">3. から</label></div><div class="option"><input id="q31d" name="q31" type="radio" value="0"/><label for="q31d">4. のに</label></div></div><div class="explanation">✅ 正解：2. し — 「〜し〜し」で and、and what's more。やさしいしおもしろい。</div></div>
+<div class="question"><div class="q-text"><span class="q-num">32</span>れきしの　本を　（　）　あります。</div><div class="options"><div class="option"><input id="q32a" name="q32" type="radio" value="1"/><label for="q32a">1. よんで</label></div><div class="option"><input id="q32b" name="q32" type="radio" value="0"/><label for="q32b">2. よむ</label></div><div class="option"><input id="q32c" name="q32" type="radio" value="0"/><label for="q32c">3. よんだ</label></div><div class="option"><input id="q32d" name="q32" type="radio" value="0"/><label for="q32d">4. よみ</label></div></div><div class="explanation">✅ 正解：1. よんで — 「読んであります」= have read (in preparation)。て形＋ある。</div></div>
+</div>
+
+<div class="section">
+<div class="section-title">もんだい4 — 言い換え（5問）</div>
+<div class="question">
+<div class="q-text"><span class="q-num">33</span>この　もんだいは　<strong>かんたん</strong>です。</div>
+<div class="options">
+<div class="option"><input id="q33a" name="q33" type="radio" value="1"/><label for="q33a">1. この　もんだいは　やさしいです。</label></div>
+<div class="option"><input id="q33b" name="q33" type="radio" value="0"/><label for="q33b">2. この　もんだいは　むずかしいです。</label></div>
+<div class="option"><input id="q33c" name="q33" type="radio" value="0"/><label for="q33c">3. この　もんだいは　おもしろいです。</label></div>
+<div class="option"><input id="q33d" name="q33" type="radio" value="0"/><label for="q33d">4. この　もんだいは　たいへんです。</label></div>
+</div>
+<div class="explanation">✅ 正解：1 — 「簡単」≒「易しい」（やさしい）。どちらも難しくないという意味。</div>
+</div>
+<div class="question"><div class="q-text"><span class="q-num">34</span>あの人の　はなしは　<strong>まったく</strong>　わかりません。</div><div class="options"><div class="option"><input id="q34a" name="q34" type="radio" value="0"/><label for="q34a">1. すこし</label></div><div class="option"><input id="q34b" name="q34" type="radio" value="1"/><label for="q34b">2. ぜんぜん</label></div><div class="option"><input id="q34c" name="q34" type="radio" value="0"/><label for="q34c">3. だいたい</label></div><div class="option"><input id="q34d" name="q34" type="radio" value="0"/><label for="q34d">4. たいてい</label></div></div><div class="explanation">✅ 正解：2. ぜんぜん — 「まったく〜ない」≒「全然〜ない」。完全否定。</div></div>
+<div class="question"><div class="q-text"><span class="q-num">35</span>この　しごとは　<strong>ふくざつ</strong>です。</div><div class="options"><div class="option"><input id="q35a" name="q35" type="radio" value="0"/><label for="q35a">1. この　しごとは　つまらないです。</label></div><div class="option"><input id="q35b" name="q35" type="radio" value="1"/><label for="q35b">2. この　しごとは　かんたんではないです。</label></div><div class="option"><input id="q35c" name="q35" type="radio" value="0"/><label for="q35c">3. この　しごとは　たいへんではないです。</label></div><div class="option"><input id="q35d" name="q35" type="radio" value="0"/><label for="q35d">4. この　しごとは　おもしろいです。</label></div></div><div class="explanation">✅ 正解：2 — 「複雑」は「簡単ではない」という意味に近い。</div></div>
+<div class="question"><div class="q-text"><span class="q-num">36</span>かれは　<strong>ぜひ</strong>　日本に　行きたいと　言っています。</div><div class="options"><div class="option"><input id="q36a" name="q36" type="radio" value="0"/><label for="q36a">1. たぶん</label></div><div class="option"><input id="q36b" name="q36" type="radio" value="0"/><label for="q36b">2. あまり</label></div><div class="option"><input id="q36c" name="q36" type="radio" value="1"/><label for="q36c">3. 必ず</label></div><div class="option"><input id="q36d" name="q36" type="radio" value="0"/><label for="q36d">4. ときどき</label></div></div><div class="explanation">✅ 正解：3. 必ず — 「ぜひ」= by all means、certainly。「必ず」も同様に強く望む気持ちを表す。</div></div>
+<div class="question"><div class="q-text"><span class="q-num">37</span>この　道は　<strong>あぶない</strong>です。</div><div class="options"><div class="option"><input id="q37a" name="q37" type="radio" value="0"/><label for="q37a">1. この　道は　あんぜんです。</label></div><div class="option"><input id="q37b" name="q37" type="radio" value="1"/><label for="q37b">2. この　道は　きけんです。</label></div><div class="option"><input id="q37c" name="q37" type="radio" value="0"/><label for="q37c">3. この　道は　ひろいです。</label></div><div class="option"><input id="q37d" name="q37" type="radio" value="0"/><label for="q37d">4. この　道は　せまいです。</label></div></div><div class="explanation">✅ 正解：2 — 「危ない」=「危険」。dangerous の意味。</div></div>
+</div>
+
+<div class="section">
+<div class="section-title">もんだい5 — 文の組み立て（5問）</div>
+<p style="color:#718096;font-size:.9em;margin-bottom:12px">★に入る最もよいものを選んでください。4つの選択肢をすべて使って正しい文を作る順序で、★の位置に入るものを選んでください。</p>
+<div class="question">
+<div class="q-text"><span class="q-num">38</span>友だちに ＿＿ ＿＿ ★ ＿＿ もらいました。</div>
+<div class="options">
+<div class="option"><input id="q38a" name="q38" type="radio" value="0"/><label for="q38a">1. 日本語を</label></div>
+<div class="option"><input id="q38b" name="q38" type="radio" value="1"/><label for="q38b">2. ていねいに</label></div>
+<div class="option"><input id="q38c" name="q38" type="radio" value="0"/><label for="q38c">3. おしえて</label></div>
+<div class="option"><input id="q38d" name="q38" type="radio" value="0"/><label for="q38d">4. きのう</label></div>
+</div>
+<div class="explanation">✅ 正解：2. ていねいに — 正しい語順「友だちに きのう 日本語を ★ていねいに おしえて もらいました。」4つすべてを使って並び替える。</div>
+</div>
+<div class="question"><div class="q-text"><span class="q-num">39</span>私に ＿＿ ＿＿ ★ ＿＿ ください。</div><div class="options"><div class="option"><input id="q39a" name="q39" type="radio" value="0"/><label for="q39a">1. のり方を</label></div><div class="option"><input id="q39b" name="q39" type="radio" value="0"/><label for="q39b">2. おしえて</label></div><div class="option"><input id="q39c" name="q39" type="radio" value="0"/><label for="q39c">3. 電車の</label></div><div class="option"><input id="q39d" name="q39" type="radio" value="1"/><label for="q39d">4. ていねいに</label></div></div><div class="explanation">✅ 正解：4. ていねいに — 正しい語順「私に 電車の のり方を ★ていねいに おしえて ください。」4つすべてを使って並び替える。</div></div>
+<div class="question"><div class="q-text"><span class="q-num">40</span>来週の ＿＿ ＿＿ ★ ＿＿ あります。</div><div class="options"><div class="option"><input id="q40a" name="q40" type="radio" value="0"/><label for="q40a">1. 会議が</label></div><div class="option"><input id="q40b" name="q40" type="radio" value="0"/><label for="q40b">2. 水曜日に</label></div><div class="option"><input id="q40c" name="q40" type="radio" value="0"/><label for="q40c">3. 午後3時から</label></div><div class="option"><input id="q40d" name="q40" type="radio" value="1"/><label for="q40d">4. しょくいんしつで</label></div></div><div class="explanation">✅ 正解：4. しょくいんしつで — 正しい語順「来週の 水曜日に 午後3時から しょくいんしつで 会議が あります。」4つすべてを使って並び替える。★の位置はしょくいんしつで。</div></div>
+<div class="question"><div class="q-text"><span class="q-num">41</span>母に ＿＿ ＿＿ ★ ＿＿ あげました。</div><div class="options"><div class="option"><input id="q41a" name="q41" type="radio" value="1"/><label for="q41a">1. プレゼントを</label></div><div class="option"><input id="q41b" name="q41" type="radio" value="0"/><label for="q41b">2. たんじょうびの</label></div><div class="option"><input id="q41c" name="q41" type="radio" value="0"/><label for="q41c">3. 買って</label></div><div class="option"><input id="q41d" name="q41" type="radio" value="0"/><label for="q41d">4. きのう</label></div></div><div class="explanation">✅ 正解：1. プレゼントを — 正しい語順「母に きのう たんじょうびの ★プレゼントを 買って あげました。」4つすべてを使って並び替える。</div></div>
+<div class="question"><div class="q-text"><span class="q-num">42</span>弟に ＿＿ ＿＿ ★ ＿＿ やりました。</div><div class="options"><div class="option"><input id="q42a" name="q42" type="radio" value="0"/><label for="q42a">1. 英語を</label></div><div class="option"><input id="q42b" name="q42" type="radio" value="0"/><label for="q42b">2. おしえて</label></div><div class="option"><input id="q42c" name="q42" type="radio" value="0"/><label for="q42c">3. きのう</label></div><div class="option"><input id="q42d" name="q42" type="radio" value="1"/><label for="q42d">4. ていねいに</label></div></div><div class="explanation">✅ 正解：4. ていねいに — 正しい語順「弟に きのう 英語を ていねいに おしえて やりました。」4つすべてを使って並び替える。★の位置はていねいに。</div></div>
+</div>
+
+<div class="section">
+<div class="section-title">もんだい6 — 読解（5問）</div><p style="color:#718096;font-size:.9em;margin-bottom:14px;line-height:1.6">読解は<b>記事が2本</b>あります。1本目の記事を読んでから<b>3問</b>、2本目の記事を読んでから<b>2問</b>答えてください。同じ記事に戻りながら確認しても大丈夫です。</p>
+<div class="reading-bundle"><div class="reading-passage">
+今週の日曜日、町で「秋祭り」があります。午前9時から午後5時までです。お祭りでは、地元の食べ物や手作りのおもちゃが売られます。夕方からは和太鼓の演奏もあります。会場は駅から徒歩で15分です。入場は無料です。ぜひ家族で来てください。
+<br/><br/>
+来週の土曜日、学校で「文化祭」があります。午前10時から午後4時までです。各クラスが食べ物や飲み物を売ります。また、体育館でダンスや歌の発表があります。保護者の方も来ることができます。入場は無料です。ぜひ来てください。
+<br/><br/>
+＜お知らせ＞<br/>
+来週の月曜日、学校は休みです。その日は「創立記念日」です。図書館は開いています。午前9時から午後5時まで利用できます。食堂は休みです。生徒の皆さんは来週の火曜日、元気に登校してください。
+</div><div class="question"><div class="q-text"><span class="q-num">43</span>秋祭りの会場までの行き方として、本文と合っているものはどれですか。</div><div class="options"><div class="option"><input id="q43a" name="q43" type="radio" value="0"/><label for="q43a">1. 駅から車で15分です</label></div><div class="option"><input id="q43b" name="q43" type="radio" value="1"/><label for="q43b">2. 駅から徒歩で15分です</label></div><div class="option"><input id="q43c" name="q43" type="radio" value="0"/><label for="q43c">3. 学校の体育館で行われます</label></div><div class="option"><input id="q43d" name="q43" type="radio" value="0"/><label for="q43d">4. 入場には500円が必要です</label></div></div><div class="explanation">✅ 正解：2 — 本文に「会場は駅から徒歩で15分です」とあり、入場は無料とも書かれています。</div></div><div class="question"><div class="q-text"><span class="q-num">44</span>文化祭の開催日と時間として、正しいものはどれですか。</div><div class="options"><div class="option"><input id="q44a" name="q44" type="radio" value="0"/><label for="q44a">1. 今週の日曜日、午前9時から午後5時まで</label></div><div class="option"><input id="q44b" name="q44" type="radio" value="1"/><label for="q44b">2. 来週の土曜日、午前10時から午後4時まで</label></div><div class="option"><input id="q44c" name="q44" type="radio" value="0"/><label for="q44c">3. 来週の月曜日、終日</label></div><div class="option"><input id="q44d" name="q44" type="radio" value="0"/><label for="q44d">4. 来月の土曜日の夜だけ</label></div></div><div class="explanation">✅ 正解：2 — 本文に「来週の土曜日、学校で『文化祭』があります。午前10時から午後4時までです」とあります。</div></div><div class="question"><div class="q-text"><span class="q-num">45</span>創立記念日の月曜日について、本文と合っているものはどれですか。</div><div class="options"><div class="option"><input id="q45a" name="q45" type="radio" value="0"/><label for="q45a">1. 図書館は休みです</label></div><div class="option"><input id="q45b" name="q45" type="radio" value="0"/><label for="q45b">2. 食堂は開いています</label></div><div class="option"><input id="q45c" name="q45" type="radio" value="1"/><label for="q45c">3. 学校は休みで、その日は創立記念日です</label></div><div class="option"><input id="q45d" name="q45" type="radio" value="0"/><label for="q45d">4. その後も学校はずっと休みです</label></div></div><div class="explanation">✅ 正解：3 — 本文に「来週の月曜日、学校は休みです。その日は『創立記念日』です」とあり、図書館は開いていて食堂は休みと書かれています。</div></div></div>
+<div class="reading-bundle"><div class="reading-passage">
+先週の日曜日、友だちと山に登りました。天気はよかったですが、風が強くて寒かったです。山の上からの景色はとてもきれいでした。帰りに温泉に入りました。とても気持ちがよかったです。来月もまた行きたいです。
+<br/><br/>
+私は毎週日曜日にスーパーで買い物をします。スーパーは家から自転車で10分です。よく野菜や果物、肉を買います。先週は卵が安かったので、たくさん買いました。今週も安いといいです。
+</div><div class="question"><div class="q-text"><span class="q-num">46</span>筆者が友だちと山に登ったのはいつですか。</div><div class="options"><div class="option"><input id="q46a" name="q46" type="radio" value="0"/><label for="q46a">1. 来月の日曜日</label></div><div class="option"><input id="q46b" name="q46" type="radio" value="1"/><label for="q46b">2. 先週の日曜日</label></div><div class="option"><input id="q46c" name="q46" type="radio" value="0"/><label for="q46c">3. 今週の土曜日</label></div><div class="option"><input id="q46d" name="q46" type="radio" value="0"/><label for="q46d">4. 昨日の金曜日</label></div></div><div class="explanation">✅ 正解：2 — 本文に「先週の日曜日、友だちと山に登りました」とあります。</div></div><div class="question"><div class="q-text"><span class="q-num">47</span>スーパーまでの行き方として、本文と合っているものはどれですか。</div><div class="options"><div class="option"><input id="q47a" name="q47" type="radio" value="1"/><label for="q47a">1. 自転車で10分ぐらいです</label></div><div class="option"><input id="q47b" name="q47" type="radio" value="0"/><label for="q47b">2. 歩いて10分です</label></div><div class="option"><input id="q47c" name="q47" type="radio" value="0"/><label for="q47c">3. バスで15分です</label></div><div class="option"><input id="q47d" name="q47" type="radio" value="0"/><label for="q47d">4. 車で5分です</label></div></div><div class="explanation">✅ 正解：1 — 本文に「スーパーは家から自転車で10分です」とあります。</div></div></div>
+</div>
+
+<button class="btn-submit" id="submitBtn" onclick="submitTest()">採点する</button>
+<div class="result-panel" id="resultPanel">
+<h2 id="resultTitle"></h2>
+<div class="result-score" id="resultScore"></div>
+<div class="result-detail" id="resultDetail"></div>
+<button class="btn-submit" onclick="location.reload()" style="margin-top:20px">もう一度</button>
+</div>
+</div>
+
+<script>
+const TOTAL=47,TIME_LIMIT=1800;
+function shuffleArray(a){
+for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];}
+}
+function relabelChoiceNumber(labelEl,idx){
+if(!labelEl)return;
+const t=labelEl.textContent.replace(/^[1-4][\.\uFF0E]\s*/u,"").trim();
+labelEl.textContent=(idx+1)+". "+t;
+}
+function shuffleAllChoices(){
+document.querySelectorAll(".question").forEach(q=>{
+const box=q.querySelector(".options");
+if(!box)return;
+const opts=[...box.querySelectorAll(":scope > .option")];
+if(opts.length<2)return;
+opts.forEach(o=>{const inp=o.querySelector('input[type="radio"]');o._isCorrect=inp&&inp.value==="1";});
+shuffleArray(opts);
+const qname=opts[0].querySelector('input[type="radio"]').name;
+const letters="abcdefghijklmnopqrstuvwxyz";
+opts.forEach((o,i)=>{
+const inp=o.querySelector('input[type="radio"]');
+const lab=o.querySelector("label");
+const suf=letters[i];
+inp.name=qname;
+inp.id=qname+suf;
+if(lab)lab.setAttribute("for",inp.id);
+inp.value=o._isCorrect?"1":"0";
+delete o._isCorrect;
+relabelChoiceNumber(lab,i);
+});
+box.replaceChildren(...opts);
+const expl=q.querySelector(".explanation");
+if(expl){expl.textContent=expl.textContent.replace(/\u6b63\u89e3\uff1a\s*[1-4](\s*[\.\uFF0E]\s*|\s*[—\u2014]\s*)/u,"\u6b63\u89e3\uff1a");}
+});
+}
+let timeLeft=TIME_LIMIT,timerInterval,submitted=false;
+function startTimer(){
+timerInterval=setInterval(()=>{timeLeft--;const m=Math.floor(timeLeft/60),s=timeLeft%60;const el=document.getElementById('timer');el.textContent=`${m}:${s.toString().padStart(2,'0')}`;document.getElementById('progress').style.width=`${(timeLeft/TIME_LIMIT)*100}%`;if(timeLeft<=60)el.className='timer danger';else if(timeLeft<=180)el.className='timer warning';if(timeLeft<=0){clearInterval(timerInterval);submitTest();}},1000);}
+function submitTest(){
+if(submitted)return;submitted=true;clearInterval(timerInterval);
+let correct=0;const sec={kanji:0,vocab:0,gram:0,para:0,sent:0,read:0};
+for(let i=1;i<=TOTAL;i++){const sel=document.querySelector(`input[name="q${i}"]:checked`);const opts=document.querySelectorAll(`input[name="q${i}"]`);let ok=false;if(sel&&sel.value==='1'){ok=true;correct++;}opts.forEach(o=>{const p=o.parentElement;if(o.value==='1')p.classList.add('correct');else if(o.checked)p.classList.add('wrong');});
+if(i<=10){if(ok)sec.kanji++;}else if(i<=20){if(ok)sec.vocab++;}else if(i<=32){if(ok)sec.gram++;}else if(i<=37){if(ok)sec.para++;}else if(i<=42){if(ok)sec.sent++;}else if(i<=47){if(ok)sec.read++;}
+}
+document.querySelectorAll('.explanation').forEach(e=>e.classList.add('show'));
+const pct=Math.round((correct/TOTAL)*100);const panel=document.getElementById('resultPanel');panel.style.display='block';
+const score=document.getElementById('resultScore');score.textContent=`${correct} / ${TOTAL}（${pct}%）`;
+const title=document.getElementById('resultTitle');
+if(pct>=90){title.textContent="\ud83c\udf89 \u7d20\u6674\u3089\u3057\u3044\uff01";score.className='result-score excellent';}else if(pct>=70){title.textContent="\ud83d\udc4d \u3088\u304f\u3067\u304d\u307e\u3057\u305f\uff01";score.className='result-score good';}else if(pct>=50){title.textContent="\ud83d\udcdd \u3082\u3046\u5c11\u3057\uff01";score.className='result-score fair';}else{title.textContent="\ud83d\udcaa \u304c\u3093\u3070\u308a\u307e\u3057\u3087\u3046\uff01";score.className='result-score poor';}
+const t=TIME_LIMIT-timeLeft;document.getElementById('resultDetail').innerHTML=`<div class="result-item"><div class="label">\u6f22\u5b57\u306e\u8aad\u307f</div><div class="value">${sec.kanji}/10</div></div><div class="result-item"><div class="label">\u8a9e\u5f59</div><div class="value">${sec.vocab}/10</div></div><div class="result-item"><div class="label">\u6587\u6cd5</div><div class="value">${sec.gram}/12</div></div><div class="result-item"><div class="label">\u8a00\u3044\u63db\u3048</div><div class="value">${sec.para}/5</div></div><div class="result-item"><div class="label">\u6587\u306e\u7d44\u307f\u7acb\u3066</div><div class="value">${sec.sent}/5</div></div><div class="result-item"><div class="label">\u8aad\u89e3</div><div class="value">${sec.read}/5</div></div><div class="result-item"><div class="label">\u6240\u8981\u6642\u9593</div><div class="value">${Math.floor(t/60)}分${t%60}秒</div></div>`;
+document.getElementById('submitBtn').disabled=true;panel.scrollIntoView({behavior:'smooth'});}
+shuffleAllChoices();
+startTimer();
+</script>
+</body>
+</html>

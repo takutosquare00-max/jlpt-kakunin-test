@@ -1,0 +1,54 @@
+---
+description: GitHub push 完了時（HTML 更新時）に「完了です」と Safari で公開 URL を開く
+alwaysApply: true
+---
+
+# GitHub HTML デプロイ完了フロー
+
+**HTML を編集・デプロイして GitHub へ push したとき**、またはユーザーが確認完了を報告してその作業が終わったとき:
+
+1. 返答は **「完了です」** で始める
+2. **同時に** Safari で GitHub Pages の公開 URL を `open -a Safari "..."` で開く（ユーザーに頼まない）
+3. ローカル file:// は開かない。**必ず公開 URL** を開く
+
+## 公開 URL の組み立て
+
+`{Pages ベース URL}{リポジトリ内の相対パス}`
+
+Pages ベース URL は `https://takutosquare00-max.github.io/{リポジ名}/`
+
+## リポジトリ対応表（school）
+
+| デプロイ先ディレクトリ | GitHub リポジ | Pages ベース URL |
+|---|---|---|
+| `minnanonihongo-quiz-deploy/` | minnanonihongo-quiz | https://takutosquare00-max.github.io/minnanonihongo-quiz/ |
+| `minnanonihongo-bunpo-deploy/` | minnanonihongo-bunpo | https://takutosquare00-max.github.io/minnanonihongo-bunpo/ |
+| `kanji-deploy/` | kanji-practice | https://takutosquare00-max.github.io/kanji-practice/ |
+| `jtest-fg-deploy/` | jtest-reading-practice | https://takutosquare00-max.github.io/jtest-reading-practice/ |
+| `moji-gakushu/` | moji-gakushu | https://takutosquare00-max.github.io/moji-gakushu/ |
+| `romaji-typing-practice/` | romaji-typing-practice | https://takutosquare00-max.github.io/romaji-typing-practice/ |
+| `school/` ルート（JLPT 等） | jlpt-kakunin-test | https://takutosquare00-max.github.io/jlpt-kakunin-test/ |
+
+上記以外の `takutosquare00-max` リポジでも、push 先の `origin` URL からリポジ名を取り `{owner}.github.io/{repo}/` を組み立てる。
+
+## どの URL を開くか
+
+- push した HTML が1つ → そのファイルの公開 URL
+- part1 / part2 両方 → **part1** を優先
+- 文法テスト・grammar-test → **part1** を優先
+- 複数ユニット → 今回編集した最初のファイル
+- パス不明 → そのリポジの index（トップ）
+
+## 適用条件
+
+- HTML（`.html`）を編集・コピー・push したセッション
+- ユーザーが「確認完了」「push して」と依頼して push まで完了
+- **HTML 更新がない push**（設定・md のみ等）→ Safari は開かない
+
+## push 手順（リマインド）
+
+1. ソース → デプロイ用ディレクトリへコピー（必要な場合）
+2. commit & push（ユーザーが明示依頼したときのみ）
+3. 「完了です」＋ Safari で公開 URL を開く
+
+関連: Obsidian `Preferences/github-html-deploy.md`

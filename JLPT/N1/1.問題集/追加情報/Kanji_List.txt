@@ -1,0 +1,1506 @@
+|#|Kanji|Onyomi|Kunyomi|Kanji Meaning|
+|---|---|---|---|---|
+|1|氏|shi|uji|family name, surname, clan|
+|2|統|tou|su(beru)|ruling, governing|
+|3|基|ki|moto, motoi|fundamentals, counter for machines, foundation|
+|4|価|ka|atai|value, price|
+|5|提|tei|sa(geru)|propose, take along, carry in hand|
+|6|挙|kyo|a(geru), kozo(ru)|raise, plan, project, behavior, actions|
+|7|応|ou|kota(eru)|apply, answer, yes, OK, reply, accept|
+|8|企|ki|kuwada(teru), takura(mu)|undertake, scheme, design, attempt, plan|
+|9|検|ken|shira(beru)|examination, investigate|
+|10|藤|tou|fuji|wisteria|
+|11|沢|taku|sawa|swamp, marsh, brilliance, grace|
+|12|裁|sai|ta(tsu), saba(ku)|tailor, judge, decision, cut out (pattern)|
+|13|証|shou|akashi|evidence, proof, certificate|
+|14|援|en||abet, help, save|
+|15|可|ka|be(ki)|can, passable, mustn't, should not|
+|16|施|shi, se|hodoko(su)|give, bestow, perform, alms|
+|17|井|sei, shou|i|well, well crib, town, community|
+|18|護|go|mamo(ru)|safeguard, protect|
+|19|展|ten||unfold, expand|
+|20|態|tai|waza(to)|attitude, condition|
+|21|鮮|sen|aza(yaka)|fresh, vivid, clear|
+|22|視|shi|mi(ru)|inspection, regard as, see, look at|
+|23|条|jou, chou, deki|eda, suji|article, clause, counter for articles|
+|24|幹|kan|miki|tree trunk, main part, talent, capability|
+|25|独|doku|hito(ri)|single, alone, spontaneously|
+|26|宮|kyuu, guu, ku|miya|Shinto shrine, constellations, palace, princess|
+|27|率|sotsu, ritsu|hiki(iru)|ratio, rate, proportion, %, factor, lead|
+|28|衛|ei||defense, protection|
+|29|張|chou|ha(ru)|lengthen, counter for bows & stringed instruments, stretch, spread, put up (tent)|
+|30|監|kan||oversee, official, govt office, rule, administer|
+|31|環|kan|wa|ring, circle, link, wheel|
+|32|審|shin|tsumabi(raka), tsubusa(ni)|hearing, judge, trial|
+|33|義|gi||righteousness, justice, morality, honor, loyalty, meaning|
+|34|訴|so|utta(eru)|accusation, sue, complain of pain, appeal to|
+|35|株|shu|kabu|stocks, stump, shares, stock, counter for small plants|
+|36|姿|shi|sugata|figure, form, shape|
+|37|閣|kaku||tower, tall building, palace|
+|38|韓|kan|kara, igeta|Korea|
+|39|衆|shuu, shu|oo(i)|masses, great numbers, multitude, populace|
+|40|評|hyou||evaluate, criticism, comment|
+|41|岡|kou|oka|mount, hill, knoll|
+|42|影|ei|kage|shadow, silhouette, phantom|
+|43|松|shou|matsu|pine tree|
+|44|撃|geki|u(tsu)|beat, attack, defeat, conquer|
+|45|佐|sa||assistant, help|
+|46|核|kaku||nucleus, core, kernel|
+|47|整|sei|totono(eru)|organize, arranging, tune, tone, meter, key (music)|
+|48|融|yuu|to(keru)|dissolve, melt|
+|49|製|sei||made in..., manufacture|
+|50|票|hyou||ballot, label, ticket, sign|
+|51|渉|shou|wata(ru)|ford, go cross, transit, ferry, import, involve|
+|52|響|kyou|hibi(ku)|echo, sound, resound, ring, vibrate|
+|53|推|sui|o(su)|conjecture, infer, guess, suppose, support, push (for)|
+|54|請|sei, shin, shou|ko(u), u(keru)|solicit, invite, ask|
+|55|器|ki|utsuwa|utensil, vessel, receptacle, implement, instrument, ability, container, tool, set|
+|56|士|shi|samurai|gentleman, scholar, samurai|
+|57|討|tou|u(tsu)|chastise, attack, defeat, destroy, conquer|
+|58|攻|kou|se(meru)|aggression, attack, criticize, polish|
+|59|崎|ki|saki, sai, misaki|promontory, cape, spit|
+|60|督|toku||coach, command, urge, lead, supervise|
+|61|授|ju|sazu(keru)|impart, instruct, grant, confer|
+|62|催|sai|moyou(su), moyoo(su)|sponsor, hold (a meeting), give (a dinner)|
+|63|及|kyuu|oyo(bu), oyobi|reach out, exert, exercise, cause|
+|64|憲|ken||constitution, law|
+|65|離|ri|hana(reru)|detach, separation, disjoin, digress|
+|66|激|geki|hage(shii)|violent, get excited, enraged, chafe, incite|
+|67|摘|teki|tsu(mu)|pinch, pick, pluck, trim, clip, summarize|
+|68|系|kei||lineage, system|
+|69|批|hi||criticism, strike|
+|70|郎|rou|otoko|son, counter for sons|
+|71|健|ken|suko(yaka)|healthy, health, strength, persistence|
+|72|従|juu, shou, ju|shitaga(u), yori|accompany, obey, submit to, comply, follow, secondary, incidental, subordinate|
+|73|修|shuu, shu|osa(meru)|discipline, conduct oneself well, study, master|
+|74|隊|tai||regiment, party, company, squad|
+|75|織|shoku, shiki|o(ru), ori, -ori, -o(ri)|weave, fabric|
+|76|拡|kaku, kou|hiro(garu)|broaden, extend, expand, enlarge|
+|77|故|ko|yue, furu(i), moto|happenstance, especially, intentionally, reason, cause, circumstances, the late, therefore|
+|78|振|shin|fu(ru)|shake, wave, wag, swing|
+|79|弁|ben, hen|kanmuri, wakima(eru), wa(keru), hanabira|valve, petal, braid, speech, dialect, discrimination, dispose of, distinguish, conical cap|
+|80|就|shuu, ju|tsu(ku)|concerning, settle, take position, depart, study, per|
+|81|異|i|koto, koto(naru), ke|uncommon, different, queerness, strangeness, wonderful, curious, unusual|
+|82|献|ken, kon|tatematsu(ru)|offering, counter for drinks, present, offer|
+|83|厳|gen, gon|ogoso(ka), kibi(shii), ika(meshii), itsukushi|stern, strictness, severity, rigidity|
+|84|維|i||fiber, tie, rope|
+|85|浜|hin|hama|seacoast, beach, seashore|
+|86|遺|i, yui|noko(su)|bequeath, leave behind, reserve|
+|87|塁|rui, rai, sui|toride|bases, fort, rampart, walls, base(ball)|
+|88|邦|hou|kuni|home country, country, Japan|
+|89|素|so, su|moto|elementary, principle, naked, uncovered|
+|90|遣|ken|tsuka(u), -tsuka(i), -dzuka(i), ya(ru)|dispatch, despatch, send, give, donate, do, undertake|
+|91|抗|kou|araga(u)|confront, resist, defy, oppose|
+|92|模|mo, bo||imitation, copy, mock|
+|93|雄|yuu|o-, osu, on|masculine, male, hero, leader, superiority, excellence|
+|94|益|eki, yaku|ma(su)|benefit, gain, profit, advantage|
+|95|緊|kin|shi(meru)|tense, solid, hard, reliable, tight|
+|96|標|hyou|shirube, shirushi|signpost, seal, mark, stamp, imprint, symbol, emblem, trademark, evidence, souvenir|
+|97|宣|sen|notama(u)|proclaim, say, announce|
+|98|昭|shou||shining, bright|
+|99|廃|hai|suta(reru)|abolish, obsolete, cessation, discarding, abandon|
+|100|伊|i|kare|Italy, that one|
+|101|江|kou|e|creek, inlet, bay|
+|102|僚|ryou||colleague, official, companion|
+|103|吉|kichi, kitsu|yoshi|good luck, joy, congratulations|
+|104|盛|sei, jou|mo(ru), saka(ru)|boom, prosper, copulate|
+|105|皇|kou, ou||emperor|
+|106|臨|rin|nozo(mu)|look to, face, meet, confront, attend, call on|
+|107|踏|tou|fu(mu)|step, trample, carry through, appraise, evade payment|
+|108|壊|kai, e|kowa(su), yabu(ru)|demolition, break, destroy|
+|109|債|sai||bond, loan, debt|
+|110|興|kou, kyou|oko(su)|entertain, revive, retrieve, interest, pleasure|
+|111|源|gen|minamoto|source, origin|
+|112|儀|gi||ceremony, rule, affair, case, a matter|
+|113|創|sou, shou|tsuku(ru), haji(meru), kizu, kezu(shikeru)|genesis, wound, injury, hurt, start, originate|
+|114|障|shou|sawa(ru)|hinder, hurt, harm|
+|115|継|kei|tsu(gu), mama-|inherit, succeed, continue, patch, graft (tree)|
+|116|筋|kin|suji|muscle, sinew, tendon, fiber, plot, plan, descent|
+|117|狙|so, sho|nera(u)|aim at, sight, shadow, stalk|
+|118|闘|tou|tataka(u), araso(u)|fight, war|
+|119|葬|sou|houmu(ru)|interment, bury, shelve|
+|120|避|hi|sa(keru), yo(keru)|evade, avoid, avert, ward off, shirk, shun|
+|121|司|shi|tsukasado(ru)|director, official, govt office, rule, administer|
+|122|康|kou||ease, peace|
+|123|善|zen|yo(i), i(i), yoshi(tosuru)|virtuous, good, goodness|
+|124|逮|tai||apprehend, chase|
+|125|迫|haku|sema(aru)|urge, force, imminent, spur on|
+|126|惑|waku|mado(u)|beguile, delusion, perplexity|
+|127|崩|hou|kuzu(reru), -kuzu(re)|crumble, die, demolish, level|
+|128|紀|ki||chronicle, account, narrative, history, annals, geologic period|
+|129|聴|chou, tei|ki(ku), yuru(su)|listen, headstrong, naughty, careful inquiry|
+|130|脱|datsu|nu(gu)|undress, removing, escape from, get rid of, be left out, take off|
+|131|級|kyuu||class, rank, grade|
+|132|博|haku, baku||Dr., command, esteem, Ph.D.|
+|133|締|tei|shi(maru), -shi(me), -ji(me)|tighten, tie, shut, lock, fasten|
+|134|救|kyuu|suku(u)|salvation, save, help, rescue, reclaim|
+|135|執|shitsu, shuu|to(ru)|tenacious, take hold, grasp, take to heart|
+|136|房|bou|fusa|tassel, tuft, fringe, bunch, lock (hair), segment (orange), house, room|
+|137|撤|tetsu||remove, withdraw, disarm, dismantle, reject, exclude|
+|138|削|saku|kezu(ru), hatsu(ru), so(gu)|plane, sharpen, whittle, pare, shave|
+|139|密|mitsu|hiso(ka)|secrecy, density (pop), minuteness, carefulness|
+|140|措|so|o(ku)|set aside, give up, suspend, discontinue, lay aside, except|
+|141|志|shi|kokoroza(su), kokorozashi|intention, plan, resolve, aspire, motive, hopes, shilling|
+|142|載|sai|no(seru)|ride, board, get on, place, spread, 10**44, record, publish|
+|143|陣|jin||camp, battle array, ranks, position, sudden, brief time|
+|144|我|ga|ware, wa, wa(ga)-, waga-|ego, I, selfish, our, oneself|
+|145|為|i|tame, na(ru), su(ru), tari, tsuku(ru), nari|do, change, make, benefit, welfare, be of use, reach to, try, practice, cost, serve as, good|
+|146|抑|yoku|osa(eru)|repress, well, now, in the first place, push, shove, press, seal, do in spite of|
+|147|幕|maku, baku|tobari|curtain, bunting, act of play|
+|148|染|sen|so(meru), shi(meru)|dye, color, paint, stain, print|
+|149|奈|na, nai, dai|ikan, karanashi|Nara, what?|
+|150|傷|shou|kizu, ita(mu)|wound, hurt, injure, impair, pain, injury, cut, gash, scar, weak point|
+|151|択|taku|era(bu)|choose, select, elect, prefer|
+|152|秀|shuu|hii(deru)|excel, excellence, beauty, surpass|
+|153|徴|chou, chi|shirushi|indications, sign, omen, symptom, collect, seek, refer to, question|
+|154|弾|dan, tan|hi(ku), -hi(ki), hazu(mu), tama, haji(ku)|bullet, twang, flip, snap|
+|155|償|shou|tsuguna(u)|reparation, make up for, recompense, redeem|
+|156|功|kou, ko|isao|achievement, merits, success, honor, credit|
+|157|拠|kyo, ko|yo(ru)|foothold, based on, follow, therefore|
+|158|秘|hi|hi(meru), hiso(ka), kaku(su)|secret, conceal|
+|159|拒|kyo, go|koba(mu)|repel, refuse, reject, decline|
+|160|刑|kei||punish, penalty, sentence, punishment|
+|161|塚|chou|tsuka, -dzuka|hillock, mound|
+|162|致|chi|ita(su)|doth, do, send, forward, cause, exert, incur, engage|
+|163|繰|sou|ku(ru)|winding, reel, spin, turn (pages), look up, refer to|
+|164|尾|bi|o|tail, end, counter for fish, lower slope of mountain|
+|165|描|byou|ega(ku), ka(ku)|sketch, compose, write, draw, paint|
+|166|鈴|rei, rin|suzu|small bell, buzzer|
+|167|盤|ban||tray, shallow bowl, platter, tub, board, phonograph record|
+|168|項|kou|unaji|paragraph, nape of neck, clause, item, term (expression)|
+|169|喪|sou|mo|miss, mourning|
+|170|伴|han, ban|tomona(u)|consort, accompany, bring with, companion|
+|171|養|you, ryou|yashina(u)|foster, bring up, rear, develop, nurture|
+|172|懸|ken, ke|ka(keru)|state of suspension, hang, depend, consult, distant, far apart|
+|173|街|gai, kai|machi|boulevard, street, town|
+|174|契|kei|chigi(ru)|pledge, promise, vow|
+|175|掲|kei|kaka(geru)|put up (a notice), put up, hoist, display, hang out, publish, describe|
+|176|躍|yaku|odo(ru)|leap, dance, skip|
+|177|棄|ki|su(teru)|abandon, throw away, discard, resign, reject, sacrifice|
+|178|邸|tei|yashiki|residence, mansion|
+|179|縮|shuku|chidji(mu)|shrink, contract, shrivel, wrinkle, reduce|
+|180|還|kan|kae(ru)|send back, return|
+|181|属|zoku, shoku|sakan, tsuku, yakara|belong, genus, subordinate official, affiliated|
+|182|慮|ryo|omonpaku(ru)|prudence, thought, concern, consider, deliberate, fear|
+|183|枠||waku|frame, framework, spindle, spool, bounding-box|
+|184|恵|kei, e|megu(mu)|favor, blessing, grace, kindness|
+|185|露|ro, rou|tsuyu|dew, tears, expose, Russia|
+|186|沖|chuu|oki, okitsu, chuu(suru), waku|open sea, offing, rise high into sky|
+|187|緩|kan|yuru(i)|slacken, loosen, relax, lessen, be moderate, ease|
+|188|節|setsu, sechi|fushi, -bushi, notto|node, season, period, occasion, verse, clause, stanza, honor, joint, knuckle, knob, knot, tune, melody|
+|189|需|ju||demand, request, need|
+|190|射|sha|i(ru), sa(su), u(tsu)|shoot, shine into, onto, archery|
+|191|購|kou||subscription, buy|
+|192|揮|ki|furu(u)|brandish, wave, wag, swing, shake|
+|193|充|juu|a(teru), mi(tasu)|allot, fill|
+|194|貢|kou, ku|mitsu(gu)|tribute, support, finance|
+|195|鹿|roku|shika, ka|deer|
+|196|却|kyaku|kae(tte), shirizo(ku)|instead, on the contrary, rather, step back, withdraw, retreat|
+|197|端|tan|hashi, ha, hata, -bata, hana|edge, origin, end, point, border, verge, cape|
+|198|賃|chin||fare, fee, hire, rent, wages, charge|
+|199|獲|kaku|e(ru)|seize, get, find, earn, acquire, can, may, able to|
+|200|郡|gun|koori|county, district|
+|201|併|hei|awa(seru)|join, get together, unite, collective|
+|202|徹|tetsu||penetrate, clear, pierce, strike home, sit up (all night)|
+|203|貴|ki|tatto(i), touto(i)|precious, value, prize, esteem, honor|
+|204|埼|ki|saki, sai, misaki|cape, spit, promontory|
+|205|衝|shou|tsu(ku)|collide, brunt, highway, opposition (astronomy), thrust, pierce, stab, prick|
+|206|焦|shou|ko(geru), ase(ru), ji(reru)|char, hurry, impatient, irritate, burn, scorch, singe|
+|207|奪|datsu|uba(u)|rob, take by force, snatch away, dispossess, plunder, usurp|
+|208|災|sai|wazawa(i)|disaster, calamity, woe, curse, evil|
+|209|浦|ho|ura|bay, creek, inlet, gulf, beach, seacoast|
+|210|析|seki||chop, divide, tear, analyze|
+|211|譲|jou|yuzu(ru)|defer, turnover, transfer, convey|
+|212|称|shou|tata(eru), tona(eru), a(geru), kana(u), haka(ri), home(ru)|appellation, praise, admire, name, title, fame|
+|213|納|nou, natsu, na, nan, tou|osa(meru), -osa(meru)|settlement, obtain, reap, pay, supply, store|
+|214|樹|ju|ki|timber, trees, wood, establish, set up|
+|215|挑|chou|ido(mu)|challenge, contend for, make love to|
+|216|誘|yuu|saso(u), izana(u)|entice, lead, tempt, invite, ask, call for, seduce, allure|
+|217|紛|fun|magi(reru), -magi(re)|distract, be mistaken for, go astray, divert|
+|218|至|shi|ita(ru)|climax, arrive, proceed, reach, attain, result in|
+|219|宗|shuu, sou|mune|religion, sect, denomination, main point, origin, essence|
+|220|促|soku|unaga(su)|stimulate, urge, press, demand, incite|
+|221|慎|shin|tsutsushi(mu), tsutsu(mashii), tsutsushi|humility, be careful, discreet, prudent|
+|222|控|kou|hika(eru)|withdraw, draw in, hold back, refrain from, be moderate|
+|223|智|chi||wisdom, intellect, reason|
+|224|握|aku|nigi(ru)|grip, hold, mould sushi, bribe|
+|225|宙|chuu||mid-air, air, space, sky, memorization, interval of time|
+|226|俊|shun||sagacious, genius, excellence|
+|227|銭|sen, zen|zeni, suki|coin, .01 yen, money|
+|228|渋|juu, shuu|shibu, shibu(i)|astringent, hesitate, reluctant, have diarrhea|
+|229|銃|juu|tsutsu|gun, arms|
+|230|操|sou, san|misao, ayatsu(ru)|maneuver, manipulate, operate, steer, chastity, virginity, fidelity|
+|231|携|kei|tazusa(eru)|portable, carry (in hand), armed with, bring along|
+|232|診|shin|mi(ru)|checkup, seeing, diagnose, examine|
+|233|託|taku|kakotsu(keru), kako(tsu)|consign, requesting, entrusting with, pretend, hint|
+|234|撮|satsu|to(ru), tsuma(mu), -do(ri)|snapshot, take pictures|
+|235|誕|tan||nativity, be born, declension, lie, be arbitrary|
+|236|侵|shin|oka(su)|encroach, invade, raid, trespass, violate|
+|237|括|katsu|kuku(ru)|fasten, tie up, arrest, constrict|
+|238|謝|sha|ayama(ru)|apologize, thank, refuse|
+|239|孝|kou, kyou||filial piety, child's respect|
+|240|駆|ku|ka(keru)|drive, run, gallop, advance, inspire, impel|
+|241|透|tou|su(ku), tou(ru)|transparent, permeate, filter, penetrate|
+|242|津|shin|tsu|haven, port, harbor, ferry|
+|243|壁|heki|kabe|wall, lining (stomach), fence|
+|244|稲|tou, te|ine, ina-|rice plant|
+|245|仮|ka, ke|kari, kari-|sham, temporary, interim, assumed (name), informal|
+|246|裂|retsu|sa(ku), -gi(re)|split, rend, tear|
+|247|敏|bin|satoi|cleverness, agile, alert|
+|248|是|ze, shi|kore, kono, koko|just so, this, right, justice|
+|249|排|hai||repudiate, exclude, expel, reject, line up, arrange|
+|250|裕|yuu||abundant, rich, fertile|
+|251|堅|ken|kata(i), -gata(i)|strict, hard, solid, tough, tight, reliable|
+|252|訳|yaku|wake|translate, reason, circumstance, case|
+|253|芝|shi|shiba|turf, lawn|
+|254|綱|kou|tsuna|hawser, class (genus), rope, cord, cable|
+|255|典|ten, den|fumi, nori|code, ceremony, law, rule|
+|256|賀|ga||congratulations, joy|
+|257|扱|sou, kyuu|atsuka(i), ko(ku)|handle, entertain, thresh, strip|
+|258|顧|ko|kaeri(miru)|look back, review, examine oneself, turn around|
+|259|弘|kou, gu|hiro(i)|vast, broad, wide|
+|260|看|kan|mi(ru)|watch over, see|
+|261|訟|shou||sue, accuse|
+|262|戒|kai|imashi(meru)|commandment|
+|263|祉|shi||welfare, happiness|
+|264|誉|yo|homa(re), ho(meru)|reputation, praise, honor, glory|
+|265|歓|kan|yoroko(bu)|delight, joy|
+|266|奏|sou|kana(deru)|play music, speak to a ruler, complete|
+|267|勧|kan, ken|susu(meru)|persuade, recommend, advise, encourage, offer|
+|268|騒|sou|sawa(gu), urei|boisterous, make noise, clamor, disturb, excite|
+|269|閥|batsu||clique, lineage, pedigree, faction, clan|
+|270|甲|kou, kan|kinoe|armor, high (voice), A grade, first class, former, instep, carapace|
+|271|縄|jou|nawa, tada(su)|straw rope, cord|
+|272|郷|kyou, gou|sato|home town, village, native place, district|
+|273|揺|you|yu(reru), ugo(ku)|swing, shake, sway, rock, tremble, vibrate|
+|274|免|men|manuka(reru), manuga(reru)|excuse, dismissal|
+|275|既|ki|sude(ni)|previously, already, long ago|
+|276|薦|sen|susu(meru)|recommend, mat, advise, encourage, offer|
+|277|隣|rin|tona(ru), tonari|neighboring|
+|278|華|ka, ke|hana|splendor, flower, petal, shine, luster, ostentatious, showy, gay, gorgeous|
+|279|範|han||pattern, example, model|
+|280|隠|in, on|kaku(su), yo(ru)|conceal, hide, cover|
+|281|徳|toku||benevolence, virtue, goodness, commanding respect|
+|282|哲|tetsu|satoi, akiraka|philosophy, clear|
+|283|杉|san|sugi|cedar, cryptomeria|
+|284|里|ri|sato|ri, village, parent's home, league|
+|285|釈|shaku, seki|toku, su(teru), yuru(su)|explanation|
+|286|己|ko, ki|onore, tsuchinoto, na|self|
+|287|妥|da||gentle, peace, satisfactory, appropriate|
+|288|威|i|odo(su)|intimidate, dignity, majesty, menace, threaten|
+|289|豪|gou|era(i)|overpowering, great, powerful, excelling, Australia|
+|290|熊|yuu|kuma|bear|
+|291|滞|tai, tei|todokoo(ru)|stagnate, be delayed, overdue, arrears|
+|292|微|bi|kasu(ka)|delicate, minuteness, insignificance|
+|293|隆|ryuu||hump, high, noble, prosperity|
+|294|症|shou||symptoms, illness|
+|295|暫|zan|shibara(ku)|temporarily, a while, moment, long time|
+|296|忠|chuu||loyalty, fidelity, faithfulness|
+|297|倉|sou|kura|godown, warehouse, storehouse, cellar, treasury|
+|298|彦|gen|hiko|lad, boy (ancient)|
+|299|肝|kan|kimo|liver, pluck, nerve, chutzpah|
+|300|喚|kan|wame(ku)|yell, cry, call, scream, summon|
+|301|沿|en|so(u), -zo(i)|run alongside, follow along, run along, lie along|
+|302|妙|myou, byou|tae|exquisite, strange, queer, mystery, miracle, excellent, delicate, charming|
+|303|唱|shou|tona(eru)|chant, recite, call upon, yell|
+|304|阿|a, o|omone(ru), kuma|Africa, flatter, fawn upon, corner, nook, recess|
+|305|索|saku||cord, rope, searching, inquiring|
+|306|誠|sei|makoto|sincerity, admonish, warn, prohibit, truth, fidelity|
+|307|襲|shuu|oso(u), kasa(ne)|attack, advance on, succeed to, pile, heap|
+|308|懇|kon|nengo(ro)|sociable, kind, courteous, hospitable, cordial|
+|309|俳|hai||haiku, actor|
+|310|柄|hei|gara, e, tsuka|design, pattern, build, nature, character, handle, crank, grip, knob, shaft|
+|311|驚|kyou|odoro(ku)|wonder, be surprised, frightened, amazed|
+|312|麻|ma, maa|asa|hemp, flax, numb|
+|313|李|ri|sumomo|plum|
+|314|浩|kou|ooki(i), hiro(i)|wide expanse, abundance, vigorous|
+|315|剤|zai, sui, sei|karu, kezu(ru)|dose, medicine, drug|
+|316|瀬|rai|se|rapids, current, torrent, shallows, shoal|
+|317|趣|shu|omomuki, omomu(ku)|purport, gist, elegance, interest, proceed to, tend, become|
+|318|陥|kan|ochii(ru), otoshii(reru)|collapse, fall into, cave in, fall (castle), slide into|
+|319|斎|sai|toki, tsutsushi(mu), monoimi, i(mu), iwa(u), itsu(ku)|purification, Buddhist food, room, worship, avoid, alike|
+|320|貫|kan|tsuranu(ku), nu(ku), nuki|pierce, 8 1/3lbs, penetrate, brace|
+|321|仙|sen, sento||hermit, wizard, cent|
+|322|慰|i|nagusa(meru)|consolation, amusement, seduce, cheer, make sport of, comfort, console|
+|323|序|jo|tsui(de), tsuide|preface, beginning, order, precedence, occasion, chance, incidentally|
+|324|旬|jun, shun||decameron, ten-day period, season (for specific products)|
+|325|兼|ken|ka(neru), -ka(neru)|concurrently, and, beforehand, in advance|
+|326|聖|sei, shou|hijiri|holy, saint, sage, master, priest|
+|327|旨|shi|mune, uma(i)|delicious, relish, show a liking for, purport, will, clever, expert|
+|328|即|soku|tsu(ku), sunawa(chi)|instant, namely, as is, conform, agree, adapt|
+|329|柳|ryuu|yanagi|willow|
+|330|舎|sha, seki|yado(ru)|cottage, inn, hut, house, mansion|
+|331|偽|gi, ka|itsuwa(ru), nise|falsehood, lie, deceive, pretend, counterfeit, forgery|
+|332|較|kaku, kou|kura(beru)|contrast, compare|
+|333|覇|ha, haku|hatagashira|hegemony, supremacy, leadership, champion|
+|334|畑||hata, hatake, -batake|farm, field, garden, one's specialty, (kokuji)|
+|335|詳|shou|kuwa(shii), tsumabi(raka)|detailed, full, minute, accurate, well-informed|
+|336|抵|tei||resist, reach, touch|
+|337|脅|kyou|obiya(kasu), odo(su)|threaten, coerce|
+|338|茂|mo|shige(ru)|overgrown, grow thick, be luxuriant|
+|339|犠|gi, ki|ikenie|sacrifice|
+|340|旗|ki|hata|national flag, banner, standard|
+|341|距|kyo|heda(taru), kedzume|long-distance, spur, fetlock|
+|342|雅|ga|miya(bi)|gracious, elegant, graceful, refined|
+|343|飾|shoku|kaza(ru)|decorate, ornament, adorn, embellish|
+|344|網|mou|ami|netting, network|
+|345|竜|ryuu, ryou, rou|tatsu, ise|dragon, imperial|
+|346|詩|shi|uta|poem, poetry|
+|347|繁|han|shige(ku)|luxuriant, thick, overgrown, frequency, complexity, trouble|
+|348|翼|yoku|tsubasa|wing, plane, flank|
+|349|茨|shi, ji|ibara, kaya, kusabuki|briar, thorn|
+|350|潟|seki|kata, -gata|lagoon|
+|351|敵|teki|kataki, ada, kana(u)|enemy, foe, opponent|
+|352|魅|mi||fascination, charm, bewitch|
+|353|嫌|ken, gen|kira(i), iya|dislike, detest, hate|
+|354|斉|sei, sai|soro(u), hito(shii), ataru, hayai|adjusted, alike, equal, similar variety of|
+|355|敷|fu|shi(ku), -shi(ki)|spread, pave, sit, promulgate|
+|356|擁|yoku||hug, embrace, possess, protect, lead|
+|357|圏|ken|kako(i)|sphere, circle, radius, range|
+|358|酸|san|su(i)|acid, bitterness, sour, tart|
+|359|罰|batsu, bachi, hatsu|bas(suru)|penalty, punishment|
+|360|滅|metsu|horo(biru), horo(bu), horo(basu)|destroy, ruin, overthrow, perish|
+|361|礎|so|ishizue|cornerstone, foundation stone|
+|362|腐|fu|kusa(ru), -kusa(ru)|rot, decay, sour|
+|363|脚|kyaku, kya, kaku|ashi|skids, leg, undercarriage, lower part, base|
+|364|菱|ryou|hishi|diamond (shape), water chestnut, rhombus|
+|365|潮|chou|shio, ushio|tide, salt water, opportunity|
+|366|梅|bai|ume|plum|
+|367|尽|jin, san|tsu(kiru), tsu(kusu), -dzu(ku), zu(ku)|exhaust, use up, run out of, deplete, befriend, serve|
+|368|僕|boku|shimobe|me, I (male), servant, manservant|
+|369|桜|ou, you|sakura|cherry|
+|370|滑|katsu, kotsu|sube(ru), name(raka)|slippery, slide, slip, fail exam|
+|371|孤|ko||orphan, alone|
+|372|煕|ki|tanoshi(mu), hika(ru), hiro(i), yoroko(bu), kawa(ku), akiraka|shine|
+|373|炎|en|honoo|inflammation, flame, blaze|
+|374|賠|bai||compensation, indemnify|
+|375|句|ku||phrase, clause, sentence, passage, paragraph, counter for haiku|
+|376|寿|ju, su, shuu|kotobuki, kotobu(ku), kotoho(gu)|longevity, congratulations, one's natural life|
+|377|鋼|kou|hagane|steel|
+|378|頑|gan|kataku(na)|stubborn, foolish, firmly|
+|379|鎖|sa|kusari, toza(su)|chain, irons, connection|
+|380|彩|sai|irodo(ru)|coloring, paint, makeup|
+|381|摩|ma|ma(suru), sasu(ru), su(ru)|chafe, rub, polish, grind, scrape|
+|382|励|rei|hage(mu), hage(masu)|encourage, be diligent, inspire|
+|383|縦|juu|tate|vertical, length, height, self-indulgent, wayward|
+|384|輝|ki|kagaya(ku)|radiance, shine, sparkle, gleam, twinkle|
+|385|蓄|chiku|takuwa(eru)|amass, raise, hoard, store|
+|386|軸|jiku||axis, pivot, stem, stalk, counter for book scrolls|
+|387|巡|jun|megu(ru), megu(ri)|patrol, go around, circumference|
+|388|稼|ka|kase(gu)|earnings, work, earn money|
+|389|瞬|shun|matata(ku), majiro(gu)|wink, blink, twinkle|
+|390|砲|hou||cannon, gun|
+|391|噴|fun|fuku|erupt, spout, emit, flush out|
+|392|誇|ko|hoko(ru)|boast, be proud, pride, triumphantly|
+|393|祥|shou|saiwa(i), kiza(shi), yo(i), tsumabi(raka)|auspicious, happiness, blessedness, good omen, good fortune|
+|394|牲|sei||animal sacrifice, offering|
+|395|秩|chitsu||regularity, salary, order|
+|396|帝|tei|mikado|sovereign, the emperor, god, creator|
+|397|宏|kou|hiro(i)|wide, large|
+|398|唆|sa|soso(ru), sosonoka(su)|tempt, seduce, instigate, promote|
+|399|阻|so|haba(mu)|thwart, separate from, prevent, obstruct, deter, impede|
+|400|泰|tai||peaceful, calm, peace, easy, Thailand, extreme, excessive, great|
+|401|賄|wai|makana(u)|bribe, board, supply, finance|
+|402|撲|boku||slap, strike, hit, beat, tell, speak|
+|403|堀|kutsu|hori|ditch, moat, canal|
+|404|菊|kiku||chrysanthemum|
+|405|絞|kou|shibo(ru), shi(meru), shi(maru)|strangle, constrict, wring|
+|406|縁|en, -nen|fuchi, yukari, yosuga, heri, enishi|affinity, relation, connection, edge, border, verge, brink|
+|407|唯|yui, i|tada|solely, only, merely, simply|
+|408|膨|bou|fuku(ramu), fuku(reru)|swell, get fat, thick|
+|409|耐|tai|ta(eru)|-proof, enduring|
+|410|塾|juku||cram school, private school|
+|411|漏|rou|mo(ru), mo(reru), mo(rasu)|leak, escape, time|
+|412|慶|kei|yoroko(bi)|jubilation, congratulate, rejoice, be happy|
+|413|猛|mou||fierce, rave, rush, become furious, wildness, strength|
+|414|芳|hou|kanba(shii)|perfume, balmy, favorable, fragrant|
+|415|懲|chou|ko(riru), ko(rasu), ko(rashimeru)|penal, chastise, punish, discipline|
+|416|剣|ken|tsurugi|sabre, sword, blade, clock hand|
+|417|幌|kou|horo, tobari|canopy, awning, hood, curtain|
+|418|彰|shou||patent, clear|
+|419|棋|ko|go|chess piece, Japanese chess, shogi|
+|420|丁|chou, tei, chin, tou, chi|hinoto|street, ward, town, counter for guns, tools|
+|421|恒|kou|tsune, tsuneni|constancy, always|
+|422|揚|you|a(geru), -a(ge)|raise, elevate, hoist, praise, extol, fry in deep fat|
+|423|冒|bou|oka(su)|risk, face, defy, dare, damage, assume (a name)|
+|424|之|shi|no, kore, yuku, kono|of, this|
+|425|曽|sou, so|katsu, katsute, sunawachi|formerly, once, before, ever, never, ex-|
+|426|倫|rin||ethics, companion|
+|427|陳|chin|hi(neru)|exhibit, state, relate, explain|
+|428|憶|oku||recollection, think, remember|
+|429|潜|sen|hiso(mu), mogu(ru), kaku(reru), kugu(ru)|submerge, conceal, hide, lower (voice), hush|
+|430|梨|ri|nashi|pear tree|
+|431|仁|jin, ni, nin||humanity, virtue, benevolence, charity, man, kernel|
+|432|克|koku|ka(tsu)|overcome, kindly, skillfully|
+|433|岳|gaku|dake|point, peak, mountain|
+|434|概|gai|oomu(ne)|outline, condition, approximation, generally|
+|435|拘|kou|kaka(waru)|arrest, seize, concerned, adhere to, despite|
+|436|墓|bo|haka|grave, tomb|
+|437|黙|moku, boku|dama(ru), moda(su)|silence, become silent, stop speaking, leave as is|
+|438|須|su, shu|subekara(ku), subeshi, hige, matsu, mochi(iru), moto(meru)|ought, by all means, necessarily|
+|439|偏|hen|katayo(ru)|partial, side, left-side radical, inclining, biased|
+|440|雰|fun||atmosphere, fog|
+|441|遇|guu|a(u)|meet, encounter, interview, treat, entertain, receive, deal with|
+|442|諮|shi|haka(ru)|consult with|
+|443|狭|kyou, kou|sema(i), seba(meru), sa|cramped, narrow, contract, tight|
+|444|卓|taku||eminent, table, desk, high|
+|445|亀|ki, kyuu, kin|kame|tortoise, turtle|
+|446|糧|ryou, rou|kate|provisions, food, bread|
+|447|梶|bi|kaji, kozue|sculling oar|
+|448|簿|bo||register, record book|
+|449|炉|ro|irori|hearth, furnace, kiln, reactor|
+|450|牧|boku|maki|breed, care for, shepherd, feed, pasture|
+|451|殊|shu|koto|particularly, especially, exceptionally|
+|452|殖|shoku|fu(eru), fu(yasu)|augment, increase, multiply, raise|
+|453|艦|kan||warship|
+|454|輩|hai|-bara, yakara, yakai, tomogara|comrade, fellow, people, companions|
+|455|穴|ketsu|ana|hole, aperture, slit, cave, den|
+|456|奇|ki|ku(shiki), aya(shii), kushi, mezura(shii)|strange, strangeness, curiosity|
+|457|慢|man||ridicule, laziness|
+|458|鶴|kaku|tsuru|crane, stork|
+|459|謀|bou, mu|haka(ru), tabaka(ru), hakarigoto|conspire, cheat, impose on, plan, devise, scheme, have in mind, deceive|
+|460|暖|dan, non|atata(kai)|warmth|
+|461|昌|shou|sakan|prosperous, bright, clear|
+|462|拍|haku, hyou||clap, beat (music)|
+|463|朗|rou|hoga(raka), aki(raka)|melodious, clear, bright, serene, cheerful|
+|464|丈|jou|take, dake|length, ten shaku, measure, Mr., Ms., height, stature, all (one has), only, that's all, merely|
+|465|寛|kan|kutsuro(gu), hiro(i), yuru(yaka)|tolerant, leniency, generosity, relax, feel at home, be at ease, broadminded|
+|466|覆|fuku|oo(u), kutsugae(su)|capsize, cover, shade, mantle, be ruined|
+|467|胞|hou||placenta, sac, sheath|
+|468|泣|kyuu|na(ku)|cry, weep, moan|
+|469|隔|kaku|heda(teru)|isolate, alternate, distance, separate, gulf|
+|470|浄|jou, sei|kiyo(meru), kiyo(i)|clean, purify, cleanse, exorcise, Manchu Dynasty|
+|471|没|botsu, motsu|obo(reru), shizu(mu), nai|drown, sink, hide, fall into, disappear, die|
+|472|暇|ka|itoma|spare time, rest, leisure, time, leave of absence|
+|473|肺|hai||lungs|
+|474|貞|tei, jou|tadashi(i), sada|upright, chastity, constancy, righteousness|
+|475|靖|sei, jou|yasu(njiru)|peaceful|
+|476|鑑|kan|kanga(miru), kagami|specimen, take warning from, learn from|
+|477|飼|shi|ka(u)|domesticate, raise, keep, feed|
+|478|陰|in|kage, kage(ru)|shade, yin, negative, sex organs, secret, shadow|
+|479|銘|mei||inscription, signature (of artisan)|
+|480|随|zui|manima(ni), shitaga(u)|follow, though, notwithstanding, while, during, both, all, obey, submit to, comply|
+|481|烈|retsu|hage(shii)|ardent, violent, vehement, furious, severe, extreme|
+|482|尋|jin|tazu(neru), hiro|inquire, fathom, look for|
+|483|渕|en, kaku, kou|fuchi, kata(i), hanawa|edge|
+|484|稿|kou|wara, shitagaki|draft, copy, manuscript, straw|
+|485|丹|tan|ni|rust-colored, red, red lead, pills, sincerity|
+|486|啓|kei|hira(ku), sato(su)|disclose, open, say|
+|487|也|ya, e|nari, ka, mata|to be (classical)|
+|488|丘|kyuu|oka|hill, knoll|
+|489|棟|tou|mune, muna-|ridgepole, ridge|
+|490|壌|jou|tsuchi|lot, earth, soil|
+|491|漫|man|midari(ni), sozo(ro)|cartoon, involuntarily, unrestrained, in spite of oneself, corrupt|
+|492|玄|gen|kuro, kuro(i)|mysterious, occultness, black, deep, profound|
+|493|粘|nen|neba(ru)|sticky, glutinous, greasy, persevere|
+|494|悟|go|sato(ru)|enlightenment, perceive, discern, realize, understand|
+|495|舗|ho||shop, store, pave|
+|496|妊|nin, jin|hara(mu), migomo(ru)|pregnancy|
+|497|熟|juku|u(reru)|mellow, ripen, mature, acquire skill|
+|498|旭|kyoku|asahi|rising sun, morning sun|
+|499|恩|on||grace, kindness, goodness, favor, mercy, blessing, benefit|
+|500|騰|tou|aga(ru), nobo(ru)|leaping up, jumping up, rising, advancing, going|
+|501|往|ou|i(ku), inishie, saki(ni), yu(ku)|journey, travel, chase away, let go, going, before, formerly|
+|502|豆|tou, zu|mame, mame-|beans, pea, midget|
+|503|遂|sui|to(geru), tsui(ni)|consummate, accomplish, attain, commit (suicide)|
+|504|狂|kyou|kuru(u)|lunatic, insane, crazy, confuse|
+|505|栃||tochi|horse chestnut, (kokuji)|
+|506|岐|ki, gi||branch off, fork in road, scene, arena, theater|
+|507|陛|hei||highness, steps (of throne)|
+|508|緯|i|yokoito, nuki|horizontal, woof, left & right, (parallels of) latitude, prediction|
+|509|培|bai|tsuchika(u)|cultivate, foster|
+|510|衰|sui|otoro(eru)|decline, wane, weaken|
+|511|艇|tei||rowboat, small boat|
+|512|屈|kutsu|kaga(mu)|yield, bend, flinch, submit|
+|513|径|kei|michi, komichi, sashiwatashi, tadachini|diameter, path, method|
+|514|淡|tan|awa(i)|thin, faint, pale, fleeting|
+|515|抽|chuu|hiki-|pluck, pull, extract, excel|
+|516|披|hi||expose, open|
+|517|廷|tei||courts, imperial court, government office|
+|518|錦|kin|nishiki|brocade, fine dress, honors|
+|519|准|jun||quasi-, semi-, associate|
+|520|暑|sho|atsu(i)|sultry, hot, summer heat|
+|521|磯|ki|iso|seashore, beach|
+|522|奨|shou, sou|susu(meru)|exhort, urge, encourage|
+|523|浸|shin|hita(su), tsu(karu)|immersed, soak, dip, steep, moisten, wet, dunk|
+|524|剰|jou|amatsusae, ama(ri)|surplus, besides|
+|525|胆|tan|kimo|gall bladder, courage, pluck, nerve|
+|526|繊|sen||slender, fine, thin kimono|
+|527|駒|ku|koma|pony, horse, colt|
+|528|虚|kyo, ko|muna(shii),utsu(ro)|void, emptiness, unpreparedness, crack, fissure, untruth|
+|529|孜|shi|tsuto(meru)|industriousness|
+|530|霊|rei, ryou|tama|spirits, soul|
+|531|帳|chou|tobari|notebook, account book, album, curtain, veil, net, tent|
+|532|悔|kai|ku(iru), ku(yamu)|repent, regret|
+|533|諭|yu|sato(su)|rebuke, admonish, charge, warn, persuade|
+|534|惨|san, zan|miji(me), ita(mu), mugo(i)|wretched, disaster, cruelty, harsh|
+|535|虐|gyaku|shiita(geru)|tyrannize, oppress|
+|536|翻|hon, han|hirugae(ru)|flip, turn over, wave, flutter, change (mind)|
+|537|墜|tsui|o(chiru), o(tsu)|crash, fall (down)|
+|538|沼|shou|numa|marsh, lake, bog, swamp, pond|
+|539|据|kyo|su(eru), su(waru)|set, lay a foundation, install, equip, squat down, sit down|
+|540|肥|hi|ko(eru), koe, ko(yasu), futo(ru)|fertilizer, get fat, fertile, manure, pamper|
+|541|徐|jo|omomu(roni)|gradually, slowly, deliberately, gently|
+|542|糖|tou||sugar|
+|543|搭|tou||board, load (a vehicle), ride|
+|544|盾|jun|tate|shield, escutcheon, pretext|
+|545|脈|myaku|suji|vein, pulse, hope|
+|546|滝|rou, sou|taki|waterfall, rapids, cascade|
+|547|軌|ki||rut, wheel, track, model, way of doing|
+|548|俵|hyou|tawara|bag, bale, sack, counter for bags|
+|549|妨|bou|samata(geru)|disturb, prevent, hamper, obstruct|
+|550|盧|ro||hut|
+|551|擦|satsu|su(ru), -zu(re), kosu(ru)|grate, rub, scratch, scrape, chafe, scour|
+|552|鯨|gei|kujira|whale|
+|553|荘|sou, shou, chan|houki, ogoso(ka)|villa, inn, cottage, feudal manor, solemn, dignified|
+|554|諾|daku||consent, assent, agreement|
+|555|雷|rai|kamirari, ikazuchi, ikadzuchi|thunder, lightning bolt|
+|556|漂|hyou|tadayo(u)|drift, float (on liquid)|
+|557|懐|kai, e|futokoro, natsu(kashii), nazu(keru), ida(ku), omo(u)|feelings, heart, yearn, miss someone, become attached to, bosom, breast, pocket|
+|558|勘|kan||intuition, perception, check, compare, sixth sense|
+|559|栽|sai||plantation, planting|
+|560|拐|kai||kidnap, falsify|
+|561|笠|ryuu|kasa|bamboo hat, one's influence|
+|562|駄|da, ta||burdensome, pack horse, horse load, send by horse, trivial, worthless|
+|563|添|ten|so(eru), so(u)|annexed, accompany, marry, suit, meet, satisfy, attach, append, garnish, imitate|
+|564|冠|kan|kanmuri|crown, best, peerless|
+|565|斜|sha|nana(me), hasu|diagonal, slanting, oblique|
+|566|鏡|kyou, kei|kagami|mirror, speculum, barrel-head, round rice-cake offering|
+|567|聡|sou|sato(i), mimizato(i)|wise, fast learner|
+|568|浪|rou||wandering, waves, billows, reckless, unrestrained|
+|569|亜|a|tsu(gu)|Asia, rank next, come after, -ous|
+|570|覧|ran|mi(ru)|perusal, see|
+|571|詐|sa|itsuwa(ru)|lie, falsehood, deceive, pretend|
+|572|壇|dan, tan||podium, stage, rostrum, terrace|
+|573|勲|kun|isao|meritorious deed, merit|
+|574|魔|ma||witch, demon, evil spirit|
+|575|酬|shuu, shu, tou|muku(iru)|repay, reward, retribution|
+|576|紫|shi|murasaki|purple, violet|
+|577|曙|sho|akebono|dawn, daybreak|
+|578|紋|mon||family crest, figures|
+|579|卸|sha|oro(su), oroshi|wholesale|
+|580|奮|fun|furu(u)|stirred up, be invigorated, flourish|
+|581|趙|chou, jou, kyou||nimble, late-going|
+|582|欄|ran|tesuri|column, handrail, blank, space|
+|583|逸|itsu|so(reru), hagu(reru)|deviate, idleness, leisure, miss the mark, evade, elude, parry, diverge|
+|584|涯|gai|hate|horizon, shore, limit, bound|
+|585|拓|taku|hira(ku)|clear (the land), open, break up (land)|
+|586|眼|gan, gen|manako, me|eyeball|
+|587|獄|goku||prison, jail|
+|588|筑|chiku||an ancient musical instrument|
+|589|尚|shou|nao|esteem, furthermore, still, yet|
+|590|阜|fu, fuu||hill, mound, left village radical (no. 170)|
+|591|彫|chou|ho(ru), -bo(ri)|carve, engrave, chisel|
+|592|穏|on|oda(yaka)|calm, quiet, moderation|
+|593|顕|kun|akiraka, arawa(reru)|appear, existing|
+|594|巧|kou|taku(mi), uma(i)|adroit, skilled, ingenuity|
+|595|矛|mu, bou|hoko|halberd, arms, festival float|
+|596|垣|en|kaki|hedge, fence, wall|
+|597|欺|gi|azamu(ku)|deceit, cheat, delude|
+|598|釣|chou|tsu(ru)|angling, fish, catch, allure, ensnare|
+|599|萩|shuu|hagi|bush clover|
+|600|粧|shou||cosmetics, adorn (one's person)|
+|601|葛|katsu, kachi|tsudzura, kuzu|arrowroot, kudzu|
+|602|粛|shuku, suku|tsutsushi(mu)|solemn, quietly, softly|
+|603|栗|ritsu, ri|kuri, ononoku|chestnut|
+|604|愚|gu|oro(ka)|foolish, folly, absurdity, stupid|
+|605|嘉|ka|yomi(suru), yoi|applaud, praise, esteem, happy, auspicious|
+|606|遭|sou|a(u), a(waseru)|encounter, meet, party, association, interview, join|
+|607|架|ka|ka(keru)|erect, frame, mount, support, shelf, construct|
+|608|篠|zou, shou|shino, sasa, suzu|bamboo grass|
+|609|鬼|ki|oni|ghost, devil|
+|610|庶|sho||commoner, all, bastard|
+|611|稚|chi, ji|itokenai, osanai, okute, oderu|immature, young|
+|612|菅|kan, ken|suge|sedge|
+|613|滋|ji, shi||nourishing, more & more, be luxuriant, planting, turbidity|
+|614|幻|gen|maboroshi|phantasm, vision, dream, illusion, apparition|
+|615|煮|sha|ni(ru), -ni|boil, cook|
+|616|姫|ki|hime, hime-|princess|
+|617|誓|sei|chika(u)|vow, swear, pledge|
+|618|把|ha, wa||grasp, faggot, bunch, counter for bundles|
+|619|践|sen|fu(mu)|tread, step on, trample, practice, carry through|
+|620|呈|tei||display, offer, present, send, exhibit|
+|621|疎|so, sho|uto(i), maba(ra)|alienate, rough, neglect, shun, sparse, penetrate|
+|622|仰|gyou, kou|oo(gu), o(ssharu)|face-up, look up, depend, seek, respect, revere, drink, take|
+|623|剛|gou||sturdy, strength|
+|624|疾|shitsu|haya(i)|rapidly|
+|625|征|sei||subjugate, attack the rebellious, collect taxes|
+|626|砕|sai|kuda(ku)|smash, break, crush, familiar, popular|
+|627|謡|you|uta(i)|song, sing, ballad, noh chanting|
+|628|嫁|ka|yome, totsu(gu), i(ku), yu(ku)|marry into, bride|
+|629|謙|ken|herikuda(ru)|self-effacing, humble oneself, condescend, be modest|
+|630|后|kou, go|kisaki|empress, queen, after, behind, back, later|
+|631|嘆|tan|nage(ku), nage(kawashii)|sigh, lament, moan, grieve, sigh of admiration|
+|632|俣|mata||crotch, thigh, groin, fork, junction, (kokuji)|
+|633|菌|kin||germ, fungus, bacteria|
+|634|鎌|ren, ken|kama|sickle, scythe, trick|
+|635|巣|sou|su, su(kuu)|nest, rookery, hive, cobweb, den|
+|636|頻|hin|shiki(rini)|repeatedly, recur|
+|637|琴|kin, gon|koto|harp, koto|
+|638|班|han||squad, corps, unit, group|
+|639|淵|en, kaku, kou|fuchi, kata(i), hanawa|abyss, edge, deep pool, the depths|
+|640|棚|hou|tana, -dana|shelf, ledge, rack, mount, mantle, trellis|
+|641|潔|ketsu|isagiyo(i)|undefiled, pure, clean, righteous, gallant|
+|642|酷|koku|hido(i)|cruel, severe, atrocious, unjust|
+|643|宰|sai||superintend, manager, rule|
+|644|廊|rou||corridor, hall, tower|
+|645|寂|jaku, seki|sabi, sabi(shii), sami(shii)|loneliness, quietly, mellow, mature, death of a priest|
+|646|辰|shin, jin|tatsu|sign of the dragon, 7-9AM, fifth sign of Chinese zodiac, shin dragon radical (no. 161)|
+|647|霞|ka, ge|kasumi, kasu(mu)|be hazy, grow dim, blurred|
+|648|伏|fuku|fu(seru), fu(su)|prostrated, bend down, bow, cover, lay (pipes)|
+|649|柏|haku, hyaku, byaku|kashiwa|oak, cypress|
+|650|碁|go||Go|
+|651|俗|zoku||vulgar, customs, manners, worldliness, mundane things|
+|652|漠|baku||vague, obscure, desert, wide|
+|653|邪|ja|yokoshi(ma)|wicked, injustice, wrong|
+|654|晶|shou||sparkle, clear, crystal|
+|655|辻||tsuji|crossing, crossroad, street corners, (kokuji)|
+|656|墨|boku|sumi|black ink, India ink, ink stick, Mexico|
+|657|鎮|chin|shizu(meru), osae|tranquilize, ancient peace-preservation centers|
+|658|洞|dou|hora|den, cave, excavation|
+|659|履|ri|ha(ku)|perform, complete, footgear, shoes, boots, put on (the feet)|
+|660|劣|retsu|oto(ru)|inferiority, be inferior to, be worse|
+|661|那|na, da|nani, nanzo, ikan|what?|
+|662|殴|ou|nagu(ru)|assault, hit, beat, thrash|
+|663|娠|shin||with child, pregnancy|
+|664|奉|hou, bu|tatematsu(ru), matsu(ru), hou(zuru)|observance, offer, present, dedicate|
+|665|憂|yuu|ure(eru), ure(i), u(i), u(ki)|melancholy, grieve, lament, be anxious, sad, unhappy|
+|666|朴|boku|hou, hoo, enoki|crude, simple, plain, docile|
+|667|亭|tei, chin||pavilion, restaurant, mansion, arbor, cottage, vaudeville, music hall, stage name|
+|668|淳|jun, shun|atsu(i)|pure|
+|669|荻|teki|ogi|reed, rush|
+|670|嶋|tou|shima|island|
+|671|怪|kai, ke|aya(shii), aya(shimu)|suspicious, mystery, apparition|
+|672|鳩|kyuu, ku|hato, atsu(meru)|pigeon, dove|
+|673|柴|sai, shi|shiba|brush, firewood|
+|674|酔|sui|yo(u), yo(i), yo|drunk, feel sick, poisoned, elated, spellbound|
+|675|惜|seki|o(shii), o(shimu)|pity, be sparing of, frugal, stingy, regret|
+|676|穫|kaku||harvest, reap|
+|677|佳|ka||excellent, beautiful, good, pleasing, skilled|
+|678|潤|jun|uruo(u), uru(mu)|wet, be watered, profit by, receive benefits, favor, charm, steep|
+|679|悼|tou|ita(mu)|lament, grieve over|
+|680|乏|bou|tobo(shii), tomo(shii)|destitution, scarce, limited|
+|681|該|gai||above-stated, the said, that specific|
+|682|赴|fu|omomu(ku)|proceed, get, become, tend|
+|683|桑|sou|kuwa|mulberry|
+|684|桂|kei|katsura|Japanese Judas-tree, cinnamon tree|
+|685|髄|zui||marrow, pith, essence|
+|686|虎|ko|tora|tiger, drunkard|
+|687|盆|bon||basin, lantern festival, tray|
+|688|晋|shin|susu(mu)|advance|
+|689|穂|sui|ho|ear, ear (grain), head, crest (wave)|
+|690|壮|sou|sakan|robust, manhood, prosperity|
+|691|堤|tei|tsutsumi|dike, bank, embankment|
+|692|飢|ki|u(eru)|hungry, starve|
+|693|傍|bou|katawa(ra), waki, oka-, hata, soba|bystander, side, besides, while, nearby, third person|
+|694|疫|eki, yaku||epidemic|
+|695|累|rui||accumulate, involvement, trouble, tie up, continually|
+|696|痴|chi|shi(reru), oroka|stupid, foolish|
+|697|搬|han||conveyor, carry, transport|
+|698|晃|kou|akiraka|clear|
+|699|癒|yu|i(eru), iya(su)|healing, cure, quench (thirst), wreak|
+|700|桐|tou, dou|kiri|paulownia|
+|701|寸|sun||measurement, tenth of a shaku, a little, small|
+|702|郭|kaku|kuruwa|enclosure, quarters, fortification, red-light district|
+|703|尿|nyou|yubari, ibari, shito|urine|
+|704|凶|kyou||villain, evil, bad luck, disaster|
+|705|吐|to|ha(ku), tsu(ku)|spit, vomit, belch, confess, tell (lies)|
+|706|宴|en|utage|banquet, feast, party|
+|707|鷹|you, ou|taka|hawk|
+|708|賓|hin|maroudo, shitagau|V.I.P., guest|
+|709|虜|ryo, ro|toriko, toriku|captive, barbarian, low epithet for the enemy|
+|710|陶|tou|sue|pottery, porcelain|
+|711|鐘|shou|kane|bell, gong, chimes|
+|712|憾|kan|ura(mu)|remorse, regret, be sorry|
+|713|畿|ki|miyako|capital, suburbs of capital|
+|714|猪|cho|i, inoshishi|boar|
+|715|紘|kou|oodzuna, tsuna, tsunagu|large|
+|716|磁|ji||magnet, porcelain|
+|717|弥|mi, bi|ya, iya, iyo(iyo), wata(ru)|all the more, increasingly|
+|718|昆|kon||descendants, elder brother, insect|
+|719|粗|so|ara(i), ara-|coarse, rough, rugged|
+|720|訂|tei|tada(su)|revise, correct, decide|
+|721|芽|ga|me|bud, sprout, spear, germ|
+|722|尻|kou|shiri|buttocks, hips, butt, rear|
+|723|庄|shou, so, sou, hou||level, in the country, manor, village, hamlet|
+|724|傘|san|kasa|umbrella|
+|725|敦|ton, tai, dan, chou|atsu(i)|industry, kindliness|
+|726|騎|ki||equestrian, riding on horses, counter for equestrians|
+|727|寧|nei|mushi(ro)|rather, preferably, peaceful, quiet, tranquility|
+|728|循|jun||sequential, follow|
+|729|忍|nin|shino(bu), shino(baseru)|endure, bear, put up with, conceal, secrete, spy, sneak|
+|730|磐|ban, han|iwa|rock, crag, cliff, wall (in a mine)|
+|731|怠|tai|okota(ru), nama(keru)|neglect, laziness|
+|732|如|jo, nyo|goto(shi)|likeness, like, such as, as if, better, best, equal|
+|733|寮|ryou||dormitory, hostel, villa, tea pavillion|
+|734|祐|yuu, u|tasu(keru)|help|
+|735|鵬|hou|ootori|phoenix|
+|736|鉛|en|namari|lead|
+|737|珠|shu|tama|pearl, gem, jewel|
+|738|凝|gyou|ko(ru), kogo(rasu)|congeal, freeze, stiff, be absorbed in|
+|739|苗|byou, myou|nae, nawa-|seedling, sapling, shoot|
+|740|獣|juu|kemono, kedamono|animal, beast|
+|741|哀|ai|awa(re), kana(shii)|pathetic, grief, sorrow, pathos, pity, sympathize|
+|742|跳|chou|ha(neru), to(bu), -to(bi)|hop, leap up, spring, jerk, prance, buck, splash, sputter, snap|
+|743|匠|shou|takumi|artisan, workman, carpenter|
+|744|垂|sui|ta(reru), -ta(re), nannanto(su)|droop, suspend, hang, slouch|
+|745|蛇|ja, da, i, ya|hebi|snake, serpent, hard drinker|
+|746|澄|chou|su(mu), su(masu), -su(masu)|lucidity, be clear, clear, clarify, settle, strain, look grave|
+|747|縫|hou|nu(u)|sew, stitch, embroider|
+|748|僧|sou||Buddhist priest, monk|
+|749|眺|chou|naga(meru)|stare, watch, look at, see, scrutinize|
+|750|唐|tou|kara|T'ang, China, foreign|
+|751|亘|kou, kan, sen|wata(ru), moto(meru)|span, range, extend over|
+|752|呉|go|ku(reru)|give, do something for, kingdom of Wu|
+|753|凡|bon, han|oyo(so), ouyo(so), sube(te)|commonplace, ordinary, mediocre|
+|754|憩|kei|iko(i), iko(u)|recess, rest, relax, repose|
+|755|鄭|tei, jou||an ancient Chinese province|
+|756|芦|ro|ashi, yoshi|reed, bullrush|
+|757|龍|ryuu, ryou, rou|tatsu|dragon, imperial|
+|758|媛|en|hime|beautiful woman, princess|
+|759|溝|kou|mizo|gutter, ditch, sewer, drain, 10**32|
+|760|恭|kyou|uyauya(shii)|respect, reverent|
+|761|刈|gai, kai|ka(ru)|reap, cut, clip, trim, prune|
+|762|睡|sui|nemu(ru), nemu(i)|drowsy, sleep, die|
+|763|錯|saku, shaku||confused, mix, be in disorder|
+|764|伯|haku||chief, count, earl, uncle, Brazil|
+|765|笹||sasa|bamboo grass, (kokuji)|
+|766|穀|koku||cereals, grain|
+|767|柿|shi|kaki|persimmon|
+|768|陵|ryou|misasagi|mausoleum, imperial tomb, mound, hill|
+|769|霧|mu, bou, bu|kiri|fog, mist|
+|770|魂|kon|tamashii, tama|soul, spirit|
+|771|弊|hei||abuse, evil, vice, breakage|
+|772|釧|sen|kushiro, udewa|bracelet|
+|773|妃|hi|kisaki|queen, princess|
+|774|舶|haku||liner, ship|
+|775|餓|ga|u(eru)|starve, hungry, thirst|
+|776|腎|jin||kidney|
+|777|窮|kyuu, kyou|kiwa(meru)|hard up, destitute, suffer, perplexed, cornered|
+|778|掌|shou|tenohira, tanagokoro|manipulate, rule, administer, conduct, palm of hand|
+|779|麗|rei|uruwa(shii), ura(raka)|lovely, beautiful, graceful, resplendent|
+|780|綾|rin|aya|design, figured cloth, twill|
+|781|臭|shuu|kusa(i), -kusa(i), nio(u)|stinking, ill-smelling, suspicious looking, odor, savor, fragrance, be fragrant|
+|782|釜|fu|kama|kettle, cauldron, iron pot|
+|783|悦|etsu|yoroko(bu)|ecstasy, joy, rapture|
+|784|刃|jin, nin|ha, yaiba, ki(ru)|blade, sword, edge|
+|785|縛|baku|shiba(ru)|truss, arrest, bind, tie, restrain|
+|786|暦|reki, ryaku|koyomi|calendar, almanac|
+|787|宜|gi|yoro(shii)|best regards, good|
+|788|盲|mou|mekura|blind, blind man, ignoramus|
+|789|粋|sui|iki|chic, style, purity, essence, pith, cream, elite, choice|
+|790|辱|joku|hazukashi(meru)|embarrass, humiliate, shame|
+|791|毅|ki, gi|tsuyo(i)|strong|
+|792|轄|katsu|kusabi|control, wedge|
+|793|猿|en|saru|monkey|
+|794|弦|gen|tsuru|bowstring, chord, hypotenuse|
+|795|嶌|tou|shima|island|
+|796|稔|nen, jin, nin|mino(ru), minori|harvest, ripen|
+|797|窒|chitsu||plug up, obstruct|
+|798|炊|sui|ta(ku), -da(ki)|cook, boil|
+|799|洪|kou||deluge, flood, vast|
+|800|摂|setsu, shou|osa(meru), kane(ru), to(ru)|vicarious, surrogate, act in addition to, take in, absorb|
+|801|飽|hou|a(kiru), a(kasu), a(ku)|sated, tired of, bored, satiate|
+|802|函|kan|hako, i(reru)|box (archaic)|
+|803|冗|jou||superfluous, uselessness|
+|804|桃|tou|momo|peach|
+|805|狩|shu|ka(ru), ka(ri), -ga(ri)|hunt, raid, gather|
+|806|朱|shu|ake|vermilion, cinnabar, scarlet, red, bloody|
+|807|渦|ka|uzu|whirlpool, eddy, vortex|
+|808|紳|shin||sire, good belt, gentleman|
+|809|枢|suu, shu|toboso, karakuri|hinge, pivot, door, center of things|
+|810|碑|hi|ishibumi|tombstone, monument|
+|811|鍛|tan|kita(eru)|forge, discipline, train|
+|812|刀|tou|katana, sori|sword, saber, knife|
+|813|鼓|ko|tsudzumi|drum, beat, rouse, muster|
+|814|裸|ra|hadaka|naked, nude, uncovered, partially clothed|
+|815|鴨|ou|kamo, ahiru|wild duck, easy mark|
+|816|猶|yuu, yu|nao|furthermore, still, yet|
+|817|塊|kai, ke|katamari, tsuchikure|clod, lump, chunk, clot, mass|
+|818|旋|sen|mu(guru), ibari|rotation, go around|
+|819|弓|kyuu|yumi|bow, bow (archery, violin)|
+|820|幣|hei|nusa|cash, bad habit, humble prefix, gift|
+|821|膜|maku||membrane|
+|822|扇|sen|ougi|fan, folding fan|
+|823|脇|kyou|waki, wake|armpit, the other way, another place, flank, supporting role|
+|824|腸|chou|harawata, wata|intestines, guts, bowels, viscera|
+|825|槽|sou|fune|vat, tub, tank|
+|826|鍋|ka|nabe|pot, pan, kettle|
+|827|慈|ji|itsuku(shimu)|mercy|
+|828|樋|tou|hi, toi|water pipe, gutter, downspout, conduit|
+|829|楊|you|yanagi|willow|
+|830|伐|batsu, hatsu, ka, bochi|ki(ru), somu(ku), u(tsu)|fell, strike, attack, punish|
+|831|駿|shun, sun|sugu(reru)|a good horse, speed, a fast person|
+|832|漬|shi|tsu(keru), -dzuke|pickling, soak, moisten, steep|
+|833|糾|kyuu|tada(su)|twist, ask, investigate, verify|
+|834|亮|ryou|akiraka|clear, help|
+|835|墳|fun||tomb, mound|
+|836|坪|hei|tsubo|two-mat area, approx. thirty-six sq ft|
+|837|紺|kon||dark blue, navy|
+|838|慌|kou|awa(teru), awa(tadashii)|disconcerted, be confused, lose one's head|
+|839|娯|go||recreation, pleasure|
+|840|吾|go|ware, waga-, a-|I, my, our, one's own|
+|841|椿|chin, chun|tsubaki|camellia|
+|842|舌|zetsu|shita|tongue, reed, clapper|
+|843|羅|ra|usumono|gauze, thin silk, Rome, arrange, spread out|
+|844|峡|kyou, kou|hazama|gorge, ravine|
+|845|俸|hou||stipend, salary|
+|846|厘|rin||rin, 1/10 sen, 1/10 bu|
+|847|峰|hou|mine, ne|summit, peak|
+|848|圭|kei, ke||square jewel, corner, angle, edge|
+|849|醸|jou|kamo(su)|brew, cause|
+|850|蓮|ren|hasu, hachisu|lotus|
+|851|弔|chou|tomura(u), tobura(u)|condolences, mourning, funeral|
+|852|乙|otsu, itsu|oto-, kinoto|the latter, duplicate, strange, witty, fishhook radical (no. 5)|
+|853|倶|gu, ku|tomo(ni)|both, together, alike|
+|854|汁|juu|shiru, -shiru, tsuyu|soup, juice, broth, sap, gravy, pus|
+|855|尼|ni|ama|nun|
+|856|遍|hen|amane(ku)|everywhere, times, widely, generally|
+|857|堺|kai|sakai|world|
+|858|衡|kou||equilibrium, measuring rod, scale|
+|859|呆|hou|bo(keru), aki(reru), oroka|be amazed, disgusted, shocked|
+|860|薫|kun|kao(ru)|send forth fragrance, fragrant, be scented, smoke (tobacco)|
+|861|瓦|ga|kawara, guramu|tile, gram|
+|862|猟|ryou|kari, ka(ru)|game-hunting, shooting, game, bag|
+|863|羊|you|hitsuji|sheep|
+|864|窪|wa, a|kubo(mu)|depression, cave in, sink, become hollow|
+|865|款|kan||goodwill, article, section, friendship, collusion|
+|866|閲|etsu|kemi(suru)|review, inspection, revision|
+|867|雀|jaku, jan, saku, shaku|suzume|sparrow|
+|868|偵|tei||spy|
+|869|喝|katsu||hoarse, scold|
+|870|敢|kan|a(ete)|daring, brave, bold, sad, tragic, pitiful|
+|871|畠||hatake, hata|field, farm, garden, (kokuji)|
+|872|胎|tai||womb, uterus|
+|873|酵|kou||fermentation|
+|874|憤|fun|ikidoo(ru)|aroused, resent, be indignant, anger|
+|875|豚|ton|buta|pork, pig|
+|876|遮|sha|saegi(ru)|intercept, interrupt, obstruct|
+|877|扉|hi|tobira|front door, title page, front page|
+|878|硫|ryuu||sulphur|
+|879|赦|sha|yuru(su)|pardon, forgiveness|
+|880|挫|za, sa|kuji(ku)|crush, break, sprain, discourage|
+|881|窃|setsu|nusu(mu), hiso(ka)|stealth, steal, secret, private, hushed|
+|882|泡|hou|awa|bubbles, foam, suds, froth|
+|883|瑞|zui, sui|mizu-, shirushi|congratulations|
+|884|又|yuu|mata, mata-, mata(no-)|or again, furthermore, on the other hand|
+|885|慨|gai|nage(ku)|rue, be sad, sigh, lament|
+|886|紡|bou|tsumu(gu)|spinning|
+|887|恨|kon|ura(mu), ura(meshii)|regret, bear a grudge, resentment, malice, hatred|
+|888|肪|bou||obese, fat|
+|889|扶|fu|tasu(keru)|aid, help, assist|
+|890|戯|gi, ge|tawamu(reru), za(reru), ja(reru)|frolic, play, sport|
+|891|伍|go|itsutsu|five, five-man squad, file, line|
+|892|忌|ki|i(mu), i(mi), i(mawashii)|mourning, abhor, detestable, death anniversary|
+|893|濁|daku, joku|nigo(ru)|voiced, uncleanness, wrong, nigori, impurity|
+|894|奔|hon|hashi(ru)|run, bustle|
+|895|斗|to, tou||Big Dipper, ten sho (vol), sake dipper, dots and cross radical (no. 68)|
+|896|蘭|ran, ra||orchid, Holland|
+|897|蒲|ho, bo, fu, bu|gama, kaba, kama|bullrush, flag, cattail|
+|898|迅|jin||swift, fast|
+|899|肖|shou|ayaka(ru)|resemblance|
+|900|鉢|hachi, hatsu||bowl, rice tub, pot, crown|
+|901|朽|kyuu|ku(chiru)|decay, rot, remain in seclusion|
+|902|殻|kaku, koku, bai|kara, gara|husk, nut shell|
+|903|享|kyou, kou|u(keru)|enjoy, receive, undergo, answer (phone), take, get, catch|
+|904|秦|shin|hata|Manchu dynasty, name given to naturalized foreigners|
+|905|茅|bou, myou|kaya, chigaya|miscanthus reed|
+|906|藩|han||clan, enclosure|
+|907|沙|sa, sha|suna, yonageru|sand|
+|908|輔|ho, fu|tasu(keru)|help|
+|909|媒|bai|nakoudo|mediator, go-between|
+|910|鶏|kei|niwatori, tori|chicken|
+|911|禅|zen, sen|shizuka, yuzu(ru)|Zen, silent meditation|
+|912|嘱|shoku|shoku(suru), tano(mu)|entrust, request, send a message|
+|913|胴|dou||trunk, torso, hull (ship), hub of wheel|
+|914|粕|haku|kasu|scrap, waste|
+|915|冨|fu, fuu|to(mu), tomi|enrich, wealthy, abundant|
+|916|迭|tetsu||transfer, alternation|
+|917|挿|sou|sa(su), hasa(mu)|insert, put in, graft, wear (sword)|
+|918|湘|shou||name of Chinese river, the Sagami river|
+|919|嵐|ran|arashi|storm, tempest|
+|920|椎|tsui, sui|tsuchi, u(tsu)|chinquapin, mallet, spine|
+|921|灘|tan, dan|nada, se|open sea|
+|922|堰|en|seki, se(ku)|dam, prevent, stop up|
+|923|獅|shi|shishi|lion|
+|924|姜|kyou, ga|kou|Chinese surname, ginger|
+|925|絹|ken|kinu|silk|
+|926|陪|bai||obeisance, follow, accompany, attend on|
+|927|剖|bou||divide|
+|928|譜|fu||musical score, music, note, staff, table, genealogy|
+|929|郁|iku||cultural progress, perfume|
+|930|悠|yuu||permanence, distant, long time, leisure|
+|931|淑|shuku|shito(yaka)|graceful, gentle, pure|
+|932|帆|han|ho|sail|
+|933|暁|gyou, kyou|akatsuki, sato(ru)|daybreak, dawn, in the event|
+|934|鷲|shuu, ju|washi|eagle|
+|935|傑|ketsu|sugu(reru)|greatness, excellence|
+|936|楠|nan, dan, zen, nen|kusu, kusunoki|camphor tree|
+|937|笛|teki|fue|flute, clarinet, pipe, whistle, bagpipe, piccolo|
+|938|芥|kai, ke|karashi, gomi, akuta|mustard, rape, dust, trash, rubbish|
+|939|其|ki, gi, go|sore, sono|that|
+|940|玲|rei||sound of jewels|
+|941|奴|do|yatsu, yakko|guy, slave, manservant, fellow|
+|942|錠|jou||lock, fetters, shackles|
+|943|拳|ken, gen|kobushi|fist|
+|944|翔|shou|kake(ru), to(bu)|soar, fly|
+|945|遷|sen|utsu(ru), miyakogae|transition, move, change|
+|946|拙|setsu|tsutana(i)|bungling, clumsy, unskillful|
+|947|侍|ji, shi|samu(rai), habe(ru)|waiter, samurai, wait upon, serve|
+|948|尺|shaku, seki|sashi|shaku, Japanese foot, measure, scale, rule|
+|949|峠||touge|mountain peak, mountain pass, climax, crest, (kokuji)|
+|950|篤|toku|atsu(i)|fervent, kind, cordial, serious, deliberate|
+|951|肇|chou, jou, tou|haji(meru), hajime|beginning|
+|952|渇|katsu|kawa(ku)|thirst, dry up, parch|
+|953|榎|ka|enoki|lotus tree, nettle tree, hackberry|
+|954|劉|ryuu, ru|koro(su)|weapon of war, logging axe, kill en masse, peeling (paint off a wall, etc), sparse, faded|
+|955|幡|man, han, ban, hon|hata|flag|
+|956|諏|shu, su|sou, haka(ru)|consult|
+|957|叔|shuku||uncle, youth|
+|958|雌|shi|me-, mesu, men|feminine, female|
+|959|亨|kou, kyou, hou|too(ru)|pass through, go smoothly|
+|960|堪|kan, tan|ta(eru), tama(ru), kora(eru), kota(eru)|withstand, endure, support, resist|
+|961|叙|jo|tsui(zu), tsuide|confer, relate, narrate, describe|
+|962|酢|saku|su|vinegar, sour, acid, tart|
+|963|吟|gin||versify, singing, recital|
+|964|逓|tei|kawa(ru), tagaini|relay, in turn, sending|
+|965|痕|kon|ato|mark, foot print|
+|966|嶺|rei, ryou|mine|peak, summit|
+|967|袖|shuu|sode|sleeve, wing (building), extension, give cold shoulder|
+|968|甚|jin|hanaha(da), hanaha(dashii)|tremendously, very, great, exceedingly|
+|969|喬|kyou|taka(i)|high, boasting|
+|970|崔|gai, sai, sui|gake|cliff, bluff, precipice|
+|971|妖|you|aya(shii), nama(meku), wazawa(i)|attractive, bewitching, calamity|
+|972|琵|bi, hi||glissando on strings, lute|
+|973|琶|ha, be, wa||lute|
+|974|聯|ren|tsura(naru), tsura(neru)|party, gang, clique|
+|975|蘇|so, su|yomigae(ru)|be resuscitated, revived, perilla, shiso|
+|976|闇|an, on|yami, kura(i)|get dark, gloom, disorder|
+|977|崇|suu|aga(meru)|adore, respect, revere, worship|
+|978|漆|shitsu|urushi|lacquer, varnish, seven|
+|979|岬|kou|misaki|headland, cape, spit, promontory|
+|980|癖|heki|kuse, kuse(ni)|mannerism, habit, vice, trait, fault, kink|
+|981|愉|yu|tano(shii), tano(shimu)|pleasure, happy, rejoice|
+|982|寅|in|tora|sign of the tiger, 3-5AM, third sign of Chinese zodiac|
+|983|捉|soku, saku|tora(eru)|catch, capture|
+|984|礁|shou||reef, sunken rock|
+|985|乃|nai, dai, no, ai|no, sunawa(chi), nanji|from, possessive particle, whereupon, accordingly|
+|986|洲|shuu, su|shima|continent, sandbar, island, country|
+|987|屯|ton|tamuro|barracks, police station, camp, ton|
+|988|樽|son|taru|barrel, cask, keg|
+|989|樺|ka|kaba, kanba|birch, dark red|
+|990|槙|ten, shin|maki, kozue|twig, ornamental evergreen|
+|991|薩|satsu, sachi||salvation, Buddha|
+|992|姻|in||matrimony, marry|
+|993|巌|gan|iwa, iwao, kewa(shii)|rock, crag, boulder|
+|994|淀|ten, den|yodo(mu)|pool, eddy|
+|995|麹|kiku|kouji|malt, yeast|
+|996|賭|to|ka(keru), kake|gamble, wager, bet|
+|997|擬|gi|maga(i), modo(ki)|mimic, aim (a gun) at, nominate, imitate|
+|998|塀|hei, bei||fence, wall, (kokuji)|
+|999|唇|shin|kuchibiru|lips|
+|1000|睦|boku, moku|mutsu(majii), mutsu(mu), mutsu(bu)|intimate, friendly, harmonious|
+|1001|閑|kan||leisure|
+|1002|胡|u, ko, go|nanzo|barbarian, foreign|
+|1003|幽|yuu|fuka(i), kasu(ka), kura(i), shiro(i)|seclude, confine to a room, deep, profound, secluded, faint, dark, tranquil, calm|
+|1004|峻|shun|kewa(shii), taka(i)|high, steep|
+|1005|曹|sou, zou||office, official, comrade, fellow|
+|1006|哨|shou|mihari|scout, sentinel|
+|1007|詠|ei|yo(mu), uta(u)|recitation, poem, song, composing|
+|1008|炒|sou, shou|i(ru), ita(meru)|broil, parch, roast, fry|
+|1009|屏|hei, byou|oo(u), shirizo(ku), byou(bu)|wall, fence|
+|1010|卑|hi|iya(shii)|lowly, base, vile, vulgar, despise|
+|1011|侮|bu|anado(ru)|scorn, despise, make light of, contempt|
+|1012|鋳|chuu, i, shu, shuu|i(ru)|casting, mint|
+|1013|抹|matsu||rub, paint, erase|
+|1014|尉|i, jou||military officer, jailer, old man, rank|
+|1015|槻|ki|tsuki|Zelkova tree|
+|1016|隷|rei|shitaga(u), shimobe|slave, servant, prisoner, criminal, follower|
+|1017|禍|ka|kazawai|calamity, misfortune, evil, curse|
+|1018|蝶|chou||butterfly|
+|1019|酪|raku||dairy products, whey, broth, fruit juice|
+|1020|茎|kei, kyou|kuki|stalk, stem|
+|1021|汎|han, bu, fuu, hou, hon|tadayo(u), hiro(i)|pan-|
+|1022|頃|kei, kyou|koro, goro, shibara(ku)|time, about, toward|
+|1023|帥|sui||commander, leading troops, governor|
+|1024|梁|ryou|hari, utsubari, uchibari, yana, hashi|weir, fish trap, beam, girder|
+|1025|逝|sei|yu(ku), i(ku)|departed, die|
+|1026|汽|ki||vapor, steam|
+|1027|謎|mei, bei|nazo|riddle, puzzle, enigma, hint, tip|
+|1028|琢|taku|miga(ku)|polish|
+|1029|箕|ki|mi|winnowing|
+|1030|匿|toku|kakuma(u)|hide, shelter, shield|
+|1031|爪|sou|tsume, tsuma-|claw, nail, talon|
+|1032|芭|ba, ha||banana|
+|1033|逗|tou, zu|todo(maru)|stop|
+|1034|苫|sen|toma|rush matting|
+|1035|鍵|ken|kagi|key|
+|1036|襟|kin|eri|collar, neck, lapel, one's inner feelings|
+|1037|蛍|kei|hotaru|lightning-bug, firefly|
+|1038|楢|shuu, yuu|nara|oak|
+|1039|蕉|shou||banana, plantain|
+|1040|兜|tou, to|kabuto|helmet, head piece|
+|1041|寡|ka||widow, minority, few|
+|1042|琉|ryuu, ru||precious stone, gem, lapis lazuli|
+|1043|痢|ri||diarrhea|
+|1044|庸|you||commonplace, ordinary, employment|
+|1045|朋|hou|tomo|companion, friend|
+|1046|坑|kou||pit, hole|
+|1047|姑|ko|shuutome, shuuto, oba, shibaraku|mother-in-law|
+|1048|烏|u, o|karasu, izukunzo, nanzo|crow, raven|
+|1049|藍|ran|ai|indigo|
+|1050|僑|kyou||expatriate, person living abroad, temporary home|
+|1051|賊|zoku||burglar, rebel, traitor, robber|
+|1052|搾|saku|shibo(ru)|squeeze|
+|1053|奄|en|oo(u), tachimachi|cover, suffocate, obstruct|
+|1054|臼|kyuu, gu|usu, usudzu(ku)|mortar|
+|1055|畔|han|aze, kuro, hotori|paddy ridge, levee|
+|1056|遼|ryou||distant|
+|1057|唄|bai|uta, uta(u)|song, ballad|
+|1058|孔|kou, ku|ana|cavity, hole, slit, very, great, exceedingly|
+|1059|橘|kitsu|tachibana|mandarin orange|
+|1060|漱|sou, shuu, su|kuchisusu(gu), kuchisoso(gu), ugai, susu(gu)|gargle, rinse mouth|
+|1061|呂|ro, ryo|sebone|spine, backbone|
+|1062|桧|kai|hinoki, hi|Japanese cypress|
+|1063|拷|gou||torture, beat|
+|1064|宋|sou||dwell, Sung dynasty|
+|1065|嬢|jou|musume|lass, girl, Miss, daughter|
+|1066|苑|en, on|sono, u(tsu)|garden, farm, park|
+|1067|巽|son|tatsumi|southeast|
+|1068|杜|to, tou, zu|mori, fusa(gu), yamanashi|woods, grove|
+|1069|渓|kei|tani, tanigawa|mountain stream, valley|
+|1070|翁|ou|okina|venerable old man|
+|1071|藝|gei, un|u(eru), nori, waza|art, craft, performance, acting, trick, stunt|
+|1072|廉|ren||bargain, reason, charge, suspicion, point, account, purity|
+|1073|牙|ga, ge|kiba, ha|tusk, fang, tusk radical (no. 92)|
+|1074|謹|kin|tsutsushi(mu)|discreet, reverently, humbly|
+|1075|瞳|dou, tou|hitomi|pupil (of eye)|
+|1076|湧|yuu, you, yu|wa(ku)|boil, ferment, seethe, uproar, breed|
+|1077|欣|kin, gon, kon|yoroko(bu)|take pleasure in, rejoice|
+|1078|窯|you|kama|kiln, oven, furnace|
+|1079|褒|hou|ho(meru)|praise, extol|
+|1080|醜|shuu|miniku(i), shiko|ugly, unclean, shame, bad looking|
+|1081|魏|gi|taka(i)|high, large, Kingdom of Wei|
+|1082|篇|hen||volume, chapter, book, editing, compilation|
+|1083|升|shou|masu|measuring box, 1.8 liter|
+|1084|此|shi|kore, kono, koko|this, current, next, coming, last, past|
+|1085|峯|hou|mine, ne|peak, summit|
+|1086|殉|jun||martyrdom, follow by resigning|
+|1087|煩|han, bon|wazura(u), urusa(garu)|anxiety, trouble, worry, pain, ill, annoy, nuisance, irksome|
+|1088|巴|ha|tomoe, uzumaki|comma-design|
+|1089|禎|tei|saiwa(i)|happiness, blessed, good fortune, auspicious|
+|1090|枕|chin, shin|makura|pillow|
+|1091|劾|gai||censure, criminal investigation|
+|1092|菩|bo||kind of grass, sacred tree|
+|1093|堕|da|o(chiru), kuzu(su)|degenerate, descend to, lapse into|
+|1094|丼|ton, tan, shou, sei|donburi|bowl, bowl of food|
+|1095|租|so||tariff, crop tax, borrowing|
+|1096|檜|kai|hinoki, hi|Japanese cypress|
+|1097|稜|ryou, rou|itsu, kado|angle, edge, corner, power, majesty|
+|1098|牟|bou, mu||pupil (eye), moo (cow sound)|
+|1099|桟|san, sen|kakehashi|scaffold, cleat, frame, jetty, bolt (door)|
+|1100|榊||sakaki|sacred Shinto tree, (kokuji)|
+|1101|錫|seki, shaku|suzu, tama(u)|copper, tin|
+|1102|荏|jin, nin||bean, perilla, herb, soft, pliable|
+|1103|惧|ku, gu|oso(reru)|fear, be afraid of, dread|
+|1104|倭|wa, i|yamato, shitaga(u)|Yamato, ancient Japan|
+|1105|婿|sei|muko|bridegroom, son-in-law|
+|1106|慕|bo|shita(u)|pining, yearn for, love dearly, adore|
+|1107|廟|byou, myou|tamaya, mitamaya, yashiro|mausoleum, shrine, palace|
+|1108|銚|chou, you|nabe|sake bottle|
+|1109|斐|hi, i||beautiful, patterned|
+|1110|罷|hi|maka(ri-), ya(meru)|quit, stop, leave, withdraw, go|
+|1111|矯|kyou|ta(meru)|rectify, straighten, correct, reform, cure, control, pretend, falsify|
+|1112|某|bou|soregashi, nanigashi|so-and-so, one, a certain, that person|
+|1113|囚|shuu|tora(wareru)|captured, criminal, arrest, catch|
+|1114|魁|kai|sakigake, kashira|charging ahead of others|
+|1115|薮|sou|yabu|thicket, bush, underbrush, grove|
+|1116|虹|kou|niji|rainbow|
+|1117|鴻|kou, gou|ootori, hishikui, oogari|large bird, wild goose, large, great, powerful, prosperous|
+|1118|泌|hitsu, hi||ooze, flow, soak in, penetrate, secrete|
+|1119|於|o, yo|oi(te), o(keru), aa, yori|at, in, on, as for|
+|1120|赳|kyuu||strong and brave|
+|1121|漸|zen|youya(ku), yaya, youyo(u), susu(mu)|steadily, gradually advancing, finally, barely|
+|1122|逢|hou|a(u), muka(eru)|meeting, tryst, date, rendezvous|
+|1123|凧||ikanobori, tako|kite, (kokuji)|
+|1124|鵜|tei, dai|u|cormorant|
+|1125|庵|an|iori, io|hermitage, retreat|
+|1126|膳|zen, sen|kashiwa, susu(meru), sona(eru)|small low table, tray|
+|1127|蚊|bun|ka|mosquito|
+|1128|葵|ki|aoi|hollyhock|
+|1129|厄|yaku||unlucky, misfortune, bad luck, disaster|
+|1130|藻|sou|mo|seaweed, duckweed|
+|1131|萬|man, ban|yorozu|ten thousand, 10,000|
+|1132|禄|roku|saiwa(i), fuchi|fief, allowance, pension, grant, happiness|
+|1133|孟|mou, bou, myou|kashira|chief, beginning|
+|1134|鴈|gan|kari, karigane|wild goose|
+|1135|狼|rou|ookami|wolf|
+|1136|嫡|chaku, teki||legitimate wife, direct descent (non-bastard)|
+|1137|呪|ju, shu, shuu, zu|majina(u), noro(i)|spell, curse, charm, malediction|
+|1138|斬|zan, san, sen, zen|ki(ru)|beheading, kill, murder|
+|1139|尖|sen|toga(ru), saki, surudo(i)|be pointed, sharp, taper, displeased, angry, edgy|
+|1140|翫|gan|moteaso(bu)|take pleasure in, play instrument|
+|1141|嶽|gaku|take|peak|
+|1142|尭|gyou|taka(i)|high, far|
+|1143|怨|en, on, un|ura(mu)|grudge, show resentment, be jealous|
+|1144|卿|kei, kyou|kimi|you, lord, secretary, state minister|
+|1145|串|kan, ken, sen|kushi, tsuranu(ku)|spit, skewer|
+|1146|已|i|ya(mu), sude(ni), nomi, hanahada|stop, halt, previously, already, long ago|
+|1147|嚇|kaku|odo(su)|menacing, dignity, majesty, threaten|
+|1148|巳|shi|mi|sign of the snake or serpent, 9-11AM, sixth sign of Chinese zodiac|
+|1149|凸|totsu|deko|convex, beetle brow, uneven|
+|1150|暢|chou|nobi(ru)|stretch|
+|1151|腫|shu, shou|ha(reru), ha(re), ha(rasu), haremono|tumor, swelling|
+|1152|粟|zoku, shoku, soku|awa, momi|millet|
+|1153|燕|en|tsubame, tsubakura, tsubakuro|swallow (bird)|
+|1154|韻|in||rhyme, elegance, tone|
+|1155|綴|tei, tetsu, techi, getsu|to(jiru), tsudzu(ru), tsudzuri, sumi(yaka)|compose, spell, write, bind (books)|
+|1156|埴|shoku|hani, hena|clay|
+|1157|霜|sou|shimo|frost|
+|1158|餅|hei, hyou|mochi, mochii|mochi rice cake|
+|1159|魯|ro|oroka|foolish, Russia|
+|1160|硝|shou||nitrate, saltpeter|
+|1161|牡|bo, bou|osu, o-, on-|male|
+|1162|箸|cho, chaku|hashi|chopsticks|
+|1163|勅|choku|imashi(meru), mikotonori|imperial order|
+|1164|芹|kin|seri|parsley|
+|1165|杏|kyou, an, kou|anzu|apricot|
+|1166|迦|ka, ke||(used phonetically)|
+|1167|棺|kan||coffin, casket|
+|1168|儒|ju||Confucian|
+|1169|鳳|hou, fuu||male mythical bird|
+|1170|馨|kei, kyou|kao(ru), kaori|fragrant, balmy, favourable|
+|1171|斑|han|fu, madara|spot, blemish, speck, patches|
+|1172|蔭|in, on|kage|shade, shadow, backing assistance|
+|1173|焉|en|izuku(nzo), kokoni, kore|how, why, then|
+|1174|慧|kei, e|satoi|wise|
+|1175|祇|gi, ki, shi|kunitsukami, tada, masani|national or local god, peaceful, great|
+|1176|摯|shi|ita(ru), tsuka(mu), nie|gift, seriousness|
+|1177|愁|shuu|ure(eru), ure(i)|distress, grieve, lament, be anxious|
+|1178|鷺|ro|sagi|heron|
+|1179|楼|rou|takadono|watchtower, lookout, high building|
+|1180|彬|hin, fun|uruwa(shii), aki(raka)|refined, gentle|
+|1181|袴|ko, ku|hakama, zubon|men's formal divided skirt|
+|1182|匡|kyou, ou|suku(u), tada(su)|correct, save, assist|
+|1183|眉|bi, mi|mayu|eyebrow|
+|1184|苅|gai, kai|ka(ru)|cutting (grass)|
+|1185|讃|san|ho(meru), tata(eru)|praise, title on a picture|
+|1186|尹|in|osa, tada(su)|an official rank|
+|1187|欽|kin, kon|tsutsushi(mu)|respect, revere, long for|
+|1188|薪|shin|takigi, maki|fuel, firewood, kindling|
+|1189|湛|tan, chin, jin, sen|shizu(mu), tata(eru)|fill, wear (a smile), clear, pure, dense, deep|
+|1190|堆|tai, tsui|uzutaka(i)|piled high|
+|1191|狐|ko|kitsune|fox|
+|1192|褐|katsu||brown, woollen kimono|
+|1193|鴎|ou|kamome|seagull|
+|1194|瀋|shin||juice, broth|
+|1195|挺|chou, tei|nu(ku)|bravely volunteer, counter for guns, inksticks, palanquins|
+|1196|賜|shi|tamawa(ru), tama(u), tamo(u)|grant, gift, boon, results|
+|1197|嵯|sa, shi||steep, craggy, rugged|
+|1198|雁|gan|kari, karigane|wild goose|
+|1199|佃|ten, den|tsukuda|cultivated rice field|
+|1200|綜|sou|osa(meru), su(beru)|rule, synthesize|
+|1201|繕|zen|tsukuro(u)|darning, repair, mend, trim, tidy up, adjust|
+|1202|狛|haku|koma|archaic part of Korea, lion-dog shrine guards|
+|1203|壷|ko|tsubo|jar, pot, hinge knuckle, one's aim|
+|1204|橿|kyou|kashi, mochinoki|oak|
+|1205|栓|sen||plug, bolt, cork, bung, stopper|
+|1206|翠|sui|kawasemi, midori|green, kingfisher|
+|1207|鮎|den, nen|ayu, namazu|freshwater trout, smelt|
+|1208|芯|shin||wick|
+|1209|蜜|mitsu, bitsu||honey, nectar, molasses|
+|1210|播|ha, ban, han|ma(ku)|plant, sow|
+|1211|榛|shin, han|hashibami, hari|hazelnut, filbert|
+|1212|凹|ou|kubo(mu), heko(mu), boko|concave, hollow, sunken|
+|1213|艶|en|tsuya, nama(mekashii), ade(yaka), tsuya(meku)|glossy, luster, glaze, polish, charm, colorful, captivating|
+|1214|帖|chou, jou|kakimono|quire (of paper), bundle of seaweed, counter for screens, notebook|
+|1215|桶|you, tou|oke|tub, bucket|
+|1216|惣|sou|sube(te)|all|
+|1217|股|ko|mata, momo|thigh, crotch|
+|1218|匂||nio(u), nio(i), nio(waseru)|fragrant, stink, glow, insinuate, (kokuji)|
+|1219|鞍|an|kura|saddle|
+|1220|蔦|chou|tsuta|vine, ivy|
+|1221|玩|gan|mochiaso(bu), moteaso(bu)|play, take pleasure in, trifle with, make sport of|
+|1222|萱|ken|kaya, kanzou|miscanthus reed|
+|1223|梯|tei, tai|hashigo|ladder, stairs, insatiable drinking|
+|1224|雫|da|shizuku|drop, trickle, dripping, (kokuji)|
+|1225|絆|han|kizuna, hoda(su), tsuna(gu)|bonds, fetters|
+|1226|錬|ren|ne(ru)|tempering, refine, drill, train, polish|
+|1227|湊|sou|minato, atsu(maru)|port, harbor|
+|1228|蜂|hou|hachi|bee, wasp, hornet|
+|1229|隼|shun, jun|hayabusa|falcon|
+|1230|舵|da, ta|kaji|rudder, helm, wheel|
+|1231|渚|sho|nagisa|strand, beach, shore|
+|1232|珂|ka||jewel|
+|1233|煥|kan|akiraka|shine|
+|1234|衷|chuu||inmost, heart, mind, inside|
+|1235|逐|chiku||pursue, drive away, chase, accomplish, attain, commit|
+|1236|斥|seki|shirizo(keru)|reject, retreat, recede, withdraw, repel, repulse|
+|1237|稀|ki, ke|mare, mabara|rare, phenomenal, dilute (acid)|
+|1238|癌|gan||cancer, cancerous evil|
+|1239|峨|ga|kewa(shii)|high mountain|
+|1240|嘘|kyo, ko|uso, fu(ku)|lie, falsehood|
+|1241|旛|hen, han|hata|flag|
+|1242|篭|rou, ru|kago, ko(meru), komo(ru), ko(mu)|seclude oneself, cage, coop, implied|
+|1243|芙|fu||lotus, Mt Fuji|
+|1244|詔|shou|mikotonori|imperial edict|
+|1245|皐|kou|satsuki|swamp, shore, fifth month|
+|1246|雛|suu, su, ju|hina, hiyoko|chick, squab, duckling, doll|
+|1247|娼|shou|asobime|prostitute|
+|1248|篆|ten||seal-style characters|
+|1249|鮫|kou|same, mizuchi|shark|
+|1250|椅|i||chair|
+|1251|惟|i, yui|omo(nmiru), kore, omo(uni)|consider, reflect, think|
+|1252|牌|hai|pai, fuda|label, signboard, medal, mahjong tiles|
+|1253|宕|tou|sugiru|cave|
+|1254|喧|ken|yakama(shii), kamabisu(shii)|noisy, boisterous|
+|1255|佑|yuu, u|tasu(keru)|help, assist|
+|1256|蒋|shou, sou|makomo, hage(masu)|reed|
+|1257|樟|shou|kusu|camphor|
+|1258|耀|you|kagaya(ku), hikari|shine, sparkle, gleam, twinkle|
+|1259|黛|tai|mayuzumi|blackened eyebrows|
+|1260|叱|shitsu, shichi, ka|shika(ru)|scold, reprove|
+|1261|櫛|shitsu|kushi, kushikezu(ru)|comb|
+|1262|渥|aku|atsu(i), uruo(u)|kindness, moisten|
+|1263|挨|ai|hira(ku)|approach, draw near, push open|
+|1264|憧|shou, tou, dou|akoga(reru)|yearn after, long for, aspire to, admire, adore|
+|1265|濡|ju, nyu|nure(ru), uruo(i)|get wet, damp, make love|
+|1266|槍|sou, shou|yari|spear, lance, javelin|
+|1267|宵|shou|yoi|wee hours, evening, early night|
+|1268|襄|jou, shou|hara(u)|rise, raise|
+|1269|妄|mou, bou|mida(rini)|delusion, unnecessarily, without authority, reckless|
+|1270|惇|shun, jun, ton|atsu(i)|sincere, kind, considerate|
+|1271|蛋|tan||barbarian, egg|
+|1272|脩|shuu|osa(meru), naga(i), hojishi|dried meat|
+|1273|笘|sen, chou||whip, cane, wooden writing slate|
+|1274|宍|niku, jiku|shishi|muscles, meat|
+|1275|甫|ho, fu|haji(mete)|for the first time, not until|
+|1276|酌|shaku|ku(mu)|bar-tending, serving sake, the host, draw (water), ladle, scoop, pump|
+|1277|蚕|san, ten|kaiko, ko|silkworm|
+|1278|壕|kou, gou|hori|trench, dugout, air raid shelter|
+|1279|嬉|ki|ure(shii), tano(shimu)|glad, pleased, rejoice|
+|1280|囃|satsu, sou|haya(su), hayashi|play (music), accompany, beat time, banter, jeer, applaud|
+|1281|蒼|sou|ao(i)|blue, pale|
+|1282|餌|ji, ni|e, eba, esa, mochi|food, bait, prey, tempting profit|
+|1283|簗|ryou|yana|weir, fish trap, (kokuji)|
+|1284|峙|ji|sobada(tsu)|tower, soar|
+|1285|粥|iku, shuku, juku|kayu, kai, hisa(gu)|rice gruel|
+|1286|舘|kan|yakata, tate|mansion, large building, palace|
+|1287|銕|tetsu|kurogane|iron, strong, solid, firm|
+|1288|鄒|suu, shu, shuu||place name|
+|1289|蜷|ken|nina|an edible river snail|
+|1290|暉|ki|kaga(yaku)|shine, light|
+|1291|捧|hou|sasa(geru)|lift up, give, offer, consecrate, sacrifice, dedicate|
+|1292|頒|han|wa(katsu), wa(keru)|distribute, disseminate, partition, understand|
+|1293|只|shi|tada|only, free, in addition|
+|1294|肢|shi||limb, arms & legs|
+|1295|箏|sou, shou|koto|a koto|
+|1296|檀|dan, tan|mayumi|cedar, sandalwood, spindle tree|
+|1297|鵠|koku, kou|kugui, mato|swan|
+|1298|凱|gai, kai|kachidoki, yawaragu|victory song|
+|1299|彗|sui, e, kei, sei|houki|comet|
+|1300|謄|tou||mimeograph, copy|
+|1301|諌|kan|isa(me)|admonish, dissuade|
+|1302|樫||kashi|evergreen oak, (kokuji)|
+|1303|噂|son|uwasa|rumor, gossip, hearsay|
+|1304|脊|seki|se, sei|stature, height, spine|
+|1305|牝|hin|mesu, me-, men|female|
+|1306|梓|shi|azusa|catalpa tree, woodblock printing|
+|1307|洛|raku||Kyoto, the capital|
+|1308|醍|dai, tai, tei||whey, good Buddhist teaching|
+|1309|砦|sai|toride|fort, stronghold, entrenchments|
+|1310|丑|chuu|ushi|sign of the ox or cow, 1-3AM, second sign of Chinese zodiac|
+|1311|笏|kotsu|shaku|mace, baton, scepter|
+|1312|蕨|ketsu|warabi|bracken, fernbrake|
+|1313|噺||hanashi|talk, (kokuji)|
+|1314|抒|jo, sho|ku(mu), no(beru)|tell, 10**24|
+|1315|嗣|shi||heir, succeed|
+|1316|隈|wai, e|kuma, sumi|corner, nook, recess|
+|1317|叶|kyou|kana(eru), kana(u)|grant, answer|
+|1318|凄|sei, sai|samu(i), sugo(i), susa(majii)|uncanny, weird, threatening, horrible|
+|1319|汐|seki|shio, ushio, sei|eventide, tide, salt water, opportunity|
+|1320|絢|ken||brilliant fabric design|
+|1321|叩|kou|tata(ku), hata(ku), sugi|strike, beat, kow tow, hit, thrash, criticize|
+|1322|嫉|shitsu|sone(mu), neta(mu), niku(mu)|jealous, envy|
+|1323|朔|saku|tsuitachi|conjunction (astronomy), first day of month, north|
+|1324|蔡|sai||type of tortoise used for divination|
+|1325|膝|shitsu|hiza|knee, lap|
+|1326|鍾|shou, shu|atsu(meru), sakazuki, kane|spindle, gather, collect|
+|1327|仇|kyuu, gu|ada, ata, kataki, tsureai|foe, enemy, revenge, grudge, feud|
+|1328|伽|ka, ga, kya, gya|togi|nursing, attending, entertainer|
+|1329|夷|i|ebisu, emishi, koro(su), tai(rageru)|barbarian, savage, Ainu|
+|1330|恣|shi|hoshiimama|selfish, arbitrary|
+|1331|瞑|mei, ben, myou, min, men|mei(suru), tsubu(ru), tsumu(ru), kura(i)|sleep, dark, close eyes|
+|1332|畝|bou, ho, mo, mu|se, une|furrow, thirty tsubo, ridge, rib|
+|1333|抄|shou||extract, selection, summary, copy, spread thin|
+|1334|杭|kou|kui|stake, post, picket|
+|1335|寓|guu, gu, dou|guu(suru), kakotsu(keru), yo(ru), karizumai|temporary abode, imply, suggest|
+|1336|麺|men, ben|mugiko|noodles, wheat flour|
+|1337|戴|tai|itada(ku)|be crowned with, live under (a ruler), receive|
+|1338|爽|sou|aki(raka), sawa(yaka), tagau|refreshing, bracing, resonant, sweet, clear|
+|1339|裾|kyo, ko|suso|cuff, hem, foot of mountain|
+|1340|黎|rei, ri|kuro(i)|dark, black, many|
+|1341|惰|da||lazy, laziness|
+|1342|坐|za, sa|suwa(ru), owasu, sozoroni, mashimasu|sit|
+|1343|鍼|shin|hari, sa(su)|needle|
+|1344|蛮|ban|ebisu|barbarian|
+|1345|塙|kaku, kou|hanawa, kata(i)|projecting tableland or mountain|
+|1346|冴|go, ko|sa(eru), koo(ru), hi(eru)|be clear, serene, cold, skilful|
+|1347|旺|ou, kyou, gou|kagaya(ki), utsukushi(i), sakan|flourishing, successful, beautiful, vigorous|
+|1348|葦|i|ashi, yoshi, shio(reru), shina(biru), shibo(mu), na(eru)|reed, bullrush|
+|1349|礒|gi, ga|iso, iwao|rock, beach, shore|
+|1350|咸|kan, gen||all, same|
+|1351|萌|hou|mo(eru), kiza(su), mebae|show symptoms of, sprout, bud, malt|
+|1352|饗|kyou|u(keru), motena(su)|banquet|
+|1353|歪|wai, e|iga(mu), ibitsu, hizu(mu), yuga(mu)|warp, bend, strained, distort|
+|1354|冥|mei, myou|kura(i)|dark|
+|1355|偲|sai, shi|shino(bu)|recollect, remember|
+|1356|壱|ichi, itsu|hitotsu|one (in documents)|
+|1357|瑠|ru, ryuu||lapis lazuli|
+|1358|韮|kyuu, ku|nira|leek|
+|1359|漕|sou|ko(gu), hako(bu)|rowing, scull, paddle|
+|1360|杵|sho, so|kine|wooden pestle|
+|1361|薔|ba, shou, shoku, sou|mizutade|water pepper|
+|1362|膠|kou, kyou|nikawa, nibe|glue, isinglass|
+|1363|允|in|jou, makoto(ni), yurusu|license, sincerity, permit|
+|1364|眞|shin|ma, makoto|truth, reality, Buddhist sect|
+|1365|蒙|mou, bou|koumu(ru), oo(u), kura(i)|ignorance, darkness, get, receive, be subjected to, sustain, Mongolia|
+|1366|蕃|ban, han||grow luxuriously|
+|1367|呑|ton, don|no(mu)|drink|
+|1368|侯|kou||marquis, lord, daimyo|
+|1369|碓|kaku, tai|tashi(ka), kaku(taru)|pestle|
+|1370|茗|myou, mei|cha|tea|
+|1371|麓|roku|fumoto|foot of a mountain|
+|1372|瀕|hin|hotori|shore, brink, verge|
+|1373|蒔|shi, ji|u(eru), ma(ku)|sow (seeds)|
+|1374|鯉|ri|koi|carp|
+|1375|竪|ju|tate, ta(teru), kodomo|length, height, warp|
+|1376|弧|ko||arc, arch, bow|
+|1377|稽|kei|kanga(eru), todo(meru)|think, consider|
+|1378|瘤|ryuu, ru|kobu|lump, swelling|
+|1379|澤|taku|sawa, uruo(i), uruo(su), tsuya|swamp|
+|1380|溥|fu, haku|amaneshi|far and wide|
+|1381|遥|you|haru(ka)|far off, distant, long ago|
+|1382|蹴|shuku, shuu|ke(ru)|kick|
+|1383|或|waku, koku, iki|a(ru), arui, aruiwa|some, one, or, possibly, a certain|
+|1384|訃|fu|shirase|obituary|
+|1385|矩|ku|kane, kanezashi, sashigane|ruler, carpenter's square|
+|1386|厦|ka, sa|ie|house|
+|1387|冤|en||false charge, hatred|
+|1388|剥|haku, hoku|he(gu), mu(ku), ha(gareru)|come off, peel, fade, discolor|
+|1389|舜|shun||type of morning glory, rose of Sharon, althea|
+|1390|侠|kyou|kyan, otokodate|tomboy, chivalry|
+|1391|贅|zei, sei|ibo|luxury|
+|1392|杖|jou|tsue|staff, cane|
+|1393|蓋|gai, kai, kou|futa, keda(shi), oo(u), kasa, kakou|cover, lid, flap|
+|1394|畏|i|oso(reru), kashikoma(ru), kashiko, kashiko(shi)|fear, majestic, graciously, be apprehensive|
+|1395|喉|kou|nodo|throat, voice|
+|1396|汪|ou||flowing full, expanse of water, wide, deep|
+|1397|猷|yuu, you|hakarigoto, haka(ru)|plan, scheme, plot, way|
+|1398|瑛|ei||sparkle of jewelry, crystal|
+|1399|搜|sou, shu, shuu|saga(su)|search, seek, investigate|
+|1400|曼|man, ban|naga(i)|wide, beautiful|
+|1401|附|fu|tsu(keru), tsu(ku)|affixed, attach, refer to, append|
+|1402|彪|hyou, hyuu|aya|spotted, mottled, patterned, small tiger|
+|1403|撚|nen|yo(ru), yo(reru), yori, hi(neru)|twist, twine, kinky|
+|1404|噛|kou, gou|ka(mu), ka(jiru)|chew, bite, gnaw|
+|1405|卯|bou, mou|u|sign of the hare or rabbit, fourth sign of Chinese zodiac, 5-7AM, east|
+|1406|桝||masu|measuring box, (kokuji)|
+|1407|撫|bu, fu|na(deru)|stroke, pat, smooth down|
+|1408|喋|chou, tou|shabe(ru), tsuiba(mu)|talk, chat, chatter|
+|1409|但|tan|tada(shi)|however, but|
+|1410|溢|itsu|kobo(reru), afu(reru), mi(chiru)|overflow, inundate, spill|
+|1411|闊|katsu|hiro(i)|wide|
+|1412|藏|zou, sou|kura, osa(meru), kaku(reru)|hide, own, have, possess|
+|1413|浙|setsu||name of a Chinese river|
+|1414|彭|hou||swelling, sound of drum|
+|1415|淘|tou|yona(geru)|select|
+|1416|剃|tei|mai, so(ru), su(ru)|shave|
+|1417|揃|sen|soro(eru), ki(ru)|be complete, uniform, all present|
+|1418|綺|ki|aya|figured cloth, beautiful|
+|1419|徘|hai|samayo(u)|wander|
+|1420|巷|kou|chimata|fork in road, scene, arena, theater|
+|1421|竿|kan|sao|pole, rod, scale beam, violin neck|
+|1422|蟹|kai|kani|crab|
+|1423|芋|u|imo|potato|
+|1424|袁|en, on||long kimono|
+|1425|舩|sen|fune, funa-|boat, ship, vessel|
+|1426|拭|shoku, shiki|nugu(u), fu(ku)|wipe, mop, swab|
+|1427|茜|sen|akane|madder, red dye, Turkey red|
+|1428|凌|ryou|shino(gu)|endure, keep (rain)out, stave off, tide over, defy, slight, surpass|
+|1429|頬|kyou|hoo, hoho|cheeks, jaw|
+|1430|厨|shuu, zu, chu, chuu|kuriya|kitchen|
+|1431|犀|sai, sei||rhinoceros|
+|1432|簑|sa, sai|mino|a coat raincoat|
+|1433|皓|kou|shiro(i), hika(ru)|white, clear|
+|1434|甦|so, kou|yomigae(ru)|be resuscitated, revived|
+|1435|洸|kou||sparkling water|
+|1436|毬|kyuu|iga, mari|burr, ball|
+|1437|檄|keki|geki(suru), furebumi|written appeal, manifesto|
+|1438|姚|you, chou|utsuku(shii)|beautiful|
+|1439|蛭|shitsu, chitsu|hiru|leech|
+|1440|婆|ba|baba, baa|old woman, grandma, wet nurse|
+|1441|叢|sou, su|kusamura, mura(garu), mura|plexus, clump of bushes, thicket|
+|1442|椙||sugi|Japanese cedar, cryptomeria, (kokuji)|
+|1443|轟|gou, kou|todoro(kasu), todoro(ku)|roar, thunder, boom resound|
+|1444|贋|gan|nise|counterfeit, forgery|
+|1445|洒|sha, son, sai, sen, sei|susu(gu), ara(u)|wash, sprinkle|
+|1446|貰|sei, sha|mora(u)|get, have, obtain|
+|1447|儲|cho|mou(keru), mou(karu), mouke, takuwa(eru)|be profitable, yield profit|
+|1448|緋|hi|ake, aka|scarlet, cardinal|
+|1449|諜|chou|chou(zuru), ukaga(u), shime(su)|spy out, reconnoiter|
+|1450|鯛|chou|tai|sea bream, red snapper|
+|1451|蓼|shin, riku, ryou|tade|luxurious grass, a smartweed|
+|1452|甕|ou|kame, mika|jar, jug, vat|
+|1453|喘|zen, sen|ae(gu), seki|pant, gasp, breathe hard|
+|1454|怜|rei, ren, ryou|awa(remu), sato(i)|wise|
+|1455|溜|ryuu|ta(maru), tama(ru), shitata(ru)|collect, gather, be in arrears|
+|1456|邑|yuu|mura|village, rural community, right village radical (no. 163)|
+|1457|鉾|bou, mu|hoko|halberd, arms, festival float|
+|1458|倣|hou|nara(u)|emulate, imitate|
+|1459|碧|heki, hyaku||blue, green|
+|1460|燈|tou|hi, ho-, tomoshibi, tomo(su), akari|lamp, light, counter for lights|
+|1461|諦|tei, tai|akira(meru), tsumabiraka, makoto|truth, clarity, abandon, give up|
+|1462|煎|sen|sen(jiru), i(ru), ni(ru)|broil, parch, roast, boil|
+|1463|瓜|ka, ke|uri|melon|
+|1464|緻|chi|komaka(i)|fine (i.e. not coarse)|
+|1465|哺|ho|haguku(mu), fuku(mu)|nurse, suckle|
+|1466|槌|tsui|tsuchi|hammer, mallet|
+|1467|啄|taku, tsuku, toku|tsuiba(mu), tsutsu(ku)|peck, pick up|
+|1468|穣|jou|wara, yutaka|good crops, prosperity, 10**28|
+|1469|嗜|shi|tashina(mu), kono(mu)|like, taste, modest|
+|1470|偕|kai|tomoni|together|
+|1471|罵|ba|nonoshi(ru)|abuse, insult|
+|1472|酉|yuu|tori|west, bird, sign of the bird, 5-7PM, tenth sign of Chinese zodiac, sake radical (no. 164)|
+|1473|蹄|tei|hidzume|hoof|
+|1474|頚|kei|kubi|neck, head|
+|1475|胚|hai|harami, hara(mu)|embryo|
+|1476|牢|rou|kata(i), hitoya|prison, jail, hardness|
+|1477|糞|fun|kuso|shit, feces, excrement|
+|1478|悌|tei, dai||serving our elders|
+|1479|吊|chou|tsu(ru), tsuru(su)|suspend, hang, wear (sword)|
+|1480|楕|da, ta||ellipse|
+|1481|鮭|kai, kei|sake, shake, fugu|salmon|
+|1482|乞|kotsu, kitsu, ki, kike, kochi|ko(u)|beg, invite, ask|
+|1483|倹|ken|tsuma(shii), tsudzumayaka|frugal, economy, thrifty|
+|1484|嗅|kyuu|ka(gu)|smell, sniff, scent|
+|1485|詫|ta|wabi, wabi(shii), kakotsu, wa(biru)|apologize|
+|1486|鱒|son, sen, zan|masu|salmon trout|
+|1487|蔑|betsu|naigashiro, nami(suru), kurai, sagesu(mu)|ignore, despise, neglect, ridicule|
+|1488|轍|tetsu|wadachii, wadachi|rut, wheel track|
+|1489|醤|shou|hishio|a kind of miso|
+|1490|惚|kotsu|hoke(ru), bo(keru), ho(reru)|fall in love with, admire, grow senile|
+|1491|廣|kou|hiro(i)|broad, wide, spacious|
+|1492|藁|kou|wara|straw|
+|1493|柚|yu, yuu, jiku|yuzu|citron|
+|1494|舛|bu, sen|mai, somu(ku)|dancing radical (no. 136)|
+|1495|縞|kou|shima, shiroginu|stripe|
+|1496|謳|ou, u|uta(u)|extol, declare, express|
+|1497|杞|ko, ki||river willow|
+|1498|鱗|rin|uroko, koke, kokera|scales (fish)|
+|1499|繭|ken|mayu, kinu|cocoon|
+|1500|釘|tei, chou|kugi|nail, tack, peg|
+|1501|弛|chi, shi|taru(mu), tayu(mu), yuru(mu)|slacken, relax|
+|1502|狸|ri, rai|tanuki|tanuki, raccoon|
+|1503|壬|nin, jin, i|mizunoe|9th calendar sign|
+|1504|硯|ken, gen|suzuri|inkstone|

@@ -1,0 +1,1150 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>タイ文字ドリル（日本語ガイド付き）</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Noto+Sans+Thai+Looped:wght@400;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --red: #d32f2f;
+      --red-soft: #ef5350;
+      --blue: #1e88e5;
+      --blue-deep: #1565c0;
+      --green: #00897b;
+      --green-dark: #00695c;
+      --gray-trace: #c5c5c5;
+      --border-title: #90caf9;
+      --font-thai: "Noto Sans Thai Looped", "Noto Sans Thai", "Leelawadee UI", "Tahoma", sans-serif;
+      --radius: 12px;
+      --radius-sm: 8px;
+      --shadow-card: 0 2px 12px rgba(0, 0, 0, 0.06);
+      --border-subtle: #e8eaed;
+      /** タイ語の見かけサイズ（学習者向けに読みやすくやや大きめ） */
+      /* 赤枠・トップ唱えのタイ字（全体を約2/3スケール） */
+      --thai-hero-glyph: 2.8rem;
+      --thai-hero-yomi: 0.59rem;
+      --thai-body-glyph: 1.55rem;
+      --thai-body-yomi: 0.72rem;
+      --thai-write-glyph: 3.25rem;
+      --thai-write-yomi: 0.72rem;
+      --thai-trace-glyph: 4.2rem;
+      --thai-trace-glyph-sm: 3.2rem;
+      --thai-trace-yomi: 0.78rem;
+      --thai-trace-yomi-sm: 0.68rem;
+      --thai-chue-default-glyph: 1.44rem;
+      --thai-chue-default-yomi: 0.85rem;
+      --write-cell-size: 7.2rem;
+      /* 20マス＝横5列×縦4行 */
+      --write-grid-cols: 5;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: "Noto Sans JP", "Hiragino Sans", sans-serif;
+      background: linear-gradient(165deg, #eef1f5 0%, #e3e8ef 50%, #eceff4 100%);
+      color: #1a1a1a;
+      min-height: 100vh;
+    }
+
+    .sheet-wrap {
+      max-width: 920px;
+      margin: 1.25rem auto 0;
+      padding: 0 1rem;
+    }
+
+    /** 状態同期用（画面上には出さない） */
+    #wordSelect {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
+
+    .char-picker-outer {
+      max-width: 920px;
+      margin: 1.5rem auto 2.5rem;
+      padding: 1rem 1rem 1.25rem;
+      background: #fff;
+      border-radius: var(--radius);
+      border: 1px solid var(--border-subtle);
+      box-shadow: var(--shadow-card);
+    }
+
+    .char-picker {
+      max-width: 920px;
+      margin: 0 auto;
+    }
+
+    .char-picker-group {
+      margin-bottom: 0.75rem;
+    }
+
+    .char-picker-group:last-child {
+      margin-bottom: 0;
+    }
+
+    .char-picker-group-label {
+      font-size: 0.68rem;
+      font-weight: 700;
+      color: #5f6368;
+      letter-spacing: 0.02em;
+      margin-bottom: 0.35rem;
+      padding-left: 0.15rem;
+    }
+
+    .char-picker-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.35rem;
+    }
+
+    .char-picker-btn {
+      font-family: var(--font-thai);
+      font-size: 1.2rem;
+      font-weight: 600;
+      min-width: 2.65rem;
+      height: 2.65rem;
+      padding: 0 0.35rem;
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-sm);
+      background: #fff;
+      color: #1a1a1a;
+      cursor: pointer;
+      line-height: 1;
+      transition: background 0.12s, border-color 0.12s, box-shadow 0.12s;
+    }
+
+    .char-picker-btn:hover {
+      background: #f1f3f4;
+      border-color: #dadce0;
+    }
+
+    .char-picker-btn:focus-visible {
+      outline: 2px solid var(--blue);
+      outline-offset: 2px;
+    }
+
+    .char-picker-btn.is-current {
+      background: linear-gradient(180deg, #e3f2fd 0%, #bbdefb 100%);
+      border-color: var(--blue-deep);
+      color: #0d47a1;
+      box-shadow: 0 0 0 1px rgba(21, 101, 192, 0.2);
+    }
+
+    .char-picker-btn--tight {
+      font-size: 0.82rem;
+      min-width: 2.35rem;
+      height: auto;
+      min-height: 2.55rem;
+      padding: 0.2rem 0.25rem;
+      word-break: break-all;
+    }
+
+    .char-picker-btn--mark {
+      font-size: 0.95rem;
+    }
+
+    .sheet {
+      display: block;
+      min-height: 1000px;
+      background: #fff;
+      box-shadow: var(--shadow-card), 0 24px 48px rgba(0, 0, 0, 0.06);
+      border-radius: var(--radius);
+      overflow: hidden;
+      border: 1px solid rgba(0, 0, 0, 0.04);
+    }
+
+    .main {
+      width: 100%;
+      padding: 1.5rem 1.65rem 1.65rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.35rem;
+      background: #fafbfc;
+    }
+
+    .top-block {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: flex-start;
+      gap: 1rem 1.35rem;
+      padding: 1.15rem 1.2rem;
+      background: #fff;
+      border-radius: var(--radius);
+      border: 1px solid var(--border-subtle);
+      box-shadow: var(--shadow-card);
+    }
+
+    .top-block-chue {
+      flex: 1 1 10rem;
+      min-width: 0;
+    }
+
+    .chue-ruby-wrap {
+      writing-mode: horizontal-tb;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: flex-end;
+      align-content: flex-end;
+      gap: 0.5rem 0.65rem;
+      padding-top: 0.15rem;
+    }
+
+    /** トップの覚え方（唱え）：赤枠内の文字と同じ指定サイズ */
+    .top-block .chue-ruby-wrap .furi-chue {
+      gap: 0.33rem;
+    }
+
+    .top-block .chue-ruby-wrap .furi-chue .furi-yomi {
+      font-size: var(--thai-hero-yomi);
+    }
+
+    .top-block .chue-ruby-wrap .furi-chue .furi-thai {
+      font-size: var(--thai-hero-glyph);
+      font-weight: 700;
+      color: #111;
+    }
+
+    .top-block-nav {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 0.45rem;
+      flex: 0 0 auto;
+      padding-left: 0.15rem;
+    }
+
+    .btn-step {
+      min-width: 5.25rem;
+      padding: 0.48rem 0.75rem;
+      font-family: inherit;
+      font-size: 0.875rem;
+      font-weight: 600;
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-sm);
+      background: #fff;
+      cursor: pointer;
+      transition: background 0.12s, border-color 0.12s;
+    }
+
+    .btn-step:hover {
+      background: #f1f3f4;
+      border-color: #dadce0;
+    }
+
+    .btn-step:focus-visible {
+      outline: 2px solid var(--blue);
+      outline-offset: 2px;
+    }
+
+    .btn-step:disabled {
+      opacity: 0.4;
+      cursor: not-allowed;
+      pointer-events: none;
+    }
+
+    /**
+     * ふりがな：ネイティブ ruby は被りやすいので flex 縦積み
+     * 構造: .furi > .furi-yomi + .furi-thai
+     */
+    .furi {
+      display: inline-flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      vertical-align: bottom;
+      line-height: 1;
+    }
+
+    .furi-yomi {
+      font-family: "Noto Sans JP", sans-serif;
+      font-weight: 700;
+      color: #424242;
+      line-height: 1.2;
+      white-space: nowrap;
+      order: 1;
+    }
+
+    .furi-thai {
+      font-family: var(--font-thai);
+      font-weight: 600;
+      color: #333;
+      order: 2;
+      line-height: 1;
+    }
+
+    .furi-plain .furi-thai {
+      color: var(--gray-trace);
+    }
+
+    .furi-hero {
+      gap: 0.48rem;
+    }
+
+    .furi-hero .furi-yomi {
+      font-size: var(--thai-hero-yomi);
+      letter-spacing: 0.04em;
+    }
+
+    .furi-hero .furi-thai {
+      font-size: var(--thai-hero-glyph);
+      font-weight: 700;
+      color: #111;
+    }
+
+    /** 赤枠内は常に同一サイズ（compact による縮小を無効化） */
+    .hero-box .furi-hero.furi-compact .furi-thai {
+      font-size: var(--thai-hero-glyph);
+    }
+
+    .furi-trace {
+      gap: 0.52rem;
+    }
+
+    .furi-trace .furi-yomi {
+      font-size: var(--thai-trace-yomi);
+    }
+
+    .furi-trace .furi-thai {
+      font-size: var(--thai-trace-glyph);
+      font-weight: 600;
+      color: var(--gray-trace);
+    }
+
+    .furi-trace-sm {
+      gap: 0.44rem;
+    }
+
+    .furi-trace-sm .furi-yomi {
+      font-size: var(--thai-trace-yomi-sm);
+    }
+
+    .furi-trace-sm .furi-thai {
+      font-size: var(--thai-trace-glyph-sm);
+      color: var(--gray-trace);
+    }
+
+    .furi-chue {
+      gap: 0.42rem;
+    }
+
+    .furi-chue .furi-yomi {
+      font-size: var(--thai-chue-default-yomi);
+    }
+
+    .furi-chue .furi-thai {
+      font-size: var(--thai-chue-default-glyph);
+      color: #333;
+    }
+
+    .furi-usage {
+      gap: 0.5rem;
+    }
+
+    .furi-usage .furi-yomi {
+      font-size: var(--thai-body-yomi);
+    }
+
+    .furi-usage .furi-thai {
+      font-size: var(--thai-body-glyph);
+      font-weight: 700;
+      color: #1a1a1a;
+    }
+
+    .furi-write {
+      gap: 0.38rem;
+    }
+
+    .furi-write .furi-yomi {
+      font-size: var(--thai-write-yomi);
+    }
+
+    .furi-write .furi-thai {
+      font-size: var(--thai-write-glyph);
+      color: var(--gray-trace);
+    }
+
+    .furi-write.furi-compact .furi-yomi {
+      font-size: var(--thai-write-yomi);
+    }
+
+    .furi-write.furi-compact .furi-thai {
+      font-size: var(--thai-write-glyph);
+    }
+
+    .chue-gap {
+      display: inline-block;
+      width: 0.55rem;
+      flex-shrink: 0;
+    }
+
+    .top-block .chue-gap {
+      width: 0.85rem;
+    }
+
+    .th-plain {
+      font-family: var(--font-thai);
+    }
+
+    .trace-plain {
+      font-family: var(--font-thai);
+      font-size: var(--thai-trace-glyph);
+      font-weight: 600;
+      color: var(--gray-trace);
+      line-height: 1;
+    }
+
+    .trace-plain.compact {
+      font-size: var(--thai-trace-glyph-sm);
+    }
+
+    .hero-plain {
+      font-family: var(--font-thai);
+      font-size: var(--thai-hero-glyph);
+      font-weight: 700;
+      color: #111;
+      line-height: 1;
+    }
+
+    .hero-box .hero-plain.compact {
+      font-size: var(--thai-hero-glyph);
+    }
+
+    .write-plain {
+      font-family: var(--font-thai);
+      font-size: var(--thai-write-glyph);
+      font-weight: 600;
+      color: var(--gray-trace);
+      line-height: 1;
+    }
+
+    .write-cell .write-plain.compact {
+      font-size: var(--thai-write-glyph);
+    }
+
+    .vowel-dtau-ruby {
+      margin-top: 0.65rem;
+      padding-top: 0.65rem;
+      border-top: 1px dashed var(--border-subtle);
+      width: 100%;
+      max-width: 15rem;
+      text-align: center;
+    }
+
+    .hero-box {
+      flex: 0 0 auto;
+      align-self: center;
+      border: 2px solid var(--red);
+      border-radius: var(--radius);
+      padding: 0.85rem 1.15rem;
+      min-width: min(100%, 168px);
+      text-align: center;
+      background: #fff;
+      box-shadow: none;
+    }
+
+    .hero-thai {
+      display: flex;
+      justify-content: center;
+      align-items: flex-end;
+      min-height: calc(var(--thai-hero-glyph) * 1.2);
+    }
+
+    .mid-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin-top: 0.15rem;
+    }
+
+    .imi-block,
+    .on-block {
+      display: flex;
+      flex-direction: column;
+      align-items: stretch;
+      gap: 0.55rem;
+      padding: 1rem 0.85rem;
+      background: #fff;
+      border-radius: var(--radius);
+      border: 1px solid var(--border-subtle);
+      box-shadow: var(--shadow-card);
+      min-height: auto;
+    }
+
+    .imi-block .label-pill-th,
+    .on-block .label-pill-th {
+      align-self: center;
+    }
+
+    .on-block .on-body {
+      flex: 1;
+    }
+
+    .label-pill-th {
+      font-family: "Noto Sans JP", sans-serif;
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: #fff;
+      padding: 0.2rem 0.55rem;
+      border-radius: 999px;
+      letter-spacing: 0.02em;
+      white-space: nowrap;
+    }
+
+    .label-pill-th.red { background: var(--red); }
+    .label-pill-th.blue { background: var(--blue-deep); }
+
+    .imi-body,
+    .on-body {
+      writing-mode: horizontal-tb;
+      text-orientation: mixed;
+      font-family: "Noto Sans JP", "Hiragino Sans", sans-serif;
+      font-weight: 600;
+      font-size: 0.92rem;
+      line-height: 1.75;
+      min-height: auto;
+      width: 100%;
+      text-align: left;
+    }
+
+    .imi-body {
+      color: #b71c1c;
+    }
+
+    .on-body {
+      color: #1565c0;
+    }
+
+    .mid-body-p {
+      margin: 0 0 0.65em 0;
+    }
+
+    .mid-body-p:last-child {
+      margin-bottom: 0;
+    }
+
+    /** 説明文内のタイ語用（コンパクトな縦積みふりがな） */
+    .furi-mid {
+      gap: 0.18rem;
+      vertical-align: bottom;
+      margin: 0 0.04em;
+    }
+
+    .furi-mid .furi-yomi {
+      font-size: var(--thai-body-yomi);
+      font-weight: 700;
+      color: #424242;
+    }
+
+    .furi-mid .furi-thai {
+      font-size: var(--thai-body-glyph);
+      font-weight: 600;
+    }
+
+    .mid-inline-thai {
+      font-family: var(--font-thai);
+      font-weight: 600;
+      font-size: var(--thai-body-glyph);
+    }
+
+    .imi-body .furi-chue,
+    .on-body .furi-chue {
+      gap: 0.32rem;
+    }
+
+    .imi-body .furi-chue .furi-yomi,
+    .on-body .furi-chue .furi-yomi {
+      font-size: var(--thai-body-yomi);
+    }
+
+    .imi-body .furi-chue .furi-thai,
+    .on-body .furi-chue .furi-thai {
+      font-size: var(--thai-body-glyph);
+      font-weight: 600;
+    }
+
+    .imi-body .chue-gap,
+    .on-body .chue-gap {
+      width: 0.35rem;
+    }
+
+    .imi-body .sub-ja,
+    .on-body .sub-ja {
+      font-family: "Noto Sans JP", sans-serif;
+      font-size: 0.78rem;
+      font-weight: 500;
+      color: #666;
+    }
+
+    .usage-section {
+      margin-top: auto;
+    }
+
+    .usage-pill {
+      display: inline-block;
+      background: var(--green);
+      color: #fff;
+      font-family: "Noto Sans JP", sans-serif;
+      font-size: 0.82rem;
+      font-weight: 700;
+      padding: 0.35rem 1rem;
+      border-radius: 999px;
+      margin-bottom: 0.65rem;
+    }
+
+    .usage-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0.65rem;
+    }
+
+    .usage-item {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 0.15rem;
+    }
+
+    /** 「例」内は日本語ラベル・タイ語（ruby あり／なし）で太さを揃える */
+    .usage-section .usage-item .ja-hint {
+      font-size: 0.8rem;
+      color: #555;
+      font-weight: 600;
+    }
+
+    .usage-section .usage-item .furi-usage .furi-thai {
+      font-weight: 600;
+    }
+
+    .usage-section .usage-item .thai-line .th-plain {
+      font-size: var(--thai-body-glyph);
+      font-weight: 600;
+      color: #1a1a1a;
+    }
+
+    .usage-item .thai-line {
+      display: inline-flex;
+      align-items: flex-end;
+      flex-wrap: wrap;
+      gap: 0.25rem;
+    }
+
+    .bottom-row {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 1.25rem;
+      align-items: start;
+      margin-top: 0.5rem;
+    }
+
+    .write-grid {
+      display: grid;
+      grid-template-columns: repeat(var(--write-grid-cols), var(--write-cell-size));
+      grid-auto-rows: var(--write-cell-size);
+      gap: 2px;
+      padding: 2px;
+      width: fit-content;
+      max-width: 100%;
+      box-sizing: border-box;
+      background: #333;
+      border: 2px solid #333;
+    }
+
+    .write-cell {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #fff;
+      box-sizing: border-box;
+      min-width: 0;
+      min-height: 0;
+    }
+
+    .write-cell.trace {
+      padding: 0.25rem;
+    }
+
+    @media (max-width: 640px) {
+      :root {
+        /* 横5列を維持しつつ画面幅に収める（タイ字はやや大きめを維持） */
+        --write-cell-size: min(5.75rem, calc((100vw - 3rem) / 5.35));
+        --thai-write-glyph: 2.65rem;
+        --thai-write-yomi: 0.65rem;
+        --thai-body-glyph: 1.38rem;
+        --thai-body-yomi: 0.65rem;
+        --thai-hero-glyph: 2.45rem;
+        --thai-hero-yomi: 0.54rem;
+        --write-grid-cols: 5;
+      }
+    }
+
+    @media print {
+      body { background: #fff; }
+      #wordSelect { display: none; }
+      .char-picker-outer { display: none; }
+      .top-block-nav { display: none; }
+      .sheet-wrap { margin: 0; padding: 0; max-width: none; }
+      .sheet {
+        box-shadow: none;
+        border-radius: 0;
+        min-height: 297mm;
+        page-break-after: always;
+        break-after: page;
+      }
+      .sheet:last-of-type {
+        page-break-after: auto;
+        break-after: auto;
+      }
+
+      .furi-hero {
+        gap: 0.28rem;
+      }
+
+      .furi-hero .furi-yomi {
+        font-size: var(--thai-hero-yomi);
+      }
+
+      .furi-hero .furi-thai,
+      .hero-box .furi-hero.furi-compact .furi-thai {
+        font-size: var(--thai-hero-glyph);
+      }
+
+      .top-block .chue-ruby-wrap .furi-chue .furi-thai {
+        font-size: var(--thai-hero-glyph);
+      }
+
+      .top-block .chue-ruby-wrap .furi-chue .furi-yomi {
+        font-size: var(--thai-hero-yomi);
+      }
+
+      .furi-trace,
+      .furi-trace-sm {
+        gap: 0.28rem;
+      }
+
+      .furi-trace .furi-yomi {
+        font-size: var(--thai-trace-yomi);
+      }
+
+      .furi-trace-sm .furi-yomi {
+        font-size: var(--thai-trace-yomi-sm);
+      }
+
+      .furi-chue {
+        gap: 0.22rem;
+      }
+
+      .furi-chue .furi-yomi {
+        font-size: var(--thai-chue-default-yomi);
+      }
+
+      .furi-mid {
+        gap: 0.14rem;
+      }
+
+      .furi-mid .furi-yomi {
+        font-size: var(--thai-body-yomi);
+      }
+
+      .furi-mid .furi-thai {
+        font-size: var(--thai-body-glyph);
+      }
+
+      .imi-body .furi-chue .furi-yomi,
+      .on-body .furi-chue .furi-yomi {
+        font-size: var(--thai-body-yomi);
+      }
+
+      .imi-body .furi-chue .furi-thai,
+      .on-body .furi-chue .furi-thai {
+        font-size: var(--thai-body-glyph);
+      }
+    }
+  </style>
+</head>
+<body>
+  <select id="wordSelect" aria-label="現在の練習文字（内部同期用）" tabindex="-1"></select>
+  <div class="sheet-wrap">
+    <div id="sheetRoot"></div>
+  </div>
+  <div id="charPickerRoot" class="char-picker-outer" hidden aria-hidden="true"></div>
+
+  <script src="thai-ruby-readings.js"></script>
+  <script src="thai-kanji-drill-data.js"></script>
+  <script>
+    const DRILL_WORDS = typeof THAI_DRILL_WORDS !== "undefined" ? THAI_DRILL_WORDS : [];
+    /** 書き取りグリッド総マス数（横5×縦4＝20、見本1＋空欄19） */
+    const WRITE_GRID_CELL_COUNT = 20;
+
+    const SELECT_GROUPS = [
+      { category: "consonant", label: "子音 42字" },
+      { category: "vowel", label: "母音・複合" },
+      { category: "mark", label: "記号・声調・繰り返し（ๆ）" }
+    ];
+
+    function escapeHtml(s) {
+      return String(s)
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;");
+    }
+
+    /**
+     * タイ語＋カタカナ読み（目安）。ネイティブ ruby は被りやすいので .furi（縦積み flex）を使う。
+     * variant: hero | trace | write | usage | chue | mid
+     */
+    function rubyHtml(thai, rb, variant, compact) {
+      const t = String(thai || "");
+      let r = String(rb || "").trim();
+      if (!r) r = rbLookup(t);
+      const comp = compact === true || compact === "compact";
+      if (!t) return "";
+
+      if (!r) {
+        if (variant === "trace") {
+          return `<span class="trace-plain${comp ? " compact" : ""}">${escapeHtml(t)}</span>`;
+        }
+        if (variant === "write") {
+          return `<span class="write-plain${comp ? " compact" : ""}">${escapeHtml(t)}</span>`;
+        }
+        if (variant === "hero") {
+          return `<span class="hero-plain${comp ? " compact" : ""}">${escapeHtml(t)}</span>`;
+        }
+        if (variant === "mid") {
+          return `<span class="th-plain mid-inline-thai">${escapeHtml(t)}</span>`;
+        }
+        return `<span class="th-plain">${escapeHtml(t)}</span>`;
+      }
+
+      let furiSize = "furi-usage";
+      if (variant === "hero") furiSize = "furi-hero";
+      else if (variant === "trace") furiSize = comp ? "furi-trace-sm" : "furi-trace";
+      else if (variant === "write") furiSize = "furi-write";
+      else if (variant === "usage") furiSize = "furi-usage";
+      else if (variant === "chue") furiSize = "furi-chue";
+      else if (variant === "mid") furiSize = "furi-mid";
+
+      const extra = (variant === "hero" || variant === "write") && comp ? " furi-compact" : "";
+      return `<span class="furi ${furiSize}${extra}"><span class="furi-yomi">${escapeHtml(r)}</span><span class="furi-thai">${escapeHtml(t)}</span></span>`;
+    }
+
+    /** 唱え「กอ ไก่」：語ごとにふりがな（辞書で欠けは補完） */
+    function chueRubyHtml(word) {
+      const th = String(word.chueRian || "").trim();
+      const rb = String(word.chueRuby || "").trim();
+      if (!th) return "";
+      const tParts = th.split(/\s+/).filter(Boolean);
+      const rParts = rb.split(/\s+/).filter(Boolean);
+      if (tParts.length > 1) {
+        return tParts
+          .map((tp, i) => {
+            const ri = (i < rParts.length && rParts[i] ? String(rParts[i]).trim() : "") || rbLookup(tp);
+            return rubyHtml(tp, ri, "chue", false);
+          })
+          .join('<span class="chue-gap" aria-hidden="true"></span>');
+      }
+      return rubyHtml(th, rb || rbLookup(th), "chue", false);
+    }
+
+    function thaiGlyphCount(str) {
+      return Array.from(String(str)).length;
+    }
+
+    function optionLabel(w) {
+      if (w.category === "consonant") {
+        return `${w.thai}（${w.jaKeywordGloss}）`;
+      }
+      if (w.category === "vowel") {
+        const head = w.thai.length > 4 ? w.thai.slice(0, 4) + "…" : w.thai;
+        return `${head}・${w.jaKeywordGloss}`;
+      }
+      return `${w.chueRian.slice(0, 12)}${w.chueRian.length > 12 ? "…" : ""}`;
+    }
+
+    function midLabels(cat) {
+      if (cat === "consonant") return { L: "分類", R: "覚え方・読み" };
+      if (cat === "vowel") return { L: "母音の内容", R: "音の例（タイ語）" };
+      return { L: "記号の名前", R: "説明" };
+    }
+
+    function firstChueSyllable(chueRian) {
+      const s = String(chueRian || "").trim();
+      const i = s.indexOf(" ");
+      return i === -1 ? s : s.slice(0, i);
+    }
+
+    function rbLookup(thai) {
+      const D =
+        typeof THAI_RUBY_READINGS === "object" && THAI_RUBY_READINGS !== null ? THAI_RUBY_READINGS : {};
+      return String(D[thai] || "").trim();
+    }
+
+    const THAI_SCRIPT_RUN = /[\u0E00-\u0E7F]+/g;
+
+    /** 日本語文の中に混ざるタイ語連続区間にふりがな（辞書）を付ける */
+    function jaLineWithThaiRuby(text) {
+      const s = String(text || "");
+      const out = [];
+      let last = 0;
+      let m;
+      THAI_SCRIPT_RUN.lastIndex = 0;
+      while ((m = THAI_SCRIPT_RUN.exec(s)) !== null) {
+        if (m.index > last) out.push(escapeHtml(s.slice(last, m.index)));
+        out.push(rubyHtml(m[0], rbLookup(m[0]), "mid", false));
+        last = m.index + m[0].length;
+      }
+      if (last < s.length) out.push(escapeHtml(s.slice(last)));
+      return out.join("");
+    }
+
+    function firstChueRuby(word) {
+      const th = String(word.chueRian || "").trim();
+      const rb = String(word.chueRuby || "").trim();
+      const first = firstChueSyllable(th);
+      if (!first) return "";
+      const tParts = th.split(/\s+/);
+      const rParts = rb.split(/\s+/).filter(Boolean);
+      if (rb && tParts.length === rParts.length && tParts[0] === first) return rParts[0];
+      return rbLookup(first);
+    }
+
+    function midLeftBodyHtml(word) {
+      if (word.category === "consonant") {
+        const p1 = jaLineWithThaiRuby(word.phapLenJa);
+        const p2 = `タイ語表記：${rubyHtml(word.phapLen, rbLookup(word.phapLen), "mid", false)}`;
+        return `<p class="mid-body-p">${p1}</p><p class="mid-body-p">${p2}</p>`;
+      }
+      if (word.category === "vowel") {
+        const p1 = jaLineWithThaiRuby(word.phapLenJa);
+        const saraRb = String(word.chueRuby || "").trim() || rbLookup(word.chueRian);
+        const p2 = `タイ語の名称：${rubyHtml(word.chueRian, saraRb, "mid", false)}`;
+        const p3 = `日本語メモ：${escapeHtml(word.jaKeywordGloss)}`;
+        return `<p class="mid-body-p">${p1}</p><p class="mid-body-p">${p2}</p><p class="mid-body-p">${p3}</p>`;
+      }
+      const p1 = jaLineWithThaiRuby(word.phapLenJa);
+      const nameRb = String(word.chueRuby || "").trim() || rbLookup(word.chueRian);
+      const p2 = `タイ語名：${rubyHtml(word.chueRian, nameRb, "mid", false)}`;
+      return `<p class="mid-body-p">${p1}</p><p class="mid-body-p">${p2}</p>`;
+    }
+
+    function midRightBodyHtml(word) {
+      if (word.category === "consonant") {
+        const first = firstChueSyllable(word.chueRian);
+        const p1 = `タイの子どもは「${chueRubyHtml(word)}」と唱えて覚えます。`;
+        const p2 = `頭の音節「${rubyHtml(first, firstChueRuby(word), "mid", false)}」が、この字を言うときの核になります。`;
+        return `<p class="mid-body-p">${p1}</p><p class="mid-body-p">${p2}</p>`;
+      }
+      if (word.category === "vowel") {
+        return `<p class="mid-body-p">${escapeHtml(
+          "実際の音は前後の子音と組み合わせて聞こえます。教科書では次のような例で練習します。"
+        )}</p>`;
+      }
+      const ex = word.explainJa || "";
+      return `<p class="mid-body-p">${jaLineWithThaiRuby(ex)}</p>`;
+    }
+
+    function renderSheet(word) {
+      const labels = midLabels(word.category);
+      const leftBodyHtml = midLeftBodyHtml(word);
+      const rightBodyHtml = midRightBodyHtml(word);
+      const examplesHtml = word.examples
+        .map(
+          (ex) => `
+        <div class="usage-item">
+          <span class="ja-hint">${escapeHtml(ex.ja)}</span>
+          <span class="thai-line">${rubyHtml(ex.thai, ex.rb, "usage", false)}</span>
+        </div>`
+        )
+        .join("");
+
+      const writeTraceCell = `<div class="write-cell trace">${rubyHtml(word.thai, word.glyphRuby, "write", false)}</div>`;
+      const writeBlankCells = Array.from({ length: WRITE_GRID_CELL_COUNT - 1 }, () => "<div class=\"write-cell\"></div>").join(
+        ""
+      );
+
+      return `
+      <article class="sheet" data-id="${escapeHtml(word.id)}">
+        <div class="main">
+          <div class="top-block">
+            <div class="hero-box">
+              <div class="hero-thai">${rubyHtml(word.thai, word.glyphRuby, "hero", false)}</div>
+            </div>
+            <div class="top-block-chue">
+              <div class="chue-ruby-wrap" aria-label="タイ式の唱え方（覚え方）">${chueRubyHtml(word)}</div>
+            </div>
+            <div class="top-block-nav" aria-label="前後の文字">
+              <button type="button" class="btn-step btn-step-prev" aria-label="前の文字へ">戻る</button>
+              <button type="button" class="btn-step btn-step-next" aria-label="次の文字へ">次へ</button>
+            </div>
+          </div>
+          <div class="mid-row">
+            <div class="imi-block">
+              <span class="label-pill-th red">${escapeHtml(labels.L)}</span>
+              <div class="imi-body">${leftBodyHtml}</div>
+            </div>
+            <div class="on-block">
+              <span class="label-pill-th blue">${escapeHtml(labels.R)}</span>
+              <div class="on-body">${rightBodyHtml}</div>
+              ${
+                word.category === "vowel"
+                  ? `<div class="vowel-dtau-ruby">${rubyHtml(word.khumDtonYang, word.dtauRuby, "usage", false)}</div>`
+                  : ""
+              }
+            </div>
+          </div>
+          <div class="bottom-row">
+            <div class="write-grid" aria-label="書き写し・筆順練習（横5×縦4、見本1マス＋空欄19）">
+              ${writeTraceCell}${writeBlankCells}
+            </div>
+            <div class="usage-section">
+              <span class="usage-pill">例</span>
+              <div class="usage-list">${examplesHtml}</div>
+            </div>
+          </div>
+        </div>
+      </article>`;
+    }
+
+    const select = document.getElementById("wordSelect");
+    const root = document.getElementById("sheetRoot");
+    const charPickerRoot = document.getElementById("charPickerRoot");
+
+    function pickerExtraClasses(w) {
+      const n = thaiGlyphCount(w.thai);
+      const parts = [];
+      if (n > 2) parts.push("char-picker-btn--tight");
+      if (w.category === "mark" && n <= 2) parts.push("char-picker-btn--mark");
+      return parts.join(" ");
+    }
+
+    function renderCharPickerHtml() {
+      if (!DRILL_WORDS.length) return "";
+      let html = '<nav class="char-picker" aria-label="全文字から選択">';
+      SELECT_GROUPS.forEach((g) => {
+        const items = DRILL_WORDS.filter((x) => x.category === g.category);
+        if (!items.length) return;
+        html += '<div class="char-picker-group">';
+        html += `<div class="char-picker-group-label">${escapeHtml(g.label)}</div>`;
+        html += '<div class="char-picker-grid">';
+        items.forEach((w) => {
+          const ex = pickerExtraClasses(w).trim();
+          const cls = `char-picker-btn${ex ? ` ${ex}` : ""}`;
+          html += `<button type="button" class="${cls}" data-id="${escapeHtml(w.id)}" title="${escapeHtml(optionLabel(w))}">${escapeHtml(w.thai)}</button>`;
+        });
+        html += "</div></div>";
+      });
+      html += "</nav>";
+      return html;
+    }
+
+    function updatePickerSelection(id) {
+      if (!charPickerRoot) return;
+      charPickerRoot.querySelectorAll(".char-picker-btn").forEach((btn) => {
+        const cur = btn.getAttribute("data-id") === id;
+        btn.classList.toggle("is-current", cur);
+      });
+    }
+
+    function initCharPicker() {
+      if (!charPickerRoot) return;
+      if (!DRILL_WORDS.length) {
+        charPickerRoot.innerHTML = "";
+        charPickerRoot.hidden = true;
+        charPickerRoot.setAttribute("aria-hidden", "true");
+        return;
+      }
+      charPickerRoot.innerHTML = renderCharPickerHtml();
+      charPickerRoot.hidden = false;
+      charPickerRoot.removeAttribute("aria-hidden");
+    }
+
+    function currentWordIndex() {
+      if (!select) return 0;
+      const id = select.value;
+      const i = DRILL_WORDS.findIndex((w) => w.id === id);
+      return i >= 0 ? i : 0;
+    }
+
+    function goAdjacent(delta) {
+      if (!DRILL_WORDS.length) return;
+      const n = DRILL_WORDS.length;
+      const i = (currentWordIndex() + delta + n) % n;
+      showWord(DRILL_WORDS[i].id);
+    }
+
+    function fillSelect() {
+      if (!select) return;
+      select.innerHTML = "";
+      if (!DRILL_WORDS.length) {
+        const opt = document.createElement("option");
+        opt.textContent = "データ未読込（thai-ruby-readings.js → thai-kanji-drill-data.js の順で読み込み）";
+        select.appendChild(opt);
+        return;
+      }
+      SELECT_GROUPS.forEach((g) => {
+        const items = DRILL_WORDS.filter((w) => w.category === g.category);
+        if (!items.length) return;
+        const og = document.createElement("optgroup");
+        og.label = g.label;
+        items.forEach((w) => {
+          const opt = document.createElement("option");
+          opt.value = w.id;
+          opt.textContent = optionLabel(w);
+          og.appendChild(opt);
+        });
+        select.appendChild(og);
+      });
+    }
+
+    function showWord(id) {
+      const word = DRILL_WORDS.find((w) => w.id === id) || DRILL_WORDS[0];
+      if (!word) {
+        root.innerHTML = "<p>データがありません。</p>";
+        return;
+      }
+      if (select) select.value = word.id;
+      root.innerHTML = renderSheet(word);
+      updatePickerSelection(word.id);
+    }
+
+    fillSelect();
+    initCharPicker();
+
+    if (root) {
+      root.addEventListener("click", (e) => {
+        if (e.target.closest(".btn-step-prev")) goAdjacent(-1);
+        else if (e.target.closest(".btn-step-next")) goAdjacent(1);
+      });
+    }
+
+    if (charPickerRoot) {
+      charPickerRoot.addEventListener("click", (e) => {
+        const btn = e.target.closest(".char-picker-btn");
+        if (!btn) return;
+        const id = btn.getAttribute("data-id");
+        if (!id) return;
+        showWord(id);
+      });
+    }
+
+    if (DRILL_WORDS.length) {
+      showWord(DRILL_WORDS[0].id);
+    } else {
+      root.innerHTML =
+        "<p>thai-ruby-readings.js と thai-kanji-drill-data.js を同じフォルダに置き、HTMLの順で読み込んでください。</p>";
+    }
+  </script>
+</body>
+</html>

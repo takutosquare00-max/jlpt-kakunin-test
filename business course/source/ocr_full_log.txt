@@ -1,0 +1,204 @@
+============================================================
+PDF OCR 抽出スクリプト
+============================================================
+PDF: /Users/hayashi./datax/Business/school/business course/source/日本語のルール.pdf
+対象: ページ 100-214
+
+[1/3] PDFを画像に変換中...
+  → 115 ページを変換しました
+
+[2/3] EasyOCRでテキスト抽出中...
+EasyOCRの初期化中（日本語+英語）...
+  OCR処理中: ページ 100 (1/115)...
+/Users/hayashi./datax/Business/school/business course/source/.venv/lib/python3.14/site-packages/PIL/Image.py:3451: DecompressionBombWarning: Image size (125266275 pixels) exceeds limit of 89478485 pixels, could be decompression bomb DOS attack.
+  warnings.warn(
+/Users/hayashi./datax/Business/school/business course/source/.venv/lib/python3.14/site-packages/torch/utils/data/dataloader.py:775: UserWarning: 'pin_memory' argument is set as true but not supported on MPS now, device pinned memory won't be used.
+  super().__init__(loader)
+  OCR処理中: ページ 101 (2/115)...
+/Users/hayashi./datax/Business/school/business course/source/.venv/lib/python3.14/site-packages/PIL/Image.py:3451: DecompressionBombWarning: Image size (125266275 pixels) exceeds limit of 89478485 pixels, could be decompression bomb DOS attack.
+  warnings.warn(
+/Users/hayashi./datax/Business/school/business course/source/.venv/lib/python3.14/site-packages/torch/utils/data/dataloader.py:775: UserWarning: 'pin_memory' argument is set as true but not supported on MPS now, device pinned memory won't be used.
+  super().__init__(loader)
+  OCR処理中: ページ 102 (3/115)...
+/Users/hayashi./datax/Business/school/business course/source/.venv/lib/python3.14/site-packages/PIL/Image.py:3451: DecompressionBombWarning: Image size (125266275 pixels) exceeds limit of 89478485 pixels, could be decompression bomb DOS attack.
+  warnings.warn(
+/Users/hayashi./datax/Business/school/business course/source/.venv/lib/python3.14/site-packages/torch/utils/data/dataloader.py:775: UserWarning: 'pin_memory' argument is set as true but not supported on MPS now, device pinned memory won't be used.
+  super().__init__(loader)
+  OCR処理中: ページ 103 (4/115)...
+/Users/hayashi./datax/Business/school/business course/source/.venv/lib/python3.14/site-packages/PIL/Image.py:3451: DecompressionBombWarning: Image size (125266275 pixels) exceeds limit of 89478485 pixels, could be decompression bomb DOS attack.
+  warnings.warn(
+/Users/hayashi./datax/Business/school/business course/source/.venv/lib/python3.14/site-packages/torch/utils/data/dataloader.py:775: UserWarning: 'pin_memory' argument is set as true but not supported on MPS now, device pinned memory won't be used.
+  super().__init__(loader)
+  OCR処理中: ページ 104 (5/115)...
+/Users/hayashi./datax/Business/school/business course/source/.venv/lib/python3.14/site-packages/PIL/Image.py:3451: DecompressionBombWarning: Image size (125266275 pixels) exceeds limit of 89478485 pixels, could be decompression bomb DOS attack.
+  warnings.warn(
+/Users/hayashi./datax/Business/school/business course/source/.venv/lib/python3.14/site-packages/torch/utils/data/dataloader.py:775: UserWarning: 'pin_memory' argument is set as true but not supported on MPS now, device pinned memory won't be used.
+  super().__init__(loader)
+  OCR処理中: ページ 105 (6/115)...
+/Users/hayashi./datax/Business/school/business course/source/.venv/lib/python3.14/site-packages/PIL/Image.py:3451: DecompressionBombWarning: Image size (125266275 pixels) exceeds limit of 89478485 pixels, could be decompression bomb DOS attack.
+  warnings.warn(
+/Users/hayashi./datax/Business/school/business course/source/.venv/lib/python3.14/site-packages/torch/utils/data/dataloader.py:775: UserWarning: 'pin_memory' argument is set as true but not supported on MPS now, device pinned memory won't be used.
+  super().__init__(loader)
+  OCR処理中: ページ 106 (7/115)...
+/Users/hayashi./datax/Business/school/business course/source/.venv/lib/python3.14/site-packages/PIL/Image.py:3451: DecompressionBombWarning: Image size (125266275 pixels) exceeds limit of 89478485 pixels, could be decompression bomb DOS attack.
+  warnings.warn(
+/Users/hayashi./datax/Business/school/business course/source/.venv/lib/python3.14/site-packages/torch/utils/data/dataloader.py:775: UserWarning: 'pin_memory' argument is set as true but not supported on MPS now, device pinned memory won't be used.
+  super().__init__(loader)
+  OCR処理中: ページ 107 (8/115)...
+/Users/hayashi./datax/Business/school/business course/source/.venv/lib/python3.14/site-packages/PIL/Image.py:3451: DecompressionBombWarning: Image size (125266275 pixels) exceeds limit of 89478485 pixels, could be decompression bomb DOS attack.
+  warnings.warn(
+/Users/hayashi./datax/Business/school/business course/source/.venv/lib/python3.14/site-packages/torch/utils/data/dataloader.py:775: UserWarning: 'pin_memory' argument is set as true but not supported on MPS now, device pinned memory won't be used.
+  super().__init__(loader)
+  OCR処理中: ページ 108 (9/115)...
+/Users/hayashi./datax/Business/school/business course/source/.venv/lib/python3.14/site-packages/PIL/Image.py:3451: DecompressionBombWarning: Image size (125266275 pixels) exceeds limit of 89478485 pixels, could be decompression bomb DOS attack.
+  warnings.warn(
+/Users/hayashi./datax/Business/school/business course/source/.venv/lib/python3.14/site-packages/torch/utils/data/dataloader.py:775: UserWarning: 'pin_memory' argument is set as true but not supported on MPS now, device pinned memory won't be used.
+  super().__init__(loader)
+  OCR処理中: ページ 109 (10/115)...
+/Users/hayashi./datax/Business/school/business course/source/.venv/lib/python3.14/site-packages/PIL/Image.py:3451: DecompressionBombWarning: Image size (125266275 pixels) exceeds limit of 89478485 pixels, could be decompression bomb DOS attack.
+  warnings.warn(
+/Users/hayashi./datax/Business/school/business course/source/.venv/lib/python3.14/site-packages/torch/utils/data/dataloader.py:775: UserWarning: 'pin_memory' argument is set as true but not supported on MPS now, device pinned memory won't be used.
+  super().__init__(loader)
+  OCR処理中: ページ 110 (11/115)...
+/Users/hayashi./datax/Business/school/business course/source/.venv/lib/python3.14/site-packages/PIL/Image.py:3451: DecompressionBombWarning: Image size (125266275 pixels) exceeds limit of 89478485 pixels, could be decompression bomb DOS attack.
+  warnings.warn(
+/Users/hayashi./datax/Business/school/business course/source/.venv/lib/python3.14/site-packages/torch/utils/data/dataloader.py:775: UserWarning: 'pin_memory' argument is set as true but not supported on MPS now, device pinned memory won't be used.
+  super().__init__(loader)
+  OCR処理中: ページ 111 (12/115)...
+/Users/hayashi./datax/Business/school/business course/source/.venv/lib/python3.14/site-packages/PIL/Image.py:3451: DecompressionBombWarning: Image size (125266275 pixels) exceeds limit of 89478485 pixels, could be decompression bomb DOS attack.
+  warnings.warn(
+/Users/hayashi./datax/Business/school/business course/source/.venv/lib/python3.14/site-packages/torch/utils/data/dataloader.py:775: UserWarning: 'pin_memory' argument is set as true but not supported on MPS now, device pinned memory won't be used.
+  super().__init__(loader)
+  OCR処理中: ページ 112 (13/115)...
+/Users/hayashi./datax/Business/school/business course/source/.venv/lib/python3.14/site-packages/PIL/Image.py:3451: DecompressionBombWarning: Image size (125266275 pixels) exceeds limit of 89478485 pixels, could be decompression bomb DOS attack.
+  warnings.warn(
+/Users/hayashi./datax/Business/school/business course/source/.venv/lib/python3.14/site-packages/torch/utils/data/dataloader.py:775: UserWarning: 'pin_memory' argument is set as true but not supported on MPS now, device pinned memory won't be used.
+  super().__init__(loader)
+  OCR処理中: ページ 113 (14/115)...
+/Users/hayashi./datax/Business/school/business course/source/.venv/lib/python3.14/site-packages/PIL/Image.py:3451: DecompressionBombWarning: Image size (125266275 pixels) exceeds limit of 89478485 pixels, could be decompression bomb DOS attack.
+  warnings.warn(
+/Users/hayashi./datax/Business/school/business course/source/.venv/lib/python3.14/site-packages/torch/utils/data/dataloader.py:775: UserWarning: 'pin_memory' argument is set as true but not supported on MPS now, device pinned memory won't be used.
+  super().__init__(loader)
+  OCR処理中: ページ 114 (15/115)...
+/Users/hayashi./datax/Business/school/business course/source/.venv/lib/python3.14/site-packages/PIL/Image.py:3451: DecompressionBombWarning: Image size (125266275 pixels) exceeds limit of 89478485 pixels, could be decompression bomb DOS attack.
+  warnings.warn(
+/Users/hayashi./datax/Business/school/business course/source/.venv/lib/python3.14/site-packages/torch/utils/data/dataloader.py:775: UserWarning: 'pin_memory' argument is set as true but not supported on MPS now, device pinned memory won't be used.
+  super().__init__(loader)
+  OCR処理中: ページ 115 (16/115)...
+/Users/hayashi./datax/Business/school/business course/source/.venv/lib/python3.14/site-packages/PIL/Image.py:3451: DecompressionBombWarning: Image size (125266275 pixels) exceeds limit of 89478485 pixels, could be decompression bomb DOS attack.
+  warnings.warn(
+/Users/hayashi./datax/Business/school/business course/source/.venv/lib/python3.14/site-packages/torch/utils/data/dataloader.py:775: UserWarning: 'pin_memory' argument is set as true but not supported on MPS now, device pinned memory won't be used.
+  super().__init__(loader)
+  OCR処理中: ページ 116 (17/115)...
+/Users/hayashi./datax/Business/school/business course/source/.venv/lib/python3.14/site-packages/PIL/Image.py:3451: DecompressionBombWarning: Image size (125266275 pixels) exceeds limit of 89478485 pixels, could be decompression bomb DOS attack.
+  warnings.warn(
+/Users/hayashi./datax/Business/school/business course/source/.venv/lib/python3.14/site-packages/torch/utils/data/dataloader.py:775: UserWarning: 'pin_memory' argument is set as true but not supported on MPS now, device pinned memory won't be used.
+  super().__init__(loader)
+  OCR処理中: ページ 117 (18/115)...
+/Users/hayashi./datax/Business/school/business course/source/.venv/lib/python3.14/site-packages/PIL/Image.py:3451: DecompressionBombWarning: Image size (125266275 pixels) exceeds limit of 89478485 pixels, could be decompression bomb DOS attack.
+  warnings.warn(
+/Users/hayashi./datax/Business/school/business course/source/.venv/lib/python3.14/site-packages/torch/utils/data/dataloader.py:775: UserWarning: 'pin_memory' argument is set as true but not supported on MPS now, device pinned memory won't be used.
+  super().__init__(loader)
+  OCR処理中: ページ 118 (19/115)...
+/Users/hayashi./datax/Business/school/business course/source/.venv/lib/python3.14/site-packages/PIL/Image.py:3451: DecompressionBombWarning: Image size (125266275 pixels) exceeds limit of 89478485 pixels, could be decompression bomb DOS attack.
+  warnings.warn(
+/Users/hayashi./datax/Business/school/business course/source/.venv/lib/python3.14/site-packages/torch/utils/data/dataloader.py:775: UserWarning: 'pin_memory' argument is set as true but not supported on MPS now, device pinned memory won't be used.
+  super().__init__(loader)
+  OCR処理中: ページ 119 (20/115)...
+/Users/hayashi./datax/Business/school/business course/source/.venv/lib/python3.14/site-packages/PIL/Image.py:3451: DecompressionBombWarning: Image size (125266275 pixels) exceeds limit of 89478485 pixels, could be decompression bomb DOS attack.
+  warnings.warn(
+/Users/hayashi./datax/Business/school/business course/source/.venv/lib/python3.14/site-packages/torch/utils/data/dataloader.py:775: UserWarning: 'pin_memory' argument is set as true but not supported on MPS now, device pinned memory won't be used.
+  super().__init__(loader)
+  OCR処理中: ページ 120 (21/115)...
+/Users/hayashi./datax/Business/school/business course/source/.venv/lib/python3.14/site-packages/PIL/Image.py:3451: DecompressionBombWarning: Image size (125266275 pixels) exceeds limit of 89478485 pixels, could be decompression bomb DOS attack.
+  warnings.warn(
+/Users/hayashi./datax/Business/school/business course/source/.venv/lib/python3.14/site-packages/torch/utils/data/dataloader.py:775: UserWarning: 'pin_memory' argument is set as true but not supported on MPS now, device pinned memory won't be used.
+  super().__init__(loader)
+  OCR処理中: ページ 121 (22/115)...
+/Users/hayashi./datax/Business/school/business course/source/.venv/lib/python3.14/site-packages/PIL/Image.py:3451: DecompressionBombWarning: Image size (125266275 pixels) exceeds limit of 89478485 pixels, could be decompression bomb DOS attack.
+  warnings.warn(
+/Users/hayashi./datax/Business/school/business course/source/.venv/lib/python3.14/site-packages/torch/utils/data/dataloader.py:775: UserWarning: 'pin_memory' argument is set as true but not supported on MPS now, device pinned memory won't be used.
+  super().__init__(loader)
+  OCR処理中: ページ 122 (23/115)...
+/Users/hayashi./datax/Business/school/business course/source/.venv/lib/python3.14/site-packages/PIL/Image.py:3451: DecompressionBombWarning: Image size (125266275 pixels) exceeds limit of 89478485 pixels, could be decompression bomb DOS attack.
+  warnings.warn(
+/Users/hayashi./datax/Business/school/business course/source/.venv/lib/python3.14/site-packages/torch/utils/data/dataloader.py:775: UserWarning: 'pin_memory' argument is set as true but not supported on MPS now, device pinned memory won't be used.
+  super().__init__(loader)
+  OCR処理中: ページ 123 (24/115)...
+/Users/hayashi./datax/Business/school/business course/source/.venv/lib/python3.14/site-packages/PIL/Image.py:3451: DecompressionBombWarning: Image size (125266275 pixels) exceeds limit of 89478485 pixels, could be decompression bomb DOS attack.
+  warnings.warn(
+/Users/hayashi./datax/Business/school/business course/source/.venv/lib/python3.14/site-packages/torch/utils/data/dataloader.py:775: UserWarning: 'pin_memory' argument is set as true but not supported on MPS now, device pinned memory won't be used.
+  super().__init__(loader)
+  OCR処理中: ページ 124 (25/115)...
+/Users/hayashi./datax/Business/school/business course/source/.venv/lib/python3.14/site-packages/PIL/Image.py:3451: DecompressionBombWarning: Image size (125266275 pixels) exceeds limit of 89478485 pixels, could be decompression bomb DOS attack.
+  warnings.warn(
+/Users/hayashi./datax/Business/school/business course/source/.venv/lib/python3.14/site-packages/torch/utils/data/dataloader.py:775: UserWarning: 'pin_memory' argument is set as true but not supported on MPS now, device pinned memory won't be used.
+  super().__init__(loader)
+  OCR処理中: ページ 125 (26/115)...
+/Users/hayashi./datax/Business/school/business course/source/.venv/lib/python3.14/site-packages/PIL/Image.py:3451: DecompressionBombWarning: Image size (125266275 pixels) exceeds limit of 89478485 pixels, could be decompression bomb DOS attack.
+  warnings.warn(
+/Users/hayashi./datax/Business/school/business course/source/.venv/lib/python3.14/site-packages/torch/utils/data/dataloader.py:775: UserWarning: 'pin_memory' argument is set as true but not supported on MPS now, device pinned memory won't be used.
+  super().__init__(loader)
+  OCR処理中: ページ 126 (27/115)...
+/Users/hayashi./datax/Business/school/business course/source/.venv/lib/python3.14/site-packages/PIL/Image.py:3451: DecompressionBombWarning: Image size (125266275 pixels) exceeds limit of 89478485 pixels, could be decompression bomb DOS attack.
+  warnings.warn(
+/Users/hayashi./datax/Business/school/business course/source/.venv/lib/python3.14/site-packages/torch/utils/data/dataloader.py:775: UserWarning: 'pin_memory' argument is set as true but not supported on MPS now, device pinned memory won't be used.
+  super().__init__(loader)
+  OCR処理中: ページ 127 (28/115)...
+/Users/hayashi./datax/Business/school/business course/source/.venv/lib/python3.14/site-packages/PIL/Image.py:3451: DecompressionBombWarning: Image size (125266275 pixels) exceeds limit of 89478485 pixels, could be decompression bomb DOS attack.
+  warnings.warn(
+/Users/hayashi./datax/Business/school/business course/source/.venv/lib/python3.14/site-packages/torch/utils/data/dataloader.py:775: UserWarning: 'pin_memory' argument is set as true but not supported on MPS now, device pinned memory won't be used.
+  super().__init__(loader)
+  OCR処理中: ページ 128 (29/115)...
+/Users/hayashi./datax/Business/school/business course/source/.venv/lib/python3.14/site-packages/PIL/Image.py:3451: DecompressionBombWarning: Image size (125266275 pixels) exceeds limit of 89478485 pixels, could be decompression bomb DOS attack.
+  warnings.warn(
+/Users/hayashi./datax/Business/school/business course/source/.venv/lib/python3.14/site-packages/torch/utils/data/dataloader.py:775: UserWarning: 'pin_memory' argument is set as true but not supported on MPS now, device pinned memory won't be used.
+  super().__init__(loader)
+  OCR処理中: ページ 129 (30/115)...
+/Users/hayashi./datax/Business/school/business course/source/.venv/lib/python3.14/site-packages/PIL/Image.py:3451: DecompressionBombWarning: Image size (125266275 pixels) exceeds limit of 89478485 pixels, could be decompression bomb DOS attack.
+  warnings.warn(
+/Users/hayashi./datax/Business/school/business course/source/.venv/lib/python3.14/site-packages/torch/utils/data/dataloader.py:775: UserWarning: 'pin_memory' argument is set as true but not supported on MPS now, device pinned memory won't be used.
+  super().__init__(loader)
+  OCR処理中: ページ 130 (31/115)...
+/Users/hayashi./datax/Business/school/business course/source/.venv/lib/python3.14/site-packages/PIL/Image.py:3451: DecompressionBombWarning: Image size (125266275 pixels) exceeds limit of 89478485 pixels, could be decompression bomb DOS attack.
+  warnings.warn(
+/Users/hayashi./datax/Business/school/business course/source/.venv/lib/python3.14/site-packages/torch/utils/data/dataloader.py:775: UserWarning: 'pin_memory' argument is set as true but not supported on MPS now, device pinned memory won't be used.
+  super().__init__(loader)
+  OCR処理中: ページ 131 (32/115)...
+/Users/hayashi./datax/Business/school/business course/source/.venv/lib/python3.14/site-packages/PIL/Image.py:3451: DecompressionBombWarning: Image size (125266275 pixels) exceeds limit of 89478485 pixels, could be decompression bomb DOS attack.
+  warnings.warn(
+/Users/hayashi./datax/Business/school/business course/source/.venv/lib/python3.14/site-packages/torch/utils/data/dataloader.py:775: UserWarning: 'pin_memory' argument is set as true but not supported on MPS now, device pinned memory won't be used.
+  super().__init__(loader)
+  OCR処理中: ページ 132 (33/115)...
+/Users/hayashi./datax/Business/school/business course/source/.venv/lib/python3.14/site-packages/PIL/Image.py:3451: DecompressionBombWarning: Image size (125266275 pixels) exceeds limit of 89478485 pixels, could be decompression bomb DOS attack.
+  warnings.warn(
+/Users/hayashi./datax/Business/school/business course/source/.venv/lib/python3.14/site-packages/torch/utils/data/dataloader.py:775: UserWarning: 'pin_memory' argument is set as true but not supported on MPS now, device pinned memory won't be used.
+  super().__init__(loader)
+  OCR処理中: ページ 133 (34/115)...
+/Users/hayashi./datax/Business/school/business course/source/.venv/lib/python3.14/site-packages/PIL/Image.py:3451: DecompressionBombWarning: Image size (125266275 pixels) exceeds limit of 89478485 pixels, could be decompression bomb DOS attack.
+  warnings.warn(
+/Users/hayashi./datax/Business/school/business course/source/.venv/lib/python3.14/site-packages/torch/utils/data/dataloader.py:775: UserWarning: 'pin_memory' argument is set as true but not supported on MPS now, device pinned memory won't be used.
+  super().__init__(loader)
+  OCR処理中: ページ 134 (35/115)...
+/Users/hayashi./datax/Business/school/business course/source/.venv/lib/python3.14/site-packages/PIL/Image.py:3451: DecompressionBombWarning: Image size (125266275 pixels) exceeds limit of 89478485 pixels, could be decompression bomb DOS attack.
+  warnings.warn(
+/Users/hayashi./datax/Business/school/business course/source/.venv/lib/python3.14/site-packages/torch/utils/data/dataloader.py:775: UserWarning: 'pin_memory' argument is set as true but not supported on MPS now, device pinned memory won't be used.
+  super().__init__(loader)
+  OCR処理中: ページ 135 (36/115)...
+/Users/hayashi./datax/Business/school/business course/source/.venv/lib/python3.14/site-packages/PIL/Image.py:3451: DecompressionBombWarning: Image size (125266275 pixels) exceeds limit of 89478485 pixels, could be decompression bomb DOS attack.
+  warnings.warn(
+/Users/hayashi./datax/Business/school/business course/source/.venv/lib/python3.14/site-packages/torch/utils/data/dataloader.py:775: UserWarning: 'pin_memory' argument is set as true but not supported on MPS now, device pinned memory won't be used.
+  super().__init__(loader)
+  OCR処理中: ページ 136 (37/115)...
+/Users/hayashi./datax/Business/school/business course/source/.venv/lib/python3.14/site-packages/PIL/Image.py:3451: DecompressionBombWarning: Image size (125266275 pixels) exceeds limit of 89478485 pixels, could be decompression bomb DOS attack.
+  warnings.warn(
+/Users/hayashi./datax/Business/school/business course/source/.venv/lib/python3.14/site-packages/torch/utils/data/dataloader.py:775: UserWarning: 'pin_memory' argument is set as true but not supported on MPS now, device pinned memory won't be used.
+  super().__init__(loader)
+  OCR処理中: ページ 137 (38/115)...
+/Users/hayashi./datax/Business/school/business course/source/.venv/lib/python3.14/site-packages/PIL/Image.py:3451: DecompressionBombWarning: Image size (125266275 pixels) exceeds limit of 89478485 pixels, could be decompression bomb DOS attack.
+  warnings.warn(
+/Users/hayashi./datax/Business/school/business course/source/.venv/lib/python3.14/site-packages/torch/utils/data/dataloader.py:775: UserWarning: 'pin_memory' argument is set as true but not supported on MPS now, device pinned memory won't be used.
+  super().__init__(loader)
+  OCR処理中: ページ 138 (39/115)...
+/Users/hayashi./datax/Business/school/business course/source/.venv/lib/python3.14/site-packages/PIL/Image.py:3451: DecompressionBombWarning: Image size (125266275 pixels) exceeds limit of 89478485 pixels, could be decompression bomb DOS attack.
+  warnings.warn(

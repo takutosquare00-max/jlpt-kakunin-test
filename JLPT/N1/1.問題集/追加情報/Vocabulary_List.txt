@@ -1,0 +1,19 @@
+|#|語彙|Reading|Type|Meaning|
+|---|---|---|---|---|
+|1|明くる|akuru|Pre-noun adjectival|next (day, morning, etc.); following|
+|2|読者|dokusha|Noun|reader|
+|3|本の|honno|Pre-noun adjectival|mere; only; just; slight​|
+|4|実の|jitsu no|Pre-noun adjectival|true; real; blood-related; biological (father, etc.)|
+|5|聞き取り|kikitori|Noun|listening comprehension; hearing what others say|
+|6|購買|koubai|Noun, Verb, Suru verb|procurement; purchase; buying|
+|7|購読|koudoku|Noun, Verb, Suru verb|buying and reading (book, magazine, etc.); subscribing (newspaper)|
+|8|購入|kounyuu|Noun, Verb, Suru verb|purchase; buy|
+|9|小売|kouri|Noun, Verb, Suru verb|retail|
+|10|前売り|maeuri|Noun|advance sale; booking|
+|11|主なる|omonaru|Pre-noun adjectival|main; principal; important|
+|12|新築|shinchiku|Noun, Verb, Suru verb|new building; new construction|
+|13|新人|shinjin|Noun|new face; newcomer; rookie; fresh recruit|
+|14|新婚|shinkon|Noun, Verb, Suru verb|newly-wed; newly married|
+|15|とんだ|tonda|Pre-noun adjectival, Adverb|unthinkable; unimaginable; very|
+|16|売り出し|uridashi|Noun|(bargain) sale|
+|17|売り出す|uridasu|Verb, Godan verb, Transitive verb|to put on the market; to put on sale; to begin selling|

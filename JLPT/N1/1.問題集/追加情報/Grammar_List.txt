@@ -1,0 +1,254 @@
+|#|Grammar|Meaning|
+|1|aete|敢えて（あえて）|
+|2|akumade mo|あくまでも|
+|3|an no jou|案の定（あんのじょう）|
+|4|arakajime|あらかじめ|
+|5|atte no|あっての|
+|6|ba koso|ばこそ|
+|7|ba sore made da / tara sore made da|ばそれまでだ / たらそれまでだ|
+|8|bekarazu / bekarazaru|べからず / べからざる|
+|9|beku|べく|
+|10|beku mo nai|べくもない|
+|11|beku shite|べくして|
+|12|biru / bite / bita|びる / びて / びた|
+|13|buri / ppuri|ぶり / っぷり|
+|14|buru / butte / butta|ぶる / ぶって / ぶった|
+|15|dani / dani shinai|だに / だにしない|
+|16|dano~dano|だの～だの|
+|17|darou ni|だろうに|
+|18|de are / de arou to|であれ / であろうと|
+|19|de are~de are|であれ～であれ|
+|20|demo ari~demo aru|でもあり～でもある|
+|21|demo nan demo nai / kumo nan tomo nai|でも何でもない / くも何ともない（でもなんでもない / くもなんともない）|
+|22|denakute nan darou|でなくてなんだろう|
+|23|dewa arumai ka|ではあるまいか|
+|24|dewa arumai shi|ではあるまいし|
+|25|dewa sumanai|では済まない（ではすまない）|
+|26|dou nimo~nai|どうにも～ない|
+|27|ga hayai ka|が早いか（がはやいか）|
+|28|ga/mo~nara, ~mo~da|が/も～なら、～も～だ|
+|29|gamashii|がましい|
+|30|gatera|がてら|
+|31|gotoki / gotoku / gotoshi|ごとき / ごとく / ごとし|
+|32|gurumi|ぐるみ|
+|33|hame ni naru|羽目になる（はめになる）|
+|34|hodo no koto dewa nai|ほどのことではない|
+|35|hou ga mashi da|ほうがましだ|
+|36|houdai|放題（ほうだい）|
+|37|ikan da / ikan dewa / ikan ni yotte wa|いかんだ / いかんでは / いかんによっては|
+|38|ikan ni kakawarazu / ikan ni yorazu / ikan o towazu|いかんにかかわらず / いかんによらず / いかんをとわず|
+|39|ikanaru|いかなる|
+|40|ikani|いかに|
+|41|ikani mo|いかにも|
+|42|izure ni shitemo / izure ni shiro / izure ni seyo|いずれにしても / いずれにしろ / いずれにせよ|
+|43|jimita|じみた|
+|44|ka ina ka|か否か（かいなか）|
+|45|ka to omoikiya|かと思いきや（かとおもいきや）|
+|46|kagiri da|限りだ（かぎりだ）|
+|47|kai mo naku|甲斐もなく（かいもなく）|
+|48|kanousei ga aru|可能性がある（かのうせいがある）|
+|49|kara aru / kara suru / kara no|からある / からする / からの|
+|50|kare~kare|かれ～かれ|
+|51|katagata|かたがた|
+|52|katawara|かたわら|
+|53|katsute|かつて|
+|54|kirai ga aru|嫌いがある（きらいがある）|
+|55|kiri ga nai|切りがない（きりがない）|
+|56|kitte no|きっての|
+|57|kiwamaru / kiwamarinai|極まる / 極まりない（きわまる / きわまりない）|
+|58|koso are|こそあれ|
+|59|koso sure|こそすれ|
+|60|koso~ga/keredo|こそ「～が・けれど」|
+|61|koto gotoku|ことごとく|
+|62|koto kono ue nai / kono ue nai / kono ue naku|ことこの上ない / この上ない / この上なく（ことこのうえない / このうえない / このうえなく）|
+|63|koto mo atte|こともあって|
+|64|koto nashi ni|ことなしに|
+|65|koto no nai you ni|ことのないように|
+|66|koto tote|こととて|
+|67|kurai nara|くらいなら|
+|68|kurai no mono da|くらいのものだ|
+|69|made da / made no koto da|までだ / までのことだ|
+|70|made mo nai / made mo naku|までもない / までもなく|
+|71|majiki|まじき|
+|72|makuru|まくる|
+|73|mamire|まみれ|
+|74|marukkiri|まるっきり|
+|75|meku|めく|
+|76|mo douzen da|も同然だ（もどうぜんだ）|
+|77|mo saru koto nagara|もさることながら|
+|78|mo shinai de|もしないで|
+|79|mohaya|もはや|
+|80|mono de|もので|
+|81|mono o|ものを|
+|82|mono to omowareru / mono to mirareru|ものと思われる / ものと見られる（ものとおもわれる / ものとみられる）|
+|83|mono to suru|ものとする|
+|84|mono toshite|ものとして|
+|85|moshikuwa|もしくは|
+|86|n bakari ni|んばかりに|
+|87|n ga tame ni|んがために|
+|88|nagara ni / nagara no|ながらに / ながらの|
+|89|nai made mo|ないまでも|
+|90|nai mono demo nai|ないものでもない|
+|91|nai mono ka / nai mono darou ka|ないものか / ないものだろうか|
+|92|nai tomo kagiranai|ないとも限らない（ないともかぎらない）|
+|93|nakushite wa|なくしては|
+|94|nami|並み（なみ）|
+|95|nan to iu / nanto / nante|なんという / なんと / なんて|
+|96|nani shiro|何しろ（なにしろ）|
+|97|nara dewa|ならでは|
+|98|nara iza shirazu / wa iza shirazu|ならいざしらず / はいざしらず|
+|99|nari|なり|
+|100|nari ni / nari no|なりに / なりの|
+|101|nari tomo|なりとも|
+|102|nari~nari|なり～なり|
+|103|nashi ni / nashi de|なしに / なしで|
+|104|ni|に|
+|105|ni atai suru|に値する（にあたいする）|
+|106|ni atte|にあって|
+|107|ni hikikae|に引き換え（にひきかえ）|
+|108|ni itaru / ni itatta|に至る / に至った（にいたる / にいたった）|
+|109|ni itaru made|に至るまで（にいたるまで）|
+|110|ni itattemo|に至っても（にいたっても）|
+|111|ni ittate wa|に至っては（にいたっては）|
+|112|ni iwasereba|に言わせれば（にいわせれば）|
+|113|ni kagitta koto dewa nai|に限ったことではない（にかぎったことではない）|
+|114|ni kakatte wa / ni kakattara / ni kakaru to / kakareba|にかかっては / にかかったら / にかかると / かかれば|
+|115|ni kakatteiru|にかかっている|
+|116|ni kako tsukete|にかこつけて|
+|117|ni kamakete|にかまけて|
+|118|ni katakunai|に難くない（にかたくない）|
+|119|ni matsuwaru|にまつわる|
+|120|ni nottotte|に則って（にのっとって）|
+|121|ni sakigakete|に先駆けて（にさきがけて）|
+|122|ni shinobinai|に忍びない（にしのびない）|
+|123|ni shita tokoro de / to shita tokoro de|にしたところで / としたところで|
+|124|ni shite|にして|
+|125|ni sokushite|に即して（にそくして）|
+|126|ni taeru / ni taenai|に耐える / に耐えない（にたえる / にたえない）|
+|127|ni taranai / ni tarinai|に足らない / に足りない（にたらない / にたりない）|
+|128|ni taru / ni tariru|に足る / に足りる（にたる / にたりる）|
+|129|ni terashite|に照らして（にてらして）|
+|130|ni todomarazu|にとどまらず|
+|131|ni wa muri ga aru|には無理がある（にはむりがある）|
+|132|ni yorazu|によらず|
+|133|ni~o kasanete|に～を重ねて（に～をかさねて）|
+|134|nimo hodo ga aru|にもほどがある|
+|135|nimo mashite|にも増して（にもまして）|
+|136|niwa ataranai|には当たらない（にはあたらない）|
+|137|niwa oyobanai|には及ばない（にはおよばない）|
+|138|no itari|の至り（のいたり）|
+|139|no kiwami|の極み（のきわみ）|
+|140|no nan notte|のなんのって|
+|141|no yara / mono yara / koto yara|のやら / ものやら / ことやら|
+|142|no yara~no yara|のやら～のやら|
+|143|o fumaete|を踏まえて（をふまえて）|
+|144|o hete|を経て（をへて）|
+|145|o hikaete|を控えて（をひかえて）|
+|146|o ii koto ni|をいいことに|
+|147|o kaerimizu / mo kaerimizu|を顧みず / も顧みず（をかえりみず / もかえりみず）|
+|148|o kagiri ni|を限りに（をかぎりに）|
+|149|o kanete|を兼ねて（をかねて）|
+|150|o kawakiri ni|を皮切りに（をかわきりに）|
+|151|o ki ni|を機に（をきに）|
+|152|o kinji enai|を禁じ得ない（をきんじえない）|
+|153|o mono tomo sezuni|をものともせずに|
+|154|o motte / o mochimashite|をもって / をもちまして|
+|155|o oite~nai|をおいて～ない|
+|156|o oshite / o oshikitte|を押して / を押し切って（をおして / をおしきって）|
+|157|o sakai ni|を境に（をさかいに）|
+|158|o yogi naku sareru|を余儀なくされる（をよぎなくされる）|
+|159|o yoso ni|をよそに|
+|160|o zentei toshite|を前提として（をぜんていとして）|
+|161|omoi o suru|思いをする（おもいをする）|
+|162|ori ni|折に（おりに）|
+|163|oyoso|およそ|
+|164|sa|さ|
+|165|samo|さも|
+|166|samonaito|さもないと|
+|167|sazo|さぞ|
+|168|shimatsu da|始末だ（しまつだ）|
+|169|soba kara|そばから|
+|170|sobireru|そびれる|
+|171|sokonau / sokoneru / sonjiru|損なう / 損ねる / 損じる（そこなう / そこねる / そんじる）|
+|172|sube ga nai|術がない（すべがない）|
+|173|sura / de sura|すら / ですら|
+|174|ta hazumi ni / ta hyoushi ni|た弾みに / た拍子に（たはずみに / たひょうしに）|
+|175|ta koto ni suru / ta koto ni naru|たことにする / たことになる|
+|176|ta tokoro de|たところで|
+|177|ta tsumori wa nai|たつもりはない|
+|178|tada~nomi da|ただ～のみだ|
+|179|tameshi ga nai|ためしがない|
+|180|tara saigo / taga saigo|たら最後 / たが最後（たらさいご / たがさいご）|
+|181|tara~tade|たら～たで|
+|182|tara~tokoro da|たら～ところだ|
+|183|tari tomo|たりとも|
+|184|taru mono / taru|たるもの / たる|
+|185|te kanawanai|て敵わない（てかなわない）|
+|186|te kara to iu mono|てからというもの|
+|187|te miseru|てみせる|
+|188|te shikaru beki da|てしかるべきだ|
+|189|te sumu koto dewa nai|て済むことではない（てすむことではない）|
+|190|te yamanai|てやまない|
+|191|temae|手前（てまえ）|
+|192|temo dou ni mo naranai|てもどうにもならない|
+|193|temo sashitsukaenai|ても差し支えない（てもさしつかえない）|
+|194|temo shiranai|ても知らない（てもしらない）|
+|195|to aimatte|と相まって（とあいまって）|
+|196|to areba|とあれば|
+|197|to atte|とあって|
+|198|to bakari ni|とばかりに|
+|199|to ie domo|といえども|
+|200|to ienaku mo nai|と言えなくもない（といえなくもない）|
+|201|to ii~to ii|といい～といい|
+|202|to ittara nai|といったらない|
+|203|to iu|という|
+|204|to iu ka~to iu ka|というか～というか|
+|205|to iu mono|というもの|
+|206|to iu tokoro da / to itta tokoro da|というところだ / といったところだ|
+|207|to iu wake da|というわけだ|
+|208|to iu wake dewa nai|というわけではない|
+|209|to iwazu~to iwazu|といわず～といわず|
+|210|to kiteiru|ときている|
+|211|to miru to|とみると|
+|212|to miru ya|と見るや（とみるや）|
+|213|to naru to / to nareba|となると / となれば|
+|214|to sareru|とされる|
+|215|tokitara|ときたら|
+|216|tokoro o|ところを|
+|217|tomo arou mono ga|ともあろうものが|
+|218|tomo naku / tomo nashi ni|ともなく / ともなしに|
+|219|tomo sureba|ともすれば|
+|220|tomo~tomo|とも～とも|
+|221|toriwake|とりわけ|
+|222|toshita koto ga|としたことが|
+|223|tossa ni|とっさに|
+|224|tote|とて|
+|225|towa|とは|
+|226|towa ie|とはいえ|
+|227|towa kurabemono ni naranai|とは比べものにならない（とはくらべものにならない）|
+|228|towa utte kawatte / to wa utte kawari|とは打って変わって / とは打って変わり（とはうってかわって / とはうってかわり）|
+|229|tsu~tsu|つ～つ|
+|230|tsukusu|尽くす（つくす）|
+|231|tteba / ttara|ってば / ったら|
+|232|uchi ni hairanai|うちに入らない（うちにはいらない）|
+|233|wa|わ|
+|234|wa dou de are|はどうであれ|
+|235|wa oroka|はおろか|
+|236|wa sateoki|はさておき|
+|237|wa socchinoke de / o socchinoke de|はそっちのけで / をそっちのけで|
+|238|wa~wade|わ〜わで|
+|239|ya ina ya|や否や（やいなや）|
+|240|ya shinai|やしない|
+|241|yare~yare|やれ～やれ|
+|242|you ga / you to|ようが / ようと|
+|243|you ga~you ga / you to~you to|ようが～ようが / ようと～ようと|
+|244|you ni yotte wa / you dewa|ようによっては / ようでは|
+|245|you nimo~nai|ようにも～ない|
+|246|you to~mai to / you ga~mai ga|ようと～まいと / ようが～まいが|
+|247|yue ni|ゆえに|
+|248|zo / ze|ぞ・ぜ|
+|249|zu jimai|ずじまい|
+|250|zu niwa okanai / nai dewa okanai|ずにはおかない / ないではおかない|
+|251|zu niwa sumanai / nai dewa sumanai|ずには済まない / ないでは済まない（ずにはすまない / ないではすまない）|
+|252|zu tomo|ずとも|
+|253|zukume|ずくめ|

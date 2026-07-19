@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>N2文法 まとめの問題 一覧</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;-webkit-tap-highlight-color:transparent}
+body{font-family:'Hiragino Kaku Gothic ProN','Hiragino Sans','Noto Sans JP',Meiryo,sans-serif;background:#f0f4f8;color:#1a202c;line-height:1.7;padding:env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left)}
+.container{max-width:800px;margin:0 auto;padding:20px}
+header{background:linear-gradient(135deg,#2b6cb0 0%,#2c5282 100%);color:#fff;padding:24px;border-radius:16px;margin-bottom:24px;text-align:center;position:sticky;top:0;z-index:100;box-shadow:0 4px 15px rgba(43,108,176,.4)}
+header h1{font-size:1.45em;margin-bottom:4px}
+.header-info{display:flex;justify-content:center;gap:24px;align-items:center;margin-top:8px;flex-wrap:wrap}
+.timer{font-size:1.8em;font-weight:bold;font-variant-numeric:tabular-nums}
+.timer.warning{color:#ffd700;animation:pulse 1s infinite}
+.timer.danger{color:#ff4757;animation:pulse .5s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.6}}
+.progress-bar{width:200px;height:8px;background:rgba(255,255,255,.3);border-radius:4px;overflow:hidden}
+.progress-fill{height:100%;background:#fff;border-radius:4px;transition:width .3s}
+.score-badge{background:rgba(255,255,255,.2);padding:4px 12px;border-radius:20px;font-size:.9em}
+.section{background:#fff;border-radius:12px;padding:24px;margin-bottom:20px;box-shadow:0 2px 8px rgba(0,0,0,.06)}
+.section-title{font-size:1.1em;font-weight:bold;color:#2b6cb0;border-left:4px solid #2b6cb0;padding-left:12px;margin-bottom:16px}
+.section-lead{font-size:.95em;font-weight:500;color:#2d3748;line-height:1.65;margin-bottom:18px}
+.question{padding:16px 0;border-bottom:1px solid #e2e8f0}
+.question:last-child{border-bottom:none}
+.q-num{display:inline-block;background:#2b6cb0;color:#fff;width:28px;height:28px;text-align:center;line-height:28px;border-radius:50%;font-size:.85em;font-weight:bold;margin-right:8px}
+.q-text{font-size:1.05em;margin-bottom:12px;font-weight:500;line-height:1.85}
+.options{display:grid;grid-template-columns:1fr 1fr;gap:8px;align-items:stretch}
+@media(max-width:600px){.options{grid-template-columns:1fr}}
+.option{position:relative;display:flex;min-height:0}
+.option input{display:none}
+.option label{flex:1;display:flex;align-items:center;gap:8px;padding:12px 14px;border:2px solid #e2e8f0;border-radius:8px;cursor:pointer;transition:all .2s;font-size:.95em;touch-action:manipulation;-webkit-user-select:none;user-select:none;min-height:48px;width:100%;box-sizing:border-box}
+.option .opt-key{flex:0 0 auto;min-width:1.75em;text-align:right;font-weight:600;font-variant-numeric:tabular-nums;line-height:1.4;align-self:center}
+.option .opt-body{flex:1;min-width:0;line-height:1.65;align-self:center;word-break:break-word}
+.option label:hover{border-color:#2b6cb0;background:#f0f7ff}
+.option input:checked+label{border-color:#2b6cb0;background:#e8f2fc;color:#1a365d;font-weight:600}
+.option.correct label{border-color:#48bb78!important;background:#f0fff4!important;color:#276749!important}
+.option.wrong label{border-color:#fc8181!important;background:#fff5f5!important;color:#9b2c2c!important}
+.reading-passage{background:#f7fafc;border-left:3px solid #2b6cb0;padding:16px;margin:12px 0 16px;border-radius:0 8px 8px 0;font-size:.95em;line-height:2;position:sticky;top:calc(var(--hh,100px) + 8px);z-index:10;max-height:40vh;overflow-y:auto;box-shadow:0 4px 12px rgba(0,0,0,.08)}
+.reading-passage p{margin-bottom:.6em}
+.reading-passage p:last-child{margin-bottom:0}
+.reading-passage .pnote{font-size:.8em;color:#718096;margin-top:8px;padding-top:8px;border-top:1px solid #e2e8f0}
+.btn-submit{display:block;width:100%;min-height:48px;padding:16px;background:linear-gradient(135deg,#2b6cb0 0%,#2c5282 100%);color:#fff;border:none;border-radius:12px;font-size:1.1em;font-weight:bold;cursor:pointer;transition:transform .2s,box-shadow .2s;margin-top:24px;touch-action:manipulation;-webkit-user-select:none;user-select:none}
+.btn-submit:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(43,108,176,.4)}
+.btn-submit:disabled{opacity:.5;cursor:not-allowed;transform:none;box-shadow:none}
+.result-panel{background:#fff;border-radius:16px;padding:32px;text-align:center;box-shadow:0 4px 20px rgba(0,0,0,.1);margin-top:24px;display:none}
+.result-panel h2{font-size:1.8em;margin-bottom:8px}
+.result-score{font-size:3em;font-weight:bold;margin:16px 0}
+.result-score.excellent{color:#48bb78}
+.result-score.good{color:#2b6cb0}
+.result-score.fair{color:#ed8936}
+.result-score.poor{color:#fc8181}
+.result-detail{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:12px;margin-top:20px}
+.result-item{background:#f7fafc;padding:12px;border-radius:8px}
+.result-item .label{font-size:.8em;color:#718096}
+.result-item .value{font-size:1.2em;font-weight:bold}
+.explanation{display:none;margin-top:8px;padding:10px;background:#fffbeb;border-radius:8px;font-size:.9em;border-left:3px solid #f6ad55}
+.explanation.show{display:block}
+.b-num{display:inline-flex;align-items:center;justify-content:center;background:#2b6cb0;color:#fff;width:20px;height:20px;border-radius:4px;font-size:.74rem;font-weight:700;margin:0 2px;vertical-align:middle}
+.star{color:#c05621;font-weight:700;font-size:1.1em}
+
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:14px;margin-top:20px}
+.card{display:flex;flex-direction:column;align-items:center;justify-content:center;background:#fff;border-radius:12px;padding:20px 16px;text-align:center;text-decoration:none;color:inherit;box-shadow:0 2px 8px rgba(0,0,0,.06);transition:all .2s;border:2px solid transparent}
+.card:hover{border-color:#2b6cb0;transform:translateY(-2px);box-shadow:0 6px 16px rgba(43,108,176,.2)}
+.card-num{font-size:1.1rem;font-weight:700;color:#2b6cb0}
+.card-page{font-size:.8rem;color:#718096;margin-top:6px}
+</style>
+</head>
+<body>
+<div class="container">
+<header>
+<h1>N2文法 まとめの問題</h1>
+<div class="header-info"><div class="score-badge">TRY! JLPT N2 — 全14回</div></div>
+</header>
+<div class="grid"><a href="matome-01.html" class="card"><div class="card-num">まとめの問題 ①</div><div class="card-page">p.38〜41</div></a><a href="matome-02.html" class="card"><div class="card-num">まとめの問題 ②</div><div class="card-page">p.68〜72</div></a><a href="matome-03.html" class="card"><div class="card-num">まとめの問題 ③</div><div class="card-page">p.89〜92</div></a><a href="matome-04.html" class="card"><div class="card-num">まとめの問題 ④</div><div class="card-page">p.106〜109</div></a><a href="matome-05.html" class="card"><div class="card-num">まとめの問題 ⑤</div><div class="card-page">p.129〜131</div></a><a href="matome-06.html" class="card"><div class="card-num">まとめの問題 ⑥</div><div class="card-page">p.154〜158</div></a><a href="matome-07.html" class="card"><div class="card-num">まとめの問題 ⑦</div><div class="card-page">p.184〜189</div></a><a href="matome-08.html" class="card"><div class="card-num">まとめの問題 ⑧</div><div class="card-page">p.201〜204</div></a><a href="matome-09.html" class="card"><div class="card-num">まとめの問題 ⑨</div><div class="card-page">p.230〜234</div></a><a href="matome-10.html" class="card"><div class="card-num">まとめの問題 ⑩</div><div class="card-page">p.249〜252</div></a><a href="matome-11.html" class="card"><div class="card-num">まとめの問題 ⑪</div><div class="card-page">p.267〜270</div></a><a href="matome-12.html" class="card"><div class="card-num">まとめの問題 ⑫</div><div class="card-page">p.292〜295</div></a><a href="matome-13.html" class="card"><div class="card-num">まとめの問題 ⑬</div><div class="card-page">p.321〜324</div></a><a href="matome-14.html" class="card"><div class="card-num">まとめの問題 ⑭</div><div class="card-page">p.339〜342</div></a></div>
+</div>
+</body>
+</html>
