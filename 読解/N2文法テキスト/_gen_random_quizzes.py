@@ -7,7 +7,7 @@ N2文法 ランダム10問テスト 量産スクリプト
 """
 import os, random
 
-OUT = "/Users/hayashi./datax/Business/school/読解/N2文法テキスト/random-quiz"
+OUT = "/Users/hayashi./DataxWorkspace/Developer/school/読解/N2文法テキスト/random-quiz"
 os.makedirs(OUT, exist_ok=True)
 
 # ── 問題データ ────────────────────────────────────────────────

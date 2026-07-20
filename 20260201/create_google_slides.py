@@ -258,7 +258,7 @@ def create_presentation(title, service):
 
 def main():
     """メイン関数"""
-    markdown_file = '/Users/hayashi./datax/Business/school/20260131/n5-test-20questions.md'
+    markdown_file = '/Users/hayashi./DataxWorkspace/Developer/school/20260131/n5-test-20questions.md'
     
     # 認証
     print('Google APIに認証中...')

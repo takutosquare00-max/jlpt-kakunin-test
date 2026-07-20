@@ -157,8 +157,8 @@ def create_html_presentation(slides, output_file):
 
 def main():
     """メイン関数"""
-    markdown_file = '/Users/hayashi./datax/Business/school/20260131/n5-test-20questions.md'
-    output_file = '/Users/hayashi./datax/Business/school/20260131/n5-test-20questions.html'
+    markdown_file = '/Users/hayashi./DataxWorkspace/Developer/school/20260131/n5-test-20questions.md'
+    output_file = '/Users/hayashi./DataxWorkspace/Developer/school/20260131/n5-test-20questions.html'
     
     print('マークダウンファイルを解析中...')
     slides = parse_markdown_slides(markdown_file)

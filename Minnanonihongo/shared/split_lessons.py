@@ -1,8 +1,8 @@
 from pypdf import PdfReader, PdfWriter
 import os
 
-PDF_PATH = '/Users/hayashi./datax/Business/school/Minnanonihongo/shared/minnanonihongo all lessons.pdf'
-OUT_DIR = '/Users/hayashi./datax/Business/school/Minnanonihongo/shared/lessons'
+PDF_PATH = '/Users/hayashi./DataxWorkspace/Developer/school/Minnanonihongo/shared/minnanonihongo all lessons.pdf'
+OUT_DIR = '/Users/hayashi./DataxWorkspace/Developer/school/Minnanonihongo/shared/lessons'
 
 OFFSET = 20  # PDF page = book page + OFFSET
 

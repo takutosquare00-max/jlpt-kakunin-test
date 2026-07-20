@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 import os, re
 
-DIR = "/Users/hayashi./datax/Business/school/読解/N2文法テキスト/matome-html"
+DIR = "/Users/hayashi./DataxWorkspace/Developer/school/読解/N2文法テキスト/matome-html"
 os.makedirs(DIR, exist_ok=True)
 
 def bn(n): return f'<span class="b-num">{n}</span>'

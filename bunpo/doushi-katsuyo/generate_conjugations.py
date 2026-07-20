@@ -213,7 +213,7 @@ def main():
         if c:
             lines.append(f"| {verb} | {c['ない']} | {c['よう']} | {c['ます']} | {c['た']} | {c['辞書形']} | {c['の']} | {c['ば']} | {c['命令']} |")
 
-    with open('/Users/hayashi./datax/Business/school/doushi-katsuyo/N5動詞活用形一覧.md', 'w', encoding='utf-8') as f:
+    with open('/Users/hayashi./DataxWorkspace/Developer/school/doushi-katsuyo/N5動詞活用形一覧.md', 'w', encoding='utf-8') as f:
         f.write('\n'.join(lines))
     print("Generated N5動詞活用形一覧.md")
 

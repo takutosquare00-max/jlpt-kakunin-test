@@ -4,8 +4,8 @@
 
 import re
 
-MD_PATH = '/Users/hayashi./datax/Business/school/J.TEST/202603student/202603ゴイさん/0315ゴイさんjtest_AC_解答.md'
-HTML_PATH = '/Users/hayashi./datax/Business/school/J.TEST/202603student/jtest-ac-202603.html'
+MD_PATH = '/Users/hayashi./DataxWorkspace/Developer/school/J.TEST/202603student/202603ゴイさん/0315ゴイさんjtest_AC_解答.md'
+HTML_PATH = '/Users/hayashi./DataxWorkspace/Developer/school/J.TEST/202603student/jtest-ac-202603.html'
 
 # 解答一覧から正解を取得（マークダウンの表）
 ANSWERS_TABLE = {

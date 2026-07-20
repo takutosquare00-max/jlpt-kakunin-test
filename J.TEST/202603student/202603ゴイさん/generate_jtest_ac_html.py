@@ -396,7 +396,7 @@ startTimer();
     html = '\n'.join(out)
     # Fix: explanation div uses HTML in q_text for <br>
     html = html.replace('&lt;br&gt;', '<br>')
-    with open('/Users/hayashi./datax/Business/school/J.TEST/202603student/jtest-ac-202603.html', 'w', encoding='utf-8') as f:
+    with open('/Users/hayashi./DataxWorkspace/Developer/school/J.TEST/202603student/jtest-ac-202603.html', 'w', encoding='utf-8') as f:
         f.write(html)
     print('Generated: jtest-ac-202603.html')
 

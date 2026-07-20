@@ -74,5 +74,5 @@ def organize_files_by_date(base_dir):
     print(f"\nTotal files moved: {moved_count}")
 
 if __name__ == '__main__':
-    base_directory = '/Users/hayashi./datax/Business/school'
+    base_directory = '/Users/hayashi./DataxWorkspace/Developer/school'
     organize_files_by_date(base_directory)
