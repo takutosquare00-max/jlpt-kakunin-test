@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+
+<html lang="ja">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport"/>
+<title>工場見学シリーズ 小テスト（15分・15問）</title>
+<style>*{margin:0;padding:0;box-sizing:border-box}html{-webkit-text-size-adjust:100%;-webkit-tap-highlight-color:transparent}html{font-size:21px}body{font-family:'Hiragino Kaku Gothic ProN','Hiragino Sans','Noto Sans JP',Meiryo,sans-serif;background:#eef2f7;color:#1a202c;line-height:1.6;padding:env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left)}
+.container{width:100%;max-width:920px;margin:0 auto;padding:12px 14px 28px}
+header{background:linear-gradient(135deg,#2b6cb0 0%,#2c5282 100%);color:#fff;padding:12px 16px;border-radius:14px;margin-bottom:14px;position:sticky;top:8px;z-index:100;box-shadow:0 4px 15px rgba(43,108,176,.35)}
+.work-head-row{display:flex;align-items:center;gap:10px}
+header h1{flex:1;min-width:0;font-size:1.02em;margin:0;font-weight:700;text-align:center;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.timer-group{display:flex;align-items:center;gap:6px;flex:0 0 auto}
+.timer{font-size:1.15em;font-weight:bold;font-variant-numeric:tabular-nums}
+.timer.warning{color:#ffd700;animation:pulse 1s infinite}
+.timer.danger{color:#ff4757;animation:pulse .5s infinite}
+.timer.paused{color:#cbd5e0;animation:none}
+.pause-btn{background:rgba(255,255,255,.25);border:none;color:#fff;width:30px;height:30px;border-radius:50%;font-size:.9em;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .2s;padding:0;line-height:1;touch-action:manipulation;-webkit-user-select:none;user-select:none;flex:0 0 auto}
+.pause-btn:hover{background:rgba(255,255,255,.4)}
+.pause-btn:active{transform:scale(.95)}
+.pause-btn:disabled{opacity:.4;cursor:not-allowed}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.6}}
+.progress-bar{width:100%;height:4px;margin-top:9px;background:rgba(255,255,255,.3);border-radius:4px;overflow:hidden}
+.progress-fill{height:100%;background:#fff;border-radius:4px;transition:width .3s}
+.section{background:#fff;border-radius:14px;padding:16px 18px;margin-bottom:14px;box-shadow:0 1px 4px rgba(0,0,0,.05)}
+.section-title{font-size:.95em;font-weight:bold;color:#2b6cb0;border-left:3px solid #2b6cb0;padding-left:10px;margin-bottom:10px}
+.section-lead{font-size:.95em;font-weight:500;color:#4a5568;line-height:1.5;margin-bottom:12px}
+.question{padding:12px 0;border-bottom:1px solid #edf1f5}
+.question:last-child{border-bottom:none}
+.q-num{display:inline-flex;align-items:center;justify-content:center;background:#2b6cb0;color:#fff;width:1.6em;height:1.6em;border-radius:50%;font-size:1em;font-weight:bold;font-family:'Hiragino Kaku Gothic ProN','Hiragino Sans','Noto Sans JP',Meiryo,sans-serif;vertical-align:middle;margin-right:.3em;position:relative;top:-.06em}
+.q-text{font-size:1.08em;margin-bottom:9px;font-weight:500;line-height:1.6em}
+.options{display:grid;grid-template-columns:1fr 1fr;gap:6px;align-items:stretch}
+.option{position:relative;display:flex;min-height:0}
+.option input{display:none}
+.option label{flex:1;display:flex;align-items:baseline;gap:6px;padding:9px 11px;border:1.5px solid #e2e8f0;border-radius:9px;cursor:pointer;transition:all .15s;font-size:.92em;touch-action:manipulation;-webkit-user-select:none;user-select:none;min-height:40px;width:100%;box-sizing:border-box;font-family:'Hiragino Kaku Gothic ProN','Hiragino Sans','Noto Sans JP',Meiryo,sans-serif}
+.option .opt-key{flex:0 0 auto;min-width:1.5em;text-align:right;font-weight:600;line-height:1.3;align-self:center;color:#4a5568;font-family:inherit;position:relative;top:.16em}
+.option .opt-body{flex:1;min-width:0;line-height:1.5;align-self:center;word-break:break-word;font-family:inherit}
+.option .opt-body:not(:has(ruby)){position:relative;top:.16em}
+.option label:hover{border-color:#2b6cb0;background:#f0f7ff}
+.option input:checked+label{border-color:#2b6cb0;background:#e8f2fc;color:#1a365d;font-weight:600}
+.option.correct label{border-color:#48bb78!important;background:#f0fff4!important;color:#276749!important}
+.option.alt-correct label{border-color:#f6ad55!important;background:#fffbeb!important;color:#975a16!important}
+.option.wrong label{border-color:#fc8181!important;background:#fff5f5!important;color:#9b2c2c!important}
+.btn-submit{display:block;width:100%;min-height:44px;padding:13px;background:linear-gradient(135deg,#2b6cb0 0%,#2c5282 100%);color:#fff;border:none;border-radius:11px;font-size:1.02em;font-weight:bold;cursor:pointer;transition:transform .2s,box-shadow .2s;margin-top:4px;touch-action:manipulation;-webkit-user-select:none;user-select:none;box-shadow:0 4px 14px rgba(43,108,176,.35)}
+.btn-submit:hover{transform:translateY(-1px)}
+.btn-submit:disabled{opacity:.5;cursor:not-allowed;transform:none;box-shadow:none}
+.result-panel{background:#fff;border-radius:14px;padding:24px 20px;text-align:center;box-shadow:0 4px 20px rgba(0,0,0,.08);margin-top:14px;display:none}
+.result-panel h2{font-size:1.4em;margin-bottom:6px}
+.result-score{font-size:2.3em;font-weight:bold;margin:10px 0}
+.result-score.excellent{color:#48bb78}
+.result-score.good{color:#2b6cb0}
+.result-score.fair{color:#ed8936}
+.result-score.poor{color:#fc8181}
+.result-detail{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:10px;margin-top:14px}
+.result-item{background:#f7fafc;padding:10px;border-radius:8px}
+.result-item .label{font-size:.75em;color:#718096}
+.result-item .value{font-size:1.05em;font-weight:bold}
+.explanation{display:none;margin-top:7px;padding:9px 11px;background:#fffbeb;border-radius:8px;font-size:.85em;border-left:3px solid #f6ad55;line-height:1.5}
+.explanation.show{display:block}
+.dialogue{margin:5px 0 10px;padding:11px 13px;background:#f7fafc;border-left:3px solid #2b6cb0;border-radius:0 8px 8px 0;font-size:.96em;line-height:1.75}
+.dialogue p{margin:0 0 .4em;padding:0}
+.dialogue p:last-child{margin-bottom:0}
+.dialogue .sp{font-weight:700;color:#1a365d;margin-right:.2em}
+ruby{ruby-align:center}
+rt{font-size:.55em;font-weight:400;line-height:1.1}
+.blank-paren{display:inline-block;color:#c05621;font-weight:700;white-space:nowrap}
+.longread-wrap{display:block}
+.longread-passage{position:sticky;top:var(--sticky-top,110px);z-index:5;background:#f7fafc;border:1px solid #cbd5e0;border-radius:10px;padding:12px 14px;max-height:42vh;overflow-y:auto;-webkit-overflow-scrolling:touch;margin-bottom:14px}
+.longread-questions .options{grid-template-columns:1fr}
+</style>
+</head>
+<body>
+
+<div class="container"><header class="work-head"><div class="work-head-row"><h1>工場見学シリーズ 小テスト（15分・15問）</h1><div class="timer-group"><div class="timer" id="timer">15:00</div><button aria-label="一時停止" class="pause-btn" id="pauseBtn" onclick="togglePause()" type="button">⏸</button></div></div><div class="progress-bar"><div class="progress-fill" id="progress" style="width:100%"></div></div></header>
+
+<div class="section">
+<div class="section-title">A. 漢字・語彙（問題 1-5）</div>
+<p class="section-lead">（　）に入る正しい言葉はどれですか。</p>
+
+<div class="question">
+<div class="q-text"><span class="q-num">1</span>人の作業を機械に任せることを<span class="blank-paren">（　　　）</span>という。</div>
+<div class="options">
+<div class="option"><input id="q1a" name="q1" type="radio" value="1"/><label for="q1a"><span class="opt-key">1.</span><span class="opt-body">自動化</span></label></div>
+<div class="option"><input id="q1b" name="q1" type="radio" value="0"/><label for="q1b"><span class="opt-key">2.</span><span class="opt-body">内製化</span></label></div>
+<div class="option"><input id="q1c" name="q1" type="radio" value="0"/><label for="q1c"><span class="opt-key">3.</span><span class="opt-body">多能化</span></label></div>
+<div class="option"><input id="q1d" name="q1" type="radio" value="0"/><label for="q1d"><span class="opt-key">4.</span><span class="opt-body">効率化</span></label></div>
+</div>
+<div class="explanation">✅ 正解：1 — 人が行っていた作業を機械に任せることを「自動化」と言う。</div>
+</div>
+
+<div class="question">
+<div class="q-text"><span class="q-num">2</span>案内を聞いて工場を見る<span class="blank-paren">（　　　）</span>に参加した。</div>
+<div class="options">
+<div class="option"><input id="q2a" name="q2" type="radio" value="1"/><label for="q2a"><span class="opt-key">1.</span><span class="opt-body">工場見学</span></label></div>
+<div class="option"><input id="q2b" name="q2" type="radio" value="0"/><label for="q2b"><span class="opt-key">2.</span><span class="opt-body">現場視察</span></label></div>
+<div class="option"><input id="q2c" name="q2" type="radio" value="0"/><label for="q2c"><span class="opt-key">3.</span><span class="opt-body">工程管理</span></label></div>
+<div class="option"><input id="q2d" name="q2" type="radio" value="0"/><label for="q2d"><span class="opt-key">4.</span><span class="opt-body">品質検査</span></label></div>
+</div>
+<div class="explanation">✅ 正解：1 — 学習のために案内に従って工場内を見て回る催しは「工場見学」である。</div>
+</div>
+
+<div class="question">
+<div class="q-text"><span class="q-num">3</span>悪い点を直してよくすることを<span class="blank-paren">（　　　）</span>という。</div>
+<div class="options">
+<div class="option"><input id="q3a" name="q3" type="radio" value="1"/><label for="q3a"><span class="opt-key">1.</span><span class="opt-body">改善</span></label></div>
+<div class="option"><input id="q3b" name="q3" type="radio" value="0"/><label for="q3b"><span class="opt-key">2.</span><span class="opt-body">改革</span></label></div>
+<div class="option"><input id="q3c" name="q3" type="radio" value="0"/><label for="q3c"><span class="opt-key">3.</span><span class="opt-body">改良</span></label></div>
+<div class="option"><input id="q3d" name="q3" type="radio" value="0"/><label for="q3d"><span class="opt-key">4.</span><span class="opt-body">変更</span></label></div>
+</div>
+<div class="explanation">✅ 正解：1 — 作業方法の悪いところを直して良くすることを「改善」と言う。</div>
+</div>
+
+<div class="question">
+<div class="q-text"><span class="q-num">4</span>機械が動く製造<span class="blank-paren">（　　　）</span>を見に行った。</div>
+<div class="options">
+<div class="option"><input id="q4a" name="q4" type="radio" value="1"/><label for="q4a"><span class="opt-key">1.</span><span class="opt-body">現場</span></label></div>
+<div class="option"><input id="q4b" name="q4" type="radio" value="0"/><label for="q4b"><span class="opt-key">2.</span><span class="opt-body">本社</span></label></div>
+<div class="option"><input id="q4c" name="q4" type="radio" value="0"/><label for="q4c"><span class="opt-key">3.</span><span class="opt-body">会場</span></label></div>
+<div class="option"><input id="q4d" name="q4" type="radio" value="0"/><label for="q4d"><span class="opt-key">4.</span><span class="opt-body">職場</span></label></div>
+</div>
+<div class="explanation">✅ 正解：1 — 実際に製造作業が行われている場所を「製造現場」と言う。</div>
+</div>
+
+<div class="question">
+<div class="q-text"><span class="q-num">5</span>社内でシステムを作る<span class="blank-paren">（　　　）</span>を進めた。</div>
+<div class="options">
+<div class="option"><input id="q5a" name="q5" type="radio" value="1"/><label for="q5a"><span class="opt-key">1.</span><span class="opt-body">内製化</span></label></div>
+<div class="option"><input id="q5b" name="q5" type="radio" value="0"/><label for="q5b"><span class="opt-key">2.</span><span class="opt-body">効率化</span></label></div>
+<div class="option"><input id="q5c" name="q5" type="radio" value="0"/><label for="q5c"><span class="opt-key">3.</span><span class="opt-body">自動化</span></label></div>
+<div class="option"><input id="q5d" name="q5" type="radio" value="0"/><label for="q5d"><span class="opt-key">4.</span><span class="opt-body">標準化</span></label></div>
+</div>
+<div class="explanation">✅ 正解：1 — 外部に頼らず社内で作ることを「内製化」と言う。</div>
+</div>
+</div>
+
+<div class="section">
+<div class="section-title">B. 文法（問題 6-9）</div>
+<p class="section-lead">（　）に入る正しいものはどれですか。</p>
+
+<div class="question">
+<div class="q-text"><span class="q-num">6</span>自動化で、少ない人数でも作業が<span class="blank-paren">（　　　）</span>。</div>
+<div class="options">
+<div class="option"><input id="q6a" name="q6" type="radio" value="1"/><label for="q6a"><span class="opt-key">1.</span><span class="opt-body">できるようになった</span></label></div>
+<div class="option"><input id="q6b" name="q6" type="radio" value="0"/><label for="q6b"><span class="opt-key">2.</span><span class="opt-body">できていた</span></label></div>
+<div class="option"><input id="q6c" name="q6" type="radio" value="0"/><label for="q6c"><span class="opt-key">3.</span><span class="opt-body">できるのに</span></label></div>
+<div class="option"><input id="q6d" name="q6" type="radio" value="0"/><label for="q6d"><span class="opt-key">4.</span><span class="opt-body">できたばかりだ</span></label></div>
+</div>
+<div class="explanation">✅ 正解：1 — 「〜ようになる」は変化の結果、新たに可能になったことを表す。</div>
+</div>
+
+<div class="question">
+<div class="q-text"><span class="q-num">7</span>小さな会社<span class="blank-paren">（　　　）</span>、立派な仕組みがあった。</div>
+<div class="options">
+<div class="option"><input id="q7a" name="q7" type="radio" value="1"/><label for="q7a"><span class="opt-key">1.</span><span class="opt-body">にしては</span></label></div>
+<div class="option"><input id="q7b" name="q7" type="radio" value="0"/><label for="q7b"><span class="opt-key">2.</span><span class="opt-body">によって</span></label></div>
+<div class="option"><input id="q7c" name="q7" type="radio" value="0"/><label for="q7c"><span class="opt-key">3.</span><span class="opt-body">にとって</span></label></div>
+<div class="option"><input id="q7d" name="q7" type="radio" value="0"/><label for="q7d"><span class="opt-key">4.</span><span class="opt-body">につけて</span></label></div>
+</div>
+<div class="explanation">✅ 正解：1 — 「〜にしては」は前の条件から予想されるより意外な結果を表す。</div>
+</div>
+
+<div class="question">
+<div class="q-text"><span class="q-num">8</span>筆者は長い間、コードを<span class="blank-paren">（　　　）</span>。</div>
+<div class="options">
+<div class="option"><input id="q8a" name="q8" type="radio" value="1"/><label for="q8a"><span class="opt-key">1.</span><span class="opt-body">書いてばかりいた</span></label></div>
+<div class="option"><input id="q8b" name="q8" type="radio" value="0"/><label for="q8b"><span class="opt-key">2.</span><span class="opt-body">書いたばかりだった</span></label></div>
+<div class="option"><input id="q8c" name="q8" type="radio" value="0"/><label for="q8c"><span class="opt-key">3.</span><span class="opt-body">書きばかりしていた</span></label></div>
+<div class="option"><input id="q8d" name="q8" type="radio" value="0"/><label for="q8d"><span class="opt-key">4.</span><span class="opt-body">書いてばかりした</span></label></div>
+</div>
+<div class="explanation">✅ 正解：1 — 「動詞て形＋ばかりいる／いた」でその動作ばかりしている状態を表す。</div>
+</div>
+
+<div class="question">
+<div class="q-text"><span class="q-num">9</span>手作業の多さには、筆者<span class="blank-paren">（　　　）</span>驚いた。</div>
+<div class="options">
+<div class="option"><input id="q9a" name="q9" type="radio" value="1"/><label for="q9a"><span class="opt-key">1.</span><span class="opt-body">ですら</span></label></div>
+<div class="option"><input id="q9b" name="q9" type="radio" value="0"/><label for="q9b"><span class="opt-key">2.</span><span class="opt-body">にとって</span></label></div>
+<div class="option"><input id="q9c" name="q9" type="radio" value="0"/><label for="q9c"><span class="opt-key">3.</span><span class="opt-body">について</span></label></div>
+<div class="option"><input id="q9d" name="q9" type="radio" value="0"/><label for="q9d"><span class="opt-key">4.</span><span class="opt-body">によって</span></label></div>
+</div>
+<div class="explanation">✅ 正解：1 — 「〜ですら」は極端な例を挙げて「それでさえ」という意味を強調する。</div>
+</div>
+</div>
+
+<div class="section">
+<div class="section-title">C. 文の組み立て（問題 10-12）</div>
+<p class="section-lead">＿★＿に入るものはどれですか。</p>
+
+<div class="question">
+<div class="q-text"><span class="q-num">10</span>その工場では　＿＿　＿＿　★　＿＿。</div>
+<div class="options">
+<div class="option"><input id="q10a" name="q10" type="radio" value="1"/><label for="q10a"><span class="opt-key">1.</span><span class="opt-body">読み取り</span></label></div>
+<div class="option"><input id="q10b" name="q10" type="radio" value="0"/><label for="q10b"><span class="opt-key">2.</span><span class="opt-body">部品の</span></label></div>
+<div class="option"><input id="q10c" name="q10" type="radio" value="0"/><label for="q10c"><span class="opt-key">3.</span><span class="opt-body">QRコードを</span></label></div>
+<div class="option"><input id="q10d" name="q10" type="radio" value="0"/><label for="q10d"><span class="opt-key">4.</span><span class="opt-body">数を管理した</span></label></div>
+</div>
+<div class="explanation">✅ 正解：1 — 正しい語順は「部品の　QRコードを　読み取り　数を管理した」。★には「読み取り」が入る。</div>
+</div>
+
+<div class="question">
+<div class="q-text"><span class="q-num">11</span>＿＿　＿＿　★　＿＿。</div>
+<div class="options">
+<div class="option"><input id="q11a" name="q11" type="radio" value="1"/><label for="q11a"><span class="opt-key">1.</span><span class="opt-body">改善の心は</span></label></div>
+<div class="option"><input id="q11b" name="q11" type="radio" value="0"/><label for="q11b"><span class="opt-key">2.</span><span class="opt-body">会社の規模は</span></label></div>
+<div class="option"><input id="q11c" name="q11" type="radio" value="0"/><label for="q11c"><span class="opt-key">3.</span><span class="opt-body">違っても</span></label></div>
+<div class="option"><input id="q11d" name="q11" type="radio" value="0"/><label for="q11d"><span class="opt-key">4.</span><span class="opt-body">同じだった</span></label></div>
+</div>
+<div class="explanation">✅ 正解：1 — 正しい語順は「会社の規模は　違っても　改善の心は　同じだった」。★には「改善の心は」が入る。</div>
+</div>
+
+<div class="question">
+<div class="q-text"><span class="q-num">12</span>これは　＿＿　＿＿　★　＿＿。</div>
+<div class="options">
+<div class="option"><input id="q12a" name="q12" type="radio" value="1"/><label for="q12a"><span class="opt-key">1.</span><span class="opt-body">仕事の</span></label></div>
+<div class="option"><input id="q12b" name="q12" type="radio" value="0"/><label for="q12b"><span class="opt-key">2.</span><span class="opt-body">自作の</span></label></div>
+<div class="option"><input id="q12c" name="q12" type="radio" value="0"/><label for="q12c"><span class="opt-key">3.</span><span class="opt-body">システムによる</span></label></div>
+<div class="option"><input id="q12d" name="q12" type="radio" value="0"/><label for="q12d"><span class="opt-key">4.</span><span class="opt-body">内製化だ</span></label></div>
+</div>
+<div class="explanation">✅ 正解：1 — 正しい語順は「自作の　システムによる　仕事の　内製化だ」。★には「仕事の」が入る。</div>
+</div>
+</div>
+
+<div class="section">
+<div class="section-title">D. 長文読解（問題 13-15）</div>
+<p class="section-lead">次の文章を読んで、あとの質問に答えてください。</p>
+<div class="longread-wrap">
+<div class="longread-passage">
+<div class="dialogue">
+<p>ある町工場で事業部を一人で経営する筆者は、社内のあらゆる作業をデジタル化し、効率化を進めてきた。しかし、現場で仕事を続けるうちに、デジタルだけでは解決できないことがあると気づいた。客先との細かいやり取りや、長年の経験でしかできない微妙な調整は、どれだけシステムを整えても、完全にはデータに置き換えられない。</p>
+<p>筆者は、こうした「デジタル化できない部分」を否定せず、そのまま受け入れることが大切だと考えるようになった。効率化に慣れている筆者でも、すべてを数字や仕組みに置き換えることはできないと感じている。</p>
+<p>それでも、デジタル化できる部分とできない部分を見分けて、両方をうまく組み合わせていくことが、これからの町工場には必要だと筆者は語る。</p>
+</div>
+</div>
+
+<div class="longread-questions">
+<div class="question">
+<div class="q-text"><span class="q-num">13</span>本文によると、筆者がこれまで進めてきたことは、社内のあらゆる作業を<span class="blank-paren">（　　　）</span>ことである。</div>
+<div class="options" style="grid-template-columns:1fr">
+<div class="option"><input id="q13a" name="q13" type="radio" value="1"/><label for="q13a"><span class="opt-key">1.</span><span class="opt-body">デジタル化する</span></label></div>
+<div class="option"><input id="q13b" name="q13" type="radio" value="0"/><label for="q13b"><span class="opt-key">2.</span><span class="opt-body">外注化する</span></label></div>
+<div class="option"><input id="q13c" name="q13" type="radio" value="0"/><label for="q13c"><span class="opt-key">3.</span><span class="opt-body">現場に任せる</span></label></div>
+<div class="option"><input id="q13d" name="q13" type="radio" value="0"/><label for="q13d"><span class="opt-key">4.</span><span class="opt-body">手作業に戻す</span></label></div>
+</div>
+<div class="explanation">✅ 正解：1 — 本文冒頭に「社内のあらゆる作業をデジタル化し」とある。</div>
+</div>
+
+<div class="question">
+<div class="q-text"><span class="q-num">14</span>本文の内容と合っているものはどれですか。</div>
+<div class="options" style="grid-template-columns:1fr">
+<div class="option"><input id="q14a" name="q14" type="radio" value="1"/><label for="q14a"><span class="opt-key">1.</span><span class="opt-body">デジタル化に慣れた筆者でも、すべてをデータに置き換えることはできないと感じている。</span></label></div>
+<div class="option"><input id="q14b" name="q14" type="radio" value="0"/><label for="q14b"><span class="opt-key">2.</span><span class="opt-body">筆者は、デジタル化できない部分はすべて無駄なので、なくすべきだと考えている。</span></label></div>
+<div class="option"><input id="q14c" name="q14" type="radio" value="0"/><label for="q14c"><span class="opt-key">3.</span><span class="opt-body">筆者は、客先とのやり取りも完全にデジタル化することに成功した。</span></label></div>
+<div class="option"><input id="q14d" name="q14" type="radio" value="0"/><label for="q14d"><span class="opt-key">4.</span><span class="opt-body">筆者は、デジタル化を進めることに意味がないと気づき、やめることにした。</span></label></div>
+</div>
+<div class="explanation">✅ 正解：1 — 「効率化に慣れている筆者でも…できないと感じている」の内容と一致する。</div>
+</div>
+
+<div class="question">
+<div class="q-text"><span class="q-num">15</span>本文には「<span class="blank-paren">（　　　）</span>システムを整えても、完全にはデータに置き換えられない部分がある」と書かれている。</div>
+<div class="options" style="grid-template-columns:1fr">
+<div class="option"><input id="q15a" name="q15" type="radio" value="1"/><label for="q15a"><span class="opt-key">1.</span><span class="opt-body">どれだけ</span></label></div>
+<div class="option"><input id="q15b" name="q15" type="radio" value="0"/><label for="q15b"><span class="opt-key">2.</span><span class="opt-body">なるべく</span></label></div>
+<div class="option"><input id="q15c" name="q15" type="radio" value="0"/><label for="q15c"><span class="opt-key">3.</span><span class="opt-body">なかなか</span></label></div>
+<div class="option"><input id="q15d" name="q15" type="radio" value="0"/><label for="q15d"><span class="opt-key">4.</span><span class="opt-body">せっかく</span></label></div>
+</div>
+<div class="explanation">✅ 正解：1 — 「どれだけ〜ても、〜ない」でどんなに努力しても結果が変わらないことを表す。本文の該当箇所と一致する。</div>
+</div>
+</div>
+</div>
+</div>
+
+<button class="btn-submit" id="submitBtn" onclick="submitTest()">採点する</button>
+<div class="result-panel" id="resultPanel"><h2 id="resultTitle"></h2><div class="result-score" id="resultScore"></div><div class="result-detail" id="resultDetail"></div></div>
+</div>
+<script>const TOTAL=15,TIME_LIMIT=900;let timeLeft=TIME_LIMIT,timerInterval,submitted=false,paused=false;
+function togglePause(){if(submitted)return;paused=!paused;const b=document.getElementById('pauseBtn'),t=document.getElementById('timer');b.textContent=paused?'▶':'⏸';b.setAttribute('aria-label',paused?'再開':'一時停止');if(paused){t.classList.add('paused');t.classList.remove('warning','danger')}else{t.classList.remove('paused');if(timeLeft<=60)t.classList.add('danger');else if(timeLeft<=300)t.classList.add('warning')}}
+function shuffleAllOptions(){function r(n){if(n<=1)return 0;try{if(crypto&&crypto.getRandomValues){const lim=Math.floor(4294967296/n)*n,b=new Uint32Array(1);let x;do{crypto.getRandomValues(b);x=b[0]}while(x>=lim);return x%n}}catch(e){}return Math.floor(Math.random()*n)}function fy(a){for(let i=a.length-1;i>0;i--){const j=r(i+1),t=a[i];a[i]=a[j];a[j]=t}}function upd(o,e){const ks=Array.from(o.querySelectorAll('input[value="1"],input[value="2"]')).map(inp=>{const k=inp.closest('.option').querySelector('.opt-key'),m=k&&k.textContent.match(/^(\d+)\./);return m?m[1]:''}).filter(Boolean).sort((a,b)=>Number(a)-Number(b));if(ks.length)e.innerHTML=e.innerHTML.replace(/正解：[0-9・]+/,'正解：'+ks.join('・'))}function rel(o,it,p){it.forEach(el=>o.appendChild(el));it.forEach((el,i)=>{const inp=el.querySelector('input'),lab=el.querySelector('label'),id=p+String.fromCharCode(97+i);inp.id=id;lab.setAttribute('for',id);el.querySelector('.opt-key').textContent=(i+1)+'.'});const e=o.nextElementSibling;if(e&&e.classList.contains('explanation'))upd(o,e);return it.findIndex(el=>el.querySelector('input[value="1"]'))}const cnt=[0,0,0,0];document.querySelectorAll('.options').forEach(o=>{const it=Array.from(o.children).filter(el=>el.classList.contains('option'));if(it.length<2)return;fy(it);const p=o.querySelector('input').name;let s=rel(o,it,p);let min=Math.min(...cnt.slice(0,it.length)),c=[];for(let i=0;i<it.length;i++)if(cnt[i]===min)c.push(i);const ideal=c[r(c.length)];if(s!==ideal&&cnt[s]>cnt[ideal]){const t=it[s];it[s]=it[ideal];it[ideal]=t;s=rel(o,it,p)}cnt[s]++})}
+function visibleLen(el){const c=el.cloneNode(true);c.querySelectorAll('rt,rp').forEach(n=>n.remove());return c.textContent.trim().length}
+function layoutOptions(){document.querySelectorAll('.options').forEach(o=>{const bodies=o.querySelectorAll('.opt-body');if(!bodies.length)return;const maxLen=Math.max(...Array.from(bodies).map(visibleLen));o.style.gridTemplateColumns=maxLen<=15?'1fr 1fr':'1fr'})}
+try{layoutOptions()}catch(e){}
+try{shuffleAllOptions()}catch(e){}
+function setStickyTop(){const h=document.querySelector('header').offsetHeight;document.documentElement.style.setProperty('--sticky-top',(h+10)+'px')}
+setStickyTop();window.addEventListener('resize',setStickyTop);
+function startTimer(){timerInterval=setInterval(()=>{if(paused)return;timeLeft--;const m=Math.floor(timeLeft/60),s=timeLeft%60,t=document.getElementById('timer');t.textContent=`${m}:${s.toString().padStart(2,'0')}`;document.getElementById('progress').style.width=(timeLeft/TIME_LIMIT*100)+'%';if(timeLeft<=60){t.className='timer danger'}else if(timeLeft<=300){t.className='timer warning'}else{t.className='timer'}if(timeLeft<=0){clearInterval(timerInterval);submitTest()}},1000)}
+function submitTest(){if(submitted)return;submitted=true;clearInterval(timerInterval);let score=0;for(let i=1;i<=TOTAL;i++){const opts=Array.from(document.querySelectorAll(`input[name="q${i}"]`)),sel=opts.find(o=>o.checked);if(sel&&(sel.value==='1'||sel.value==='2'))score++;opts.forEach(o=>{const w=o.closest('.option');if(o.value==='1')w.classList.add('correct');else if(o.value==='2')w.classList.add('alt-correct');else if(o.checked)w.classList.add('wrong')});const exp=opts[0].closest('.question').querySelector('.explanation');if(exp)exp.classList.add('show')}const pct=Math.round(score/TOTAL*100),p=document.getElementById('resultPanel'),sc=document.getElementById('resultScore'),tt=document.getElementById('resultTitle');p.style.display='block';sc.textContent=`${score} / ${TOTAL}（${pct}%）`;sc.className='result-score '+(pct>=90?'excellent':pct>=70?'good':pct>=50?'fair':'poor');tt.textContent=pct>=90?'すばらしい！':pct>=70?'よくできました！':pct>=50?'もうすこし！':'がんばりましょう！';const used=TIME_LIMIT-timeLeft;document.getElementById('resultDetail').innerHTML=`<div class="result-item"><div class="label">せいかい</div><div class="value">${score}/${TOTAL}</div></div><div class="result-item"><div class="label">じかん</div><div class="value">${Math.floor(used/60)}分${used%60}秒</div></div>`;document.getElementById('submitBtn').disabled=true;document.getElementById('pauseBtn').disabled=true;p.scrollIntoView({behavior:'smooth'})}
+startTimer();</script>
+</body>
+</html>
