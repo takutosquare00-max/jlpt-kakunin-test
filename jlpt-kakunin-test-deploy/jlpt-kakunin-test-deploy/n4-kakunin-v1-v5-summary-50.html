@@ -280,7 +280,7 @@ if(expl){expl.textContent=expl.textContent.replace(/\u6b63\u89e3\uff1a\s*[1-4](\
 }
 let timeLeft=TIME_LIMIT,timerInterval,submitted=false;
 function startTimer(){
-timerInterval=setInterval(()=>{timeLeft--;const m=Math.floor(timeLeft/60),s=timeLeft%60;const el=document.getElementById('timer');el.textContent=`${m}:${s.toString().padStart(2,'0')}`;document.getElementById('progress').style.width=`${(timeLeft/TIME_LIMIT)*100}%`;if(timeLeft<=60)el.className='timer danger';else if(timeLeft<=180)el.className='timer warning';if(timeLeft<=0){clearInterval(timerInterval);submitTest();}},1000);}
+timerInterval=setInterval(()=>{timeLeft--;const m=Math.floor(timeLeft/60),s=timeLeft%60;const el=document.getElementById('timer');el.textContent=`${m}:${s.toString().padStart(2,'0')}`;document.getElementById('progress').style.width=`${(timeLeft/TIME_LIMIT)*100}%`;if(timeLeft<=60)el.className='timer danger';else if(timeLeft<=180)el.className='timer warning';if(timeLeft<=0){clearInterval(timerInterval);const pb=document.getElementById('pauseBtn');if(pb)pb.disabled=true;}},1000);}
 function submitTest(){
 if(submitted)return;submitted=true;clearInterval(timerInterval);
 let correct=0;const sec={kanji:0,vocab:0,gram:0,para:0,sent:0,read:0};

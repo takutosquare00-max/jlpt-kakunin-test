@@ -221,7 +221,7 @@ el.textContent=`${m}:${s.toString().padStart(2,'0')}`;
 document.getElementById('progress').style.width=`${(timeLeft/TIME_LIMIT)*100}%`;
 if(timeLeft<=60)el.className='timer danger';
 else if(timeLeft<=180)el.className='timer warning';
-if(timeLeft<=0){clearInterval(timerInterval);submitTest();}
+if(timeLeft<=0){clearInterval(timerInterval);const pb=document.getElementById('pauseBtn');if(pb)pb.disabled=true;}
 },1000);
 }
 function submitTest(){

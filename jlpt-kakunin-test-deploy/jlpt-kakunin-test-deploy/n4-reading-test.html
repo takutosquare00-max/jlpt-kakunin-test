@@ -1397,7 +1397,7 @@ function startQTimer() {
     if (submitted || paused) return;
     timeLeft--;
     updateTimerUi();
-    if (timeLeft <= 0) { clearQTimer(); submitTest(); }
+    if (timeLeft <= 0) { clearQTimer(); const pb = document.getElementById('pauseBtn'); if (pb) pb.disabled = true; }
   }, 1000);
 }
 
