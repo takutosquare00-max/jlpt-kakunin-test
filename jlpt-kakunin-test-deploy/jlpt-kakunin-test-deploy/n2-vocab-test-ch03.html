@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<title>JLPT N2 単語テスト 第3課（コロケーション）</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;-webkit-tap-highlight-color:transparent;font-size:135%}
+body{font-family:'Hiragino Kaku Gothic ProN','Hiragino Sans','Noto Sans JP',Meiryo,sans-serif;background:#f0f4f8;color:#1a202c;line-height:1.7;padding:env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left)}
+.container{max-width:1100px;margin:0 auto;padding:20px 5px}
+header{background:linear-gradient(135deg,#e53e3e 0%,#c53030 100%);color:#fff;padding:12px 16px;border-radius:14px;margin-bottom:14px;position:sticky;top:8px;z-index:100;box-shadow:0 4px 15px rgba(229,62,62,.4)}
+.head-row{display:flex;align-items:center;gap:10px}
+header h1{flex:1;min-width:0;font-size:1.02em;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.score-box{flex:0 0 auto;font-weight:700;font-variant-numeric:tabular-nums}
+.score{display:inline-block;min-width:2.2em;text-align:center;border-bottom:2px solid rgba(255,255,255,.7)}
+.section{background:#fff;border-radius:12px;padding:20px 24px;margin-bottom:20px;box-shadow:0 2px 8px rgba(0,0,0,.06)}
+.questions{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:0 32px}
+.question{padding:16px 0;border-bottom:1px solid #e2e8f0}
+.q-text{display:flex;align-items:baseline;font-size:1.05em;font-weight:500}
+.q-num{flex:0 0 28px;display:inline-block;background:#e53e3e;color:#fff;width:28px;height:28px;text-align:center;line-height:28px;border-radius:50%;font-size:.8em;font-weight:bold;margin-right:8px}
+.sentence{flex:1;min-width:0;overflow-wrap:anywhere}
+.answer{width:6.5em;max-width:55vw;border:0;border-bottom:2px solid #a0aec0;background:#f7fafc;padding:0 .3em;font:inherit;text-align:center;border-radius:4px 4px 0 0}
+.answer:focus{outline:2px solid #feb2b2;background:#fff}
+.answer.correct{border-color:#48bb78;background:#f0fff4;color:#276749}.answer.half{border-color:#ed8936;background:#fffaf0}.answer.wrong{border-color:#fc8181;background:#fff5f5;color:#9b2c2c}
+.hint{color:#718096;font-size:.8em;margin:4px 0 0 36px;overflow-wrap:anywhere}
+.explanation{display:none;margin:8px 0 0 36px;padding:8px 10px;background:#fffbeb;border-radius:8px;font-size:.8em;border-left:3px solid #f6ad55}
+.explanation.show{display:block}
+.explanation .mark{font-weight:700;margin-right:6px}.explanation.correct .mark{color:#2f855a}.explanation.half .mark{color:#c05621}.explanation.wrong .mark{color:#c53030}
+.explanation .meta{color:#718096}
+.actions{display:flex;gap:12px;margin-top:20px}
+.actions button{flex:1;min-height:48px;padding:14px;border-radius:12px;font:inherit;font-size:1em;font-weight:bold;cursor:pointer;transition:transform .2s,box-shadow .2s;touch-action:manipulation;-webkit-user-select:none;user-select:none}
+.btn-submit{background:linear-gradient(135deg,#e53e3e 0%,#c53030 100%);color:#fff;border:none}
+.btn-next{background:#fff;color:#c53030;border:2px solid #e53e3e}
+.actions button:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(229,62,62,.3)}
+.print-key{display:none}
+@media(max-width:700px){.questions{grid-template-columns:minmax(0,1fr)}.section{padding:16px}}
+@media print{html{font-size:100%}body{background:#fff}.actions,.explanation{display:none!important}header{position:static;box-shadow:none;background:none;color:#000;border-bottom:2px solid #000;border-radius:0}.score{border-color:#000}.section{box-shadow:none;padding:0}.question{break-inside:avoid}.answer{background:none!important;border-bottom:1px solid #000;color:transparent}.q-num{background:none;color:#000;border:1px solid #000}.print-key{display:block;break-before:page}.print-key li{margin:4px 0 4px 1.5em}}
+</style>
+</head>
+<body>
+<div class="container">
+<header><div class="head-row"><h1>N2 単語テスト 第3課</h1><div class="score-box">点数 <span class="score">　</span> / 10</div></div></header>
+<div class="section">
+<div class="questions"></div>
+<div class="actions"><button type="button" class="btn-submit grade">採点</button><button type="button" class="btn-next next">新しい10問</button></div>
+</div>
+<section class="print-key"><h2>解答</h2><ol></ol></section>
+</div>
+<script>
+const BANK=[{"id":1,"sentence":"ホテルの（　）となる","answer":"一員","reading":"いちいん","thai":"สมาชิก","alternatives":[],"source":"教科書","collocations":["チームの一員","社会の一員","一員に加わる"]},{"id":2,"sentence":"スタッフとしての（　）を学ぶ","answer":"心構え","reading":"こころがまえ","thai":"การเตรียมใจ","alternatives":[],"source":"教科書","collocations":["仕事の心構え","基本的な心構え","心構えを身につける"]},{"id":3,"sentence":"サービスの（　）を高める","answer":"質","reading":"しつ","thai":"คุณภาพ","alternatives":[],"source":"教科書","collocations":["生活の質","教育の質","質が高い"]},{"id":4,"sentence":"消費者のニーズを（　）する","answer":"追求","reading":"ついきゅう","thai":"การติดตาม, การแสวงหา","alternatives":[],"source":"教科書","collocations":["ニーズを追求する","利益を追求する","理想を追求する"]},{"id":5,"sentence":"部長の（　）として出張する","answer":"代理","reading":"だいり","thai":"การรับหน้าที่แทน, ตัวแทน, ผู้แทน","alternatives":[],"source":"教科書","collocations":["社長の代理","代理を務める","代理で出席する"]},{"id":6,"sentence":"試合で（　）を尽くす","answer":"全力","reading":"ぜんりょく","thai":"สุดความสามารถ, พยายามอย่างเต็มที่","alternatives":[],"source":"教科書","collocations":["全力で戦う","全力を注ぐ","全力で取り組む"]},{"id":7,"sentence":"そのクレームは（　）なものだ","answer":"正当","reading":"せいとう","thai":"ถูกต้องเหมาะสม, สมเหตุสมผล","alternatives":[],"source":"教科書","collocations":["正当な理由","正当な評価","正当な権利"]},{"id":8,"sentence":"支払い時に（　）をいただく","answer":"サービス料","reading":"サービスりょう","thai":"ค่าบริการ","alternatives":[],"source":"教科書","collocations":["サービス料を含む","サービス料を加算する","サービス料を支払う"]},{"id":9,"sentence":"（　）でも働ける職場を作る","answer":"高齢者","reading":"こうれいしゃ","thai":"คนแก่, ผู้สูงอายุ","alternatives":[],"source":"教科書","collocations":["高齢者を支援する","高齢者向け住宅","高齢者が増える"]},{"id":10,"sentence":"留学ビザを（　）する","answer":"申請","reading":"しんせい","thai":"ใบสมัคร, การสมัคร, การยื่นคำร้อง","alternatives":[],"source":"教科書","collocations":["許可を申請する","申請を受け付ける","申請を却下する"]},{"id":11,"sentence":"客を（　）な気持ちにさせる","answer":"不快","reading":"ふかい","thai":"ไม่สะดวกสบาย, ไม่สบายใจ, อึดอัด","alternatives":[],"source":"教科書","collocations":["不快な思い","不快に感じる","不快感を与える"]},{"id":12,"sentence":"会社の転勤命令に（　）","answer":"従う","reading":"したがう","thai":"ทำตาม, เชื่อฟัง","alternatives":[],"source":"教科書","collocations":["指示に従う","規則に従う","手順に従う"]},{"id":13,"sentence":"首相の発言は（　）を無視している","answer":"国民感情","reading":"こくみんかんじょう","thai":"ความรู้สึกของคนในชาติ, ความรู้สึกของประชาชน","alternatives":[],"source":"教科書","collocations":["国民感情に配慮する","国民感情を害する","国民感情が悪化する"]},{"id":14,"sentence":"鍵をかけて盗難を（　）","answer":"防ぐ","reading":"ふせぐ","thai":"ป้องกัน","alternatives":[],"source":"補足","collocations":["事故を防ぐ","感染を防ぐ","被害を防ぐ"]},{"id":15,"sentence":"（　）の自然に恵まれた村","answer":"山奥","reading":"やまおく","thai":"บริเวณที่ลึกเข้าไปในหุบเขา","alternatives":[],"source":"教科書","collocations":["山奥に住む","山奥の温泉","山奥に入る"]},{"id":16,"sentence":"（　）の就職事情を考える","answer":"昨今","reading":"さっこん","thai":"ทุกวันนี้, ปัจจุบันนี้","alternatives":[],"source":"教科書","collocations":["昨今の情勢","昨今の傾向","昨今の動向"]},{"id":17,"sentence":"深刻な（　）が長期化する","answer":"就職難","reading":"しゅうしょくなん","thai":"การขาดแคลนงาน, การหางานลำบาก","alternatives":[],"source":"補足","collocations":["就職難に直面する","就職難を乗り切る","就職難が続く"]},{"id":18,"sentence":"商品に（　）がなければ売れない","answer":"魅力","reading":"みりょく","thai":"สิ่งดึงดูดใจ, เสน่ห์","alternatives":[],"source":"教科書","collocations":["魅力を感じる","魅力を伝える","魅力に欠ける"]},{"id":19,"sentence":"趣味で（　）を習い始める","answer":"油絵","reading":"あぶらえ","thai":"ภาพสีน้ำมัน","alternatives":[],"source":"教科書","collocations":["油絵を描く","油絵を習う","油絵を展示する"]},{"id":20,"sentence":"自分の能力に（　）を感じる","answer":"限界","reading":"げんかい","thai":"ขีดสุด, ขีดจำกัด","alternatives":[],"source":"教科書","collocations":["限界に達する","限界を超える","能力の限界"]}];
+const DRAW=10, STORE_KEY='tryn2-colloc-deck-ch3', BLANK='（　）';
+const qs=s=>document.querySelector(s), qsa=s=>[...document.querySelectorAll(s)];
+function esc(s){const d=document.createElement('div');d.textContent=s;return d.innerHTML}
+function shuffle(a){for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a}
+// まだ出していない問の山（deck）。全問を出し切るまで同じ問は出ない。保存できない環境では毎回全問から選ぶ
+function loadDeck(){try{const d=JSON.parse(localStorage.getItem(STORE_KEY));if(Array.isArray(d)&&d.every(i=>Number.isInteger(i)&&i>=0&&i<BANK.length))return [...new Set(d)]}catch(e){}return BANK.map((_,i)=>i)}
+function saveDeck(d){try{localStorage.setItem(STORE_KEY,JSON.stringify(d))}catch(e){}}
+// 山から先に取り、足りなければ山を全問で作り直して残りを補う（同じ10問の中では重複しない）
+function draw(){
+  const all=BANK.map((_,i)=>i), deck=loadDeck();
+  const set=shuffle(deck.slice()).slice(0,DRAW);
+  let next=deck.filter(i=>!set.includes(i));
+  if(set.length<DRAW){
+    set.push(...shuffle(all.filter(i=>!set.includes(i))).slice(0,DRAW-set.length));
+    next=all.filter(i=>!set.includes(i));
+  }
+  saveDeck(next);
+  return shuffle(set);
+}
+let current=[];
+function render(){
+  current=draw();
+  qs('.questions').innerHTML=current.map((idx,n)=>{
+    const q=BANK[idx], [before,after]=q.sentence.split(BLANK);
+    const input=`（<input class="answer" autocomplete="off" autocapitalize="off" spellcheck="false" aria-label="第${n+1}問の答え">）`;
+    return `<div class="question"><div class="q-text"><span class="q-num">${n+1}</span><span class="sentence">${esc(before)}${input}${esc(after)}</span></div><div class="hint" lang="th">〔${esc(q.thai)}〕</div><div class="explanation" aria-live="polite"></div></div>`;
+  }).join('');
+  qs('.print-key ol').innerHTML=current.map(idx=>`<li>${esc(BANK[idx].answer)}（${esc(BANK[idx].reading||'読みなし')}）</li>`).join('');
+  qs('.score').textContent='　';
+}
+const isHiragana=s=>/^[ぁ-ゖー]+$/.test(s);
+qs('.grade').addEventListener('click',()=>{
+  let score=0;
+  qsa('.question').forEach((row,n)=>{
+    const item=BANK[current[n]], input=row.querySelector('.answer'), fb=row.querySelector('.explanation'), value=input.value.trim();
+    let cls, mark;
+    if(value===item.answer||item.alternatives.includes(value)){score+=1;cls='correct';mark='○'}
+    else if(item.reading&&value===item.reading&&isHiragana(value)){score+=.5;cls='half';mark='△ 0.5'}
+    else{cls='wrong';mark='×'}
+    input.classList.remove('correct','half','wrong'); input.classList.add(cls);
+    fb.className='explanation show '+cls;
+    fb.innerHTML=`<span class="mark">${mark}</span>答え：<b>${esc(item.answer)}</b>（${esc(item.reading||'読みなし')}）`
+      +(item.alternatives.length?`<div class="meta">別解：${item.alternatives.map(esc).join('／')}</div>`:'')
+      +`<div class="meta">関連：${item.collocations.map(esc).join('／')}</div>`;
+  });
+  qs('.score').textContent=score;
+});
+qs('.next').addEventListener('click',()=>{render();window.scrollTo(0,0)});
+render();
+</script>
+</body></html>

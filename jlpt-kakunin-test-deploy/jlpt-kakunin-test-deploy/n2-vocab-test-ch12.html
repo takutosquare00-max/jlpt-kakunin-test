@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<title>JLPT N2 単語テスト 第12課（コロケーション）</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;-webkit-tap-highlight-color:transparent;font-size:135%}
+body{font-family:'Hiragino Kaku Gothic ProN','Hiragino Sans','Noto Sans JP',Meiryo,sans-serif;background:#f0f4f8;color:#1a202c;line-height:1.7;padding:env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left)}
+.container{max-width:1100px;margin:0 auto;padding:20px 5px}
+header{background:linear-gradient(135deg,#e53e3e 0%,#c53030 100%);color:#fff;padding:12px 16px;border-radius:14px;margin-bottom:14px;position:sticky;top:8px;z-index:100;box-shadow:0 4px 15px rgba(229,62,62,.4)}
+.head-row{display:flex;align-items:center;gap:10px}
+header h1{flex:1;min-width:0;font-size:1.02em;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.score-box{flex:0 0 auto;font-weight:700;font-variant-numeric:tabular-nums}
+.score{display:inline-block;min-width:2.2em;text-align:center;border-bottom:2px solid rgba(255,255,255,.7)}
+.section{background:#fff;border-radius:12px;padding:20px 24px;margin-bottom:20px;box-shadow:0 2px 8px rgba(0,0,0,.06)}
+.questions{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:0 32px}
+.question{padding:16px 0;border-bottom:1px solid #e2e8f0}
+.q-text{display:flex;align-items:baseline;font-size:1.05em;font-weight:500}
+.q-num{flex:0 0 28px;display:inline-block;background:#e53e3e;color:#fff;width:28px;height:28px;text-align:center;line-height:28px;border-radius:50%;font-size:.8em;font-weight:bold;margin-right:8px}
+.sentence{flex:1;min-width:0;overflow-wrap:anywhere}
+.answer{width:6.5em;max-width:55vw;border:0;border-bottom:2px solid #a0aec0;background:#f7fafc;padding:0 .3em;font:inherit;text-align:center;border-radius:4px 4px 0 0}
+.answer:focus{outline:2px solid #feb2b2;background:#fff}
+.answer.correct{border-color:#48bb78;background:#f0fff4;color:#276749}.answer.half{border-color:#ed8936;background:#fffaf0}.answer.wrong{border-color:#fc8181;background:#fff5f5;color:#9b2c2c}
+.hint{color:#718096;font-size:.8em;margin:4px 0 0 36px;overflow-wrap:anywhere}
+.explanation{display:none;margin:8px 0 0 36px;padding:8px 10px;background:#fffbeb;border-radius:8px;font-size:.8em;border-left:3px solid #f6ad55}
+.explanation.show{display:block}
+.explanation .mark{font-weight:700;margin-right:6px}.explanation.correct .mark{color:#2f855a}.explanation.half .mark{color:#c05621}.explanation.wrong .mark{color:#c53030}
+.explanation .meta{color:#718096}
+.actions{display:flex;gap:12px;margin-top:20px}
+.actions button{flex:1;min-height:48px;padding:14px;border-radius:12px;font:inherit;font-size:1em;font-weight:bold;cursor:pointer;transition:transform .2s,box-shadow .2s;touch-action:manipulation;-webkit-user-select:none;user-select:none}
+.btn-submit{background:linear-gradient(135deg,#e53e3e 0%,#c53030 100%);color:#fff;border:none}
+.btn-next{background:#fff;color:#c53030;border:2px solid #e53e3e}
+.actions button:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(229,62,62,.3)}
+.print-key{display:none}
+@media(max-width:700px){.questions{grid-template-columns:minmax(0,1fr)}.section{padding:16px}}
+@media print{html{font-size:100%}body{background:#fff}.actions,.explanation{display:none!important}header{position:static;box-shadow:none;background:none;color:#000;border-bottom:2px solid #000;border-radius:0}.score{border-color:#000}.section{box-shadow:none;padding:0}.question{break-inside:avoid}.answer{background:none!important;border-bottom:1px solid #000;color:transparent}.q-num{background:none;color:#000;border:1px solid #000}.print-key{display:block;break-before:page}.print-key li{margin:4px 0 4px 1.5em}}
+</style>
+</head>
+<body>
+<div class="container">
+<header><div class="head-row"><h1>N2 単語テスト 第12課</h1><div class="score-box">点数 <span class="score">　</span> / 10</div></div></header>
+<div class="section">
+<div class="questions"></div>
+<div class="actions"><button type="button" class="btn-submit grade">採点</button><button type="button" class="btn-next next">新しい10問</button></div>
+</div>
+<section class="print-key"><h2>解答</h2><ol></ol></section>
+</div>
+<script>
+const BANK=[{"id":1,"sentence":"製品をさらに（　）する","answer":"軽量化","reading":"けいりょうか","thai":"การทำให้เบาขึ้น","alternatives":[],"source":"補足","collocations":["車体の軽量化を図る","部品を軽量化する"]},{"id":2,"sentence":"出版（　）で長く働く","answer":"業界","reading":"ぎょうかい","thai":"วงการ","alternatives":[],"source":"補足","collocations":["業界に参入する","業界の動向を調べる"]},{"id":3,"sentence":"時代の（　）を正確に読む","answer":"流れ","reading":"ながれ","thai":"แนวทาง, กระแส","alternatives":[],"source":"補足","collocations":["業界の流れに沿う","時代の流れに逆らう"]},{"id":4,"sentence":"海外での販売（　）がある","answer":"実績","reading":"じっせき","thai":"ผลงาน","alternatives":[],"source":"教科書","collocations":["実績を積む","実績が認められる"]},{"id":5,"sentence":"消費者の（　）で考える","answer":"視点","reading":"してん","thai":"ทัศนคติ, มุมมอง","alternatives":[],"source":"教科書","collocations":["視点を変える","異なる視点から見る"]},{"id":6,"sentence":"新しい顧客を（　）する","answer":"獲得","reading":"かくとく","thai":"การขวนขวายหามา, การได้มา","alternatives":[],"source":"教科書","collocations":["権利を獲得する","支持を獲得する"]},{"id":7,"sentence":"性能だけでなく（　）も大切だ","answer":"見た目","reading":"みため","thai":"ภาพลักษณ์, ลักษณะภายนอก","alternatives":[],"source":"教科書","collocations":["見た目を重視する","見た目が変わる"]},{"id":8,"sentence":"安全性を最も（　）する","answer":"重視","reading":"じゅうし","thai":"การให้ความสำคัญ","alternatives":[],"source":"教科書","collocations":["機能性を重視する","本人の意思を重視する"]},{"id":9,"sentence":"靴を買うときの（　）はデザインだ","answer":"決め手","reading":"きめて","thai":"คนตัดสิน","alternatives":[],"source":"教科書","collocations":["勝負の決め手になる","決め手に欠ける"]},{"id":10,"sentence":"暑い日は（　）に注意する","answer":"熱中症","reading":"ねっちゅうしょう","thai":"โรคลมแดด, ภาวะอุณหภูมิในร่างกายสูง","alternatives":[],"source":"教科書","collocations":["熱中症に注意する","熱中症で倒れる"]},{"id":11,"sentence":"（　）の海辺を歩く","answer":"夕暮れ","reading":"ゆうぐれ","thai":"ตอนเย็น, ยามเย็น","alternatives":[],"source":"教科書","collocations":["夕暮れが迫る","夕暮れの空を眺める"]},{"id":12,"sentence":"接客は（　）にそって行う","answer":"マニュアル","reading":"","thai":"คู่มือการใช้, หนังสือคู่มือ, คู่มือ","alternatives":[],"source":"教科書","collocations":["マニュアルに沿う","マニュアルを作成する"]},{"id":13,"sentence":"美術館で（　）を開く","answer":"展覧会","reading":"てんらんかい","thai":"นิทรรศการ","alternatives":[],"source":"補足","collocations":["展覧会を見に行く","展覧会に出品する"]},{"id":14,"sentence":"新作を会場に（　）する","answer":"展示","reading":"てんじ","thai":"การนำเสนอ, การจัดแสดง","alternatives":[],"source":"教科書","collocations":["作品を展示する","展示を見学する"]},{"id":15,"sentence":"世界（　）の技術を誇る","answer":"トップレベル","reading":"","thai":"ชั้นสูง, ชั้นนำ","alternatives":[],"source":"教科書","collocations":["全国トップレベルになる","トップレベルを維持する"]},{"id":16,"sentence":"この地域では（　）が盛んだ","answer":"製造業","reading":"せいぞうぎょう","thai":"อุตสาหกรรมการผลิต","alternatives":[],"source":"補足","collocations":["製造業に従事する","製造業を支援する"]},{"id":17,"sentence":"経験者を（　）募集する","answer":"若干名","reading":"じゃっかんめい","thai":"คนจำนวนน้อย, ไม่กี่คน","alternatives":[],"source":"教科書","collocations":["若干名を採用する","若干名の欠員が出る"]},{"id":18,"sentence":"新卒社員を（　）する","answer":"採用","reading":"さいよう","thai":"การจ้างงาน, การรับเข้าทำงาน","alternatives":[],"source":"教科書","collocations":["人材を採用する","提案を採用する"]},{"id":19,"sentence":"千人を（　）する会場だ","answer":"収容","reading":"しゅうよう","thai":"การบรรจุ, ความจุ","alternatives":[],"source":"教科書","collocations":["観客を収容する","収容人数を増やす"]},{"id":20,"sentence":"（　）調査を行う","answer":"マーケティング","reading":"","thai":"การตลาด","alternatives":[],"source":"教科書","collocations":["マーケティング戦略を立てる","マーケティングを学ぶ"]},{"id":21,"sentence":"観光地への道路を（　）する","answer":"整備","reading":"せいび","thai":"การดูแลรักษา, การบำรุงรักษา","alternatives":[],"source":"教科書","collocations":["設備を整備する","交通網を整備する"]},{"id":22,"sentence":"本人の（　）を尊重する","answer":"意思","reading":"いし","thai":"ความตั้งใจ, ความมุ่งมั่น","alternatives":[],"source":"補足","collocations":["意思を伝える","意思を確認する"]},{"id":23,"sentence":"相手の意図を（　）する","answer":"誤解","reading":"ごかい","thai":"ความเข้าใจผิด, การเข้าใจผิด","alternatives":[],"source":"教科書","collocations":["誤解を招く","誤解を解く"]},{"id":24,"sentence":"乱れた（　）を改善する","answer":"食生活","reading":"しょくせいかつ","thai":"อุปนิสัยการกิน","alternatives":[],"source":"補足","collocations":["食生活を見直す","食生活が偏る"]},{"id":25,"sentence":"牛乳から（　）を取る","answer":"カルシウム","reading":"","thai":"แคลเซียม","alternatives":[],"source":"補足","collocations":["カルシウムが不足する","カルシウムを含む食品"]},{"id":26,"sentence":"不足した栄養を（　）","answer":"補う","reading":"おぎなう","thai":"ชดเชย, ทดแทน","alternatives":[],"source":"教科書","collocations":["不足分を補う","欠点を補う"]},{"id":27,"sentence":"魚の（　）を開ける","answer":"缶詰","reading":"かんづめ","thai":"ผลิตภัณฑ์บรรจุกระป๋อง, เครื่องกระป๋อง","alternatives":[],"source":"教科書","collocations":["缶詰を保存する","缶詰を温める"]},{"id":28,"sentence":"受付で身分証を（　）","answer":"差し出す","reading":"さしだす","thai":"ยื่นให้, ส่ง","alternatives":[],"source":"補足","collocations":["手紙を差し出す","手を差し出す"]},{"id":29,"sentence":"突然の変更に（　）","answer":"戸惑う","reading":"とまどう","thai":"งุนงง, ลังเล","alternatives":[],"source":"補足","collocations":["返答に戸惑う","対応に戸惑う"]},{"id":30,"sentence":"外食が続くと栄養が（　）","answer":"偏る","reading":"かたよる","thai":"เอนเอียง, ลำเอียง","alternatives":[],"source":"教科書","collocations":["考え方が偏る","一方に偏る"]},{"id":31,"sentence":"雨の少ない（　）を旅する","answer":"砂漠","reading":"さばく","thai":"ทะเลทราย","alternatives":[],"source":"補足","collocations":["砂漠を横断する","砂漠が広がる"]},{"id":32,"sentence":"健康のため毎日（　）する","answer":"自炊","reading":"じすい","thai":"การทำอาหารกินเอง","alternatives":[],"source":"教科書","collocations":["自炊を始める","自炊で食費を抑える"]},{"id":33,"sentence":"親元を離れて（　）する","answer":"自立","reading":"じりつ","thai":"การเป็นอิสระ, การพึ่งพาตนเอง","alternatives":[],"source":"教科書","collocations":["経済的に自立する","自立を支援する"]},{"id":34,"sentence":"甘い物を食べると（　）が増える","answer":"にきび","reading":"","thai":"สิว","alternatives":[],"source":"教科書","collocations":["にきびが増える","にきびを治す"]},{"id":35,"sentence":"にせ物ではないかと（　）","answer":"疑う","reading":"うたがう","thai":"สงสัย","alternatives":[],"source":"教科書","collocations":["事実を疑う","自分の耳を疑う"]},{"id":36,"sentence":"服の（　）を高める","answer":"ファッション性","reading":"ファッションせい","thai":"แฟชั่น, ความทันสมัย","alternatives":[],"source":"補足","collocations":["ファッション性を重視する","ファッション性に優れる"]},{"id":37,"sentence":"この町には（　）な人が多い","answer":"おしゃれ","reading":"","thai":"สวยงาม, ดูดี, เก๋ไก๋","alternatives":[],"source":"教科書","collocations":["おしゃれな服を着る","おしゃれな雰囲気を楽しむ"]},{"id":38,"sentence":"防水などの（　）に優れた靴","answer":"機能性","reading":"きのうせい","thai":"การใช้งาน, ฟังก์ชั่น","alternatives":[],"source":"補足","collocations":["機能性を重視する","機能性に優れる"]},{"id":39,"sentence":"倉庫がカフェに（　）","answer":"生まれ変わる","reading":"うまれかわる","thai":"เกิดใหม่","alternatives":[],"source":"補足","collocations":["新しく生まれ変わる","別の姿に生まれ変わる"]},{"id":40,"sentence":"（　）に家を建てる","answer":"郊外","reading":"こうがい","thai":"ชานเมือง","alternatives":[],"source":"教科書","collocations":["郊外に住む","郊外へ移転する"]},{"id":41,"sentence":"庭付きの（　）を購入する","answer":"一戸建て","reading":"いっこだて","thai":"บ้านเดี่ยว","alternatives":[],"source":"教科書","collocations":["一戸建てに住む","一戸建てを借りる"]},{"id":42,"sentence":"日程の変更を（　）する","answer":"了承","reading":"りょうしょう","thai":"การยอมรับ, ความเข้าใจ","alternatives":[],"source":"補足","collocations":["了承を求める","了承を得る"]},{"id":43,"sentence":"申請内容を（　）する","answer":"審査","reading":"しんさ","thai":"การพิจารณาคัดเลือก","alternatives":[],"source":"教科書","collocations":["審査を受ける","厳正に審査する"]},{"id":44,"sentence":"事業の（　）を調達する","answer":"資金","reading":"しきん","thai":"เงินทุน","alternatives":[],"source":"補足","collocations":["資金を集める","資金が不足する"]},{"id":45,"sentence":"部品をメーカーに（　）する","answer":"発注","reading":"はっちゅう","thai":"การสั่งซื้อ","alternatives":[],"source":"教科書","collocations":["材料を発注する","追加で発注する"]},{"id":46,"sentence":"必ず（　）を守って納品する","answer":"納期","reading":"のうき","thai":"กำหนดเวลาการส่งมอบ, กำหนดเวลาชำระเงิน","alternatives":[],"source":"補足","collocations":["納期に間に合わせる","納期を延ばす"]},{"id":47,"sentence":"強い（　）にさらされる","answer":"風雨","reading":"ふうう","thai":"ลมฝน","alternatives":[],"source":"補足","collocations":["風雨が強まる","風雨に耐える"]},{"id":48,"sentence":"台風の勢力が（　）","answer":"強まる","reading":"つよまる","thai":"แข็งแกร่งขึ้น, รุนแรงขึ้น","alternatives":[],"source":"教科書","collocations":["雨が強まる","警戒感が強まる"]},{"id":49,"sentence":"港に（　）が戻ってきた","answer":"漁船","reading":"ぎょせん","thai":"เรือประมง, เรือหาปลา","alternatives":[],"source":"教科書","collocations":["漁船が出港する","漁船で漁に出る"]},{"id":50,"sentence":"（　）が進み、語学力が必要になる","answer":"グローバル化","reading":"グローバルか","thai":"โลกาภิวัตน์","alternatives":[],"source":"教科書","collocations":["市場がグローバル化する","グローバル化に対応する"]}];
+const DRAW=10, STORE_KEY='tryn2-colloc-deck-ch12', BLANK='（　）';
+const qs=s=>document.querySelector(s), qsa=s=>[...document.querySelectorAll(s)];
+function esc(s){const d=document.createElement('div');d.textContent=s;return d.innerHTML}
+function shuffle(a){for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a}
+// まだ出していない問の山（deck）。全問を出し切るまで同じ問は出ない。保存できない環境では毎回全問から選ぶ
+function loadDeck(){try{const d=JSON.parse(localStorage.getItem(STORE_KEY));if(Array.isArray(d)&&d.every(i=>Number.isInteger(i)&&i>=0&&i<BANK.length))return [...new Set(d)]}catch(e){}return BANK.map((_,i)=>i)}
+function saveDeck(d){try{localStorage.setItem(STORE_KEY,JSON.stringify(d))}catch(e){}}
+// 山から先に取り、足りなければ山を全問で作り直して残りを補う（同じ10問の中では重複しない）
+function draw(){
+  const all=BANK.map((_,i)=>i), deck=loadDeck();
+  const set=shuffle(deck.slice()).slice(0,DRAW);
+  let next=deck.filter(i=>!set.includes(i));
+  if(set.length<DRAW){
+    set.push(...shuffle(all.filter(i=>!set.includes(i))).slice(0,DRAW-set.length));
+    next=all.filter(i=>!set.includes(i));
+  }
+  saveDeck(next);
+  return shuffle(set);
+}
+let current=[];
+function render(){
+  current=draw();
+  qs('.questions').innerHTML=current.map((idx,n)=>{
+    const q=BANK[idx], [before,after]=q.sentence.split(BLANK);
+    const input=`（<input class="answer" autocomplete="off" autocapitalize="off" spellcheck="false" aria-label="第${n+1}問の答え">）`;
+    return `<div class="question"><div class="q-text"><span class="q-num">${n+1}</span><span class="sentence">${esc(before)}${input}${esc(after)}</span></div><div class="hint" lang="th">〔${esc(q.thai)}〕</div><div class="explanation" aria-live="polite"></div></div>`;
+  }).join('');
+  qs('.print-key ol').innerHTML=current.map(idx=>`<li>${esc(BANK[idx].answer)}（${esc(BANK[idx].reading||'読みなし')}）</li>`).join('');
+  qs('.score').textContent='　';
+}
+const isHiragana=s=>/^[ぁ-ゖー]+$/.test(s);
+qs('.grade').addEventListener('click',()=>{
+  let score=0;
+  qsa('.question').forEach((row,n)=>{
+    const item=BANK[current[n]], input=row.querySelector('.answer'), fb=row.querySelector('.explanation'), value=input.value.trim();
+    let cls, mark;
+    if(value===item.answer||item.alternatives.includes(value)){score+=1;cls='correct';mark='○'}
+    else if(item.reading&&value===item.reading&&isHiragana(value)){score+=.5;cls='half';mark='△ 0.5'}
+    else{cls='wrong';mark='×'}
+    input.classList.remove('correct','half','wrong'); input.classList.add(cls);
+    fb.className='explanation show '+cls;
+    fb.innerHTML=`<span class="mark">${mark}</span>答え：<b>${esc(item.answer)}</b>（${esc(item.reading||'読みなし')}）`
+      +(item.alternatives.length?`<div class="meta">別解：${item.alternatives.map(esc).join('／')}</div>`:'')
+      +`<div class="meta">関連：${item.collocations.map(esc).join('／')}</div>`;
+  });
+  qs('.score').textContent=score;
+});
+qs('.next').addEventListener('click',()=>{render();window.scrollTo(0,0)});
+render();
+</script>
+</body></html>

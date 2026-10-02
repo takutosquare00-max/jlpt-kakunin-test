@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<title>JLPT N2 単語テスト 第9課（コロケーション）</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;-webkit-tap-highlight-color:transparent;font-size:135%}
+body{font-family:'Hiragino Kaku Gothic ProN','Hiragino Sans','Noto Sans JP',Meiryo,sans-serif;background:#f0f4f8;color:#1a202c;line-height:1.7;padding:env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left)}
+.container{max-width:1100px;margin:0 auto;padding:20px 5px}
+header{background:linear-gradient(135deg,#e53e3e 0%,#c53030 100%);color:#fff;padding:12px 16px;border-radius:14px;margin-bottom:14px;position:sticky;top:8px;z-index:100;box-shadow:0 4px 15px rgba(229,62,62,.4)}
+.head-row{display:flex;align-items:center;gap:10px}
+header h1{flex:1;min-width:0;font-size:1.02em;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.score-box{flex:0 0 auto;font-weight:700;font-variant-numeric:tabular-nums}
+.score{display:inline-block;min-width:2.2em;text-align:center;border-bottom:2px solid rgba(255,255,255,.7)}
+.section{background:#fff;border-radius:12px;padding:20px 24px;margin-bottom:20px;box-shadow:0 2px 8px rgba(0,0,0,.06)}
+.questions{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:0 32px}
+.question{padding:16px 0;border-bottom:1px solid #e2e8f0}
+.q-text{display:flex;align-items:baseline;font-size:1.05em;font-weight:500}
+.q-num{flex:0 0 28px;display:inline-block;background:#e53e3e;color:#fff;width:28px;height:28px;text-align:center;line-height:28px;border-radius:50%;font-size:.8em;font-weight:bold;margin-right:8px}
+.sentence{flex:1;min-width:0;overflow-wrap:anywhere}
+.answer{width:6.5em;max-width:55vw;border:0;border-bottom:2px solid #a0aec0;background:#f7fafc;padding:0 .3em;font:inherit;text-align:center;border-radius:4px 4px 0 0}
+.answer:focus{outline:2px solid #feb2b2;background:#fff}
+.answer.correct{border-color:#48bb78;background:#f0fff4;color:#276749}.answer.half{border-color:#ed8936;background:#fffaf0}.answer.wrong{border-color:#fc8181;background:#fff5f5;color:#9b2c2c}
+.hint{color:#718096;font-size:.8em;margin:4px 0 0 36px;overflow-wrap:anywhere}
+.explanation{display:none;margin:8px 0 0 36px;padding:8px 10px;background:#fffbeb;border-radius:8px;font-size:.8em;border-left:3px solid #f6ad55}
+.explanation.show{display:block}
+.explanation .mark{font-weight:700;margin-right:6px}.explanation.correct .mark{color:#2f855a}.explanation.half .mark{color:#c05621}.explanation.wrong .mark{color:#c53030}
+.explanation .meta{color:#718096}
+.actions{display:flex;gap:12px;margin-top:20px}
+.actions button{flex:1;min-height:48px;padding:14px;border-radius:12px;font:inherit;font-size:1em;font-weight:bold;cursor:pointer;transition:transform .2s,box-shadow .2s;touch-action:manipulation;-webkit-user-select:none;user-select:none}
+.btn-submit{background:linear-gradient(135deg,#e53e3e 0%,#c53030 100%);color:#fff;border:none}
+.btn-next{background:#fff;color:#c53030;border:2px solid #e53e3e}
+.actions button:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(229,62,62,.3)}
+.print-key{display:none}
+@media(max-width:700px){.questions{grid-template-columns:minmax(0,1fr)}.section{padding:16px}}
+@media print{html{font-size:100%}body{background:#fff}.actions,.explanation{display:none!important}header{position:static;box-shadow:none;background:none;color:#000;border-bottom:2px solid #000;border-radius:0}.score{border-color:#000}.section{box-shadow:none;padding:0}.question{break-inside:avoid}.answer{background:none!important;border-bottom:1px solid #000;color:transparent}.q-num{background:none;color:#000;border:1px solid #000}.print-key{display:block;break-before:page}.print-key li{margin:4px 0 4px 1.5em}}
+</style>
+</head>
+<body>
+<div class="container">
+<header><div class="head-row"><h1>N2 単語テスト 第9課</h1><div class="score-box">点数 <span class="score">　</span> / 10</div></div></header>
+<div class="section">
+<div class="questions"></div>
+<div class="actions"><button type="button" class="btn-submit grade">採点</button><button type="button" class="btn-next next">新しい10問</button></div>
+</div>
+<section class="print-key"><h2>解答</h2><ol></ol></section>
+</div>
+<script>
+const BANK=[{"id":1,"sentence":"夕食は（　）の店に決めた","answer":"食べ放題","reading":"たべほうだい","thai":"บุฟเฟ่ต์","alternatives":[],"source":"教科書","collocations":["食べ放題に行く","食べ放題を予約する","焼き肉の食べ放題"]},{"id":2,"sentence":"夕飯に（　）を作る","answer":"肉じゃが","reading":"にくじゃが","thai":"เนื้อต้มมันฝรั่ง","alternatives":[],"source":"補足","collocations":["肉じゃがを煮る","肉じゃがを作る","家庭の肉じゃが"]},{"id":3,"sentence":"朝食に（　）を一切れ食べた","answer":"焼き魚","reading":"やきざかな","thai":"ปลาย่าง","alternatives":[],"source":"補足","collocations":["焼き魚を食べる","焼き魚定食","焼き魚にレモンを添える"]},{"id":4,"sentence":"朝から何も食べず（　）だ","answer":"空腹","reading":"くうふく","thai":"หิว, ท้องว่าง","alternatives":[],"source":"補足","collocations":["空腹を感じる","空腹を満たす","空腹で出かける"]},{"id":5,"sentence":"歯医者で（　）を抜いた","answer":"虫歯","reading":"むしば","thai":"ฟันผุ","alternatives":[],"source":"教科書","collocations":["虫歯を抜く","虫歯を治療する","虫歯を予防する"]},{"id":6,"sentence":"両親の勧めで（　）をする","answer":"見合い","reading":"みあい","thai":"การดูตัว (เพื่อจัดการแต่งงาน)","alternatives":[],"source":"教科書","collocations":["見合いをする","見合いを勧める","見合い相手"]},{"id":7,"sentence":"温かい（　）を一つ食べた","answer":"おまんじゅう","reading":"","thai":"ขนมมันจู (แป้งสอดไส้)","alternatives":[],"source":"教科書","collocations":["おまんじゅうを食べる","おまんじゅうを蒸す","温かいおまんじゅう"]},{"id":8,"sentence":"このベンチは（　）塗りたてだ","answer":"ペンキ","reading":"","thai":"การทาสี","alternatives":[],"source":"教科書","collocations":["ペンキを塗る","ペンキが乾く","ペンキ塗りたて"]},{"id":9,"sentence":"犬が私を（　）の人と間違えた","answer":"よそ","reading":"","thai":"อื่น","alternatives":[],"source":"教科書","collocations":["よその人","よその家","よそへ行く"]},{"id":10,"sentence":"犬が知らない人に（　）","answer":"ほえる","reading":"","thai":"เห่า, คำราม","alternatives":[],"source":"教科書","collocations":["犬がほえる","人にほえる","大声でほえる"]},{"id":11,"sentence":"このパソコンは（　）壊れる","answer":"しょっちゅう","reading":"","thai":"เสมอ ๆ, บ่อย ๆ, เป็นประจำ","alternatives":[],"source":"補足","collocations":["しょっちゅう遅刻する","しょっちゅう故障する","しょっちゅう連絡する"]},{"id":12,"sentence":"作業中に画面が（　）する","answer":"フリーズ","reading":"","thai":"(คอมพิวเตอร์) ค้าง, แฮงก์","alternatives":[],"source":"補足","collocations":["画面がフリーズする","パソコンがフリーズする","突然フリーズする"]},{"id":13,"sentence":"来客は（　）からお入りください","answer":"正面玄関","reading":"しょうめんげんかん","thai":"ทางเข้าด้านหน้า, โถงทางเข้าด้านหน้า","alternatives":[],"source":"補足","collocations":["正面玄関から入る","正面玄関に立つ","正面玄関を閉める"]},{"id":14,"sentence":"駅前に偉人の（　）が立つ","answer":"銅像","reading":"どうぞう","thai":"รูปหล่อทองแดง, รูปปั้น","alternatives":[],"source":"教科書","collocations":["銅像を立てる","銅像を建てる","銅像の前で待つ"]},{"id":15,"sentence":"花粉で（　）が止まらない","answer":"くしゃみ","reading":"","thai":"การจาม","alternatives":[],"source":"補足","collocations":["くしゃみが出る","くしゃみをする","くしゃみが止まらない"]},{"id":16,"sentence":"（　）で好きな皿を取る","answer":"回転寿司","reading":"かいてんずし","thai":"ซูชิจานเวียน, ซูชิสายพาน, ซูชิหมุน","alternatives":[],"source":"補足","collocations":["回転寿司に行く","回転寿司を食べる","回転寿司の店"]},{"id":17,"sentence":"皿の（　）で金額を計算する","answer":"センサー","reading":"","thai":"เซ็นเซอร์","alternatives":[],"source":"教科書","collocations":["センサーが反応する","センサーで検知する","センサーを取り付ける"]},{"id":18,"sentence":"金額を（　）計算する","answer":"自動的に","reading":"じどうてきに","thai":"โดยอัตโนมัติ","alternatives":[],"source":"教科書","collocations":["自動的に計算する","自動的に閉まる","自動的に停止する"]},{"id":19,"sentence":"（　）でたばこに火をつける","answer":"ライター","reading":"","thai":"ไฟแช็ก","alternatives":[],"source":"補足","collocations":["ライターで火をつける","使い捨てライター","ライターの火を消す"]},{"id":20,"sentence":"ガスに（　）する","answer":"着火","reading":"ちゃっか","thai":"การจุดไฟ, การติดไฟ","alternatives":[],"source":"補足","collocations":["ガスに着火する","自動で着火する","着火装置を点検する"]},{"id":21,"sentence":"地震で照明が大きく（　）","answer":"揺れる","reading":"ゆれる","thai":"สั่น, สั่นสะเทือน, สั่นไหว","alternatives":[],"source":"補足","collocations":["建物が揺れる","大きく揺れる","地震で揺れる"]},{"id":22,"sentence":"彼は（　）な料理を考案した","answer":"独創的","reading":"どくそうてき","thai":"แปลกใหม่, ไม่เหมือนใคร","alternatives":[],"source":"補足","collocations":["独創的な料理","独創的な発想","独創的な作品"]},{"id":23,"sentence":"この道は急な（　）が多い","answer":"カーブ","reading":"","thai":"เส้นโค้ง, ทางโค้ง","alternatives":[],"source":"教科書","collocations":["急なカーブ","カーブを曲がる","カーブが多い"]},{"id":24,"sentence":"この通りは（　）が少なくて暗い","answer":"街灯","reading":"がいとう","thai":"ไฟริมถนน, ไฟริมทาง","alternatives":[],"source":"教科書","collocations":["街灯を設置する","街灯がつく","街灯が道を照らす"]},{"id":25,"sentence":"この（　）は去年のモデルだ","answer":"プリンター","reading":"","thai":"พรินเตอร์, เครื่องพิมพ์","alternatives":[],"source":"教科書","collocations":["プリンターで印刷する","プリンターを接続する","家庭用プリンター"]},{"id":26,"sentence":"海外の友人と（　）する","answer":"チャット","reading":"","thai":"พูดคุย, สนทนา, แชท (ทางอินเทอร์เน็ต)","alternatives":[],"source":"教科書","collocations":["友人とチャットする","チャットで相談する","チャットに参加する"]},{"id":27,"sentence":"（　）になっても基礎を復習する","answer":"上級","reading":"じょうきゅう","thai":"ระดับสูง, ขั้นสูง","alternatives":[],"source":"教科書","collocations":["上級になる","上級クラス","上級者向け"]},{"id":28,"sentence":"新聞記事で（　）力を鍛える","answer":"読解","reading":"どっかい","thai":"การอ่านทำความเข้าใจ","alternatives":[],"source":"補足","collocations":["読解の練習をする","読解力を伸ばす","読解問題を解く"]},{"id":29,"sentence":"正々堂々と（　）する","answer":"勝負","reading":"しょうぶ","thai":"การแข่งขัน","alternatives":[],"source":"補足","collocations":["店との勝負","勝負に勝つ","勝負が決まる"]},{"id":30,"sentence":"飲み物は（　）にする","answer":"控えめ","reading":"ひかえめ","thai":"สำรวม, เกรงใจ","alternatives":[],"source":"教科書","collocations":["飲み物を控えめにする","控えめな味付け","量を控えめにする"]}];
+const DRAW=10, STORE_KEY='tryn2-colloc-deck-ch9', BLANK='（　）';
+const qs=s=>document.querySelector(s), qsa=s=>[...document.querySelectorAll(s)];
+function esc(s){const d=document.createElement('div');d.textContent=s;return d.innerHTML}
+function shuffle(a){for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a}
+// まだ出していない問の山（deck）。全問を出し切るまで同じ問は出ない。保存できない環境では毎回全問から選ぶ
+function loadDeck(){try{const d=JSON.parse(localStorage.getItem(STORE_KEY));if(Array.isArray(d)&&d.every(i=>Number.isInteger(i)&&i>=0&&i<BANK.length))return [...new Set(d)]}catch(e){}return BANK.map((_,i)=>i)}
+function saveDeck(d){try{localStorage.setItem(STORE_KEY,JSON.stringify(d))}catch(e){}}
+// 山から先に取り、足りなければ山を全問で作り直して残りを補う（同じ10問の中では重複しない）
+function draw(){
+  const all=BANK.map((_,i)=>i), deck=loadDeck();
+  const set=shuffle(deck.slice()).slice(0,DRAW);
+  let next=deck.filter(i=>!set.includes(i));
+  if(set.length<DRAW){
+    set.push(...shuffle(all.filter(i=>!set.includes(i))).slice(0,DRAW-set.length));
+    next=all.filter(i=>!set.includes(i));
+  }
+  saveDeck(next);
+  return shuffle(set);
+}
+let current=[];
+function render(){
+  current=draw();
+  qs('.questions').innerHTML=current.map((idx,n)=>{
+    const q=BANK[idx], [before,after]=q.sentence.split(BLANK);
+    const input=`（<input class="answer" autocomplete="off" autocapitalize="off" spellcheck="false" aria-label="第${n+1}問の答え">）`;
+    return `<div class="question"><div class="q-text"><span class="q-num">${n+1}</span><span class="sentence">${esc(before)}${input}${esc(after)}</span></div><div class="hint" lang="th">〔${esc(q.thai)}〕</div><div class="explanation" aria-live="polite"></div></div>`;
+  }).join('');
+  qs('.print-key ol').innerHTML=current.map(idx=>`<li>${esc(BANK[idx].answer)}（${esc(BANK[idx].reading||'読みなし')}）</li>`).join('');
+  qs('.score').textContent='　';
+}
+const isHiragana=s=>/^[ぁ-ゖー]+$/.test(s);
+qs('.grade').addEventListener('click',()=>{
+  let score=0;
+  qsa('.question').forEach((row,n)=>{
+    const item=BANK[current[n]], input=row.querySelector('.answer'), fb=row.querySelector('.explanation'), value=input.value.trim();
+    let cls, mark;
+    if(value===item.answer||item.alternatives.includes(value)){score+=1;cls='correct';mark='○'}
+    else if(item.reading&&value===item.reading&&isHiragana(value)){score+=.5;cls='half';mark='△ 0.5'}
+    else{cls='wrong';mark='×'}
+    input.classList.remove('correct','half','wrong'); input.classList.add(cls);
+    fb.className='explanation show '+cls;
+    fb.innerHTML=`<span class="mark">${mark}</span>答え：<b>${esc(item.answer)}</b>（${esc(item.reading||'読みなし')}）`
+      +(item.alternatives.length?`<div class="meta">別解：${item.alternatives.map(esc).join('／')}</div>`:'')
+      +`<div class="meta">関連：${item.collocations.map(esc).join('／')}</div>`;
+  });
+  qs('.score').textContent=score;
+});
+qs('.next').addEventListener('click',()=>{render();window.scrollTo(0,0)});
+render();
+</script>
+</body></html>

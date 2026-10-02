@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<title>JLPT N2 単語テスト 第14課（コロケーション）</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;-webkit-tap-highlight-color:transparent;font-size:135%}
+body{font-family:'Hiragino Kaku Gothic ProN','Hiragino Sans','Noto Sans JP',Meiryo,sans-serif;background:#f0f4f8;color:#1a202c;line-height:1.7;padding:env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left)}
+.container{max-width:1100px;margin:0 auto;padding:20px 5px}
+header{background:linear-gradient(135deg,#e53e3e 0%,#c53030 100%);color:#fff;padding:12px 16px;border-radius:14px;margin-bottom:14px;position:sticky;top:8px;z-index:100;box-shadow:0 4px 15px rgba(229,62,62,.4)}
+.head-row{display:flex;align-items:center;gap:10px}
+header h1{flex:1;min-width:0;font-size:1.02em;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.score-box{flex:0 0 auto;font-weight:700;font-variant-numeric:tabular-nums}
+.score{display:inline-block;min-width:2.2em;text-align:center;border-bottom:2px solid rgba(255,255,255,.7)}
+.section{background:#fff;border-radius:12px;padding:20px 24px;margin-bottom:20px;box-shadow:0 2px 8px rgba(0,0,0,.06)}
+.questions{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:0 32px}
+.question{padding:16px 0;border-bottom:1px solid #e2e8f0}
+.q-text{display:flex;align-items:baseline;font-size:1.05em;font-weight:500}
+.q-num{flex:0 0 28px;display:inline-block;background:#e53e3e;color:#fff;width:28px;height:28px;text-align:center;line-height:28px;border-radius:50%;font-size:.8em;font-weight:bold;margin-right:8px}
+.sentence{flex:1;min-width:0;overflow-wrap:anywhere}
+.answer{width:6.5em;max-width:55vw;border:0;border-bottom:2px solid #a0aec0;background:#f7fafc;padding:0 .3em;font:inherit;text-align:center;border-radius:4px 4px 0 0}
+.answer:focus{outline:2px solid #feb2b2;background:#fff}
+.answer.correct{border-color:#48bb78;background:#f0fff4;color:#276749}.answer.half{border-color:#ed8936;background:#fffaf0}.answer.wrong{border-color:#fc8181;background:#fff5f5;color:#9b2c2c}
+.hint{color:#718096;font-size:.8em;margin:4px 0 0 36px;overflow-wrap:anywhere}
+.explanation{display:none;margin:8px 0 0 36px;padding:8px 10px;background:#fffbeb;border-radius:8px;font-size:.8em;border-left:3px solid #f6ad55}
+.explanation.show{display:block}
+.explanation .mark{font-weight:700;margin-right:6px}.explanation.correct .mark{color:#2f855a}.explanation.half .mark{color:#c05621}.explanation.wrong .mark{color:#c53030}
+.explanation .meta{color:#718096}
+.actions{display:flex;gap:12px;margin-top:20px}
+.actions button{flex:1;min-height:48px;padding:14px;border-radius:12px;font:inherit;font-size:1em;font-weight:bold;cursor:pointer;transition:transform .2s,box-shadow .2s;touch-action:manipulation;-webkit-user-select:none;user-select:none}
+.btn-submit{background:linear-gradient(135deg,#e53e3e 0%,#c53030 100%);color:#fff;border:none}
+.btn-next{background:#fff;color:#c53030;border:2px solid #e53e3e}
+.actions button:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(229,62,62,.3)}
+.print-key{display:none}
+@media(max-width:700px){.questions{grid-template-columns:minmax(0,1fr)}.section{padding:16px}}
+@media print{html{font-size:100%}body{background:#fff}.actions,.explanation{display:none!important}header{position:static;box-shadow:none;background:none;color:#000;border-bottom:2px solid #000;border-radius:0}.score{border-color:#000}.section{box-shadow:none;padding:0}.question{break-inside:avoid}.answer{background:none!important;border-bottom:1px solid #000;color:transparent}.q-num{background:none;color:#000;border:1px solid #000}.print-key{display:block;break-before:page}.print-key li{margin:4px 0 4px 1.5em}}
+</style>
+</head>
+<body>
+<div class="container">
+<header><div class="head-row"><h1>N2 単語テスト 第14課</h1><div class="score-box">点数 <span class="score">　</span> / 10</div></div></header>
+<div class="section">
+<div class="questions"></div>
+<div class="actions"><button type="button" class="btn-submit grade">採点</button><button type="button" class="btn-next next">新しい10問</button></div>
+</div>
+<section class="print-key"><h2>解答</h2><ol></ol></section>
+</div>
+<script>
+const BANK=[{"id":1,"sentence":"今朝の新聞の（　）を読む","answer":"社説","reading":"しゃせつ","thai":"บทบรรณาธิการ","alternatives":[],"source":"教科書","collocations":["社説を読む","社説を掲載する","社説で主張する"]},{"id":2,"sentence":"計画をめぐって意見が（　）する","answer":"対立","reading":"たいりつ","thai":"การเผชิญหน้ากัน, ความขัดแย้ง","alternatives":[],"source":"教科書","collocations":["意見が対立する","利害が対立する","対立を深める"]},{"id":3,"sentence":"次回大会の（　）に選ばれる","answer":"開催国","reading":"かいさいこく","thai":"ประเทศเจ้าภาพ","alternatives":[],"source":"補足","collocations":["開催国に決まる","開催国を代表する","開催国の責任"]},{"id":4,"sentence":"留学を（　）に成長する","answer":"契機","reading":"けいき","thai":"โอกาส, จังหวะ","alternatives":[],"source":"補足","collocations":["契機となる","事件を契機に","契機として発展する"]},{"id":5,"sentence":"地域の経済が（　）する","answer":"発展","reading":"はってん","thai":"การเจริญเติบโต, การพัฒนา","alternatives":[],"source":"教科書","collocations":["国が発展する","産業の発展","発展を願う"]},{"id":6,"sentence":"建設に多額の（　）がかかる","answer":"費用","reading":"ひよう","thai":"ต้นทุน, ค่าใช้จ่าย","alternatives":[],"source":"教科書","collocations":["費用がかかる","費用を負担する","費用を抑える"]},{"id":7,"sentence":"住民が政府に（　）する","answer":"抗議","reading":"こうぎ","thai":"การคัดค้าน, การโต้แย้ง","alternatives":[],"source":"教科書","collocations":["抗議の声が上がる","判定に抗議する","抗議を受ける"]},{"id":8,"sentence":"新事業の（　）を集める","answer":"資金","reading":"しきん","thai":"เงินทุน","alternatives":[],"source":"補足","collocations":["資金を確保する","資金が不足する","資金を調達する"]},{"id":9,"sentence":"新しい（　）を建設する","answer":"競技場","reading":"きょうぎじょう","thai":"สนามกีฬา, สนามแข่ง","alternatives":[],"source":"教科書","collocations":["競技場を整備する","競技場に入る","競技場で大会を開催する"]},{"id":10,"sentence":"新しい工場の（　）を探す","answer":"建設用地","reading":"けんせつようち","thai":"พื้นที่ก่อสร้าง, บริเวณก่อสร้าง","alternatives":[],"source":"補足","collocations":["建設用地を探す","建設用地を取得する","建設用地を選ぶ"]},{"id":11,"sentence":"必要な人員を（　）する","answer":"確保","reading":"かくほ","thai":"การหามาได้, การรักษาไว้ให้มั่น","alternatives":[],"source":"補足","collocations":["安全を確保する","場所を確保する","財源を確保する"]},{"id":12,"sentence":"本社を郊外へ（　）する","answer":"移転","reading":"いてん","thai":"การย้ายสถานที่","alternatives":[],"source":"補足","collocations":["住民が移転する","移転を求める","移転先を探す"]},{"id":13,"sentence":"冷静な（　）を養う","answer":"判断力","reading":"はんだんりょく","thai":"ทักษะการตัดสินใจ","alternatives":[],"source":"補足","collocations":["判断力を養う","判断力に優れる","的確な判断力"]},{"id":14,"sentence":"契約時に（　）を支払う","answer":"保証金","reading":"ほしょうきん","thai":"เงินประกัน","alternatives":[],"source":"補足","collocations":["保証金を預ける","保証金を返す","保証金を受け取る"]},{"id":15,"sentence":"被災者向けの（　）を建てる","answer":"住宅","reading":"じゅうたく","thai":"บ้าน, ที่อยู่อาศัย","alternatives":[],"source":"補足","collocations":["住宅を購入する","住宅を供給する","住宅問題を解決する"]},{"id":16,"sentence":"説明を聞いても（　）がいかない","answer":"納得","reading":"なっとく","thai":"การยอมรับ, การเห็นด้วย","alternatives":[],"source":"補足","collocations":["説明に納得する","納得がいく","納得を得る"]},{"id":17,"sentence":"互いの信頼関係を（　）する","answer":"構築","reading":"こうちく","thai":"การสร้าง, การก่อสร้าง","alternatives":[],"source":"補足","collocations":["社会を構築する","体制を構築する","関係を構築する"]},{"id":18,"sentence":"会社の基本（　）を掲げる","answer":"理念","reading":"りねん","thai":"อุดมคติ, ความคิด","alternatives":[],"source":"補足","collocations":["理念に基づく","理念を共有する","基本理念を示す"]},{"id":19,"sentence":"（　）の平和に貢献する","answer":"国際社会","reading":"こくさいしゃかい","thai":"สังคมนานาชาติ","alternatives":[],"source":"教科書","collocations":["国際社会に訴える","国際社会の一員","国際社会で活躍する"]},{"id":20,"sentence":"市民に計画への（　）を呼びかける","answer":"賛同","reading":"さんどう","thai":"ความเห็นชอบ, การเห็นด้วย","alternatives":[],"source":"補足","collocations":["趣旨に賛同する","賛同を得る","賛同を呼びかける"]},{"id":21,"sentence":"大会を開く（　）がある","answer":"意義","reading":"いぎ","thai":"ความหมาย, ความสำคัญ","alternatives":[],"source":"教科書","collocations":["意義がある","意義を見いだす","社会的意義を考える"]},{"id":22,"sentence":"事業の（　）を縮小する","answer":"規模","reading":"きぼ","thai":"สัดส่วน, ขนาด","alternatives":[],"source":"補足","collocations":["規模を拡大する","世界規模で考える","大規模な工事"]},{"id":23,"sentence":"国際大会を（　）する","answer":"招致","reading":"しょうち","thai":"การเชื้อเชิญ","alternatives":[],"source":"補足","collocations":["大会招致に成功する","招致を目指す","招致活動を進める"]},{"id":24,"sentence":"建設計画の（　）を問う","answer":"是非","reading":"ぜひ","thai":"ถูกผิด, ดีเลว","alternatives":[],"source":"教科書","collocations":["是非を議論する","是非を判断する","是非をめぐって争う"]},{"id":25,"sentence":"冬山で（　）する","answer":"遭難","reading":"そうなん","thai":"การประสบภัยที่อาจอันตรายถึงชีวิต","alternatives":[],"source":"教科書","collocations":["遭難者を救助する","海で遭難する","遭難事故が起きる"]},{"id":26,"sentence":"貴重な文化（　）を守る","answer":"遺産","reading":"いさん","thai":"มรดก","alternatives":[],"source":"教科書","collocations":["遺産を受け継ぐ","遺産を残す","遺産をめぐって争う"]},{"id":27,"sentence":"土地をめぐって兄弟の（　）が起こる","answer":"争い","reading":"あらそい","thai":"การโต้เถียง, การทะเลาะ, เรื่องวิวาท","alternatives":[],"source":"教科書","collocations":["争いが起こる","争いを避ける","争いを収める"]},{"id":28,"sentence":"川の上流に（　）を建設する","answer":"ダム","reading":"","thai":"เขื่อน","alternatives":[],"source":"教科書","collocations":["ダムを造る","ダムに水をためる","ダムの建設に反対する"]},{"id":29,"sentence":"（　）が祭りを準備する","answer":"村人","reading":"むらびと","thai":"คนในหมู่บ้าน","alternatives":[],"source":"補足","collocations":["村人と交流する","村人が集まる","村人に話を聞く"]},{"id":30,"sentence":"予定どおり計画を（　）する","answer":"実行","reading":"じっこう","thai":"การทำให้เกิดผล, การนำไปปฏิบัติจริง","alternatives":[],"source":"教科書","collocations":["政策を実行する","実行に移す","実行を延期する"]},{"id":31,"sentence":"十分検討した上で（　）を出す","answer":"結論","reading":"けつろん","thai":"ข้อสรุป, ข้อยุติ","alternatives":[],"source":"教科書","collocations":["結論に達する","結論を急ぐ","結論を導く"]},{"id":32,"sentence":"決定を次回に（　）","answer":"持ち越す","reading":"もちこす","thai":"เลื่อนออกไป, เลื่อนเวลา","alternatives":[],"source":"教科書","collocations":["結論を持ち越す","問題を翌日に持ち越す","課題を次年度へ持ち越す"]},{"id":33,"sentence":"校舎の（　）を行う","answer":"改修工事","reading":"かいしゅうこうじ","thai":"งานซ่อมแซม, งานปรับปรุงซ่อมแซม","alternatives":[],"source":"補足","collocations":["改修工事を始める","改修工事が終わる","改修工事をめぐる話し合い"]},{"id":34,"sentence":"来月から新商品を（　）する","answer":"販売","reading":"はんばい","thai":"การขาย, การจัดจำหน่าย","alternatives":[],"source":"補足","collocations":["商品を販売する","販売を開始する","販売計画を立てる"]},{"id":35,"sentence":"新しい政策について（　）する","answer":"議論","reading":"ぎろん","thai":"การอภิปราย, การถกเถียง","alternatives":[],"source":"補足","collocations":["議論を重ねる","議論が続く","議論を深める"]},{"id":36,"sentence":"店員の態度に（　）を言う","answer":"文句","reading":"もんく","thai":"การบ่น, การร้องทุกข์, คำร้องเรียน","alternatives":[],"source":"補足","collocations":["文句がある","文句をつける","文句ばかり言う"]},{"id":37,"sentence":"警察が事件を（　）する","answer":"捜査","reading":"そうさ","thai":"การสืบสวน, การสอบสวน","alternatives":[],"source":"教科書","collocations":["捜査を開始する","捜査を続ける","捜査方法を見直す"]},{"id":38,"sentence":"二つの（　）を持つ","answer":"国籍","reading":"こくせき","thai":"สัญชาติ, เชื้อชาติ","alternatives":[],"source":"補足","collocations":["国籍を取得する","国籍を問わない","国籍による差別"]},{"id":39,"sentence":"応募者の（　）を問わない","answer":"性別","reading":"せいべつ","thai":"เพศ","alternatives":[],"source":"補足","collocations":["性別を記入する","性別に関係なく","性別による違い"]},{"id":40,"sentence":"人種を理由に人を（　）する","answer":"差別","reading":"さべつ","thai":"การแบ่งแยก, การเลือกปฏิบัติ","alternatives":[],"source":"教科書","collocations":["差別をなくす","差別を受ける","差別を禁止する"]},{"id":41,"sentence":"乱れた（　）を見直す","answer":"食生活","reading":"しょくせいかつ","thai":"อุปนิสัยการกิน","alternatives":[],"source":"教科書","collocations":["食生活を改善する","食生活が乱れる","健康的な食生活"]},{"id":42,"sentence":"業務の進め方を（　）する","answer":"改善","reading":"かいぜん","thai":"การทำให้ดีขึ้น, การปรับปรุง","alternatives":[],"source":"補足","collocations":["状況を改善する","改善に努める","改善策を示す"]},{"id":43,"sentence":"（　）な運動を続ける","answer":"適度","reading":"てきど","thai":"พอเหมาะ, เหมาะสม","alternatives":[],"source":"教科書","collocations":["適度な休息","適度に体を動かす","適度な量"]},{"id":44,"sentence":"十分な睡眠で（　）を保つ","answer":"免疫力","reading":"めんえきりょく","thai":"ภูมิคุ้มกัน, ภูมิต้านทานโรค","alternatives":[],"source":"補足","collocations":["免疫力が高まる","免疫力を高める","免疫力が低下する"]},{"id":45,"sentence":"健康への関心が（　）","answer":"高まる","reading":"たかまる","thai":"เพิ่มขึ้น, สูงขึ้น","alternatives":[],"source":"教科書","collocations":["期待が高まる","緊張が高まる","必要性が高まる"]},{"id":46,"sentence":"当店では衣料品を（　）","answer":"扱う","reading":"あつかう","thai":"จัดการ, ดูแล","alternatives":[],"source":"補足","collocations":["商品を扱う","問題を扱う","丁寧に扱う"]},{"id":47,"sentence":"（　）が年々進んでいる","answer":"少子高齢化","reading":"しょうしこうれいか","thai":"สังคมที่อัตราเด็กเกิดใหม่ลดลงและผู้สูงอายุมากขึ้น","alternatives":[],"source":"教科書","collocations":["少子高齢化が進む","少子高齢化に対応する","少子高齢化の影響"]},{"id":48,"sentence":"国内の（　）が減少する","answer":"労働人口","reading":"ろうどうじんこう","thai":"แรงงาน","alternatives":[],"source":"教科書","collocations":["労働人口が増える","労働人口を確保する","労働人口の減少"]},{"id":49,"sentence":"人口が減れば（　）にも影響が出る","answer":"経済構造","reading":"けいざいこうぞう","thai":"โครงสร้างเศรษฐกิจ","alternatives":[],"source":"教科書","collocations":["経済構造を改革する","経済構造に影響する","経済構造の変化"]},{"id":50,"sentence":"駅前に新しい（　）を出す","answer":"店舗","reading":"てんぽ","thai":"ร้านค้า","alternatives":[],"source":"補足","collocations":["店舗を移転する","店舗を構える","店舗を改装する"]},{"id":51,"sentence":"駅周辺の（　）を進める","answer":"再開発","reading":"さいかいはつ","thai":"การพัฒนาหรือฟื้นฟูอีกครั้ง","alternatives":[],"source":"補足","collocations":["再開発を進める","再開発計画を立てる","再開発で変わる"]},{"id":52,"sentence":"古くなった建物を（　）","answer":"取り壊す","reading":"とりこわす","thai":"รื้อ, ทำลาย, ทุบทิ้ง","alternatives":[],"source":"教科書","collocations":["家を取り壊す","倉庫を取り壊す","校舎を取り壊す"]},{"id":53,"sentence":"住民が改革に（　）する","answer":"抵抗","reading":"ていこう","thai":"การขัดขืน, การต่อต้าน","alternatives":[],"source":"補足","collocations":["変化に抵抗する","抵抗を感じる","激しく抵抗する"]},{"id":54,"sentence":"製品の（　）を確認する","answer":"安全性","reading":"あんぜんせい","thai":"ความปลอดภัย","alternatives":[],"source":"教科書","collocations":["安全性を高める","安全性を調査する","安全性に問題がある"]},{"id":55,"sentence":"地域に新しい（　）を設ける","answer":"診療所","reading":"しんりょうじょ","thai":"สถานีอนามัย","alternatives":[],"source":"補足","collocations":["診療所を開く","診療所で診察を受ける","診療所に通う"]},{"id":56,"sentence":"相談窓口を（　）する","answer":"開設","reading":"かいせつ","thai":"การสร้าง, การสถาปนา, การก่อตั้ง","alternatives":[],"source":"補足","collocations":["診療所を開設する","口座を開設する","サイトを開設する"]},{"id":57,"sentence":"地方の（　）を充実させる","answer":"医療","reading":"いりょう","thai":"การรักษาพยาบาล","alternatives":[],"source":"補足","collocations":["医療を受ける","医療環境を整える","医療に携わる"]},{"id":58,"sentence":"被災地の（　）を進める","answer":"復興","reading":"ふっこう","thai":"การสร้างใหม่, การฟื้นฟู","alternatives":[],"source":"補足","collocations":["復興を支援する","復興に取り組む","地域が復興する"]},{"id":59,"sentence":"被災した住民を（　）する","answer":"支援","reading":"しえん","thai":"การช่วยเหลือ","alternatives":[],"source":"補足","collocations":["支援を受ける","子育てを支援する","支援を呼びかける"]},{"id":60,"sentence":"社員としての（　）について話す","answer":"心構え","reading":"こころがまえ","thai":"การเตรียมใจ","alternatives":[],"source":"教科書","collocations":["心構えを持つ","仕事への心構え","心構えを身につける"]}];
+const DRAW=10, STORE_KEY='tryn2-colloc-deck-ch14', BLANK='（　）';
+const qs=s=>document.querySelector(s), qsa=s=>[...document.querySelectorAll(s)];
+function esc(s){const d=document.createElement('div');d.textContent=s;return d.innerHTML}
+function shuffle(a){for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a}
+// まだ出していない問の山（deck）。全問を出し切るまで同じ問は出ない。保存できない環境では毎回全問から選ぶ
+function loadDeck(){try{const d=JSON.parse(localStorage.getItem(STORE_KEY));if(Array.isArray(d)&&d.every(i=>Number.isInteger(i)&&i>=0&&i<BANK.length))return [...new Set(d)]}catch(e){}return BANK.map((_,i)=>i)}
+function saveDeck(d){try{localStorage.setItem(STORE_KEY,JSON.stringify(d))}catch(e){}}
+// 山から先に取り、足りなければ山を全問で作り直して残りを補う（同じ10問の中では重複しない）
+function draw(){
+  const all=BANK.map((_,i)=>i), deck=loadDeck();
+  const set=shuffle(deck.slice()).slice(0,DRAW);
+  let next=deck.filter(i=>!set.includes(i));
+  if(set.length<DRAW){
+    set.push(...shuffle(all.filter(i=>!set.includes(i))).slice(0,DRAW-set.length));
+    next=all.filter(i=>!set.includes(i));
+  }
+  saveDeck(next);
+  return shuffle(set);
+}
+let current=[];
+function render(){
+  current=draw();
+  qs('.questions').innerHTML=current.map((idx,n)=>{
+    const q=BANK[idx], [before,after]=q.sentence.split(BLANK);
+    const input=`（<input class="answer" autocomplete="off" autocapitalize="off" spellcheck="false" aria-label="第${n+1}問の答え">）`;
+    return `<div class="question"><div class="q-text"><span class="q-num">${n+1}</span><span class="sentence">${esc(before)}${input}${esc(after)}</span></div><div class="hint" lang="th">〔${esc(q.thai)}〕</div><div class="explanation" aria-live="polite"></div></div>`;
+  }).join('');
+  qs('.print-key ol').innerHTML=current.map(idx=>`<li>${esc(BANK[idx].answer)}（${esc(BANK[idx].reading||'読みなし')}）</li>`).join('');
+  qs('.score').textContent='　';
+}
+const isHiragana=s=>/^[ぁ-ゖー]+$/.test(s);
+qs('.grade').addEventListener('click',()=>{
+  let score=0;
+  qsa('.question').forEach((row,n)=>{
+    const item=BANK[current[n]], input=row.querySelector('.answer'), fb=row.querySelector('.explanation'), value=input.value.trim();
+    let cls, mark;
+    if(value===item.answer||item.alternatives.includes(value)){score+=1;cls='correct';mark='○'}
+    else if(item.reading&&value===item.reading&&isHiragana(value)){score+=.5;cls='half';mark='△ 0.5'}
+    else{cls='wrong';mark='×'}
+    input.classList.remove('correct','half','wrong'); input.classList.add(cls);
+    fb.className='explanation show '+cls;
+    fb.innerHTML=`<span class="mark">${mark}</span>答え：<b>${esc(item.answer)}</b>（${esc(item.reading||'読みなし')}）`
+      +(item.alternatives.length?`<div class="meta">別解：${item.alternatives.map(esc).join('／')}</div>`:'')
+      +`<div class="meta">関連：${item.collocations.map(esc).join('／')}</div>`;
+  });
+  qs('.score').textContent=score;
+});
+qs('.next').addEventListener('click',()=>{render();window.scrollTo(0,0)});
+render();
+</script>
+</body></html>

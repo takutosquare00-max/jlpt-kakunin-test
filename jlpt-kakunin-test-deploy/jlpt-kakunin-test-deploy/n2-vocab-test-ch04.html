@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<title>JLPT N2 単語テスト 第4課（コロケーション）</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;-webkit-tap-highlight-color:transparent;font-size:135%}
+body{font-family:'Hiragino Kaku Gothic ProN','Hiragino Sans','Noto Sans JP',Meiryo,sans-serif;background:#f0f4f8;color:#1a202c;line-height:1.7;padding:env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left)}
+.container{max-width:1100px;margin:0 auto;padding:20px 5px}
+header{background:linear-gradient(135deg,#e53e3e 0%,#c53030 100%);color:#fff;padding:12px 16px;border-radius:14px;margin-bottom:14px;position:sticky;top:8px;z-index:100;box-shadow:0 4px 15px rgba(229,62,62,.4)}
+.head-row{display:flex;align-items:center;gap:10px}
+header h1{flex:1;min-width:0;font-size:1.02em;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.score-box{flex:0 0 auto;font-weight:700;font-variant-numeric:tabular-nums}
+.score{display:inline-block;min-width:2.2em;text-align:center;border-bottom:2px solid rgba(255,255,255,.7)}
+.section{background:#fff;border-radius:12px;padding:20px 24px;margin-bottom:20px;box-shadow:0 2px 8px rgba(0,0,0,.06)}
+.questions{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:0 32px}
+.question{padding:16px 0;border-bottom:1px solid #e2e8f0}
+.q-text{display:flex;align-items:baseline;font-size:1.05em;font-weight:500}
+.q-num{flex:0 0 28px;display:inline-block;background:#e53e3e;color:#fff;width:28px;height:28px;text-align:center;line-height:28px;border-radius:50%;font-size:.8em;font-weight:bold;margin-right:8px}
+.sentence{flex:1;min-width:0;overflow-wrap:anywhere}
+.answer{width:6.5em;max-width:55vw;border:0;border-bottom:2px solid #a0aec0;background:#f7fafc;padding:0 .3em;font:inherit;text-align:center;border-radius:4px 4px 0 0}
+.answer:focus{outline:2px solid #feb2b2;background:#fff}
+.answer.correct{border-color:#48bb78;background:#f0fff4;color:#276749}.answer.half{border-color:#ed8936;background:#fffaf0}.answer.wrong{border-color:#fc8181;background:#fff5f5;color:#9b2c2c}
+.hint{color:#718096;font-size:.8em;margin:4px 0 0 36px;overflow-wrap:anywhere}
+.explanation{display:none;margin:8px 0 0 36px;padding:8px 10px;background:#fffbeb;border-radius:8px;font-size:.8em;border-left:3px solid #f6ad55}
+.explanation.show{display:block}
+.explanation .mark{font-weight:700;margin-right:6px}.explanation.correct .mark{color:#2f855a}.explanation.half .mark{color:#c05621}.explanation.wrong .mark{color:#c53030}
+.explanation .meta{color:#718096}
+.actions{display:flex;gap:12px;margin-top:20px}
+.actions button{flex:1;min-height:48px;padding:14px;border-radius:12px;font:inherit;font-size:1em;font-weight:bold;cursor:pointer;transition:transform .2s,box-shadow .2s;touch-action:manipulation;-webkit-user-select:none;user-select:none}
+.btn-submit{background:linear-gradient(135deg,#e53e3e 0%,#c53030 100%);color:#fff;border:none}
+.btn-next{background:#fff;color:#c53030;border:2px solid #e53e3e}
+.actions button:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(229,62,62,.3)}
+.print-key{display:none}
+@media(max-width:700px){.questions{grid-template-columns:minmax(0,1fr)}.section{padding:16px}}
+@media print{html{font-size:100%}body{background:#fff}.actions,.explanation{display:none!important}header{position:static;box-shadow:none;background:none;color:#000;border-bottom:2px solid #000;border-radius:0}.score{border-color:#000}.section{box-shadow:none;padding:0}.question{break-inside:avoid}.answer{background:none!important;border-bottom:1px solid #000;color:transparent}.q-num{background:none;color:#000;border:1px solid #000}.print-key{display:block;break-before:page}.print-key li{margin:4px 0 4px 1.5em}}
+</style>
+</head>
+<body>
+<div class="container">
+<header><div class="head-row"><h1>N2 単語テスト 第4課</h1><div class="score-box">点数 <span class="score">　</span> / 10</div></div></header>
+<div class="section">
+<div class="questions"></div>
+<div class="actions"><button type="button" class="btn-submit grade">採点</button><button type="button" class="btn-next next">新しい10問</button></div>
+</div>
+<section class="print-key"><h2>解答</h2><ol></ol></section>
+</div>
+<script>
+const BANK=[{"id":1,"sentence":"台風は日本の南（　）にある","answer":"海上","reading":"かいじょう","thai":"ในทะเล, ที่ทะเล","alternatives":[],"source":"教科書","collocations":["海上を進む","海上で発生する","海上交通"]},{"id":2,"sentence":"台風の中心の（　）は低い","answer":"気圧","reading":"きあつ","thai":"ความกดอากาศ","alternatives":[],"source":"教科書","collocations":["気圧が下がる","気圧が低い","中心気圧"]},{"id":3,"sentence":"台風の（　）は35メートルだ","answer":"最大瞬間風速","reading":"さいだいしゅんかんふうそく","thai":"ความเร็วลมสูงสุด","alternatives":[],"source":"教科書","collocations":["最大瞬間風速を記録する","最大瞬間風速が上がる","最大瞬間風速を観測する"]},{"id":4,"sentence":"沖縄が台風の（　）に入る","answer":"暴風域","reading":"ぼうふういき","thai":"พื้นที่ลมมรสุม, เขตลมมรสุม","alternatives":[],"source":"教科書","collocations":["暴風域に入る","暴風域を抜ける","暴風域を伴う"]},{"id":5,"sentence":"雨が（　）にわたって降る","answer":"広範囲","reading":"こうはんい","thai":"เป็นบริเวณกว้าง","alternatives":[],"source":"教科書","collocations":["広範囲に及ぶ","広範囲を調査する","広範囲で停電する"]},{"id":6,"sentence":"九州（　）では波が高い","answer":"沿岸","reading":"えんがん","thai":"ชายฝั่ง, ริมฝั่ง","alternatives":[],"source":"教科書","collocations":["太平洋沿岸","沿岸地域","沿岸を航行する"]},{"id":7,"sentence":"台風が（　）するため休校となる","answer":"接近","reading":"せっきん","thai":"การใกล้เข้ามา","alternatives":[],"source":"教科書","collocations":["台風が接近する","接近を知らせる","日本に接近する"]},{"id":8,"sentence":"大雨洪水（　）が出される","answer":"注意報","reading":"ちゅういほう","thai":"การเตือน, ประกาศเตือนภัย","alternatives":[],"source":"教科書","collocations":["注意報を出す","注意報を解除する","強風注意報"]},{"id":9,"sentence":"今夜から明日の（　）にかけて雨が降る","answer":"明け方","reading":"あけがた","thai":"เช้าตรู่, เช้ามืด, รุ่งสาง","alternatives":[],"source":"教科書","collocations":["明け方まで続く","明け方に目が覚める","明け方の空"]},{"id":10,"sentence":"（　）の水質を調べる","answer":"河川","reading":"かせん","thai":"แม่น้ำ","alternatives":[],"source":"補足","collocations":["河川が氾濫する","河川を管理する","河川の水位"]},{"id":11,"sentence":"川が急に（　）する","answer":"増水","reading":"ぞうすい","thai":"การที่ปริมาณน้ำเพิ่มขึ้น","alternatives":[],"source":"教科書","collocations":["川が増水する","増水に注意する","大雨で増水する"]},{"id":12,"sentence":"現地の様子を（　）する","answer":"中継","reading":"ちゅうけい","thai":"การถ่ายทอดสด","alternatives":[],"source":"教科書","collocations":["試合を中継する","現場から中継する","生中継を見る"]},{"id":13,"sentence":"おもちゃ（　）で贈り物を選ぶ","answer":"売り場","reading":"うりば","thai":"พื้นที่ขายสินค้า, แผนกขายสินค้า","alternatives":[],"source":"教科書","collocations":["食品売り場","売り場に並べる","売り場を担当する"]},{"id":14,"sentence":"子どもの喜ぶ顔を（　）","answer":"思い浮かべる","reading":"おもいうかべる","thai":"นึกถึง, รำลึกถึง","alternatives":[],"source":"教科書","collocations":["故郷を思い浮かべる","情景を思い浮かべる","顔を思い浮かべる"]},{"id":15,"sentence":"贈り物を選ぶ父親の（　）が増える","answer":"姿","reading":"すがた","thai":"ลักษณะภายนอก, รูปร่างหน้าตา","alternatives":[],"source":"教科書","collocations":["姿を見せる","後ろ姿","美しい姿"]},{"id":16,"sentence":"けがをした足を（　）","answer":"かばう","reading":"","thai":"ป้องกัน, ปกป้อง","alternatives":[],"source":"教科書","collocations":["子どもをかばう","仲間をかばう","痛む足をかばう"]},{"id":17,"sentence":"苦しみながらも（　）する","answer":"完走","reading":"かんそう","thai":"การวิ่งจนจบการแข่งขัน, การวิ่งถึงเส้นชัย","alternatives":[],"source":"教科書","collocations":["マラソンを完走する","最後まで完走する","完走を目指す"]},{"id":18,"sentence":"観客が選手に（　）する","answer":"拍手","reading":"はくしゅ","thai":"การปรบมือ","alternatives":[],"source":"教科書","collocations":["温かい拍手","拍手を送る","大きな拍手"]},{"id":19,"sentence":"各（　）の問題点を調べる","answer":"部署","reading":"ぶしょ","thai":"แผนก","alternatives":[],"source":"教科書","collocations":["部署を異動する","担当部署","関係部署"]},{"id":20,"sentence":"会議で問題点を（　）する","answer":"検討","reading":"けんとう","thai":"การพิจารณา","alternatives":[],"source":"教科書","collocations":["対策を検討する","導入を検討する","検討を重ねる"]},{"id":21,"sentence":"会議で今後の方針を（　）する","answer":"決定","reading":"けってい","thai":"การตัดสินใจ","alternatives":[],"source":"教科書","collocations":["日程を決定する","正式に決定する","決定を下す"]},{"id":22,"sentence":"趣味の（　）教室に通う","answer":"園芸","reading":"えんげい","thai":"การจัดสวน, การทำสวน","alternatives":[],"source":"教科書","collocations":["園芸を楽しむ","園芸用品","園芸店"]},{"id":23,"sentence":"（　）の育て方を学ぶ","answer":"草花","reading":"くさばな","thai":"ดอกไม้","alternatives":[],"source":"教科書","collocations":["草花を育てる","草花を植える","野の草花"]},{"id":24,"sentence":"母は（　）を手伝っている","answer":"家業","reading":"かぎょう","thai":"ธุรกิจครอบครัว","alternatives":[],"source":"教科書","collocations":["家業を継ぐ","家業を営む","家業を手伝う"]},{"id":25,"sentence":"厳しい状況で仲間を（　）","answer":"励ます","reading":"はげます","thai":"ส่งเสริม, ให้กำลังใจ","alternatives":[],"source":"教科書","collocations":["仲間を励ます","患者を励ます","後輩を励ます"]},{"id":26,"sentence":"隊員が遭難者を（　）する","answer":"救助","reading":"きゅうじょ","thai":"การช่วยชีวิต, การช่วยเหลือ","alternatives":[],"source":"補足","collocations":["人命を救助する","救助を待つ","救助に向かう"]},{"id":27,"sentence":"台風で（　）が切れる","answer":"電線","reading":"でんせん","thai":"สายไฟ","alternatives":[],"source":"教科書","collocations":["電線を張る","電線に触れる","切れた電線"]},{"id":28,"sentence":"市内（　）に大雨警報が出る","answer":"全域","reading":"ぜんいき","thai":"ทั่วทุกพื้นที่","alternatives":[],"source":"補足","collocations":["市内全域","全域にわたって停電する","全域に広がる"]},{"id":29,"sentence":"台風で町全体が（　）する","answer":"停電","reading":"ていでん","thai":"ไฟดับ","alternatives":[],"source":"教科書","collocations":["停電が起きる","停電から復旧する","大規模な停電"]},{"id":30,"sentence":"（　）にわたる研究を続ける","answer":"長年","reading":"ながねん","thai":"ระยะเวลายาวนาน, หลายปี","alternatives":[],"source":"教科書","collocations":["長年の経験","長年勤める","長年にわたる努力"]},{"id":31,"sentence":"研究者の努力が（　）","answer":"実る","reading":"みのる","thai":"ออกดอกออกผล, เกิดประโยชน์","alternatives":[],"source":"教科書","collocations":["努力が実る","研究が実る","果実が実る"]},{"id":32,"sentence":"政治・経済・（　）で活躍する","answer":"外交","reading":"がいこう","thai":"การทูต","alternatives":[],"source":"教科書","collocations":["外交関係","外交を行う","外交政策"]},{"id":33,"sentence":"市民向けに（　）を教える","answer":"生け花","reading":"いけばな","thai":"อิเคบานะ (การจัดดอกไม้แบบญี่ปุ่น)","alternatives":[],"source":"教科書","collocations":["生け花を習う","生け花を飾る","生け花教室"]},{"id":34,"sentence":"全10回の公開（　）に通う","answer":"講座","reading":"こうざ","thai":"ชั้นเรียน, หลักสูตร","alternatives":[],"source":"補足","collocations":["講座を受ける","講座を開く","公開講座"]},{"id":35,"sentence":"10年間にわたり（　）を調査する","answer":"遺跡","reading":"いせき","thai":"ซากโบราณ, ซากปรักหักพัง","alternatives":[],"source":"教科書","collocations":["遺跡を発掘する","遺跡を保存する","古代遺跡"]},{"id":36,"sentence":"九州地方が（　）する","answer":"梅雨入り","reading":"つゆいり","thai":"การเริ่มเข้าฤดูฝน","alternatives":[],"source":"教科書","collocations":["梅雨入りを発表する","平年より早い梅雨入り","梅雨入りが遅れる"]},{"id":37,"sentence":"この動物は（　）で暮らす","answer":"群れ","reading":"むれ","thai":"กลุ่ม, ฝูง, หมู่","alternatives":[],"source":"教科書","collocations":["群れを作る","群れを離れる","鳥の群れ"]},{"id":38,"sentence":"町が買い物客で（　）","answer":"にぎわう","reading":"","thai":"มีชีวิตชีวา, คึกคัก","alternatives":[],"source":"教科書","collocations":["観光客でにぎわう","祭りでにぎわう","市場がにぎわう"]},{"id":39,"sentence":"（　）から腕にレースが付く","answer":"肩","reading":"かた","thai":"ไหล่","alternatives":[],"source":"教科書","collocations":["肩を痛める","肩に掛ける","肩がこる"]},{"id":40,"sentence":"レース付きの（　）を着る","answer":"ブラウス","reading":"","thai":"เสื้อครึ่งตัวของสตรี","alternatives":[],"source":"教科書","collocations":["白いブラウス","ブラウスを着る","ブラウスの袖"]}];
+const DRAW=10, STORE_KEY='tryn2-colloc-deck-ch4', BLANK='（　）';
+const qs=s=>document.querySelector(s), qsa=s=>[...document.querySelectorAll(s)];
+function esc(s){const d=document.createElement('div');d.textContent=s;return d.innerHTML}
+function shuffle(a){for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a}
+// まだ出していない問の山（deck）。全問を出し切るまで同じ問は出ない。保存できない環境では毎回全問から選ぶ
+function loadDeck(){try{const d=JSON.parse(localStorage.getItem(STORE_KEY));if(Array.isArray(d)&&d.every(i=>Number.isInteger(i)&&i>=0&&i<BANK.length))return [...new Set(d)]}catch(e){}return BANK.map((_,i)=>i)}
+function saveDeck(d){try{localStorage.setItem(STORE_KEY,JSON.stringify(d))}catch(e){}}
+// 山から先に取り、足りなければ山を全問で作り直して残りを補う（同じ10問の中では重複しない）
+function draw(){
+  const all=BANK.map((_,i)=>i), deck=loadDeck();
+  const set=shuffle(deck.slice()).slice(0,DRAW);
+  let next=deck.filter(i=>!set.includes(i));
+  if(set.length<DRAW){
+    set.push(...shuffle(all.filter(i=>!set.includes(i))).slice(0,DRAW-set.length));
+    next=all.filter(i=>!set.includes(i));
+  }
+  saveDeck(next);
+  return shuffle(set);
+}
+let current=[];
+function render(){
+  current=draw();
+  qs('.questions').innerHTML=current.map((idx,n)=>{
+    const q=BANK[idx], [before,after]=q.sentence.split(BLANK);
+    const input=`（<input class="answer" autocomplete="off" autocapitalize="off" spellcheck="false" aria-label="第${n+1}問の答え">）`;
+    return `<div class="question"><div class="q-text"><span class="q-num">${n+1}</span><span class="sentence">${esc(before)}${input}${esc(after)}</span></div><div class="hint" lang="th">〔${esc(q.thai)}〕</div><div class="explanation" aria-live="polite"></div></div>`;
+  }).join('');
+  qs('.print-key ol').innerHTML=current.map(idx=>`<li>${esc(BANK[idx].answer)}（${esc(BANK[idx].reading||'読みなし')}）</li>`).join('');
+  qs('.score').textContent='　';
+}
+const isHiragana=s=>/^[ぁ-ゖー]+$/.test(s);
+qs('.grade').addEventListener('click',()=>{
+  let score=0;
+  qsa('.question').forEach((row,n)=>{
+    const item=BANK[current[n]], input=row.querySelector('.answer'), fb=row.querySelector('.explanation'), value=input.value.trim();
+    let cls, mark;
+    if(value===item.answer||item.alternatives.includes(value)){score+=1;cls='correct';mark='○'}
+    else if(item.reading&&value===item.reading&&isHiragana(value)){score+=.5;cls='half';mark='△ 0.5'}
+    else{cls='wrong';mark='×'}
+    input.classList.remove('correct','half','wrong'); input.classList.add(cls);
+    fb.className='explanation show '+cls;
+    fb.innerHTML=`<span class="mark">${mark}</span>答え：<b>${esc(item.answer)}</b>（${esc(item.reading||'読みなし')}）`
+      +(item.alternatives.length?`<div class="meta">別解：${item.alternatives.map(esc).join('／')}</div>`:'')
+      +`<div class="meta">関連：${item.collocations.map(esc).join('／')}</div>`;
+  });
+  qs('.score').textContent=score;
+});
+qs('.next').addEventListener('click',()=>{render();window.scrollTo(0,0)});
+render();
+</script>
+</body></html>
