@@ -10,7 +10,7 @@
 html{-webkit-text-size-adjust:100%;-webkit-tap-highlight-color:transparent;font-size:135%}
 body{font-family:'Hiragino Kaku Gothic ProN','Hiragino Sans','Noto Sans JP',Meiryo,sans-serif;background:#f0f4f8;color:#1a202c;line-height:1.7;padding:env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left)}
 .container{max-width:1100px;margin:0 auto;padding:20px 5px}
-header{background:linear-gradient(135deg,#e53e3e 0%,#c53030 100%);color:#fff;padding:12px 16px;border-radius:14px;margin-bottom:14px;position:sticky;top:8px;z-index:100;box-shadow:0 4px 15px rgba(229,62,62,.4)}
+header{background:linear-gradient(135deg,#667eea 0%,#764ba2 100%);color:#fff;padding:12px 16px;border-radius:14px;margin-bottom:14px;position:sticky;top:8px;z-index:100;box-shadow:0 4px 15px rgba(102,126,234,0.4)}
 .head-row{display:flex;align-items:center;gap:10px}
 header h1{flex:1;min-width:0;font-size:1.02em;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .score-box{flex:0 0 auto;font-weight:700;font-variant-numeric:tabular-nums}
@@ -19,10 +19,10 @@ header h1{flex:1;min-width:0;font-size:1.02em;font-weight:700;white-space:nowrap
 .questions{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:0 32px}
 .question{padding:16px 0;border-bottom:1px solid #e2e8f0}
 .q-text{display:flex;align-items:baseline;font-size:1.05em;font-weight:500}
-.q-num{flex:0 0 28px;display:inline-block;background:#e53e3e;color:#fff;width:28px;height:28px;text-align:center;line-height:28px;border-radius:50%;font-size:.8em;font-weight:bold;margin-right:8px}
+.q-num{flex:0 0 28px;display:inline-block;background:#667eea;color:#fff;width:28px;height:28px;text-align:center;line-height:28px;border-radius:50%;font-size:.8em;font-weight:bold;margin-right:8px}
 .sentence{flex:1;min-width:0;overflow-wrap:anywhere}
 .answer{width:6.5em;max-width:55vw;border:0;border-bottom:2px solid #a0aec0;background:#f7fafc;padding:0 .3em;font:inherit;text-align:center;border-radius:4px 4px 0 0}
-.answer:focus{outline:2px solid #feb2b2;background:#fff}
+.answer:focus{outline:2px solid #c3cafa;background:#fff}
 .answer.correct{border-color:#48bb78;background:#f0fff4;color:#276749}.answer.half{border-color:#ed8936;background:#fffaf0}.answer.wrong{border-color:#fc8181;background:#fff5f5;color:#9b2c2c}
 .hint{color:#718096;font-size:.8em;margin:4px 0 0 36px;overflow-wrap:anywhere}
 .explanation{display:none;margin:8px 0 0 36px;padding:8px 10px;background:#fffbeb;border-radius:8px;font-size:.8em;border-left:3px solid #f6ad55}
@@ -31,9 +31,9 @@ header h1{flex:1;min-width:0;font-size:1.02em;font-weight:700;white-space:nowrap
 .explanation .meta{color:#718096}
 .actions{display:flex;gap:12px;margin-top:20px}
 .actions button{flex:1;min-height:48px;padding:14px;border-radius:12px;font:inherit;font-size:1em;font-weight:bold;cursor:pointer;transition:transform .2s,box-shadow .2s;touch-action:manipulation;-webkit-user-select:none;user-select:none}
-.btn-submit{background:linear-gradient(135deg,#e53e3e 0%,#c53030 100%);color:#fff;border:none}
-.btn-next{background:#fff;color:#c53030;border:2px solid #e53e3e}
-.actions button:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(229,62,62,.3)}
+.btn-submit{background:linear-gradient(135deg,#667eea 0%,#764ba2 100%);color:#fff;border:none}
+.btn-next{background:#fff;color:#667eea;border:2px solid #667eea}
+.actions button:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(102,126,234,.3)}
 ruby rt{font-size:.55em}.print-key{display:none}
 @media(max-width:700px){.questions{grid-template-columns:minmax(0,1fr)}.section{padding:16px}}
 @media print{html{font-size:100%}body{background:#fff}.actions,.explanation{display:none!important}header{position:static;box-shadow:none;background:none;color:#000;border-bottom:2px solid #000;border-radius:0}.score{border-color:#000}.section{box-shadow:none;padding:0}.question{break-inside:avoid}.answer{background:none!important;border-bottom:1px solid #000;color:transparent}.q-num{background:none;color:#000;border:1px solid #000}.print-key{display:block;break-before:page}.print-key li{margin:4px 0 4px 1.5em}}
@@ -41,7 +41,7 @@ ruby rt{font-size:.55em}.print-key{display:none}
 </head>
 <body>
 <div class="container">
-<header><div class="head-row"><h1>単語テスト p.1–2</h1><div class="score-box">点数 <span class="score">　</span> / 10</div></div></header>
+<header><div class="head-row"><h1>N5 単語テスト p.1–2</h1><div class="score-box">点数 <span class="score">　</span> / 10</div></div></header>
 <div class="section">
 <div class="questions"></div>
 <div class="actions"><button type="button" class="btn-submit grade">採点</button><button type="button" class="btn-next next">新しい10問</button></div>
