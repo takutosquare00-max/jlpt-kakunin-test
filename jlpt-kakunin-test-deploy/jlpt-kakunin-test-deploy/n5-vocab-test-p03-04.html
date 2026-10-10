@@ -81,4 +81,19 @@ function render(){
 qs('.grade').addEventListener('click',()=>{let score=0;qsa('.question').forEach((row,n)=>{const item=BANK[current[n]],input=row.querySelector('.answer'),fb=row.querySelector('.explanation'),value=input.value.trim(),ok=[item.answer,item.reading,...item.alternatives].includes(value);if(ok)score++;input.classList.remove('correct','half','wrong');input.classList.add(ok?'correct':'wrong');fb.className='explanation show '+(ok?'correct':'wrong');fb.innerHTML=`<span class="mark">${ok?'○':'×'}</span>答え：<b>${esc(item.answer)}${item.answer!==item.reading?`（${esc(item.reading)}）`:''}</b>`+(item.alternatives.length?`<div class="meta">別解：${item.alternatives.map(esc).join('／')}</div>`:'')+`<div class="meta">関連：${item.collocations.join('／')}</div>`;});qs('.score').textContent=score;});
 qs('.next').addEventListener('click',()=>{render();window.scrollTo(0,0)});render();
 </script>
+<script>
+/* answer-fit: 記入枠から文字がはみ出すときは枠の大きさを保ったまま文字を縮小する */
+(function(){
+  function fit(el){
+    el.style.fontSize='';el.style.width='';el.style.height='';
+    var base=parseFloat(getComputedStyle(el).fontSize),r=el.getBoundingClientRect();
+    if(!r.width||el.scrollWidth<=el.clientWidth)return;
+    el.style.width=r.width+'px';el.style.height=r.height+'px';
+    var lo=base*0.3,s=base;
+    while(el.scrollWidth>el.clientWidth&&s>lo){s=Math.max(lo,s-0.5);el.style.fontSize=s+'px';}
+  }
+  document.addEventListener('input',function(e){var t=e.target;if(t&&t.classList&&t.classList.contains('answer'))fit(t);});
+  window.addEventListener('resize',function(){document.querySelectorAll('.answer').forEach(fit);});
+})();
+</script>
 </body></html>
