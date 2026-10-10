@@ -11,8 +11,8 @@ html{-webkit-text-size-adjust:100%;-webkit-tap-highlight-color:transparent;font-
 body{font-family:'Hiragino Kaku Gothic ProN','Hiragino Sans','Noto Sans JP',Meiryo,sans-serif;background:#f0f4f8;color:#1a202c;line-height:1.7;padding:env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left)}
 .container{max-width:1100px;margin:0 auto;padding:20px 5px}
 header{background:#667eea;color:#fff;padding:12px 16px;border-radius:14px;margin-bottom:14px;position:sticky;top:8px;z-index:100;box-shadow:0 4px 15px rgba(102,126,234,0.4)}
-.head-row{display:flex;align-items:center;gap:10px}
-header h1{flex:1;min-width:0;font-size:1.02em;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.head-row{display:flex;flex-wrap:wrap;align-items:center;gap:8px 14px}
+header h1{flex:1 0 auto;font-size:1.02em;font-weight:700;white-space:nowrap}
 .score-box{flex:0 0 auto;font-weight:700;font-variant-numeric:tabular-nums}
 .score{display:inline-block;min-width:2.2em;text-align:center;border-bottom:2px solid rgba(255,255,255,.7)}
 .section{background:#fff;border-radius:12px;padding:20px 24px;margin-bottom:20px;box-shadow:0 2px 8px rgba(0,0,0,.06)}
@@ -37,13 +37,12 @@ header h1{flex:1;min-width:0;font-size:1.02em;font-weight:700;white-space:nowrap
 ruby rt{font-size:.55em}.print-key{display:none}
 @media(max-width:700px){.questions{grid-template-columns:minmax(0,1fr)}.section{padding:16px}}
 @media print{html{font-size:100%}body{background:#fff}.actions,.explanation{display:none!important}header{position:static;box-shadow:none;background:none;color:#000;border-bottom:2px solid #000;border-radius:0}.score{border-color:#000}.section{box-shadow:none;padding:0}.question{break-inside:avoid}.answer{background:none!important;border-bottom:1px solid #000;color:transparent}.q-num{background:none;color:#000;border:1px solid #000}.print-key{display:block;break-before:page}.print-key li{margin:4px 0 4px 1.5em}}
-.range-box{padding:14px 18px}.range-row{display:flex;flex-wrap:wrap;align-items:center;gap:8px 10px}.range-row select{font:inherit;font-size:1em;padding:6px 8px;border:2px solid #cbd5e0;border-radius:8px;background:#fff;min-width:5.2em}.range-row .start{flex:0 0 auto;min-height:44px;padding:8px 22px;border-radius:12px;font:inherit;font-weight:bold;cursor:pointer;border:none;color:#fff}.range-msg{margin-top:8px;font-size:.8em;color:#c53030;min-height:1em}.range-msg:empty{display:none}@media print{.range-box{display:none!important}}
+.range-row{flex:0 1 auto;display:flex;flex-wrap:wrap;align-items:center;gap:6px 8px;font-size:.9em}.range-row select{font:inherit;padding:4px 6px;border:0;border-radius:8px;background:#fff;color:#1a202c;min-width:4.6em}.range-row .start{flex:0 0 auto;min-height:38px;padding:4px 16px;border-radius:10px;font:inherit;font-weight:bold;cursor:pointer;border:none;background:#fff;color:#667eea}.range-msg{margin-top:6px;font-size:.8em;font-weight:700;color:#fff}.range-msg:empty{display:none}@media print{.range-row,.range-msg{display:none!important}}
 </style>
 </head>
 <body>
 <div class="container">
-<header><div class="head-row"><h1>N5 単語テスト</h1><div class="score-box">点数 <span class="score">　</span> / 10</div></div></header>
-<div class="section range-box"><div class="range-row"><span>ページ</span><select class="from" aria-label="開始ページ"></select><span>〜</span><select class="to" aria-label="終了ページ"></select><button type="button" class="btn-submit start">テスト開始</button></div><div class="range-msg"></div></div>
+<header><div class="head-row"><h1>N5 単語テスト</h1><div class="range-row"><span>ページ</span><select class="from" aria-label="開始ページ"></select><span>〜</span><select class="to" aria-label="終了ページ"></select><button type="button" class="start">テスト開始</button></div><div class="score-box">点数 <span class="score">　</span> / 10</div></div><div class="range-msg"></div></header>
 <div class="section test-box" hidden>
 <div class="questions"></div>
 <div class="actions"><button type="button" class="btn-submit grade">採点</button><button type="button" class="btn-next next">新しい10問</button></div>
