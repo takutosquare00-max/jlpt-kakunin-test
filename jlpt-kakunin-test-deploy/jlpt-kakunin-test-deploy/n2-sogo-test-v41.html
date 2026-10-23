@@ -56,6 +56,17 @@ header{background:linear-gradient(135deg,#e53e3e 0%,#c53030 100%);box-shadow:0 4
 .result-score.good{color:#c53030}
 .result-score.fair{color:#ed8936}
 .result-score.poor{color:#e53e3e}
+/* 読解：Mac画面の左半分（Safari 875×1040〜1078px）で本文全文＋問題1問＋選択肢4つをスクロールなしで表示。
+   余白と行間のみ詰め、それでも収まらない長文は fitReading() が本文の文字を最小80%まで縮める */
+@media (min-width:700px) and (min-height:850px){
+.passage-pane{max-height:none;overflow:visible;padding:12px 16px;margin-bottom:12px}
+.passage-text p{margin-bottom:.3em;line-height:1.7}
+.questions-col .question{padding:10px 0}
+.questions-col .q-text{margin-bottom:8px}
+.questions-col .options{gap:6px}
+.questions-col .option label{min-height:40px;padding:6px 14px}
+.questions-col .opt-txt{line-height:1.8}
+}
 </style>
 </head>
 <body>
@@ -94,6 +105,8 @@ function setStickyTop(){const h=document.querySelector('header').offsetHeight;do
 function submitTest(){if(submitted)return;submitted=true;clearInterval(timerInterval);let correct=0;const sec={kanji:0,vocab:0,gram:0,sent:0,read:0};for(let i=1;i<=TOTAL;i++){const sel=document.querySelector(`input[name="q${i}"]:checked`);const opts=document.querySelectorAll(`input[name="q${i}"]`);let ok=false;if(sel&&sel.value==='1'){ok=true;correct++;}opts.forEach(o=>{const p=o.parentElement;if(o.value==='1')p.classList.add('correct');else if(o.checked)p.classList.add('wrong');});if(i<=2){if(ok)sec.kanji++;}else if(i<=4){if(ok)sec.vocab++;}else if(i<=7){if(ok)sec.gram++;}else if(i===8){if(ok)sec.sent++;}else{if(ok)sec.read++;}}document.querySelectorAll('.explanation').forEach(e=>e.classList.add('show'));const pct=Math.round((correct/TOTAL)*100);const panel=document.getElementById('resultPanel');panel.style.display='block';const score=document.getElementById('resultScore');score.textContent=`${correct} / ${TOTAL}（${pct}%）`;const title=document.getElementById('resultTitle');if(pct>=90){title.textContent='\ud83c\udf89 \u7d20\u6674\u3089\u3057\u3044\uff01';score.className='result-score excellent';}else if(pct>=70){title.textContent='\ud83d\udc4d \u3088\u304f\u3067\u304d\u307e\u3057\u305f\uff01';score.className='result-score good';}else if(pct>=50){title.textContent='\ud83d\udcdd \u3082\u3046\u5c11\u3057\uff01';score.className='result-score fair';}else{title.textContent='\ud83d\udcaa \u304c\u3093\u3070\u308a\u307e\u3057\u3087\u3046\uff01';score.className='result-score poor';}const t=TIME_LIMIT-timeLeft;document.getElementById('resultDetail').innerHTML=`<div class="result-item"><div class="label">\u6f22\u5b57\u306e\u8aad\u307f</div><div class="value">${sec.kanji}/2</div></div><div class="result-item"><div class="label">\u8a9e\u5f59</div><div class="value">${sec.vocab}/2</div></div><div class="result-item"><div class="label">\u6587\u6cd5</div><div class="value">${sec.gram}/3</div></div><div class="result-item"><div class="label">\u6587\u306e\u7d44\u307f\u7acb\u3066</div><div class="value">${sec.sent}/1</div></div><div class="result-item"><div class="label">\u8aad\u89e3</div><div class="value">${sec.read}/2</div></div><div class="result-item"><div class="label">\u6240\u8981\u6642\u9593</div><div class="value">${Math.floor(t/60)}\u5206${t%60}\u79d2</div></div>`;document.getElementById('submitBtn').disabled=true;const pb=document.getElementById('pauseBtn');if(pb)pb.disabled=true;panel.scrollIntoView({behavior:'smooth'});}
 const _pb=document.getElementById('pauseBtn');if(_pb)_pb.addEventListener('click',togglePause);
 setStickyTop();window.addEventListener('resize',setStickyTop);
+function fitReading(){const p=document.querySelector('.passage-pane'),t=p&&p.querySelector('.passage-text');if(!t)return;t.style.fontSize='';if(!matchMedia('(min-width:700px) and (min-height:850px)').matches)return;const base=parseFloat(getComputedStyle(t).fontSize),st=parseFloat(getComputedStyle(p).top)||0,mb=parseFloat(getComputedStyle(p).marginBottom)||0;let mq=0;document.querySelectorAll('.questions-col .question').forEach(q=>{mq=Math.max(mq,q.offsetHeight);});const avail=innerHeight-8;for(let s=0.98;s>0.79&&st+p.offsetHeight+mb+mq>avail;s-=0.02)t.style.fontSize=(base*s)+'px';}
+fitReading();window.addEventListener('resize',fitReading);if(document.fonts)document.fonts.ready.then(fitReading);
 startTimer();
 </script>
 </body>
