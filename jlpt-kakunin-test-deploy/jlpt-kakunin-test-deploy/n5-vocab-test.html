@@ -55,6 +55,18 @@ const DRAW=10, LEVEL='N5', STORE_PREFIX='tryn5-colloc-range-deck-';
 const qs=s=>document.querySelector(s), qsa=s=>[...document.querySelectorAll(s)];
 const CONF=new Map();for(const [a,b] of CONFLICTS){if(!CONF.has(a))CONF.set(a,new Set());if(!CONF.has(b))CONF.set(b,new Set());CONF.get(a).add(b);CONF.get(b).add(a)}
 function esc(s){const d=document.createElement('div');d.textContent=s;return d.innerHTML}
+// 採点用: 全角半角・カタカナ→ひらがな・空白を正規化し、漢字ごとに漢字/かなのどちらで書いても正解にする
+function norm(s){return s.normalize('NFKC').replace(/\s+/g,'').replace(/[ァ-ヶ]/g,c=>String.fromCharCode(c.charCodeAt(0)-0x60))}
+const isKanji=c=>/[㐀-鿿豈-﫿々〆]/.test(c);
+function mixMatch(form,reading,input){form=norm(form);reading=norm(reading);input=norm(input);const memo=new Map();
+  const go=(i,j,k)=>{const key=i+','+j+','+k;if(memo.has(key))return memo.get(key);let r=false;
+    if(i===form.length)r=j===reading.length&&k===input.length;
+    else if(!isKanji(form[i]))r=form[i]===reading[j]&&form[i]===input[k]&&go(i+1,j+1,k+1);
+    else for(let t=1;!r&&j+t<=reading.length;t++)r=(input[k]===form[i]&&go(i+1,j+t,k+1))||(input.startsWith(reading.slice(j,j+t),k)&&go(i+1,j+t,k+t));
+    memo.set(key,r);return r};
+  return go(0,0,0)}
+function isCorrect(item,value){if(!value)return false;const v=norm(value);
+  return [item.answer,item.reading,...item.alternatives].some(f=>norm(f)===v||mixMatch(f,item.reading,value))}
 function shuffle(a){for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a}
 function conflicts(a,b){const s=CONF.get(a);return !!s&&s.has(b)}
 let range=null, pool=[], current=[];
@@ -111,7 +123,7 @@ function render(){
   qs('.print-key ol').innerHTML=current.map(idx=>{const q=BANK[idx];return `<li>${esc(q.answer)}${q.answer!==q.reading?`（${esc(q.reading)}）`:''}</li>`}).join('');
   qs('.score').textContent='　';
 }
-qs('.grade').addEventListener('click',()=>{if(!range)return;let score=0;qsa('.question').forEach((row,n)=>{const item=BANK[current[n]],input=row.querySelector('.answer'),fb=row.querySelector('.explanation'),value=input.value.trim(),ok=[item.answer,item.reading,...item.alternatives].includes(value);if(ok)score++;input.classList.remove('correct','half','wrong');input.classList.add(ok?'correct':'wrong');fb.className='explanation show '+(ok?'correct':'wrong');fb.innerHTML=`<span class="mark">${ok?'○':'×'}</span>答え：<b>${esc(item.answer)}${item.answer!==item.reading?`（${esc(item.reading)}）`:''}</b>`+(item.alternatives.length?`<div class="meta">別解：${item.alternatives.map(esc).join('／')}</div>`:'')+`<div class="meta">関連：${item.collocations.join('／')}</div>`;});qs('.score').textContent=score;});
+qs('.grade').addEventListener('click',()=>{if(!range)return;let score=0;qsa('.question').forEach((row,n)=>{const item=BANK[current[n]],input=row.querySelector('.answer'),fb=row.querySelector('.explanation'),value=input.value.trim(),ok=isCorrect(item,value);if(ok)score++;input.classList.remove('correct','half','wrong');input.classList.add(ok?'correct':'wrong');fb.className='explanation show '+(ok?'correct':'wrong');fb.innerHTML=`<span class="mark">${ok?'○':'×'}</span>答え：<b>${esc(item.answer)}${item.answer!==item.reading?`（${esc(item.reading)}）`:''}</b>`+(item.alternatives.length?`<div class="meta">別解：${item.alternatives.map(esc).join('／')}</div>`:'')+`<div class="meta">関連：${item.collocations.join('／')}</div>`;});qs('.score').textContent=score;});
 qs('.next').addEventListener('click',()=>{if(!range)return;render();window.scrollTo(0,0)});
 qs('.from').innerHTML=PAGES.map(p=>`<option value="${p}">p.${p}</option>`).join('');
 qs('.from').addEventListener('change',fillTo);
